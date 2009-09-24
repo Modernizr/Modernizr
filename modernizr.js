@@ -1,5 +1,5 @@
 /*!
- * Modernizr JavaScript library 1.0a
+ * Modernizr JavaScript library 1.0b
  * http://modernizr.com/
  *
  * Copyright (c) 2009 Faruk Ates - http://farukat.es/
@@ -70,6 +70,19 @@ window.Modernizr = (function(){
 	 * enableNoClasses is ON by default.
 	 */
 	enableNoClasses = true,
+	
+	
+	/**
+	 * fontfaceCheckDelay is the ms delay before the @font-face test is
+	 * checked a second time. This is neccessary because both Gecko and
+	 * WebKit do not load data URI font data synchronously.
+	 *   https://bugzilla.mozilla.org/show_bug.cgi?id=512566
+	 * If you need to query for @font-face support, send a callback to: 
+	 *  Modernizr._fontfaceready(fn);
+	 * The callback is passed the boolean value of Modernizr.fontface
+	 */
+	fontfaceCheckDelay = 50,
+	
 	
 	doc = document,
 	docElement = doc.documentElement,
@@ -241,9 +254,7 @@ window.Modernizr = (function(){
 		// If the UA supports multiple backgrounds, there should be three occurrences
 		//	of the string "url(" in the return value for elem_style.background
 		
-		// var matches = m_style[background].match( /url\(/g );
-		// return matches && matches.length == 3;
-		return !!m_style[background].match(/(url\s*\(.*?){3}/);
+		return /(url\s*\(.*?){3}/.test(m_style[background]);
 	};
 	
 	tests[borderimage] = function() {
@@ -324,46 +335,70 @@ window.Modernizr = (function(){
 		
 		return test_props_all( 'transitionProperty' );
 	};
-	
-	tests[fontface] = function() {
-	  
-	  
-	  function isFontFaceSupported(){
- 
-  // IE supports EOT. 
-  //   It has had EOT since IE 5.
-  // So we sniff. :(
-  if (!(!/*@cc_on@if(@_jscript_version>=5)!@end@*/0)) return true;
- 
-  var doc = document,
-      b   = doc.body,
-      st  = doc.createElement('style'),
-      spn = doc.createElement('span'),
-      wid, nwid;
- 
-  st.textContent = "@font-face{font-family:testfont;src:url('data:font/ttf;base64,AAEAAAAMAIAAAwBAT1MvMliohmwAAADMAAAAVmNtYXCp5qrBAAABJAAAANhjdnQgACICiAAAAfwAAAAEZ2FzcP//AAMAAAIAAAAACGdseWYv5OZoAAACCAAAANxoZWFk69bnvwAAAuQAAAA2aGhlYQUJAt8AAAMcAAAAJGhtdHgGDgC4AAADQAAAABRsb2NhAIQAwgAAA1QAAAAMbWF4cABVANgAAANgAAAAIG5hbWUgXduAAAADgAAABPVwb3N03NkzmgAACHgAAAA4AAECBAEsAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAACAAMDAAAAAAAAgAACbwAAAAoAAAAAAAAAAFBmRWQAAAAgqS8DM/8zAFwDMwDNAAAABQAAAAAAAAAAAAMAAAADAAAAHAABAAAAAABGAAMAAQAAAK4ABAAqAAAABgAEAAEAAgAuqQD//wAAAC6pAP///9ZXAwAAAAAAAAACAAAABgBoAAAAAAAvAAEAAAAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEACoAAAAGAAQAAQACAC6pAP//AAAALqkA////1lcDAAAAAAAAAAIAAAAiAogAAAAB//8AAgACACIAAAEyAqoAAwAHAC6xAQAvPLIHBADtMrEGBdw8sgMCAO0yALEDAC88sgUEAO0ysgcGAfw8sgECAO0yMxEhESczESMiARDuzMwCqv1WIgJmAAACAFUAAAIRAc0ADwAfAAATFRQWOwEyNj0BNCYrASIGARQGKwEiJj0BNDY7ATIWFX8aIvAiGhoi8CIaAZIoN/43KCg3/jcoAWD0JB4eJPQkHh7++EY2NkbVRjY2RgAAAAABAEH/+QCdAEEACQAANjQ2MzIWFAYjIkEeEA8fHw8QDxwWFhwWAAAAAQAAAAIAAIuYbWpfDzz1AAsEAAAAAADFn9IuAAAAAMWf0i797/8zA4gDMwAAAAgAAgAAAAAAAAABAAADM/8zAFwDx/3v/98DiAABAAAAAAAAAAAAAAAAAAAABQF2ACIAAAAAAVUAAAJmAFUA3QBBAAAAKgAqACoAWgBuAAEAAAAFAFAABwBUAAQAAgAAAAEAAQAAAEAALgADAAMAAAAQAMYAAQAAAAAAAACLAAAAAQAAAAAAAQAhAIsAAQAAAAAAAgAFAKwAAQAAAAAAAwBDALEAAQAAAAAABAAnAPQAAQAAAAAABQAKARsAAQAAAAAABgAmASUAAQAAAAAADgAaAUsAAwABBAkAAAEWAWUAAwABBAkAAQBCAnsAAwABBAkAAgAKAr0AAwABBAkAAwCGAscAAwABBAkABABOA00AAwABBAkABQAUA5sAAwABBAkABgBMA68AAwABBAkADgA0A/tDb3B5cmlnaHQgMjAwOSBieSBEYW5pZWwgSm9obnNvbi4gIFJlbGVhc2VkIHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgT3BlbiBGb250IExpY2Vuc2UuIEtheWFoIExpIGdseXBocyBhcmUgcmVsZWFzZWQgdW5kZXIgdGhlIEdQTCB2ZXJzaW9uIDMuYmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhTGlnaHRiYWVjMmE5MmJmZmU1MDMyIC0gc3Vic2V0IG9mIEZvbnRGb3JnZSAyLjAgOiBKdXJhIExpZ2h0IDogMjMtMS0yMDA5YmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhIExpZ2h0VmVyc2lvbiAyIGJhZWMyYTkyYmZmZTUwMzIgLSBzdWJzZXQgb2YgSnVyYUxpZ2h0aHR0cDovL3NjcmlwdHMuc2lsLm9yZy9PRkwAQwBvAHAAeQByAGkAZwBoAHQAIAAyADAAMAA5ACAAYgB5ACAARABhAG4AaQBlAGwAIABKAG8AaABuAHMAbwBuAC4AIAAgAFIAZQBsAGUAYQBzAGUAZAAgAHUAbgBkAGUAcgAgAHQAaABlACAAdABlAHIAbQBzACAAbwBmACAAdABoAGUAIABPAHAAZQBuACAARgBvAG4AdAAgAEwAaQBjAGUAbgBzAGUALgAgAEsAYQB5AGEAaAAgAEwAaQAgAGcAbAB5AHAAaABzACAAYQByAGUAIAByAGUAbABlAGEAcwBlAGQAIAB1AG4AZABlAHIAIAB0AGgAZQAgAEcAUABMACAAdgBlAHIAcwBpAG8AbgAgADMALgBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQBMAGkAZwBoAHQAYgBhAGUAYwAyAGEAOQAyAGIAZgBmAGUANQAwADMAMgAgAC0AIABzAHUAYgBzAGUAdAAgAG8AZgAgAEYAbwBuAHQARgBvAHIAZwBlACAAMgAuADAAIAA6ACAASgB1AHIAYQAgAEwAaQBnAGgAdAAgADoAIAAyADMALQAxAC0AMgAwADAAOQBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQAgAEwAaQBnAGgAdABWAGUAcgBzAGkAbwBuACAAMgAgAGIAYQBlAGMAMgBhADkAMgBiAGYAZgBlADUAMAAzADIAIAAtACAAcwB1AGIAcwBlAHQAIABvAGYAIABKAHUAcgBhAEwAaQBnAGgAdABoAHQAdABwADoALwAvAHMAYwByAGkAcAB0AHMALgBzAGkAbAAuAG8AcgBnAC8ATwBGAEwAAAAAAgAAAAAAAP+BADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAQACAQIAEQt6ZXJva2F5YWhsaQ==')}";
- 
-  spn.setAttribute('style','font-family:monospace;position:absolute;top:-9999px;left:-9999px;visibility:hidden');
- 
-  // the data-uri'd font only has the . glyph.
-  spn.innerHTML = '........';
-  spn.id        = 'fonttest';
- 
-  b.appendChild(st);
-  b.appendChild(spn);
- 
-  wid = spn.offsetWidth;
-  spn.style.fontFamily = 'testfont,monospace';
-  nwid = spn.offsetWidth;
- 
-  b.removeChild(st);
-  b.removeChild(spn);
- 
-  return (isFontFaceSupported = function(){ return wid !== nwid; })();
-}
 
-return isFontFaceSupported();
-	};
+
+
+	// @font-face detection routine created by Paul Irish - paulirish.com
+	// Merged into Modernizr with approval. Read more about his work here:
+	// http://paulirish.com/2009/font-face-feature-detection/
+  tests[fontface] = (function(){
+
+    var fontret;
+    
+		// IE supports EOT and has had EOT support since IE 5.
+		// This is a proprietary standard (ATOW) and thus this off-spec,
+		// proprietary test for it is acceptable. 
+    if (!(!/*@cc_on@if(@_jscript_version>=5)!@end@*/0)) fontret = true;
+  
+    else {
+      
+      // Create variables for dedicated @font-face test
+      var st  = doc.createElement('style'),
+        spn = doc.createElement('span'),
+        wid, nwid, isFakeBody = false, body = doc.body, fontret, 
+        callback, isCallbackCalled;
+  
+      // The following is a font-face + glyph definition for the . character:
+      st.textContent = "@font-face{font-family:testfont;src:url('data:font/ttf;base64,AAEAAAAMAIAAAwBAT1MvMliohmwAAADMAAAAVmNtYXCp5qrBAAABJAAAANhjdnQgACICiAAAAfwAAAAEZ2FzcP//AAMAAAIAAAAACGdseWYv5OZoAAACCAAAANxoZWFk69bnvwAAAuQAAAA2aGhlYQUJAt8AAAMcAAAAJGhtdHgGDgC4AAADQAAAABRsb2NhAIQAwgAAA1QAAAAMbWF4cABVANgAAANgAAAAIG5hbWUgXduAAAADgAAABPVwb3N03NkzmgAACHgAAAA4AAECBAEsAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAACAAMDAAAAAAAAgAACbwAAAAoAAAAAAAAAAFBmRWQAAAAgqS8DM/8zAFwDMwDNAAAABQAAAAAAAAAAAAMAAAADAAAAHAABAAAAAABGAAMAAQAAAK4ABAAqAAAABgAEAAEAAgAuqQD//wAAAC6pAP///9ZXAwAAAAAAAAACAAAABgBoAAAAAAAvAAEAAAAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEACoAAAAGAAQAAQACAC6pAP//AAAALqkA////1lcDAAAAAAAAAAIAAAAiAogAAAAB//8AAgACACIAAAEyAqoAAwAHAC6xAQAvPLIHBADtMrEGBdw8sgMCAO0yALEDAC88sgUEAO0ysgcGAfw8sgECAO0yMxEhESczESMiARDuzMwCqv1WIgJmAAACAFUAAAIRAc0ADwAfAAATFRQWOwEyNj0BNCYrASIGARQGKwEiJj0BNDY7ATIWFX8aIvAiGhoi8CIaAZIoN/43KCg3/jcoAWD0JB4eJPQkHh7++EY2NkbVRjY2RgAAAAABAEH/+QCdAEEACQAANjQ2MzIWFAYjIkEeEA8fHw8QDxwWFhwWAAAAAQAAAAIAAIuYbWpfDzz1AAsEAAAAAADFn9IuAAAAAMWf0i797/8zA4gDMwAAAAgAAgAAAAAAAAABAAADM/8zAFwDx/3v/98DiAABAAAAAAAAAAAAAAAAAAAABQF2ACIAAAAAAVUAAAJmAFUA3QBBAAAAKgAqACoAWgBuAAEAAAAFAFAABwBUAAQAAgAAAAEAAQAAAEAALgADAAMAAAAQAMYAAQAAAAAAAACLAAAAAQAAAAAAAQAhAIsAAQAAAAAAAgAFAKwAAQAAAAAAAwBDALEAAQAAAAAABAAnAPQAAQAAAAAABQAKARsAAQAAAAAABgAmASUAAQAAAAAADgAaAUsAAwABBAkAAAEWAWUAAwABBAkAAQBCAnsAAwABBAkAAgAKAr0AAwABBAkAAwCGAscAAwABBAkABABOA00AAwABBAkABQAUA5sAAwABBAkABgBMA68AAwABBAkADgA0A/tDb3B5cmlnaHQgMjAwOSBieSBEYW5pZWwgSm9obnNvbi4gIFJlbGVhc2VkIHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgT3BlbiBGb250IExpY2Vuc2UuIEtheWFoIExpIGdseXBocyBhcmUgcmVsZWFzZWQgdW5kZXIgdGhlIEdQTCB2ZXJzaW9uIDMuYmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhTGlnaHRiYWVjMmE5MmJmZmU1MDMyIC0gc3Vic2V0IG9mIEZvbnRGb3JnZSAyLjAgOiBKdXJhIExpZ2h0IDogMjMtMS0yMDA5YmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhIExpZ2h0VmVyc2lvbiAyIGJhZWMyYTkyYmZmZTUwMzIgLSBzdWJzZXQgb2YgSnVyYUxpZ2h0aHR0cDovL3NjcmlwdHMuc2lsLm9yZy9PRkwAQwBvAHAAeQByAGkAZwBoAHQAIAAyADAAMAA5ACAAYgB5ACAARABhAG4AaQBlAGwAIABKAG8AaABuAHMAbwBuAC4AIAAgAFIAZQBsAGUAYQBzAGUAZAAgAHUAbgBkAGUAcgAgAHQAaABlACAAdABlAHIAbQBzACAAbwBmACAAdABoAGUAIABPAHAAZQBuACAARgBvAG4AdAAgAEwAaQBjAGUAbgBzAGUALgAgAEsAYQB5AGEAaAAgAEwAaQAgAGcAbAB5AHAAaABzACAAYQByAGUAIAByAGUAbABlAGEAcwBlAGQAIAB1AG4AZABlAHIAIAB0AGgAZQAgAEcAUABMACAAdgBlAHIAcwBpAG8AbgAgADMALgBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQBMAGkAZwBoAHQAYgBhAGUAYwAyAGEAOQAyAGIAZgBmAGUANQAwADMAMgAgAC0AIABzAHUAYgBzAGUAdAAgAG8AZgAgAEYAbwBuAHQARgBvAHIAZwBlACAAMgAuADAAIAA6ACAASgB1AHIAYQAgAEwAaQBnAGgAdAAgADoAIAAyADMALQAxAC0AMgAwADAAOQBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQAgAEwAaQBnAGgAdABWAGUAcgBzAGkAbwBuACAAMgAgAGIAYQBlAGMAMgBhADkAMgBiAGYAZgBlADUAMAAzADIAIAAtACAAcwB1AGIAcwBlAHQAIABvAGYAIABKAHUAcgBhAEwAaQBnAGgAdABoAHQAdABwADoALwAvAHMAYwByAGkAcAB0AHMALgBzAGkAbAAuAG8AcgBnAC8ATwBGAEwAAAAAAgAAAAAAAP+BADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAQACAQIAEQt6ZXJva2F5YWhsaQ==')}";
+      doc.getElementsByTagName('head')[0].appendChild(st);
+      
+      
+      spn.setAttribute('style','font:99px _,serif;position:absolute;visibility:hidden'); 
+      
+      if  (!body){
+        body = docElement.appendChild(doc.createElement(fontface));
+        isFakeBody = true;
+      } 
+      
+      // the data-uri'd font only has the . glyph; which is 3 pixels wide.
+      spn.innerHTML = '........';
+      spn.id        = 'fonttest';
+      
+      body.appendChild(spn);
+      wid = spn.offsetWidth;
+      spn.style.font = '99px testfont,_,serif';
+      
+      // needed for the CSSFontFaceRule false positives (ff3, chrome, op9)
+      fontret = wid !== spn.offsetWidth;
+      
+      var delayedCheck = function(){
+        fontret = Modernizr[fontface] = wid !== spn.offsetWidth;
+        docElement.className = docElement.className.replace(/(no-)?font.*?\b/,'') + fontret ? ' ' : ' no-' + fontface;
+        
+        callback && (isCallbackCalled = true) && callback(fontret);
+        isFakeBody && setTimeout(function(){body.parentNode.removeChild(body)},50);
+      }
+
+      setTimeout(delayedCheck,fontfaceCheckDelay);
+      
+      // allow for a callback
+      ret._fontfaceready = function(fn){
+        isCallbackCalled || fontret ? fn(fontret) : (callback = fn);
+      }
+    }
+      
+    return function(){ return fontret || wid !== spn.offsetWidth; };
+  })();
 	
 	tests[video] = function() {
 		return !!doc.createElement(video)[canPlayType];
@@ -381,18 +416,17 @@ return isFontFaceSupported();
 		}
 	}
 
-
 	// Run through HTML5's new input types to see if the UA understands any.
 	//   This is put behind the tests runloop because it doesn't return a
 	//   true/false like all the other tests; instead, it returns an array
-	//   containing properties that represent the input types.
+	//   containing properties that represent the 'supported' input types.
 	ret[inputtypes] = function(props) {
 		for ( var i in props ) {
 			f.setAttribute('type', props[i]);
 			inputs[ props[i] ] = !!( f.type !== 'text');
 		}
 		return inputs;
-	}(['search', 'tel', 'url', 'email', 'datetime', 'date', 'month', 'week', 'time', 'datetime-local', 'number', 'range', 'color']);
+	}('search tel url email datetime date month week time datetime-local number range color'.split(' '));
 
 
 	/**
@@ -410,8 +444,8 @@ return isFontFaceSupported();
 	if ( enableHTML5 && !(!/*@cc_on!@*/0) ) {
 		elems = 'abbr article aside audio bb canvas datagrid datalist details dialog figure footer header mark menu meter nav output progress section time video'.split(' ');
 
-		i = elems.length;
-		while ( i-- ) {
+		i = elems.length+1;
+		while ( --i ) {
 			elem = doc.createElement( elems[i] );
 		}
 		elem = null;
