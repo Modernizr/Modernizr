@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="modernizr-1.0" class="no-js">
+<head>
+	<title>Modernizr 1.0 Test Suite</title>
+	<style media="screen">
+		body {
+			font: 14px/18px Inconsolata;
+		}
+		li {
+			color: #900;
+		}
+		li.yes {
+			color: #090;
+		}
+		li b {
+			color: #000;
+		}
+	</style>
+
+
+
+
+</head>
+
+<body id="home">
+
+
+<script>
+	var start = +new Date();
+</script>
+<script src="modernizr.js"></script>
+
+
+
+<script>
+// callback for the fontface detect
+Modernizr._fontfaceready && Modernizr._fontfaceready(function(bool){
+  var elem = document.getElementById('fontface');
+  
+  if (!elem) return;
+  elem.className = (bool ? 'yes' : '');
+  elem.innerHTML = 'fontface :' + Modernizr['fontface'];
+  elem.style.fontWeight = 'bold'; 
+});
+
+
+document.write('At '+ (+new Date()) +', Modernizr took: '+ ((+new Date()) - start) + 'ms');
+</script>
+
+	<h1>Modernizr</h1>
+	
+	<ol>
+<script>
+	for (var prop in Modernizr) {
+	  if (typeof Modernizr[prop] === 'function') continue;
+		if (prop == 'inputtypes') {
+			document.write('<li><b>Input types:</b><ul>');
+			for (var field in Modernizr[prop]) {
+				document.write('<li class="' + (Modernizr[prop][field] ? 'yes' : '') + '">' + field + ': ' + Modernizr[prop][field] + '</li>');
+			}
+			document.write('</ul></li>');
+		} else {
+			document.write('<li  id="'+prop+'" class="' + (Modernizr[prop] ? 'yes' : '') + '">' + prop + ': ' + Modernizr[prop] + '</li>');
+		}
+	}
+	
+	
+</script>
+	</ol>
+
+
+<script>
+document.write('HTML element className = ' + document.documentElement.className);
+</script>
+
+</body>
+</html>
