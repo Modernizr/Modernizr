@@ -16,7 +16,7 @@
  * features with a true/false value, depending on whether the UA has
  * native support for it or not.
  * 
- * In addition to that, Modernizr will add classes to the <body>
+ * In addition to that, Modernizr will add classes to the <html>
  * element of the page, one for each cutting-edge feature. If the UA
  * supports it, a class like "cssgradients" will be added. If not,
  * the class name will be "no-cssgradients". This allows for simple
