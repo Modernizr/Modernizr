@@ -1,5 +1,5 @@
 /*!
- * Modernizr JavaScript library 1.0b
+ * Modernizr JavaScript library 1.0c
  * http://modernizr.com/
  *
  * Copyright (c) 2009 Faruk Ates - http://farukat.es/
@@ -66,7 +66,7 @@ window.Modernizr = (function(){
 	 *  Modernizr._fontfaceready(fn);
 	 * The callback is passed the boolean value of Modernizr.fontface
 	 */
-	fontfaceCheckDelay = 100,
+	fontfaceCheckDelay = 50,
 	
 	
 	doc = document,
