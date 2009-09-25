@@ -355,7 +355,7 @@ window.Modernizr = (function(){
       // Create variables for dedicated @font-face test
       var st  = doc.createElement('style'),
         spn = doc.createElement('span'),
-        wid, nwid, isFakeBody = false, body = doc.body, fontret, 
+        wid, nwid, isFakeBody = false, body = doc.body,
         callback, isCallbackCalled;
   
       // The following is a font-face + glyph definition for the . character:
@@ -383,18 +383,18 @@ window.Modernizr = (function(){
       
       var delayedCheck = function(){
         fontret = Modernizr[fontface] = wid !== spn.offsetWidth;
-        docElement.className = docElement.className.replace(/(no-)?font.*?\b/,'') + fontret ? ' ' : ' no-' + fontface;
+        docElement.className = docElement.className.replace(/(no-)?font.*?\b/,'') + (fontret ? ' ' : ' no-') + fontface;
         
         callback && (isCallbackCalled = true) && callback(fontret);
         isFakeBody && setTimeout(function(){body.parentNode.removeChild(body)},50);
       }
 
       setTimeout(delayedCheck,fontfaceCheckDelay);
-      
-      // allow for a callback
-      ret._fontfaceready = function(fn){
-        isCallbackCalled || fontret ? fn(fontret) : (callback = fn);
-      }
+    }
+
+    // allow for a callback
+    ret._fontfaceready = function(fn){
+      (isCallbackCalled || fontret) ? fn(fontret) : (callback = fn);
     }
       
     return function(){ return fontret || wid !== spn.offsetWidth; };
