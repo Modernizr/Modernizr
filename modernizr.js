@@ -47,7 +47,7 @@ window.Modernizr = (function(){
 	
 	/**
 	 * enableNoClasses is a private property that, when enabled, will
-	 * add classnames to the <body> element at all times, but prefixes
+	 * add classnames to the <html> element at all times, but prefixes
 	 * failed groups with "no-", e.g. "no-cssanimations".
 	 * This allows for very easy IF / ELSE style rules in your CSS. It
 	 * can be disabled if these "no-classes" are not needed or desired.
