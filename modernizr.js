@@ -10,21 +10,6 @@
  * Paul Irish  - http://paulirish.com
  * Ben Alman   - http://benalman.com/
  */
-
-/*
-
-TODO: copy these notes elsewhere.
-
-Minor contributions, to list in the announcement posts:
-
-- John Resig
-- Mark Pilgrim
-- Leonid Khachaturov
-- John Tantalo
-- Peter Speck
-
-*/
-
 /*
  * Modernizr is a script that will detect native CSS3 and HTML5 features
  * available in the current UA and provide an object containing all
@@ -75,13 +60,13 @@ window.Modernizr = (function(){
 	/**
 	 * fontfaceCheckDelay is the ms delay before the @font-face test is
 	 * checked a second time. This is neccessary because both Gecko and
-	 * WebKit do not load data URI font data synchronously.
+	 * WebKit do not load data: URI font data synchronously.
 	 *   https://bugzilla.mozilla.org/show_bug.cgi?id=512566
 	 * If you need to query for @font-face support, send a callback to: 
 	 *  Modernizr._fontfaceready(fn);
 	 * The callback is passed the boolean value of Modernizr.fontface
 	 */
-	fontfaceCheckDelay = 50,
+	fontfaceCheckDelay = 100,
 	
 	
 	doc = document,
@@ -114,6 +99,7 @@ window.Modernizr = (function(){
 	cssgradients = 'cssgradients',
 	cssreflections = 'cssreflections',
 	csstransforms = 'csstransforms',
+	csstransforms3d = 'csstransforms3d',
 	csstransitions = 'csstransitions',
 	fontface = 'fontface',
 	geolocation = 'geolocation',
@@ -330,6 +316,12 @@ window.Modernizr = (function(){
 		return !!test_props([ 'transformProperty', 'webkitTransform', 'MozTransform', 'mozTransform', 'oTransform', 'msTransform' ]);
 	};
 	
+	tests[csstransforms3d] = function() {
+		set_css_all( 'perspective:500' );
+		
+		return !!test_props([ 'perspectiveProperty', 'webkitPerspective', 'MozPerspective', 'mozPerspective', 'oPerspective', 'msPerspective' ]);
+	};
+	
 	tests[csstransitions] = function() {
 		set_css_all( 'transition:all .5s linear' );
 		
@@ -339,7 +331,7 @@ window.Modernizr = (function(){
 
 
 	// @font-face detection routine created by Paul Irish - paulirish.com
-	// Merged into Modernizr with approval. Read more about his work here:
+	// Merged into Modernizr with approval. Read more about Paul's work here:
 	// http://paulirish.com/2009/font-face-feature-detection/
   tests[fontface] = (function(){
 
@@ -386,7 +378,7 @@ window.Modernizr = (function(){
         docElement.className = docElement.className.replace(/(no-)?font.*?\b/,'') + (fontret ? ' ' : ' no-') + fontface;
         
         callback && (isCallbackCalled = true) && callback(fontret);
-        isFakeBody && setTimeout(function(){body.parentNode.removeChild(body)},50);
+        isFakeBody && setTimeout(function(){body.parentNode.removeChild(body)}, 50);
       }
 
       setTimeout(delayedCheck,fontfaceCheckDelay);
