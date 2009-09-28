@@ -106,7 +106,7 @@ window.Modernizr = (function(){
 	video = 'video',
 	audio = 'audio',
 	inputtypes = 'inputtypes',
-	// inputtypes is a test array of its own containing individual tests for
+	// inputtypes is an object of its own containing individual tests for
 	// various new input types, such as search, range, datetime, etc.
 	
 	// SVG is not yet supported in Modernizr 1.0
@@ -410,8 +410,8 @@ window.Modernizr = (function(){
 
 	// Run through HTML5's new input types to see if the UA understands any.
 	//   This is put behind the tests runloop because it doesn't return a
-	//   true/false like all the other tests; instead, it returns an array
-	//   containing properties that represent the 'supported' input types.
+	//   true/false like all the other tests; instead, it returns an object
+	//   containing each input type with its corresponding true/false value 
 	ret[inputtypes] = function(props) {
 		for ( var i in props ) {
 			f.setAttribute('type', props[i]);
