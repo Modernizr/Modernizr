@@ -419,7 +419,7 @@ window.Modernizr = (function(){
 		return typeof window.Worker != 'undefined';
 	};
 
-	
+
 	// Run through all tests and detect their support in the current UA.
 	for ( feature in tests ) {
 		if ( tests.hasOwnProperty( feature ) ) {
