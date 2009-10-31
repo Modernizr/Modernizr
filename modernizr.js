@@ -116,6 +116,7 @@ window.Modernizr = (function(){
 	backgroundColor = background + 'Color',
 	canPlayType = 'canPlayType',
 	localStorage = 'localStorage',
+	webWorkers = 'webWorkers',
 	
 	tests = {},
 	inputs = {},
@@ -412,7 +413,11 @@ window.Modernizr = (function(){
 
 	tests[localStorage] = function() {
 		return (typeof window.localStorage != 'undefined');
-	}
+	};
+
+	tests[webWorkers] = function () {
+		return typeof window.Worker != 'undefined';
+	};
 
 	
 	// Run through all tests and detect their support in the current UA.
