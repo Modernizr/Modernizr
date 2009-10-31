@@ -117,7 +117,8 @@ window.Modernizr = (function(){
 	canPlayType = 'canPlayType',
 	localStorage = 'localStorage',
 	webWorkers = 'webWorkers',
-	
+	offline = 'offline',
+
 	tests = {},
 	inputs = {},
 	
@@ -417,6 +418,10 @@ window.Modernizr = (function(){
 
 	tests[webWorkers] = function () {
 		return typeof window.Worker != 'undefined';
+	};
+
+	tests[offline] =  function() {
+		return (typeof window.applicationCache != 'undefined');
 	};
 
 
