@@ -115,6 +115,7 @@ window.Modernizr = (function(){
 	background = 'background',
 	backgroundColor = background + 'Color',
 	canPlayType = 'canPlayType',
+	localStorage = 'localStorage',
 	
 	tests = {},
 	inputs = {},
@@ -408,6 +409,10 @@ window.Modernizr = (function(){
 	tests[audio] = function() {
 		return !!doc.createElement(audio)[canPlayType];
 	};
+
+	tests[localStorage] = function() {
+	  return (typeof window.localStorage != 'undefined');
+	}
 
 	
 	// Run through all tests and detect their support in the current UA.
