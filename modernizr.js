@@ -119,6 +119,7 @@ window.Modernizr = (function(){
 	webWorkers = 'webWorkers',
 	offline = 'offline',
 	inputPlaceholders = 'inputPlaceholders',
+	inputAutofocus = 'inputAutofocus',
 
 	tests = {},
 	inputs = {},
@@ -428,6 +429,11 @@ window.Modernizr = (function(){
 	tests[inputPlaceholders] = function() {
 		var i = document.createElement('input');
 		return 'placeholder' in i;
+	};
+
+	tests[inputAutofocus] = function() {
+		var i = document.createElement('input');
+		return 'autofocus' in i;
 	};
 
 
