@@ -118,6 +118,7 @@ window.Modernizr = (function(){
 	localStorage = 'localStorage',
 	webWorkers = 'webWorkers',
 	offline = 'offline',
+	inputPlaceholders = 'inputPlaceholders',
 
 	tests = {},
 	inputs = {},
@@ -422,6 +423,11 @@ window.Modernizr = (function(){
 
 	tests[offline] =  function() {
 		return (typeof window.applicationCache != 'undefined');
+	};
+
+	tests[inputPlaceholders] = function() {
+		var i = document.createElement('input');
+		return 'placeholder' in i;
 	};
 
 
