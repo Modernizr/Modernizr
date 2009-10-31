@@ -411,7 +411,7 @@ window.Modernizr = (function(){
 	};
 
 	tests[localStorage] = function() {
-	  return (typeof window.localStorage != 'undefined');
+		return (typeof window.localStorage != 'undefined');
 	}
 
 	
