@@ -251,6 +251,8 @@ window.Modernizr = (function(){
 	// We'll take advantage of this quick test and skip setting a style 
 	// on our modernizr element, but instead just testing undefined vs
 	// empty string.
+	// The legacy set_css_all calls will stay in for clarity, however
+	// functionally they are no longer needed.
 	
 	tests[borderimage] = function() {
 	    //	set_css_all( 'border-image:url(m.png) 1 1 stretch' );
