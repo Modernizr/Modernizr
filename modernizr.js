@@ -115,7 +115,12 @@ window.Modernizr = (function(){
 	background = 'background',
 	backgroundColor = background + 'Color',
 	canPlayType = 'canPlayType',
-	
+	localStorage = 'localStorage',
+	webWorkers = 'webWorkers',
+	offline = 'offline',
+	inputPlaceholders = 'inputPlaceholders',
+	inputAutofocus = 'inputAutofocus',
+
 	tests = {},
 	inputs = {},
 	
@@ -411,7 +416,29 @@ window.Modernizr = (function(){
 		return !!doc.createElement(audio)[canPlayType];
 	};
 
-	
+	tests[localStorage] = function() {
+		return (typeof window.localStorage != 'undefined');
+	};
+
+	tests[webWorkers] = function () {
+		return typeof window.Worker != 'undefined';
+	};
+
+	tests[offline] =  function() {
+		return (typeof window.applicationCache != 'undefined');
+	};
+
+	tests[inputPlaceholders] = function() {
+		var i = document.createElement('input');
+		return 'placeholder' in i;
+	};
+
+	tests[inputAutofocus] = function() {
+		var i = document.createElement('input');
+		return 'autofocus' in i;
+	};
+
+
 	// Run through all tests and detect their support in the current UA.
 	for ( feature in tests ) {
 		if ( tests.hasOwnProperty( feature ) ) {
