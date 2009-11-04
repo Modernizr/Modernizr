@@ -66,7 +66,7 @@ window.Modernizr = (function(){
 	 *  Modernizr._fontfaceready(fn);
 	 * The callback is passed the boolean value of Modernizr.fontface
 	 */
-	fontfaceCheckDelay = 50,
+	fontfaceCheckDelay = 100,
 	
 	
 	doc = document,
@@ -243,14 +243,23 @@ window.Modernizr = (function(){
 		return /(url\s*\(.*?){3}/.test(m_style[background]);
 	};
 	
+	
+	// In testing support for a given CSS property, it's legit to test:
+	//    elem.style[styleName] !== undefined
+	// If the property is supported it will return an empty string,
+	// if unsupported it will return undefined.
+	// We'll take advantage of this quick test and skip setting a style 
+	// on our modernizr element, but instead just testing undefined vs
+	// empty string.
+	
 	tests[borderimage] = function() {
-		set_css_all( 'border-image:url(m.png) 1 1 stretch' );
+	    //	set_css_all( 'border-image:url(m.png) 1 1 stretch' );
 		
 		return test_props_all( 'borderImage' );
 	};
 	
 	tests[borderradius] = function() {
-		set_css_all( 'border-radius:10px' );
+	    //	set_css_all( 'border-radius:10px' );
 
 		return test_props_all( 'borderRadius', '', function( prop ) {
 			return contains( prop, 'orderRadius' );
@@ -258,7 +267,7 @@ window.Modernizr = (function(){
 	};
 	
 	tests[boxshadow] = function() {
-		set_css_all( 'box-shadow:#000 1px 1px 3px' );
+	    //	set_css_all( 'box-shadow:#000 1px 1px 3px' );
 		
 		return test_props_all( 'boxShadow' );
 	};
@@ -274,13 +283,13 @@ window.Modernizr = (function(){
 	};
 	
 	tests[cssanimations] = function() {
-		set_css_all( 'animation:"animate" 2s ease 2', 'position:relative' );
+	    //	set_css_all( 'animation:"animate" 2s ease 2', 'position:relative' );
 		
 		return test_props_all( 'animationName' );
 	};
 	
 	tests[csscolumns] = function() {
-		set_css_all( 'column-count:3' );
+	    //	set_css_all( 'column-count:3' );
 		
 		return test_props_all( 'columnCount' );
 	};
@@ -306,24 +315,24 @@ window.Modernizr = (function(){
 	};
 	
 	tests[cssreflections] = function() {
-		set_css_all( 'box-reflect:right 1px' );
+	    //	set_css_all( 'box-reflect:right 1px' );
 		return test_props_all( 'boxReflect' );
 	};
 	
 	tests[csstransforms] = function() {
-		set_css_all( 'transform:rotate(3deg)' );
+	    //	set_css_all( 'transform:rotate(3deg)' );
 		
 		return !!test_props([ 'transformProperty', 'webkitTransform', 'MozTransform', 'mozTransform', 'oTransform', 'msTransform' ]);
 	};
 	
 	tests[csstransforms3d] = function() {
-		set_css_all( 'perspective:500' );
+	    //	set_css_all( 'perspective:500' );
 		
 		return !!test_props([ 'perspectiveProperty', 'webkitPerspective', 'MozPerspective', 'mozPerspective', 'oPerspective', 'msPerspective' ]);
 	};
 	
 	tests[csstransitions] = function() {
-		set_css_all( 'transition:all .5s linear' );
+	    //	set_css_all( 'transition:all .5s linear' );
 		
 		return test_props_all( 'transitionProperty' );
 	};
