@@ -256,8 +256,9 @@ window.Modernizr = (function(){
 	// We'll take advantage of this quick test and skip setting a style 
 	// on our modernizr element, but instead just testing undefined vs
 	// empty string.
-	// The legacy set_css_all calls will stay in for clarity, however
-	// functionally they are no longer needed.
+	// The legacy set_css_all calls will remain in the source 
+	// (however, commented) in for clarity, yet functionally they are 
+	// no longer needed.
 	
 	tests[borderimage] = function() {
 	    //	set_css_all( 'border-image:url(m.png) 1 1 stretch' );
@@ -478,7 +479,7 @@ window.Modernizr = (function(){
 
 	// Enable HTML 5 elements for styling in IE:
 	if ( enableHTML5 && !(!/*@cc_on!@*/0) ) {
-		elems = 'abbr article aside audio bb canvas datagrid datalist details dialog figure footer header mark menu meter nav output progress section time video'.split(' ');
+		elems = 'abbr article aside audio canvas datalist details eventsource figure footer header hgroup mark menu meter nav output progress section time video'.split(' ');
 
 		i = elems.length+1;
 		while ( --i ) {
