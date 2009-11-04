@@ -417,25 +417,23 @@ window.Modernizr = (function(){
 	};
 
 	tests[localStorage] = function() {
-		return (typeof window.localStorage != 'undefined');
+		return !!window.localStorage;
 	};
 
 	tests[webWorkers] = function () {
-		return typeof window.Worker != 'undefined';
+		return !!window.Worker;
 	};
 
 	tests[offline] =  function() {
-		return (typeof window.applicationCache != 'undefined');
+		return !!window.applicationCache;
 	};
 
 	tests[inputPlaceholders] = function() {
-		var i = document.createElement('input');
-		return 'placeholder' in i;
+		return 'placeholder' in f;
 	};
 
 	tests[inputAutofocus] = function() {
-		var i = document.createElement('input');
-		return 'autofocus' in i;
+		return 'autofocus' in f;
 	};
 
 
