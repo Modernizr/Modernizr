@@ -424,17 +424,16 @@ window.Modernizr = (function(){
 	// we're using the Boolean constructor here, so that we can extend the value
 	// e.g.  Modernizr.video     // true
 	//       Modernizr.video.ogg // 'probably'
-	// UPDATE : this approach will not work, as !!new Boolean(false) is truthy.
-	//  We'll have to find a new API for supported media types.
 	//
 	// codec values from : http://www.w3.org/TR/html5/video.html#the-source-element
 	//                     http://www.ietf.org/rfc/rfc4281.txt
 	
 	tests[video] = function() {
 		var elem = doc.createElement(video),
-		    bool = new Boolean(elem[canPlayType]);
+		    bool = elem[canPlayType];
 		
-		if (bool){    
+		if (bool){  
+		    bool      = new Boolean(bool);  
 		    bool.ogg  = elem[canPlayType]('video/ogg; codecs="theora, vorbis"');
 		    bool.h264 = elem[canPlayType]('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
 		}
@@ -443,9 +442,10 @@ window.Modernizr = (function(){
 	
 	tests[audio] = function() {
 		var elem = doc.createElement(audio),
-		    bool = new Boolean(elem[canPlayType]);
+		    bool = elem[canPlayType];
 		
-		if (bool){    
+		if (bool){  
+		    bool      = new Boolean(bool);  
 		    bool.ogg  = elem[canPlayType]('audio/ogg; codecs="vorbis"');
 		    bool.mp3  = elem[canPlayType]('audio/mpeg3;');
 		    
