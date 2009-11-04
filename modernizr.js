@@ -305,6 +305,8 @@ window.Modernizr = (function(){
 		/**
 		 * For CSS Gradients syntax, please see:
 		 * http://webkit.org/blog/175/introducing-css-gradients/
+		 * https://developer.mozilla.org/en/CSS/-moz-linear-gradient
+		 * https://developer.mozilla.org/en/CSS/-moz-radial-gradient
 		 */
 		
 		var str1 = background + '-image:',
