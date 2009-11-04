@@ -308,7 +308,8 @@ window.Modernizr = (function(){
 		 */
 		
 		var str1 = background + '-image:',
-			str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));';
+			str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));',
+			str3 = 'linear-gradient(left top,right bottom,from(#9f9),to(white));';
 		
 		set_css(
 				str1 + str2
@@ -316,6 +317,11 @@ window.Modernizr = (function(){
 			+ str1 + '-moz-' + str2
 			+ str1 + '-o-' + str2
 			+ str1 + '-ms-' + str2
+			+ str1 + str3
+			+ str1 + '-webkit-' + str3
+			+ str1 + '-moz-' + str3
+			+ str1 + '-o-' + str3
+			+ str1 + '-ms-' + str3
 		);
 		
 		return contains( m_style.backgroundImage, 'gradient' );
