@@ -453,17 +453,35 @@ window.Modernizr = (function(){
 		}
 	}
 
+    /**
+     * Addtest allows the user to define their own feature tests
+     * the result will be added onto the Modernizr object,
+     * as well as an appropriate className set on the html element
+     * 
+     * @param feature - String naming the feature
+     * @param test - Function returning true if feature is supported, false if not
+     */
+    ret.addTest = function (feature, test) {
+      if (this.hasOwnProperty( feature )) {
+        // warn that feature is already in place
+      } 
+      test = !!(test());
+      docElement.className += ' ' + (!test && enableNoClasses ? 'no-' : '') + feature; 
+      ret[ feature ] = Modernizr[ feature ] = test;
+    };
+
+
 	// Run through HTML5's new input types to see if the UA understands any.
 	//   This is put behind the tests runloop because it doesn't return a
 	//   true/false like all the other tests; instead, it returns an array
 	//   containing properties that represent the 'supported' input types.
-	ret[inputtypes] = function(props) {
+	ret[inputtypes] = (function(props) {
 		for ( var i in props ) {
 			f.setAttribute('type', props[i]);
 			inputs[ props[i] ] = !!( f.type !== 'text');
 		}
 		return inputs;
-	}('search tel url email datetime date month week time datetime-local number range color'.split(' '));
+	})('search tel url email datetime date month week time datetime-local number range color'.split(' '));
 
 
 	/**
