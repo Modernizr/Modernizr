@@ -417,12 +417,45 @@ window.Modernizr = (function(){
     return function(){ return fontret || wid !== spn.offsetWidth; };
   })();
 	
+	
+	// These tests evaluate support of the video/audio elements, as well as
+	// testing what types of content they support.
+	//
+	// we're using the Boolean constructor here, so that we can extend the value
+	// e.g.  Modernizr.video     // true
+	//       Modernizr.video.ogg // 'probably'
+	// UPDATE : this approach will not work, as !!new Boolean(false) is truthy.
+	//  We'll have to find a new API for supported media types.
+	//
+	// codec values from : http://www.w3.org/TR/html5/video.html#the-source-element
+	//                     http://www.ietf.org/rfc/rfc4281.txt
+	
 	tests[video] = function() {
-		return !!doc.createElement(video)[canPlayType];
+		var elem = doc.createElement(video),
+		    bool = new Boolean(elem[canPlayType]);
+		
+		if (bool){    
+		    bool.ogg  = elem[canPlayType]('video/ogg; codecs="theora, vorbis"');
+		    bool.h264 = elem[canPlayType]('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
+		}
+		return bool;
 	};
 	
 	tests[audio] = function() {
-		return !!doc.createElement(audio)[canPlayType];
+		var elem = doc.createElement(audio),
+		    bool = new Boolean(elem[canPlayType]);
+		
+		if (bool){    
+		    bool.ogg  = elem[canPlayType]('audio/ogg; codecs="vorbis"');
+		    bool.mp3  = elem[canPlayType]('audio/mpeg3;');
+		    
+		    // mimetypes accepted: 
+		    //   https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
+		    //   http://developer.apple.com/safari/library/documentation/appleapplications/reference/SafariWebContent/CreatingContentforSafarioniPhone/CreatingContentforSafarioniPhone.html#//apple_ref/doc/uid/TP40006482-SW7
+            bool.wav  = elem[canPlayType]('audio/wav; codecs="1"');
+            bool.m4a  = elem[canPlayType]('audio/x-m4a;');
+        }
+		return bool;
 	};
 
 	tests[localStorage] = function() {
