@@ -23,323 +23,393 @@
  * if-conditionals in CSS styling, making it easily to have fine
  * control over the look and feel of your website.
  * 
- * @author		Faruk Ates
- * @copyright	 (2009) Faruk Ates.
+ * @author    Faruk Ates
+ * @copyright   (2009) Faruk Ates.
  *
  * @contributor   Paul Irish
  * @contributor   Ben Alman
  */
 
-window.Modernizr = (function(){
-	
-	var ret = {},
-
-	/**
-	 * enableHTML5 is a private property for advanced use only. If enabled,
-	 * it will make Modernizr.init() run through a brief while() loop in
-	 * which it will create all HTML5 elements in the DOM to allow for
-	 * styling them in Internet Explorer, which does not recognize any
-	 * non-HTML4 elements unless created in the DOM this way.
-	 * 
-	 * enableHTML5 is ON by default.
-	 */
-	enableHTML5 = true,
-	
-	/**
-	 * enableNoClasses is a private property that, when enabled, will
-	 * add classnames to the <html> element at all times, but prefixes
-	 * failed groups with "no-", e.g. "no-cssanimations".
-	 * This allows for very easy IF / ELSE style rules in your CSS. It
-	 * can be disabled if these "no-classes" are not needed or desired.
-	 * 
-	 * enableNoClasses is ON by default.
-	 */
-	enableNoClasses = true,
-	
-	
-	/**
-	 * fontfaceCheckDelay is the ms delay before the @font-face test is
-	 * checked a second time. This is neccessary because both Gecko and
-	 * WebKit do not load data: URI font data synchronously.
-	 *   https://bugzilla.mozilla.org/show_bug.cgi?id=512566
-	 * If you need to query for @font-face support, send a callback to: 
-	 *  Modernizr._fontfaceready(fn);
-	 * The callback is passed the boolean value of Modernizr.fontface
-	 */
-	fontfaceCheckDelay = 50,
-	
-	
-	doc = document,
-	docElement = doc.documentElement,
-
-	/**
-	 * Create our "modernizr" element that we do most feature tests on.
-	 */
-	m = doc.createElement( 'modernizr' ),
-	m_style = m.style,
-
-	/**
-	 * Create the input element for various HTML5 feature tests.
-	 */
-	f = doc.createElement( 'input' ),
-	
-	// Reused strings.
-	
-	canvas = 'canvas',
-	canvastext = 'canvastext',
-	rgba = 'rgba',
-	hsla = 'hsla',
-	multiplebgs = 'multiplebgs',
-	borderimage = 'borderimage',
-	borderradius = 'borderradius',
-	boxshadow = 'boxshadow',
-	opacity = 'opacity',
-	cssanimations = 'cssanimations',
-	csscolumns = 'csscolumns',
-	cssgradients = 'cssgradients',
-	cssreflections = 'cssreflections',
-	csstransforms = 'csstransforms',
-	csstransforms3d = 'csstransforms3d',
-	csstransitions = 'csstransitions',
-	fontface = 'fontface',
-	geolocation = 'geolocation',
-	video = 'video',
-	audio = 'audio',
-	inputtypes = 'inputtypes',
-	// inputtypes is an object of its own containing individual tests for
-	// various new input types, such as search, range, datetime, etc.
-	
-	// SVG is not yet supported in Modernizr 1.0
-	// svg = 'svg',
-	
-	background = 'background',
-	backgroundColor = background + 'Color',
-	canPlayType = 'canPlayType',
-	
-	tests = {},
-	inputs = {},
-	
-	elems,
-	elem,
-	i,
-	feature,
-	classes = [];
+window.Modernizr = (function(window, doc){
   
+  var ret = {},
+
+  /**
+   * enableHTML5 is a private property for advanced use only. If enabled,
+   * it will make Modernizr.init() run through a brief while() loop in
+   * which it will create all HTML5 elements in the DOM to allow for
+   * styling them in Internet Explorer, which does not recognize any
+   * non-HTML4 elements unless created in the DOM this way.
+   * 
+   * enableHTML5 is ON by default.
+   */
+  enableHTML5 = true,
+  
+  /**
+   * enableNoClasses is a private property that, when enabled, will
+   * add classnames to the <html> element at all times, but prefixes
+   * failed groups with "no-", e.g. "no-cssanimations".
+   * This allows for very easy IF / ELSE style rules in your CSS. It
+   * can be disabled if these "no-classes" are not needed or desired.
+   * 
+   * enableNoClasses is ON by default.
+   */
+  enableNoClasses = true,
+  
+  
+  /**
+   * fontfaceCheckDelay is the ms delay before the @font-face test is
+   * checked a second time. This is neccessary because both Gecko and
+   * WebKit do not load data: URI font data synchronously.
+   *   https://bugzilla.mozilla.org/show_bug.cgi?id=512566
+   * If you need to query for @font-face support, send a callback to: 
+   *  Modernizr._fontfaceready(fn);
+   * The callback is passed the boolean value of Modernizr.fontface
+   */
+  fontfaceCheckDelay = 50,
+  
+  
+  docElement = doc.documentElement,
+
+  /**
+   * Create our "modernizr" element that we do most feature tests on.
+   */
+  m = doc.createElement( 'modernizr' ),
+  m_style = m.style,
+
+  /**
+   * Create the input element for various HTML5 feature tests.
+   */
+  f = doc.createElement( 'input' ),
+  
+  // Reused strings.
+  
+  canvas = 'canvas',
+  canvastext = 'canvastext',
+  rgba = 'rgba',
+  hsla = 'hsla',
+  multiplebgs = 'multiplebgs',
+  borderimage = 'borderimage',
+  borderradius = 'borderradius',
+  boxshadow = 'boxshadow',
+  opacity = 'opacity',
+  cssanimations = 'cssanimations',
+  csscolumns = 'csscolumns',
+  cssgradients = 'cssgradients',
+  cssreflections = 'cssreflections',
+  csstransforms = 'csstransforms',
+  csstransforms3d = 'csstransforms3d',
+  csstransitions = 'csstransitions',
+  fontface = 'fontface',
+  geolocation = 'geolocation',
+  video = 'video',
+  audio = 'audio',
+  inputtypes = 'inputtypes',
+  appcache = 'appcache',
+  hashchange = 'hashchange',
+  crossdocmessaging = 'crossdocmessaging',
+  historymanagement = 'historymanagement',
+  draganddrop = 'draganddrop',
+  domstorage = 'domstorage',
+  offlinedetection = 'offlinedetection',
+  webdatabase = 'webdatabase',
+  // inputtypes is an object of its own containing individual tests for
+  // various new input types, such as search, range, datetime, etc.
+  
+  // SVG is not yet supported in Modernizr 1.0
+  // svg = 'svg',
+  
+  background = 'background',
+  backgroundColor = background + 'Color',
+  canPlayType = 'canPlayType',
+  
+  tests = {},
+  inputs = {},
+  
+  elems,
+  elem,
+  i,
+  feature,
+  classes = [];
+  
+  /**
+   * isEventSupported determines if a given element supports the given event
+   */
+  function isEventSupported(eventName, element) {
+    element = element || document.createElement('div');
+    eventName = 'on' + eventName;
+    
+    // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize"
+    // `in` "catches" those
+    var isSupported = (eventName in element);
+    
+    if (!isSupported && element.setAttribute) {
+      element.setAttribute(eventName, 'return;');
+      isSupported = typeof element[eventName] == 'function';
+    }
+    
+    element = null;
+    return isSupported;
+  }  
  
-	/**
-	 * set_css applies given styles to the Modernizr DOM node.
-	 */
-	function set_css( str ) {
-		m_style.cssText = str;
-	}
+  /**
+   * set_css applies given styles to the Modernizr DOM node.
+   */
+  function set_css( str ) {
+    m_style.cssText = str;
+  }
 
-	/**
-	 * set_css_all extrapolates all vendor-specific css strings.
-	 */
-	function set_css_all( str1, str2 ) {
-		str1 += ';';
+  /**
+   * set_css_all extrapolates all vendor-specific css strings.
+   */
+  function set_css_all( str1, str2 ) {
+    str1 += ';';
 
-		return set_css(
-			str1
-			+ '-webkit-' + str1
-			+ '-moz-' + str1
-			+ '-o-' + str1
-			+ '-ms-' + str1
-			+ ( str2 || '' )
-		);
-	}
+    return set_css(
+      str1
+      + '-webkit-' + str1
+      + '-moz-' + str1
+      + '-o-' + str1
+      + '-ms-' + str1
+      + ( str2 || '' )
+    );
+  }
 
-	/**
-	 * contains returns a boolean for if substr is found within str.
-	 */
-	function contains( str, substr ) {
-		return str.indexOf( substr ) !== -1;
-	}
+  /**
+   * contains returns a boolean for if substr is found within str.
+   */
+  function contains( str, substr ) {
+    return str.indexOf( substr ) !== -1;
+  }
 
-	/**
-	 * test_props is a generic CSS / DOM property test; if a browser supports
-	 *   a certain property, it won't return undefined for it.
-	 */
-	function test_props( props, callback ) {
-		for ( var i in props ) {
-			if ( m_style[ props[i] ] !== undefined && ( !callback || callback( props[i] ) ) ) {
-				return true;
-			}
-		}
-	}
+  /**
+   * test_props is a generic CSS / DOM property test; if a browser supports
+   *   a certain property, it won't return undefined for it.
+   */
+  function test_props( props, callback ) {
+    for ( var i in props ) {
+      if ( m_style[ props[i] ] !== undefined && ( !callback || callback( props[i] ) ) ) {
+        return true;
+      }
+    }
+  }
 
-	/**
-	 * test_props_all tests a list of DOM properties we want to check against.
-	 *   We specify literally ALL possible (known and/or likely) properties on 
-	 *   the element including the non-vendor prefixed one, for forward-
-	 *   compatibility.
-	 */
-	function test_props_all( prop, callback ) {
-		var uc_prop = prop.replace( /./, function(a) { return a.toUpperCase(); } ),
-		props = [
-			prop,
-			'webkit' + uc_prop,
-			'Moz' + uc_prop,
-			'moz' + uc_prop,
-			'o' + uc_prop,
-			'ms' + uc_prop
-		];
+  /**
+   * test_props_all tests a list of DOM properties we want to check against.
+   *   We specify literally ALL possible (known and/or likely) properties on 
+   *   the element including the non-vendor prefixed one, for forward-
+   *   compatibility.
+   */
+  function test_props_all( prop, callback ) {
+    var uc_prop = prop.replace( /./, function(a) { return a.toUpperCase(); } ),
+    props = [
+      prop,
+      'webkit' + uc_prop,
+      'Moz' + uc_prop,
+      'moz' + uc_prop,
+      'o' + uc_prop,
+      'ms' + uc_prop
+    ];
 
-		return !!test_props( props, callback );
-	}
-
-
-	// Tests
-
-	/**
-	 * Canvas tests in Modernizr 1.0 are still somewhat rudimentary. However,
-	 *   the added "canvastext" test allows for a slightly more reliable and
-	 *   usable setup.
-	 */
-	tests[canvas] = function() {
-		return !!doc.createElement( canvas ).getContext;
-	};
-	
-	tests[canvastext] = function() {
-		return !!(tests[canvas]() && typeof doc.createElement( canvas ).getContext('2d').fillText == 'function');
-	};
-
-	/**
-	 * geolocation tests for the new Geolocation API specification.
-	 *   This test is a standards compliant-only test; for more complete
-	 *   testing, including a Google Gears fallback, please see:
-	 *   http://code.google.com/p/geo-location-javascript/
-	 */
-	tests[geolocation] = function() {
-		return !!navigator.geolocation;
-	};
-
-	tests[rgba] = function() {
-		// Set an rgba() color and check the returned value
-		
-		set_css( background + '-color:rgba(150,255,150,.5)' );
-		
-		return contains( m_style[backgroundColor], rgba );
-	};
-	
-	tests[hsla] = function() {
-		// Same as rgba(), in fact, browsers re-map hsla() to rgba() internally
-		
-		set_css( background + '-color:hsla(120,40%,100%,.5)' );
-		
-		return contains( m_style[backgroundColor], rgba );
-	};
-	
-	tests[multiplebgs] = function() {
-		// Setting multiple images AND a color on the background shorthand property
-		//	and then querying the style.background property value for the number of
-		//	occurrences of "url(" is a reliable method for detecting ACTUAL support for this!
-		
-		set_css( background + ':url(m.png),url(a.png),#f99 url(m.png)' );
-		
-		// If the UA supports multiple backgrounds, there should be three occurrences
-		//	of the string "url(" in the return value for elem_style.background
-		
-		return /(url\s*\(.*?){3}/.test(m_style[background]);
-	};
-	
-	tests[borderimage] = function() {
-		set_css_all( 'border-image:url(m.png) 1 1 stretch' );
-		
-		return test_props_all( 'borderImage' );
-	};
-	
-	tests[borderradius] = function() {
-		set_css_all( 'border-radius:10px' );
-
-		return test_props_all( 'borderRadius', '', function( prop ) {
-			return contains( prop, 'orderRadius' );
-		});
-	};
-	
-	tests[boxshadow] = function() {
-		set_css_all( 'box-shadow:#000 1px 1px 3px' );
-		
-		return test_props_all( 'boxShadow' );
-	};
-	
-	tests[opacity] = function() {
-		// Browsers that actually have CSS Opacity implemented have done so
-		//	according to spec, which means their return values are within the
-		//	range of [0.0,1.0] - including the leading zero.
-		
-		set_css( 'opacity:.5' );
-		
-		return contains( m_style[opacity], '0.5' );
-	};
-	
-	tests[cssanimations] = function() {
-		set_css_all( 'animation:"animate" 2s ease 2', 'position:relative' );
-		
-		return test_props_all( 'animationName' );
-	};
-	
-	tests[csscolumns] = function() {
-		set_css_all( 'column-count:3' );
-		
-		return test_props_all( 'columnCount' );
-	};
-	
-	tests[cssgradients] = function() {
-		/**
-		 * For CSS Gradients syntax, please see:
-		 * http://webkit.org/blog/175/introducing-css-gradients/
-		 */
-		
-		var str1 = background + '-image:',
-			str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));';
-		
-		set_css(
-				str1 + str2
-			+ str1 + '-webkit-' + str2
-			+ str1 + '-moz-' + str2
-			+ str1 + '-o-' + str2
-			+ str1 + '-ms-' + str2
-		);
-		
-		return contains( m_style.backgroundImage, 'gradient' );
-	};
-	
-	tests[cssreflections] = function() {
-		set_css_all( 'box-reflect:right 1px' );
-		return test_props_all( 'boxReflect' );
-	};
-	
-	tests[csstransforms] = function() {
-		set_css_all( 'transform:rotate(3deg)' );
-		
-		return !!test_props([ 'transformProperty', 'webkitTransform', 'MozTransform', 'mozTransform', 'oTransform', 'msTransform' ]);
-	};
-	
-	tests[csstransforms3d] = function() {
-		set_css_all( 'perspective:500' );
-		
-		return !!test_props([ 'perspectiveProperty', 'webkitPerspective', 'MozPerspective', 'mozPerspective', 'oPerspective', 'msPerspective' ]);
-	};
-	
-	tests[csstransitions] = function() {
-		set_css_all( 'transition:all .5s linear' );
-		
-		return test_props_all( 'transitionProperty' );
-	};
+    return !!test_props( props, callback );
+  }
 
 
+  // Tests
 
-	// @font-face detection routine created by Paul Irish - paulirish.com
-	// Merged into Modernizr with approval. Read more about Paul's work here:
-	// http://paulirish.com/2009/font-face-feature-detection/
+  /**
+   * Canvas tests in Modernizr 1.0 are still somewhat rudimentary. However,
+   *   the added "canvastext" test allows for a slightly more reliable and
+   *   usable setup.
+   */
+  tests[canvas] = function() {
+    return !!doc.createElement( canvas ).getContext;
+  };
+  
+  tests[canvastext] = function() {
+    return !!(tests[canvas]() && typeof doc.createElement( canvas ).getContext('2d').fillText == 'function');
+  };
+
+  /**
+   * geolocation tests for the new Geolocation API specification.
+   *   This test is a standards compliant-only test; for more complete
+   *   testing, including a Google Gears fallback, please see:
+   *   http://code.google.com/p/geo-location-javascript/
+   */
+  tests[geolocation] = function() {
+    return !!navigator.geolocation;
+  };
+
+  /**
+   * appcache tests for the new Offline Application API specification.
+   *   http://www.w3.org/TR/html5/offline.html
+   */
+  tests[appcache] = function() {
+    var cache = window.applicationCache;
+    return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
+  };
+  
+  tests[crossdocmessaging] = function() {
+    return !!window.postMessage;
+  };
+  
+  tests[webdatabase] = function() {
+    return !!window.openDatabase;
+  };
+  
+  tests[hashchange] = function() {
+    return isEventSupported(hashchange, document.body);
+  };
+  
+  tests[offlinedetection] = function() {
+    return !!navigator.onLine;
+  };
+  
+  tests[historymanagement] = function() {
+    return !!(history.pushState && history.popState);
+  };
+  
+  tests[domstorage] = function() {
+    // tested sessionsStorage this way because otherwise Firefox will throw
+    return !!(window.localStorage && ('sessionStorage' in window));
+  };
+  
+  tests[draganddrop] = function() {
+    return isEventSupported('drag')
+        && isEventSupported('dragstart')
+        && isEventSupported('dragenter')
+        && isEventSupported('dragover')
+        && isEventSupported('dragleave')
+        && isEventSupported('dragend')
+        && isEventSupported('drop');
+  };
+  
+  tests[rgba] = function() {
+    // Set an rgba() color and check the returned value
+    
+    set_css( background + '-color:rgba(150,255,150,.5)' );
+    
+    return contains( m_style[backgroundColor], rgba );
+  };
+  
+  tests[hsla] = function() {
+    // Same as rgba(), in fact, browsers re-map hsla() to rgba() internally
+    
+    set_css( background + '-color:hsla(120,40%,100%,.5)' );
+    
+    return contains( m_style[backgroundColor], rgba );
+  };
+  
+  tests[multiplebgs] = function() {
+    // Setting multiple images AND a color on the background shorthand property
+    //  and then querying the style.background property value for the number of
+    //  occurrences of "url(" is a reliable method for detecting ACTUAL support for this!
+    
+    set_css( background + ':url(m.png),url(a.png),#f99 url(m.png)' );
+    
+    // If the UA supports multiple backgrounds, there should be three occurrences
+    //  of the string "url(" in the return value for elem_style.background
+    
+    return /(url\s*\(.*?){3}/.test(m_style[background]);
+  };
+  
+  tests[borderimage] = function() {
+    set_css_all( 'border-image:url(m.png) 1 1 stretch' );
+    
+    return test_props_all( 'borderImage' );
+  };
+  
+  tests[borderradius] = function() {
+    set_css_all( 'border-radius:10px' );
+
+    return test_props_all( 'borderRadius', '', function( prop ) {
+      return contains( prop, 'orderRadius' );
+    });
+  };
+  
+  tests[boxshadow] = function() {
+    set_css_all( 'box-shadow:#000 1px 1px 3px' );
+    
+    return test_props_all( 'boxShadow' );
+  };
+  
+  tests[opacity] = function() {
+    // Browsers that actually have CSS Opacity implemented have done so
+    //  according to spec, which means their return values are within the
+    //  range of [0.0,1.0] - including the leading zero.
+    
+    set_css( 'opacity:.5' );
+    
+    return contains( m_style[opacity], '0.5' );
+  };
+  
+  tests[cssanimations] = function() {
+    set_css_all( 'animation:"animate" 2s ease 2', 'position:relative' );
+    
+    return test_props_all( 'animationName' );
+  };
+  
+  tests[csscolumns] = function() {
+    set_css_all( 'column-count:3' );
+    
+    return test_props_all( 'columnCount' );
+  };
+  
+  tests[cssgradients] = function() {
+    /**
+     * For CSS Gradients syntax, please see:
+     * http://webkit.org/blog/175/introducing-css-gradients/
+     */
+    
+    var str1 = background + '-image:',
+      str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));';
+    
+    set_css(
+        str1 + str2
+      + str1 + '-webkit-' + str2
+      + str1 + '-moz-' + str2
+      + str1 + '-o-' + str2
+      + str1 + '-ms-' + str2
+    );
+    
+    return contains( m_style.backgroundImage, 'gradient' );
+  };
+  
+  tests[cssreflections] = function() {
+    set_css_all( 'box-reflect:right 1px' );
+    return test_props_all( 'boxReflect' );
+  };
+  
+  tests[csstransforms] = function() {
+    set_css_all( 'transform:rotate(3deg)' );
+    
+    return !!test_props([ 'transformProperty', 'webkitTransform', 'MozTransform', 'mozTransform', 'oTransform', 'msTransform' ]);
+  };
+  
+  tests[csstransforms3d] = function() {
+    set_css_all( 'perspective:500' );
+    
+    return !!test_props([ 'perspectiveProperty', 'webkitPerspective', 'MozPerspective', 'mozPerspective', 'oPerspective', 'msPerspective' ]);
+  };
+  
+  tests[csstransitions] = function() {
+    set_css_all( 'transition:all .5s linear' );
+    
+    return test_props_all( 'transitionProperty' );
+  };
+
+
+
+  // @font-face detection routine created by Paul Irish - paulirish.com
+  // Merged into Modernizr with approval. Read more about Paul's work here:
+  // http://paulirish.com/2009/font-face-feature-detection/
   tests[fontface] = (function(){
 
     var fontret;
     
-		// IE supports EOT and has had EOT support since IE 5.
-		// This is a proprietary standard (ATOW) and thus this off-spec,
-		// proprietary test for it is acceptable. 
+    // IE supports EOT and has had EOT support since IE 5.
+    // This is a proprietary standard (ATOW) and thus this off-spec,
+    // proprietary test for it is acceptable. 
     if (!(!/*@cc_on@if(@_jscript_version>=5)!@end@*/0)) fontret = true;
   
     else {
@@ -391,68 +461,68 @@ window.Modernizr = (function(){
       
     return function(){ return fontret || wid !== spn.offsetWidth; };
   })();
-	
-	tests[video] = function() {
-		return !!doc.createElement(video)[canPlayType];
-	};
-	
-	tests[audio] = function() {
-		return !!doc.createElement(audio)[canPlayType];
-	};
+  
+  tests[video] = function() {
+    return !!doc.createElement(video)[canPlayType];
+  };
+  
+  tests[audio] = function() {
+    return !!doc.createElement(audio)[canPlayType];
+  };
 
-	
-	// Run through all tests and detect their support in the current UA.
-	for ( feature in tests ) {
-		if ( tests.hasOwnProperty( feature ) ) {
-			classes.push( ( !( ret[ feature ] = tests[ feature ]() ) && enableNoClasses ? 'no-' : '' ) + feature );
-		}
-	}
+  
+  // Run through all tests and detect their support in the current UA.
+  for ( feature in tests ) {
+    if ( tests.hasOwnProperty( feature ) ) {
+      classes.push( ( !( ret[ feature ] = tests[ feature ]() ) && enableNoClasses ? 'no-' : '' ) + feature );
+    }
+  }
 
-	// Run through HTML5's new input types to see if the UA understands any.
-	//   This is put behind the tests runloop because it doesn't return a
-	//   true/false like all the other tests; instead, it returns an object
-	//   containing each input type with its corresponding true/false value 
-	ret[inputtypes] = function(props) {
-		for ( var i in props ) {
-			f.setAttribute('type', props[i]);
-			inputs[ props[i] ] = !!( f.type !== 'text');
-		}
-		return inputs;
-	}('search tel url email datetime date month week time datetime-local number range color'.split(' '));
+  // Run through HTML5's new input types to see if the UA understands any.
+  //   This is put behind the tests runloop because it doesn't return a
+  //   true/false like all the other tests; instead, it returns an object
+  //   containing each input type with its corresponding true/false value 
+  ret[inputtypes] = function(props) {
+    for ( var i in props ) {
+      f.setAttribute('type', props[i]);
+      inputs[ props[i] ] = !!( f.type !== 'text');
+    }
+    return inputs;
+  }('search tel url email datetime date month week time datetime-local number range color'.split(' '));
 
 
-	/**
-	 * Reset m.style.cssText to nothing to reduce memory footprint.
-	 * Reset tmp, i and prop to null (in case they were used).
-	 * 
-	 * TODO: explore alternative approach where m.style.cssText is
-	 *	   set only once and we extract all data in one fell swoop.
-	 *	   Could prove to be a performance improvement.
-	 */
-	set_css( '' );
-	m = f = null;
+  /**
+   * Reset m.style.cssText to nothing to reduce memory footprint.
+   * Reset tmp, i and prop to null (in case they were used).
+   * 
+   * TODO: explore alternative approach where m.style.cssText is
+   *     set only once and we extract all data in one fell swoop.
+   *     Could prove to be a performance improvement.
+   */
+  set_css( '' );
+  m = f = null;
 
-	// Enable HTML 5 elements for styling in IE:
-	if ( enableHTML5 && !(!/*@cc_on!@*/0) ) {
-		elems = 'abbr article aside audio bb canvas datagrid datalist details dialog figure footer header mark menu meter nav output progress section time video'.split(' ');
+  // Enable HTML 5 elements for styling in IE:
+  if ( enableHTML5 && !(!/*@cc_on!@*/0) ) {
+    elems = 'abbr article aside audio bb canvas datagrid datalist details dialog figure footer header mark menu meter nav output progress section time video'.split(' ');
 
-		i = elems.length+1;
-		while ( --i ) {
-			elem = doc.createElement( elems[i] );
-		}
-		elem = null;
-	}
+    i = elems.length+1;
+    while ( --i ) {
+      elem = doc.createElement( elems[i] );
+    }
+    elem = null;
+  }
 
-	// Assign private properties to the return object with prefix
-	ret._enableHTML5	 = enableHTML5;
-	ret._enableNoClasses = enableNoClasses;
+  // Assign private properties to the return object with prefix
+  ret._enableHTML5   = enableHTML5;
+  ret._enableNoClasses = enableNoClasses;
 
-	// Remove "no-js" class from <html> element, if it exists:
-	(function(H,C){H[C]=H[C].replace(/\bno-js\b/,'js')})(docElement,'className');
+  // Remove "no-js" class from <html> element, if it exists:
+  (function(H,C){H[C]=H[C].replace(/\bno-js\b/,'js')})(docElement,'className');
 
-	// Add the new classes to the <html> element.
-	docElement.className += ' ' + classes.join( ' ' );
+  // Add the new classes to the <html> element.
+  docElement.className += ' ' + classes.join( ' ' );
 
-	return ret;
+  return ret;
 
-})();
+})(this, this.document);
