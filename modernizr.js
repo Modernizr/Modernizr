@@ -194,7 +194,7 @@ window.Modernizr = (function(window, doc){
    *   compatibility.
    */
   function test_props_all( prop, callback ) {
-    var uc_prop = prop.replace( /./, function(a) { return a.toUpperCase(); } ),
+    var uc_prop = prop.charAt(0).toUpperCase() + prop.substr(1),
     props = [
       prop,
       'webkit' + uc_prop,
