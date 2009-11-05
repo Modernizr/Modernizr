@@ -123,6 +123,8 @@ window.Modernizr = (function(window, doc){
   backgroundColor = background + 'Color',
   canPlayType = 'canPlayType',
   
+  // list of property values to set for css tests
+  setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
   tests = {},
   inputs = {},
   
@@ -163,16 +165,7 @@ window.Modernizr = (function(window, doc){
    * set_css_all extrapolates all vendor-specific css strings.
    */
   function set_css_all( str1, str2 ) {
-    str1 += ';';
-
-    return set_css(
-      str1
-      + '-webkit-' + str1
-      + '-moz-' + str1
-      + '-o-' + str1
-      + '-ms-' + str1
-      + ( str2 || '' )
-    );
+    return set_css(setProperties.join(str1 + ';') + ( str2 || '' ));
   }
 
   /**
