@@ -23,14 +23,14 @@
  * if-conditionals in CSS styling, making it easily to have fine
  * control over the look and feel of your website.
  * 
- * @author		Faruk Ates
- * @copyright	 (2009) Faruk Ates.
+ * @author    Faruk Ates
+ * @copyright   (2009) Faruk Ates.
  *
  * @contributor   Paul Irish
  * @contributor   Ben Alman
  */
 
-window.Modernizr = (function(){
+window.Modernizr = (function(window,doc){
 	
 	var ret = {},
 
@@ -120,6 +120,9 @@ window.Modernizr = (function(){
 	offline = 'offline',
 	inputPlaceholders = 'inputplaceholders',
 	inputAutofocus = 'inputautofocus',
+	
+	// list of property values to set for css tests
+    setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
 
 	tests = {},
 	inputs = {},
@@ -142,16 +145,7 @@ window.Modernizr = (function(){
 	 * set_css_all extrapolates all vendor-specific css strings.
 	 */
 	function set_css_all( str1, str2 ) {
-		str1 += ';';
-
-		return set_css(
-			str1
-			+ '-webkit-' + str1
-			+ '-moz-' + str1
-			+ '-o-' + str1
-			+ '-ms-' + str1
-			+ ( str2 || '' )
-		);
+    	return set_css(setProperties.join(str1 + ';') + ( str2 || '' ));
 	}
 
 	/**
@@ -180,7 +174,7 @@ window.Modernizr = (function(){
 	 *   compatibility.
 	 */
 	function test_props_all( prop, callback ) {
-		var uc_prop = prop.replace( /./, function(a) { return a.toUpperCase(); } ),
+		var uc_prop = prop.charAt(0).toUpperCase() + prop.substr(1),
 		props = [
 			prop,
 			'webkit' + uc_prop,
@@ -361,10 +355,6 @@ window.Modernizr = (function(){
   tests[fontface] = (function(){
 
     var fontret;
-    
-		// IE supports EOT and has had EOT support since IE 5.
-		// This is a proprietary standard (ATOW) and thus this off-spec,
-		// proprietary test for it is acceptable. 
     if (!(!/*@cc_on@if(@_jscript_version>=5)!@end@*/0)) fontret = true;
   
     else {
@@ -551,4 +541,4 @@ window.Modernizr = (function(){
 
 	return ret;
 
-})();
+})(this,this.document);
