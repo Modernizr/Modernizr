@@ -549,6 +549,8 @@ window.Modernizr = (function(){
 	// Add the new classes to the <html> element.
 	docElement.className += ' ' + classes.join( ' ' );
 
+    // extend jQuery.support with the Modernizr object
+    window.jQuery && jQuery.extend(jQuery.support,ret);
+    
 	return ret;
-
 })();
