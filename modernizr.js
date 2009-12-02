@@ -116,6 +116,7 @@ window.Modernizr = (function(window,doc){
     backgroundColor = background + 'Color',
     canPlayType = 'canPlayType',
     localStorage = 'localstorage',
+    sessionStorage = 'sessionstorage',
     webWorkers = 'webworkers',
     offline = 'offline',
     inputPlaceholders = 'inputplaceholders',
@@ -451,8 +452,16 @@ window.Modernizr = (function(window,doc){
         return bool;
     };
 
+    // both localStorage and sessionStorage are
+    // tested in this method because otherwise Firefox will
+    //   throw an error: https://bugzilla.mozilla.org/show_bug.cgi?id=365772
+    // if cookies are disabled
     tests[localStorage] = function() {
-        return !!window.localStorage;
+        return !!('localStorage' in window);
+    };
+
+    tests[sessionStorage] = function() {
+        return !!('sessionStorage' in window);
     };
 
     tests[webWorkers] = function () {
