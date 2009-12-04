@@ -123,6 +123,8 @@ window.Modernizr = (function(window,doc){
     inputAutofocus = 'inputautofocus',
     inputList = 'inputlist',
     inputPlaceholders = 'inputplaceholders',
+    inputMax = 'inputmax',
+    inputMin = 'inputmin',
     inputMultiple = 'inputmultiple',
     inputPattern = 'inputpattern',
     inputRequired = 'inputrequired',
@@ -489,7 +491,7 @@ window.Modernizr = (function(window,doc){
     
     tests[inputAutocomplete] = function() {
         return 'autocomplete' in f;
-    }
+    };
     
     tests[inputAutofocus] = function() {
         return 'autofocus' in f;
@@ -501,6 +503,14 @@ window.Modernizr = (function(window,doc){
 
     tests[inputPlaceholders] = function() {
         return 'placeholder' in f;
+    };
+    
+    tests[inputMax] = function() {
+        return 'max' in f;
+    }
+    
+    test[inputMin] = function() {
+        return 'min' in f;
     };
 
     tests[inputMultiple] = function() {
