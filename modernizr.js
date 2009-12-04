@@ -119,6 +119,7 @@ window.Modernizr = (function(window,doc){
     sessionStorage = 'sessionstorage',
     webWorkers = 'webworkers',
     offline = 'offline',
+    inputAutocomplete = 'inputautocomplete',
     inputAutofocus = 'inputautofocus',
     inputPlaceholders = 'inputplaceholders',
     inputMultiple = 'inputmultiple',
@@ -482,6 +483,10 @@ window.Modernizr = (function(window,doc){
     tests[offline] =  function() {
         return !!window.applicationCache;
     };
+    
+    tests[inputAutocomplete] = function() {
+        return 'autocomplete' in f;
+    }
     
     tests[inputAutofocus] = function() {
         return 'autofocus' in f;
