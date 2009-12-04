@@ -119,8 +119,8 @@ window.Modernizr = (function(window,doc){
     sessionStorage = 'sessionstorage',
     webWorkers = 'webworkers',
     offline = 'offline',
-    inputPlaceholders = 'inputplaceholders',
     inputAutofocus = 'inputautofocus',
+    inputPlaceholders = 'inputplaceholders',
     
     // list of property values to set for css tests
     setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
@@ -481,13 +481,13 @@ window.Modernizr = (function(window,doc){
     tests[offline] =  function() {
         return !!window.applicationCache;
     };
+    
+    tests[inputAutofocus] = function() {
+        return 'autofocus' in f;
+    };
 
     tests[inputPlaceholders] = function() {
         return 'placeholder' in f;
-    };
-
-    tests[inputAutofocus] = function() {
-        return 'autofocus' in f;
     };
 
 
