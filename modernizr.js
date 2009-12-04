@@ -121,6 +121,7 @@ window.Modernizr = (function(window,doc){
     offline = 'offline',
     inputAutocomplete = 'inputautocomplete',
     inputAutofocus = 'inputautofocus',
+    inputList = 'inputlist',
     inputPlaceholders = 'inputplaceholders',
     inputMultiple = 'inputmultiple',
     inputPattern = 'inputpattern',
@@ -492,6 +493,10 @@ window.Modernizr = (function(window,doc){
     
     tests[inputAutofocus] = function() {
         return 'autofocus' in f;
+    };
+    
+    tests[inputList] = function() {
+        return 'list' in f;
     };
 
     tests[inputPlaceholders] = function() {
