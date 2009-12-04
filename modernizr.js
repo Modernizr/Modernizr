@@ -121,6 +121,7 @@ window.Modernizr = (function(window,doc){
     offline = 'offline',
     inputAutofocus = 'inputautofocus',
     inputPlaceholders = 'inputplaceholders',
+    inputMultiple = 'inputmultiple',
     
     // list of property values to set for css tests
     setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
@@ -490,6 +491,9 @@ window.Modernizr = (function(window,doc){
         return 'placeholder' in f;
     };
 
+    tests[inputMultiple] = function() {
+        return 'multiple' in f;
+    };
 
     // Run through all tests and detect their support in the current UA.
     for ( feature in tests ) {
