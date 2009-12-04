@@ -123,7 +123,6 @@ window.Modernizr = (function(window,doc){
     inputAutofocus = 'inputautofocus',
     inputList = 'inputlist',
     inputPlaceholders = 'inputplaceholders',
-    inputMaxlength = 'inputmaxLength',
     inputMultiple = 'inputmultiple',
     inputPattern = 'inputpattern',
     inputRequired = 'inputrequired',
@@ -502,10 +501,6 @@ window.Modernizr = (function(window,doc){
 
     tests[inputPlaceholders] = function() {
         return 'placeholder' in f;
-    };
-    
-    test[inputMaxlength] = function() {
-        return 'maxLength' in f;
     };
 
     tests[inputMultiple] = function() {
