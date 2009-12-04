@@ -124,6 +124,7 @@ window.Modernizr = (function(window,doc){
     inputPlaceholders = 'inputplaceholders',
     inputMultiple = 'inputmultiple',
     inputPattern = 'inputpattern',
+    inputRequired = 'inputrequired',
     
     // list of property values to set for css tests
     setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
@@ -503,6 +504,10 @@ window.Modernizr = (function(window,doc){
     
     tests[inputPattern] = function() {
         return 'pattern' in f;
+    };
+    
+    tests[inputRequired] = function() {
+        return 'required' in f;
     };
 
     // Run through all tests and detect their support in the current UA.
