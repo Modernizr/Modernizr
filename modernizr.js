@@ -196,15 +196,6 @@ window.Modernizr = (function(window,doc){
         return !!test_props( props, callback );
     }
     
-    /**
-     * extendjQuerySupport extends the jQuery.support object with the Modernizr
-     *   object. This way, jQuery developers can also use Modernizr like so:
-     *   jQuery.support.borderradius
-     */
-    function extendjQuerySupport(){
-        window.jQuery && jQuery.extend(jQuery.support,ret || Modernizr || {});
-    }
-
     // Tests
 
     /**
@@ -409,8 +400,6 @@ window.Modernizr = (function(window,doc){
           var delayedCheck = function(){
             fontret = Modernizr[fontface] = wid !== spn.offsetWidth;
             docElement.className = docElement.className.replace(/(no-)?font.*?\b/,'') + (fontret ? ' ' : ' no-') + fontface;
-        
-            extendjQuerySupport();
             
             callback && (isCallbackCalled = true) && callback(fontret);
             isFakeBody && setTimeout(function(){body.parentNode.removeChild(body)}, 50);
@@ -552,7 +541,6 @@ window.Modernizr = (function(window,doc){
       test = !!(test());
       docElement.className += ' ' + (!test && enableNoClasses ? 'no-' : '') + feature; 
       ret[ feature ] = Modernizr[ feature ] = test;
-      extendjQuerySupport();
     };
 
 
@@ -600,9 +588,6 @@ window.Modernizr = (function(window,doc){
 
     // Add the new classes to the <html> element.
     docElement.className += ' ' + classes.join( ' ' );
-
-    // extend jQuery.support with the Modernizr object
-    extendjQuerySupport();
     
     return ret;
 
