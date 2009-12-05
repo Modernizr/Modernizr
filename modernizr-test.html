@@ -48,6 +48,22 @@ Modernizr._fontfaceready && Modernizr._fontfaceready(function(bool){
 
 
 document.write('At '+ (+new Date()) +', Modernizr took: '+ ((+new Date()) - start) + 'ms');
+
+/*
+Modernizr.addTest('datauri',function(){
+   
+    var data = new Image();
+    var is1px = function(){
+        return data.width == 1 && data.height == 1;
+    }
+    
+    data.onload = data.onerror = function(){
+    		Modernizr.datauri = 	is1px();
+    }
+    data.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+    Modernizr.datauri = 	is1px();
+});
+*/
 </script>
 
 	<h1>Modernizr</h1>
