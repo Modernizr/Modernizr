@@ -123,10 +123,12 @@ window.Modernizr = (function(window,doc){
     inputAutofocus = 'inputautofocus',
     inputList = 'inputlist',
     inputPlaceholders = 'inputplaceholders',
-    inputMaxlength = 'inputmaxLength',
+    inputMax = 'inputmax',
+    inputMin = 'inputmin',
     inputMultiple = 'inputmultiple',
     inputPattern = 'inputpattern',
     inputRequired = 'inputrequired',
+    inputStep = 'inputstep',
     
     // list of property values to set for css tests
     setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
@@ -490,7 +492,7 @@ window.Modernizr = (function(window,doc){
     
     tests[inputAutocomplete] = function() {
         return 'autocomplete' in f;
-    }
+    };
     
     tests[inputAutofocus] = function() {
         return 'autofocus' in f;
@@ -504,8 +506,12 @@ window.Modernizr = (function(window,doc){
         return 'placeholder' in f;
     };
     
-    test[inputMaxlength] = function() {
-        return 'maxLength' in f;
+    tests[inputMax] = function() {
+        return 'max' in f;
+    };
+    
+    tests[inputMin] = function() {
+        return 'min' in f;
     };
 
     tests[inputMultiple] = function() {
@@ -518,6 +524,10 @@ window.Modernizr = (function(window,doc){
     
     tests[inputRequired] = function() {
         return 'required' in f;
+    };
+    
+    tests[inputStep] = function() {
+        return 'step' in f;
     };
 
     // Run through all tests and detect their support in the current UA.
