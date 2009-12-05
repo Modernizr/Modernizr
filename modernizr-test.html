@@ -56,8 +56,8 @@ document.write('At '+ (+new Date()) +', Modernizr took: '+ ((+new Date()) - star
 <script>
 	for (var prop in Modernizr) {
 	  if (typeof Modernizr[prop] === 'function') continue;
-		if (prop == 'inputtypes') {
-			document.write('<li><b>Input types:</b><ul>');
+		if (prop == 'inputtypes' || prop == 'input') {
+			document.write('<li><b>'+prop+'{}</b><ul>');
 			for (var field in Modernizr[prop]) {
 				document.write('<li class="' + (Modernizr[prop][field] ? 'yes' : '') + '">' + field + ': ' + Modernizr[prop][field] + '</li>');
 			}

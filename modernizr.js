@@ -119,22 +119,13 @@ window.Modernizr = (function(window,doc){
     sessionStorage = 'sessionstorage',
     webWorkers = 'webworkers',
     offline = 'offline',
-    inputAutocomplete = 'inputautocomplete',
-    inputAutofocus = 'inputautofocus',
-    inputList = 'inputlist',
-    inputPlaceholders = 'inputplaceholders',
-    inputMax = 'inputmax',
-    inputMin = 'inputmin',
-    inputMultiple = 'inputmultiple',
-    inputPattern = 'inputpattern',
-    inputRequired = 'inputrequired',
-    inputStep = 'inputstep',
     
-    // list of property values to set for css tests
+    // list of property values to set for css tests. see ticket #21
     setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
 
     tests = {},
     inputs = {},
+    attrs = {},
     
     elems,
     elem,
@@ -431,7 +422,7 @@ window.Modernizr = (function(window,doc){
     
     tests[video] = function() {
         var elem = doc.createElement(video),
-            bool = elem[canPlayType];
+            bool = !!elem[canPlayType];
         
         if (bool){  
             bool      = new Boolean(bool);  
@@ -443,7 +434,7 @@ window.Modernizr = (function(window,doc){
     
     tests[audio] = function() {
         var elem = doc.createElement(audio),
-            bool = elem[canPlayType];
+            bool = !!elem[canPlayType];
         
         if (bool){  
             bool      = new Boolean(bool);  
@@ -478,46 +469,7 @@ window.Modernizr = (function(window,doc){
     tests[offline] =  function() {
         return !!window.applicationCache;
     };
-    
-    tests[inputAutocomplete] = function() {
-        return 'autocomplete' in f;
-    };
-    
-    tests[inputAutofocus] = function() {
-        return 'autofocus' in f;
-    };
-    
-    tests[inputList] = function() {
-        return 'list' in f;
-    };
-
-    tests[inputPlaceholders] = function() {
-        return 'placeholder' in f;
-    };
-    
-    tests[inputMax] = function() {
-        return 'max' in f;
-    };
-    
-    tests[inputMin] = function() {
-        return 'min' in f;
-    };
-
-    tests[inputMultiple] = function() {
-        return 'multiple' in f;
-    };
-    
-    tests[inputPattern] = function() {
-        return 'pattern' in f;
-    };
-    
-    tests[inputRequired] = function() {
-        return 'required' in f;
-    };
-    
-    tests[inputStep] = function() {
-        return 'step' in f;
-    };
+ 
 
     // Run through all tests and detect their support in the current UA.
     for ( feature in tests ) {
@@ -542,7 +494,19 @@ window.Modernizr = (function(window,doc){
       docElement.className += ' ' + (!test && enableNoClasses ? 'no-' : '') + feature; 
       ret[ feature ] = Modernizr[ feature ] = test;
     };
-
+    
+    // Run through HTML5's new input attributes to see if the UA understands any.
+    // We're using f which is the <input> element created early on
+    // Mike Taylr has created a comprehensive resource for testing these attributes
+    //   when applied to all input types: 
+    //   http://miketaylr.com/code/input-type-attr.html
+    // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
+    ret['input'] = (function(props) {
+        for ( var i in props ) {
+            attrs[ props[i] ] = props[i] in f;
+        }
+        return attrs;
+    })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
 
     // Run through HTML5's new input types to see if the UA understands any.
     //   This is put behind the tests runloop because it doesn't return a
