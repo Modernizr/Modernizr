@@ -79,7 +79,7 @@ window.Modernizr = (function(window,doc){
     m_style = m.style,
 
     /**
-     * Create the input element for various HTML5 feature tests.
+     * Create the input element for various Web Forms feature tests.
      */
     f = doc.createElement( 'input' ),
     
@@ -389,7 +389,7 @@ window.Modernizr = (function(window,doc){
           fontret = wid !== spn.offsetWidth;
       
           var delayedCheck = function(){
-            fontret = Modernizr[fontface] = wid !== spn.offsetWidth;
+            fontret = ret[fontface] = wid !== spn.offsetWidth;
             docElement.className = docElement.className.replace(/(no-)?font.*?\b/,'') + (fontret ? ' ' : ' no-') + fontface;
             
             callback && (isCallbackCalled = true) && callback(fontret);
@@ -455,11 +455,11 @@ window.Modernizr = (function(window,doc){
     //   throw an error: https://bugzilla.mozilla.org/show_bug.cgi?id=365772
     // if cookies are disabled
     tests[localStorage] = function() {
-        return !!('localStorage' in window);
+        return 'localStorage' in window;
     };
 
     tests[sessionStorage] = function() {
-        return !!('sessionStorage' in window);
+        return 'sessionStorage' in window;
     };
 
     tests[webWorkers] = function () {
@@ -488,11 +488,11 @@ window.Modernizr = (function(window,doc){
      */
     ret.addTest = function (feature, test) {
       if (this.hasOwnProperty( feature )) {
-        // warn that feature is already in place
+        // warn that feature test is already present
       } 
       test = !!(test());
       docElement.className += ' ' + (!test && enableNoClasses ? 'no-' : '') + feature; 
-      ret[ feature ] = Modernizr[ feature ] = test;
+      ret[ feature ] = test;
     };
     
     // Run through HTML5's new input attributes to see if the UA understands any.
