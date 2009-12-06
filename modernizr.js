@@ -118,7 +118,7 @@ window.Modernizr = (function(window,doc){
     localStorage = 'localstorage',
     sessionStorage = 'sessionstorage',
     webWorkers = 'webworkers',
-    offline = 'offline',
+    applicationCache = 'applicationcache',
     
     // list of property values to set for css tests. see ticket #21
     setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
@@ -466,7 +466,7 @@ window.Modernizr = (function(window,doc){
         return !!window.Worker;
     };
 
-    tests[offline] =  function() {
+    tests[applicationCache] =  function() {
         return !!window.applicationCache;
     };
  
