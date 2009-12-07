@@ -69,7 +69,6 @@ window.Modernizr = (function(window,doc){
     fontfaceCheckDelay = 100,
     
     
-    doc = document,
     docElement = doc.documentElement,
 
     /**
@@ -105,11 +104,12 @@ window.Modernizr = (function(window,doc){
     geolocation = 'geolocation',
     video = 'video',
     audio = 'audio',
-    inputtypes = 'inputtypes',
+    input = 'input',
+    inputtypes = input + 'types',
     // inputtypes is an object of its own containing individual tests for
     // various new input types, such as search, range, datetime, etc.
     
-    // SVG is not yet supported in Modernizr 1.0
+    // SVG is not yet supported in Modernizr
     // svg = 'svg',
     
     background = 'background',
@@ -501,9 +501,9 @@ window.Modernizr = (function(window,doc){
     //   when applied to all input types: 
     //   http://miketaylr.com/code/input-type-attr.html
     // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
-    ret['input'] = (function(props) {
+    ret[input] = (function(props) {
         for ( var i in props ) {
-            attrs[ props[i] ] = props[i] in f;
+            attrs[ props[i] ] = !!(props[i] in f);
         }
         return attrs;
     })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
@@ -523,11 +523,6 @@ window.Modernizr = (function(window,doc){
 
     /**
      * Reset m.style.cssText to nothing to reduce memory footprint.
-     * Reset tmp, i and prop to null (in case they were used).
-     * 
-     * TODO: explore alternative approach where m.style.cssText is
-     *     set only once and we extract all data in one fell swoop.
-     *     Could prove to be a performance improvement.
      */
     set_css( '' );
     m = f = null;
