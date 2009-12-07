@@ -121,6 +121,12 @@ window.Modernizr = (function(window,doc){
     sessionStorage = 'sessionstorage',
     webWorkers = 'webworkers',
     applicationCache = 'applicationcache',
+    hashchange = 'hashchange',
+    crosswindowmessaging = 'crosswindowmessaging',
+    historymanagement = 'historymanagement',
+    draganddrop = 'draganddrop',
+    offlinedetection = 'offlinedetection',
+    webdatabase = 'webdatabase',
     
     // list of property values to set for css tests. see ticket #21
     setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
@@ -133,9 +139,37 @@ window.Modernizr = (function(window,doc){
     elem,
     i,
     feature,
-    classes = [];
+    classes = [],
+    cache;
   
- 
+    /**
+      * isEventSupported determines if a given element supports the given event
+      * function from http://yura.thinkweb2.com/isEventSupported/
+      */
+    function isEventSupported(eventName, element) {
+        var canCache = (arguments.length == 1);
+        
+        // only return cached result when no element is given
+        if (canCache && cache[eventName]) {
+            return cache[eventName];
+        }
+        
+        element = element || document.createElement(TAGNAMES[eventName] || 'div');
+        eventName = 'on' + eventName;
+        
+        // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize"
+        // `in` "catches" those
+        var isSupported = (eventName in element);
+        
+        if (!isSupported && element.setAttribute) {
+            element.setAttribute(eventName, 'return;');
+            isSupported = typeof element[eventName] == 'function';
+        }
+        
+        element = null;
+        return canCache ? (cache[eventName] = isSupported) : isSupported;
+    }
+    
     /**
      * set_css applies given styles to the Modernizr DOM node.
      */
@@ -215,6 +249,36 @@ window.Modernizr = (function(window,doc){
         return !!navigator.geolocation;
     };
 
+    tests[crosswindowmessaging] = function() {
+      return !!window.postMessage;
+    };
+
+    tests[webdatabase] = function() {
+      return !!window.openDatabase;
+    };
+
+    tests[hashchange] = function() {
+      return isEventSupported(hashchange, document.body);
+    };
+
+    tests[offlinedetection] = function() {
+      return !!navigator.onLine;
+    };
+
+    tests[historymanagement] = function() {
+      return !!(window.history && history.pushState && history.popState);
+    };
+
+    tests[draganddrop] = function() {
+        return isEventSupported('drag')
+            && isEventSupported('dragstart')
+            && isEventSupported('dragenter')
+            && isEventSupported('dragover')
+            && isEventSupported('dragleave')
+            && isEventSupported('dragend')
+            && isEventSupported('drop');
+    };
+    
     tests[rgba] = function() {
         // Set an rgba() color and check the returned value
         
