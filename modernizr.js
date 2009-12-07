@@ -32,7 +32,9 @@
 
 window.Modernizr = (function(window,doc){
     
-    var ret = {},
+    var version = '1.1',
+    
+    ret = {},
 
     /**
      * enableHTML5 is a private property for advanced use only. If enabled,
@@ -542,6 +544,7 @@ window.Modernizr = (function(window,doc){
     // Assign private properties to the return object with prefix
     ret._enableHTML5     = enableHTML5;
     ret._enableNoClasses = enableNoClasses;
+    ret._version         = version;
 
     // Remove "no-js" class from <html> element, if it exists:
     (function(H,C){H[C]=H[C].replace(/\bno-js\b/,'js')})(docElement,'className');
