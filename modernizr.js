@@ -1,5 +1,5 @@
 /*!
- * Modernizr JavaScript library 1.0c
+ * Modernizr JavaScript library 1.1
  * http://modernizr.com/
  *
  * Copyright (c) 2009 Faruk Ates - http://farukat.es/
@@ -158,6 +158,7 @@ window.Modernizr = (function(window,doc){
     /**
      * test_props is a generic CSS / DOM property test; if a browser supports
      *   a certain property, it won't return undefined for it.
+     *   A supported CSS property returns empty string when its not yet set.
      */
     function test_props( props, callback ) {
         for ( var i in props ) {
