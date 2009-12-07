@@ -140,35 +140,46 @@ window.Modernizr = (function(window,doc){
     i,
     feature,
     classes = [],
-    cache;
   
     /**
       * isEventSupported determines if a given element supports the given event
       * function from http://yura.thinkweb2.com/isEventSupported/
       */
-    function isEventSupported(eventName, element) {
-        var canCache = (arguments.length == 1);
+    isEventSupported = (function(){
+  
+        var TAGNAMES = {
+          'select':'input','change':'input',
+          'submit':'form','reset':'form',
+          'error':'img','load':'img','abort':'img'
+        }, 
+        cache = { };
         
-        // only return cached result when no element is given
-        if (canCache && cache[eventName]) {
-            return cache[eventName];
+        function isEventSupported(eventName, element) {
+            var canCache = (arguments.length == 1);
+            
+            // only return cached result when no element is given
+            if (canCache && cache[eventName]) {
+                return cache[eventName];
+            }
+            
+            element = element || document.createElement(TAGNAMES[eventName] || 'div');
+            eventName = 'on' + eventName;
+            
+            // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize"
+            // `in` "catches" those
+            var isSupported = (eventName in element);
+            
+            if (!isSupported && element.setAttribute) {
+                element.setAttribute(eventName, 'return;');
+                isSupported = typeof element[eventName] == 'function';
+            }
+            
+            element = null;
+            return canCache ? (cache[eventName] = isSupported) : isSupported;
         }
         
-        element = element || document.createElement(TAGNAMES[eventName] || 'div');
-        eventName = 'on' + eventName;
-        
-        // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize"
-        // `in` "catches" those
-        var isSupported = (eventName in element);
-        
-        if (!isSupported && element.setAttribute) {
-            element.setAttribute(eventName, 'return;');
-            isSupported = typeof element[eventName] == 'function';
-        }
-        
-        element = null;
-        return canCache ? (cache[eventName] = isSupported) : isSupported;
-    }
+        return isEventSupported;
+    })();
     
     /**
      * set_css applies given styles to the Modernizr DOM node.
