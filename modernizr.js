@@ -556,7 +556,8 @@ window.Modernizr = (function(window,doc){
     };
 
     tests[applicationCache] =  function() {
-        return !!window.applicationCache;
+        var cache = window.applicationCache;
+        return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
  
 
