@@ -341,7 +341,29 @@ window.Modernizr = (function(window,doc){
     tests[csstransforms3d] = function() {
         //  set_css_all( 'perspective:500' );
         
-        return !!test_props([ 'perspectiveProperty', 'webkitPerspective', 'MozPerspective', 'mozPerspective', 'oPerspective', 'msPerspective' ]);
+        var ret = !!test_props([ 'perspectiveProperty', 'webkitPerspective', 'MozPerspective', 'mozPerspective', 'oPerspective', 'msPerspective' ]);
+        
+        // webkit has 3d transforms disabled for chrome and safari, though
+        //   it works fine in webkit nightly on (snow) leopard.
+        // as a result, it 'regonizes' the syntax and throws a false positive
+        // thus we must do a more thorough check.
+        if (ret){
+            var st = document.createElement('style'),
+                div = doc.createElement('div');
+                
+            // webkit allows this media query to succeed only if the feature is enabled.    
+            // "@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){#modernizr{height:3px}}"
+            st.textContent = '@media ('+setProperties.join('transform-3d),(')+'modernizr){#modernizr{height:3px}}';
+            doc.getElementsByTagName('head')[0].appendChild(st);
+            div.id = 'modernizr';
+            docElement.appendChild(div);
+            
+            ret = div.offsetHeight === 3;
+            
+            st.parentNode.removeChild(st);
+            div.parentNode.removeChild(div);
+        }
+        return ret;
     };
     
     tests[csstransitions] = function() {
