@@ -32,7 +32,7 @@
 
 window.Modernizr = (function(window,doc){
     
-    var version = '1.1',
+    var version = '1.2pre',
     
     ret = {},
 
@@ -345,8 +345,8 @@ window.Modernizr = (function(window,doc){
         
         // webkit has 3d transforms disabled for chrome and safari, though
         //   it works fine in webkit nightly on (snow) leopard.
-        // as a result, it 'regonizes' the syntax and throws a false positive
-        // thus we must do a more thorough check.
+        // as a result, it 'recognizes' the syntax and throws a false positive
+        // thus we must do a more thorough check:
         if (ret){
             var st = document.createElement('style'),
                 div = doc.createElement('div');
