@@ -112,7 +112,7 @@ window.Modernizr = (function(window,doc){
     // various new input types, such as search, range, datetime, etc.
     
     // SVG is not yet supported in Modernizr
-    // svg = 'svg',
+    svg = 'svg',
     
     background = 'background',
     backgroundColor = background + 'Color',
@@ -288,6 +288,10 @@ window.Modernizr = (function(window,doc){
             && isEventSupported('dragleave')
             && isEventSupported('dragend')
             && isEventSupported('drop');
+    };
+    
+    tests[svg] = function(){
+        return !!(window.SVGAngle || doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
     };
     
     tests[rgba] = function() {
@@ -603,7 +607,7 @@ window.Modernizr = (function(window,doc){
     //   http://miketaylr.com/code/input-type-attr.html
     // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
     ret[input] = (function(props) {
-        for ( var i in props ) {
+        for (var i = 0,len=props.length;i<len;i++) {
             attrs[ props[i] ] = !!(props[i] in f);
         }
         return attrs;
@@ -614,9 +618,9 @@ window.Modernizr = (function(window,doc){
     //   true/false like all the other tests; instead, it returns an object
     //   containing each input type with its corresponding true/false value 
     ret[inputtypes] = (function(props) {
-        for ( var i in props ) {
+        for (var i = 0,len=props.length;i<len;i++) {
             f.setAttribute('type', props[i]);
-            inputs[ props[i] ] = !!( f.type !== 'text');
+            inputs[ props[i] ] = f.type !== 'text';
         }
         return inputs;
     })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
