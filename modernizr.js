@@ -127,6 +127,7 @@ window.Modernizr = (function(window,doc){
     draganddrop = 'draganddrop',
     offlinedetection = 'offlinedetection',
     webdatabase = 'webdatabase',
+    websocket = 'websocket',
     
     // list of property values to set for css tests. see ticket #21
     setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
@@ -292,6 +293,10 @@ window.Modernizr = (function(window,doc){
     
     tests[svg] = function(){
         return !!(window.SVGAngle || doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
+    };
+    
+    tests[websocket] = function(){
+        return ('WebSocket' in window);
     };
     
     tests[rgba] = function() {
