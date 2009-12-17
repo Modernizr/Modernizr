@@ -8,7 +8,7 @@
  *
  * Featuring major contributions by
  * Paul Irish  - http://paulirish.com
- * Ben Alman   - http://benalman.com/
+ * Ben Alman   - http://benalman.com
  */
 /*
  * Modernizr is a script that will detect native CSS3 and HTML5 features
