@@ -121,6 +121,7 @@ window.Modernizr = (function(window,doc){
     sessionStorage = 'sessionstorage',
     webWorkers = 'webworkers',
     applicationCache = 'applicationcache',
+    smil = 'smil',
     hashchange = 'hashchange',
     crosswindowmessaging = 'crosswindowmessaging',
     historymanagement = 'historymanagement',
@@ -128,6 +129,8 @@ window.Modernizr = (function(window,doc){
     offlinedetection = 'offlinedetection',
     webdatabase = 'webdatabase',
     websocket = 'websocket',
+    
+    toString = Object.prototype.toString,
     
     // list of property values to set for css tests. see ticket #21
     setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
@@ -345,6 +348,10 @@ window.Modernizr = (function(window,doc){
         
         return test_props_all( 'borderImage' );
     };
+    
+    
+    // super comprehensive table about all the unique implementations of 
+    // border-radius: http://muddledramblings.com/table-of-css3-border-radius-compliance
     
     tests[borderradius] = function() {
         //  set_css_all( 'border-radius:10px' );
@@ -580,6 +587,13 @@ window.Modernizr = (function(window,doc){
         return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
  
+    // thanks to F1lt3r and lucideer
+    // http://github.com/Modernizr/Modernizr/issues#issue/35
+    tests[smil] = function(){
+        return document.createElementNS && /SVG/.test(toString.call(document.createElementNS('http://www.w3.org/2000/svg','animate')));
+    };
+
+
 
     // Run through all tests and detect their support in the current UA.
     for ( feature in tests ) {
