@@ -128,7 +128,7 @@ window.Modernizr = (function(window,doc){
     historymanagement = 'historymanagement',
     draganddrop = 'draganddrop',
     offlinedetection = 'offlinedetection',
-    webdatabase = 'webdatabase',
+    websqldatabase = 'websqldatabase',
     websocket = 'websocket',
     
     toString = Object.prototype.toString,
@@ -269,7 +269,7 @@ window.Modernizr = (function(window,doc){
       return !!window.postMessage;
     };
 
-    tests[webdatabase] = function() {
+    tests[websqldatabase] = function() {
       return !!window.openDatabase;
     };
 
