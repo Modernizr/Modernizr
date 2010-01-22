@@ -64,11 +64,13 @@ window.Modernizr = (function(window,doc){
      * checked a second time. This is neccessary because both Gecko and
      * WebKit do not load data: URI font data synchronously.
      *   https://bugzilla.mozilla.org/show_bug.cgi?id=512566
+     * The check will be done again at fontfaceCheckDelay*2 and then 
+     * a fourth time at window's load event. 
      * If you need to query for @font-face support, send a callback to: 
      *  Modernizr._fontfaceready(fn);
      * The callback is passed the boolean value of Modernizr.fontface
      */
-    fontfaceCheckDelay = 100,
+    fontfaceCheckDelay = 75,
     
     
     docElement = doc.documentElement,
@@ -111,9 +113,8 @@ window.Modernizr = (function(window,doc){
     // inputtypes is an object of its own containing individual tests for
     // various new input types, such as search, range, datetime, etc.
     
-    // SVG is not yet supported in Modernizr
+
     svg = 'svg',
-    
     background = 'background',
     backgroundColor = background + 'Color',
     canPlayType = 'canPlayType',
@@ -507,12 +508,18 @@ window.Modernizr = (function(window,doc){
           var delayedCheck = function(){
             fontret = ret[fontface] = wid !== spn.offsetWidth;
             docElement.className = docElement.className.replace(/(no-)?font.*?\b/,'') + (fontret ? ' ' : ' no-') + fontface;
-            
-            callback && (isCallbackCalled = true) && callback(fontret);
-            isFakeBody && setTimeout(function(){body.parentNode.removeChild(body)}, 50);
           }
 
           setTimeout(delayedCheck,fontfaceCheckDelay);
+          setTimeout(delayedCheck,fontfaceCheckDelay*2);
+          addEventListener('load',function(){
+              delayedCheck();
+              callback && (isCallbackCalled = true) && callback(fontret);
+              setTimeout(function(){
+                  isFakeBody && body.parentNode.removeChild(body);
+                  st.parentNode.removeChild(st);
+              }, 50);
+          });
         }
 
         // allow for a callback
