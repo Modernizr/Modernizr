@@ -30,7 +30,7 @@
  * @contributor   Ben Alman
  */
 
-window.Modernizr = (function(window,doc){
+window.Modernizr = (function(window,doc,undefined){
     
     var version = '1.2pre',
     
@@ -118,10 +118,10 @@ window.Modernizr = (function(window,doc){
     background = 'background',
     backgroundColor = background + 'Color',
     canPlayType = 'canPlayType',
-    localStorage = 'localstorage',
-    sessionStorage = 'sessionstorage',
+    localStorage = 'localStorage',
+    sessionStorage = 'sessionStorage',
     webWorkers = 'webworkers',
-    applicationCache = 'applicationcache',
+    applicationCache = 'applicationCache',
     smil = 'smil',
     hashchange = 'hashchange',
     crosswindowmessaging = 'crosswindowmessaging',
@@ -274,7 +274,7 @@ window.Modernizr = (function(window,doc){
     };
 
     tests[hashchange] = function() {
-      return isEventSupported(hashchange, document.body);
+      return isEventSupported(hashchange, document.body || m);
     };
 
     tests[offlinedetection] = function() {
@@ -578,11 +578,11 @@ window.Modernizr = (function(window,doc){
     //   throw an error: https://bugzilla.mozilla.org/show_bug.cgi?id=365772
     // if cookies are disabled
     tests[localStorage] = function() {
-        return 'localStorage' in window;
+        return (localStorage in window) && window[localStorage] !== null;
     };
 
     tests[sessionStorage] = function() {
-        return 'sessionStorage' in window;
+        return sessionStorage in window;
     };
 
     tests[webWorkers] = function () {
@@ -590,7 +590,7 @@ window.Modernizr = (function(window,doc){
     };
 
     tests[applicationCache] =  function() {
-        var cache = window.applicationCache;
+        var cache = window[applicationCache];
         return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
  
@@ -599,7 +599,6 @@ window.Modernizr = (function(window,doc){
     tests[smil] = function(){
         return document.createElementNS && /SVG/.test(toString.call(document.createElementNS('http://www.w3.org/2000/svg','animate')));
     };
-
 
 
     // Run through all tests and detect their support in the current UA.
@@ -621,6 +620,7 @@ window.Modernizr = (function(window,doc){
       if (this.hasOwnProperty( feature )) {
         // warn that feature test is already present
       } 
+      feature = feature.toLowerCase();
       test = !!(test());
       docElement.className += ' ' + (!test && enableNoClasses ? 'no-' : '') + feature; 
       ret[ feature ] = test;
