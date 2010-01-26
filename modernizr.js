@@ -519,7 +519,7 @@ window.Modernizr = (function(window,doc,undefined){
                   isFakeBody && body.parentNode.removeChild(body);
                   st.parentNode.removeChild(st);
               }, 50);
-          });
+          },false);
         }
 
         // allow for a callback
