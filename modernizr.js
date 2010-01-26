@@ -2,7 +2,7 @@
  * Modernizr JavaScript library 1.1
  * http://modernizr.com/
  *
- * Copyright (c) 2009 Faruk Ates - http://farukat.es/
+ * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
  * Licensed under the MIT license.
  * http://modernizr.com/license/
  *
@@ -24,7 +24,7 @@
  * control over the look and feel of your website.
  * 
  * @author    Faruk Ates
- * @copyright   (2009) Faruk Ates.
+ * @copyright   (2009-2010) Faruk Ates.
  *
  * @contributor   Paul Irish
  * @contributor   Ben Alman
@@ -230,10 +230,9 @@ window.Modernizr = (function(window,doc,undefined){
         var uc_prop = prop.charAt(0).toUpperCase() + prop.substr(1),
         props = [
             prop,
-            'webkit' + uc_prop,
+            'Webkit' + uc_prop,
             'Moz' + uc_prop,
-            'moz' + uc_prop,
-            'o' + uc_prop,
+            'O' + uc_prop,
             'ms' + uc_prop
         ];
 
@@ -427,13 +426,13 @@ window.Modernizr = (function(window,doc,undefined){
     tests[csstransforms] = function() {
         //  set_css_all( 'transform:rotate(3deg)' );
         
-        return !!test_props([ 'transformProperty', 'webkitTransform', 'MozTransform', 'mozTransform', 'oTransform', 'msTransform' ]);
+        return !!test_props([ 'transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform' ]);
     };
     
     tests[csstransforms3d] = function() {
         //  set_css_all( 'perspective:500' );
         
-        var ret = !!test_props([ 'perspectiveProperty', 'webkitPerspective', 'MozPerspective', 'mozPerspective', 'oPerspective', 'msPerspective' ]);
+        var ret = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
         
         // webkit has 3d transforms disabled for chrome and safari, though
         //   it works fine in webkit nightly on (snow) leopard.
