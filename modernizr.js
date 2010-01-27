@@ -47,17 +47,6 @@ window.Modernizr = (function(window,doc,undefined){
      */
     enableHTML5 = true,
     
-    /**
-     * enableNoClasses is a private property that, when enabled, will
-     * add classnames to the <html> element at all times, but prefixes
-     * failed groups with "no-", e.g. "no-cssanimations".
-     * This allows for very easy IF / ELSE style rules in your CSS. It
-     * can be disabled if these "no-classes" are not needed or desired.
-     * 
-     * enableNoClasses is ON by default.
-     */
-    enableNoClasses = true,
-    
     
     /**
      * fontfaceCheckDelay is the ms delay before the @font-face test is
@@ -603,7 +592,7 @@ window.Modernizr = (function(window,doc,undefined){
     // Run through all tests and detect their support in the current UA.
     for ( feature in tests ) {
         if ( tests.hasOwnProperty( feature ) ) {
-            classes.push( ( !( ret[ feature ] = tests[ feature ]() ) && enableNoClasses ? 'no-' : '' ) + feature );
+            classes.push( ( !( ret[ feature ] = tests[ feature ]() ) ? 'no-' : '' ) + feature );
         }
     }
 
@@ -621,7 +610,7 @@ window.Modernizr = (function(window,doc,undefined){
       } 
       feature = feature.toLowerCase();
       test = !!(test());
-      docElement.className += ' ' + (!test && enableNoClasses ? 'no-' : '') + feature; 
+      docElement.className += ' ' + (!test ? 'no-' : '') + feature; 
       ret[ feature ] = test;
     };
     
@@ -670,7 +659,6 @@ window.Modernizr = (function(window,doc,undefined){
 
     // Assign private properties to the return object with prefix
     ret._enableHTML5     = enableHTML5;
-    ret._enableNoClasses = enableNoClasses;
     ret._version         = version;
 
     // Remove "no-js" class from <html> element, if it exists:
