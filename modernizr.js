@@ -102,8 +102,8 @@ window.Modernizr = (function(window,doc,undefined){
     // inputtypes is an object of its own containing individual tests for
     // various new input types, such as search, range, datetime, etc.
     
-
-    svg = 'svg',
+    // SVG checking is not added just yet
+    // svg = 'svg',
     background = 'background',
     backgroundColor = background + 'Color',
     canPlayType = 'canPlayType',
@@ -283,9 +283,9 @@ window.Modernizr = (function(window,doc,undefined){
             && isEventSupported('drop');
     };
     
-    tests[svg] = function(){
-        return !!(window.SVGAngle || doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
-    };
+    // tests[svg] = function(){
+    //     return !!(window.SVGAngle || doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
+    // };
     
     tests[websocket] = function(){
         return ('WebSocket' in window);
