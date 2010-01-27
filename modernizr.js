@@ -577,6 +577,9 @@ window.Modernizr = (function(window,doc,undefined){
     // tested in this method because otherwise Firefox will
     //   throw an error: https://bugzilla.mozilla.org/show_bug.cgi?id=365772
     // if cookies are disabled
+    
+    // FWIW miller device resolves to [object Storage] in all supporting browsers
+    //   except for IE who does [object Object]
     tests[localStorage] = function() {
         return (localStorage in window) && window[localStorage] !== null;
     };
