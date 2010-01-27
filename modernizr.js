@@ -573,7 +573,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
     tests[sessionStorage] = function() {
-        return sessionStorage in window;
+        return (sessionStorage in window) && window[localStorage] !== null;
     };
 
     tests[webWorkers] = function () {
