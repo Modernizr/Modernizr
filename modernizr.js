@@ -2,7 +2,7 @@
  * Modernizr JavaScript library 1.1
  * http://modernizr.com/
  *
- * Copyright (c) 2009 Faruk Ates - http://farukat.es/
+ * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
  * Licensed under the MIT license.
  * http://modernizr.com/license/
  *
@@ -24,7 +24,7 @@
  * control over the look and feel of your website.
  * 
  * @author    Faruk Ates
- * @copyright   (2009) Faruk Ates.
+ * @copyright   (2009-2010) Faruk Ates.
  *
  * @contributor   Paul Irish
  * @contributor   Ben Alman
@@ -46,17 +46,6 @@ window.Modernizr = (function(window,doc,undefined){
      * enableHTML5 is ON by default.
      */
     enableHTML5 = true,
-    
-    /**
-     * enableNoClasses is a private property that, when enabled, will
-     * add classnames to the <html> element at all times, but prefixes
-     * failed groups with "no-", e.g. "no-cssanimations".
-     * This allows for very easy IF / ELSE style rules in your CSS. It
-     * can be disabled if these "no-classes" are not needed or desired.
-     * 
-     * enableNoClasses is ON by default.
-     */
-    enableNoClasses = true,
     
     
     /**
@@ -113,8 +102,8 @@ window.Modernizr = (function(window,doc,undefined){
     // inputtypes is an object of its own containing individual tests for
     // various new input types, such as search, range, datetime, etc.
     
-
-    svg = 'svg',
+    // SVG checking is not added just yet
+    // svg = 'svg',
     background = 'background',
     backgroundColor = background + 'Color',
     canPlayType = 'canPlayType',
@@ -230,10 +219,9 @@ window.Modernizr = (function(window,doc,undefined){
         var uc_prop = prop.charAt(0).toUpperCase() + prop.substr(1),
         props = [
             prop,
-            'webkit' + uc_prop,
+            'Webkit' + uc_prop,
             'Moz' + uc_prop,
-            'moz' + uc_prop,
-            'o' + uc_prop,
+            'O' + uc_prop,
             'ms' + uc_prop
         ];
 
@@ -295,9 +283,9 @@ window.Modernizr = (function(window,doc,undefined){
             && isEventSupported('drop');
     };
     
-    tests[svg] = function(){
-        return !!(window.SVGAngle || doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
-    };
+    // tests[svg] = function(){
+    //     return !!(window.SVGAngle || doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
+    // };
     
     tests[websocket] = function(){
         return ('WebSocket' in window);
@@ -427,13 +415,13 @@ window.Modernizr = (function(window,doc,undefined){
     tests[csstransforms] = function() {
         //  set_css_all( 'transform:rotate(3deg)' );
         
-        return !!test_props([ 'transformProperty', 'webkitTransform', 'MozTransform', 'mozTransform', 'oTransform', 'msTransform' ]);
+        return !!test_props([ 'transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform' ]);
     };
     
     tests[csstransforms3d] = function() {
         //  set_css_all( 'perspective:500' );
         
-        var ret = !!test_props([ 'perspectiveProperty', 'webkitPerspective', 'MozPerspective', 'mozPerspective', 'oPerspective', 'msPerspective' ]);
+        var ret = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
         
         // webkit has 3d transforms disabled for chrome and safari, though
         //   it works fine in webkit nightly on (snow) leopard.
@@ -487,7 +475,7 @@ window.Modernizr = (function(window,doc,undefined){
           doc.getElementsByTagName('head')[0].appendChild(st);
       
       
-          spn.setAttribute('style','font:99px _,serif;position:absolute;visibility:hidden'); 
+          spn.setAttribute('style','font:99px _,arial,helvetica;position:absolute;visibility:hidden'); 
       
           if  (!body){
             body = docElement.appendChild(doc.createElement(fontface));
@@ -519,7 +507,7 @@ window.Modernizr = (function(window,doc,undefined){
                   isFakeBody && body.parentNode.removeChild(body);
                   st.parentNode.removeChild(st);
               }, 50);
-          });
+          },false);
         }
 
         // allow for a callback
@@ -607,7 +595,7 @@ window.Modernizr = (function(window,doc,undefined){
     // Run through all tests and detect their support in the current UA.
     for ( feature in tests ) {
         if ( tests.hasOwnProperty( feature ) ) {
-            classes.push( ( !( ret[ feature ] = tests[ feature ]() ) && enableNoClasses ? 'no-' : '' ) + feature );
+            classes.push( ( !( ret[ feature ] = tests[ feature ]() ) ? 'no-' : '' ) + feature );
         }
     }
 
@@ -625,7 +613,7 @@ window.Modernizr = (function(window,doc,undefined){
       } 
       feature = feature.toLowerCase();
       test = !!(test());
-      docElement.className += ' ' + (!test && enableNoClasses ? 'no-' : '') + feature; 
+      docElement.className += ' ' + (!test ? 'no-' : '') + feature; 
       ret[ feature ] = test;
     };
     
@@ -674,7 +662,6 @@ window.Modernizr = (function(window,doc,undefined){
 
     // Assign private properties to the return object with prefix
     ret._enableHTML5     = enableHTML5;
-    ret._enableNoClasses = enableNoClasses;
     ret._version         = version;
 
     // Remove "no-js" class from <html> element, if it exists:
