@@ -475,7 +475,7 @@ window.Modernizr = (function(window,doc,undefined){
           doc.getElementsByTagName('head')[0].appendChild(st);
       
       
-          spn.setAttribute('style','font:99px _,serif;position:absolute;visibility:hidden'); 
+          spn.setAttribute('style','font:99px _,arial,helvetica;position:absolute;visibility:hidden'); 
       
           if  (!body){
             body = docElement.appendChild(doc.createElement(fontface));
