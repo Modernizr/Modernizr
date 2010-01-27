@@ -261,8 +261,10 @@ window.Modernizr = (function(window,doc,undefined){
       return !!window.openDatabase;
     };
 
+    // documentMode logic from YUI to filter out IE8 Compat Mode
+    //   which false positives.
     tests[hashchange] = function() {
-      return isEventSupported(hashchange, document.body || m);
+      return isEventSupported(hashchange, window) && ( document.documentMode === undefined || document.documentMode > 7 );
     };
 
     tests[offlinedetection] = function() {
