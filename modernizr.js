@@ -336,7 +336,6 @@ window.Modernizr = (function(window,doc,undefined){
     
     tests[borderimage] = function() {
         //  set_css_all( 'border-image:url(m.png) 1 1 stretch' );
-        
         return test_props_all( 'borderImage' );
     };
     
@@ -346,17 +345,17 @@ window.Modernizr = (function(window,doc,undefined){
     
     tests[borderradius] = function() {
         //  set_css_all( 'border-radius:10px' );
-
         return test_props_all( 'borderRadius', '', function( prop ) {
             return contains( prop, 'orderRadius' );
         });
     };
     
+    
     tests[boxshadow] = function() {
         //  set_css_all( 'box-shadow:#000 1px 1px 3px' );
-        
         return test_props_all( 'boxShadow' );
     };
+    
     
     tests[opacity] = function() {
         // Browsers that actually have CSS Opacity implemented have done so
@@ -368,17 +367,18 @@ window.Modernizr = (function(window,doc,undefined){
         return contains( m_style[opacity], '0.5' );
     };
     
+    
     tests[cssanimations] = function() {
         //  set_css_all( 'animation:"animate" 2s ease 2', 'position:relative' );
-        
         return test_props_all( 'animationName' );
     };
     
+    
     tests[csscolumns] = function() {
         //  set_css_all( 'column-count:3' );
-        
         return test_props_all( 'columnCount' );
     };
+    
     
     tests[cssgradients] = function() {
         /**
@@ -409,16 +409,18 @@ window.Modernizr = (function(window,doc,undefined){
         return contains( m_style.backgroundImage, 'gradient' );
     };
     
+    
     tests[cssreflections] = function() {
         //  set_css_all( 'box-reflect:right 1px' );
         return test_props_all( 'boxReflect' );
     };
     
+    
     tests[csstransforms] = function() {
         //  set_css_all( 'transform:rotate(3deg)' );
-        
         return !!test_props([ 'transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform' ]);
     };
+    
     
     tests[csstransforms3d] = function() {
         //  set_css_all( 'perspective:500' );
@@ -448,12 +450,11 @@ window.Modernizr = (function(window,doc,undefined){
         return ret;
     };
     
+    
     tests[csstransitions] = function() {
         //  set_css_all( 'transition:all .5s linear' );
-        
         return test_props_all( 'transitionProperty' );
     };
-
 
 
     // @font-face detection routine created by Paul Irish - paulirish.com
@@ -522,7 +523,6 @@ window.Modernizr = (function(window,doc,undefined){
     })();
     
 
-    
     // These tests evaluate support of the video/audio elements, as well as
     // testing what types of content they support.
     //
@@ -563,6 +563,7 @@ window.Modernizr = (function(window,doc,undefined){
         return bool;
     };
 
+
     // both localStorage and sessionStorage are
     // tested in this method because otherwise Firefox will
     //   throw an error: https://bugzilla.mozilla.org/show_bug.cgi?id=365772
@@ -578,14 +579,17 @@ window.Modernizr = (function(window,doc,undefined){
         return (sessionStorage in window) && window[localStorage] !== null;
     };
 
+
     tests[webWorkers] = function () {
         return !!window.Worker;
     };
+
 
     tests[applicationCache] =  function() {
         var cache = window[applicationCache];
         return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
+ 
  
     // thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
