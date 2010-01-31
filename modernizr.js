@@ -119,6 +119,7 @@ window.Modernizr = (function(window,doc,undefined){
     offlinedetection = 'offlinedetection',
     websqldatabase = 'websqldatabase',
     websocket = 'websocket',
+    flash = 'flash',
     
     toString = Object.prototype.toString,
     
@@ -589,7 +590,18 @@ window.Modernizr = (function(window,doc,undefined){
         var cache = window[applicationCache];
         return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
- 
+    
+    
+    // technique courtesy of Jonathan Neal
+    tests[flash] = function(){
+        try {
+        	    return !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
+        }
+        catch(e) {
+            return false;
+        }
+    };
+
  
     // thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
