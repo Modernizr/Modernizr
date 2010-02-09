@@ -667,15 +667,9 @@ window.Modernizr = (function(window,doc,undefined){
     set_css( '' );
     m = f = null;
 
-    // Enable HTML 5 elements for styling in IE:
+    // Enable HTML 5 elements for styling in IE. thx remy, jdalton, kangeax, and porneL
     if ( enableHTML5 && !(!/*@cc_on!@*/0) ) {
-        elems = 'abbr article aside audio canvas datalist details figure footer header hgroup mark menu meter nav output progress ruby rt section time video'.split(' ');
-
-        i = elems.length+1;
-        while ( --i ) {
-            elem = doc.createElement( elems[i] );
-        }
-        elem = null;
+		'abbr article aside audio canvas details figcaption figure footer header hgroup mark menu meter nav output progress section summary time video'.replace(/\w+/g,function(n){doc.createElement(n)});
     }
 
     // Assign private properties to the return object with prefix
