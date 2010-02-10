@@ -79,6 +79,7 @@ window.Modernizr = (function(window,doc,undefined){
     
     canvas = 'canvas',
     canvastext = 'canvastext',
+    webgl = 'webgl',
     rgba = 'rgba',
     hsla = 'hsla',
     multiplebgs = 'multiplebgs',
@@ -243,6 +244,20 @@ window.Modernizr = (function(window,doc,undefined){
     tests[canvastext] = function() {
         return !!(tests[canvas]() && typeof doc.createElement( canvas ).getContext('2d').fillText == 'function');
     };
+    
+    
+	tests[webgl] = function(){
+		var elem 	 = doc.createElement( canvas ),
+	    	contexts = [webgl, "experimental-"+webgl, "moz-"+webgl, "o-"+webgl, "webkit-3d", "3d"]; // this could probably use expansion.
+	    	
+	    for (var b = -1; ++b < contexts.length; ) {
+	    	try {
+	       		if (elem.getContext(contexts[b])) return true;	
+			} catch(e){	}
+		}
+		return false;
+	};
+
 
     /**
      * geolocation tests for the new Geolocation API specification.
@@ -601,7 +616,6 @@ window.Modernizr = (function(window,doc,undefined){
             return false;
         }
     };
-
  
     // thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
