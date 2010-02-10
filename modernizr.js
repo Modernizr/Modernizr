@@ -582,6 +582,9 @@ window.Modernizr = (function(window,doc,undefined){
     
     // FWIW miller device resolves to [object Storage] in all supporting browsers
     //   except for IE who does [object Object]
+    
+    // IE8 Compat mode supports these features completely:
+    // http://www.quirksmode.org/dom/html5.html
     tests[localStorage] = function() {
         return (localStorage in window) && window[localStorage] !== null;
     };
