@@ -249,7 +249,7 @@ window.Modernizr = (function(window,doc,undefined){
 		var elem 	 = doc.createElement( canvas ),
 	    	contexts = [webgl, "experimental-"+webgl, "moz-"+webgl, "o-"+webgl, "webkit-3d", "3d"]; // this could probably use expansion.
 	    	
-	    for (var b = -1; ++b < contexts.length; ) {
+	    for (var b = -1, len = contexts.length; ++b < len; ) {
 	    	try {
 	       		if (elem.getContext(contexts[b])) return true;	
 			} catch(e){	}
