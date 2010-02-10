@@ -117,7 +117,6 @@ window.Modernizr = (function(window,doc,undefined){
     crosswindowmessaging = 'crosswindowmessaging',
     historymanagement = 'historymanagement',
     draganddrop = 'draganddrop',
-    offlinedetection = 'offlinedetection',
     websqldatabase = 'websqldatabase',
     websocket = 'websocket',
     flash = 'flash',
@@ -281,10 +280,6 @@ window.Modernizr = (function(window,doc,undefined){
     //   which false positives.
     tests[hashchange] = function() {
       return isEventSupported(hashchange, window) && ( document.documentMode === undefined || document.documentMode > 7 );
-    };
-
-    tests[offlinedetection] = function() {
-      return !!navigator.onLine;
     };
 
     tests[historymanagement] = function() {
