@@ -606,6 +606,9 @@ window.Modernizr = (function(window,doc,undefined){
     
     
     // technique courtesy of Jonathan Neal
+    
+    // in my testing if plugins are disabled this plugins entry isn't availble, so no need to check
+    //   navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin
     tests[flash] = function(){
         try {
         	    return !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
