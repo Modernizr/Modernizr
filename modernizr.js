@@ -610,12 +610,23 @@ window.Modernizr = (function(window,doc,undefined){
     // in my testing if plugins are disabled this plugins entry isn't availble, so no need to check
     //   navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin
     tests[flash] = function(){
+    	var bool;
         try {
-        	    return !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
+        	bool = !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
         }
         catch(e) {
-            return false;
+            bool = false;
         }
+        // test for flashblock
+        /*  -moz-binding to flashblock is asynchronous. >:(
+        if (bool){
+        	var x = doc.createElement('embed');
+        	x.src = flash+'.swf';
+        	docElement.appendChild(x);
+        	bool = !/chrome/.test(getComputedStyle(x,null).getPropertyValue('-moz-binding'))
+        	docElement.removeChild(x);
+        } */
+        return bool;
     };
  
     // thanks to F1lt3r and lucideer
