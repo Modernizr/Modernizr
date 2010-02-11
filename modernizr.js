@@ -619,6 +619,7 @@ window.Modernizr = (function(window,doc,undefined){
         }
         // test for flashblock
         /*  -moz-binding to flashblock is asynchronous. >:(
+        	// another technique here: http://jeremiahgrossman.blogspot.com/2006/08/i-know-what-youve-got-firefox.html
         if (bool){
         	var x = doc.createElement('embed');
         	x.src = flash+'.swf';
