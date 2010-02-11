@@ -611,22 +611,22 @@ window.Modernizr = (function(window,doc,undefined){
     // in my testing if plugins are disabled this plugins entry isn't availble, so no need to check
     //   navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin
     tests[flash] = function(){
-    	var bool;
+        var bool;
         try {
-        	bool = !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
+            bool = !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
         }
         catch(e) {
             bool = false;
         }
         // test for flashblock
         /*  -moz-binding to flashblock is asynchronous. >:(
-        	// another technique here: http://jeremiahgrossman.blogspot.com/2006/08/i-know-what-youve-got-firefox.html
+            // another technique here: http://jeremiahgrossman.blogspot.com/2006/08/i-know-what-youve-got-firefox.html
         if (bool){
-        	var x = doc.createElement('embed');
-        	x.src = flash+'.swf';
-        	docElement.appendChild(x);
-        	bool = !/chrome/.test(getComputedStyle(x,null).getPropertyValue('-moz-binding'))
-        	docElement.removeChild(x);
+            var x = doc.createElement('embed');
+            x.src = flash+'.swf';
+            docElement.appendChild(x);
+            bool = !/chrome/.test(getComputedStyle(x,null).getPropertyValue('-moz-binding'))
+            docElement.removeChild(x);
         } */
         return bool;
     };
@@ -697,7 +697,7 @@ window.Modernizr = (function(window,doc,undefined){
 
     // Enable HTML 5 elements for styling in IE. thx remy, jdalton, kangax, and porneL
     if ( enableHTML5 && !(!/*@cc_on!@*/0) ) {
-		'abbr article aside audio canvas datalist details figcaption figure footer header hgroup mark menu meter nav output progress section summary time video'.replace(/\w+/g,function(n){doc.createElement(n)});
+        'abbr article aside audio canvas datalist details figcaption figure footer header hgroup mark menu meter nav output progress section summary time video'.replace(/\w+/g,function(n){doc.createElement(n)});
     }
 
     // Assign private properties to the return object with prefix
