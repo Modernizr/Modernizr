@@ -245,17 +245,18 @@ window.Modernizr = (function(window,doc,undefined){
     };
     
     
-	tests[webgl] = function(){
-		var elem 	 = doc.createElement( canvas ),
-	    	contexts = [webgl, "experimental-"+webgl, "moz-"+webgl, "o-"+webgl, "webkit-3d", "3d"]; // this could probably use expansion.
-	    	
-	    for (var b = -1, len = contexts.length; ++b < len; ) {
-	    	try {
-	       		if (elem.getContext(contexts[b])) return true;	
-			} catch(e){	}
-		}
-		return false;
-	};
+    tests[webgl] = function(){
+
+        var elem 	 = doc.createElement( canvas ),
+            contexts = [webgl, "ms-"+webgl, "experimental-"+webgl, "moz-"+webgl, "opera-3d", "webkit-3d", "ms-3d", "3d"]; 
+            
+        for (var b = -1, len = contexts.length; ++b < len; ) {
+            try {
+                if (elem.getContext(contexts[b])) return true;	
+            } catch(e){	}
+        }
+        return false;
+    };
 
 
     /**
