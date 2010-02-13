@@ -79,6 +79,7 @@ window.Modernizr = (function(window,doc,undefined){
     
     canvas = 'canvas',
     canvastext = 'canvastext',
+    webgl = 'webgl',
     rgba = 'rgba',
     hsla = 'hsla',
     multiplebgs = 'multiplebgs',
@@ -116,7 +117,6 @@ window.Modernizr = (function(window,doc,undefined){
     crosswindowmessaging = 'crosswindowmessaging',
     historymanagement = 'historymanagement',
     draganddrop = 'draganddrop',
-    offlinedetection = 'offlinedetection',
     websqldatabase = 'websqldatabase',
     websocket = 'websocket',
     flash = 'flash',
@@ -243,6 +243,21 @@ window.Modernizr = (function(window,doc,undefined){
     tests[canvastext] = function() {
         return !!(tests[canvas]() && typeof doc.createElement( canvas ).getContext('2d').fillText == 'function');
     };
+    
+    
+    tests[webgl] = function(){
+
+        var elem 	 = doc.createElement( canvas ),
+            contexts = [webgl, "ms-"+webgl, "experimental-"+webgl, "moz-"+webgl, "opera-3d", "webkit-3d", "ms-3d", "3d"]; 
+            
+        for (var b = -1, len = contexts.length; ++b < len; ) {
+            try {
+                if (elem.getContext(contexts[b])) return true;	
+            } catch(e){	}
+        }
+        return false;
+    };
+
 
     /**
      * geolocation tests for the new Geolocation API specification.
@@ -266,10 +281,6 @@ window.Modernizr = (function(window,doc,undefined){
     //   which false positives.
     tests[hashchange] = function() {
       return isEventSupported(hashchange, window) && ( document.documentMode === undefined || document.documentMode > 7 );
-    };
-
-    tests[offlinedetection] = function() {
-      return !!navigator.onLine;
     };
 
     tests[historymanagement] = function() {
@@ -578,6 +589,9 @@ window.Modernizr = (function(window,doc,undefined){
     
     // FWIW miller device resolves to [object Storage] in all supporting browsers
     //   except for IE who does [object Object]
+    
+    // IE8 Compat mode supports these features completely:
+    // http://www.quirksmode.org/dom/html5.html
     tests[localStorage] = function() {
         return (localStorage in window) && window[localStorage] !== null;
     };
@@ -599,15 +613,29 @@ window.Modernizr = (function(window,doc,undefined){
     
     
     // technique courtesy of Jonathan Neal
+    
+    // in my testing if plugins are disabled this plugins entry isn't availble, so no need to check
+    //   navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin
     tests[flash] = function(){
+        var bool;
         try {
-            return !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
+            bool = !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
         }
         catch(e) {
-            return false;
+            bool = false;
         }
+        // test for flashblock
+        /*  -moz-binding to flashblock is asynchronous. >:(
+            // another technique here: http://jeremiahgrossman.blogspot.com/2006/08/i-know-what-youve-got-firefox.html
+        if (bool){
+            var x = doc.createElement('embed');
+            x.src = flash+'.swf';
+            docElement.appendChild(x);
+            bool = !/chrome/.test(getComputedStyle(x,null).getPropertyValue('-moz-binding'))
+            docElement.removeChild(x);
+        } */
+        return bool;
     };
-
  
     // thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
@@ -673,15 +701,9 @@ window.Modernizr = (function(window,doc,undefined){
     set_css( '' );
     m = f = null;
 
-    // Enable HTML 5 elements for styling in IE:
+    // Enable HTML 5 elements for styling in IE. thx remy, jdalton, kangax, and porneL
     if ( enableHTML5 && !(!/*@cc_on!@*/0) ) {
-        elems = 'abbr article aside audio canvas datalist details figure footer header hgroup mark menu meter nav output progress ruby rt section time video'.split(' ');
-
-        i = elems.length+1;
-        while ( --i ) {
-            elem = doc.createElement( elems[i] );
-        }
-        elem = null;
+        'abbr article aside audio canvas datalist details figcaption figure footer header hgroup mark menu meter nav output progress section summary time video'.replace(/\w+/g,function(n){doc.createElement(n)});
     }
 
     // Assign private properties to the return object with prefix
