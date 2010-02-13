@@ -294,6 +294,8 @@ window.Modernizr = (function(window,doc,undefined){
         return ('WebSocket' in window);
     };
     
+    
+    // http://css-tricks.com/rgba-browser-support/
     tests[rgba] = function() {
         // Set an rgba() color and check the returned value
         
@@ -471,14 +473,16 @@ window.Modernizr = (function(window,doc,undefined){
           // Create variables for dedicated @font-face test
           var st  = doc.createElement('style'),
             spn = doc.createElement('span'),
-            wid, nwid, isFakeBody = false, body = doc.body,
+            size, isFakeBody = false, body = doc.body,
             callback, isCallbackCalled;
   
           // The following is a font-face + glyph definition for the . character:
           st.textContent = "@font-face{font-family:testfont;src:url('data:font/ttf;base64,AAEAAAAMAIAAAwBAT1MvMliohmwAAADMAAAAVmNtYXCp5qrBAAABJAAAANhjdnQgACICiAAAAfwAAAAEZ2FzcP//AAMAAAIAAAAACGdseWYv5OZoAAACCAAAANxoZWFk69bnvwAAAuQAAAA2aGhlYQUJAt8AAAMcAAAAJGhtdHgGDgC4AAADQAAAABRsb2NhAIQAwgAAA1QAAAAMbWF4cABVANgAAANgAAAAIG5hbWUgXduAAAADgAAABPVwb3N03NkzmgAACHgAAAA4AAECBAEsAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAACAAMDAAAAAAAAgAACbwAAAAoAAAAAAAAAAFBmRWQAAAAgqS8DM/8zAFwDMwDNAAAABQAAAAAAAAAAAAMAAAADAAAAHAABAAAAAABGAAMAAQAAAK4ABAAqAAAABgAEAAEAAgAuqQD//wAAAC6pAP///9ZXAwAAAAAAAAACAAAABgBoAAAAAAAvAAEAAAAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEACoAAAAGAAQAAQACAC6pAP//AAAALqkA////1lcDAAAAAAAAAAIAAAAiAogAAAAB//8AAgACACIAAAEyAqoAAwAHAC6xAQAvPLIHBADtMrEGBdw8sgMCAO0yALEDAC88sgUEAO0ysgcGAfw8sgECAO0yMxEhESczESMiARDuzMwCqv1WIgJmAAACAFUAAAIRAc0ADwAfAAATFRQWOwEyNj0BNCYrASIGARQGKwEiJj0BNDY7ATIWFX8aIvAiGhoi8CIaAZIoN/43KCg3/jcoAWD0JB4eJPQkHh7++EY2NkbVRjY2RgAAAAABAEH/+QCdAEEACQAANjQ2MzIWFAYjIkEeEA8fHw8QDxwWFhwWAAAAAQAAAAIAAIuYbWpfDzz1AAsEAAAAAADFn9IuAAAAAMWf0i797/8zA4gDMwAAAAgAAgAAAAAAAAABAAADM/8zAFwDx/3v/98DiAABAAAAAAAAAAAAAAAAAAAABQF2ACIAAAAAAVUAAAJmAFUA3QBBAAAAKgAqACoAWgBuAAEAAAAFAFAABwBUAAQAAgAAAAEAAQAAAEAALgADAAMAAAAQAMYAAQAAAAAAAACLAAAAAQAAAAAAAQAhAIsAAQAAAAAAAgAFAKwAAQAAAAAAAwBDALEAAQAAAAAABAAnAPQAAQAAAAAABQAKARsAAQAAAAAABgAmASUAAQAAAAAADgAaAUsAAwABBAkAAAEWAWUAAwABBAkAAQBCAnsAAwABBAkAAgAKAr0AAwABBAkAAwCGAscAAwABBAkABABOA00AAwABBAkABQAUA5sAAwABBAkABgBMA68AAwABBAkADgA0A/tDb3B5cmlnaHQgMjAwOSBieSBEYW5pZWwgSm9obnNvbi4gIFJlbGVhc2VkIHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgT3BlbiBGb250IExpY2Vuc2UuIEtheWFoIExpIGdseXBocyBhcmUgcmVsZWFzZWQgdW5kZXIgdGhlIEdQTCB2ZXJzaW9uIDMuYmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhTGlnaHRiYWVjMmE5MmJmZmU1MDMyIC0gc3Vic2V0IG9mIEZvbnRGb3JnZSAyLjAgOiBKdXJhIExpZ2h0IDogMjMtMS0yMDA5YmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhIExpZ2h0VmVyc2lvbiAyIGJhZWMyYTkyYmZmZTUwMzIgLSBzdWJzZXQgb2YgSnVyYUxpZ2h0aHR0cDovL3NjcmlwdHMuc2lsLm9yZy9PRkwAQwBvAHAAeQByAGkAZwBoAHQAIAAyADAAMAA5ACAAYgB5ACAARABhAG4AaQBlAGwAIABKAG8AaABuAHMAbwBuAC4AIAAgAFIAZQBsAGUAYQBzAGUAZAAgAHUAbgBkAGUAcgAgAHQAaABlACAAdABlAHIAbQBzACAAbwBmACAAdABoAGUAIABPAHAAZQBuACAARgBvAG4AdAAgAEwAaQBjAGUAbgBzAGUALgAgAEsAYQB5AGEAaAAgAEwAaQAgAGcAbAB5AHAAaABzACAAYQByAGUAIAByAGUAbABlAGEAcwBlAGQAIAB1AG4AZABlAHIAIAB0AGgAZQAgAEcAUABMACAAdgBlAHIAcwBpAG8AbgAgADMALgBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQBMAGkAZwBoAHQAYgBhAGUAYwAyAGEAOQAyAGIAZgBmAGUANQAwADMAMgAgAC0AIABzAHUAYgBzAGUAdAAgAG8AZgAgAEYAbwBuAHQARgBvAHIAZwBlACAAMgAuADAAIAA6ACAASgB1AHIAYQAgAEwAaQBnAGgAdAAgADoAIAAyADMALQAxAC0AMgAwADAAOQBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQAgAEwAaQBnAGgAdABWAGUAcgBzAGkAbwBuACAAMgAgAGIAYQBlAGMAMgBhADkAMgBiAGYAZgBlADUAMAAzADIAIAAtACAAcwB1AGIAcwBlAHQAIABvAGYAIABKAHUAcgBhAEwAaQBnAGgAdABoAHQAdABwADoALwAvAHMAYwByAGkAcAB0AHMALgBzAGkAbAAuAG8AcgBnAC8ATwBGAEwAAAAAAgAAAAAAAP+BADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAQACAQIAEQt6ZXJva2F5YWhsaQ==')}";
           doc.getElementsByTagName('head')[0].appendChild(st);
       
-      
+            // we don't use `serif` and we don't use `monospace`
+            // http://github.com/Modernizr/Modernizr/issues/closed#issue/39
+            // http://neugierig.org/software/chromium/notes/2009/09/monospace-fonts-workaround.html
           spn.setAttribute('style','font:99px _,arial,helvetica;position:absolute;visibility:hidden'); 
       
           if  (!body){
@@ -491,14 +495,15 @@ window.Modernizr = (function(window,doc,undefined){
           spn.id        = 'fonttest';
       
           body.appendChild(spn);
-          wid = spn.offsetWidth;
-          spn.style.font = '99px testfont,_,serif';
+          size = spn.offsetWidth*spn.offsetHeight;
+          spn.style.font = '99px testfont,_,arial,helvetica';
       
           // needed for the CSSFontFaceRule false positives (ff3, chrome, op9)
-          fontret = wid !== spn.offsetWidth;
+          fontret = size !== spn.offsetWidth*spn.offsetHeight;
       
-          var delayedCheck = function(){
-            fontret = ret[fontface] = wid !== spn.offsetWidth;
+          function delayedCheck(){
+            if (!body.parentNode) return;
+            fontret = ret[fontface] = size !== spn.offsetWidth*spn.offsetHeight;
             docElement.className = docElement.className.replace(/(no-)?font.*?\b/,'') + (fontret ? ' ' : ' no-') + fontface;
           }
 
@@ -508,7 +513,8 @@ window.Modernizr = (function(window,doc,undefined){
               delayedCheck();
               callback && (isCallbackCalled = true) && callback(fontret);
               setTimeout(function(){
-                  isFakeBody && body.parentNode.removeChild(body);
+                  if (!isFakeBody) body = spn;
+                  body.parentNode.removeChild(body);
                   st.parentNode.removeChild(st);
               }, 50);
           },false);
@@ -519,7 +525,7 @@ window.Modernizr = (function(window,doc,undefined){
           (isCallbackCalled || fontret) ? fn(fontret) : (callback = fn);
         }
       
-        return function(){ return fontret || wid !== spn.offsetWidth; };
+        return function(){ return fontret || size !== spn.offsetWidth; };
     
     })();
     
@@ -595,7 +601,7 @@ window.Modernizr = (function(window,doc,undefined){
     // technique courtesy of Jonathan Neal
     tests[flash] = function(){
         try {
-        	    return !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
+            return !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
         }
         catch(e) {
             return false;
