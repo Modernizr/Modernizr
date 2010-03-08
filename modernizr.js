@@ -1,5 +1,5 @@
 /*!
- * Modernizr JavaScript library 1.1
+ * Modernizr JavaScript library 1.2pre
  * http://modernizr.com/
  *
  * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
@@ -67,7 +67,8 @@ window.Modernizr = (function(window,doc,undefined){
     /**
      * Create our "modernizr" element that we do most feature tests on.
      */
-    m = doc.createElement( 'modernizr' ),
+    mod = 'modernizr'
+    m = doc.createElement( mod ),
     m_style = m.style,
 
     /**
@@ -108,10 +109,13 @@ window.Modernizr = (function(window,doc,undefined){
     background = 'background',
     backgroundColor = background + 'Color',
     canPlayType = 'canPlayType',
-    localStorage = 'localStorage',
-    sessionStorage = 'sessionStorage',
+    
+    // FF gets really angry if you name local variables as these, but camelCased.
+    localstorage = 'localStorage',
+    sessionstorage = 'sessionStorage',
+    applicationcache = 'applicationCache',
+    
     webWorkers = 'webworkers',
-    applicationCache = 'applicationCache',
     smil = 'smil',
     hashchange = 'hashchange',
     crosswindowmessaging = 'crosswindowmessaging',
@@ -119,7 +123,8 @@ window.Modernizr = (function(window,doc,undefined){
     draganddrop = 'draganddrop',
     websqldatabase = 'websqldatabase',
     websocket = 'websocket',
-    flash = 'flash',
+    flash = 'flash';
+    var 
     
     toString = Object.prototype.toString,
     
@@ -135,6 +140,9 @@ window.Modernizr = (function(window,doc,undefined){
     i,
     feature,
     classes = [],
+    
+    cookie,
+    cookiestr = mod + version,
   
     /**
       * isEventSupported determines if a given element supports the given event
@@ -174,7 +182,8 @@ window.Modernizr = (function(window,doc,undefined){
         }
         
         return isEventSupported;
-    })();
+    })();    
+    
     
     /**
      * set_css applies given styles to the Modernizr DOM node.
@@ -591,13 +600,19 @@ window.Modernizr = (function(window,doc,undefined){
     //   except for IE who does [object Object]
     
     // IE8 Compat mode supports these features completely:
-    // http://www.quirksmode.org/dom/html5.html
-    tests[localStorage] = function() {
-        return (localStorage in window) && window[localStorage] !== null;
+    //   http://www.quirksmode.org/dom/html5.html
+    
+    tests[localstorage] = function() {
+        return ('localStorage' in window) && window[localstorage] !== null;
     };
 
-    tests[sessionStorage] = function() {
-        return (sessionStorage in window) && window[localStorage] !== null;
+    tests[sessionstorage] = function() {
+        // try/catch required for pissy FF behavior
+        try {
+            return ('sessionStorage' in window) && window[sessionstorage] !== null;
+        } catch(e){
+            return false;
+        }
     };
 
 
@@ -606,8 +621,8 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
 
-    tests[applicationCache] =  function() {
-        var cache = window[applicationCache];
+    tests[applicationcache] =  function() {
+        var cache = window[applicationcache];
         return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
     
@@ -644,12 +659,31 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
 
+
+    
+    
+    // test if we've already done this.
+    var canCookie = tests[localstorage]() && window.JSON;
+    if (canCookie){
+        cookie = (cookie = localStorage[cookiestr] ) && JSON.parse(cookie);
+        if (cookie) ret = cookie;
+    }
+
+
     // Run through all tests and detect their support in the current UA.
     for ( feature in tests ) {
         if ( tests.hasOwnProperty( feature ) ) {
-            classes.push( ( !( ret[ feature ] = tests[ feature ]() ) ? 'no-' : '' ) + feature );
+            classes.push( ( !( ret[ feature ] = (cookie ? ret[feature] : tests[ feature ]()) ) ? 'no-' : '' ) + feature );
         }
     }
+    
+    if (canCookie && !cookie){
+         localStorage[cookiestr] = JSON.stringify(ret);
+    }
+    
+   
+
+    
 
     /**
      * Addtest allows the user to define their own feature tests
