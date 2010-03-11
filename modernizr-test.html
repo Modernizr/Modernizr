@@ -38,7 +38,7 @@
 
 <script>
 // callback for the fontface detect
-Modernizr._fontfaceready && Modernizr._fontfaceready(function(bool){
+window.Modernizr && Modernizr._fontfaceready && Modernizr._fontfaceready(function(bool){
   var elem = document.getElementById('fontface');
   
   if (!elem) return;
@@ -71,7 +71,13 @@ Modernizr.addTest('datauri',function(){
 	
 	<ol >
 <script>
-	for (var prop in Modernizr) {
+(function(){
+  if (!window.Modernizr) {
+    document.write('Modernizr object not created.');
+    return;
+  }
+  
+  for (var prop in Modernizr) {
 	  if (typeof Modernizr[prop] === 'function') continue;
 		if (prop == 'inputtypes' || prop == 'input') {
 			document.write('<li><b>'+prop+'{}</b><ul>');
@@ -84,7 +90,9 @@ Modernizr.addTest('datauri',function(){
 		}
 	}
 	
-	
+  
+})();
+
 </script>
 	</ol>
 
