@@ -77,6 +77,8 @@ Modernizr.addTest('datauri',function(){
     return;
   }
   
+  document.write('localStorage.getItem(modernizr'+Modernizr._version+') == ' + localStorage.getItem('modernizr'+Modernizr._version) + '<br>');
+  
   for (var prop in Modernizr) {
 	  if (typeof Modernizr[prop] === 'function') continue;
 		if (prop == 'inputtypes' || prop == 'input') {
