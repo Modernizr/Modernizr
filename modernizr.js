@@ -143,6 +143,7 @@ window.Modernizr = (function(window,doc,undefined){
     
     cookie,
     cookiestr = mod + version,
+    isAgentCookieable,
   
     /**
       * isEventSupported determines if a given element supports the given event
@@ -483,7 +484,7 @@ window.Modernizr = (function(window,doc,undefined){
     // @font-face detection routine created by Paul Irish - paulirish.com
     // Merged into Modernizr with approval. Read more about Paul's work here:
     // http://paulirish.com/2009/font-face-feature-detection/  
-    tests[fontface] = (function(){
+    tests[fontface] = function(){
 
         var fontret;
         if (!(!/*@cc_on@if(@_jscript_version>=5)!@end@*/0)) fontret = true;
@@ -545,9 +546,9 @@ window.Modernizr = (function(window,doc,undefined){
           (isCallbackCalled || fontret) ? fn(fontret) : (callback = fn);
         }
       
-        return function(){ return fontret || size !== spn.offsetWidth; };
+        return fontret || size !== spn.offsetWidth;
     
-    })();
+    };
     
 
     // These tests evaluate support of the video/audio elements, as well as
@@ -658,27 +659,36 @@ window.Modernizr = (function(window,doc,undefined){
         return document.createElementNS && /SVG/.test(toString.call(document.createElementNS('http://www.w3.org/2000/svg','animate')));
     };
 
+    // end of tests.
 
 
+
+
+
+    // now...
+    // instead of running all tests, we're going to check if there's already a "cookied"
+    // test result and use that if so. 
     
-    
-    // test if we've already done this.
-    var canCookie = tests[localstorage]() && window.JSON;
-    if (canCookie){
-        cookie = (cookie = localStorage[cookiestr] ) && JSON.parse(cookie);
+    isAgentCookieable = tests[localstorage]() && window.JSON && JSON.parse && JSON.stringify;
+    if (isAgentCookieable){
+        cookie = (cookie = localStorage.getItem( cookiestr ) ) && JSON.parse(cookie);
         if (cookie) ret = cookie;
     }
 
 
     // Run through all tests and detect their support in the current UA.
+    // todo: hypothetically we could be doing an array of tests and use a basic loop here.
     for ( feature in tests ) {
         if ( tests.hasOwnProperty( feature ) ) {
+            // if we're pulling from the cookie, then just apply the result, otherwise run the test
+            // then based on the boolean, define an appropriate className
             classes.push( ( !( ret[ feature ] = (cookie ? ret[feature] : tests[ feature ]()) ) ? 'no-' : '' ) + feature );
         }
     }
     
-    if (canCookie && !cookie){
-         localStorage[cookiestr] = JSON.stringify(ret);
+    // store the cookie for the first time.
+    if (isAgentCookieable && !cookie){
+         localStorage.setItem( cookiestr , JSON.stringify(ret) );
     }
     
    
