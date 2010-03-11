@@ -242,7 +242,7 @@ window.Modernizr = (function(window,doc,undefined){
     // Tests
 
     /**
-     * Canvas tests in Modernizr 1.0 are still somewhat rudimentary. However,
+     * Canvas tests in Modernizr 1.x are still somewhat rudimentary. However,
      *   the added "canvastext" test allows for a slightly more reliable and
      *   usable setup.
      */
@@ -418,16 +418,7 @@ window.Modernizr = (function(window,doc,undefined){
             str3 = 'linear-gradient(left top,#9f9, white);';
         
         set_css(
-                str1 + str2
-            + str1 + '-webkit-' + str2
-            + str1 + '-moz-' + str2
-            + str1 + '-o-' + str2
-            + str1 + '-ms-' + str2
-            + str1 + str3
-            + str1 + '-webkit-' + str3
-            + str1 + '-moz-' + str3
-            + str1 + '-o-' + str3
-            + str1 + '-ms-' + str3
+            (str1 + setProperties.join(str2 + str1) + setProperties.join(str3 + str1)).slice(0,-str1.length)
         );
         
         return contains( m_style.backgroundImage, 'gradient' );
