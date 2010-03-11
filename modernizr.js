@@ -659,6 +659,41 @@ window.Modernizr = (function(window,doc,undefined){
         return document.createElementNS && /SVG/.test(toString.call(document.createElementNS('http://www.w3.org/2000/svg','animate')));
     };
 
+
+
+    // input features and input types go directly onto the ret object, bypassing the tests loop.
+    // hold this guy to execute conditionally.
+    function webforms(){
+    
+        // Run through HTML5's new input attributes to see if the UA understands any.
+        // We're using f which is the <input> element created early on
+        // Mike Taylr has created a comprehensive resource for testing these attributes
+        //   when applied to all input types: 
+        //   http://miketaylr.com/code/input-type-attr.html
+        // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
+        ret[input] = (function(props) {
+            for (var i = 0,len=props.length;i<len;i++) {
+                attrs[ props[i] ] = !!(props[i] in f);
+            }
+            return attrs;
+        })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
+
+        // Run through HTML5's new input types to see if the UA understands any.
+        //   This is put behind the tests runloop because it doesn't return a
+        //   true/false like all the other tests; instead, it returns an object
+        //   containing each input type with its corresponding true/false value 
+        ret[inputtypes] = (function(props) {
+            for (var i = 0,len=props.length;i<len;i++) {
+                f.setAttribute('type', props[i]);
+                inputs[ props[i] ] = f.type !== 'text';
+            }
+            return inputs;
+        })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
+
+    }
+
+
+
     // end of tests.
 
 
@@ -686,9 +721,13 @@ window.Modernizr = (function(window,doc,undefined){
         }
     }
     
+    // input tests need to run.
+    if (!ret[input]) webforms();
+    
     // store the cookie for the first time.
     if (isAgentCookieable && !cookie){
-         localStorage.setItem( cookiestr , JSON.stringify(ret) );
+        
+        localStorage.setItem( cookiestr , JSON.stringify(ret) );
     }
     
    
@@ -712,32 +751,6 @@ window.Modernizr = (function(window,doc,undefined){
       docElement.className += ' ' + (!test ? 'no-' : '') + feature; 
       ret[ feature ] = test;
     };
-    
-    // Run through HTML5's new input attributes to see if the UA understands any.
-    // We're using f which is the <input> element created early on
-    // Mike Taylr has created a comprehensive resource for testing these attributes
-    //   when applied to all input types: 
-    //   http://miketaylr.com/code/input-type-attr.html
-    // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
-    ret[input] = (function(props) {
-        for (var i = 0,len=props.length;i<len;i++) {
-            attrs[ props[i] ] = !!(props[i] in f);
-        }
-        return attrs;
-    })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
-
-    // Run through HTML5's new input types to see if the UA understands any.
-    //   This is put behind the tests runloop because it doesn't return a
-    //   true/false like all the other tests; instead, it returns an object
-    //   containing each input type with its corresponding true/false value 
-    ret[inputtypes] = (function(props) {
-        for (var i = 0,len=props.length;i<len;i++) {
-            f.setAttribute('type', props[i]);
-            inputs[ props[i] ] = f.type !== 'text';
-        }
-        return inputs;
-    })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
-
 
     /**
      * Reset m.style.cssText to nothing to reduce memory footprint.
