@@ -695,7 +695,9 @@ window.Modernizr = (function(window,doc,undefined){
     // instead of running all tests, we're going to check if there's already a "cookied"
     // test result and use that if so. 
     
-    isAgentCookieable = tests[localstorage]() && window.JSON && JSON.parse && JSON.stringify;
+    
+    // CURRENTLY DISABLED COMPLETELY.
+    isAgentCookieable = false && tests[localstorage]() && window.JSON && JSON.parse && JSON.stringify;
     if (isAgentCookieable){
         cookie = (cookie = localStorage.getItem( cookiestr ) ) && JSON.parse(cookie);
         if (cookie) ret = cookie;
