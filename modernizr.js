@@ -204,7 +204,7 @@ window.Modernizr = (function(window,doc,undefined){
      * contains returns a boolean for if substr is found within str.
      */
     function contains( str, substr ) {
-        return str.indexOf( substr ) !== -1;
+        return (''+str).indexOf( substr ) !== -1;
     }
 
     /**
@@ -723,7 +723,7 @@ window.Modernizr = (function(window,doc,undefined){
     
    
 
-    
+
 
     /**
      * Addtest allows the user to define their own feature tests
