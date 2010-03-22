@@ -104,8 +104,7 @@ window.Modernizr = (function(window,doc,undefined){
     // inputtypes is an object of its own containing individual tests for
     // various new input types, such as search, range, datetime, etc.
     
-    // SVG checking is not added just yet
-    // svg = 'svg',
+    svg = 'svg',
     background = 'background',
     backgroundColor = background + 'Color',
     canPlayType = 'canPlayType',
@@ -306,10 +305,7 @@ window.Modernizr = (function(window,doc,undefined){
             && isEventSupported('dragend')
             && isEventSupported('drop');
     };
-    
-    // tests[svg] = function(){
-    //     return !!(window.SVGAngle || doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
-    // };
+
     
     tests[websocket] = function(){
         return ('WebSocket' in window);
@@ -644,12 +640,22 @@ window.Modernizr = (function(window,doc,undefined){
         return bool;
     };
  
+    // thanks to Erik Dahlstrom
+    tests[svg] = function(){
+        return doc.createElementNS && doc.createElementNS( "http://www.w3.org/2000/svg", "svg").createSVGRect;
+        //return (window.SVGAngle || doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
+    };
+    
     // thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
     tests[smil] = function(){
-        return document.createElementNS && /SVG/.test(toString.call(document.createElementNS('http://www.w3.org/2000/svg','animate')));
+        return doc.createElementNS && /SVG/.test(toString.call(doc.createElementNS('http://www.w3.org/2000/svg','animate')));
     };
 
+    tests[svgclippaths] = function(){
+        // returns a false positive in saf 3.2?
+        return doc.createElementNS && /SVG/.test(toString.call(doc.createElementNS('http://www.w3.org/2000/svg','clipPath')));
+    };
 
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
