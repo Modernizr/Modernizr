@@ -105,6 +105,9 @@ window.Modernizr = (function(window,doc,undefined){
     // various new input types, such as search, range, datetime, etc.
     
     svg = 'svg',
+    smil = 'smil',
+    svgclippaths = svg+'clippaths',
+    
     background = 'background',
     backgroundColor = background + 'Color',
     canPlayType = 'canPlayType',
@@ -115,7 +118,6 @@ window.Modernizr = (function(window,doc,undefined){
     applicationcache = 'applicationCache',
     
     webWorkers = 'webworkers',
-    smil = 'smil',
     hashchange = 'hashchange',
     crosswindowmessaging = 'crosswindowmessaging',
     historymanagement = 'historymanagement',
