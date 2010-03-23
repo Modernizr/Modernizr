@@ -82,6 +82,7 @@ window.Modernizr = (function(window,doc,undefined){
     rgba = 'rgba',
     hsla = 'hsla',
     multiplebgs = 'multiplebgs',
+    backgroundsize = 'backgroundsize',
     borderimage = 'borderimage',
     borderradius = 'borderradius',
     boxshadow = 'boxshadow',
@@ -364,6 +365,11 @@ window.Modernizr = (function(window,doc,undefined){
     // The legacy set_css_all calls will remain in the source 
     // (however, commented) in for clarity, yet functionally they are 
     // no longer needed.
+    
+
+    tests[backgroundsize] = function() {
+        return test_props_all( background + 'Size' );
+    };
     
     tests[borderimage] = function() {
         //  set_css_all( 'border-image:url(m.png) 1 1 stretch' );
