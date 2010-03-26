@@ -1,3 +1,4 @@
+Modernizr – a JavaScript library allowing you to use CSS3 & HTML5 while maintaining control over unsupported browsers 
 
 Modernizr is a script that will detect native CSS3 and HTML5 features
 available in the current UA and provide an object containing all
