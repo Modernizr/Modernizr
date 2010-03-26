@@ -21,8 +21,6 @@
 
 
 <script>
- window.localStorage && document.write('localStorage.getItem("modernizr1.2pre") is: ' + (!!localStorage.getItem('modernizr1.2pre') ? 'PRESENT' : 'EMPTY') + '<br>');
-
 	var start = +new Date();
 </script>
 <!--
@@ -50,7 +48,7 @@ window.Modernizr && Modernizr._fontfaceready && Modernizr._fontfaceready(functio
 });
 
 
-document.write('At '+ (+new Date()) +', Modernizr took: '+ ((+new Date()) - start) + 'ms');
+document.write('Modernizr took <b>'+ ((+new Date()) - start) + 'ms</b> to run.');
 
 /*
 Modernizr.addTest('datauri',function(){
@@ -79,8 +77,7 @@ Modernizr.addTest('datauri',function(){
     return;
   }
   
-  window.localStorage && document.write('localStorage.getItem(modernizr'+Modernizr._version+') == ' + localStorage.getItem('modernizr'+Modernizr._version) + '<br>');
-  
+
   for (var prop in Modernizr) {
 	  if (typeof Modernizr[prop] === 'function') continue;
 		if (prop == 'inputtypes' || prop == 'input') {
