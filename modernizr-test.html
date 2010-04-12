@@ -37,6 +37,9 @@
 
 
 <script>
+document.write('Modernizr took <b>'+ ((+new Date()) - start) + 'ms</b> to run.');
+
+
 // callback for the fontface detect
 window.Modernizr && Modernizr._fontfaceready && Modernizr._fontfaceready(function(bool){
   var elem = document.getElementById('fontface');
@@ -48,7 +51,7 @@ window.Modernizr && Modernizr._fontfaceready && Modernizr._fontfaceready(functio
 });
 
 
-document.write('Modernizr took <b>'+ ((+new Date()) - start) + 'ms</b> to run.');
+
 
 /*
 Modernizr.addTest('datauri',function(){

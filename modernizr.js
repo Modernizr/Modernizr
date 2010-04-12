@@ -567,13 +567,13 @@ window.Modernizr = (function(window,doc,undefined){
         if (bool){  
             bool      = new Boolean(bool);  
             bool.ogg  = elem[canPlayType]('audio/ogg; codecs="vorbis"');
-            bool.mp3  = elem[canPlayType]('audio/mpeg3;');
+            bool.mp3  = elem[canPlayType]('audio/mpeg;');
             
             // mimetypes accepted: 
             //   https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
             //   http://developer.apple.com/safari/library/documentation/appleapplications/reference/SafariWebContent/CreatingContentforSafarioniPhone/CreatingContentforSafarioniPhone.html#//apple_ref/doc/uid/TP40006482-SW7
             bool.wav  = elem[canPlayType]('audio/wav; codecs="1"');
-            bool.m4a  = elem[canPlayType]('audio/x-m4a;');
+            bool.m4a  = elem[canPlayType]('audio/x-m4a;') || elem[canPlayType]('audio/aac;');
         }
         return bool;
     };
