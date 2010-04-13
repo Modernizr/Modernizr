@@ -141,10 +141,6 @@ window.Modernizr = (function(window,doc,undefined){
     i,
     feature,
     classes = [],
-    
-    cookie,
-    cookiestr = mod + version,
-    isAgentCookieable,
   
     /**
       * isEventSupported determines if a given element supports the given event
@@ -569,13 +565,13 @@ window.Modernizr = (function(window,doc,undefined){
         if (bool){  
             bool      = new Boolean(bool);  
             bool.ogg  = elem[canPlayType]('audio/ogg; codecs="vorbis"');
-            bool.mp3  = elem[canPlayType]('audio/mpeg3;');
+            bool.mp3  = elem[canPlayType]('audio/mpeg;');
             
             // mimetypes accepted: 
             //   https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
             //   http://developer.apple.com/safari/library/documentation/appleapplications/reference/SafariWebContent/CreatingContentforSafarioniPhone/CreatingContentforSafarioniPhone.html#//apple_ref/doc/uid/TP40006482-SW7
             bool.wav  = elem[canPlayType]('audio/wav; codecs="1"');
-            bool.m4a  = elem[canPlayType]('audio/x-m4a;');
+            bool.m4a  = elem[canPlayType]('audio/x-m4a;') || elem[canPlayType]('audio/aac;');
         }
         return bool;
     };
@@ -661,7 +657,7 @@ window.Modernizr = (function(window,doc,undefined){
 
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
-    // hold this guy to execute conditionally.
+    // hold this guy to execute in a moment.
     function webforms(){
     
         // Run through HTML5's new input attributes to see if the UA understands any.
@@ -697,40 +693,19 @@ window.Modernizr = (function(window,doc,undefined){
 
 
 
-
-
-    // now...
-    // instead of running all tests, we're going to check if there's already a "cookied"
-    // test result and use that if so. 
-    
-    
-    // CURRENTLY DISABLED COMPLETELY.
-    isAgentCookieable = false && tests[localstorage]() && window.JSON && JSON.parse && JSON.stringify;
-    if (isAgentCookieable){
-        cookie = (cookie = localStorage.getItem( cookiestr ) ) && JSON.parse(cookie);
-        if (cookie) ret = cookie;
-    }
-
-
     // Run through all tests and detect their support in the current UA.
     // todo: hypothetically we could be doing an array of tests and use a basic loop here.
     for ( feature in tests ) {
         if ( tests.hasOwnProperty( feature ) ) {
-            // if we're pulling from the cookie, then just apply the result, otherwise run the test
-            // then based on the boolean, define an appropriate className
-            classes.push( ( !( ret[ feature ] = (cookie ? ret[feature] : tests[ feature ]()) ) ? 'no-' : '' ) + feature );
+            // run the test, then based on the boolean, define an appropriate className
+            classes.push( ( !( ret[ feature ] = tests[ feature ]() ) ? 'no-' : '' ) + feature );
         }
     }
     
     // input tests need to run.
     if (!ret[input]) webforms();
     
-    // store the cookie for the first time.
-    if (isAgentCookieable && !cookie){
-        
-        localStorage.setItem( cookiestr , JSON.stringify(ret) );
-    }
-    
+
    
 
 
