@@ -718,13 +718,14 @@ window.Modernizr = (function(window,doc,undefined){
      * @param test - Function returning true if feature is supported, false if not
      */
     ret.addTest = function (feature, test) {
-      if (this.hasOwnProperty( feature )) {
-        // warn that feature test is already present
+      if (ret[ feature ]) {
+        return; // quit if you're trying to overwrite an existing test
       } 
       feature = feature.toLowerCase();
       test = !!(test());
       docElement.className += ' ' + (!test ? 'no-' : '') + feature; 
       ret[ feature ] = test;
+      return ret; // allow chaining.
     };
 
     /**
