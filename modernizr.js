@@ -8,7 +8,6 @@
  *
  * Featuring major contributions by
  * Paul Irish  - http://paulirish.com
- * Ben Alman   - http://benalman.com
  */
 /*
  * Modernizr is a script that will detect native CSS3 and HTML5 features
@@ -734,137 +733,10 @@ window.Modernizr = (function(window,doc,undefined){
     set_css( '' );
     m = f = null;
 
-    // Enable HTML 5 elements for styling in IE. thx remy, jdalton, kangax, and porneL
-    // thx @jon_neal for solving printing IE bug. http://code.google.com/p/ie-print-protector/
-    if ( enableHTML5 && !(!/*@cc_on!@*/0) ) {
-        
-        var root = iepp = {
-            _elements: 'abbr|article|aside|audio|canvas|command|datalist|details|dialog|figure|figcaption|footer|header|hgroup|keygen|mark|meter|nav|output|progress|section|source|summary|time|video',
-
-            _protect: [],
-
-            _parseSheets: function (stylesheets) {
-                var root = iepp,
-                    imports,
-                    rules,
-                    selectors,
-                    selectorsMatch = new RegExp('\\b(' + root._elements + ')\\b', 'gi'),
-                    selectorsReplace = function (m) {
-                        return '.iepp_' + m;
-                    },
-                    declarationBlock,
-                    a = -1,
-                    b;
-
-                while (++a < stylesheets.length) {
-                    imports = stylesheets[a].imports;
-                    rules = stylesheets[a].rules;
-                    b = -1;
-
-                    if (imports.length) {
-                        root._parseSheets(imports);
-                    }
-
-                    while (++b < rules.length) {
-                        selectors = rules[b].selectorText;
-                        declarationBlock = rules[b].style.cssText;
-
-                        if (selectors.match(selectorsMatch)) {
-                            root._stylesheet.styleSheet.addRule(selectors.replace(selectorsMatch, selectorsReplace), declarationBlock);
-                        }
-                    }
-                }
-            },
-
-            shim: function () {
-                var root = iepp,
-                    els = root._elements.split('|'),
-                    fragment = doc.createDocumentFragment(),
-                    div = doc.createElement('div'),
-                    i = -1;
-
-                fragment.appendChild(div);
-
-                while (++i < els.length) {
-                    doc.createElement(els[i]);
-                    fragment.createElement(els[i]);
-                }
-
-                root._fragment = div;
-
-                window.attachEvent('onbeforeprint', root.addSafeHTML);
-                window.attachEvent('onafterprint', root.removeSafeHTML);
-            },
-
-            addSafeCSS: function () {
-                var root = iepp,
-                    head = doc.documentElement.firstChild,
-                    safeStylesheet = doc.createElement('style'),
-                    stylesheets = doc.styleSheets;
-
-                head.insertBefore(safeStylesheet, head.firstChild);
-
-                root._stylesheet = safeStylesheet;
-
-                root._parseSheets(stylesheets);
-            },
-
-            removeSafeCSS: function () {
-                doc.documentElement.firstChild.removeChild(window.iepp._stylesheet);
-            },
-
-            addSafeHTML: function () {
-                var root = iepp,
-                    els = doc.getElementsByTagName('*'),
-                    node_match = new RegExp('^' + root._elements + '$', 'i'),
-                    node_name,
-                    node_replace,
-                    node_safe,
-                    safe_element,
-                    protect,
-                    i = -1;
-
-                root.addSafeCSS();
-
-                while (++i < els.length) {
-                    node_name = els[i].nodeName.match(node_match);
-
-                    if (node_name) {
-                        node_replace = new RegExp('^\\s*<' + node_name + '(.*)\\/' + node_name + '>\\s*$', 'i');
-                        node_safe = (els[i].currentStyle.display == 'block') ? 'div' : 'span'; 
-
-                        root._fragment.innerHTML = els[i].outerHTML.replace(/\r|\n/g, ' ').replace(node_replace, '<' + node_safe + '$1/' + node_safe + '>');
-
-                        safe_element = root._fragment.childNodes[0];
-
-                        safe_element.className += ' iepp_' + node_name;
-
-                        protect = root._protect[root._protect.length] = {
-                            before: els[i],
-                            after: root._fragment.childNodes[0]
-                        };
-
-                        els[i].parentNode.replaceChild(protect.after, protect.before);
-                    }
-                }
-            },
-
-            removeSafeHTML: function () {
-                var root = iepp,
-                    els = root._protect,
-                    i = -1;
-
-                root.removeSafeCSS();
-
-                while (++i < els.length) {
-                    els[i].after.parentNode.replaceChild(els[i].before, els[i].after);
-                }
-
-                root._protect = [];
-            }
-        };
-
-        iepp.shim();
+    // Enable HTML 5 elements for styling in IE. 
+    if ( enableHTML5 && !(!/*@cc_on@if(@_jscript_version<9)!@end@*/0) ) {
+        // iepp v1.5.1 MIT @jon_neal  http://code.google.com/p/ie-print-protector/
+        (function(p,e){function q(a,b){if(g[a])g[a].styleSheet.cssText+=b;else{var c=r[l],d=e[j]("style");d.media=a;c.insertBefore(d,c[l]);g[a]=d;q(a,b)}}function s(a,b){for(var c=new RegExp("\\b("+m+")\\b(?!.*[;}])","gi"),d=function(k){return".iepp_"+k},h=-1;++h<a.length;){b=a[h].media||b;s(a[h].imports,b);q(b,a[h].cssText.replace(c,d))}}function t(){for(var a,b=e.getElementsByTagName("*"),c,d,h=new RegExp("^"+m+"$","i"),k=-1;++k<b.length;)if((a=b[k])&&(d=a.nodeName.match(h))){c=new RegExp("^\\s*<"+d+"(.*)\\/"+d+">\\s*$","i");i.innerHTML=a.outerHTML.replace(/\r|\n/g," ").replace(c,a.currentStyle.display=="block"?"<div$1/div>":"<span$1/span>");c=i.childNodes[0];c.className+=" iepp_"+d;c=f[f.length]=[a,c];a.parentNode.replaceChild(c[1],c[0])}s(e.styleSheets,"all")}function u(){for(var a=-1,b;++a<f.length;)f[a][1].parentNode.replaceChild(f[a][0],f[a][1]);for(b in g)r[l].removeChild(g[b]);g={};f=[]}for(var r=e.documentElement,i=e.createDocumentFragment(),g={},m="abbr|article|aside|audio|canvas|command|datalist|details|figure|figcaption|footer|header|hgroup|keygen|mark|meter|nav|output|progress|section|source|summary|time|video",n=m.split("|"),f=[],o=-1,l="firstChild",j="createElement";++o<n.length;){e[j](n[o]);i[j](n[o])}i=i.appendChild(e[j]("div"));p.attachEvent("onbeforeprint",t);p.attachEvent("onafterprint",u)})(this,doc);
     }
 
     // Assign private properties to the return object with prefix
