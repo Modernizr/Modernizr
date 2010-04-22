@@ -123,8 +123,8 @@ window.Modernizr = (function(window,doc,undefined){
     draganddrop = 'draganddrop',
     websqldatabase = 'websqldatabase',
     websocket = 'websocket',
-    flash = 'flash';
-    var 
+    flash = 'flash',
+    smile = ':)',
     
     toString = Object.prototype.toString,
     
@@ -677,9 +677,19 @@ window.Modernizr = (function(window,doc,undefined){
         //   true/false like all the other tests; instead, it returns an object
         //   containing each input type with its corresponding true/false value 
         ret[inputtypes] = (function(props) {
-            for (var i = 0,len=props.length;i<len;i++) {
+            for (var i = 0,bool,len=props.length;i<len;i++) {
                 f.setAttribute('type', props[i]);
-                inputs[ props[i] ] = f.type !== 'text';
+                bool = f.type !== 'text';
+                
+                // chrome likes to claim support here so we feed it a textual value
+                // if that doesnt succeed then we know there's a custom UI
+                // TODO: not sure how we deal with search, tel, url here..
+                if (bool){  
+                    f.value = smile;
+                    bool = f.value != smile;
+                }
+                
+                inputs[ props[i] ] = bool;
             }
             return inputs;
         })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
