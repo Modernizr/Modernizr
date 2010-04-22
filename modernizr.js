@@ -129,7 +129,7 @@ window.Modernizr = (function(window,doc,undefined){
     toString = Object.prototype.toString,
     
     // list of property values to set for css tests. see ticket #21
-    setProperties = ' -o- -moz- -ms- -webkit- '.split(' '),
+    setProperties = ' -o- -moz- -ms- -webkit- -khtml- '.split(' '),
 
     tests = {},
     inputs = {},
@@ -375,7 +375,7 @@ window.Modernizr = (function(window,doc,undefined){
         //  according to spec, which means their return values are within the
         //  range of [0.0,1.0] - including the leading zero.
         
-        set_css( 'opacity:.5' );
+        set_css_all( 'opacity:.5' );
         
         return contains( m_style[opacity], '0.5' );
     };
