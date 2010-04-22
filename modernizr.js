@@ -620,16 +620,10 @@ window.Modernizr = (function(window,doc,undefined){
         catch(e) {
             bool = false;
         }
-        // test for flashblock
-        /*  -moz-binding to flashblock is asynchronous. >:(
-            // another technique here: http://jeremiahgrossman.blogspot.com/2006/08/i-know-what-youve-got-firefox.html
-        if (bool){
-            var x = doc.createElement('embed');
-            x.src = flash+'.swf';
-            docElement.appendChild(x);
-            bool = !/chrome/.test(getComputedStyle(x,null).getPropertyValue('-moz-binding'))
-            docElement.removeChild(x);
-        } */
+        // mark pilgrims excellent test for flashblockers is asynchronous and rather large.
+        // it's not included now but we hope to add it later, somehow.
+        // http://code.google.com/p/flashblockdetector/
+        
         return bool;
     };
  
