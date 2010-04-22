@@ -745,7 +745,7 @@ window.Modernizr = (function(window,doc,undefined){
     ret._version         = version;
 
     // Remove "no-js" class from <html> element, if it exists:
-    (function(H,C){H[C]=H[C].replace(/\bno-js\b/,'js')})(docElement,'className');
+    docElement.className=docElement.className.replace(/\bno-js\b/,'js');
 
     // Add the new classes to the <html> element.
     docElement.className += ' ' + classes.join( ' ' );
