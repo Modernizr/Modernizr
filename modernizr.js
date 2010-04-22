@@ -225,7 +225,8 @@ window.Modernizr = (function(window,doc,undefined){
             'Webkit' + uc_prop,
             'Moz' + uc_prop,
             'O' + uc_prop,
-            'ms' + uc_prop
+            'ms' + uc_prop,
+            'Khtml' + uc_prop
         ];
 
         return !!test_props( props, callback );
