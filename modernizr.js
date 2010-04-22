@@ -135,12 +135,8 @@ window.Modernizr = (function(window,doc,undefined){
     inputs = {},
     attrs = {},
     
-    elems,
-    elem,
-    i,
-    feature,
     classes = [],
-  
+    
     /**
       * isEventSupported determines if a given element supports the given event
       * function from http://yura.thinkweb2.com/isEventSupported/
@@ -704,7 +700,7 @@ window.Modernizr = (function(window,doc,undefined){
 
     // Run through all tests and detect their support in the current UA.
     // todo: hypothetically we could be doing an array of tests and use a basic loop here.
-    for ( feature in tests ) {
+    for ( var feature in tests ) {
         if ( tests.hasOwnProperty( feature ) ) {
             // run the test, then based on the boolean, define an appropriate className
             classes.push( ( !( ret[ feature ] = tests[ feature ]() ) ? 'no-' : '' ) + feature );
