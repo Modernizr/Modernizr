@@ -125,6 +125,7 @@ window.Modernizr = (function(window,doc,undefined){
     websocket = 'websocket',
     flash = 'flash',
     smile = ':)',
+    touch = 'touch',
     
     toString = Object.prototype.toString,
     
@@ -259,6 +260,16 @@ window.Modernizr = (function(window,doc,undefined){
             } catch(e){	}
         }
         return false;
+    };
+    
+    /**
+     * The Modernizr.touch test only indicates if the browser supports
+     *    touch events; it does not necessarily detect a touchscreen
+     *    device, as evidenced by tablets running Windows 7 or, alas,
+     *    the Palm Pre / WebOS (touch) phones.
+     */
+    tests[touch] = function() {
+       return !!('ontouchstart' in window);
     };
 
 
