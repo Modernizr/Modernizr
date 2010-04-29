@@ -264,7 +264,7 @@ window.Modernizr = (function(window,doc,undefined){
     
     /**
      * The Modernizr.touch test only indicates if the browser supports
-     *    touch events; it does not necessarily detect a touchscreen
+     *    touch events, which does not necessarily reflect a touchscreen
      *    device, as evidenced by tablets running Windows 7 or, alas,
      *    the Palm Pre / WebOS (touch) phones.
      */
