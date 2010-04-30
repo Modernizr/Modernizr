@@ -1,9 +1,9 @@
 /*!
- * Modernizr JavaScript library 1.2pre
+ * Modernizr JavaScript library 1.2
  * http://modernizr.com/
  *
  * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
- * Licensed under the MIT license.
+ * Dual-licensed under the BSD and MIT licenses.
  * http://modernizr.com/license/
  *
  * Featuring major contributions by
@@ -22,8 +22,8 @@
  * if-conditionals in CSS styling, making it easily to have fine
  * control over the look and feel of your website.
  * 
- * @author    Faruk Ates
- * @copyright   (2009-2010) Faruk Ates.
+ * @author        Faruk Ates
+ * @copyright     (c) 2009-2010 Faruk Ates.
  *
  * @contributor   Paul Irish
  * @contributor   Ben Alman
@@ -31,7 +31,7 @@
 
 window.Modernizr = (function(window,doc,undefined){
     
-    var version = '1.2pre',
+    var version = '1.2',
     
     ret = {},
 
