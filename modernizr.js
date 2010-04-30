@@ -339,7 +339,7 @@ window.Modernizr = (function(window,doc,undefined){
         //  and then querying the style.background property value for the number of
         //  occurrences of "url(" is a reliable method for detecting ACTUAL support for this!
         
-        set_css( background + ':url(m.png),url(a.png),#f99 url(m.png)' );
+        set_css( background + ':url(//:),url(//:),red url(//:)' );
         
         // If the UA supports multiple backgrounds, there should be three occurrences
         //  of the string "url(" in the return value for elem_style.background
