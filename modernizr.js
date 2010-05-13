@@ -127,7 +127,8 @@ window.Modernizr = (function(window,doc,undefined){
     smile = ':)',
     touch = 'touch',
     
-    toString = Object.prototype.toString,
+    // IE7 gets mad if you name a local variable `toString`
+    tostring = Object.prototype.toString,
     
     // list of property values to set for css tests. see ticket #21
     setProperties = ' -o- -moz- -ms- -webkit- -khtml- '.split(' '),
@@ -648,12 +649,12 @@ window.Modernizr = (function(window,doc,undefined){
     // thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
     tests[smil] = function(){
-        return doc.createElementNS && /SVG/.test(toString.call(doc.createElementNS('http://www.w3.org/2000/svg','animate')));
+        return doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS('http://www.w3.org/2000/svg','animate')));
     };
 
     tests[svgclippaths] = function(){
         // returns a false positive in saf 3.2?
-        return doc.createElementNS && /SVG/.test(toString.call(doc.createElementNS('http://www.w3.org/2000/svg','clipPath')));
+        return doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS('http://www.w3.org/2000/svg','clipPath')));
     };
 
 
