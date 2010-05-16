@@ -258,6 +258,8 @@ window.Modernizr = (function(window,doc,undefined){
      *    touch events, which does not necessarily reflect a touchscreen
      *    device, as evidenced by tablets running Windows 7 or, alas,
      *    the Palm Pre / WebOS (touch) phones.
+     * Additionally, chrome used to lie about its support on this, but that 
+     *    has since been recitifed: http://crbug.com/36415
      */
     tests[touch] = function() {
        return !!('ontouchstart' in window);
@@ -269,6 +271,8 @@ window.Modernizr = (function(window,doc,undefined){
      *   This test is a standards compliant-only test; for more complete
      *   testing, including a Google Gears fallback, please see:
      *   http://code.google.com/p/geo-location-javascript/
+     * or view a fallback solution using google's geo API:
+     *   http://gist.github.com/366184
      */
     tests[geolocation] = function() {
         return !!navigator.geolocation;
@@ -541,8 +545,8 @@ window.Modernizr = (function(window,doc,undefined){
     // e.g.  Modernizr.video     // true
     //       Modernizr.video.ogg // 'probably'
     //
-    // codec values from : http://www.w3.org/TR/html5/video.html#the-source-element
-    //                     http://www.ietf.org/rfc/rfc4281.txt
+    // codec values from : http://github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
+    //                     thx to NielsLeenheer and zcorpan
     
     tests[video] = function() {
         var elem = doc.createElement(video),
@@ -550,8 +554,8 @@ window.Modernizr = (function(window,doc,undefined){
         
         if (bool){  
             bool      = new Boolean(bool);  
-            bool.ogg  = elem[canPlayType]('video/ogg; codecs="theora, vorbis"');
-            bool.h264 = elem[canPlayType]('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
+            bool.ogg  = elem[canPlayType]('video/ogg; codecs="theora"');
+            bool.h264 = elem[canPlayType]('video/mp4; codecs="avc1.42E01E"');
         }
         return bool;
     };
@@ -567,7 +571,7 @@ window.Modernizr = (function(window,doc,undefined){
             
             // mimetypes accepted: 
             //   https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
-            //   http://developer.apple.com/safari/library/documentation/appleapplications/reference/SafariWebContent/CreatingContentforSafarioniPhone/CreatingContentforSafarioniPhone.html#//apple_ref/doc/uid/TP40006482-SW7
+            //   http://bit.ly/iphoneoscodecs
             bool.wav  = elem[canPlayType]('audio/wav; codecs="1"');
             bool.m4a  = elem[canPlayType]('audio/x-m4a;') || elem[canPlayType]('audio/aac;');
         }
