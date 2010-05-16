@@ -641,8 +641,7 @@ window.Modernizr = (function(window,doc,undefined){
  
     // thanks to Erik Dahlstrom
     tests[svg] = function(){
-        return doc.createElementNS && doc.createElementNS( "http://www.w3.org/2000/svg", "svg").createSVGRect;
-        //return (window.SVGAngle || doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
+        return doc.createElementNS && !!doc.createElementNS( "http://www.w3.org/2000/svg", "svg").createSVGRect;
     };
     
     // thanks to F1lt3r and lucideer
