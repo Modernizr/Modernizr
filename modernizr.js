@@ -1,9 +1,9 @@
 /*!
- * Modernizr JavaScript library 1.2pre
+ * Modernizr JavaScript library 1.2
  * http://modernizr.com/
  *
  * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
- * Licensed under the MIT license.
+ * Dual-licensed under the BSD and MIT licenses.
  * http://modernizr.com/license/
  *
  * Featuring major contributions by
@@ -22,8 +22,8 @@
  * if-conditionals in CSS styling, making it easily to have fine
  * control over the look and feel of your website.
  * 
- * @author    Faruk Ates
- * @copyright   (2009-2010) Faruk Ates.
+ * @author        Faruk Ates
+ * @copyright     (c) 2009-2010 Faruk Ates.
  *
  * @contributor   Paul Irish
  * @contributor   Ben Alman
@@ -31,7 +31,7 @@
 
 window.Modernizr = (function(window,doc,undefined){
     
-    var version = '1.2pre',
+    var version = '1.2',
     
     ret = {},
 
@@ -79,7 +79,6 @@ window.Modernizr = (function(window,doc,undefined){
     
     canvas = 'canvas',
     canvastext = 'canvastext',
-    webgl = 'webgl',
     rgba = 'rgba',
     hsla = 'hsla',
     multiplebgs = 'multiplebgs',
@@ -123,7 +122,6 @@ window.Modernizr = (function(window,doc,undefined){
     draganddrop = 'draganddrop',
     websqldatabase = 'websqldatabase',
     websocket = 'websocket',
-    flash = 'flash',
     smile = ':)',
     touch = 'touch',
     
@@ -246,20 +244,6 @@ window.Modernizr = (function(window,doc,undefined){
         return !!(tests[canvas]() && typeof doc.createElement( canvas ).getContext('2d').fillText == 'function');
     };
     
-    
-    tests[webgl] = function(){
-
-        var elem 	 = doc.createElement( canvas ),
-            contexts = [webgl, "ms-"+webgl, "experimental-"+webgl, "moz-"+webgl, "opera-3d", "webkit-3d", "ms-3d", "3d"]; 
-            
-        for (var b = -1, len = contexts.length; ++b < len; ) {
-            try {
-                if (elem.getContext(contexts[b])) return true;	
-            } catch(e){	}
-        }
-        return false;
-    };
-    
     /**
      * The Modernizr.touch test only indicates if the browser supports
      *    touch events, which does not necessarily reflect a touchscreen
@@ -341,8 +325,8 @@ window.Modernizr = (function(window,doc,undefined){
         
         // If the UA supports multiple backgrounds, there should be three occurrences
         //  of the string "url(" in the return value for elem_style.background
-        
-        return /(url\s*\(.*?){3}/.test(m_style[background]);
+
+        return new RegExp("(url\\s*\\(.*?){3}").test(m_style[background]);
     };
     
     
@@ -616,26 +600,7 @@ window.Modernizr = (function(window,doc,undefined){
         var cache = window[applicationcache];
         return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
-    
-    
-    // technique courtesy of Jonathan Neal
-    
-    // in my testing if plugins are disabled this plugins entry isn't availble, so no need to check
-    //   navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin
-    tests[flash] = function(){
-        var bool;
-        try {
-            bool = !!navigator.plugins['Shockwave Flash'] || !!(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
-        }
-        catch(e) {
-            bool = false;
-        }
-        // mark pilgrims excellent test for flashblockers is asynchronous and rather large.
-        // it's not included now but we hope to add it later, somehow.
-        // http://code.google.com/p/flashblockdetector/
-        
-        return bool;
-    };
+
  
     // thanks to Erik Dahlstrom
     tests[svg] = function(){
