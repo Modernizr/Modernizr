@@ -1,5 +1,5 @@
 /*!
- * Modernizr JavaScript library 1.2
+ * Modernizr JavaScript library 1.2pre
  * http://modernizr.com/
  *
  * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
@@ -31,7 +31,7 @@
 
 window.Modernizr = (function(window,doc,undefined){
     
-    var version = '1.2',
+    var version = '1.2pre',
     
     ret = {},
 
@@ -219,6 +219,15 @@ window.Modernizr = (function(window,doc,undefined){
      */
     function test_props_all( prop, callback ) {
         var uc_prop = prop.charAt(0).toUpperCase() + prop.substr(1),
+        
+        // following spec is to expose vendor-specific style properties as:
+        //   elem.style.WebkitBorderRadius
+        // and the following would be incorrect:
+        //   elem.style.webkitBorderRadius
+        // Webkit and Mozilla are nice enough to ghost their properties in the lowercase
+        //   version but Opera does not.
+        
+        // see more here: http://github.com/Modernizr/Modernizr/issues/issue/21
         props = [
             prop,
             'Webkit' + uc_prop,
