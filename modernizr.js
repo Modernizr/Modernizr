@@ -517,7 +517,7 @@ window.Modernizr = (function(window,doc,undefined){
           function delayedCheck(){
             if (!body.parentNode) return;
             fontret = ret[fontface] = size !== spn.offsetWidth*spn.offsetHeight;
-            docElement.className = docElement.className.replace(/(no-)?font.*?\b/,'') + (fontret ? ' ' : ' no-') + fontface;
+            docElement.className = docElement.className.replace(/(no-)?fontface\b/,'') + (fontret ? ' ' : ' no-') + fontface;
           }
 
           setTimeout(delayedCheck,fontfaceCheckDelay);
@@ -708,7 +708,7 @@ window.Modernizr = (function(window,doc,undefined){
     for ( var feature in tests ) {
         if ( tests.hasOwnProperty( feature ) ) {
             // run the test, then based on the boolean, define an appropriate className
-            classes.push( ( !( ret[ feature ] = tests[ feature ]() ) ? 'no-' : '' ) + feature );
+            classes.push( ( ( ret[ feature ] = tests[ feature ]() ) ?  '' : 'no-' ) + feature );
         }
     }
     
@@ -734,7 +734,7 @@ window.Modernizr = (function(window,doc,undefined){
       } 
       feature = feature.toLowerCase();
       test = !!(test());
-      docElement.className += ' ' + (!test ? 'no-' : '') + feature; 
+      docElement.className += ' ' + (test ? '' : 'no-') + feature; 
       ret[ feature ] = test;
       return ret; // allow chaining.
     };
