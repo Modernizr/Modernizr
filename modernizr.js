@@ -233,13 +233,11 @@ window.Modernizr = (function(window,doc,undefined){
         return !!test_props( props, callback );
     }
     
-    // Tests
 
     /**
-     * Canvas tests in Modernizr 1.x are still somewhat rudimentary. However,
-     *   the added "canvastext" test allows for a slightly more reliable and
-     *   usable setup.
+     * Tests
      */
+     
     tests[canvas] = function() {
         return !!doc.createElement( canvas ).getContext;
     };
@@ -699,7 +697,7 @@ window.Modernizr = (function(window,doc,undefined){
 
 
 
-    // end of tests.
+    // end of test definitions
 
 
 
@@ -707,8 +705,10 @@ window.Modernizr = (function(window,doc,undefined){
     // todo: hypothetically we could be doing an array of tests and use a basic loop here.
     for ( var feature in tests ) {
         if ( tests.hasOwnProperty( feature ) ) {
-            // run the test, then based on the boolean, define an appropriate className
-            classes.push( ( ( ret[ feature ] = tests[ feature ]() ) ?  '' : 'no-' ) + feature );
+            // run the test, throw the return value into the Modernizr,
+            //   then based on that boolean, define an appropriate className
+            //   and push it into an array of classes we'll join later.
+            classes.push( ( ( ret[ feature.toLowerCase() ] = tests[ feature ]() ) ?  '' : 'no-' ) + feature.toLowerCase() );
         }
     }
     
@@ -729,10 +729,11 @@ window.Modernizr = (function(window,doc,undefined){
      * @param test - Function returning true if feature is supported, false if not
      */
     ret.addTest = function (feature, test) {
+      feature = feature.toLowerCase();
+      
       if (ret[ feature ]) {
         return; // quit if you're trying to overwrite an existing test
       } 
-      feature = feature.toLowerCase();
       test = !!(test());
       docElement.className += ' ' + (test ? '' : 'no-') + feature; 
       ret[ feature ] = test;
