@@ -654,17 +654,30 @@ window.Modernizr = (function(window,doc,undefined){
         //   This is put behind the tests runloop because it doesn't return a
         //   true/false like all the other tests; instead, it returns an object
         //   containing each input type with its corresponding true/false value 
+        
+        // Big thx to @miketaylr for the html5 forms expertise. http://miketaylr.com/
         ret[inputtypes] = (function(props) {
             for (var i = 0,bool,len=props.length;i<len;i++) {
                 f.setAttribute('type', props[i]);
                 bool = f.type !== 'text';
                 
-                // chrome likes to claim support here so we feed it a textual value
+                // chrome likes to falsely purport support, so we feed it a textual value
                 // if that doesnt succeed then we know there's a custom UI
-                // TODO: not sure how we deal with search, tel, url here..
                 if (bool){  
+                  
                     f.value = smile;
-                    bool = f.value != smile;
+                    
+                    if (/tel|search/.test(f.type)){
+                      // spec doesnt define any special parsing or detectable UI 
+                      //   behaviors so we pass these through as true
+                      
+                    } else if (/url|email/.test(f.type)) {
+                      // real url and email support comes with prebaked validation.
+                      bool = f.checkValidity && f.checkValidity() === false;
+                      
+                    } else {
+                      bool = f.value != smile;
+                    }
                 }
                 
                 inputs[ props[i] ] = bool;
