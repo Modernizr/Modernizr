@@ -557,6 +557,7 @@ window.Modernizr = (function(window,doc,undefined){
             bool      = new Boolean(bool);  
             bool.ogg  = elem[canPlayType]('video/ogg; codecs="theora"');
             bool.h264 = elem[canPlayType]('video/mp4; codecs="avc1.42E01E"');
+            bool.webm = elem[canPlayType]('video/webm; codecs="vp8, vorbis"');
         }
         return bool;
     };
@@ -680,7 +681,7 @@ window.Modernizr = (function(window,doc,undefined){
                     }
                 }
                 
-                inputs[ props[i] ] = bool;
+                inputs[ props[i] ] = !!bool;
             }
             return inputs;
         })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
