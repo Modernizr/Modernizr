@@ -263,7 +263,17 @@ window.Modernizr = (function(window,doc,undefined){
      *    has since been recitifed: http://crbug.com/36415
      */
     tests[touch] = function() {
-       return !!('ontouchstart' in window);
+
+        var bool = !!('ontouchstart' in window)
+      
+        // to be extra safe we'll have a fallback test
+        bool && doc.addEventListener && doc.addEventListener('mousemove',function mousemove(){
+            doc.removeEventListener('mousemove',mousemove,false);
+            Modernizr[touch] = ret[touch] = false;
+            docElement.className = docElement.className.replace(/\stouch\b/,' no-touch');
+        },false);
+        
+        return bool;
     };
 
 
