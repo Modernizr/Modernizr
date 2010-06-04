@@ -305,7 +305,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
     tests[historymanagement] = function() {
-      return !!(window.history && history.pushState && history.popState);
+      return !!(window.history && history.pushState);
     };
 
     tests[draganddrop] = function() {
