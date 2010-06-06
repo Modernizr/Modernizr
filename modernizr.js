@@ -756,6 +756,8 @@ window.Modernizr = (function(window,doc,undefined){
     m = f = null;
 
     // Enable HTML 5 elements for styling in IE. 
+    // fyi: jscript version does not reflect trident version
+    //      therefore ie9 in ie7 mode will still have a jScript v.9
     if ( enableHTML5 && (function(){ var elem = document.createElement("div");
                                       elem.innerHTML = "<elem></elem>";
                                       return elem.childNodes.length !== 1; })()) {
