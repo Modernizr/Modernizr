@@ -684,6 +684,13 @@ window.Modernizr = (function(window,doc,undefined){
 
                     f.value = smile;
                     
+                    /* Safari 4 is allowing the smiley as a value, and incorrecty failing..
+                       the test fixes for webkit only, but breaks Opera.. 
+                    if (/range/.test(f.type)){
+                      bool =  test_props_all('appearance',function(prop,m){ return m_style[prop] !== 'textfield' })  
+                    } 
+                    */
+                            
                     if (/tel|search/.test(f.type)){
                       // spec doesnt define any special parsing or detectable UI 
                       //   behaviors so we pass these through as true
