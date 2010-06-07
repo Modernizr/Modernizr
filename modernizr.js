@@ -75,7 +75,7 @@ window.Modernizr = (function(window,doc,undefined){
      */
     f = doc.createElement( 'input' ),
     
-    // Reused strings.
+    // Reused strings, stored here to allow better minification
     
     canvas = 'canvas',
     canvastext = 'canvastext',
@@ -207,7 +207,7 @@ window.Modernizr = (function(window,doc,undefined){
      */
     function test_props( props, callback ) {
         for ( var i in props ) {
-            if ( m_style[ props[i] ] !== undefined && ( !callback || callback( props[i] ) ) ) {
+            if ( m_style[ props[i] ] !== undefined && ( !callback || callback( props[i], m ) ) ) {
                 return true;
             }
         }
@@ -455,8 +455,8 @@ window.Modernizr = (function(window,doc,undefined){
         
         var ret = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
         
-        // webkit has 3d transforms disabled for chrome and safari, though
-        //   it works fine in webkit nightly on (snow) leopard.
+        // webkit has 3d transforms disabled for chrome, though
+        //   it works fine in safari on leopard and snow leopard
         // as a result, it 'recognizes' the syntax and throws a false positive
         // thus we must do a more thorough check:
         if (ret){
@@ -491,7 +491,7 @@ window.Modernizr = (function(window,doc,undefined){
     tests[fontface] = function(){
 
         var fontret;
-        if (!(!/*@cc_on@if(@_jscript_version>=5)!@end@*/0)) fontret = true;
+        if (/*@cc_on@if(@_jscript_version>=5)!@end@*/0) fontret = true;
   
         else {
       
@@ -505,9 +505,9 @@ window.Modernizr = (function(window,doc,undefined){
           st.textContent = "@font-face{font-family:testfont;src:url('data:font/ttf;base64,AAEAAAAMAIAAAwBAT1MvMliohmwAAADMAAAAVmNtYXCp5qrBAAABJAAAANhjdnQgACICiAAAAfwAAAAEZ2FzcP//AAMAAAIAAAAACGdseWYv5OZoAAACCAAAANxoZWFk69bnvwAAAuQAAAA2aGhlYQUJAt8AAAMcAAAAJGhtdHgGDgC4AAADQAAAABRsb2NhAIQAwgAAA1QAAAAMbWF4cABVANgAAANgAAAAIG5hbWUgXduAAAADgAAABPVwb3N03NkzmgAACHgAAAA4AAECBAEsAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAACAAMDAAAAAAAAgAACbwAAAAoAAAAAAAAAAFBmRWQAAAAgqS8DM/8zAFwDMwDNAAAABQAAAAAAAAAAAAMAAAADAAAAHAABAAAAAABGAAMAAQAAAK4ABAAqAAAABgAEAAEAAgAuqQD//wAAAC6pAP///9ZXAwAAAAAAAAACAAAABgBoAAAAAAAvAAEAAAAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEACoAAAAGAAQAAQACAC6pAP//AAAALqkA////1lcDAAAAAAAAAAIAAAAiAogAAAAB//8AAgACACIAAAEyAqoAAwAHAC6xAQAvPLIHBADtMrEGBdw8sgMCAO0yALEDAC88sgUEAO0ysgcGAfw8sgECAO0yMxEhESczESMiARDuzMwCqv1WIgJmAAACAFUAAAIRAc0ADwAfAAATFRQWOwEyNj0BNCYrASIGARQGKwEiJj0BNDY7ATIWFX8aIvAiGhoi8CIaAZIoN/43KCg3/jcoAWD0JB4eJPQkHh7++EY2NkbVRjY2RgAAAAABAEH/+QCdAEEACQAANjQ2MzIWFAYjIkEeEA8fHw8QDxwWFhwWAAAAAQAAAAIAAIuYbWpfDzz1AAsEAAAAAADFn9IuAAAAAMWf0i797/8zA4gDMwAAAAgAAgAAAAAAAAABAAADM/8zAFwDx/3v/98DiAABAAAAAAAAAAAAAAAAAAAABQF2ACIAAAAAAVUAAAJmAFUA3QBBAAAAKgAqACoAWgBuAAEAAAAFAFAABwBUAAQAAgAAAAEAAQAAAEAALgADAAMAAAAQAMYAAQAAAAAAAACLAAAAAQAAAAAAAQAhAIsAAQAAAAAAAgAFAKwAAQAAAAAAAwBDALEAAQAAAAAABAAnAPQAAQAAAAAABQAKARsAAQAAAAAABgAmASUAAQAAAAAADgAaAUsAAwABBAkAAAEWAWUAAwABBAkAAQBCAnsAAwABBAkAAgAKAr0AAwABBAkAAwCGAscAAwABBAkABABOA00AAwABBAkABQAUA5sAAwABBAkABgBMA68AAwABBAkADgA0A/tDb3B5cmlnaHQgMjAwOSBieSBEYW5pZWwgSm9obnNvbi4gIFJlbGVhc2VkIHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgT3BlbiBGb250IExpY2Vuc2UuIEtheWFoIExpIGdseXBocyBhcmUgcmVsZWFzZWQgdW5kZXIgdGhlIEdQTCB2ZXJzaW9uIDMuYmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhTGlnaHRiYWVjMmE5MmJmZmU1MDMyIC0gc3Vic2V0IG9mIEZvbnRGb3JnZSAyLjAgOiBKdXJhIExpZ2h0IDogMjMtMS0yMDA5YmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhIExpZ2h0VmVyc2lvbiAyIGJhZWMyYTkyYmZmZTUwMzIgLSBzdWJzZXQgb2YgSnVyYUxpZ2h0aHR0cDovL3NjcmlwdHMuc2lsLm9yZy9PRkwAQwBvAHAAeQByAGkAZwBoAHQAIAAyADAAMAA5ACAAYgB5ACAARABhAG4AaQBlAGwAIABKAG8AaABuAHMAbwBuAC4AIAAgAFIAZQBsAGUAYQBzAGUAZAAgAHUAbgBkAGUAcgAgAHQAaABlACAAdABlAHIAbQBzACAAbwBmACAAdABoAGUAIABPAHAAZQBuACAARgBvAG4AdAAgAEwAaQBjAGUAbgBzAGUALgAgAEsAYQB5AGEAaAAgAEwAaQAgAGcAbAB5AHAAaABzACAAYQByAGUAIAByAGUAbABlAGEAcwBlAGQAIAB1AG4AZABlAHIAIAB0AGgAZQAgAEcAUABMACAAdgBlAHIAcwBpAG8AbgAgADMALgBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQBMAGkAZwBoAHQAYgBhAGUAYwAyAGEAOQAyAGIAZgBmAGUANQAwADMAMgAgAC0AIABzAHUAYgBzAGUAdAAgAG8AZgAgAEYAbwBuAHQARgBvAHIAZwBlACAAMgAuADAAIAA6ACAASgB1AHIAYQAgAEwAaQBnAGgAdAAgADoAIAAyADMALQAxAC0AMgAwADAAOQBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQAgAEwAaQBnAGgAdABWAGUAcgBzAGkAbwBuACAAMgAgAGIAYQBlAGMAMgBhADkAMgBiAGYAZgBlADUAMAAzADIAIAAtACAAcwB1AGIAcwBlAHQAIABvAGYAIABKAHUAcgBhAEwAaQBnAGgAdABoAHQAdABwADoALwAvAHMAYwByAGkAcAB0AHMALgBzAGkAbAAuAG8AcgBnAC8ATwBGAEwAAAAAAgAAAAAAAP+BADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAQACAQIAEQt6ZXJva2F5YWhsaQ==')}";
           doc.getElementsByTagName('head')[0].appendChild(st);
       
-            // we don't use `serif` and we don't use `monospace`
-            // http://github.com/Modernizr/Modernizr/issues/closed#issue/39
-            // http://neugierig.org/software/chromium/notes/2009/09/monospace-fonts-workaround.html
+          // we don't use `serif` and we don't use `monospace`
+          // http://github.com/Modernizr/Modernizr/issues/closed#issue/39
+          // http://neugierig.org/software/chromium/notes/2009/09/monospace-fonts-workaround.html
           spn.setAttribute('style','font:99px _,arial,helvetica;position:absolute;visibility:hidden'); 
       
           if  (!body){
@@ -681,7 +681,7 @@ window.Modernizr = (function(window,doc,undefined){
                 // chrome likes to falsely purport support, so we feed it a textual value
                 // if that doesnt succeed then we know there's a custom UI
                 if (bool){  
-                  
+
                     f.value = smile;
                     
                     if (/tel|search/.test(f.type)){
@@ -758,7 +758,7 @@ window.Modernizr = (function(window,doc,undefined){
     // Enable HTML 5 elements for styling in IE. 
     // fyi: jscript version does not reflect trident version
     //      therefore ie9 in ie7 mode will still have a jScript v.9
-    if ( enableHTML5 && (function(){ var elem = document.createElement("div");
+    if ( enableHTML5 && (function(){ var elem = doc.createElement("div");
                                       elem.innerHTML = "<elem></elem>";
                                       return elem.childNodes.length !== 1; })()) {
         // iepp v1.5.1 MIT @jon_neal  http://code.google.com/p/ie-print-protector/
