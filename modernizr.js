@@ -123,6 +123,7 @@ window.Modernizr = (function(window,doc,undefined){
     historymanagement = 'historymanagement',
     draganddrop = 'draganddrop',
     websqldatabase = 'websqldatabase',
+    indexedDB = 'indexedDB',
     websocket = 'websocket',
     smile = ':)',
     
@@ -312,6 +313,10 @@ window.Modernizr = (function(window,doc,undefined){
         }
       }
       return result;
+    };
+    
+    tests[indexedDB] = function(){
+      return !!window[indexedDB];
     };
 
     // documentMode logic from YUI to filter out IE8 Compat Mode
