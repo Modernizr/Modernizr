@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"  class="no-js">
+<head>
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" > -->
+	<title>Modernizr Test Suite</title>
+	<style media="screen">
+		body {
+			font: 14px/18px Inconsolata, Consolas, monospace;
+		}
+		li {
+			color: #900;
+		}
+		li.yes {
+			color: #090;
+		}
+		li b {
+			color: #000;
+		}
+	</style>
+
+
+
+<script>
+ // window.localStorage && document.write('localStorage.getItem("modernizr1.2") is: ' + (!!localStorage.getItem('modernizr1.2') ? 'PRESENT' : 'EMPTY') + '<br>');
+
+	var start = +new Date();
+</script>
+<!--
+<script src="http://code.jquery.com/jquery-nightly.js"></script>
+-->
+<script src="http://github.com/Modernizr/Modernizr/raw/master/modernizr.js"></script>
+
+
+
+</head>
+
+<body id="home">
+
+
+
+<script>
+// callback for the fontface detect
+window.Modernizr && Modernizr._fontfaceready && Modernizr._fontfaceready(function(bool){
+  var elem = document.getElementById('fontface');
+  
+  if (!elem) return;
+  elem.className = (bool ? 'yes' : '');
+  elem.innerHTML = 'fontface :' + Modernizr['fontface'];
+  elem.style.fontWeight = 'bold'; 
+});
+
+
+document.write('At '+ (+new Date()) +', Modernizr took: '+ ((+new Date()) - start) + 'ms');
+
+/*
+Modernizr.addTest('datauri',function(){
+   
+    var data = new Image();
+    var is1px = function(){
+        return data.width == 1 && data.height == 1;
+    }
+    
+    data.onload = data.onerror = function(){
+    		Modernizr.datauri = 	is1px();
+    }
+    data.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+    Modernizr.datauri = 	is1px();
+});
+*/
+</script>
+
+	<h1>Modernizr</h1>
+	
+	<ol >
+<script>
+(function(){
+  if (!window.Modernizr) {
+    document.write('Modernizr object not created.');
+    return;
+  }
+  
+ // window.localStorage && document.write('localStorage.getItem(modernizr'+Modernizr._version+') == ' + localStorage.getItem('modernizr'+Modernizr._version) + '<br>');
+  
+  for (var prop in Modernizr) {
+	  if (typeof Modernizr[prop] === 'function') continue;
+		if (prop == 'inputtypes' || prop == 'input') {
+			document.write('<li><b>'+prop+'{}</b><ul>');
+			for (var field in Modernizr[prop]) {
+				document.write('<li class="' + (Modernizr[prop][field] ? 'yes' : '') + '">' + field + ': ' + Modernizr[prop][field] + '</li>');
+			}
+			document.write('</ul></li>');
+		} else {
+			document.write('<li  id="'+prop+'" class="' + (Modernizr[prop] ? 'yes' : '') + '">' + prop + ': ' + Modernizr[prop] + '</li>');
+		}
+	}
+	
+  
+})();
+
+</script>
+	</ol>
+
+
+<script>
+document.write('HTML element className = ' + document.documentElement.className);
+</script>
+
+
+<br>
+<a href="./test/index.html">View Test Suite</a>
+</body>
+</html>
