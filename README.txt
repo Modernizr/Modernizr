@@ -15,3 +15,4 @@ control over the look and feel of your website.
 
 http://www.modernizr.com
 
+Dual-licensed under the BSD and MIT licenses.
