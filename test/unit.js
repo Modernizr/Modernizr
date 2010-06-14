@@ -110,19 +110,6 @@ test('html classes are looking good',function(){
          'whitespace between all classes.');
   
   
-  
-  // the correlating test occurs on mousemove so we'll test that its doing the right thing similarly
-  document.addEventListener && document.addEventListener('mousemove',function mousemove(){
-    
-    document.removeEventListener('mousemove',mousemove,false);
-    test('event-based tests',function(){
-      
-      equals(/[^\s]no-/.test(document.documentElement.className),false,
-             'after mousemove, still whitespace between all classes.');
-    });
-  },false);
-  
-  
 })
 
 

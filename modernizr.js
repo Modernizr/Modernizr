@@ -1,5 +1,5 @@
 /*!
- * Modernizr JavaScript library 1.2pre
+ * Modernizr JavaScript library 1.5
  * http://www.modernizr.com/
  *
  * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
@@ -32,7 +32,7 @@
 
 window.Modernizr = (function(window,doc,undefined){
     
-    var version = '1.2pre',
+    var version = '1.5',
     
     ret = {},
 
