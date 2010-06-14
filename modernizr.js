@@ -180,6 +180,18 @@ window.Modernizr = (function(window,doc,undefined){
     })();    
     
     
+    var _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
+    if (typeof _hasOwnProperty !== 'undefined' && typeof _hasOwnProperty.call !== 'undefined') {
+      hasOwnProperty = function (object, property) {
+        return _hasOwnProperty.call(object, property);
+      };
+    }
+    else {
+      hasOwnProperty = function (object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
+        return ((property in object) && typeof object.constructor.prototype[property] === 'undefined');
+      };
+    }
+    
     /**
      * set_css applies given styles to the Modernizr DOM node.
      */
@@ -721,7 +733,7 @@ window.Modernizr = (function(window,doc,undefined){
     // Run through all tests and detect their support in the current UA.
     // todo: hypothetically we could be doing an array of tests and use a basic loop here.
     for ( var feature in tests ) {
-        if ( tests.hasOwnProperty( feature ) ) {
+        if ( hasOwnProperty( tests, feature ) ) {
             // run the test, throw the return value into the Modernizr,
             //   then based on that boolean, define an appropriate className
             //   and push it into an array of classes we'll join later.
