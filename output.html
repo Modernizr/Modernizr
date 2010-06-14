@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" id="modernizr-1.2" class="no-js">
+<html lang="en" dir="ltr"  class="no-js">
 <head>
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" > -->
-	<title>Modernizr 1.2 Test Suite</title>
+	<title>Modernizr Test Suite</title>
 	<style media="screen">
 		body {
 			font: 14px/18px Inconsolata, Consolas, monospace;
@@ -21,7 +21,7 @@
 
 
 <script>
- window.localStorage && document.write('localStorage.getItem("modernizr1.2") is: ' + (!!localStorage.getItem('modernizr1.2') ? 'PRESENT' : 'EMPTY') + '<br>');
+ // window.localStorage && document.write('localStorage.getItem("modernizr1.2") is: ' + (!!localStorage.getItem('modernizr1.2') ? 'PRESENT' : 'EMPTY') + '<br>');
 
 	var start = +new Date();
 </script>
@@ -79,7 +79,7 @@ Modernizr.addTest('datauri',function(){
     return;
   }
   
-  window.localStorage && document.write('localStorage.getItem(modernizr'+Modernizr._version+') == ' + localStorage.getItem('modernizr'+Modernizr._version) + '<br>');
+ // window.localStorage && document.write('localStorage.getItem(modernizr'+Modernizr._version+') == ' + localStorage.getItem('modernizr'+Modernizr._version) + '<br>');
   
   for (var prop in Modernizr) {
 	  if (typeof Modernizr[prop] === 'function') continue;

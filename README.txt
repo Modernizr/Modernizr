@@ -16,5 +16,3 @@ control over the look and feel of your website.
 Modernizr is dual-licensed under the BSD and MIT licenses.
 
 http://www.modernizr.com/
-
-Dual-licensed under the BSD and MIT licenses.
