@@ -24,7 +24,7 @@ test("globals set up",2, function() {
        - ($.inArray('onhashchange',remainingGlobals) > -1 && $.inArray('onhashchange',remainingGlobals) == -1 &&
           'onhashchange' in window && !window.onhashchange ? 1 : 0); 
    
-	equals( count , 1 , 'no more than one global object created'); 
+	ok( ! (count > 1) , 'no more than one global object created'); 
 	      
 	/*  * /    
 	var arr = [];
@@ -51,7 +51,7 @@ test("no-js class is gone.", function() {
 	equals(document.documentElement.className.indexOf('no-js') , -1,
 	       'no-js is gone.'); 
 	       
-	ok(document.documentElement.className.indexOf(' js ') > -1,
+	ok(/\bjs /.test(document.documentElement.className),
 	   'html.js class is present')
 	
 	if (document.querySelector){

@@ -23,7 +23,7 @@
 	  function getMembers(thing){
 	    var things = [];
   	  for (var x in thing){
-  	    if (thing.hasOwnProperty(x)){
+  	    if (thing.hasOwnProperty && thing.hasOwnProperty(x)){
 	        things.push(x);
   	    }
   	  }
