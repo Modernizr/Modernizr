@@ -131,7 +131,7 @@ window.Modernizr = (function(window,doc,undefined){
     tostring = Object.prototype.toString,
     
     // list of property values to set for css tests. see ticket #21
-    setProperties = ' -o- -moz- -ms- -webkit- -khtml- '.split(' '),
+    prefixes = ' -o- -moz- -ms- -webkit- -khtml- '.split(' '),
 
     tests = {},
     inputs = {},
@@ -203,7 +203,7 @@ window.Modernizr = (function(window,doc,undefined){
      * set_css_all extrapolates all vendor-specific css strings.
      */
     function set_css_all( str1, str2 ) {
-        return set_css(setProperties.join(str1 + ';') + ( str2 || '' ));
+        return set_css(prefixes.join(str1 + ';') + ( str2 || '' ));
     }
 
     /**
@@ -452,7 +452,7 @@ window.Modernizr = (function(window,doc,undefined){
             str3 = 'linear-gradient(left top,#9f9, white);';
         
         set_css(
-            (str1 + setProperties.join(str2 + str1) + setProperties.join(str3 + str1)).slice(0,-str1.length)
+            (str1 + prefixes.join(str2 + str1) + prefixes.join(str3 + str1)).slice(0,-str1.length)
         );
         
         return contains( m_style.backgroundImage, 'gradient' );
@@ -486,7 +486,7 @@ window.Modernizr = (function(window,doc,undefined){
                 
             // webkit allows this media query to succeed only if the feature is enabled.    
             // "@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){#modernizr{height:3px}}"
-            st.textContent = '@media ('+setProperties.join('transform-3d),(')+'modernizr){#modernizr{height:3px}}';
+            st.textContent = '@media ('+prefixes.join('transform-3d),(')+'modernizr){#modernizr{height:3px}}';
             doc.getElementsByTagName('head')[0].appendChild(st);
             div.id = 'modernizr';
             docElement.appendChild(div);
@@ -735,7 +735,6 @@ window.Modernizr = (function(window,doc,undefined){
 
 
     // end of test definitions
-
 
 
     // Run through all tests and detect their support in the current UA.
