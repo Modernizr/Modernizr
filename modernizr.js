@@ -1,10 +1,10 @@
 /*!
  * Modernizr JavaScript library 1.2pre
- * http://modernizr.com/
+ * http://www.modernizr.com/
  *
  * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
  * Dual-licensed under the BSD and MIT licenses.
- * http://modernizr.com/license/
+ * http://www.modernizr.com/license/
  *
  * Featuring major contributions by
  * Paul Irish  - http://paulirish.com
