@@ -557,7 +557,7 @@ window.Modernizr = (function(window,doc,undefined){
           setTimeout(delayedCheck,fontfaceCheckDelay*2);
           addEventListener('load',function(){
               delayedCheck();
-              callback && (isCallbackCalled = true) && callback(fontret);
+              (isCallbackCalled = true) && callback && callback(fontret);
               setTimeout(function(){
                   if (!isFakeBody) body = spn;
                   body.parentNode.removeChild(body);
