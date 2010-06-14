@@ -124,7 +124,7 @@ window.Modernizr = (function(window,doc,undefined){
     draganddrop = 'draganddrop',
     websqldatabase = 'websqldatabase',
     indexedDB = 'indexedDB',
-    websocket = 'websocket',
+    websockets = 'websockets',
     smile = ':)',
     
     // IE7 gets mad if you name a local variable `toString`
@@ -340,7 +340,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
     
-    tests[websocket] = function(){
+    tests[websockets] = function(){
         return ('WebSocket' in window);
     };
     
