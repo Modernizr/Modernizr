@@ -13,5 +13,7 @@ the class name will be "no-cssgradients". This allows for simple
 if-conditionals in CSS styling, making it easily to have fine
 control over the look and feel of your website.
 
-http://www.modernizr.com
+Modernizr is dual-licensed under the BSD and MIT licenses.
+
+http://www.modernizr.com/
 
