@@ -308,15 +308,13 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
     tests[websqldatabase] = function() {
-      var result = true;
-      try {
-        if( window.openDatabase ) {
-          var db = openDatabase("testdb", "1.0", "html5 test db", 200000);
-          if (!db) result = false
-        } else
+      var result = !!window.openDatabase;
+      if (result){
+        try {
+          result = !!openDatabase("testdb", "1.0", "html5 test db", 200000);
+        } catch(err) {
           result = false;
-      } catch(err) {
-        result = false;
+        }
       }
       return result;
     };
