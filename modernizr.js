@@ -125,7 +125,6 @@ window.Modernizr = (function(window,doc,undefined){
     websqldatabase = 'websqldatabase',
     websocket = 'websocket',
     smile = ':)',
-    touch = 'touch',
     
     // IE7 gets mad if you name a local variable `toString`
     tostring = Object.prototype.toString,
@@ -275,21 +274,17 @@ window.Modernizr = (function(window,doc,undefined){
      *    the Palm Pre / WebOS (touch) phones.
      * Additionally, chrome used to lie about its support on this, but that 
      *    has since been recitifed: http://crbug.com/36415
-     */
+     * Because there is no way to reliably detect Chrome's false positive 
+     *    without UA sniffing we have removed this test from Modernizr. We 
+     *    hope to add it in after Chrome 5 has been sunsetted. 
+     * See also http://github.com/Modernizr/Modernizr/issues#issue/84
+     
     tests[touch] = function() {
 
-        var bool = !!('ontouchstart' in window)
-      
-        // to be extra safe we'll have a fallback test
-        bool && doc.addEventListener && doc.addEventListener('mousemove',function mousemove(){
-            doc.removeEventListener('mousemove',mousemove,false);
-            Modernizr[touch] = ret[touch] = false;
-            docElement.className = docElement.className.replace(/\stouch\b/,' no-touch');
-        },false);
+        return !!('ontouchstart' in window);
         
-        return bool;
     };
-
+    */
 
     /**
      * geolocation tests for the new Geolocation API specification.
