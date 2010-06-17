@@ -704,23 +704,24 @@ window.Modernizr = (function(window,doc,undefined){
                 if (bool){  
 
                     f.value = smile;
-                    
-                    /* Safari 4 is allowing the smiley as a value, and incorrecty failing..
-                       the test fixes for webkit only, but breaks Opera.. 
-                    if (/range/.test(f.type)){
-                      bool =  test_props_all('appearance',function(prop,m){ return m_style[prop] !== 'textfield' })  
-                    } 
-                    */
-                            
-                    if (/tel|search/.test(f.type)){
+                      
+                    if (/range/.test(f.type) && f.style.WebkitAppearance !== undefined){
+                      // Safari 2-4 allows the smiley as a value, despite making a slider
+                      bool =  f.style.WebkitAppearance !== 'textfield';  
+                      
+                    } else if (/tel|search/.test(f.type)){
                       // spec doesnt define any special parsing or detectable UI 
                       //   behaviors so we pass these through as true
+                      
+                      // interestingly, opera fails the earlier test, so it doesn't
+                      //  even make it here.
                       
                     } else if (/url|email/.test(f.type)) {
                       // real url and email support comes with prebaked validation.
                       bool = f.checkValidity && f.checkValidity() === false;
                       
                     } else {
+                      // if the upgraded input compontent rejects the :) text, we got a winner
                       bool = f.value != smile;
                     }
                 }
