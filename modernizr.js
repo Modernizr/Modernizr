@@ -712,11 +712,11 @@ window.Modernizr = (function(window,doc,undefined){
                     } 
                     */
                             
-                    if (/tel|search/.test(f.type)){
+                    if (/^(?:search|tel)$/.test(f.type)){
                       // spec doesnt define any special parsing or detectable UI 
                       //   behaviors so we pass these through as true
                       
-                    } else if (/url|email/.test(f.type)) {
+                    } else if (/^(?:url|email)$/.test(f.type)) {
                       // real url and email support comes with prebaked validation.
                       bool = f.checkValidity && f.checkValidity() === false;
                       
@@ -805,3 +805,4 @@ window.Modernizr = (function(window,doc,undefined){
     return ret;
 
 })(this,this.document);
+    
