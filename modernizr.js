@@ -355,11 +355,12 @@ window.Modernizr = (function(window,doc,undefined){
     };
     
     tests[hsla] = function() {
-        // Same as rgba(), in fact, browsers re-map hsla() to rgba() internally
+        // Same as rgba(), in fact, browsers re-map hsla() to rgba() internally..
+        //   except IE9 who retains it as hsla
         
         set_css( background + '-color:hsla(120,40%,100%,.5)' );
         
-        return contains( m_style[backgroundColor], rgba );
+        return contains( m_style[backgroundColor], rgba ) || contains( m_style[backgroundColor], hsla );
     };
     
     tests[multiplebgs] = function() {
