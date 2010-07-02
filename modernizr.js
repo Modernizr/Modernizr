@@ -631,7 +631,12 @@ window.Modernizr = (function(window,doc,undefined){
     //   http://www.quirksmode.org/dom/html5.html
     
     tests[localstorage] = function() {
-        return ('localStorage' in window) && window[localstorage] !== null;
+        // try/catch required for pissy FF behavior
+        try {
+          return ('localStorage' in window) && window[localstorage] !== null;
+        } catch(e) {
+          return false;
+        }
     };
 
     tests[sessionstorage] = function() {
