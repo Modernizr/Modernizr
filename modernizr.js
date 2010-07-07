@@ -620,9 +620,12 @@ window.Modernizr = (function(window,doc,undefined){
 
 
     // both localStorage and sessionStorage are
-    // tested in this method because otherwise Firefox will
+    // tested via the `in` operator because otherwise Firefox will
     //   throw an error: https://bugzilla.mozilla.org/show_bug.cgi?id=365772
     // if cookies are disabled
+    
+    // they require try/catch because of possible firefox configuration:
+    //   http://github.com/Modernizr/Modernizr/issues#issue/92
     
     // FWIW miller device resolves to [object Storage] in all supporting browsers
     //   except for IE who does [object Object]
@@ -631,7 +634,6 @@ window.Modernizr = (function(window,doc,undefined){
     //   http://www.quirksmode.org/dom/html5.html
     
     tests[localstorage] = function() {
-        // try/catch required for pissy FF behavior
         try {
           return ('localStorage' in window) && window[localstorage] !== null;
         } catch(e) {
@@ -640,7 +642,6 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
     tests[sessionstorage] = function() {
-        // try/catch required for pissy FF behavior
         try {
             return ('sessionStorage' in window) && window[sessionstorage] !== null;
         } catch(e){
