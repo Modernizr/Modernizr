@@ -303,6 +303,8 @@ window.Modernizr = (function(window,doc,undefined){
       return !!window.postMessage;
     };
 
+    // in chrome incognito mode, openDatabase is truthy, but using it
+    //   will throw an exception: http://crbug.com/42380
     tests[websqldatabase] = function() {
       var result = !!window.openDatabase;
       if (result){
