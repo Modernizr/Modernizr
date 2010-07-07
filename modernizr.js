@@ -716,23 +716,28 @@ window.Modernizr = (function(window,doc,undefined){
 
                     f.value = smile;
      
-                    if (/range/.test(f.type) && f.style.WebkitAppearance !== undefined){
+                    if (/^range$/.test(f.type) && f.style.WebkitAppearance !== undefined){
+                      
+                      docElement.appendChild(f);
+                      
                       // Safari 2-4 allows the smiley as a value, despite making a slider
-                      bool =  window.getComputedStyle && 
-                              getComputedStyle(f, null).WebkitAppearance !== 'textfield' // && 
+                      bool =  doc.defaultView.getComputedStyle && 
+                              doc.defaultView.getComputedStyle(f, null).WebkitAppearance !== 'textfield' && 
                       
                               // mobile android web browser has false positive, so must
                               // check the height to see if the widget is actually there.
-                              //(f.offsetHeight !== 0);
+                              (f.offsetHeight !== 0);
                               
-                    } else if (/^(?:search|tel)$/.test(f.type)){
+                      docElement.removeChild(f);
+                              
+                    } else if (/^(search|tel)$/.test(f.type)){
                       // spec doesnt define any special parsing or detectable UI 
                       //   behaviors so we pass these through as true
                       
                       // interestingly, opera fails the earlier test, so it doesn't
                       //  even make it here.
                       
-                    } else if (/^(?:url|email)$/.test(f.type)) {
+                    } else if (/^(url|email)$/.test(f.type)) {
 
                       // real url and email support comes with prebaked validation.
                       bool = f.checkValidity && f.checkValidity() === false;
