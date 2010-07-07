@@ -239,8 +239,10 @@ window.Modernizr = (function(window,doc,undefined){
         //   elem.style.WebkitBorderRadius
         // and the following would be incorrect:
         //   elem.style.webkitBorderRadius
-        // Webkit and Mozilla are nice enough to ghost their properties in the lowercase
-        //   version but Opera does not.
+        
+        // Webkit ghosts their properties in lowercase but Opera & Moz do not.
+        // Microsoft foregoes prefixes entirely <= IE8, but appears to 
+        //   use a lowercase `ms` instead of the correct `Ms` in IE9
         
         // see more here: http://github.com/Modernizr/Modernizr/issues/issue/21
         props = [
