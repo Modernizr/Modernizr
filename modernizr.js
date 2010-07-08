@@ -307,12 +307,13 @@ window.Modernizr = (function(window,doc,undefined){
 
     // in chrome incognito mode, openDatabase is truthy, but using it
     //   will throw an exception: http://crbug.com/42380
+    // we create a dummy database. there is no way to delete it afterwards. sorry. 
     tests[websqldatabase] = function() {
       var result = !!window.openDatabase;
       if (result){
         try {
-          result = !!openDatabase("testdb", "1.0", "html5 test db", 200000);
-        } catch(err) {
+          result = !!openDatabase( mod + "testdb", "1.0", mod + "testdb", 2e4);
+        } catch(e) {
           result = false;
         }
       }
