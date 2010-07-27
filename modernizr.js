@@ -272,7 +272,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
     
     tests[canvastext] = function() {
-        return !!(tests[canvas]() && typeof doc.createElement( canvas ).getContext('2d').fillText == 'function');
+        return !!(ret[canvas] && typeof doc.createElement( canvas ).getContext('2d').fillText == 'function');
     };
     
     /**
