@@ -144,42 +144,46 @@ window.Modernizr = (function(window,doc,undefined){
       * function from http://yura.thinkweb2.com/isEventSupported/
       */
     isEventSupported = (function(){
-  
-        var TAGNAMES = {
-          'select':'input','change':'input',
-          'submit':'form','reset':'form',
-          'error':'img','load':'img','abort':'img'
-        }, 
-        cache = { };
-        
-        function isEventSupported(eventName, element) {
-            var canCache = (arguments.length == 1);
-            
-            // only return cached result when no element is given
-            if (canCache && cache[eventName]) {
-                return cache[eventName];
+
+      var TAGNAMES = {
+        'select':'input','change':'input',
+        'submit':'form','reset':'form',
+        'error':'img','load':'img','abort':'img'
+      }
+
+      function isEventSupported(eventName, element) {
+
+        element = element || document.createElement(TAGNAMES[eventName] || 'div');
+        eventName = 'on' + eventName;
+
+        // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize", whereas `in` "catches" those
+        var isSupported = (eventName in element);
+
+        if (!isSupported) {
+          // if it has no `setAttribute` (i.e. doesn't implement Node interface), try generic element
+          if (!element.setAttribute) {
+            element = document.createElement('div');
+          }
+          if (element.setAttribute && element.removeAttribute) {
+            element.setAttribute(eventName, '');
+            isSupported = typeof element[eventName] == 'function';
+
+            // if property was created, "remove it" (by setting value to `undefined`)
+            if (typeof element[eventName] != 'undefined') {
+              element[eventName] = void 0;
             }
-            
-            element = element || document.createElement(TAGNAMES[eventName] || 'div');
-            eventName = 'on' + eventName;
-            
-            // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize"
-            // `in` "catches" those
-            var isSupported = (eventName in element);
-            
-            if (!isSupported && element.setAttribute) {
-                element.setAttribute(eventName, 'return;');
-                isSupported = typeof element[eventName] == 'function';
-            }
-            
-            element = null;
-            return canCache ? (cache[eventName] = isSupported) : isSupported;
+            element.removeAttribute(eventName);
+          }
         }
-        
-        return isEventSupported;
-    })();    
+
+        element = null;
+        return isSupported;
+      }
+      return isEventSupported;
+    })();
     
     
+    // hasOwnProperty shim by kangax needed for Safari 2.0 support
     var _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
     if (typeof _hasOwnProperty !== 'undefined' && typeof _hasOwnProperty.call !== 'undefined') {
       hasOwnProperty = function (object, property) {
