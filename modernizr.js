@@ -48,20 +48,6 @@ window.Modernizr = (function(window,doc,undefined){
     enableHTML5 = true,
     
     
-    /**
-     * fontfaceCheckDelay is the ms delay before the @font-face test is
-     * checked a second time. This is neccessary because both Gecko and
-     * WebKit do not load data: URI font data synchronously.
-     *   https://bugzilla.mozilla.org/show_bug.cgi?id=512566
-     * The check will be done again at fontfaceCheckDelay*2 and then 
-     * a fourth time at window's load event. 
-     * If you need to query for @font-face support, send a callback to: 
-     *  Modernizr._fontfaceready(fn);
-     * The callback is passed the boolean value of Modernizr.fontface
-     */
-    fontfaceCheckDelay = 75,
-    
-    
     docElement = doc.documentElement,
 
     /**
