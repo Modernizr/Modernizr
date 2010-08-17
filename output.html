@@ -28,7 +28,7 @@
 <!--
 <script src="http://code.jquery.com/jquery-nightly.js"></script>
 -->
-<script src="http://github.com/Modernizr/Modernizr/raw/master/modernizr.js"></script>
+<script src="modernizr.js"></script>
 
 
 
@@ -97,6 +97,40 @@ Modernizr.addTest('datauri',function(){
   
 })();
 
+
+
+
+function _bBeaconComplete(data){
+  window.console && console.log('beaconComplete',data);
+}
+
+window._bTestResults = {};
+
+for (var feat in Modernizr) {
+  
+  if (/^_/.test(feat)) continue;
+  
+  if (/input|video|audio/.test(feat) && Modernizr[feat]){
+    for (var thing in Modernizr[feat]){
+      _bTestResults[feat + ':' +thing] = Modernizr[feat][thing] ? '1' : '0';
+    }
+  } else {
+    _bTestResults[feat] = Modernizr[feat] ? '1' : '0';
+  }	
+}
+
+// Beacon the results to Browserscope.
+(function() {
+  var _bTestKey = 'agt1YS1wcm9maWxlcnINCxIEVGVzdBjg8PMBDA';
+  var _bScript = document.createElement('script');
+  _bScript.src = 'http://www.browserscope.org/user/beacon/' + _bTestKey + '?callback=_bBeaconComplete';
+  _bScript.setAttribute('async', 'true');
+  var scripts = document.getElementsByTagName('script');
+  var lastScript = scripts[scripts.length - 1];
+  lastScript.parentNode.insertBefore(_bScript, lastScript);
+})();
+
+
 </script>
 	</ol>
 
@@ -107,6 +141,6 @@ document.write('HTML element className = ' + document.documentElement.className)
 
 
 <br>
-<a href="./test/index.html">View Test Suite</a>
+<a href="./test/index.html">View Test Suite</a> <input type="range">
 </body>
 </html>
