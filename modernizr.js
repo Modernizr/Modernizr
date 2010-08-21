@@ -81,6 +81,7 @@ window.Modernizr = (function(window,doc,undefined){
     csstransforms = 'csstransforms',
     csstransforms3d = 'csstransforms3d',
     csstransitions = 'csstransitions',
+    flexbox = 'flexbox',
     fontface = 'fontface',
     geolocation = 'geolocation',
     video = 'video',
@@ -262,7 +263,51 @@ window.Modernizr = (function(window,doc,undefined){
     /**
      * Tests
      */
-    
+
+    tests[flexbox] = function() {
+        /**
+         * set_prefixed_value_css sets the property of a specified element
+         * adding vendor prefixes to the VALUE of the property.
+         * @param {Element} element
+         * @param {string} property The property name. This will not be prefixed.
+         * @param {string} value The value of the property. This WILL be prefixed.
+         * @param {string=} extra Additional CSS to append unmodified to the end of
+         * the CSS string.
+         */
+        function set_prefixed_value_css(element, property, value, extra) {
+            property += ':';
+            element.style.cssText = (property + prefixes.join(value + ';' + property)).slice(0, -property.length) + (extra || '');
+        }
+
+        /**
+         * set_prefixed_property_css sets the property of a specified element
+         * adding vendor prefixes to the NAME of the property.
+         * @param {Element} element
+         * @param {string} property The property name. This WILL be prefixed.
+         * @param {string} value The value of the property. This will not be prefixed.
+         * @param {string=} extra Additional CSS to append unmodified to the end of
+         * the CSS string.
+         */
+        function set_prefixed_property_css(element, property, value, extra) {
+            element.style.cssText = prefixes.join(property + ':' + value + ';') + (extra || '');
+        }
+
+        var c = doc.createElement('div'),
+            elem = doc.createElement('div');
+
+        set_prefixed_value_css(c, 'display', 'box', 'width:42px;padding:0;');
+        set_prefixed_property_css(elem, 'box-flex', '1', 'width:10px;');
+
+        c.appendChild(elem);
+        docElement.appendChild(c);
+
+        var ret = elem.offsetWidth === 42;
+
+        c.removeChild(elem);
+        docElement.removeChild(c);
+
+        return ret;
+    };
     
     // On the S60 and BB Storm, getContext exists, but always returns undefined
     // http://github.com/Modernizr/Modernizr/issues/issue/97/ 
