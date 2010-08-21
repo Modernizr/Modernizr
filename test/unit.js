@@ -19,10 +19,7 @@ test("globals set up",2, function() {
 	     - (window.TEST   ? 1 : 0) 
        - (window.backuphtml      ? 1 : 0)
        - (window.cbfunc ? 1 : 0)
-       
-       // couldnt tell why you why gecko has this exposed so peculiarly.. 
-       - ($.inArray('onhashchange',remainingGlobals) > -1 && $.inArray('onhashchange',remainingGlobals) == -1 &&
-          'onhashchange' in window && !window.onhashchange ? 1 : 0); 
+       - ('onhashchange' in window && !window.onhashchange ? 1 : 0)
    
 	ok( ! (count > 1) , 'no more than one global object created'); 
 	      

@@ -62,59 +62,8 @@ window.Modernizr = (function(window,doc,undefined){
      */
     f = doc.createElement( 'input' ),
     
-    // Reused strings, stored here to allow better minification
-    
-    canvas = 'canvas',
-    canvastext = 'canvastext',
-    rgba = 'rgba',
-    hsla = 'hsla',
-    multiplebgs = 'multiplebgs',
-    backgroundsize = 'backgroundsize',
-    borderimage = 'borderimage',
-    borderradius = 'borderradius',
-    boxshadow = 'boxshadow',
-    opacity = 'opacity',
-    cssanimations = 'cssanimations',
-    csscolumns = 'csscolumns',
-    cssgradients = 'cssgradients',
-    cssreflections = 'cssreflections',
-    csstransforms = 'csstransforms',
-    csstransforms3d = 'csstransforms3d',
-    csstransitions = 'csstransitions',
-    flexbox = 'flexbox',
-    fontface = 'fontface',
-    geolocation = 'geolocation',
-    video = 'video',
-    audio = 'audio',
-    input = 'input',
-    inputtypes = input + 'types',
-    // inputtypes is an object of its own containing individual tests for
-    // various new input types, such as search, range, datetime, etc.
-    
-    svg = 'svg',
-    smil = 'smil',
-    svgclippaths = svg+'clippaths',
-    
-    background = 'background',
-    backgroundColor = background + 'Color',
-    canPlayType = 'canPlayType',
-    
-    // FF gets really angry if you name local variables as these, but camelCased.
-    localstorage = 'localStorage',
-    sessionstorage = 'sessionStorage',
-    applicationcache = 'applicationCache',
-    
-    webWorkers = 'webworkers',
-    hashchange = 'hashchange',
-    crosswindowmessaging = 'crosswindowmessaging',
-    historymanagement = 'historymanagement',
-    draganddrop = 'draganddrop',
-    websqldatabase = 'websqldatabase',
-    indexedDB = 'indexedDB',
-    websockets = 'websockets',
     smile = ':)',
     
-    // IE7 gets mad if you name a local variable `toString`
     tostring = Object.prototype.toString,
     
     // list of property values to set for css tests. see ticket #21
@@ -264,7 +213,7 @@ window.Modernizr = (function(window,doc,undefined){
      * Tests
      */
 
-    tests[flexbox] = function() {
+    tests['flexbox'] = function() {
         /**
          * set_prefixed_value_css sets the property of a specified element
          * adding vendor prefixes to the VALUE of the property.
@@ -312,13 +261,13 @@ window.Modernizr = (function(window,doc,undefined){
     // On the S60 and BB Storm, getContext exists, but always returns undefined
     // http://github.com/Modernizr/Modernizr/issues/issue/97/ 
     
-    tests[canvas] = function() {
-        var elem = doc.createElement( canvas );
+    tests['canvas'] = function() {
+        var elem = doc.createElement( 'canvas' );
         return !!(elem.getContext && elem.getContext('2d'));
     };
     
-    tests[canvastext] = function() {
-        return !!(ret[canvas] && typeof doc.createElement( canvas ).getContext('2d').fillText == 'function');
+    tests['canvastext'] = function() {
+        return !!(ret['canvas'] && typeof doc.createElement( 'canvas' ).getContext('2d').fillText == 'function');
     };
     
     /**
@@ -348,18 +297,18 @@ window.Modernizr = (function(window,doc,undefined){
      * or view a fallback solution using google's geo API:
      *   http://gist.github.com/366184
      */
-    tests[geolocation] = function() {
+    tests['geolocation'] = function() {
         return !!navigator.geolocation;
     };
 
-    tests[crosswindowmessaging] = function() {
+    tests['crosswindowmessaging'] = function() {
       return !!window.postMessage;
     };
 
     // in chrome incognito mode, openDatabase is truthy, but using it
     //   will throw an exception: http://crbug.com/42380
     // we create a dummy database. there is no way to delete it afterwards. sorry. 
-    tests[websqldatabase] = function() {
+    tests['websqldatabase'] = function() {
       var result = !!window.openDatabase;
       if (result){
         try {
@@ -371,21 +320,21 @@ window.Modernizr = (function(window,doc,undefined){
       return result;
     };
     
-    tests[indexedDB] = function(){
-      return !!window[indexedDB];
+    tests['indexedDB'] = function(){
+      return !!window.indexedDB;
     };
 
     // documentMode logic from YUI to filter out IE8 Compat Mode
     //   which false positives.
-    tests[hashchange] = function() {
-      return isEventSupported(hashchange, window) && ( document.documentMode === undefined || document.documentMode > 7 );
+    tests['hashchange'] = function() {
+      return isEventSupported('hashchange', window) && ( document.documentMode === undefined || document.documentMode > 7 );
     };
 
-    tests[historymanagement] = function() {
+    tests['historymanagement'] = function() {
       return !!(window.history && history.pushState);
     };
 
-    tests[draganddrop] = function() {
+    tests['draganddrop'] = function() {
         return isEventSupported('drag')
             && isEventSupported('dragstart')
             && isEventSupported('dragenter')
@@ -396,40 +345,40 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
     
-    tests[websockets] = function(){
+    tests['websockets'] = function(){
         return ('WebSocket' in window);
     };
     
     
     // http://css-tricks.com/rgba-browser-support/
-    tests[rgba] = function() {
+    tests['rgba'] = function() {
         // Set an rgba() color and check the returned value
         
-        set_css( background + '-color:rgba(150,255,150,.5)' );
+        set_css(  'background-color:rgba(150,255,150,.5)' );
         
-        return contains( m_style[backgroundColor], rgba );
+        return contains( m_style.backgroundColor, 'rgba' );
     };
     
-    tests[hsla] = function() {
+    tests['hsla'] = function() {
         // Same as rgba(), in fact, browsers re-map hsla() to rgba() internally..
         //   except IE9 who retains it as hsla
         
-        set_css( background + '-color:hsla(120,40%,100%,.5)' );
+        set_css('background-color:hsla(120,40%,100%,.5)' );
         
-        return contains( m_style[backgroundColor], rgba ) || contains( m_style[backgroundColor], hsla );
+        return contains( m_style.backgroundColor, 'rgba' ) || contains( m_style.backgroundColor, 'hsla' );
     };
     
-    tests[multiplebgs] = function() {
+    tests['multiplebgs'] = function() {
         // Setting multiple images AND a color on the background shorthand property
         //  and then querying the style.background property value for the number of
         //  occurrences of "url(" is a reliable method for detecting ACTUAL support for this!
         
-        set_css( background + ':url(//:),url(//:),red url(//:)' );
+        set_css( 'background:url(//:),url(//:),red url(//:)' );
         
         // If the UA supports multiple backgrounds, there should be three occurrences
         //  of the string "url(" in the return value for elem_style.background
 
-        return new RegExp("(url\\s*\\(.*?){3}").test(m_style[background]);
+        return new RegExp("(url\\s*\\(.*?){3}").test(m_style.background);
     };
     
     
@@ -445,11 +394,11 @@ window.Modernizr = (function(window,doc,undefined){
     // no longer needed.
     
 
-    tests[backgroundsize] = function() {
-        return test_props_all( background + 'Size' );
+    tests['backgroundsize'] = function() {
+        return test_props_all( 'backgroundSize' );
     };
     
-    tests[borderimage] = function() {
+    tests['borderimage'] = function() {
         //  set_css_all( 'border-image:url(m.png) 1 1 stretch' );
         return test_props_all( 'borderImage' );
     };
@@ -458,7 +407,7 @@ window.Modernizr = (function(window,doc,undefined){
     // super comprehensive table about all the unique implementations of 
     // border-radius: http://muddledramblings.com/table-of-css3-border-radius-compliance
     
-    tests[borderradius] = function() {
+    tests['borderradius'] = function() {
         //  set_css_all( 'border-radius:10px' );
         return test_props_all( 'borderRadius', '', function( prop ) {
             return contains( prop, 'orderRadius' );
@@ -466,36 +415,36 @@ window.Modernizr = (function(window,doc,undefined){
     };
     
     
-    tests[boxshadow] = function() {
+    tests['boxshadow'] = function() {
         //  set_css_all( 'box-shadow:#000 1px 1px 3px' );
         return test_props_all( 'boxShadow' );
     };
     
     
-    tests[opacity] = function() {
+    tests['opacity'] = function() {
         // Browsers that actually have CSS Opacity implemented have done so
         //  according to spec, which means their return values are within the
         //  range of [0.0,1.0] - including the leading zero.
         
         set_css_all( 'opacity:.5' );
         
-        return contains( m_style[opacity], '0.5' );
+        return contains( m_style.opacity, '0.5' );
     };
     
     
-    tests[cssanimations] = function() {
+    tests['cssanimations'] = function() {
         //  set_css_all( 'animation:"animate" 2s ease 2', 'position:relative' );
         return test_props_all( 'animationName' );
     };
     
     
-    tests[csscolumns] = function() {
+    tests['csscolumns'] = function() {
         //  set_css_all( 'column-count:3' );
         return test_props_all( 'columnCount' );
     };
     
     
-    tests[cssgradients] = function() {
+    tests['cssgradients'] = function() {
         /**
          * For CSS Gradients syntax, please see:
          * http://webkit.org/blog/175/introducing-css-gradients/
@@ -504,7 +453,7 @@ window.Modernizr = (function(window,doc,undefined){
          * http://dev.w3.org/csswg/css3-images/#gradients-
          */
         
-        var str1 = background + '-image:',
+        var str1 = 'background-image:',
             str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));',
             str3 = 'linear-gradient(left top,#9f9, white);';
         
@@ -516,19 +465,19 @@ window.Modernizr = (function(window,doc,undefined){
     };
     
     
-    tests[cssreflections] = function() {
+    tests['cssreflections'] = function() {
         //  set_css_all( 'box-reflect:right 1px' );
         return test_props_all( 'boxReflect' );
     };
     
     
-    tests[csstransforms] = function() {
+    tests['csstransforms'] = function() {
         //  set_css_all( 'transform:rotate(3deg)' );
         return !!test_props([ 'transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform' ]);
     };
     
     
-    tests[csstransforms3d] = function() {
+    tests['csstransforms3d'] = function() {
         //  set_css_all( 'perspective:500' );
         
         var ret = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
@@ -557,7 +506,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
     
     
-    tests[csstransitions] = function() {
+    tests['csstransitions'] = function() {
         //  set_css_all( 'transition:all .5s linear' );
         return test_props_all( 'transitionProperty' );
     };
@@ -565,7 +514,7 @@ window.Modernizr = (function(window,doc,undefined){
 
     // @font-face detection routine by Diego Perini
     // http://javascript.nwbox.com/CSSSupport/
-    tests[fontface] = function(){
+    tests['fontface'] = function(){
 
         var 
         sheet, style, result,
@@ -607,7 +556,7 @@ window.Modernizr = (function(window,doc,undefined){
 
         // DEPRECATED - allow for a callback
         ret._fontfaceready = function(fn){
-          fn(ret[fontface]);
+          fn(ret.fontface);
         };
         
         return supportAtRule('@font-face { font-family: "font"; src: "font.ttf"; }');
@@ -625,33 +574,33 @@ window.Modernizr = (function(window,doc,undefined){
     // codec values from : http://github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
     //                     thx to NielsLeenheer and zcorpan
     
-    tests[video] = function() {
-        var elem = doc.createElement(video),
-            bool = !!elem[canPlayType];
+    tests['video'] = function() {
+        var elem = doc.createElement('video'),
+            bool = !!elem.canPlayType;
         
         if (bool){  
             bool      = new Boolean(bool);  
-            bool.ogg  = elem[canPlayType]('video/ogg; codecs="theora"');
-            bool.h264 = elem[canPlayType]('video/mp4; codecs="avc1.42E01E"');
-            bool.webm = elem[canPlayType]('video/webm; codecs="vp8, vorbis"');
+            bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"');
+            bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"');
+            bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
         }
         return bool;
     };
     
-    tests[audio] = function() {
-        var elem = doc.createElement(audio),
-            bool = !!elem[canPlayType];
+    tests['audio'] = function() {
+        var elem = doc.createElement('audio'),
+            bool = !!elem.canPlayType;
         
         if (bool){  
             bool      = new Boolean(bool);  
-            bool.ogg  = elem[canPlayType]('audio/ogg; codecs="vorbis"');
-            bool.mp3  = elem[canPlayType]('audio/mpeg;');
+            bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"');
+            bool.mp3  = elem.canPlayType('audio/mpeg;');
             
             // mimetypes accepted: 
             //   https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
             //   http://bit.ly/iphoneoscodecs
-            bool.wav  = elem[canPlayType]('audio/wav; codecs="1"');
-            bool.m4a  = elem[canPlayType]('audio/x-m4a;') || elem[canPlayType]('audio/aac;');
+            bool.wav  = elem.canPlayType('audio/wav; codecs="1"');
+            bool.m4a  = elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;');
         }
         return bool;
     };
@@ -671,46 +620,46 @@ window.Modernizr = (function(window,doc,undefined){
     // IE8 Compat mode supports these features completely:
     //   http://www.quirksmode.org/dom/html5.html
     
-    tests[localstorage] = function() {
+    tests['localstorage'] = function() {
         try {
-          return ('localStorage' in window) && window[localstorage] !== null;
+          return ('localStorage' in window) && window.localStorage !== null;
         } catch(e) {
           return false;
         }
     };
 
-    tests[sessionstorage] = function() {
+    tests['sessionstorage'] = function() {
         try {
-            return ('sessionStorage' in window) && window[sessionstorage] !== null;
+            return ('sessionStorage' in window) && window.sessionStorage !== null;
         } catch(e){
             return false;
         }
     };
 
 
-    tests[webWorkers] = function () {
+    tests['webWorkers'] = function () {
         return !!window.Worker;
     };
 
 
-    tests[applicationcache] =  function() {
-        var cache = window[applicationcache];
+    tests['applicationcache'] =  function() {
+        var cache = window.applicationCache;
         return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
 
  
     // thanks to Erik Dahlstrom
-    tests[svg] = function(){
+    tests['svg'] = function(){
         return !!doc.createElementNS && !!doc.createElementNS( "http://www.w3.org/2000/svg", "svg").createSVGRect;
     };
     
     // thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
-    tests[smil] = function(){
+    tests['smil'] = function(){
         return !!doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS('http://www.w3.org/2000/svg','animate')));
     };
 
-    tests[svgclippaths] = function(){
+    tests['svgclippaths'] = function(){
         // returns a false positive in saf 3.2?
         return !!doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS('http://www.w3.org/2000/svg','clipPath')));
     };
@@ -726,7 +675,7 @@ window.Modernizr = (function(window,doc,undefined){
         //   when applied to all input types: 
         //   http://miketaylr.com/code/input-type-attr.html
         // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
-        ret[input] = (function(props) {
+        ret['input'] = (function(props) {
             for (var i = 0,len=props.length;i<len;i++) {
                 attrs[ props[i] ] = !!(props[i] in f);
             }
@@ -739,7 +688,7 @@ window.Modernizr = (function(window,doc,undefined){
         //   containing each input type with its corresponding true/false value 
         
         // Big thx to @miketaylr for the html5 forms expertise. http://miketaylr.com/
-        ret[inputtypes] = (function(props) {
+        ret['inputtypes'] = (function(props) {
             for (var i = 0,bool,len=props.length;i<len;i++) {
                 f.setAttribute('type', props[i]);
                 bool = f.type !== 'text';
@@ -806,7 +755,7 @@ window.Modernizr = (function(window,doc,undefined){
     }
     
     // input tests need to run.
-    if (!ret[input]) webforms();
+    if (!ret.input) webforms();
     
 
    
