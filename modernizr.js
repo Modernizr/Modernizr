@@ -85,7 +85,7 @@ window.Modernizr = (function(window,doc,undefined){
         'select':'input','change':'input',
         'submit':'form','reset':'form',
         'error':'img','load':'img','abort':'img'
-      }
+      };
 
       function isEventSupported(eventName, element) {
 
@@ -106,7 +106,7 @@ window.Modernizr = (function(window,doc,undefined){
 
             // if property was created, "remove it" (by setting value to `undefined`)
             if (typeof element[eventName] != 'undefined') {
-              element[eventName] = void 0;
+              element[eventName] = undefined;
             }
             element.removeAttribute(eventName);
           }
@@ -335,13 +335,13 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
     tests['draganddrop'] = function() {
-        return isEventSupported('drag')
-            && isEventSupported('dragstart')
-            && isEventSupported('dragenter')
-            && isEventSupported('dragover')
-            && isEventSupported('dragleave')
-            && isEventSupported('dragend')
-            && isEventSupported('drop');
+        return  isEventSupported('drag') && 
+                isEventSupported('dragstart') && 
+                isEventSupported('dragenter') &&
+                isEventSupported('dragover') &&
+                isEventSupported('dragleave') &&
+                isEventSupported('dragend') &&
+                isEventSupported('drop');
     };
 
     
@@ -517,17 +517,13 @@ window.Modernizr = (function(window,doc,undefined){
     tests['fontface'] = function(){
 
         var 
-        sheet, style, result,
+        sheet,
         head = doc.head || doc.getElementsByTagName('head')[0] || docElement,
-
-        impl = doc.implementation ||
-            { hasFeature: function() { return false; } },
-
-        style = doc.createElement("style");
+        style = doc.createElement("style"),
+        impl = doc.implementation || { hasFeature: function() { return false; } };
+        
         style.type = 'text/css';
-
         head.insertBefore(style, head.firstChild);
-
         sheet = style.sheet || style.styleSheet;
 
         // removing it crashes IE browsers
@@ -547,10 +543,11 @@ window.Modernizr = (function(window,doc,undefined){
                 function(rule) {
                     if (!(sheet && rule)) return false;
                     sheet.cssText = rule;
-                    return sheet.cssText.length !== 0 &&
-                        !(/unknown/i).test(sheet.cssText) &&
-                        sheet.cssText.replace(/\r+|\n+/g, '').
-                            indexOf(rule.split(' ')[0]) === 0;
+                    
+                    return sheet.cssText.length !== 0 && !(/unknown/i).test(sheet.cssText) &&
+                      sheet.cssText
+                            .replace(/\r+|\n+/g, '')
+                            .indexOf(rule.split(' ')[0]) === 0;
                 };
 
 
