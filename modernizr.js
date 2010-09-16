@@ -578,7 +578,7 @@ window.Modernizr = (function(window,doc,undefined){
         if (bool){  
             bool      = new Boolean(bool);  
             bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"');
-            bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"');
+            bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
             bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
         }
         return bool;
