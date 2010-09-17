@@ -571,6 +571,9 @@ window.Modernizr = (function(window,doc,undefined){
     // codec values from : http://github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
     //                     thx to NielsLeenheer and zcorpan
     
+    // note: in FF 3.5.1 and 3.5.0, "no" was a return value instead of empty string.
+    //   Modernizr does not normalize for that.
+    
     tests['video'] = function() {
         var elem = doc.createElement('video'),
             bool = !!elem.canPlayType;
