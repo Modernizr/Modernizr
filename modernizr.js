@@ -560,6 +560,9 @@ window.Modernizr = (function(window,doc,undefined){
         
     };
     
+    tests['textstroke'] = function() {
+        return test_props_all( 'textStroke' );
+    };
 
     // These tests evaluate support of the video/audio elements, as well as
     // testing what types of content they support.
