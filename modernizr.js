@@ -69,6 +69,8 @@ window.Modernizr = (function(window,doc,undefined){
     // list of property values to set for css tests. see ticket #21
     prefixes = ' -o- -moz- -ms- -webkit- -khtml- '.split(' '),
 
+    ns = {'svg': 'http://www.w3.org/2000/svg'},
+
     tests = {},
     inputs = {},
     attrs = {},
@@ -655,9 +657,15 @@ window.Modernizr = (function(window,doc,undefined){
  
     // thanks to Erik Dahlstrom
     tests['svg'] = function(){
-        return !!doc.createElementNS && !!doc.createElementNS( "http://www.w3.org/2000/svg", "svg").createSVGRect;
+        return !!doc.createElementNS && !!doc.createElementNS(ns.svg, "svg").createSVGRect;
     };
-    
+
+    tests['svginhtml5'] = function() {
+	    var div = document.createElement('div');
+	    div.innerHTML = '<svg/>';
+	    return div.firstChild.namespaceURI == ns.svg;
+	};
+
     // thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
     tests['smil'] = function(){
