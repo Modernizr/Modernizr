@@ -660,7 +660,7 @@ window.Modernizr = (function(window,doc,undefined){
         return !!doc.createElementNS && !!doc.createElementNS(ns.svg, "svg").createSVGRect;
     };
 
-    tests['svginhtml5'] = function() {
+    tests['inlinesvg'] = function() {
 	    var div = document.createElement('div');
 	    div.innerHTML = '<svg/>';
 	    return div.firstChild.namespaceURI == ns.svg;
