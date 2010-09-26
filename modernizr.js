@@ -677,6 +677,13 @@ window.Modernizr = (function(window,doc,undefined){
         return !!doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS('http://www.w3.org/2000/svg','clipPath')));
     };
 
+    // native json
+    tests['nativejson'] = function() {
+	    return window.JSON != undefined &&
+	        typeof window.JSON.stringify == typeof function(){} &&
+	        typeof window.JSON.parse == typeof function(){} &&
+	        window.JSON.parse(window.JSON.stringify({'foo':3})).foo == 3;
+	};
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // hold this guy to execute in a moment.
