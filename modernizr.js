@@ -663,7 +663,7 @@ window.Modernizr = (function(window,doc,undefined){
     tests['svginhtml5'] = function() {
 	    var div = document.createElement('div');
 	    div.innerHTML = '<svg/>';
-	    return div.firstChild.namespaceURI == ns.svg;
+	    return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
 	};
 
     // thanks to F1lt3r and lucideer
