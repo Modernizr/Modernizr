@@ -272,7 +272,7 @@ window.Modernizr = (function(window,doc,undefined){
         return !!(ret['canvas'] && typeof doc.createElement( 'canvas' ).getContext('2d').fillText == 'function');
     };
     
-    /**
+    /*
      * The Modernizr.touch test only indicates if the browser supports
      *    touch events, which does not necessarily reflect a touchscreen
      *    device, as evidenced by tablets running Windows 7 or, alas,
@@ -283,13 +283,14 @@ window.Modernizr = (function(window,doc,undefined){
      *    without UA sniffing we have removed this test from Modernizr. We 
      *    hope to add it in after Chrome 5 has been sunsetted. 
      * See also http://github.com/Modernizr/Modernizr/issues#issue/84
+     */
      
     tests[touch] = function() {
 
-        return !!('ontouchstart' in window);
+        return ('ontouchstart' in window);
         
     };
-    */
+
 
     /**
      * geolocation tests for the new Geolocation API specification.
