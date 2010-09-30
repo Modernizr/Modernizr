@@ -1,5 +1,5 @@
 /*!
- * Modernizr JavaScript library 1.5
+ * Modernizr JavaScript library 1.6pre
  * http://www.modernizr.com/
  *
  * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
