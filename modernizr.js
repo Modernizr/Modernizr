@@ -283,9 +283,10 @@ window.Modernizr = (function(window,doc,undefined){
      *    without UA sniffing we have removed this test from Modernizr. We 
      *    hope to add it in after Chrome 5 has been sunsetted. 
      * See also http://github.com/Modernizr/Modernizr/issues#issue/84
+     *      and http://modernizr.github.com/Modernizr/touch.html
      */
      
-    tests[touch] = function() {
+    tests['touch'] = function() {
 
         return ('ontouchstart' in window);
         
