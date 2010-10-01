@@ -50,26 +50,26 @@ window['Modernizr'] = (function(window,doc,undefined){
     enableHTML5 = !0,
     
     
-    docElement = doc['documentElement'],
+    docElement = doc.documentElement,
 
     /**
      * Create our "modernizr" element that we do most feature tests on.
      */
     mod = 'modernizr',
-    m = doc['createElement']( mod ),
-    m_style = m['style'],
+    m = doc.createElement( mod ),
+    m_style = m.style,
 
     /**
      * Create the input element for various Web Forms feature tests.
      */
-    f = doc['createElement']( 'input' ),
+    f = doc.createElement( 'input' ),
     
     smile = ':)',
     
-    tostring = Object['prototype']['toString'],
+    tostring = Object.prototype.toString,
     
     // list of property values to set for css tests. see ticket #21
-    prefixes = ' -o- -moz- -ms- -webkit- -khtml- '['split'](' '),
+    prefixes = ' -o- -moz- -ms- -webkit- -khtml- '.split(' '),
 
     ns = {'svg': 'http://www.w3.org/2000/svg'},
 
@@ -93,7 +93,7 @@ window['Modernizr'] = (function(window,doc,undefined){
 
       function isEventSupported(eventName, element) {
 
-        element = element || document['createElement'](TAGNAMES[eventName] || 'div');
+        element = element || document.createElement(TAGNAMES[eventName] || 'div');
         eventName = 'on' + eventName;
 
         // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize", whereas `in` "catches" those
@@ -101,18 +101,18 @@ window['Modernizr'] = (function(window,doc,undefined){
 
         if (!isSupported) {
           // if it has no `setAttribute` (i.e. doesn't implement Node interface), try generic element
-          if (!element['setAttribute']) {
-            element = document['createElement']('div');
+          if (!element.setAttribute) {
+            element = document.createElement('div');
           }
-          if (element['setAttribute'] && element['removeAttribute']) {
-            element['setAttribute'](eventName, '');
+          if (element.setAttribute && element.removeAttribute) {
+            element.setAttribute(eventName, '');
             isSupported = typeof element[eventName] == 'function';
 
             // if property was created, "remove it" (by setting value to `undefined`)
             if (typeof element[eventName] != 'undefined') {
               element[eventName] = undefined;
             }
-            element['removeAttribute'](eventName);
+            element.removeAttribute(eventName);
           }
         }
 
@@ -124,15 +124,15 @@ window['Modernizr'] = (function(window,doc,undefined){
     
     
     // hasOwnProperty shim by kangax needed for Safari 2.0 support
-    var _hasOwnProperty = ({})['hasOwnProperty'], hasOwnProperty;
-    if (typeof _hasOwnProperty !== 'undefined' && typeof _hasOwnProperty['call'] !== 'undefined') {
+    var _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
+    if (typeof _hasOwnProperty !== 'undefined' && typeof _hasOwnProperty.call !== 'undefined') {
       hasOwnProperty = function (object, property) {
-        return _hasOwnProperty['call'](object, property);
+        return _hasOwnProperty.call(object, property);
       };
     }
     else {
       hasOwnProperty = function (object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
-        return ((property in object) && typeof object['constructor']['prototype'][property] === 'undefined');
+        return ((property in object) && typeof object.constructor.prototype[property] === 'undefined');
       };
     }
     
@@ -140,21 +140,21 @@ window['Modernizr'] = (function(window,doc,undefined){
      * set_css applies given styles to the Modernizr DOM node.
      */
     function set_css( str ) {
-        m_style['cssText'] = str;
+        m_style.cssText = str;
     }
 
     /**
      * set_css_all extrapolates all vendor-specific css strings.
      */
     function set_css_all( str1, str2 ) {
-        return set_css(prefixes['join'](str1 + ';') + ( str2 || '' ));
+        return set_css(prefixes.join(str1 + ';') + ( str2 || '' ));
     }
 
     /**
      * contains returns a boolean for if substr is found within str.
      */
     function contains( str, substr ) {
-        return (''+str)['indexOf']( substr ) !== -1;
+        return (''+str).indexOf( substr ) !== -1;
     }
 
     /**
@@ -188,7 +188,7 @@ window['Modernizr'] = (function(window,doc,undefined){
      *   compatibility.
      */
     function test_props_all( prop, callback ) {
-        var uc_prop = prop['charAt'](0)['toUpperCase']() + prop['substr'](1),
+        var uc_prop = prop.charAt(0).toUpperCase() + prop.substr(1),
         
         // following spec is to expose vendor-specific style properties as:
         //   elem.style.WebkitBorderRadius
@@ -229,7 +229,7 @@ window['Modernizr'] = (function(window,doc,undefined){
          */
         function set_prefixed_value_css(element, property, value, extra) {
             property += ':';
-            element['style']['cssText'] = (property + prefixes['join'](value + ';' + property))['slice'](0, -property['length']) + (extra || '');
+            element.style.cssText = (property + prefixes.join(value + ';' + property)).slice(0, -property.length) + (extra || '');
         }
 
         /**
@@ -242,22 +242,22 @@ window['Modernizr'] = (function(window,doc,undefined){
          * the CSS string.
          */
         function set_prefixed_property_css(element, property, value, extra) {
-            element['style']['cssText'] = prefixes['join'](property + ':' + value + ';') + (extra || '');
+            element.style.cssText = prefixes.join(property + ':' + value + ';') + (extra || '');
         }
 
-        var c = doc['createElement']('div'),
-            elem = doc['createElement']('div');
+        var c = doc.createElement('div'),
+            elem = doc.createElement('div');
 
         set_prefixed_value_css(c, 'display', 'box', 'width:42px;padding:0;');
         set_prefixed_property_css(elem, 'box-flex', '1', 'width:10px;');
 
-        c['appendChild'](elem);
-        docElement['appendChild'](c);
+        c.appendChild(elem);
+        docElement.appendChild(c);
 
-        var ret = elem['offsetWidth'] === 42;
+        var ret = elem.offsetWidth === 42;
 
-        c['removeChild'](elem);
-        docElement['removeChild'](c);
+        c.removeChild(elem);
+        docElement.removeChild(c);
 
         return ret;
     };
@@ -266,12 +266,12 @@ window['Modernizr'] = (function(window,doc,undefined){
     // http://github.com/Modernizr/Modernizr/issues/issue/97/ 
     
     tests['canvas'] = function() {
-        var elem = doc['createElement']( 'canvas' );
-        return !!(elem['getContext'] && elem['getContext']('2d'));
+        var elem = doc.createElement( 'canvas' );
+        return !!(elem.getContext && elem.getContext('2d'));
     };
     
     tests['canvastext'] = function() {
-        return !!(ret['canvas'] && typeof doc['createElement']( 'canvas' )['getContext']('2d')['fillText'] == 'function');
+        return !!(ret['canvas'] && typeof doc.createElement( 'canvas' ).getContext('2d').fillText == 'function');
     };
     
     /**
@@ -302,18 +302,18 @@ window['Modernizr'] = (function(window,doc,undefined){
      *   http://gist.github.com/366184
      */
     tests['geolocation'] = function() {
-        return !!navigator['geolocation'];
+        return !!navigator.geolocation;
     };
 
     tests['crosswindowmessaging'] = function() {
-      return !!window['postMessage'];
+      return !!window.postMessage;
     };
 
     // in chrome incognito mode, openDatabase is truthy, but using it
     //   will throw an exception: http://crbug.com/42380
     // we create a dummy database. there is no way to delete it afterwards. sorry. 
     tests['websqldatabase'] = function() {
-      var result = !!window['openDatabase'];
+      var result = !!window.openDatabase;
       if (result){
         try {
           result = !!openDatabase( mod + "testdb", "1.0", mod + "testdb", 2e4);
@@ -331,11 +331,11 @@ window['Modernizr'] = (function(window,doc,undefined){
     // documentMode logic from YUI to filter out IE8 Compat Mode
     //   which false positives.
     tests['hashchange'] = function() {
-      return isEventSupported('hashchange', window) && ( document['documentMode'] === undefined || document['documentMode'] > 7 );
+      return isEventSupported('hashchange', window) && ( document.documentMode === undefined || document.documentMode > 7 );
     };
 
     tests['historymanagement'] = function() {
-      return !!(window['history'] && history['pushState']);
+      return !!(window.history && history.pushState);
     };
 
     tests['draganddrop'] = function() {
@@ -360,7 +360,7 @@ window['Modernizr'] = (function(window,doc,undefined){
         
         set_css(  'background-color:rgba(150,255,150,.5)' );
         
-        return contains( m_style['backgroundColor'], 'rgba' );
+        return contains( m_style.backgroundColor, 'rgba' );
     };
     
     tests['hsla'] = function() {
@@ -369,7 +369,7 @@ window['Modernizr'] = (function(window,doc,undefined){
         
         set_css('background-color:hsla(120,40%,100%,.5)' );
         
-        return contains( m_style['backgroundColor'], 'rgba' ) || contains( m_style['backgroundColor'], 'hsla' );
+        return contains( m_style.backgroundColor, 'rgba' ) || contains( m_style.backgroundColor, 'hsla' );
     };
     
     tests['multiplebgs'] = function() {
@@ -382,7 +382,7 @@ window['Modernizr'] = (function(window,doc,undefined){
         // If the UA supports multiple backgrounds, there should be three occurrences
         //  of the string "url(" in the return value for elem_style.background
 
-        return new RegExp("(url\\s*\\(.*?){3}")['test'](m_style['background']);
+        return new RegExp("(url\\s*\\(.*?){3}").test(m_style.background);
     };
     
     
@@ -425,14 +425,14 @@ window['Modernizr'] = (function(window,doc,undefined){
     };
     
     
-    tests['opacity'] = function() {
+    tests.opacity = function() {
         // Browsers that actually have CSS Opacity implemented have done so
         //  according to spec, which means their return values are within the
         //  range of [0.0,1.0] - including the leading zero.
         
         set_css_all( 'opacity:.5' );
         
-        return contains( m_style['opacity'], '0.5' );
+        return contains( m_style.opacity, '0.5' );
     };
     
     
@@ -462,10 +462,10 @@ window['Modernizr'] = (function(window,doc,undefined){
             str3 = 'linear-gradient(left top,#9f9, white);';
         
         set_css(
-            (str1 + prefixes['join'](str2 + str1) + prefixes['join'](str3 + str1))['slice'](0,-str1['length'])
+            (str1 + prefixes.join(str2 + str1) + prefixes.join(str3 + str1)).slice(0,-str1.length)
         );
         
-        return contains( m_style['backgroundImage'], 'gradient' );
+        return contains( m_style.backgroundImage, 'gradient' );
     };
     
     
@@ -491,20 +491,20 @@ window['Modernizr'] = (function(window,doc,undefined){
         // as a result, it 'recognizes' the syntax and throws a false positive
         // thus we must do a more thorough check:
         if (ret){
-            var st = document['createElement']('style'),
-                div = doc['createElement']('div');
+            var st = document.createElement('style'),
+                div = doc.createElement('div');
                 
             // webkit allows this media query to succeed only if the feature is enabled.    
             // "@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){#modernizr{height:3px}}"
-            st['textContent'] = '@media ('+prefixes['join']('transform-3d),(')+'modernizr){#modernizr{height:3px}}';
-            doc['getElementsByTagName']('head')[0]['appendChild'](st);
-            div['id'] = 'modernizr';
-            docElement['appendChild'](div);
+            st.textContent = '@media ('+prefixes.join('transform-3d),(')+'modernizr){#modernizr{height:3px}}';
+            doc.getElementsByTagName('head')[0].appendChild(st);
+            div.id = 'modernizr';
+            docElement.appendChild(div);
             
-            ret = div['offsetHeight'] === 3;
+            ret = div.offsetHeight === 3;
             
-            st['parentNode']['removeChild'](st);
-            div['parentNode']['removeChild'](div);
+            st.parentNode.removeChild(st);
+            div.parentNode.removeChild(div);
         }
         return ret;
     };
@@ -522,36 +522,36 @@ window['Modernizr'] = (function(window,doc,undefined){
 
         var 
         sheet,
-        head = doc['head'] || doc['getElementsByTagName']('head')[0] || docElement,
-        style = doc['createElement']("style"),
-        impl = doc['implementation'] || { 'hasFeature': function() { return _false; } };
+        head = doc['head'] || doc.getElementsByTagName('head')[0] || docElement,
+        style = doc.createElement("style"),
+        impl = doc.implementation || { 'hasFeature': function() { return _false; } };
         
-        style['type'] = 'text/css';
-        head['insertBefore'](style, head['firstChild']);
-        sheet = style['sheet'] || style['styleSheet'];
+        style.type = 'text/css';
+        head.insertBefore(style, head.firstChild);
+        sheet = style.sheet || style.styleSheet;
 
         // removing it crashes IE browsers
         //head.removeChild(style);
 
-        var supportAtRule = impl['hasFeature']('CSS2', '') ?
+        var supportAtRule = impl.hasFeature('CSS2', '') ?
                 function(rule) {
                     if (!(sheet && rule)) return _false;
                     var result = _false;
                     try {
-                        sheet['insertRule'](rule, 0);
-                        result = !(/unknown/i)['test'](sheet['cssRules'][0]['cssText']);
-                        sheet['deleteRule'](sheet['cssRules']['length'] - 1);
+                        sheet.insertRule(rule, 0);
+                        result = !(/unknown/i).test(sheet.cssRules[0].cssText);
+                        sheet.deleteRule(sheet.cssRules.length - 1);
                     } catch(e) { }
                     return result;
                 } :
                 function(rule) {
                     if (!(sheet && rule)) return _false;
-                    sheet['cssText'] = rule;
+                    sheet.cssText = rule;
                     
-                    return sheet['cssText']['length'] !== 0 && !(/unknown/i)['test'](sheet['cssText']) &&
-                      sheet['cssText']
-                            ['replace'](/\r+|\n+/g, '')
-                            ['indexOf'](rule.split(' ')[0]) === 0;
+                    return sheet.cssText.length !== 0 && !(/unknown/i).test(sheet.cssText) &&
+                      sheet.cssText
+                            .replace(/\r+|\n+/g, '')
+                            .indexOf(rule.split(' ')[0]) === 0;
                 };
 
 
@@ -579,37 +579,37 @@ window['Modernizr'] = (function(window,doc,undefined){
     //   Modernizr does not normalize for that.
     
     tests['video'] = function() {
-        var elem = doc['createElement']('video'),
-            bool = !!elem['canPlayType'];
+        var elem = doc.createElement('video'),
+            bool = !!elem.canPlayType;
         
         if (bool){  
             bool      = new Boolean(bool);  
-            bool['ogg']  = elem['canPlayType']('video/ogg; codecs="theora"');
+            bool['ogg']  = elem.canPlayType('video/ogg; codecs="theora"');
             
             // workaround required for ie9, who doesn't report video support without audio codec specified.
             //   bug 599718 @ msft connect
             var h264 = 'video/mp4; codecs="avc1.42E01E';
-            bool['h264'] = elem['canPlayType'](h264 + '"') || elem['canPlayType'](h264 + ', mp4a.40.2"');
+            bool['h264'] = elem.canPlayType(h264 + '"') || elem.canPlayType(h264 + ', mp4a.40.2"');
             
-            bool['webm'] = elem['canPlayType']('video/webm; codecs="vp8, vorbis"');
+            bool['webm'] = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
         }
         return bool;
     };
     
     tests['audio'] = function() {
-        var elem = doc['createElement']('audio'),
-            bool = !!elem['canPlayType'];
+        var elem = doc.createElement('audio'),
+            bool = !!elem.canPlayType;
         
         if (bool){  
             bool      = new Boolean(bool);  
-            bool['ogg']  = elem['canPlayType']('audio/ogg; codecs="vorbis"');
-            bool['mp3']  = elem['canPlayType']('audio/mpeg;');
+            bool['ogg']  = elem.canPlayType('audio/ogg; codecs="vorbis"');
+            bool['mp3']  = elem.canPlayType('audio/mpeg;');
             
             // mimetypes accepted: 
             //   https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
             //   http://bit.ly/iphoneoscodecs
-            bool['wav']  = elem['canPlayType']('audio/wav; codecs="1"');
-            bool['m4a']  = elem['canPlayType']('audio/x-m4a;') || elem['canPlayType']('audio/aac;');
+            bool['wav']  = elem.canPlayType('audio/wav; codecs="1"');
+            bool['m4a']  = elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;');
         }
         return bool;
     };
@@ -631,7 +631,7 @@ window['Modernizr'] = (function(window,doc,undefined){
     
     tests['localstorage'] = function() {
         try {
-          return ('localStorage' in window) && window['localStorage'] !== null;
+          return ('localStorage' in window) && window.localStorage !== null;
         } catch(e) {
           return _false;
         }
@@ -639,7 +639,7 @@ window['Modernizr'] = (function(window,doc,undefined){
 
     tests['sessionstorage'] = function() {
         try {
-            return ('sessionStorage' in window) && window['sessionStorage'] !== null;
+            return ('sessionStorage' in window) && window.sessionStorage !== null;
         } catch(e){
             return _false;
         }
@@ -652,31 +652,31 @@ window['Modernizr'] = (function(window,doc,undefined){
 
 
     tests['applicationcache'] =  function() {
-        var cache = window['applicationCache'];
-        return !!(cache && (typeof cache['status'] != 'undefined') && (typeof cache['update'] == 'function') && (typeof cache['swapCache'] == 'function'));
+        var cache = window.applicationCache;
+        return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
 
  
     // thanks to Erik Dahlstrom
     tests['svg'] = function(){
-        return !!doc['createElementNS'] && !!doc['createElementNS'](ns['svg'], "svg")['createSVGRect'];
+        return !!doc.createElementNS && !!doc.createElementNS(ns['svg'], "svg")['createSVGRect'];
     };
 
     tests['svginhtml5'] = function() {
-	    var div = document['createElement']('div');
-	    div['innerHTML'] = '<svg/>';
-	    return (div['firstChild'] && div['firstChild']['namespaceURI']) == ns['svg'];
+	    var div = document.createElement('div');
+	    div.innerHTML = '<svg/>';
+	    return (div.firstChild && div.firstChild.namespaceURI) == ns['svg'];
 	};
 
     // thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
     tests['smil'] = function(){
-        return !!doc['createElementNS'] && /SVG/['test'](tostring['call'](doc['createElementNS']('http://www.w3.org/2000/svg','animate')));
+        return !!doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS('http://www.w3.org/2000/svg','animate')));
     };
 
     tests['svgclippaths'] = function(){
         // returns a false positive in saf 3.2?
-        return !!doc['createElementNS'] && /SVG/['test'](tostring['call'](doc['createElementNS']('http://www.w3.org/2000/svg','clipPath')));
+        return !!doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS('http://www.w3.org/2000/svg','clipPath')));
     };
 
 
@@ -691,11 +691,11 @@ window['Modernizr'] = (function(window,doc,undefined){
         //   http://miketaylr.com/code/input-type-attr.html
         // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
         ret['input'] = (function(props) {
-            for (var i = 0,len=props['length'];i<len;i++) {
+            for (var i = 0,len=props.length;i<len;i++) {
                 attrs[ props[i] ] = !!(props[i] in f);
             }
             return attrs;
-        })('autocomplete autofocus list placeholder max min multiple pattern required step'['split'](' '));
+        })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
 
         // Run through HTML5's new input types to see if the UA understands any.
         //   This is put behind the tests runloop because it doesn't return a
@@ -704,52 +704,52 @@ window['Modernizr'] = (function(window,doc,undefined){
         
         // Big thx to @miketaylr for the html5 forms expertise. http://miketaylr.com/
         ret['inputtypes'] = (function(props) {
-            for (var i = 0,bool,len=props['length'];i<len;i++) {
-                f['setAttribute']('type', props[i]);
-                bool = f['type'] !== 'text';
+            for (var i = 0,bool,len=props.length;i<len;i++) {
+                f.setAttribute('type', props[i]);
+                bool = f.type !== 'text';
                 
                 // chrome likes to falsely purport support, so we feed it a textual value
                 // if that doesnt succeed then we know there's a custom UI
                 if (bool){  
 
-                    f['value'] = smile;
+                    f.value = smile;
      
-                    if (/^range$/['test'](f['type']) && f['style']['WebkitAppearance'] !== undefined){
+                    if (/^range$/.test(f.type) && f.style.WebkitAppearance !== undefined){
                       
-                      docElement['appendChild'](f);
+                      docElement.appendChild(f);
                       
                       // Safari 2-4 allows the smiley as a value, despite making a slider
-                      bool =  doc['defaultView']['getComputedStyle'] && 
-                              doc['defaultView']['getComputedStyle'](f, null)['WebkitAppearance'] !== 'textfield' && 
+                      bool =  doc.defaultView.getComputedStyle && 
+                              doc.defaultView.getComputedStyle(f, null).WebkitAppearance !== 'textfield' && 
                       
                               // mobile android web browser has false positive, so must
                               // check the height to see if the widget is actually there.
-                              (f['offsetHeight'] !== 0);
+                              (f.offsetHeight !== 0);
                               
-                      docElement['removeChild'](f);
+                      docElement.removeChild(f);
                               
-                    } else if (/^(search|tel)$/['test'](f['type'])){
+                    } else if (/^(search|tel)$/.test(f.type)){
                       // spec doesnt define any special parsing or detectable UI 
                       //   behaviors so we pass these through as true
                       
                       // interestingly, opera fails the earlier test, so it doesn't
                       //  even make it here.
                       
-                    } else if (/^(url|email)$/['test'](f['type'])) {
+                    } else if (/^(url|email)$/.test(f.type)) {
 
                       // real url and email support comes with prebaked validation.
                       bool = f['checkValidity'] && f['checkValidity']() === _false;
                       
                     } else {
                       // if the upgraded input compontent rejects the :) text, we got a winner
-                      bool = f['value'] != smile;
+                      bool = f.value != smile;
                     }
                 }
                 
                 inputs[ props[i] ] = !!bool;
             }
             return inputs;
-        })('search tel url email datetime date month week time datetime-local number range color'['split'](' '));
+        })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
 
     }
 
@@ -765,7 +765,7 @@ window['Modernizr'] = (function(window,doc,undefined){
             // run the test, throw the return value into the Modernizr,
             //   then based on that boolean, define an appropriate className
             //   and push it into an array of classes we'll join later.
-            classes['push']( ( ( ret[ feature['toLowerCase']() ] = tests[ feature ]() ) ?  '' : 'no-' ) + feature['toLowerCase']() );
+            classes.push( ( ( ret[ feature.toLowerCase() ] = tests[ feature ]() ) ?  '' : 'no-' ) + feature.toLowerCase() );
         }
     }
     
@@ -786,13 +786,13 @@ window['Modernizr'] = (function(window,doc,undefined){
      * @param test - Function returning true if feature is supported, false if not
      */
     ret['addTest'] = function (feature, test) {
-      feature = feature['toLowerCase']();
+      feature = feature.toLowerCase();
       
       if (ret[ feature ]) {
         return; // quit if you're trying to overwrite an existing test
       } 
       test = !!(test());
-      docElement['className'] += ' ' + (test ? '' : 'no-') + feature; 
+      docElement.className += ' ' + (test ? '' : 'no-') + feature; 
       ret[ feature ] = test;
       return ret; // allow chaining.
     };
@@ -806,16 +806,16 @@ window['Modernizr'] = (function(window,doc,undefined){
     // Enable HTML 5 elements for styling in IE. 
     // fyi: jscript version does not reflect trident version
     //      therefore ie9 in ie7 mode will still have a jScript v.9
-    if ( enableHTML5 && (function(){ var elem = doc['createElement']("div");
-                                      elem['innerHTML'] = "<elem></elem>";
-                                      return elem['childNodes']['length'] !== 1; })()) {
+    if ( enableHTML5 && (function(){ var elem = doc.createElement("div");
+                                      elem.innerHTML = "<elem></elem>";
+                                      return elem.childNodes.length !== 1; })()) {
         // iepp v1.5.1 MIT @jon_neal  http://code.google.com/p/ie-print-protector/
         (function (window, document) {
-			var documentElement = document['documentElement'],
-				documentFragment = document['createDocumentFragment'](),
+			var documentElement = document.documentElement,
+				documentFragment = document.createDocumentFragment(),
 				html5_stylesheet = {},
 				html5_elements = 'abbr|article|aside|audio|canvas|command|datalist|details|figure|figcaption|footer|header|hgroup|keygen|mark|meter|nav|output|progress|section|source|summary|time|video',
-				html5_elements_array = html5_elements['split']('|'),
+				html5_elements_array = html5_elements.split('|'),
 				elementsCache = [],
 				a = -1,
 				firstChild = 'firstChild',
@@ -823,14 +823,14 @@ window['Modernizr'] = (function(window,doc,undefined){
 
 			function append_stylesheet (media, cssText) {
 				if (html5_stylesheet[media]) {
-					html5_stylesheet[media]['styleSheet']['cssText'] += cssText;
+					html5_stylesheet[media].styleSheet.cssText += cssText;
 				}
 				else {
 					var head = documentElement[firstChild],
 						style = document[createElement]('style');
 
-					style['media'] = media;
-					head['insertBefore'](style, head[firstChild]);
+					style.media = media;
+					head.insertBefore(style, head[firstChild]);
 					html5_stylesheet[media] = style;
 					append_stylesheet(media, cssText);
 				}
@@ -846,19 +846,19 @@ window['Modernizr'] = (function(window,doc,undefined){
 					a = -1,
 					media_stylesheet;
 
-				while (++a < styleSheetList['length']) {
-					media = styleSheetList[a]['media'] || media;
+				while (++a < styleSheetList.length) {
+					media = styleSheetList[a].media || media;
 
-					parse_style_sheet_list(styleSheetList[a]['imports'], media);
+					parse_style_sheet_list(styleSheetList[a].imports, media);
 
-					append_stylesheet(media, styleSheetList[a]['cssText']['replace'](selectorTextMatch, selectorTextReplace));
+					append_stylesheet(media, styleSheetList[a].cssText.replace(selectorTextMatch, selectorTextReplace));
 				}
 			}
 
 			function on_before_print () {
 				var head = documentElement[firstChild],
 					element,
-					elements = document['getElementsByTagName']('*'),
+					elements = document.getElementsByTagName('*'),
 					elementCache,
 					elementName,
 					elementMatch = new RegExp('^' + html5_elements + '$', 'i'),
@@ -866,49 +866,49 @@ window['Modernizr'] = (function(window,doc,undefined){
 					elementReplaced,
 					a = -1;
 
-				while (++a < elements['length']) {
-					if ((element = elements[a]) && (elementName = element['nodeName']['match'](elementMatch))) {
+				while (++a < elements.length) {
+					if ((element = elements[a]) && (elementName = element.nodeName.match(elementMatch))) {
 						elementReplace = new RegExp('^\\s*<' + elementName + '(.*)\\/' + elementName + '>\\s*$', 'i');
 
-						documentFragment['innerHTML'] = element['outerHTML']['replace'](/\r|\n/g, ' ')['replace'](elementReplace, (element['currentStyle']['display'] == 'block') ? '<div$1/div>' : '<span$1/span>');
+						documentFragment.innerHTML = element.outerHTML.replace(/\r|\n/g, ' ').replace(elementReplace, (element.currentStyle.display == 'block') ? '<div$1/div>' : '<span$1/span>');
 
-						elementReplaced = documentFragment['childNodes'][0];
-						elementReplaced['className'] += ' iepp_' + elementName;
+						elementReplaced = documentFragment.childNodes[0];
+						elementReplaced.className += ' iepp_' + elementName;
 
-						elementCache = elementsCache[elementsCache['length']] = [element, elementReplaced];
+						elementCache = elementsCache[elementsCache.length] = [element, elementReplaced];
 
-						element['parentNode']['replaceChild'](elementCache[1], elementCache[0]);
+						element.parentNode.replaceChild(elementCache[1], elementCache[0]);
 					}
 				}
 
-				parse_style_sheet_list(document['styleSheets'], 'all');
+				parse_style_sheet_list(document.styleSheets, 'all');
 			}
 
 			function on_after_print () {
 				var a = -1,
 					b;
 
-				while (++a < elementsCache['length']) {
-					elementsCache[a][1]['parentNode']['replaceChild'](elementsCache[a][0], elementsCache[a][1]);
+				while (++a < elementsCache.length) {
+					elementsCache[a][1].parentNode.replaceChild(elementsCache[a][0], elementsCache[a][1]);
 				}
 
 				for (b in html5_stylesheet) {
-					documentElement[firstChild]['removeChild'](html5_stylesheet[b]);
+					documentElement[firstChild].removeChild(html5_stylesheet[b]);
 				}
 
 				html5_stylesheet = {};
 				elementsCache = [];
 			}
 
-			while (++a < html5_elements_array['length']) {
+			while (++a < html5_elements_array.length) {
 				document[createElement](html5_elements_array[a]);
 				documentFragment[createElement](html5_elements_array[a]);
 			}
 
-			documentFragment = documentFragment['appendChild'](document[createElement]('div'));
+			documentFragment = documentFragment.appendChild(document[createElement]('div'));
 
-			window['attachEvent']('onbeforeprint', on_before_print);
-			window['attachEvent']('onafterprint', on_after_print);
+			window.attachEvent('onbeforeprint', on_before_print);
+			window.attachEvent('onafterprint', on_after_print);
 
 			}(window, doc));
     }
@@ -918,12 +918,12 @@ window['Modernizr'] = (function(window,doc,undefined){
     ret['_version']         = version;
 
     // Remove "no-js" class from <html> element, if it exists:
-    docElement['className']=docElement['className']['replace'](/\bno-js\b/,'') + ' js';
+    docElement.className=docElement.className.replace(/\bno-js\b/,'') + ' js';
 
     // Add the new classes to the <html> element.
-    docElement['className'] += ' ' + classes['join']( ' ' );
+    docElement.className += ' ' + classes.join( ' ' );
     
     return ret;
 
-})(window,window['document']);
+})(window,window.document);
     
