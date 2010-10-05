@@ -742,7 +742,17 @@ window.Modernizr = (function(window,doc,undefined){
                               
                       docElement.removeChild(f);
                               
-                    } else if (/^(search|tel)$/.test(f.type)){
+                    } else if(/^number$/.test(f.type) && f.checkValidity) {
+                      // Chrome from at least 6.0.472.63 allows the smiley as a value, despite supporting number.
+					  // We're going to make it so the value is only meant to be changed by multiples of 2, so decrementing by 1 should mean f.checkValidity() returns false.
+					  // It is presumed that a non-supporting browser will always have f.checkValidity() returning true.
+                      f.value = 0;
+                      f.setAttribute('step', 2);
+                      f.value -= 1;
+                      var shouldBeFalse = f.checkValidity();
+                      f.value -= 1;
+                      bool = f.checkValidity() && !shouldBeFalse;
+					} else if (/^(search|tel)$/.test(f.type)){
                       // spec doesnt define any special parsing or detectable UI 
                       //   behaviors so we pass these through as true
                       
