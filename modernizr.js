@@ -67,7 +67,7 @@ window.Modernizr = (function(window,doc,undefined){
     tostring = Object.prototype.toString,
     
     // list of property values to set for css tests. see ticket #21
-    prefixes = ' -o- -moz- -ms- -webkit- -khtml- '.split(' '),
+    prefixes = ' -webkit- -moz- -o- -ms- -khtml- '.split(' '),
 
     // following spec is to expose vendor-specific style properties as:
     //   elem.style.WebkitBorderRadius
@@ -312,8 +312,18 @@ window.Modernizr = (function(window,doc,undefined){
       return result;
     };
     
+    // Vendors have inconsistent prefixing with the experimental Indexed DB.
+    // Firefox is shipping indexedDB in FF4 as moz_indexedDB
+    // Webkit's implementation is accessible through webkitIndexedDB
+    // we test both styles.
     tests['indexedDB'] = function(){
-      return !!window.indexedDB;
+      for (var i = -1, len = domPrefixes.length; ++i < len; ){ 
+        var prefix = domPrefixes[i].toLowerCase();
+        if (window[prefix + '_indexedDB'] || window[prefix + 'IndexedDB']){
+          return true;
+        } 
+      }
+      return false;
     };
 
     // documentMode logic from YUI to filter out IE8 Compat Mode
