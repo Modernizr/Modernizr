@@ -256,6 +256,22 @@ window.Modernizr = (function(window,doc,undefined){
         return !!(ret['canvas'] && typeof doc.createElement( 'canvas' ).getContext('2d').fillText == 'function');
     };
     
+    
+    tests['webgl'] = function(){
+
+        var elem = doc.createElement( 'canvas' ); 
+        
+        try {
+            if (elem.getContext('webgl')){ return true; }
+        } catch(e){	}
+        
+        try {
+            if (elem.getContext('experimental-webgl')){ return true; }
+        } catch(e){	}
+
+        return false;
+    };
+    
     /*
      * The Modernizr.touch test only indicates if the browser supports
      *    touch events, which does not necessarily reflect a touchscreen
