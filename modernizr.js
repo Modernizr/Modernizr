@@ -69,6 +69,18 @@ window.Modernizr = (function(window,doc,undefined){
     // list of property values to set for css tests. see ticket #21
     prefixes = ' -o- -moz- -ms- -webkit- -khtml- '.split(' '),
 
+    // following spec is to expose vendor-specific style properties as:
+    //   elem.style.WebkitBorderRadius
+    // and the following would be incorrect:
+    //   elem.style.webkitBorderRadius
+    
+    // Webkit ghosts their properties in lowercase but Opera & Moz do not.
+    // Microsoft foregoes prefixes entirely <= IE8, but appears to 
+    //   use a lowercase `ms` instead of the correct `Ms` in IE9
+    
+    // more here: http://github.com/Modernizr/Modernizr/issues/issue/21
+    domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+
     ns = {'svg': 'http://www.w3.org/2000/svg'},
 
     tests = {},
@@ -175,26 +187,9 @@ window.Modernizr = (function(window,doc,undefined){
      *   compatibility.
      */
     function test_props_all( prop, callback ) {
+      
         var uc_prop = prop.charAt(0).toUpperCase() + prop.substr(1),
-        
-        // following spec is to expose vendor-specific style properties as:
-        //   elem.style.WebkitBorderRadius
-        // and the following would be incorrect:
-        //   elem.style.webkitBorderRadius
-        
-        // Webkit ghosts their properties in lowercase but Opera & Moz do not.
-        // Microsoft foregoes prefixes entirely <= IE8, but appears to 
-        //   use a lowercase `ms` instead of the correct `Ms` in IE9
-        
-        // see more here: http://github.com/Modernizr/Modernizr/issues/issue/21
-        props = [
-            prop,
-            'Webkit' + uc_prop,
-            'Moz' + uc_prop,
-            'O' + uc_prop,
-            'ms' + uc_prop,
-            'Khtml' + uc_prop
-        ];
+            props   = (prop + ' ' + domPrefixes.join(uc_prop + ' ') + uc_prop).split(' ');
 
         return !!test_props( props, callback );
     }
