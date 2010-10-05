@@ -298,9 +298,13 @@ window.Modernizr = (function(window,doc,undefined){
       return !!window.postMessage;
     };
 
-    // in chrome incognito mode, openDatabase is truthy, but using it
+    // In chrome incognito mode, openDatabase is truthy, but using it
     //   will throw an exception: http://crbug.com/42380
     // we create a dummy database. there is no way to delete it afterwards. sorry. 
+    
+    // Meanwhile, a safari user can request to be prompted on any database creation.
+    //   If they do, any page with Modernizr will give them a prompt.
+    //   http://github.com/Modernizr/Modernizr/issues/closed#issue/113
     tests['websqldatabase'] = function() {
       var result = !!window.openDatabase;
       if (result){
