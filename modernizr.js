@@ -162,17 +162,6 @@ window.Modernizr = (function(window,doc,undefined){
      */
     function test_props( props, callback ) {
         for ( var i in props ) {
-            
-            // required for IE9 pp4
-            //   connect.microsoft.com/IE/feedback/details/583669/elem-style-mstransform-throws-an-error
-            //   github.com/Modernizr/Modernizr/issues#issue/60
-            try { 
-              m_style[ props[i] ] !== undefined
-            } catch(e){
-              continue;
-            }
-            // ^^ remove when IE9 beta comes out (assuming they fix the bug)
-          
             if ( m_style[ props[i] ] !== undefined && ( !callback || callback( props[i], m ) ) ) {
                 return true;
             }
