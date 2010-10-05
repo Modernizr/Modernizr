@@ -32,7 +32,7 @@
 
 window.Modernizr = (function(window,doc,undefined){
     
-    var version = '1.5',
+    var version = '1.6pre',
     
     ret = {},
 
