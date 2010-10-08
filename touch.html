@@ -15,7 +15,9 @@
 <body>
 
 	<h1>Modernizr Touch tests</h1>
-	<p>This page tests various approaches to detecting Touch events / touch support in the browser. Please visit this test page with any touch devices you have and submit the results, so that we may include a reliable Modernizr.touch test in our next major release! <a href="http://github.com/Modernizr/Modernizr/issues/#issue/84">More details on our touch support</a></p>
+	<p>This page tests various approaches to detecting Touch events / touch support in the browser. Please visit this test page with any touch devices you have, so that we may include a reliable Modernizr.touch test in our next major release! Your results will be automatically submitted. <a href="http://github.com/Modernizr/Modernizr/issues/#issue/84">More details on our touch support</a></p>
+	
+	<p style="font-size: 90%; color: #aaa">Update 10.08.10: `ontouchend in document` test added.</p>
 	
 	<p>Your browser's results:</p>
 	<table>
@@ -26,7 +28,8 @@
 }</th>
 			<th>'createTouch' in document</th>
 			<th>typeof TouchEvent != "undefined"</th>
-			<th>typeof Touch == "object"</th>
+			<th>typeof Touch == "object"</th>			
+			<th>"ontouchend" in document</th>
 		</thead>
 		<tbody>
 			<td id="ontouchstart_in_window"></td>
@@ -34,6 +37,7 @@
 			<td id="createtouch_in_doc"></td>
 			<td id="typeof_touch_not_undefined"></td>
 			<td id="typeof_touch_object"></td>
+			<td id="ontouchend_in_document"></td>
 		</tbody>
 	</table>
 <script>
@@ -50,7 +54,8 @@ var _bTestResults = {
   'try_doc_createevent': try_catch,
   'createtouch_in_doc': (!!('createTouch' in document) ? 1 : 0),
   'typeof_touch_not_undefined': (!!(typeof TouchEvent != "undefined") ? 1 : 0),
-  'typeof_touch_object': (!!(typeof Touch == "object") ? 1 : 0)
+  'typeof_touch_object': (!!(typeof Touch == "object") ? 1 : 0),
+  'ontouchend_in_document': (!!('ontouchend' in document) ? 1 : 0)
 };
 
 
