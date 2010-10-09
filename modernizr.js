@@ -829,7 +829,7 @@ window.Modernizr = (function(window,doc,undefined){
     // Enable HTML 5 elements for styling in IE. 
     // fyi: jscript version does not reflect trident version
     //      therefore ie9 in ie7 mode will still have a jScript v.9
-    if ( enableHTML5 && (function(){ var elem = doc.createElement("div");
+    if ( enableHTML5 && window.attachEvent && (function(){ var elem = doc.createElement("div");
                                       elem.innerHTML = "<elem></elem>";
                                       return elem.childNodes.length !== 1; })()) {
         // iepp v1.5.1 MIT @jon_neal  http://code.google.com/p/ie-print-protector/
