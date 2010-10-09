@@ -24,12 +24,14 @@
 		<thead>
 			<th>'ontouchstart' in window</th>
 			<th>try/catch {<br>
-&nbsp;&nbsp;&nbsp;document.createEvent("TouchEvent");<br>
+&nbsp;&nbsp;&nbsp;document.createEvent(<br>"TouchEvent");<br>
 }</th>
 			<th>'createTouch' in document</th>
 			<th>typeof TouchEvent != "undefined"</th>
 			<th>typeof Touch == "object"</th>			
 			<th>"ontouchend" in document</th>
+      <th>NW.Event<br>.isEventSupported('touchstart')</th>
+      
 		</thead>
 		<tbody>
 			<td id="ontouchstart_in_window"></td>
@@ -38,8 +40,12 @@
 			<td id="typeof_touch_not_undefined"></td>
 			<td id="typeof_touch_object"></td>
 			<td id="ontouchend_in_document"></td>
+						<td id="nwevents"></td>
 		</tbody>
 	</table>
+	
+	<script src="http://github.com/dperini/nwevents/raw/master/src/nwevents.js"></script>
+	
 <script>
 var try_catch, k;
 try {
@@ -49,13 +55,15 @@ try {
 	try_catch = 0;
 }
 
+
 var _bTestResults = {
   'ontouchstart_in_window': (!!('ontouchstart' in window) ? 1 : 0),
   'try_doc_createevent': try_catch,
   'createtouch_in_doc': (!!('createTouch' in document) ? 1 : 0),
   'typeof_touch_not_undefined': (!!(typeof TouchEvent != "undefined") ? 1 : 0),
   'typeof_touch_object': (!!(typeof Touch == "object") ? 1 : 0),
-  'ontouchend_in_document': (!!('ontouchend' in document) ? 1 : 0)
+  'ontouchend_in_document': (!!('ontouchend' in document) ? 1 : 0),
+  'nwevents' : ( NW.Event.isEventSupported('touchstart')  ? 1 : 0)
 };
 
 
