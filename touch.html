@@ -77,11 +77,38 @@ for (k in _bTestResults) {
 
 <p>Thanks!  <a href="http://github.com/Modernizr/Modernizr/">Follow Modernizr on github</a></p>
 	
+	<br><br>
+	<h3>Results Summary</h3>
+	
+	
+	  Most used to false positive in Chrome 4-5. That bug was fixed. Below are the possible solutions and notes on each.
+
+<pre>
+    'ontouchstart' in window	
+    "ontouchend" in document
+    try { document.createEvent("TouchEvent"); }	 catch(e){}
+</pre>
+    Same results with the three of these.
+
+<pre>
+    typeof TouchEvent != "undefined"
+</pre>	
+    No good. False positives in Chrome 6-7.
+
+
+<pre>
+    'createTouch' in document	
+    typeof Touch == "object"	
+</pre>
+    No good. Same results with these two. Fails in BB6, Android 1.5-2.2.
+<br><br>
+Untested solution: <a href="http://github.com/dperini/nwevents/commit/471dcb2dd32818015044f6982f39b5defd9f6fcb">nwevents touch detection via isEventSupported</a>
+	
 	
 	<br><Br>
 	  
-	  
-    <iframe style="border: 0; width: 900px; height: 600px;"src="http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnINCxIEVGVzdBjGxLICDA?v=3&amp;layout=simple" seamless></iframe>
+	  <h3>Full data table</h3>
+    <iframe style="border: 0; width: 1100px; height: 600px;"src="http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnINCxIEVGVzdBjGxLICDA?v=3&amp;layout=simple" seamless></iframe>
 	
 </body>
 </html>
