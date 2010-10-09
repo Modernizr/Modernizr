@@ -305,7 +305,7 @@ window.Modernizr = (function(window,doc,undefined){
         return !!navigator.geolocation;
     };
 
-    tests['crosswindowmessaging'] = function() {
+    tests['postmessage'] = function() {
       return !!window.postMessage;
     };
 
@@ -348,7 +348,7 @@ window.Modernizr = (function(window,doc,undefined){
       return isEventSupported('hashchange', window) && ( document.documentMode === undefined || document.documentMode > 7 );
     };
 
-    tests['historymanagement'] = function() {
+    tests['history'] = function() {
       return !!(window.history && history.pushState);
     };
 
@@ -770,6 +770,11 @@ window.Modernizr = (function(window,doc,undefined){
 
 
     // end of test definitions
+
+
+    // deprecated API is still accesible for now.
+    ret.crosswindowmessaging = ret.postmessage;
+    ret.historymanagement = ret.history;
 
 
     // Run through all tests and detect their support in the current UA.
