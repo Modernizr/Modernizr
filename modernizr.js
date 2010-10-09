@@ -89,6 +89,8 @@ window.Modernizr = (function(window,doc,undefined){
     
     classes = [],
     
+    featurename, // used in testing loop
+    
     /**
       * isEventSupported determines if a given element supports the given event
       * function from http://yura.thinkweb2.com/isEventSupported/
@@ -772,10 +774,6 @@ window.Modernizr = (function(window,doc,undefined){
     // end of test definitions
 
 
-    // deprecated API is still accesible for now.
-    ret.crosswindowmessaging = ret.postmessage;
-    ret.historymanagement = ret.history;
-
 
     // Run through all tests and detect their support in the current UA.
     // todo: hypothetically we could be doing an array of tests and use a basic loop here.
@@ -784,7 +782,10 @@ window.Modernizr = (function(window,doc,undefined){
             // run the test, throw the return value into the Modernizr,
             //   then based on that boolean, define an appropriate className
             //   and push it into an array of classes we'll join later.
-            classes.push( ( ( ret[ feature.toLowerCase() ] = tests[ feature ]() ) ?  '' : 'no-' ) + feature.toLowerCase() );
+            featurename  = feature.toLowerCase();
+            ret[ featurename ] = tests[ feature ]();
+
+            classes.push( ( ret[ featurename ] ? '' : 'no-' ) + featurename );
         }
     }
     
@@ -793,6 +794,9 @@ window.Modernizr = (function(window,doc,undefined){
     
 
    
+    // deprecated API is still accesible for now.
+    ret.crosswindowmessaging = ret.postmessage;
+    ret.historymanagement = ret.history;
 
 
 
