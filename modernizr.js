@@ -91,6 +91,30 @@ window.Modernizr = (function(window,doc,undefined){
     
     featurename, // used in testing loop
     
+    
+    
+    // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
+    testMediaQuery = function(mq){
+
+      var st = document.createElement('style'),
+          div = doc.createElement('div'),
+          ret;
+
+      st.textContent = mq + '{#modernizr{height:3px}}';
+      (doc.head || doc.getElementsByTagName('head')[0]).appendChild(st);
+      div.id = 'modernizr';
+      docElement.appendChild(div);
+
+      ret = div.offsetHeight === 3;
+
+      st.parentNode.removeChild(st);
+      div.parentNode.removeChild(div);
+
+      return !!ret;
+
+    },
+    
+    
     /**
       * isEventSupported determines if a given element supports the given event
       * function from http://yura.thinkweb2.com/isEventSupported/
@@ -280,18 +304,17 @@ window.Modernizr = (function(window,doc,undefined){
      *    device, as evidenced by tablets running Windows 7 or, alas,
      *    the Palm Pre / WebOS (touch) phones.
      * Additionally, chrome used to lie about its support on this, but that 
-     *    has since been recitifed: http://crbug.com/36415
-     * Because there is no way to reliably detect Chrome's false positive 
-     *    without UA sniffing we have removed this test from Modernizr. We 
-     *    hope to add it in after Chrome 5 has been sunsetted. 
+     *    has since been recitifed: http://crbug.com/36415  
+     *
      * See also http://github.com/Modernizr/Modernizr/issues#issue/84
      *      and http://modernizr.github.com/Modernizr/touch.html
+     * We also test for Firefox 4 Multitouch Support
      */
      
     tests['touch'] = function() {
 
-        return ('ontouchstart' in window);
-        
+        return bool = ('ontouchstart' in window) || testMediaQuery('@media all and (-moz-touch-enabled)');
+
     };
 
 
@@ -507,20 +530,10 @@ window.Modernizr = (function(window,doc,undefined){
         // as a result, it 'recognizes' the syntax and throws a false positive
         // thus we must do a more thorough check:
         if (ret){
-            var st = document.createElement('style'),
-                div = doc.createElement('div');
-                
-            // webkit allows this media query to succeed only if the feature is enabled.    
-            // "@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){#modernizr{height:3px}}"
-            st.textContent = '@media ('+prefixes.join('transform-3d),(')+'modernizr){#modernizr{height:3px}}';
-            doc.getElementsByTagName('head')[0].appendChild(st);
-            div.id = 'modernizr';
-            docElement.appendChild(div);
-            
-            ret = div.offsetHeight === 3;
-            
-            st.parentNode.removeChild(st);
-            div.parentNode.removeChild(div);
+          
+          // webkit allows this media query to succeed only if the feature is enabled.    
+          // "@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){ ... }"      
+          ret = testMediaQuery('@media ('+prefixes.join('transform-3d),(')+'modernizr)');
         }
         return ret;
     };
