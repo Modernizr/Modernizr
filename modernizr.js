@@ -305,15 +305,14 @@ window.Modernizr = (function(window,doc,undefined){
      *    the Palm Pre / WebOS (touch) phones.
      * Additionally, chrome used to lie about its support on this, but that 
      *    has since been recitifed: http://crbug.com/36415  
-     *
-     * See also http://github.com/Modernizr/Modernizr/issues#issue/84
-     *      and http://modernizr.github.com/Modernizr/touch.html
      * We also test for Firefox 4 Multitouch Support
+     *
+     * See also http://modernizr.github.com/Modernizr/touch.html
      */
      
     tests['touch'] = function() {
 
-        return bool = ('ontouchstart' in window) || testMediaQuery('@media all and (-moz-touch-enabled)');
+        return ('ontouchstart' in window) || testMediaQuery('@media ('+prefixes.join('touch-enabled),(')+'modernizr)');
 
     };
 
