@@ -462,6 +462,11 @@ window.Modernizr = (function(window,doc,undefined){
         return test_props_all( 'boxShadow' );
     };
     
+    // Note: FF3.0 will false positive on this test 
+    tests['textshadow'] = function(){
+        return doc.createElement('div').style.textShadow === '';
+    };
+    
     
     tests['opacity'] = function() {
         // Browsers that actually have CSS Opacity implemented have done so
