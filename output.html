@@ -5,7 +5,8 @@
 	<title>Modernizr Test Suite</title>
 	<style media="screen">
 		body {
-			font: 14px/18px Inconsolata, Consolas, monospace;
+			font: 16px/20px Inconsolata, Consolas, monospace;
+			-moz-column-count: 2; -webkit-column-count: 2; column-count: 2;
 		}
 		li {
 			color: #900;
@@ -50,7 +51,7 @@ window.Modernizr && Modernizr._fontfaceready && Modernizr._fontfaceready(functio
 });
 
 
-document.write('At '+ (+new Date()) +', Modernizr took: '+ ((+new Date()) - start) + 'ms');
+document.write(/*'At '+ (+new Date()) + */' Modernizr took: '+ ((+new Date()) - start) + 'ms');
 
 /*
 Modernizr.addTest('datauri',function(){
@@ -71,6 +72,8 @@ Modernizr.addTest('datauri',function(){
 
 	<h1>Modernizr</h1>
 	
+	<a href="./test/index.html">View Test Suite</a>
+  
 	<ol >
 <script>
 (function(){
@@ -136,11 +139,9 @@ for (var feat in Modernizr) {
 
 
 <script>
-document.write('HTML element className = ' + document.documentElement.className);
+document.write('<p> HTML element className = ' + document.documentElement.className + '</p>');
 </script>
 
 
-<br>
-<a href="./test/index.html">View Test Suite</a> <input type="range">
 </body>
 </html>
