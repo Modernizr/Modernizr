@@ -692,8 +692,7 @@ window.Modernizr = (function(window,doc,undefined){
 
 
     tests['applicationcache'] =  function() {
-        var cache = window.applicationCache;
-        return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
+        return !!window.applicationCache;
     };
 
  
