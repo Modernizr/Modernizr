@@ -743,7 +743,8 @@ window.Modernizr = (function(window,doc,undefined){
         
         // Big thx to @miketaylr for the html5 forms expertise. http://miketaylr.com/
         ret['inputtypes'] = (function(props) {
-            for (var i = 0,bool,len=props.length;i<len;i++) {
+            for (var i = 0, bool, len=props.length ; i < len ; i++) {
+              
                 f.setAttribute('type', props[i]);
                 bool = f.type !== 'text';
                 
@@ -756,10 +757,11 @@ window.Modernizr = (function(window,doc,undefined){
                     if (/^range$/.test(f.type) && f.style.WebkitAppearance !== undefined){
                       
                       docElement.appendChild(f);
+                      var defaultView = doc.defaultView;
                       
                       // Safari 2-4 allows the smiley as a value, despite making a slider
-                      bool =  doc.defaultView.getComputedStyle && 
-                              doc.defaultView.getComputedStyle(f, null).WebkitAppearance !== 'textfield' && 
+                      bool =  defaultView.getComputedStyle && 
+                              defaultView.getComputedStyle(f, null).WebkitAppearance !== 'textfield' && 
                       
                               // mobile android web browser has false positive, so must
                               // check the height to see if the widget is actually there.
