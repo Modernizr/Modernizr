@@ -1,14 +1,16 @@
 /*!
- * Modernizr JavaScript library 1.6pre
- * http://www.modernizr.com/
+ * Modernizr v1.6pre
+ * http://www.modernizr.com
  *
- * Copyright (c) 2009-2010 Faruk Ates - http://farukat.es/
- * Dual-licensed under the BSD and MIT licenses.
+ * Developed by: 
+ * - Faruk Ates http://farukat.es/
+ * - Paul Irish http://paulirish.com/
+ *
+ * Copyright (c) 2009-2010
+ * Dual-licensed under the BSD or MIT licenses.
  * http://www.modernizr.com/license/
- *
- * Featuring major contributions by
- * Paul Irish  - http://paulirish.com
  */
+
  
 /*
  * Modernizr is a script that will detect native CSS3 and HTML5 features
