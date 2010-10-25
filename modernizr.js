@@ -1,10 +1,10 @@
 /*!
- * Modernizr v1.6pre
+ * Modernizr v1.6
  * http://www.modernizr.com
  *
  * Developed by: 
- * - Faruk Ates http://farukat.es/
- * - Paul Irish http://paulirish.com/
+ * - Faruk Ates  http://farukat.es/
+ * - Paul Irish  http://paulirish.com/
  *
  * Copyright (c) 2009-2010
  * Dual-licensed under the BSD or MIT licenses.
@@ -13,32 +13,32 @@
 
  
 /*
- * Modernizr is a script that will detect native CSS3 and HTML5 features
- * available in the current UA and provide an object containing all
+ * Modernizr is a script that detects native CSS3 and HTML5 features
+ * available in the current UA and provides an object containing all
  * features with a true/false value, depending on whether the UA has
  * native support for it or not.
  * 
- * In addition to that, Modernizr will add classes to the <html>
- * element of the page, one for each cutting-edge feature. If the UA
- * supports it, a class like "cssgradients" will be added. If not,
- * the class name will be "no-cssgradients". This allows for simple
- * if-conditionals in CSS styling, making it easily to have fine
- * control over the look and feel of your website.
+ * Modernizr will also add classes to the <html> element of the page,
+ * one for each feature it detects. If the UA supports it, a class
+ * like "cssgradients" will be added. If not, the class name will be
+ * "no-cssgradients". This allows for simple if-conditionals in your
+ * CSS, giving you fine control over the look & feel of your website.
  * 
  * @author        Faruk Ates
+ * @author        Paul Irish
  * @copyright     (c) 2009-2010 Faruk Ates.
- *
- * @contributor   Paul Irish
  * @contributor   Ben Alman
  */
 
 window.Modernizr = (function(window,doc,undefined){
     
-    var version = '1.6pre',
+    var version = '1.6',
     
     ret = {},
 
     /**
+     * !! DEPRECATED !!
+     * 
      * enableHTML5 is a private property for advanced use only. If enabled,
      * it will make Modernizr.init() run through a brief while() loop in
      * which it will create all HTML5 elements in the DOM to allow for
@@ -46,6 +46,9 @@ window.Modernizr = (function(window,doc,undefined){
      * non-HTML4 elements unless created in the DOM this way.
      * 
      * enableHTML5 is ON by default.
+     * 
+     * The enableHTML5 toggle option is DEPRECATED as per 1.6, and will be
+     * replaced in 2.0 in lieu of the modular, configurable nature of 2.0.
      */
     enableHTML5 = true,
     
@@ -68,10 +71,10 @@ window.Modernizr = (function(window,doc,undefined){
     
     tostring = Object.prototype.toString,
     
-    // list of property values to set for css tests. see ticket #21
+    // List of property values to set for css tests. See ticket #21
     prefixes = ' -webkit- -moz- -o- -ms- -khtml- '.split(' '),
 
-    // following spec is to expose vendor-specific style properties as:
+    // Following spec is to expose vendor-specific style properties as:
     //   elem.style.WebkitBorderRadius
     // and the following would be incorrect:
     //   elem.style.webkitBorderRadius
@@ -80,7 +83,7 @@ window.Modernizr = (function(window,doc,undefined){
     // Microsoft foregoes prefixes entirely <= IE8, but appears to 
     //   use a lowercase `ms` instead of the correct `Ms` in IE9
     
-    // more here: http://github.com/Modernizr/Modernizr/issues/issue/21
+    // More here: http://github.com/Modernizr/Modernizr/issues/issue/21
     domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
 
     ns = {'svg': 'http://www.w3.org/2000/svg'},
@@ -138,7 +141,7 @@ window.Modernizr = (function(window,doc,undefined){
         var isSupported = (eventName in element);
 
         if (!isSupported) {
-          // if it has no `setAttribute` (i.e. doesn't implement Node interface), try generic element
+          // If it has no `setAttribute` (i.e. doesn't implement Node interface), try generic element
           if (!element.setAttribute) {
             element = document.createElement('div');
           }
@@ -146,7 +149,7 @@ window.Modernizr = (function(window,doc,undefined){
             element.setAttribute(eventName, '');
             isSupported = typeof element[eventName] == 'function';
 
-            // if property was created, "remove it" (by setting value to `undefined`)
+            // If property was created, "remove it" (by setting value to `undefined`)
             if (typeof element[eventName] != 'undefined') {
               element[eventName] = undefined;
             }
@@ -305,11 +308,13 @@ window.Modernizr = (function(window,doc,undefined){
      *    touch events, which does not necessarily reflect a touchscreen
      *    device, as evidenced by tablets running Windows 7 or, alas,
      *    the Palm Pre / WebOS (touch) phones.
-     * Additionally, chrome used to lie about its support on this, but that 
-     *    has since been recitifed: http://crbug.com/36415  
-     * We also test for Firefox 4 Multitouch Support
+     *    
+     * Additionally, Chrome (desktop) used to lie about its support on this,
+     *    but that has since been rectified: http://crbug.com/36415
+     *    
+     * We also test for Firefox 4 Multitouch Support.
      *
-     * See also http://modernizr.github.com/Modernizr/touch.html
+     * For more info, see: http://modernizr.github.com/Modernizr/touch.html
      */
      
     tests['touch'] = function() {
@@ -331,18 +336,23 @@ window.Modernizr = (function(window,doc,undefined){
         return !!navigator.geolocation;
     };
 
+    // Per 1.6: 
+    // This used to be Modernizr.crosswindowmessaging but the longer
+    // name has been deprecated in favor of a shorter and property-matching one.
+    // The old API is still available in 1.6, but as of 2.0 will throw a warning,
+    // and in the first release thereafter disappear entirely.
     tests['postmessage'] = function() {
       return !!window.postMessage;
     };
 
-    // web sql database is tricky..
+    // Web SQL database detection is tricky:
+
+    // In chrome incognito mode, openDatabase is truthy, but using it will 
+    //   throw an exception: http://crbug.com/42380
+    // We can create a dummy database, but there is no way to delete it afterwards. 
     
-    // In chrome incognito mode, openDatabase is truthy, but using it
-    //   will throw an exception: http://crbug.com/42380
-    // we can create a dummy database, but there is no way to delete it afterwards. 
-    
-    // Meanwhile, a safari user can request to be prompted on any database creation.
-    //   If they do, any page with Modernizr will give them a prompt.
+    // Meanwhile, Safari users can get prompted on any database creation.
+    //   If they do, any page with Modernizr will give them a prompt:
     //   http://github.com/Modernizr/Modernizr/issues/closed#issue/113
     
     // We have chosen to allow the Chrome incognito false positive, so that Modernizr
@@ -361,10 +371,10 @@ window.Modernizr = (function(window,doc,undefined){
       return result;
     };
     
-    // Vendors have inconsistent prefixing with the experimental Indexed DB.
-    // Firefox is shipping indexedDB in FF4 as moz_indexedDB
-    // Webkit's implementation is accessible through webkitIndexedDB
-    // we test both styles.
+    // Vendors have inconsistent prefixing with the experimental Indexed DB:
+    // - Firefox is shipping indexedDB in FF4 as moz_indexedDB
+    // - Webkit's implementation is accessible through webkitIndexedDB
+    // We test both styles.
     tests['indexedDB'] = function(){
       for (var i = -1, len = domPrefixes.length; ++i < len; ){ 
         var prefix = domPrefixes[i].toLowerCase();
@@ -381,6 +391,11 @@ window.Modernizr = (function(window,doc,undefined){
       return isEventSupported('hashchange', window) && ( document.documentMode === undefined || document.documentMode > 7 );
     };
 
+    // Per 1.6: 
+    // This used to be Modernizr.historymanagement but the longer
+    // name has been deprecated in favor of a shorter and property-matching one.
+    // The old API is still available in 1.6, but as of 2.0 will throw a warning,
+    // and in the first release thereafter disappear entirely.
     tests['history'] = function() {
       return !!(window.history && history.pushState);
     };
@@ -394,7 +409,6 @@ window.Modernizr = (function(window,doc,undefined){
                 isEventSupported('dragend') &&
                 isEventSupported('drop');
     };
-
     
     tests['websockets'] = function(){
         return ('WebSocket' in window);
@@ -411,7 +425,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
     
     tests['hsla'] = function() {
-        // Same as rgba(), in fact, browsers re-map hsla() to rgba() internally..
+        // Same as rgba(), in fact, browsers re-map hsla() to rgba() internally,
         //   except IE9 who retains it as hsla
         
         set_css('background-color:hsla(120,40%,100%,.5)' );
@@ -427,7 +441,7 @@ window.Modernizr = (function(window,doc,undefined){
         set_css( 'background:url(//:),url(//:),red url(//:)' );
         
         // If the UA supports multiple backgrounds, there should be three occurrences
-        //  of the string "url(" in the return value for elem_style.background
+        //   of the string "url(" in the return value for elem_style.background
 
         return new RegExp("(url\\s*\\(.*?){3}").test(m_style.background);
     };
@@ -441,7 +455,7 @@ window.Modernizr = (function(window,doc,undefined){
     // on our modernizr element, but instead just testing undefined vs
     // empty string.
     // The legacy set_css_all calls will remain in the source 
-    // (however, commented) in for clarity, yet functionally they are 
+    // (however, commented) for clarity, yet functionally they are 
     // no longer needed.
     
 
@@ -455,7 +469,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
     
     
-    // super comprehensive table about all the unique implementations of 
+    // Super comprehensive table about all the unique implementations of 
     // border-radius: http://muddledramblings.com/table-of-css3-border-radius-compliance
     
     tests['borderradius'] = function() {
@@ -538,13 +552,13 @@ window.Modernizr = (function(window,doc,undefined){
         
         var ret = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
         
-        // webkit has 3d transforms disabled for chrome, though
-        //   it works fine in safari on leopard and snow leopard
-        // as a result, it 'recognizes' the syntax and throws a false positive
-        // thus we must do a more thorough check:
+        // Webkit’s 3D transforms are passed off to the browser's own graphics renderer.
+        //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome (yet?).
+        //   As a result, Webkit typically recognizes the syntax but will sometimes throw a false
+        //   positive, thus we must do a more thorough check:
         if (ret){
           
-          // webkit allows this media query to succeed only if the feature is enabled.    
+          // Webkit allows this media query to succeed only if the feature is enabled.    
           // "@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){ ... }"      
           ret = testMediaQuery('@media ('+prefixes.join('transform-3d),(')+'modernizr)');
         }
@@ -610,14 +624,14 @@ window.Modernizr = (function(window,doc,undefined){
     // These tests evaluate support of the video/audio elements, as well as
     // testing what types of content they support.
     //
-    // we're using the Boolean constructor here, so that we can extend the value
+    // We're using the Boolean constructor here, so that we can extend the value
     // e.g.  Modernizr.video     // true
     //       Modernizr.video.ogg // 'probably'
     //
-    // codec values from : http://github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
+    // Codec values from : http://github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
     //                     thx to NielsLeenheer and zcorpan
     
-    // note: in FF 3.5.1 and 3.5.0, "no" was a return value instead of empty string.
+    // Note: in FF 3.5.1 and 3.5.0, "no" was a return value instead of empty string.
     //   Modernizr does not normalize for that.
     
     tests['video'] = function() {
@@ -628,7 +642,7 @@ window.Modernizr = (function(window,doc,undefined){
             bool      = new Boolean(bool);  
             bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"');
             
-            // workaround required for ie9, who doesn't report video support without audio codec specified.
+            // Workaround required for IE9, which doesn't report video support without audio codec specified.
             //   bug 599718 @ msft connect
             var h264 = 'video/mp4; codecs="avc1.42E01E';
             bool.h264 = elem.canPlayType(h264 + '"') || elem.canPlayType(h264 + ', mp4a.40.2"');
@@ -647,7 +661,7 @@ window.Modernizr = (function(window,doc,undefined){
             bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"');
             bool.mp3  = elem.canPlayType('audio/mpeg;');
             
-            // mimetypes accepted: 
+            // Mimetypes accepted: 
             //   https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
             //   http://bit.ly/iphoneoscodecs
             bool.wav  = elem.canPlayType('audio/wav; codecs="1"');
@@ -657,12 +671,12 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
 
-    // both localStorage and sessionStorage are
-    // tested via the `in` operator because otherwise Firefox will
+    // Both localStorage and sessionStorage are
+    //   tested via the `in` operator because otherwise Firefox will
     //   throw an error: https://bugzilla.mozilla.org/show_bug.cgi?id=365772
-    // if cookies are disabled
+    //   if cookies are disabled
     
-    // they require try/catch because of possible firefox configuration:
+    // They require try/catch because of possible firefox configuration:
     //   http://github.com/Modernizr/Modernizr/issues#issue/92
     
     // FWIW miller device resolves to [object Storage] in all supporting browsers
@@ -698,7 +712,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
  
-    // thanks to Erik Dahlstrom
+    // Thanks to Erik Dahlstrom
     tests['svg'] = function(){
         return !!doc.createElementNS && !!doc.createElementNS(ns.svg, "svg").createSVGRect;
     };
@@ -709,20 +723,20 @@ window.Modernizr = (function(window,doc,undefined){
       return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
     };
 
-    // thanks to F1lt3r and lucideer
+    // Thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
     tests['smil'] = function(){
         return !!doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS(ns.svg,'animate')));
     };
 
     tests['svgclippaths'] = function(){
-        // returns a false positive in saf 3.2?
+        // Possibly returns a false positive in Safari 3.2?
         return !!doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS(ns.svg,'clipPath')));
     };
 
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
-    // hold this guy to execute in a moment.
+    // Hold this guy to execute in a moment.
     function webforms(){
     
         // Run through HTML5's new input attributes to see if the UA understands any.
@@ -743,14 +757,14 @@ window.Modernizr = (function(window,doc,undefined){
         //   true/false like all the other tests; instead, it returns an object
         //   containing each input type with its corresponding true/false value 
         
-        // Big thx to @miketaylr for the html5 forms expertise. http://miketaylr.com/
+        // Big thanks to @miketaylr for the html5 forms expertise. http://miketaylr.com/
         ret['inputtypes'] = (function(props) {
             for (var i = 0, bool, len=props.length ; i < len ; i++) {
               
                 f.setAttribute('type', props[i]);
                 bool = f.type !== 'text';
                 
-                // chrome likes to falsely purport support, so we feed it a textual value
+                // Chrome likes to falsely purport support, so we feed it a textual value;
                 // if that doesnt succeed then we know there's a custom UI
                 if (bool){  
 
@@ -765,26 +779,26 @@ window.Modernizr = (function(window,doc,undefined){
                       bool =  defaultView.getComputedStyle && 
                               defaultView.getComputedStyle(f, null).WebkitAppearance !== 'textfield' && 
                       
-                              // mobile android web browser has false positive, so must
+                              // Mobile android web browser has false positive, so must
                               // check the height to see if the widget is actually there.
                               (f.offsetHeight !== 0);
                               
                       docElement.removeChild(f);
                               
                     } else if (/^(search|tel)$/.test(f.type)){
-                      // spec doesnt define any special parsing or detectable UI 
+                      // Spec doesnt define any special parsing or detectable UI 
                       //   behaviors so we pass these through as true
                       
-                      // interestingly, opera fails the earlier test, so it doesn't
+                      // Interestingly, opera fails the earlier test, so it doesn't
                       //  even make it here.
                       
                     } else if (/^(url|email)$/.test(f.type)) {
 
-                      // real url and email support comes with prebaked validation.
+                      // Real url and email support comes with prebaked validation.
                       bool = f.checkValidity && f.checkValidity() === false;
                       
                     } else {
-                      // if the upgraded input compontent rejects the :) text, we got a winner
+                      // If the upgraded input compontent rejects the :) text, we got a winner
                       bool = f.value != smile;
                     }
                 }
@@ -798,7 +812,7 @@ window.Modernizr = (function(window,doc,undefined){
 
 
 
-    // end of test definitions
+    // End of test definitions
 
 
 
@@ -821,7 +835,7 @@ window.Modernizr = (function(window,doc,undefined){
     
 
    
-    // deprecated API is still accesible for now.
+    // Per 1.6: deprecated API is still accesible for now:
     ret.crosswindowmessaging = ret.postmessage;
     ret.historymanagement = ret.history;
 
@@ -876,4 +890,3 @@ window.Modernizr = (function(window,doc,undefined){
     return ret;
 
 })(this,this.document);
-    
