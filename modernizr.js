@@ -30,7 +30,7 @@
  * @contributor   Ben Alman
  */
 
-window.Modernizr = (function(window,doc,undefined){
+window.Modernizr = (function(window,document,undefined){
     
     var version = '1.6',
     
@@ -53,19 +53,19 @@ window.Modernizr = (function(window,doc,undefined){
     enableHTML5 = true,
     
     
-    docElement = doc.documentElement,
+    docElement = document.documentElement,
 
     /**
      * Create our "modernizr" element that we do most feature tests on.
      */
     mod = 'modernizr',
-    m = doc.createElement( mod ),
+    m = document.createElement( mod ),
     m_style = m.style,
 
     /**
      * Create the input element for various Web Forms feature tests.
      */
-    f = doc.createElement( 'input' ),
+    f = document.createElement( 'input' ),
     
     smile = ':)',
     
@@ -101,12 +101,12 @@ window.Modernizr = (function(window,doc,undefined){
     // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
     testMediaQuery = function(mq){
 
-      var st = doc.createElement('style'),
-          div = doc.createElement('div'),
+      var st = document.createElement('style'),
+          div = document.createElement('div'),
           ret;
 
       st.textContent = mq + '{#modernizr{height:3px}}';
-      (doc.head || doc.getElementsByTagName('head')[0]).appendChild(st);
+      (document.head || document.getElementsByTagName('head')[0]).appendChild(st);
       div.id = 'modernizr';
       docElement.appendChild(div);
 
@@ -134,7 +134,7 @@ window.Modernizr = (function(window,doc,undefined){
 
       function isEventSupported(eventName, element) {
 
-        element = element || doc.createElement(TAGNAMES[eventName] || 'div');
+        element = element || document.createElement(TAGNAMES[eventName] || 'div');
         eventName = 'on' + eventName;
 
         // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize", whereas `in` "catches" those
@@ -143,7 +143,7 @@ window.Modernizr = (function(window,doc,undefined){
         if (!isSupported) {
           // If it has no `setAttribute` (i.e. doesn't implement Node interface), try generic element
           if (!element.setAttribute) {
-            element = doc.createElement('div');
+            element = document.createElement('div');
           }
           if (element.setAttribute && element.removeAttribute) {
             element.setAttribute(eventName, '');
@@ -258,8 +258,8 @@ window.Modernizr = (function(window,doc,undefined){
             element.style.cssText = prefixes.join(property + ':' + value + ';') + (extra || '');
         }
 
-        var c = doc.createElement('div'),
-            elem = doc.createElement('div');
+        var c = document.createElement('div'),
+            elem = document.createElement('div');
 
         set_prefixed_value_css(c, 'display', 'box', 'width:42px;padding:0;');
         set_prefixed_property_css(elem, 'box-flex', '1', 'width:10px;');
@@ -279,18 +279,18 @@ window.Modernizr = (function(window,doc,undefined){
     // http://github.com/Modernizr/Modernizr/issues/issue/97/ 
     
     tests['canvas'] = function() {
-        var elem = doc.createElement( 'canvas' );
+        var elem = document.createElement( 'canvas' );
         return !!(elem.getContext && elem.getContext('2d'));
     };
     
     tests['canvastext'] = function() {
-        return !!(ret['canvas'] && typeof doc.createElement( 'canvas' ).getContext('2d').fillText == 'function');
+        return !!(ret['canvas'] && typeof document.createElement( 'canvas' ).getContext('2d').fillText == 'function');
     };
     
     
     tests['webgl'] = function(){
 
-        var elem = doc.createElement( 'canvas' ); 
+        var elem = document.createElement( 'canvas' ); 
         
         try {
             if (elem.getContext('webgl')){ return true; }
@@ -388,7 +388,7 @@ window.Modernizr = (function(window,doc,undefined){
     // documentMode logic from YUI to filter out IE8 Compat Mode
     //   which false positives.
     tests['hashchange'] = function() {
-      return isEventSupported('hashchange', window) && ( doc.documentMode === undefined || doc.documentMode > 7 );
+      return isEventSupported('hashchange', window) && ( document.documentMode === undefined || document.documentMode > 7 );
     };
 
     // Per 1.6: 
@@ -487,7 +487,7 @@ window.Modernizr = (function(window,doc,undefined){
     
     // Note: FF3.0 will false positive on this test 
     tests['textshadow'] = function(){
-        return doc.createElement('div').style.textShadow === '';
+        return document.createElement('div').style.textShadow === '';
     };
     
     
@@ -578,9 +578,9 @@ window.Modernizr = (function(window,doc,undefined){
 
         var 
         sheet,
-        head = doc.head || doc.getElementsByTagName('head')[0] || docElement,
-        style = doc.createElement("style"),
-        impl = doc.implementation || { hasFeature: function() { return false; } };
+        head = document.head || document.getElementsByTagName('head')[0] || docElement,
+        style = document.createElement("style"),
+        impl = document.implementation || { hasFeature: function() { return false; } };
         
         style.type = 'text/css';
         head.insertBefore(style, head.firstChild);
@@ -635,7 +635,7 @@ window.Modernizr = (function(window,doc,undefined){
     //   Modernizr does not normalize for that.
     
     tests['video'] = function() {
-        var elem = doc.createElement('video'),
+        var elem = document.createElement('video'),
             bool = !!elem.canPlayType;
         
         if (bool){  
@@ -653,7 +653,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
     
     tests['audio'] = function() {
-        var elem = doc.createElement('audio'),
+        var elem = document.createElement('audio'),
             bool = !!elem.canPlayType;
         
         if (bool){  
@@ -714,11 +714,11 @@ window.Modernizr = (function(window,doc,undefined){
  
     // Thanks to Erik Dahlstrom
     tests['svg'] = function(){
-        return !!doc.createElementNS && !!doc.createElementNS(ns.svg, "svg").createSVGRect;
+        return !!document.createElementNS && !!document.createElementNS(ns.svg, "svg").createSVGRect;
     };
 
     tests['inlinesvg'] = function() {
-      var div = doc.createElement('div');
+      var div = document.createElement('div');
       div.innerHTML = '<svg/>';
       return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
     };
@@ -726,12 +726,12 @@ window.Modernizr = (function(window,doc,undefined){
     // Thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
     tests['smil'] = function(){
-        return !!doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS(ns.svg,'animate')));
+        return !!document.createElementNS && /SVG/.test(tostring.call(document.createElementNS(ns.svg,'animate')));
     };
 
     tests['svgclippaths'] = function(){
         // Possibly returns a false positive in Safari 3.2?
-        return !!doc.createElementNS && /SVG/.test(tostring.call(doc.createElementNS(ns.svg,'clipPath')));
+        return !!document.createElementNS && /SVG/.test(tostring.call(document.createElementNS(ns.svg,'clipPath')));
     };
 
 
@@ -773,7 +773,7 @@ window.Modernizr = (function(window,doc,undefined){
                     if (/^range$/.test(f.type) && f.style.WebkitAppearance !== undefined){
                       
                       docElement.appendChild(f);
-                      var defaultView = doc.defaultView;
+                      var defaultView = document.defaultView;
                       
                       // Safari 2-4 allows the smiley as a value, despite making a slider
                       bool =  defaultView.getComputedStyle && 
@@ -870,11 +870,11 @@ window.Modernizr = (function(window,doc,undefined){
     // Enable HTML 5 elements for styling in IE. 
     // fyi: jscript version does not reflect trident version
     //      therefore ie9 in ie7 mode will still have a jScript v.9
-    if ( enableHTML5 && window.attachEvent && (function(){ var elem = doc.createElement("div");
+    if ( enableHTML5 && window.attachEvent && (function(){ var elem = document.createElement("div");
                                       elem.innerHTML = "<elem></elem>";
                                       return elem.childNodes.length !== 1; })()) {
         // iepp v1.6 by @jon_neal : code.google.com/p/ie-print-protector
-        (function(f,l){var j="abbr|article|aside|audio|canvas|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",n=j.split("|"),k=n.length,g=new RegExp("<(/*)("+j+")","gi"),h=new RegExp("\\b("+j+")\\b(?!.*[;}])","gi"),m=l.createDocumentFragment(),d=l.documentElement,i=d.firstChild,b=l.createElement("style"),e=l.createElement("body");b.media="all";function c(p){var o=-1;while(++o<k){p.createElement(n[o])}}c(l);c(m);function a(t,s){var r=t.length,q=-1,o,p=[];while(++q<r){o=t[q];s=o.media||s;p.push(a(o.imports,s));p.push(o.cssText)}return p.join("")}f.attachEvent("onbeforeprint",function(){var r=-1;while(++r<k){var o=l.getElementsByTagName(n[r]),q=o.length,p=-1;while(++p<q){if(o[p].className.indexOf("iepp_")<0){o[p].className+=" iepp_"+n[r]}}}i.insertBefore(b,i.firstChild);b.styleSheet.cssText=a(l.styleSheets,"all").replace(h,".iepp_$1");m.appendChild(l.body);d.appendChild(e);e.innerHTML=m.firstChild.innerHTML.replace(g,"<$1bdo")});f.attachEvent("onafterprint",function(){e.innerHTML="";d.removeChild(e);i.removeChild(b);d.appendChild(m.firstChild)})})(this,doc);
+        (function(f,l){var j="abbr|article|aside|audio|canvas|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",n=j.split("|"),k=n.length,g=new RegExp("<(/*)("+j+")","gi"),h=new RegExp("\\b("+j+")\\b(?!.*[;}])","gi"),m=l.createDocumentFragment(),d=l.documentElement,i=d.firstChild,b=l.createElement("style"),e=l.createElement("body");b.media="all";function c(p){var o=-1;while(++o<k){p.createElement(n[o])}}c(l);c(m);function a(t,s){var r=t.length,q=-1,o,p=[];while(++q<r){o=t[q];s=o.media||s;p.push(a(o.imports,s));p.push(o.cssText)}return p.join("")}f.attachEvent("onbeforeprint",function(){var r=-1;while(++r<k){var o=l.getElementsByTagName(n[r]),q=o.length,p=-1;while(++p<q){if(o[p].className.indexOf("iepp_")<0){o[p].className+=" iepp_"+n[r]}}}i.insertBefore(b,i.firstChild);b.styleSheet.cssText=a(l.styleSheets,"all").replace(h,".iepp_$1");m.appendChild(l.body);d.appendChild(e);e.innerHTML=m.firstChild.innerHTML.replace(g,"<$1bdo")});f.attachEvent("onafterprint",function(){e.innerHTML="";d.removeChild(e);i.removeChild(b);d.appendChild(m.firstChild)})})(this,document);
     }
 
     // Assign private properties to the return object with prefix
