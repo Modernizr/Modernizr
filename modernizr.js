@@ -54,6 +54,7 @@ window.Modernizr = (function(window,document,undefined){
     
     
     docElement = document.documentElement,
+    docHead = document.getElementsByTagName('head')[0],
 
     /**
      * Create our "modernizr" element that we do most feature tests on.
@@ -106,7 +107,7 @@ window.Modernizr = (function(window,document,undefined){
           ret;
 
       st.textContent = mq + '{#modernizr{height:3px}}';
-      (document.head || document.getElementsByTagName('head')[0]).appendChild(st);
+      docHead.appendChild(st);
       div.id = 'modernizr';
       docElement.appendChild(div);
 
@@ -585,7 +586,7 @@ window.Modernizr = (function(window,document,undefined){
 
         var 
         sheet,
-        head = document.head || document.getElementsByTagName('head')[0] || docElement,
+        head = docHead || docElement,
         style = document.createElement("style"),
         impl = document.implementation || { hasFeature: function() { return false; } };
         
