@@ -148,10 +148,10 @@ window.Modernizr = (function(window,document,undefined){
           }
           if (element.setAttribute && element.removeAttribute) {
             element.setAttribute(eventName, '');
-            isSupported = is(element[eventName], 'function');
+            isSupported = isFunction(element[eventName]);
 
             // If property was created, "remove it" (by setting value to `undefined`)
-            if (!is(element[eventName], 'undefined')) {
+            if (isDefined(element[eventName])) {
               element[eventName] = undefined;
             }
             element.removeAttribute(eventName);
@@ -167,14 +167,14 @@ window.Modernizr = (function(window,document,undefined){
     
     // hasOwnProperty shim by kangax needed for Safari 2.0 support
     var _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
-    if (!is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined')) {
+    if (isDefined(_hasOwnProperty) && isDefined(_hasOwnProperty.call)) {
       hasOwnProperty = function (object, property) {
         return _hasOwnProperty.call(object, property);
       };
     }
     else {
       hasOwnProperty = function (object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
-        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
+        return ((property in object) && !isDefined(object.constructor.prototype[property]));
       };
     }
     
@@ -197,6 +197,20 @@ window.Modernizr = (function(window,document,undefined){
      */
     function is( obj, type ) {
         return typeof obj === type;
+    }
+
+    /**
+     * isDefined returns a boolean for if typeof obj is 'undefined'.
+     */
+    function isDefined( obj ) {
+        return !is(obj, 'undefined');
+    }
+
+    /**
+     * isFunction returns a boolean for if typeof obj is 'function'.
+     */
+    function isFunction( obj ) {
+        return is(obj, 'function');
     }
 
     /**
@@ -292,7 +306,7 @@ window.Modernizr = (function(window,document,undefined){
     };
     
     tests['canvastext'] = function() {
-        return !!(ret['canvas'] && is(document.createElement( 'canvas' ).getContext('2d').fillText, 'function'));
+        return !!(ret['canvas'] && isFunction(document.createElement( 'canvas' ).getContext('2d').fillText));
     };
     
     
