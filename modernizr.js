@@ -147,10 +147,10 @@ window.Modernizr = (function(window,document,undefined){
           }
           if (element.setAttribute && element.removeAttribute) {
             element.setAttribute(eventName, '');
-            isSupported = typeof element[eventName] == 'function';
+            isSupported = is(element[eventName], 'function');
 
             // If property was created, "remove it" (by setting value to `undefined`)
-            if (typeof element[eventName] != 'undefined') {
+            if (!is(element[eventName], 'undefined')) {
               element[eventName] = undefined;
             }
             element.removeAttribute(eventName);
@@ -166,14 +166,14 @@ window.Modernizr = (function(window,document,undefined){
     
     // hasOwnProperty shim by kangax needed for Safari 2.0 support
     var _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
-    if (typeof _hasOwnProperty !== 'undefined' && typeof _hasOwnProperty.call !== 'undefined') {
+    if (!is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined')) {
       hasOwnProperty = function (object, property) {
         return _hasOwnProperty.call(object, property);
       };
     }
     else {
       hasOwnProperty = function (object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
-        return ((property in object) && typeof object.constructor.prototype[property] === 'undefined');
+        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
       };
     }
     
@@ -189,6 +189,13 @@ window.Modernizr = (function(window,document,undefined){
      */
     function set_css_all( str1, str2 ) {
         return set_css(prefixes.join(str1 + ';') + ( str2 || '' ));
+    }
+
+    /**
+     * is returns a boolean for if typeof obj is exactly type.
+     */
+    function is( obj, type ) {
+        return typeof obj === type;
     }
 
     /**
@@ -284,7 +291,7 @@ window.Modernizr = (function(window,document,undefined){
     };
     
     tests['canvastext'] = function() {
-        return !!(ret['canvas'] && typeof document.createElement( 'canvas' ).getContext('2d').fillText == 'function');
+        return !!(ret['canvas'] && is(document.createElement( 'canvas' ).getContext('2d').fillText, 'function'));
     };
     
     
