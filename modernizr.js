@@ -101,7 +101,7 @@ window.Modernizr = (function(window,doc,undefined){
     // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
     testMediaQuery = function(mq){
 
-      var st = document.createElement('style'),
+      var st = doc.createElement('style'),
           div = doc.createElement('div'),
           ret;
 
@@ -134,7 +134,7 @@ window.Modernizr = (function(window,doc,undefined){
 
       function isEventSupported(eventName, element) {
 
-        element = element || document.createElement(TAGNAMES[eventName] || 'div');
+        element = element || doc.createElement(TAGNAMES[eventName] || 'div');
         eventName = 'on' + eventName;
 
         // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize", whereas `in` "catches" those
@@ -143,7 +143,7 @@ window.Modernizr = (function(window,doc,undefined){
         if (!isSupported) {
           // If it has no `setAttribute` (i.e. doesn't implement Node interface), try generic element
           if (!element.setAttribute) {
-            element = document.createElement('div');
+            element = doc.createElement('div');
           }
           if (element.setAttribute && element.removeAttribute) {
             element.setAttribute(eventName, '');
@@ -388,7 +388,7 @@ window.Modernizr = (function(window,doc,undefined){
     // documentMode logic from YUI to filter out IE8 Compat Mode
     //   which false positives.
     tests['hashchange'] = function() {
-      return isEventSupported('hashchange', window) && ( document.documentMode === undefined || document.documentMode > 7 );
+      return isEventSupported('hashchange', window) && ( doc.documentMode === undefined || doc.documentMode > 7 );
     };
 
     // Per 1.6: 
@@ -718,7 +718,7 @@ window.Modernizr = (function(window,doc,undefined){
     };
 
     tests['inlinesvg'] = function() {
-      var div = document.createElement('div');
+      var div = doc.createElement('div');
       div.innerHTML = '<svg/>';
       return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
     };
@@ -874,7 +874,7 @@ window.Modernizr = (function(window,doc,undefined){
                                       elem.innerHTML = "<elem></elem>";
                                       return elem.childNodes.length !== 1; })()) {
         // iepp v1.6 by @jon_neal : code.google.com/p/ie-print-protector
-        (function(f,l){var j="abbr|article|aside|audio|canvas|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",n=j.split("|"),k=n.length,g=new RegExp("<(/*)("+j+")","gi"),h=new RegExp("\\b("+j+")\\b(?!.*[;}])","gi"),m=l.createDocumentFragment(),d=l.documentElement,i=d.firstChild,b=l.createElement("style"),e=l.createElement("body");b.media="all";function c(p){var o=-1;while(++o<k){p.createElement(n[o])}}c(l);c(m);function a(t,s){var r=t.length,q=-1,o,p=[];while(++q<r){o=t[q];s=o.media||s;p.push(a(o.imports,s));p.push(o.cssText)}return p.join("")}f.attachEvent("onbeforeprint",function(){var r=-1;while(++r<k){var o=l.getElementsByTagName(n[r]),q=o.length,p=-1;while(++p<q){if(o[p].className.indexOf("iepp_")<0){o[p].className+=" iepp_"+n[r]}}}i.insertBefore(b,i.firstChild);b.styleSheet.cssText=a(l.styleSheets,"all").replace(h,".iepp_$1");m.appendChild(l.body);d.appendChild(e);e.innerHTML=m.firstChild.innerHTML.replace(g,"<$1bdo")});f.attachEvent("onafterprint",function(){e.innerHTML="";d.removeChild(e);i.removeChild(b);d.appendChild(m.firstChild)})})(this,document);
+        (function(f,l){var j="abbr|article|aside|audio|canvas|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",n=j.split("|"),k=n.length,g=new RegExp("<(/*)("+j+")","gi"),h=new RegExp("\\b("+j+")\\b(?!.*[;}])","gi"),m=l.createDocumentFragment(),d=l.documentElement,i=d.firstChild,b=l.createElement("style"),e=l.createElement("body");b.media="all";function c(p){var o=-1;while(++o<k){p.createElement(n[o])}}c(l);c(m);function a(t,s){var r=t.length,q=-1,o,p=[];while(++q<r){o=t[q];s=o.media||s;p.push(a(o.imports,s));p.push(o.cssText)}return p.join("")}f.attachEvent("onbeforeprint",function(){var r=-1;while(++r<k){var o=l.getElementsByTagName(n[r]),q=o.length,p=-1;while(++p<q){if(o[p].className.indexOf("iepp_")<0){o[p].className+=" iepp_"+n[r]}}}i.insertBefore(b,i.firstChild);b.styleSheet.cssText=a(l.styleSheets,"all").replace(h,".iepp_$1");m.appendChild(l.body);d.appendChild(e);e.innerHTML=m.firstChild.innerHTML.replace(g,"<$1bdo")});f.attachEvent("onafterprint",function(){e.innerHTML="";d.removeChild(e);i.removeChild(b);d.appendChild(m.firstChild)})})(this,doc);
     }
 
     // Assign private properties to the return object with prefix
