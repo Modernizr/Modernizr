@@ -496,9 +496,12 @@ window.Modernizr = (function(window,doc,undefined){
         //  according to spec, which means their return values are within the
         //  range of [0.0,1.0] - including the leading zero.
         
-        set_css_all( 'opacity:.5' );
+        set_css_all( 'opacity:.55' );
         
-        return contains( m_style.opacity, '0.5' );
+        // The non-literal . in this regex is intentional:
+        //   German Chrome returns this value as 0,55
+        // https://github.com/Modernizr/Modernizr/issues/#issue/59/comment/516632
+        return /^0.55$/.test(m_style.opacity);
     };
     
     
