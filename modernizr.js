@@ -409,13 +409,7 @@ window.Modernizr = (function(window,document,undefined){
     };
 
     tests['draganddrop'] = function() {
-        return  isEventSupported('drag') && 
-                isEventSupported('dragstart') && 
-                isEventSupported('dragenter') &&
-                isEventSupported('dragover') &&
-                isEventSupported('dragleave') &&
-                isEventSupported('dragend') &&
-                isEventSupported('drop');
+        return isEventSupported('dragstart') && isEventSupported('drop');
     };
     
     tests['websockets'] = function(){
