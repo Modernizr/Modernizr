@@ -54,7 +54,7 @@ window.Modernizr = (function(window,document,undefined){
     
     
     docElement = document.documentElement,
-    docHead = document.getElementsByTagName('head')[0],
+    docHead = document.head || document.getElementsByTagName('head')[0],
 
     /**
      * Create our "modernizr" element that we do most feature tests on.
