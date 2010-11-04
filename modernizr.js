@@ -60,8 +60,8 @@ window.Modernizr = (function(window,document,undefined){
      * Create our "modernizr" element that we do most feature tests on.
      */
     mod = 'modernizr',
-    m = document.createElement( mod ),
-    m_style = m.style,
+    modElem = document.createElement( mod ),
+    m_style = modElem.style,
 
     /**
      * Create the input element for various Web Forms feature tests.
@@ -213,7 +213,7 @@ window.Modernizr = (function(window,document,undefined){
      */
     function test_props( props, callback ) {
         for ( var i in props ) {
-            if ( m_style[ props[i] ] !== undefined && ( !callback || callback( props[i], m ) ) ) {
+            if ( m_style[ props[i] ] !== undefined && ( !callback || callback( props[i], modElem ) ) ) {
                 return true;
             }
         }
@@ -870,7 +870,7 @@ window.Modernizr = (function(window,document,undefined){
      * Reset m.style.cssText to nothing to reduce memory footprint.
      */
     set_css( '' );
-    m = f = null;
+    modElem = f = null;
 
     // Enable HTML 5 elements for styling in IE. 
     // fyi: jscript version does not reflect trident version
