@@ -66,7 +66,7 @@ window.Modernizr = (function(window,document,undefined){
     /**
      * Create the input element for various Web Forms feature tests.
      */
-    f = document.createElement( 'input' ),
+    inputElem = document.createElement( 'input' ),
     
     smile = ':)',
     
@@ -751,8 +751,8 @@ window.Modernizr = (function(window,document,undefined){
         //   http://miketaylr.com/code/input-type-attr.html
         // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
         ret['input'] = (function(props) {
-            for (var i = 0,len=props.length;i<len;i++) {
-                attrs[ props[i] ] = !!(props[i] in f);
+            for (var i = 0, len = props.length; i<len; i++) {
+                attrs[ props[i] ] = !!(props[i] in inputElem);
             }
             return attrs;
         })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
@@ -766,45 +766,45 @@ window.Modernizr = (function(window,document,undefined){
         ret['inputtypes'] = (function(props) {
             for (var i = 0, bool, len=props.length ; i < len ; i++) {
               
-                f.setAttribute('type', props[i]);
-                bool = f.type !== 'text';
+                inputElem.setAttribute('type', props[i]);
+                bool = inputElem.type !== 'text';
                 
                 // Chrome likes to falsely purport support, so we feed it a textual value;
                 // if that doesnt succeed then we know there's a custom UI
                 if (bool){  
 
-                    f.value = smile;
+                    inputElem.value = smile;
      
-                    if (/^range$/.test(f.type) && f.style.WebkitAppearance !== undefined){
+                    if (/^range$/.test(inputElem.type) && inputElem.style.WebkitAppearance !== undefined){
                       
-                      docElement.appendChild(f);
+                      docElement.appendChild(inputElem);
                       var defaultView = document.defaultView;
                       
                       // Safari 2-4 allows the smiley as a value, despite making a slider
                       bool =  defaultView.getComputedStyle && 
-                              defaultView.getComputedStyle(f, null).WebkitAppearance !== 'textfield' && 
+                              defaultView.getComputedStyle(inputElem, null).WebkitAppearance !== 'textfield' && 
                       
                               // Mobile android web browser has false positive, so must
                               // check the height to see if the widget is actually there.
-                              (f.offsetHeight !== 0);
+                              (inputElem.offsetHeight !== 0);
                               
-                      docElement.removeChild(f);
+                      docElement.removeChild(inputElem);
                               
-                    } else if (/^(search|tel)$/.test(f.type)){
+                    } else if (/^(search|tel)$/.test(inputElem.type)){
                       // Spec doesnt define any special parsing or detectable UI 
                       //   behaviors so we pass these through as true
                       
                       // Interestingly, opera fails the earlier test, so it doesn't
                       //  even make it here.
                       
-                    } else if (/^(url|email)$/.test(f.type)) {
+                    } else if (/^(url|email)$/.test(inputElem.type)) {
 
                       // Real url and email support comes with prebaked validation.
-                      bool = f.checkValidity && f.checkValidity() === false;
+                      bool = inputElem.checkValidity && inputElem.checkValidity() === false;
                       
                     } else {
                       // If the upgraded input compontent rejects the :) text, we got a winner
-                      bool = f.value != smile;
+                      bool = inputElem.value != smile;
                     }
                 }
                 
