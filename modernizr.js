@@ -815,35 +815,55 @@ window.Modernizr = (function(window,document,undefined){
 
     }
 
-
-
     // End of test definitions
-
-
-
-    // Run through all tests and detect their support in the current UA.
-    // todo: hypothetically we could be doing an array of tests and use a basic loop here.
-    for ( var feature in tests ) {
-        if ( hasOwnProperty( tests, feature ) ) {
-            // run the test, throw the return value into the Modernizr,
-            //   then based on that boolean, define an appropriate className
-            //   and push it into an array of classes we'll join later.
-            featurename  = feature.toLowerCase();
-            ret[ featurename ] = tests[ feature ]();
-
-            classes.push( ( ret[ featurename ] ? '' : 'no-' ) + featurename );
+    
+    
+    // Try to load cached tests
+    var wasCached = false;
+    try {
+        var cache = JSON.parse(window.localStorage.modernizrCache);
+        if ( cache.userAgent == navigator.userAgent && cache.version == version ) {
+            // i.e. jQuery.extend(ret, cache.ret);
+            for ( var feature in cache.ret ) {
+                if ( hasOwnProperty(cache.ret, feature) ) {
+                    ret[ feature ] = cache.ret[ feature ];
+                }
+            }
+            wasCached = true;
+        }
+        // Remove the cache from storage since it is stale
+        else {
+            delete window.localStorage.modernizrCache;
         }
     }
+    catch(e) {}
     
-    // input tests need to run.
-    if (!ret.input) webforms();
+    // Evaluate the tests
+    if ( !wasCached ) {
+        // Run through all tests and detect their support in the current UA.
+        // todo: hypothetically we could be doing an array of tests and use a basic loop here.
+        for ( var feature in tests ) {
+            if ( hasOwnProperty( tests, feature ) ) {
+                // run the test, throw the return value into the Modernizr,
+                //   then based on that boolean
+                featurename = feature.toLowerCase();
+                ret[ feature.toLowerCase() ] = tests[ feature ]();
+            }
+        }
+        
+        // input tests need to run.
+        if (!ret.input) webforms();
+    }
     
-
-   
-    // Per 1.6: deprecated API is still accesible for now:
-    ret.crosswindowmessaging = ret.postmessage;
-    ret.historymanagement = ret.history;
-
+    // Save the results in a cache
+    try {
+        window.localStorage.modernizrCache = JSON.stringify({
+            userAgent: navigator.userAgent,
+            version: version,
+            ret: ret
+        });
+    }
+    catch(e){}
 
 
     /**
@@ -960,15 +980,25 @@ window.Modernizr = (function(window,document,undefined){
         })(window, document);
     }
 
-    // Assign private properties to the return object with prefix
-    ret._enableHTML5     = enableHTML5;
-    ret._version         = version;
-
     // Remove "no-js" class from <html> element, if it exists:
     docElement.className=docElement.className.replace(/\bno-js\b/,'') + ' js';
 
     // Add the new classes to the <html> element.
+    for ( var feature in ret ) {
+        if ( hasOwnProperty( ret, feature ) && feature.substr(0, 1) != '_' && typeof ret[ feature ] == 'boolean' ) {
+            featurename = feature.toLowerCase()
+            classes.push( ( ret[ featurename ] ? '' : 'no-' ) + featurename );
+        }
+    }
     docElement.className += ' ' + classes.join( ' ' );
+
+    // Assign private properties to the return object with prefix
+    ret._enableHTML5     = enableHTML5;
+    ret._version         = version;
+    
+    // Per 1.6: deprecated API is still accesible for now:
+    ret.crosswindowmessaging = ret.postmessage;
+    ret.historymanagement = ret.history;
     
     return ret;
 
