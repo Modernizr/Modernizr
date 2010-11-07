@@ -871,7 +871,7 @@ window.Modernizr = (function(window,document,undefined){
     ret.addTest = function (feature, test) {
       feature = feature.toLowerCase();
       
-      if (ret[ feature ]) {
+      if (ret[ feature ] === undefined) {
         return; // quit if you're trying to overwrite an existing test
       } 
       test = !!(test());
