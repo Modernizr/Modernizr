@@ -6,7 +6,7 @@ window.TEST = {
   inputs    : ['input','inputtypes'],
   audvid    : ['video','audio'],
   API       : ['addTest'],
-  privates  : ['_enableHTML5','_version','_fontfaceready'],
+  privates  : ['_enableHTML5','_version'],
   deprecated : [
                 { oldish : 'crosswindowmessaging', newish : 'postmessage'},
                 { oldish : 'historymanagement', newish : 'history'},
@@ -28,8 +28,6 @@ window.TEST = {
     return str.replace(/^\s*/, "").replace(/\s*$/, "");
   }
 };
-
-
 
 
 test("globals set up",2, function() {
@@ -107,25 +105,22 @@ test('html shim worked', function(){
 test('html classes are looking good',function(){
   
   var classes = TEST.trim(document.documentElement.className).split(/\s+/);
-  
-  var modprops = getMembers(Modernizr).length, 
-      newprops = modprops;
+  var newprops = getMembers(Modernizr).length;
 
   // decrement for the properties that are private
   for (var i = -1, len = TEST.privates.length; ++i < len;){
-    if (Modernizr[TEST.privates[i]] != undefined) newprops--;
+    if (Modernizr[TEST.privates[i]] !== undefined) newprops--;
   }
   
   // decrement for the non-boolean objects
   for (var i = -1, len = TEST.inputs.length; ++i < len;){
-    if (Modernizr[TEST.inputs[i]] != undefined) newprops--;
+    if (Modernizr[TEST.inputs[i]] !== undefined) newprops--;
   }
   
   // decrement for deprecated ones.
   $.each( TEST.deprecated, function(key, val){
     newprops--;
   });
-  
   
   equals(classes.length,newprops,'equal number of classes and global object props');
   
@@ -142,7 +137,7 @@ test('html classes are looking good',function(){
             aclass + ' is correctly false in the classes and object')
             
     } else {
-      equals(Modernizr[aclass], true, 
+      equals(!!Modernizr[aclass], true, 
              aclass + ' is correctly true in the classes and object')
     }
   }
@@ -227,10 +222,9 @@ test('Modernizr.audio and Modernizr.video',function(){
   for (var i = -1, len = TEST.audvid.length; ++i < len;){
     var prop = TEST.audvid[i];
   
-    if (Modernizr[prop].toString() == 'true'){
+    if ( !!Modernizr[prop] ){
       
       ok(Modernizr[prop],                             'Modernizr.'+prop+' is truthy.');
-      equals(Modernizr[prop] == true,true,            'Modernizr.'+prop+' is == true')
       equals(typeof Modernizr[prop] === 'object',true,'Moderizr.'+prop+' is truly an object');
       equals(Modernizr[prop] !== true,true,           'Modernizr.'+prop+' is !== true')
       
@@ -239,30 +233,6 @@ test('Modernizr.audio and Modernizr.video',function(){
       equals(Modernizr[prop] != true,true,            'Modernizr.'+prop+' is != true')
     }
   }
-  
-  
-})
-
-asyncTest('async @font-face test',4,function(){
-  
-  // we do this to verify our callback indeed will run.
-  start();
-  ok(Modernizr._fontfaceready,'passing a method to Modernizr._fontfaceready')
-  stop();
-  
-  Modernizr._fontfaceready(function(bool){
-    
-    ok(bool === true || bool === false,'passed argument is a boolean');
-    equals(bool,Modernizr.fontface,'Modernizr prop matches passed arg');
-    
-    var expectedclass = (Modernizr.fontface ? '' : 'no-') + 'fontface';
-    
-    ok(document.documentElement.className.indexOf(' '+expectedclass) >= 0,
-       'correct class added to documentElement');
-       
-       
-    start();
-  });
   
   
 })
