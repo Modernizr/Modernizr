@@ -32,7 +32,11 @@
     
     window.__globals = getMembers(window);
     
-
+	// Delete the cached results if there are any
+	try {
+	  delete window.localStorage.modernizrCache;
+	}
+	catch(e){}
 	</script>
 	<script type="text/javascript" src="../modernizr.js"></script>
 	<script type="text/javascript" src="unit.js"></script>
