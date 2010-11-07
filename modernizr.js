@@ -634,39 +634,43 @@ window.Modernizr = (function(window,document,undefined){
     //   Modernizr does not normalize for that.
     
     tests['video'] = function() {
-        var elem = document.createElement('video'),
-            bool = !!elem.canPlayType;
+        var elem = document.createElement('video')
+        if (!elem.canPlayType) {
+            return false;
+        }
         
-        if (bool){  
-            bool      = new Boolean(bool);  
-            bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"');
+        var h264 = 'video/mp4; codecs="avc1.42E01E';
+        return {
+            _isClassName: true,
+            
+            ogg: elem.canPlayType('video/ogg; codecs="theora"'),
             
             // Workaround required for IE9, which doesn't report video support without audio codec specified.
             //   bug 599718 @ msft connect
-            var h264 = 'video/mp4; codecs="avc1.42E01E';
-            bool.h264 = elem.canPlayType(h264 + '"') || elem.canPlayType(h264 + ', mp4a.40.2"');
+            h264: elem.canPlayType(h264 + '"') || elem.canPlayType(h264 + ', mp4a.40.2"'),
             
-            bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
-        }
-        return bool;
+            webm: elem.canPlayType('video/webm; codecs="vp8, vorbis"')
+        };
     };
     
     tests['audio'] = function() {
-        var elem = document.createElement('audio'),
-            bool = !!elem.canPlayType;
+        var elem = document.createElement('audio');
+        if (!elem.canPlayType) {
+            return false;
+        }
         
-        if (bool){  
-            bool      = new Boolean(bool);  
-            bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"');
-            bool.mp3  = elem.canPlayType('audio/mpeg;');
+        return {
+            _isClassName: true,
+            
+            ogg: elem.canPlayType('audio/ogg; codecs="vorbis"'),
+            mp3: elem.canPlayType('audio/mpeg;'),
             
             // Mimetypes accepted: 
             //   https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
             //   http://bit.ly/iphoneoscodecs
-            bool.wav  = elem.canPlayType('audio/wav; codecs="1"');
-            bool.m4a  = elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;');
-        }
-        return bool;
+            wav: elem.canPlayType('audio/wav; codecs="1"'),
+            m4a: elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;')
+        };
     };
 
 
@@ -871,8 +875,8 @@ window.Modernizr = (function(window,document,undefined){
     ret.addTest = function (feature, test) {
       feature = feature.toLowerCase();
       
-      if (ret[ feature ] === undefined) {
-        return; // quit if you're trying to overwrite an existing test
+      if (ret[ feature ] !== undefined) {
+        return ret; // quit if you're trying to overwrite an existing test
       } 
       test = !!(test());
       docElement.className += ' ' + (test ? '' : 'no-') + feature; 
@@ -974,12 +978,13 @@ window.Modernizr = (function(window,document,undefined){
         })(window, document);
     }
 
-    // Remove "no-js" class from <html> element, if it exists:
+    // Replace "no-js" class with "js" on <html> element, if it exists:
+    //docElement.className = docElement.className.replace(/(\b|\s)no(?=-js(\b|\s))/, '$1');
     docElement.className=docElement.className.replace(/\bno-js\b/,'') + ' js';
 
     // Add the new classes to the <html> element.
     for ( var feature in ret ) {
-        if ( hasOwnProperty( ret, feature ) && typeof ret[ feature ] == 'boolean' ) {
+        if ( hasOwnProperty( ret, feature ) && (typeof ret[ feature ] == 'boolean' || ret[ feature ]._isClassName) ) {
             featurename = feature.toLowerCase()
             classes.push( ( ret[ featurename ] ? '' : 'no-' ) + featurename );
         }
