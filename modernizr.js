@@ -614,12 +614,6 @@ window.Modernizr = (function(window,document,undefined){
                             .replace(/\r+|\n+/g, '')
                             .indexOf(rule.split(' ')[0]) === 0;
                 };
-
-
-        // DEPRECATED - allow for a callback
-        ret._fontfaceready = function(fn){
-          fn(ret.fontface);
-        };
         
         return supportAtRule('@font-face { font-family: "font"; src: "font.ttf"; }');
         
@@ -985,7 +979,7 @@ window.Modernizr = (function(window,document,undefined){
 
     // Add the new classes to the <html> element.
     for ( var feature in ret ) {
-        if ( hasOwnProperty( ret, feature ) && feature.substr(0, 1) != '_' && typeof ret[ feature ] == 'boolean' ) {
+        if ( hasOwnProperty( ret, feature ) && typeof ret[ feature ] == 'boolean' ) {
             featurename = feature.toLowerCase()
             classes.push( ( ret[ featurename ] ? '' : 'no-' ) + featurename );
         }
