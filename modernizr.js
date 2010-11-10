@@ -845,18 +845,17 @@ window.Modernizr = (function(window,document,undefined){
         
         // input tests need to run.
         if (!ret.input) webforms();
-    }
     
-    // Save the results in a cache
-    try {
-        window.localStorage.modernizrCache = JSON.stringify({
-            userAgent: navigator.userAgent,
-            version: version,
-            features: ret
-        });
+        // Save the results in a cache
+        try {
+            window.localStorage.modernizrCache = JSON.stringify({
+                userAgent: navigator.userAgent,
+                version: version,
+                features: ret
+            });
+        }
+        catch(e){}
     }
-    catch(e){}
-
 
     /**
      * Addtest allows the user to define their own feature tests
