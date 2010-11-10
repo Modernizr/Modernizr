@@ -820,14 +820,8 @@ window.Modernizr = (function(window,document,undefined){
     var wasCached = false;
     try {
         var cache = JSON.parse(window.localStorage.modernizrCache);
-        if ( cache.userAgent == navigator.userAgent && cache.version == version ) {
-            // i.e. jQuery.extend(ret, cache.ret);
-            for ( var feature in cache.features ) {
-                if ( hasOwnProperty(cache.features, feature) ) {
-                    ret[ feature ] = cache.features[ feature ];
-                }
-            }
-            wasCached = true;
+        if ( cache.userAgent == navigator.userAgent && cache.version == version && cache.features ) {
+            ret = cache.features
         }
         // Remove the cache from storage since it is stale
         else {
