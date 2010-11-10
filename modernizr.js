@@ -822,9 +822,9 @@ window.Modernizr = (function(window,document,undefined){
         var cache = JSON.parse(window.localStorage.modernizrCache);
         if ( cache.userAgent == navigator.userAgent && cache.version == version ) {
             // i.e. jQuery.extend(ret, cache.ret);
-            for ( var feature in cache.ret ) {
-                if ( hasOwnProperty(cache.ret, feature) ) {
-                    ret[ feature ] = cache.ret[ feature ];
+            for ( var feature in cache.features ) {
+                if ( hasOwnProperty(cache.features, feature) ) {
+                    ret[ feature ] = cache.features[ feature ];
                 }
             }
             wasCached = true;
@@ -858,7 +858,7 @@ window.Modernizr = (function(window,document,undefined){
         window.localStorage.modernizrCache = JSON.stringify({
             userAgent: navigator.userAgent,
             version: version,
-            ret: ret
+            features: ret
         });
     }
     catch(e){}
