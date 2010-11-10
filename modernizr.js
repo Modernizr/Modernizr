@@ -819,13 +819,13 @@ window.Modernizr = (function(window,document,undefined){
     // Try to load cached tests
     var wasCached = false;
     try {
-        var cache = JSON.parse(window.localStorage.modernizrCache);
+        var cache = JSON.parse(window.localStorage.getItem('modernizrCache'));
         if ( cache.userAgent == navigator.userAgent && cache.version == version && cache.features ) {
-            ret = cache.features
+            ret = cache.features;
         }
         // Remove the cache from storage since it is stale
         else {
-            delete window.localStorage.modernizrCache;
+            window.localStorage.removeItem('modernizrCache');
         }
     }
     catch(e) {}
@@ -848,11 +848,11 @@ window.Modernizr = (function(window,document,undefined){
     
         // Save the results in a cache
         try {
-            window.localStorage.modernizrCache = JSON.stringify({
+            window.localStorage.setItem('modernizrCache', JSON.stringify({
                 userAgent: navigator.userAgent,
                 version: version,
                 features: ret
-            });
+            }));
         }
         catch(e){}
     }

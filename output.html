@@ -28,8 +28,8 @@
 	
 	// Delete the cached results if there are any
 	try {
-		if(!/use-cache/.test(window.location.href)){
-			delete window.localStorage.modernizrCache;
+		if(/delete-cache/.test(window.location.hash)){
+			window.localStorage.removeItem('modernizrCache');
 		}
 	}
 	catch(e){}
