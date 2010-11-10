@@ -34,7 +34,9 @@
     
 	// Delete the cached results if there are any
 	try {
-	  delete window.localStorage.modernizrCache;
+		if(!/use-cache/.test(window.location.href)){
+			delete window.localStorage.modernizrCache;
+		}
 	}
 	catch(e){}
 	</script>
