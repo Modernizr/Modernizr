@@ -643,8 +643,8 @@ window.Modernizr = (function(window,document,undefined){
         var elem = document.createElement('video'),
             bool = !!elem.canPlayType;
         
-        if (bool){  
-            bool      = new Boolean(bool);  
+        if (bool){
+            bool      = new Boolean(bool);
             bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"');
             
             // Workaround required for IE9, which doesn't report video support without audio codec specified.
@@ -653,6 +653,8 @@ window.Modernizr = (function(window,document,undefined){
             bool.h264 = elem.canPlayType(h264 + '"') || elem.canPlayType(h264 + ', mp4a.40.2"');
             
             bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
+            
+            bool.loop = elem.loop;
         }
         return bool;
     };
@@ -661,8 +663,8 @@ window.Modernizr = (function(window,document,undefined){
         var elem = document.createElement('audio'),
             bool = !!elem.canPlayType;
         
-        if (bool){  
-            bool      = new Boolean(bool);  
+        if (bool){
+            bool      = new Boolean(bool);
             bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"');
             bool.mp3  = elem.canPlayType('audio/mpeg;');
             
@@ -671,6 +673,8 @@ window.Modernizr = (function(window,document,undefined){
             //   http://bit.ly/iphoneoscodecs
             bool.wav  = elem.canPlayType('audio/wav; codecs="1"');
             bool.m4a  = elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;');
+            
+            bool.loop = elem.loop;
         }
         return bool;
     };
