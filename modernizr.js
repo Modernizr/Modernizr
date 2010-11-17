@@ -654,7 +654,7 @@ window.Modernizr = (function(window,document,undefined){
             
             bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
             
-            bool.loop = elem.loop;
+            bool.loop = !is(elem.loop, undefined);
         }
         return bool;
     };
@@ -674,7 +674,7 @@ window.Modernizr = (function(window,document,undefined){
             bool.wav  = elem.canPlayType('audio/wav; codecs="1"');
             bool.m4a  = elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;');
             
-            bool.loop = elem.loop;
+            bool.loop = !is(elem.loop, undefined);
         }
         return bool;
     };
