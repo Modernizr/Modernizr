@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "New View", 
+  "language": "JavaScript", 
+  "trigger_enabled": "0", 
+  "rank": "100", 
+  "trigger": "trigger_postopen", 
+  "value": [
+    "/*", 
+    " * @fileoverview create a new View stub in the current project", 
+    " * to customize the format of the controller class stub that is created, edit", 
+    " * the 'Controller' snippet in this project", 
+    " *", 
+    " */", 
+    "", 
+    "zendutils.addView();", 
+    ""
+  ], 
+  "version": "1.0.6", 
+  "async": "0", 
+  "type": "macro", 
+  "id": 277, 
+  "icon": "chrome://famfamfamsilk/skin/icons/application_form_add.png"
+}

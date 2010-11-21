@@ -1,0 +1,30 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "ZendView", 
+  "value": [
+    "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> ", 
+    "<html xmlns=\"http://www.w3.org/1999/xhtml\"> ", 
+    "<head> ", 
+    "  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> ", 
+    "  <title>[[%tabstop:Name]]</title> ", 
+    "</head> ", 
+    "<body> ", 
+    "  <h1>[[%tabstop:Name]]</h1> ", 
+    "  <?php if($this->values): ?> ", 
+    "    <h3>You just submitted the following values:</h3> ", 
+    "    <ul> ", 
+    "      <?php foreach ($this->values as $value) :?> ", 
+    "        <li> <?php echo $this->escape($value); ?></li> ", 
+    "      <?php endforeach; ?> ", 
+    "    </ul> ", 
+    "  <?php endif; ?> ", 
+    "  <?php echo $this->form; ?> ", 
+    "</body> ", 
+    "</html> !@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.6", 
+  "type": "snippet", 
+  "id": 283, 
+  "indent_relative": "true"
+}

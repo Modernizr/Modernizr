@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "New Controller", 
+  "language": "JavaScript", 
+  "trigger_enabled": "0", 
+  "rank": "100", 
+  "trigger": "trigger_postopen", 
+  "value": [
+    "/*", 
+    " * @fileoverview create a new Controller stub in the current project", 
+    " * to customize the format of the controller class stub that is created, edit", 
+    " * the 'Controller' snippet in this project", 
+    " *", 
+    " */", 
+    "", 
+    "zendutils.addController();", 
+    ""
+  ], 
+  "version": "1.0.6", 
+  "async": "0", 
+  "type": "macro", 
+  "id": 276, 
+  "icon": "chrome://famfamfamsilk/skin/icons/brick_add.png"
+}

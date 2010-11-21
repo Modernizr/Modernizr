@@ -1,0 +1,29 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "ZendController", 
+  "value": [
+    "<?php ", 
+    "", 
+    "require_once('Zend/Controller/Action.php');", 
+    "", 
+    "/**", 
+    " * Class [[%tabstop:Name]]Controller", 
+    " */", 
+    " ", 
+    "class [[%tabstop:Name]]Controller extends Zend_Controller_Action {", 
+    "", 
+    "    /**", 
+    "     * indexAction", 
+    "     */", 
+    "", 
+    "    public function indexAction() {", 
+    "        ", 
+    "    } ", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.6", 
+  "type": "snippet", 
+  "id": 282, 
+  "indent_relative": "true"
+}
