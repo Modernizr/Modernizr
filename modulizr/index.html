@@ -64,6 +64,9 @@
   Copy the source:<br />
   <textarea id="generatedSource" rows="10" cols="80"></textarea>
 </div>
+
+<iframe id="cframe" src="compressedframe.html" width="960" height="1024" style="border:2px solid #333;"></iframe>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="js/modulizr.js"></script>
 <script src="js/swfobject.js"></script>
@@ -84,8 +87,12 @@ jQuery(function($){
       url: '../modernizr.js',
       success:function(script) {
         // Call the modulr function to create a modular build
-        var modularBuild = Modulizr.ize(script, [].slice.call(tests,0));
-        
+        var modularBuild = Modulizr.ize(script, [].slice.call(tests,0)),
+            cframe       = $('#cframe').contents();
+           
+        cframe.find('#js_code').val(modularBuild);
+        cframe.find('#compileForm').submit();
+
         // Inject into the textarea
         $('#generatedSource').val(modularBuild);
         

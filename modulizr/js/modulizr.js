@@ -15,72 +15,126 @@
     /**
      * Function ize
      *
-     * Use `//>>module [some, modules, go here]` and `//>>module end` in order to section off
-     * module defintions that could or couldn't be included in your source. The list of modules
-     * is an implicit OR. It does not support nested modules.
-     *
      * @argument source  {string} The marked up original source
      * @argument modules {array}  An array of strings that match identifiers in the source
      *
      * @returns {string} The new source with only the requested modules
      */
     ize: function(source, modules){
-      // Split up source into chunks of module definitions and code.
-      var result = [],
-          chunks = source.split('//>>module '), //TODO::Make this safer for string literals and stuff
-          chunk, i, j, k, len, req;
+      // Variables for string manipulation and saving
+      var strings = [],
+      sid = '_' + ( + new Date());
       
-      // Loop the the strings between our token
-      for(i in chunks) {
-        chunk = $.trim(chunks[i]);
-        
-        // These chunks are the tops of module blocks
-        if (chunk.charAt(0) === '[') {
-          j = 1;
-          len = chunk.length;
-          // Find the next bracket
-          while (j < len && chunk.charAt(j) !== ']') { ++j; }
-          
-          // If j is less than the length of the chunk, we found a bracket
-          if (j < len) {
-            // Pull out the required modules
-            req = chunk.substr(1, j-1).split(',');
-            
-            // Loop through each module, and see if we want it
-            for(k in req) {
-              // Check with trimmed down module names
-              if(this._indexOf(modules, $.trim(req[k])) >= 0) {
-                // We should add the chunk if we're in here
-                // Fake the ending, so it could be re-run
-                result.push("//>>module " + chunk + "\n//>>module end");
-              }
-            }
-          }
-          // Otherwise, you suck at programming
-          else {
-            throw 'Modulr Syntax Error: Closing `]` not found near "' + chunk.substr(0,20) + '..."';
-          }
-          
-        }
-        
-        // These chunks are the end statements, so we'll leave them out
-        else if (chunk.substr(0,3) === 'end') {
-          // remove the end line and append the rest
-          // TODO::Check for characters on the commented line that appear after 'end' - JIC
-          var remainingCode = $.trim(chunk.substr(3));
-          if (remainingCode) {
-            result.push(remainingCode);
-          }
-        }
-        
-        // This is a regular block (I think just the first block, actually), so we'll add it in
-        else {
-          result.push(chunk);
-        }
-      }
+      source = this._removeComments(source);
+
+      // remove string literals
+      var js_nostr = source.replace(/("|')((?:\\\1|.)+?)\1/g, function($0) {
+      	strings[strings.length] = $0;
+      	return sid;
+      });
+
+      // filter each block
+      console.log(js_nostr);
+
+      // put the strings back where they belong!
+      var parsed = js_nostr.replace(RegExp(sid, 'g'), function() {
+      	return strings.shift();
+      });
       
-      return result.join("\n");
+      return parsed;
+    
     },
+
+    /*
+    * Stolen from james padolsey at
+    * http://james.padolsey.com/javascript/removing-comments-in-javascript/
+    * - This function is loosely based on the one found here:
+    * - http://www.weanswer.it/blog/optimize-css-javascript-remove-comments-php/
+    */
+    _removeComments:  function(str) {
+    str = ('__' + str + '__').split('');
+    var mode = {
+        singleQuote: false,
+        doubleQuote: false,
+        regex: false,
+        blockComment: false,
+        lineComment: false,
+        condComp: false 
+    };
+    for (var i = 0, l = str.length; i < l; i++) {
+ 
+        if (mode.regex) {
+            if (str[i] === '/' && str[i-1] !== '\\') {
+                mode.regex = false;
+            }
+            continue;
+        }
+ 
+        if (mode.singleQuote) {
+            if (str[i] === "'" && str[i-1] !== '\\') {
+                mode.singleQuote = false;
+            }
+            continue;
+        }
+ 
+        if (mode.doubleQuote) {
+            if (str[i] === '"' && str[i-1] !== '\\') {
+                mode.doubleQuote = false;
+            }
+            continue;
+        }
+ 
+        if (mode.blockComment) {
+            if (str[i] === '*' && str[i+1] === '/') {
+                str[i+1] = '';
+                mode.blockComment = false;
+            }
+            str[i] = '';
+            continue;
+        }
+ 
+        if (mode.lineComment) {
+            if (str[i+1] === '\n' || str[i+1] === '\r') {
+                mode.lineComment = false;
+            }
+            str[i] = '';
+            continue;
+        }
+ 
+        if (mode.condComp) {
+            if (str[i-2] === '@' && str[i-1] === '*' && str[i] === '/') {
+                mode.condComp = false;
+            }
+            continue;
+        }
+ 
+        mode.doubleQuote = str[i] === '"';
+        mode.singleQuote = str[i] === "'";
+ 
+        if (str[i] === '/') {
+ 
+            if (str[i+1] === '*' && str[i+2] === '@') {
+                mode.condComp = true;
+                continue;
+            }
+            if (str[i+1] === '*') {
+                str[i] = '';
+                mode.blockComment = true;
+                continue;
+            }
+            if (str[i+1] === '/') {
+                str[i] = '';
+                mode.lineComment = true;
+                continue;
+            }
+            mode.regex = true;
+ 
+        }
+ 
+      }
+      return str.join('').slice(2, -2);
+    },
+    
     
     // IndexOf Function Stolen from UnderscoreJS, but pretty common, soo....
     _indexOf: function(array, item) {
