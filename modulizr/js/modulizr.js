@@ -23,37 +23,53 @@
     ize: function(source, tests){
       // Variables for string manipulation and saving
       var js_notests,
+          js_noret,
           js_nostr,
           parsed,
-          i, j,
+          i, j, l,
           strings = [],
+          retStack = [],
           testStack = [],
           sid = '_' + ( + new Date()),
           multilinespaceExp = new RegExp(/\s{4}\n/g);
-      
+     
+      // Handle the out of the ordinary stuff first
+      source = this._handleSpecialCases(source, tests);
+
+      // Remove comments so we don't have false parsing positives
       source = this._removeComments(source);
 
       // Mark the tests
       js_notests = source.replace(/tests\['(.*)'\]/g, function($0, $1) {
         testStack[testStack.length] = {"code":$0, "name": $1};
-        return 'TEST__'+$1+'__'
+        return 'TEST__'+$1+'__';
+      });
+
+      js_noret = js_notests.replace(/ret\['(.*)'\]/g, function($0, $1) {
+        retStack[retStack.length] = {"code":$0, "name":$1};
+        return 'TRET__'+$1+'__';
       });
 
       // remove string literals
-      js_nostr = js_notestsstr.replace(/("|')((?:\\\1|.)+?)\1/g, function($0) {
+      js_nostr = js_noret.replace(/("|')((?:\\\1|.)+?)\1/g, function($0) {
       	strings[strings.length] = $0;
       	return 'STR__'+(strings.length-1)+'__';
       });
 
-
-      js_nostr = this._pullOutTests(js_nostr, ['flexbox', 'touch', 'geolocation']);
-      
-      parsed = js_nostr;
+      // actually take out the code, etc
+      parsed = this._pullOutTests(js_nostr, tests);
       
       for (j = 0; j < strings.length; j++) {
         // put the strings back where they belong!
         parsed = parsed.replace(RegExp("STR__"+j+"__", 'g'), function() {
           return strings[j];
+        });
+      }
+
+      for (l = 0; l < retStack.length; l++) {
+        // put the strings back where they belong!
+        parsed = parsed.replace(RegExp("TRET__"+retStack[l].name+"__", 'g'), function($0) {
+          return retStack[l].code;
         });
       }
 
@@ -74,6 +90,35 @@
     
     },
 
+    _handleSpecialCases: function(source, wanted) {
+      // Functions to run if they are NOT wanted
+      var specialCases = {
+        // This function removes the IE print protector
+        iepp: function(source) {
+          source = source.replace(new RegExp("\/\/>>BEGIN IEPP[\\s|\\S]*\/\/>>END IEPP", "ig"), "");
+          return source;
+        }
+      },
+      // Speedier lookups
+      wantedHash = (function(){
+        var hash = {}, k;
+        for(k = 0; k < wanted.length; k++) {
+          hash[wanted[k]] = true;
+        }
+        return hash;
+      })();
+      
+      for (var name in specialCases) {
+        if (specialCases.hasOwnProperty(name)) {
+          // If we DONT want any of the special cases, run them
+          if (!wantedHash[name]) {
+            source = specialCases[name](source);
+          }
+        }
+      }
+      return source;
+    },
+
     _pullOutTests: function(source, wanted) {
       var sub, i, j, start, end, name, 
       sub2, bracketStack, tests = {}, 
@@ -84,7 +129,7 @@
       for (i = 0; i < source.length; i++) {
         sub = source.substr(i, 6);
         // If we find a test identifier
-        if (sub === "TEST__") {
+        if (sub === "TEST__" || sub === "TRET__") {
           // Save the beginning here
           start = i;
 
@@ -110,7 +155,7 @@
           i += 8;
           
           // Look for the opening '{' character
-          while (source.substr(i, 1) !== '{') {
+          while (source.charAt(i) !== '{') {
             i++;
           }
 
@@ -120,7 +165,7 @@
 
           // Find an even amount of {} pairs
           while(bracketStack) {
-            sub2 = source.substr(i,1);
+            sub2 = source.charAt(i);
             if (sub2 === '{') {
               bracketStack++;
             }
@@ -129,6 +174,22 @@
             }
             i++;
           }
+
+          // Watch out for IFFEs
+          if (source.substr(i,2) === ")(") {
+            i += 2;
+            parenStack = 1;
+            while (parenStack) {
+              if (source.charAt(i) === ')') {
+                parenStack--;
+              }
+              else if (source.charAt(i) === '(') {
+                parenStack++;
+              }
+              i++;
+            }
+          }
+
           // Add the semicolon
           end = i+1;
           

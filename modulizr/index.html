@@ -9,8 +9,15 @@
 <h1>Modernizr Modular Build Tool</h1>
 
 <h3>Choose the features you want to test for:</h3>
+
 <ul id="tests" class="features"> 
-  <li id="fontface"><input type="checkbox" value="fontface" /> @font-face</li> 
+  <li id="fontface"><input type="checkbox" value="fontface" /> @font-face</li>
+  <li id="flexbox"><input type="checkbox" value="flexbox" /> FlexBox CSS Model</li>
+  <li id="webgl"><input type="checkbox" value="webgl" /> WebGL</li>
+  <li id="touch"><input type="checkbox" value="touch" /> Touch Events</li>
+  <li id="postmessage"><input type="checkbox" value="postmessage" /> PostMessage</li>
+  <li id="textshadow"><input type="checkbox" value="textshadow" /> text-shadow</li>
+  <li id="inlinesvg"><input type="checkbox" value="inlinesvg" /> Inline SVG</li>
   <li id="canvas"><input type="checkbox" value="canvas" /> Canvas</li> 
   <li id="canvastext"><input type="checkbox" value="canvastext" /> Canvas Text</li> 
   <li id="audio"><input type="checkbox" value="audio" /> HTML5 Audio</li> 
@@ -38,23 +45,20 @@
   <li id="svgclippaths"><input type="checkbox" value="svgclippaths" /> SVG Clipping</li> 
   <li id="draganddrop"><input type="checkbox" value="draganddrop" /> Drag and Drop</li> 
   <li id="hashchange"><input type="checkbox" value="hashchange" /> hashchange</li> 
-  <li id="crosswindowmessaging"><input type="checkbox" value="crosswindowmessaging" /> X-window Messaging</li> 
-  <li id="historymanagement"><input type="checkbox" value="historymanagement" /> History Management</li> 
+  <li id="history"><input type="checkbox" value="history" /> History</li> 
   <li id="applicationcache"><input type="checkbox" value="applicationcache" /> applicationCache</li> 
-  <li id="websockets"><input type="checkbox" value="websockets" /> Web Sockets</li> 
-  <li id="webworkers"><input type="checkbox" value="webworkers" /> Web Workers</li> 
+  <li id="webWorkers"><input type="checkbox" value="webWorkers" /> Web Workers</li>
+  <li id="websockets"><input type="checkbox" value="websockets" /> Web Sockets</li>
   <li id="websqldatabase"><input type="checkbox" value="websqldatabase" /> Web SQL Database</li> 
-  <li id="indexeddb"><input type="checkbox" value="indexeddb" /> IndexedDB</li> 
+  <li id="indexedDB"><input type="checkbox" value="indexedDB" /> IndexedDB</li> 
   <li id="inputtypes"><input type="checkbox" value="inputtypes" /> Input Types</li> 
   <li id="input"><input type="checkbox" value="input" /> Input Attributes</li> 
 </ul>
 
 <h3>Choose the enhancements you want to run:</h3>
 <ul id="enhancements" class="features"> 
-  <li id="shim"><input type="checkbox" value="shim" /> HTML5 Shim</li>
-  <li id="shim"><input type="checkbox" value="addtest" /> Add Your Own Tests (via addTest())</li>
-  <li id="shim"><input type="checkbox" value="htmlclasses" /> Add &lt;html&gt; Classes (e.g. class="no-csstransitions")</li>
-  <li id="shim"><input type="checkbox" value="removenojs" /> Remove the 'no-js' class from the 'html' element</li>
+  <li id="iepp"><input type="checkbox" value="iepp" /> IEPP/HTML5 Shim</li>
+  <!--li id="shim"><input type="checkbox" value="htmlclasses" /> Add &lt;html&gt; Classes (e.g. class="no-csstransitions")</li-->
 </ul>
 <input type="button" id="generate" value="Generate Custom Modernizr Build" />
 <div id="buildArea">
@@ -73,6 +77,7 @@
 <script src="js/downloadify.min.js"></script>
 <script>
 jQuery(function($){
+  $(':checkbox').attr('checked', true);
   $('#generate').click(function(){
     // Get all the tests and enhancements
     var tests = $('.features input:checked').map(function(){

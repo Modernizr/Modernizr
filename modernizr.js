@@ -872,6 +872,7 @@ window.Modernizr = (function(window,document,undefined){
     set_css( '' );
     modElem = f = null;
 
+    //>>BEGIN IEPP
     // Enable HTML 5 elements for styling in IE. 
     // fyi: jscript version does not reflect trident version
     //      therefore ie9 in ie7 mode will still have a jScript v.9
@@ -959,6 +960,7 @@ window.Modernizr = (function(window,document,undefined){
           );
         })(window, document);
     }
+    //>>END IEPP
 
     // Assign private properties to the return object with prefix
     ret._enableHTML5     = enableHTML5;
