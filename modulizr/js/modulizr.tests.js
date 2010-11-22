@@ -1,4 +1,4 @@
-(function(global, doc, undefined){
+(function(global, doc, fullModernizr, undefined){
   if (global.Modulizr) {
     global.Modulizr.Test = {
       
@@ -29,11 +29,11 @@
       
       ify: function(script, modules, cb) {
         var weirdTests = {
-          'addtest' : function(m){ return ('addTest' in m); },
-          'shim' : function(m){ return ('_enableHTML5' in m); },
-          'htmlclasses' : function(){ /* harder, but not impossible, skip for now */ return true; },
-          'removenojs' : function(){ /* harder, but not impossible, skip for now */ return true; },
-          'fontface' : function(m){ return ('_fontfaceready' in m); }
+         // 'addtest' : function(m){ return ('addTest' in m); },
+         // 'shim' : function(m){ return ('_enableHTML5' in m); },
+         // 'htmlclasses' : function(){ /* harder, but not impossible, skip for now */ return true; },
+         // 'removenojs' : function(){ /* harder, but not impossible, skip for now */ return true; },
+         // 'fontface' : function(m){ return ('_fontfaceready' in m); }
         },
         myCb = function(mdzr){
           var results = {};
@@ -41,11 +41,20 @@
             var modname = modules[i];
             
             if (!(modname in weirdTests)) {
-              if (modname in mdzr) {
+              if (modname in mdzr && mdzr[modname] === fullModernizr[modname]) {
                 results[modname] = true;
               }
               else {
                 results[modname] = false;
+              }
+
+              // Special cases for audio and video, since they are objects
+              if (modname === 'audio' || modname === 'video') {
+                for (var j in mdzr[modname]) {
+                  if (mdzr[modname][j] === fullModernizr[modname][j]) {
+                    results[modname] = true;
+                  }
+                }
               }
             } else {
               results[modname] = weirdTests[modname].call(this, mdzr, modules);
@@ -82,15 +91,51 @@
         }
         return obj;
       },
+      _modules: [
+"flexbox",
+"canvas",
+"canvastext",
+"webgl",
+"touch",
+"geolocation",
+"postmessage",
+"websqldatabase",
+"indexeddb",
+"hashchange",
+"history",
+"draganddrop",
+"websockets",
+"rgba",
+"hsla",
+"multiplebgs",
+"backgroundsize",
+"borderimage",
+"borderradius",
+"boxshadow",
+"textshadow",
+"opacity",
+"cssanimations",
+"csscolumns",
+"cssgradients",
+"cssreflections",
+"csstransforms",
+"csstransforms3d",
+"csstransitions",
+"fontface",
+"video",
+"audio",
+"localstorage",
+"sessionstorage",
+"webworkers",
+"applicationcache",
+"svg",
+"inlinesvg",
+"smil",
+"svgclippaths"
+      ],
       
-      _modules: ['fontface', 'canvas', 'canvastext', 'audio', 'video', 'rgba', 'hsla', 'borderimage', 'borderradius',
-                'boxshadow', 'opacity', 'multiplebgs', 'cssanimations', 'csscolumns', 'cssgradients', 'cssreflections',
-                'csstransforms', 'csstransforms3d', 'csstransitions', 'geolocation', 'localstorage', 'sessionstorage',
-                'svg', 'smil', 'svgclippaths','draganddrop', 'hashchange', 'crosswindowmessaging', 'historymanagement',
-                'applicationcache', 'websockets', 'webworkers', 'websqldatabase', 'indexeddb', 'inputtypes', 'input'],
-      
-      _features: ['shim', 'addtest', 'htmlclasses', 'removenojs']
+      _features: [] //'shim', 'addtest', 'htmlclasses', 'removenojs']
       
     };
   }
-})(this, this.document);
+})(this, this.document, this.fullModernizr);

@@ -12,6 +12,9 @@
  */
 (function(global){
   var Modulizr = {
+    _dependencies: {
+      'canvastext': ['canvas']
+    },
     /**
      * Function ize
      *
@@ -26,13 +29,37 @@
           js_noret,
           js_nostr,
           parsed,
-          i, j, l,
+          i, j, k, l, z,
           strings = [],
           retStack = [],
           testStack = [],
           sid = '_' + ( + new Date()),
           multilinespaceExp = new RegExp(/\s{4}\n/g);
-     
+      
+      this.wantedHash = (function(){
+        var hash = {}, k;
+        for(k = 0; k < tests.length; k++) {
+          hash[tests[k]] = true;
+        }
+        return hash;
+      })();
+
+      // Add in the dependencies of the things we want
+      for (k in this._dependencies) {
+        if (this._dependencies.hasOwnProperty(k)) {
+          // If we want this dependency
+          if (this.wantedHash[k]) {
+            // go through each dependency of this
+            for (z = 0; z < this._dependencies[k].length; z++) {
+              // Add to tests array
+              tests.push(this._dependencies[k][z]);
+              // Add to the hashed version
+              this.wantedHash[this._dependencies[k][z]] = true;
+            }
+          }
+        }
+      }
+
       // Handle the out of the ordinary stuff first
       source = this._handleSpecialCases(source, tests);
 
@@ -100,14 +127,8 @@
         }
       },
       // Speedier lookups
-      wantedHash = (function(){
-        var hash = {}, k;
-        for(k = 0; k < wanted.length; k++) {
-          hash[wanted[k]] = true;
-        }
-        return hash;
-      })();
-      
+      wantedHash = this.wantedHash;
+     
       for (var name in specialCases) {
         if (specialCases.hasOwnProperty(name)) {
           // If we DONT want any of the special cases, run them
@@ -140,8 +161,9 @@
           while (source.substr(i+j+6,2) !== '__') {
             j++;
           }
+
           // Save the name
-          name = source.substr(i+6, j);
+          name = source.substr(i+6, j).toLowerCase();
           
           // update counter
           i = i + j;
@@ -202,13 +224,7 @@
       }
       
       // Turn our wanted array into a hash, for speeedz
-      var wantedHash = (function(){
-        var hash = {}, k;
-        for(k = 0; k < wanted.length; k++) {
-          hash[wanted[k]] = true;
-        }
-        return hash;
-      })();
+      var wantedHash = this.wantedHash; 
 
       // go through the tests that we know about, and remove the ones we don't want
       for (var test in tests) {

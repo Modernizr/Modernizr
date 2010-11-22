@@ -10,6 +10,11 @@
 <input type="button" id="runtests" value="Try All Permutations" />
 <p>Check your console for results.</p>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="../modernizr.js"></script>
+<script>
+  window.fullModernizr = Modernizr;
+  window.Modernizr     = undefined;
+</script>
 <script src="js/modulizr.js"></script>
 <script src="js/modulizr.tests.js"></script>
 <script>
