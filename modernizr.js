@@ -416,6 +416,9 @@ window.Modernizr = (function(window,document,undefined){
         return ('WebSocket' in window);
     };
     
+    tests['eventsource'] = function(){
+        return ('EventSource' in window);
+    };
     
     // http://css-tricks.com/rgba-browser-support/
     tests['rgba'] = function() {
