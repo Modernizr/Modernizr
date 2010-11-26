@@ -332,6 +332,20 @@ window.Modernizr = (function(window,document,undefined){
     };
 
 
+    tests['deviceorientation'] = function() {
+
+        return ('DeviceOrientationEvent' in window);
+
+    };
+
+
+    tests['devicemotion'] = function() {
+
+        return ('DeviceMotionEvent' in window);
+
+    };
+
+
     /**
      * geolocation tests for the new Geolocation API specification.
      *   This test is a standards compliant-only test; for more complete
