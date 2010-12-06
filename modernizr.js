@@ -676,39 +676,39 @@ window.Modernizr = (function(window,document,undefined){
     };
 
 
-// Firefox has made these tests rather unfun.
+    // Firefox has made these tests rather unfun.
 
-// In FF4, if disabled, window.localStorage should === null.
+    // In FF4, if disabled, window.localStorage should === null.
 
-// Normally, we could not test that directly and need to do a 
-//   `('localStorage' in window) && ` test first because otherwise Firefox will
-//   throw http://bugzil.la/365772 if cookies are disabled
+    // Normally, we could not test that directly and need to do a 
+    //   `('localStorage' in window) && ` test first because otherwise Firefox will
+    //   throw http://bugzil.la/365772 if cookies are disabled
 
-// However, in Firefox 4 betas, if dom.storage.enabled == false, just mentioning
-//   the property will throw an exception. http://bugzil.la/599479
-// This looks to be fixed for FF4 Final.
+    // However, in Firefox 4 betas, if dom.storage.enabled == false, just mentioning
+    //   the property will throw an exception. http://bugzil.la/599479
+    // This looks to be fixed for FF4 Final.
 
-// Because we are forced to try/catch this, we'll go aggressive.
+    // Because we are forced to try/catch this, we'll go aggressive.
 
-// FWIW: IE8 Compat mode supports these features completely:
-//   http://www.quirksmode.org/dom/html5.html
-// But IE8 doesn't support either with local files
+    // FWIW: IE8 Compat mode supports these features completely:
+    //   http://www.quirksmode.org/dom/html5.html
+    // But IE8 doesn't support either with local files
 
-tests['localstorage'] = function() {
-    try {
-        return !!localStorage.getItem;
-    } catch(e) {
-        return false;
-    }
-};
+    tests['localstorage'] = function() {
+        try {
+            return !!localStorage.getItem;
+        } catch(e) {
+            return false;
+        }
+    };
 
-tests['sessionstorage'] = function() {
-    try {
-        return !!sessionStorage.getItem;
-    } catch(e){
-        return false;
-    }
-};
+    tests['sessionstorage'] = function() {
+        try {
+            return !!sessionStorage.getItem;
+        } catch(e){
+            return false;
+        }
+    };
 
 
     tests['webWorkers'] = function () {
