@@ -692,6 +692,7 @@ window.Modernizr = (function(window,document,undefined){
 
 // FWIW: IE8 Compat mode supports these features completely:
 //   http://www.quirksmode.org/dom/html5.html
+// But IE8 doesn't support either with local files
 
 tests['localstorage'] = function() {
     try {
