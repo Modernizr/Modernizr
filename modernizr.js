@@ -676,35 +676,38 @@ window.Modernizr = (function(window,document,undefined){
     };
 
 
-    // Both localStorage and sessionStorage are
-    //   tested via the `in` operator because otherwise Firefox will
-    //   throw an error: https://bugzilla.mozilla.org/show_bug.cgi?id=365772
-    //   if cookies are disabled
-    
-    // They require try/catch because of possible firefox configuration:
-    //   http://github.com/Modernizr/Modernizr/issues#issue/92
-    
-    // FWIW miller device resolves to [object Storage] in all supporting browsers
-    //   except for IE who does [object Object]
-    
-    // IE8 Compat mode supports these features completely:
-    //   http://www.quirksmode.org/dom/html5.html
-    
-    tests['localstorage'] = function() {
-        try {
-          return ('localStorage' in window) && window.localStorage !== null;
-        } catch(e) {
-          return false;
-        }
-    };
+// Firefox has made these tests rather unfun.
 
-    tests['sessionstorage'] = function() {
-        try {
-            return ('sessionStorage' in window) && window.sessionStorage !== null;
-        } catch(e){
-            return false;
-        }
-    };
+// In FF4, if disabled, window.localStorage should === null.
+
+// Normally, we could not test that directly and need to do a 
+//   `('localStorage' in window) && ` test first because otherwise Firefox will
+//   throw http://bugzil.la/365772 if cookies are disabled
+
+// However, in Firefox 4 betas, if dom.storage.enabled == false, just mentioning
+//   the property will throw an exception. http://bugzil.la/599479
+// This looks to be fixed for FF4 Final.
+
+// Because we are forced to try/catch this, we'll go aggressive.
+
+// FWIW: IE8 Compat mode supports these features completely:
+//   http://www.quirksmode.org/dom/html5.html
+
+tests['localstorage'] = function() {
+    try {
+        return !!localStorage.getItem;
+    } catch(e) {
+        return false;
+    }
+};
+
+tests['sessionstorage'] = function() {
+    try {
+        return !!sessionStorage.getItem;
+    } catch(e){
+        return false;
+    }
+};
 
 
     tests['webWorkers'] = function () {
