@@ -475,11 +475,12 @@ window.Modernizr = (function(window,document,undefined){
         });
     };
     
+    // WebOS unfortunately false positives on this test.
     tests['boxshadow'] = function() {
         return test_props_all( 'boxShadow' );
     };
     
-    // Note: FF3.0 will false positive on this test 
+    // FF3.0 will false positive on this test 
     tests['textshadow'] = function(){
         return document.createElement('div').style.textShadow === '';
     };
@@ -500,13 +501,11 @@ window.Modernizr = (function(window,document,undefined){
     
     
     tests['cssanimations'] = function() {
-        //  set_css_all( 'animation:"animate" 2s ease 2', 'position:relative' );
         return test_props_all( 'animationName' );
     };
     
     
     tests['csscolumns'] = function() {
-        //  set_css_all( 'column-count:3' );
         return test_props_all( 'columnCount' );
     };
     
