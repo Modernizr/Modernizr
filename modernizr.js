@@ -569,7 +569,7 @@ window.Modernizr = (function(window,document,undefined){
     tests['fontface'] = function(){
 
         var 
-        sheet,
+        sheet, bool,
         head = docHead || docElement,
         style = document.createElement("style"),
         impl = document.implementation || { hasFeature: function() { return false; } };
@@ -608,7 +608,9 @@ window.Modernizr = (function(window,document,undefined){
           fn(ret.fontface);
         };
         
-        return supportAtRule('@font-face { font-family: "font"; src: "font.ttf"; }');
+        bool = supportAtRule('@font-face { font-family: "font"; src: "font.ttf"; }');
+        head.removeChild(style);
+        return bool;
         
     };
     
