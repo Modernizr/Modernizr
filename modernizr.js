@@ -368,14 +368,12 @@ window.Modernizr = (function(window,document,undefined){
     //   to account for this gotcha yourself.
     tests['websqldatabase'] = function() {
       var result = !!window.openDatabase;
-      /*
-      if (result){
-        try {
-          result = !!openDatabase( mod + "testdb", "1.0", mod + "testdb", 2e4);
-        } catch(e) {
-        }
-      }
-      */
+      /*  if (result){
+            try {
+              result = !!openDatabase( mod + "testdb", "1.0", mod + "testdb", 2e4);
+            } catch(e) {
+            }
+          }  */
       return result;
     };
     
@@ -450,15 +448,13 @@ window.Modernizr = (function(window,document,undefined){
     
     
     // In testing support for a given CSS property, it's legit to test:
-    //    elem.style[styleName] !== undefined
+    //    `elem.style[styleName] !== undefined`
     // If the property is supported it will return an empty string,
     // if unsupported it will return undefined.
+    
     // We'll take advantage of this quick test and skip setting a style 
     // on our modernizr element, but instead just testing undefined vs
     // empty string.
-    // The legacy set_css_all calls will remain in the source 
-    // (however, commented) for clarity, yet functionally they are 
-    // no longer needed.
     
 
     tests['backgroundsize'] = function() {
@@ -466,7 +462,6 @@ window.Modernizr = (function(window,document,undefined){
     };
     
     tests['borderimage'] = function() {
-        //  set_css_all( 'border-image:url(m.png) 1 1 stretch' );
         return test_props_all( 'borderImage' );
     };
     
@@ -475,15 +470,12 @@ window.Modernizr = (function(window,document,undefined){
     // border-radius: http://muddledramblings.com/table-of-css3-border-radius-compliance
     
     tests['borderradius'] = function() {
-        //  set_css_all( 'border-radius:10px' );
         return test_props_all( 'borderRadius', '', function( prop ) {
             return contains( prop, 'orderRadius' );
         });
     };
     
-    
     tests['boxshadow'] = function() {
-        //  set_css_all( 'box-shadow:#000 1px 1px 3px' );
         return test_props_all( 'boxShadow' );
     };
     
@@ -541,19 +533,16 @@ window.Modernizr = (function(window,document,undefined){
     
     
     tests['cssreflections'] = function() {
-        //  set_css_all( 'box-reflect:right 1px' );
         return test_props_all( 'boxReflect' );
     };
     
     
     tests['csstransforms'] = function() {
-        //  set_css_all( 'transform:rotate(3deg)' );
         return !!test_props([ 'transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform' ]);
     };
     
     
     tests['csstransforms3d'] = function() {
-        //  set_css_all( 'perspective:500' );
         
         var ret = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
         
@@ -572,7 +561,6 @@ window.Modernizr = (function(window,document,undefined){
     
     
     tests['csstransitions'] = function() {
-        //  set_css_all( 'transition:all .5s linear' );
         return test_props_all( 'transitionProperty' );
     };
 
