@@ -578,9 +578,6 @@ window.Modernizr = (function(window,document,undefined){
         head.insertBefore(style, head.firstChild);
         sheet = style.sheet || style.styleSheet;
 
-        // removing it crashes IE browsers
-        //head.removeChild(style);
-
         var supportAtRule = impl.hasFeature('CSS2', '') ?
                 function(rule) {
                     if (!(sheet && rule)) return false;
@@ -601,17 +598,10 @@ window.Modernizr = (function(window,document,undefined){
                             .replace(/\r+|\n+/g, '')
                             .indexOf(rule.split(' ')[0]) === 0;
                 };
-
-
-        // DEPRECATED - allow for a callback
-        ret._fontfaceready = function(fn){
-          fn(ret.fontface);
-        };
         
         bool = supportAtRule('@font-face { font-family: "font"; src: "font.ttf"; }');
         head.removeChild(style);
         return bool;
-        
     };
     
 
