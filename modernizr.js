@@ -236,6 +236,7 @@ window.Modernizr = (function(window,document,undefined){
 
     /**
      * Tests
+     * -----
      */
 
     tests['flexbox'] = function() {
@@ -552,7 +553,7 @@ window.Modernizr = (function(window,document,undefined){
         if (ret && 'webkitPerspective' in docElement.style){
           
           // Webkit allows this media query to succeed only if the feature is enabled.    
-          // "@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){ ... }"      
+          // `@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){ ... }`    
           ret = testMediaQuery('@media ('+prefixes.join('transform-3d),(')+'modernizr)');
         }
         return ret;
@@ -801,6 +802,7 @@ window.Modernizr = (function(window,document,undefined){
 
 
     // End of test definitions
+    // -----------------------
 
 
 
