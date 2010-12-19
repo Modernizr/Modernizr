@@ -584,7 +584,7 @@ window.Modernizr = (function(window,document,undefined){
                     var result = false;
                     try {
                         sheet.insertRule(rule, 0);
-                        result = !(/unknown/i).test(sheet.cssRules[0].cssText);
+                        result = (/src/i).test(sheet.cssRules[0].cssText);
                         sheet.deleteRule(sheet.cssRules.length - 1);
                     } catch(e) { }
                     return result;
@@ -593,13 +593,13 @@ window.Modernizr = (function(window,document,undefined){
                     if (!(sheet && rule)) return false;
                     sheet.cssText = rule;
                     
-                    return sheet.cssText.length !== 0 && !(/unknown/i).test(sheet.cssText) &&
+                    return sheet.cssText.length !== 0 && (/src/i).test(sheet.cssText) &&
                       sheet.cssText
                             .replace(/\r+|\n+/g, '')
                             .indexOf(rule.split(' ')[0]) === 0;
                 };
         
-        bool = supportAtRule('@font-face { font-family: "font"; src: "font.ttf"; }');
+        bool = supportAtRule('@font-face { font-family: "font"; src: url(font.ttf); }');
         head.removeChild(style);
         return bool;
     };
