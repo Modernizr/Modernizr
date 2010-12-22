@@ -599,7 +599,7 @@ window.Modernizr = (function(window,document,undefined){
                             .indexOf(rule.split(' ')[0]) === 0;
                 };
         
-        bool = supportAtRule('@font-face { font-family: "font"; src: url(font.ttf); }');
+        bool = supportAtRule('@font-face { font-family: "font"; src: url(data:,); }');
         head.removeChild(style);
         return bool;
     };
