@@ -606,20 +606,20 @@ window.Modernizr = (function(window,document,undefined){
     };
 	
 	
-	// CSS generated content detection
-	tests['generatedcontent'] = function(){
+    // CSS generated content detection
+    tests['generatedcontent'] = function(){
 
         var 
         sheet, bool,
         head = docHead || docElement,
         style = document.createElement("style"),
-		div = document.createElement('div'),
+        div = document.createElement('div'),
         impl = document.implementation || { hasFeature: function() { return false; } };
         
         style.type = 'text/css';
         head.insertBefore(style, head.firstChild);
-		div.id = "modernizr";
-		docElement.appendChild(div);
+        div.id = "modernizr";
+        docElement.appendChild(div);
         sheet = style.sheet || style.styleSheet;
 
         var supportGeneratedContent = impl.hasFeature('CSS2', '') ?
@@ -642,7 +642,7 @@ window.Modernizr = (function(window,document,undefined){
         
         bool = supportGeneratedContent('#modernizr:after{content:"'+smile+'";}');
         head.removeChild(style);
-		div.parentNode.removeChild(div);
+        div.parentNode.removeChild(div);
         return bool;
     };
     
