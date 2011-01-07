@@ -604,6 +604,47 @@ window.Modernizr = (function(window,document,undefined){
         head.removeChild(style);
         return bool;
     };
+	
+	
+	// CSS generated content detection
+	tests['generatedcontent'] = function(){
+
+        var 
+        sheet, bool,
+        head = docHead || docElement,
+        style = document.createElement("style"),
+		div = document.createElement('div'),
+        impl = document.implementation || { hasFeature: function() { return false; } };
+        
+        style.type = 'text/css';
+        head.insertBefore(style, head.firstChild);
+		div.id = "modernizr";
+		docElement.appendChild(div);
+        sheet = style.sheet || style.styleSheet;
+
+        var supportGeneratedContent = impl.hasFeature('CSS2', '') ?
+                function(rule) {
+                    if (!(sheet && rule)) return false;
+                    var result = false;
+                    try {
+                        sheet.insertRule(rule, 0);
+                        result = div.offsetHeight >= 1;
+                        sheet.deleteRule(sheet.cssRules.length - 1);
+                    } catch(e) { }
+                    return result;
+                } :
+                function(rule) {
+                    if (!(sheet && rule)) return false;
+                    sheet.cssText = rule;
+                    
+                    return div.offsetHeight >= 1;
+                };
+        
+        bool = supportGeneratedContent('#modernizr:after{content:"'+smile+'";}');
+        head.removeChild(style);
+		div.parentNode.removeChild(div);
+        return bool;
+    };
     
 
     // These tests evaluate support of the video/audio elements, as well as
