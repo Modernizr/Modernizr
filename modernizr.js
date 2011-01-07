@@ -87,7 +87,10 @@ window.Modernizr = (function(window,document,undefined){
     // More here: http://github.com/Modernizr/Modernizr/issues/issue/21
     domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
 
-    ns = {'svg': 'http://www.w3.org/2000/svg'},
+    ns = {
+        'svg': 'http://www.w3.org/2000/svg',
+        'mathml': 'http://www.w3.org/1998/Math/MathML' 
+    },
 
     tests = {},
     inputs = {},
@@ -723,6 +726,11 @@ window.Modernizr = (function(window,document,undefined){
         return !!document.createElementNS && /SVG/.test(tostring.call(document.createElementNS(ns.svg,'clipPath')));
     };
 
+    tests['mathml'] = function(){
+        var mml_container = document.createElementNS(ns.mathml, "math");
+        var mml_el = mml_container.isDefaultNamespace(document.namespaceURI);
+        return !!document.createElementNS && !!mml_container && !!mml_el;
+    };
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
