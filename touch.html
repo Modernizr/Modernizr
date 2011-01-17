@@ -3,22 +3,35 @@
 <head>
 	<meta charset="utf-8">
 	<title>Modernizr: Touch tests</title>
+	<style>
+	  th { font-family: monospace;}
+	  th, td { padding: 5px;}
+	  th { background: #aaa; }
+
+    td { background: #ddd; }
+	</style>
 </head>
 
 <body>
 
 	<h1>Modernizr Touch tests</h1>
-	<p>This page tests various approaches to detecting Touch events / touch support in the browser. Please visit this test page with any touch devices you have and submit the results, so that we may include a reliable Modernizr.touch test in our next major release!</p>
+	<p>This page tests various approaches to detecting Touch events / touch support in the browser. Please visit this test page with any touch devices you have, so that we may include a reliable Modernizr.touch test in our next major release! Your results will be automatically submitted. <a href="http://github.com/Modernizr/Modernizr/issues/#issue/84">More details on our touch support</a></p>
 	
+	<p style="font-size: 90%; color: #aaa">Update 10.08.10: `ontouchend in document` test added.</p>
+	
+	<p>Your browser's results:</p>
 	<table>
 		<thead>
 			<th>'ontouchstart' in window</th>
 			<th>try/catch {<br>
-&nbsp;&nbsp;&nbsp;document.createEvent("TouchEvent");<br>
+&nbsp;&nbsp;&nbsp;document.createEvent(<br>"TouchEvent");<br>
 }</th>
 			<th>'createTouch' in document</th>
 			<th>typeof TouchEvent != "undefined"</th>
-			<th>typeof Touch == "object"</th>
+			<th>typeof Touch == "object"</th>			
+			<th>"ontouchend" in document</th>
+      <th>NW.Event<br>.isEventSupported('touchstart')</th>
+      
 		</thead>
 		<tbody>
 			<td id="ontouchstart_in_window"></td>
@@ -26,8 +39,13 @@
 			<td id="createtouch_in_doc"></td>
 			<td id="typeof_touch_not_undefined"></td>
 			<td id="typeof_touch_object"></td>
+			<td id="ontouchend_in_document"></td>
+						<td id="nwevents"></td>
 		</tbody>
 	</table>
+	
+	<script src="http://github.com/dperini/nwevents/raw/master/src/nwevents.js"></script>
+	
 <script>
 var try_catch, k;
 try {
@@ -37,12 +55,15 @@ try {
 	try_catch = 0;
 }
 
+
 var _bTestResults = {
   'ontouchstart_in_window': (!!('ontouchstart' in window) ? 1 : 0),
   'try_doc_createevent': try_catch,
   'createtouch_in_doc': (!!('createTouch' in document) ? 1 : 0),
   'typeof_touch_not_undefined': (!!(typeof TouchEvent != "undefined") ? 1 : 0),
-  'typeof_touch_object': (!!(typeof Touch == "object") ? 1 : 0)
+  'typeof_touch_object': (!!(typeof Touch == "object") ? 1 : 0),
+  'ontouchend_in_document': (!!('ontouchend' in document) ? 1 : 0),
+  'nwevents' : ( NW.Event.isEventSupported('touchstart')  ? 1 : 0)
 };
 
 
@@ -62,7 +83,40 @@ for (k in _bTestResults) {
 })();
 </script>
 
-<p>Thanks!</p>
+<p>Thanks!  <a href="http://github.com/Modernizr/Modernizr/">Follow Modernizr on github</a></p>
+	
+	<br><br>
+	<h3>Results Summary</h3>
+	
+	
+	  Most used to false positive in Chrome 4-5. That bug was fixed. Below are the possible solutions and notes on each.
+
+<pre>
+    'ontouchstart' in window	
+    "ontouchend" in document
+    try { document.createEvent("TouchEvent"); }	 catch(e){}
+</pre>
+    Same results with the three of these.
+
+<pre>
+    typeof TouchEvent != "undefined"
+</pre>	
+    No good. False positives in Chrome 6-7.
+
+
+<pre>
+    'createTouch' in document	
+    typeof Touch == "object"	
+</pre>
+    No good. Same results with these two. Fails in BB6, Android 1.5-2.2.
+<br><br>
+Untested solution: <a href="http://github.com/dperini/nwevents/commit/471dcb2dd32818015044f6982f39b5defd9f6fcb">nwevents touch detection via isEventSupported</a>
+	
+	
+	<br><Br>
+	  
+	  <h3>Full data table</h3>
+    <iframe style="border: 0; width: 1100px; height: 600px;"src="http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnINCxIEVGVzdBjGxLICDA?v=3&amp;layout=simple" seamless></iframe>
 	
 </body>
 </html>
