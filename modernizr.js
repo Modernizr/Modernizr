@@ -855,7 +855,7 @@ window.Modernizr = (function(window,document,undefined){
      * Reset m.style.cssText to nothing to reduce memory footprint.
      */
     set_css( '' );
-    modElem = f = null;
+    modElem = inputElem = null;
 
     // Enable HTML 5 elements for styling in IE. 
     // fyi: jscript version does not reflect trident version
