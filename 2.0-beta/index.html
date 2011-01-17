@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="modernizr-2-0-beta" class="no-js">
+<head>
+	<meta charset="utf-8">
+
+	<title>Modernizr 2.0 Beta Preview</title>
+	<meta name="description" content="A beta preview page for Modernizr 2.0's new custom download feature.">
+	<meta name="author" content="Faruk Ateş, Paul Irish, Alex Sexton">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="beta.css" type="text/css" media="screen">
+	
+	<script src="http://use.typekit.com/uqi6bct.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
+	<script src="/js/modernizr.prebuild1.6.js"></script>
+</head>
+
+<body>
+
+	<header>
+		<hgroup>
+			<a href="#home" class="banner">
+				<h1 class="title"><img src="logo-x12.png" width="75" height="36" class="logo">Modernizr</h1>
+				<h2 class="subtitle"><span>Front</span>-end Development Done Right</h2>
+			</a>
+		</hgroup>
+		<hgroup class="beta">
+			<h1 class="title">2.0 Beta</h1>
+			<h2 class="subtitle">Custom Download Preview</h2>
+		</hgroup>
+	</header>
+	
+	<section>
+		<h1 class="heading">Customize your Modernizr download</h1>
+		<p>Hello! You’ve landed on the Modernizr 2.0 beta preview page. Lucky you.</p>
+
+		<p>One of the new features we’re introducing with Modernizr 2.0 is the ability to configure your download of Modernizr, so you can limit it to just the tests and features you need and omit the rest. The form below allows you to do this. Please give it a try and <a href="#feedback">send us your feedback</a>!</p>
+
+		<p><strong>Note:</strong><br />
+		<em>Whilst this is a 2.0 beta preview, the source code used to put your download together is the 1.6 release.</em></p>
+		
+		<form action="#">
+			<fieldset class="features" id="group-css3">
+				<legend class="title"><abbr title="Cascading Style Sheets">CSS</abbr>3</legend>
+				
+				<ul>
+					<li id="fontface"><label><input type="checkbox" value="fontface" /> @font-face</label></li>
+					<li id="flexbox"><label><input type="checkbox" value="flexbox" /> FlexBox CSS Model</label></li>
+					<li id="textshadow"><label><input type="checkbox" value="textshadow" /> text-shadow</label></li>
+					<li id="rgba"><label><input type="checkbox" value="rgba" /> <abbr title="Red, Green, Blue, Alpha">rgba</abbr>()</label></li> 
+					<li id="hsla"><label><input type="checkbox" value="hsla" /> <abbr title="Hue, Saturation, Lightness, Alpha">hsla</abbr>()</label></li> 
+					<li id="borderimage"><label><input type="checkbox" value="borderimage" /> border-image</label></li> 
+					<li id="borderradius"><label><input type="checkbox" value="borderradius" /> border-radius</label></li> 
+					<li id="boxshadow"><label><input type="checkbox" value="boxshadow" /> box-shadow</label></li> 
+					<li id="opacity"><label><input type="checkbox" value="opacity" /> opacity</label></li>
+					<li id="backgroundsize"><label><input type="checkbox" value="backgroundsize" /> background-size</label></li> 
+					<li id="multiplebgs"><label><input type="checkbox" value="multiplebgs" /> Multiple backgrounds</label></li> 
+					<li id="cssanimations"><label><input type="checkbox" value="cssanimations" /> CSS Animations</label></li> 
+					<li id="csscolumns"><label><input type="checkbox" value="csscolumns" /> CSS Columns</label></li> 
+					<li id="cssgradients"><label><input type="checkbox" value="cssgradients" /> CSS Gradients</label></li> 
+					<li id="cssreflections"><label><input type="checkbox" value="cssreflections" /> CSS Reflections</label></li> 
+					<li id="csstransforms"><label><input type="checkbox" value="csstransforms" /> CSS 2D Transforms</label></li> 
+					<li id="csstransforms3d"><label><input type="checkbox" value="csstransforms3d" /> CSS 3D Transforms</label></li> 
+					<li id="csstransitions"><label><input type="checkbox" value="csstransitions" /> CSS Transitions</label></li>
+				</ul>
+			</fieldset>
+			<fieldset class="features" id="group-html5">
+				<legend class="title"><abbr title="HyperText Markup Language">HTML</abbr>5</legend>
+				<ul>
+					<li id="applicationcache"><label><input type="checkbox" value="applicationcache" /> applicationCache</label></li> 
+					<li id="canvas"><label><input type="checkbox" value="canvas" /> Canvas</label></li> 
+					<li id="canvastext"><label><input type="checkbox" value="canvastext" /> Canvas Text</label></li> 
+					<li id="draganddrop"><label><input type="checkbox" value="draganddrop" /> Drag and Drop</label></li> 
+					<li id="hashchange"><label><input type="checkbox" value="hashchange" /> hashchange</label></li> 
+					<li id="history"><label><input type="checkbox" value="history" /> History</label></li> 
+					<li id="audio"><label><input type="checkbox" value="audio" /> HTML5 Audio</label></li> 
+					<li id="video"><label><input type="checkbox" value="video" /> HTML5 Video</label></li> 
+					<li id="indexeddb"><label><input type="checkbox" value="indexeddb" /> IndexedDB</label></li> 
+					<li id="inputtypes"><label><input type="checkbox" value="inputtypes" /> Input Types</label></li> 
+					<li id="input"><label><input type="checkbox" value="input" /> Input Attributes</label></li> 
+					<li id="localstorage"><label><input type="checkbox" value="localstorage" /> localStorage</label></li> 
+					<li id="postmessage"><label><input type="checkbox" value="postmessage" /> PostMessage</label></li>
+					<li id="sessionstorage"><label><input type="checkbox" value="sessionstorage" /> sessionStorage</label></li> 
+					<li id="webworkers"><label><input type="checkbox" value="webworkers" /> Web Workers</label></li>
+					<li id="websockets"><label><input type="checkbox" value="websockets" /> Web Sockets</label></li>
+					<li id="websqldatabase"><label><input type="checkbox" value="websqldatabase" /> Web SQL Database</label></li> 
+				</ul>
+			</fieldset>
+			<fieldset class="features" id="group-misc">
+				<legend class="title"><abbr title="Miscellaneous">Misc.</abbr></legend>
+				<ul>
+					<li id="geolocation"><label><input type="checkbox" value="geolocation" /> Geolocation API</label></li> 
+					<li id="inlinesvg"><label><input type="checkbox" value="inlinesvg" /> Inline SVG</label></li>
+					<li id="svg"><label><input type="checkbox" value="svg" /> SVG</label></li> 
+					<li id="smil"><label><input type="checkbox" value="smil" /> SMIL</label></li> 
+					<li id="svgclippaths"><label><input type="checkbox" value="svgclippaths" /> SVG Clipping</label></li> 
+					<li id="touch"><label><input type="checkbox" value="touch" /> Touch Events</label></li>
+					<li id="webgl"><label><input type="checkbox" value="webgl" /> WebGL</label></li>
+				</ul>
+			</fieldset>
+			<fieldset class="features" id="group-plugins">
+				<legend class="title">Plug-ins</legend>
+				<ul>
+					<li id="iepp"><label><input type="checkbox" checked value="iepp" /> IEPP/HTML5 Shim</label></li>
+				</ul>
+			</fieldset>
+			
+			<div class="buttons-area">
+				<input type="button" class="button" id="generate" value="Generate it!">
+				<!-- Downloading will become available once Google Closure supports a cross-domain API  -->
+				<!-- <input type="button" class="button" id="download" value="Download" disabled="disabled"> -->
+				<small>After generating, copy the source below</small>
+			</div>
+		</form>
+
+		<!-- Generated source. No more regular, only compressed -->
+		<div id="source">
+			<!-- <textarea readonly="readonly" class="source-area default" id="generatedSource" rows="10" cols="80">// Uncompressed source</textarea> -->
+			<iframe class="source-area" id="cframe" src="compressedframe.html"></iframe>
+		</div>
+		
+		<p id="minified-explanation"><strong>Why isn’t there a non-minified version?</strong><br />
+		Modernizr 2.0 will have its documentation built right into the source, meaning, the non-minified version is <em>also</em> the full documentation. As we prefer the documentation to always be complete and up to date (for obvious reasons), we intend for it to only be distributed containing all tests and features. This also makes the purpose of the custom download much clearer, which is <strong>production use</strong>.</p>
+
+	</section>
+	
+	<footer>
+		<section>
+		  <div class="footer-area" id="team">
+		    <h3 class="title">The Modernizr Team</h3>
+  			<ul>
+  				<li class="team"><a href="http://twitter.com/KuraFire"><img src="FarukAtes.jpg" width="48" height="48" alt=""/><strong>Faruk Ateş</strong> Project Lead</a></li>
+  				<li class="team"><a href="http://twitter.com/paul_irish"><img src="PaulIrish.jpg" width="48" height="48" alt=""/><strong>Paul Irish</strong> Lead Developer</a></li>
+  				<li class="team"><a href="http://twitter.com/SlexAxton"><img src="AlexSexton.jpg" width="48" height="48" alt=""/><strong>Alex Sexton</strong> Developer</a></li>
+  			</ul>
+		  </div>
+			<div class="footer-area" id="copyright-license">
+		    <h3 class="title">Modernizr is…</h3>
+				<p>Copyright © 2009—2011</p>
+				<p>Available under the MIT &amp; BSD licenses</p>
+				<p>Proudly sponsored by <a href="http://typekit.com/" class="sponsor">Typekit</a></p>
+			</div>
+		</section>
+	</footer>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
+<script src="/js/modulizr.js"></script> 
+<!--script src="/js/swfobject.js"></script> 
+<script src="/js/downloadify.min.js"></script-->
+<script>
+ var _gaq = [['_setAccount', 'UA-3764464-7'], ['_trackPageview']];
+ (function(d, t) {
+  var g = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+  g.async = true;
+  g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g, s);
+ })(document, 'script');
+</script>
+
+<script> 
+jQuery(function($){
+  var run = false;
+  // $(':checkbox').attr('checked', true);
+
+  // Add dynamic toggle buttons; should inverse current selection per group, not just toggle all on OR off only
+  $("a.toggle-group").live('click', function() {
+    var group = $(this).closest(".features");
+    var checkbox = $(group).find(':checkbox');
+    checkbox.each(function(){
+      $(this).attr('checked', !$(this).is(':checked'));
+    });
+    event.preventDefault();
+  });
+  $("legend.title").append('<a href="#" class="toggle-group">toggle</a>');
+
+  // Generate the custom download
+  $('#generate').click(function(){
+    // Get all the tests and enhancements
+    var tests = $('.features input:checked').map(function(){
+      return this.value;
+    });
+
+    function handleInjection(modularBuild) {
+      var cframe = $('#cframe').contents();
+        
+      cframe.find('#js_code').val(modularBuild);
+      cframe.find('#compileForm').submit();
+    }
+
+    // Grab the modernizr source and run it through modulizr
+    $.ajax({
+      dataType: 'text',
+      cache: false,
+      type: 'GET',
+      url: '/js/modernizr.prebuild1.6.js',
+      success:function(script) {
+        // Call the modulr function to create a modular build
+        var modularBuild = Modulizr.ize(script, [].slice.call(tests,0));
+        // Track the different builds
+        _gaq.push(['_trackPageview', '/build/'+[].slice.call($('ul li input:checked').map(function(key, val){ return ($(this).closest('li')[0].id || undefined); }), 0).join("^")]);
+        // Check if we need to replace the iframe
+        if (run) {
+          $('#cframe').replaceWith($('<iframe class="source-area" id="cframe" src="compressedframe.html"></iframe>').bind('load', function(){
+            handleInjection(modularBuild);
+          }));
+        }
+        else {
+          handleInjection(modularBuild);
+ 
+          // Dirty bit
+          run = true;
+        }
+
+        // Inject into the textarea
+        // $('#generatedSource').val(modularBuild);
+        
+        // Create Download Button
+        /*Downloadify.create('modulizrize',{
+          filename: function(){
+            return 'modernizr.custom.'+(+new Date)+'.js';
+          },
+          data: function(){ 
+            return modularBuild;
+          },
+          swf: 'media/downloadify.swf',
+          downloadImage: 'media/download.png',
+          width: 100,
+          height: 30,
+          transparent: true,
+          append: false
+        });
+        
+        $('#buildArea').fadeIn();*/
+      }
+    });
+  });
+});
+</script>	
+</body>
+</html>

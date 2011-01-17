@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Compressed JS Host</title>
+  </head>
+  <body style="font:16px/20px Inconsolata, Menlo, monospace;">
+    <span style="text-transform:uppercase; color:#999; color:rgba(14,14,14,.7)">// Minified source</span>
+
+	<div style="display:none;">
+		<form id="compileForm" method="POST" action="http://closure-compiler.appspot.com/compile">
+			<fieldset>
+				<input type="hidden" name="compilation_level" value="SIMPLE_OPTIMIZATIONS" />
+				<input type="hidden" name="output_format" value="text" />
+				<input id="js_code" type="hidden" name="js_code" value="" />
+				<input type="hidden" name="output_info" value="compiled_code" />
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
