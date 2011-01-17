@@ -13,7 +13,7 @@
 	
 	<script src="http://use.typekit.com/uqi6bct.js"></script>
 	<script>try{Typekit.load();}catch(e){}</script>
-	<script src="/js/modernizr.prebuild1.6.js"></script>
+	<script src="../js/modernizr.prebuild1.6.js"></script>
 </head>
 
 <body>
@@ -144,9 +144,9 @@
 		</section>
 	</footer>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
-<script src="/js/modulizr.js"></script> 
-<!--script src="/js/swfobject.js"></script> 
-<script src="/js/downloadify.min.js"></script-->
+<script src="../js/modulizr.js"></script> 
+<!--script src="../js/swfobject.js"></script> 
+<script src="../js/downloadify.min.js"></script-->
 <script>
  var _gaq = [['_setAccount', 'UA-3764464-7'], ['_trackPageview']];
  (function(d, t) {
@@ -193,7 +193,7 @@ jQuery(function($){
       dataType: 'text',
       cache: false,
       type: 'GET',
-      url: '/js/modernizr.prebuild1.6.js',
+      url: '../js/modernizr.prebuild1.6.js',
       success:function(script) {
         // Call the modulr function to create a modular build
         var modularBuild = Modulizr.ize(script, [].slice.call(tests,0));
