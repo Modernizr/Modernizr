@@ -1,5 +1,36 @@
 
 
+// test helper object
+window.TEST = {
+  // note some unique members of the Modernizr object
+  inputs    : ['input','inputtypes'],
+  audvid    : ['video','audio'],
+  API       : ['addTest'],
+  privates  : ['_enableHTML5','_version','_fontfaceready'],
+  deprecated : [
+                { oldish : 'crosswindowmessaging', newish : 'postmessage'},
+                { oldish : 'historymanagement', newish : 'history'},
+              ],
+
+  // utility methods
+  inArray: function(elem, array) {
+      if (array.indexOf) {
+          return array.indexOf(elem);
+      }
+      for (var i = 0, length = array.length; i < length; i++) {
+          if (array[i] === elem) {
+              return i;
+          }
+      }
+      return -1;
+  },
+  trim : function(str){
+    return str.replace(/^\s*/, "").replace(/\s*$/, "");
+  }
+};
+
+
+
 
 test("globals set up",2, function() {
   
@@ -44,6 +75,7 @@ test("document.documentElement is valid and correct",1, function() {
 
 
 test("no-js class is gone.", function() {
+  expect(3);
   
 	equals(document.documentElement.className.indexOf('no-js') , -1,
 	       'no-js is gone.'); 
@@ -57,7 +89,19 @@ test("no-js class is gone.", function() {
 	}
 });
 
-
+test('html shim worked', function(){
+  expect(2);
+  
+  // the exact test we use in the script
+  var elem = document.createElement("div");
+  elem.innerHTML = "<elem style='color:red'></elem>";
+  
+  ok( elem.childNodes.length === 1 , 'unknown elements dont collapse');
+  
+  document.body.appendChild(elem);
+  ok( elem.childNodes[0].style.color == 'red', 'unknown elements are styleable')
+  
+});
 
 
 test('html classes are looking good',function(){
@@ -76,6 +120,11 @@ test('html classes are looking good',function(){
   for (var i = -1, len = TEST.inputs.length; ++i < len;){
     if (Modernizr[TEST.inputs[i]] != undefined) newprops--;
   }
+  
+  // decrement for deprecated ones.
+  $.each( TEST.deprecated, function(key, val){
+    newprops--;
+  });
   
   
   equals(classes.length,newprops,'equal number of classes and global object props');
@@ -192,31 +241,7 @@ test('Modernizr.audio and Modernizr.video',function(){
   }
   
   
-})
-
-asyncTest('async @font-face test',4,function(){
-  
-  // we do this to verify our callback indeed will run.
-  start();
-  ok(Modernizr._fontfaceready,'passing a method to Modernizr._fontfaceready')
-  stop();
-  
-  Modernizr._fontfaceready(function(bool){
-    
-    ok(bool === true || bool === false,'passed argument is a boolean');
-    equals(bool,Modernizr.fontface,'Modernizr prop matches passed arg');
-    
-    var expectedclass = (Modernizr.fontface ? '' : 'no-') + 'fontface';
-    
-    ok(document.documentElement.className.indexOf(' '+expectedclass) >= 0,
-       'correct class added to documentElement');
-       
-       
-    start();
-  });
-  
-  
-})
+});
 
 
 test('Modernizr results match expected values',function(){
