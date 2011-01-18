@@ -115,7 +115,7 @@ header .title {
 
 .subtitle {
 	color: #3589bd;
-	font-family: HelveticaNeue-CondensedBold, "Helvetica Neue Condensed Bold", Helvetica Neue, Helvetica, Tahoma, sans-serif !important;
+	font-family: "proxima-nova-condensed-1","proxima-nova-condensed-2", HelveticaNeue-CondensedBold, "Helvetica Neue Condensed Bold", Helvetica Neue, Helvetica, Tahoma, sans-serif !important;
 	font-size: 15px;
 	margin: 0;
 	padding: 10px 0 0 30px;
