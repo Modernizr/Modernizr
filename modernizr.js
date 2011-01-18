@@ -723,6 +723,31 @@ window.Modernizr = (function(window,document,undefined){
         return !!document.createElementNS && /SVG/.test(tostring.call(document.createElementNS(ns.svg,'clipPath')));
     };
 
+    tests['gencontent'] = function() {
+        var styleTag = document.createElement('style'),
+            supported = false,
+            getWidth = function(el) {
+                if(el.offsetWidth)
+                    return el.offsetWidth;
+                return parseInt(document.defaultView.getComputedStyle(el, '').getPropertyValue('width'), 10);
+            };
+        styleTag.type = 'text/css';
+        styleTag.innerHTML = '#gc.h:before{content:"XXX"}#gc{position:absolute}';
+        var headTag = document.getElementsByTagName('head')[0];
+        headTag.appendChild(styleTag);
+        var pTag = document.createElement('p');
+        pTag.id = 'gc';
+        var b = document.getElementsByTagName('body')[0];
+        b.appendChild(pTag);
+        var w = getWidth(pTag);
+        pTag.className = 'h';
+        // is tag dimension
+        if(w != getWidth(pTag)) supported = true;
+        h.removeChild(styleTag);
+        b.removeChild(pTag);
+        return supported;
+    };
+
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
