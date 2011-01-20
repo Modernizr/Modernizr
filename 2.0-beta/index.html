@@ -116,9 +116,10 @@
 
 		<!-- Generated source. No more regular, only compressed -->
 		<div id="source">
-			<!-- <textarea readonly="readonly" class="source-area default" id="generatedSource" rows="10" cols="80">// Uncompressed source</textarea> -->
-			<iframe class="source-area" id="cframe" src="compressedframe.html"></iframe>
-		</div>
+			<textarea readonly="readonly" class="source-area default" id="generatedSource" rows="10" cols="80">// Minified source</textarea>
+			<!--iframe class="source-area" id="cframe" src="compressedframe.html"></iframe-->
+                        <p id="modulizrize"></p>
+                </div>
 		
 		<p id="minified-explanation"><strong>Why isn’t there a non-minified version?</strong><br />
 		Modernizr 2 will have its documentation built right into the source, meaning, the non-minified version is <em>also</em> the full documentation. As we prefer the documentation to always be complete and up to date (for obvious reasons), we intend for it to only be distributed containing all tests and features. This also makes the purpose of the custom download much clearer, which is <strong>production use</strong>.</p>
@@ -143,10 +144,21 @@
 			</div>
 		</section>
 	</footer>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
-<script src="../js/modulizr.js"></script> 
-<!--script src="../js/swfobject.js"></script> 
-<script src="../js/downloadify.min.js"></script-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="../js/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="../js/modulizr.js"></script>
+<script>
+  if ( !window.console ) {
+    window.console = {};
+    window.console.log = window.console.debug = $.noop;
+  }
+</script>
+<script src="../js/uglifyjs/lib/parse-js.js"></script>
+<script src="../js/uglifyjs/lib/process.js"></script>
+<script src="../js/uglifyjs/lib/squeeze-more.js"></script>
+<script src="../js/uglifyjs/bin/uglifyjs.js"></script>
+<script src="../js/swfobject.js"></script> 
+<script src="../js/downloadify.min.js"></script>
 <script>
  var _gaq = [['_setAccount', 'UA-3764464-7'], ['_trackPageview']];
  (function(d, t) {
@@ -160,7 +172,7 @@
 
 <script> 
 jQuery(function($){
-  var run = false;
+  // var run = false;
   // $(':checkbox').attr('checked', true);
 
   // Add dynamic toggle buttons; should inverse current selection per group, not just toggle all on OR off only
@@ -182,10 +194,7 @@ jQuery(function($){
     });
 
     function handleInjection(modularBuild) {
-      var cframe = $('#cframe').contents();
-        
-      cframe.find('#js_code').val(modularBuild);
-      cframe.find('#compileForm').submit();
+      $("#generatedSource").addClass('sourceView').val( modularBuild );
     }
 
     // Grab the modernizr source and run it through modulizr
@@ -196,42 +205,31 @@ jQuery(function($){
       url: '../js/modernizr.prebuild1.6.js',
       success:function(script) {
         // Call the modulr function to create a modular build
-        var modularBuild = Modulizr.ize(script, [].slice.call(tests,0));
+        var modularBuild = Modulizr.ize(script, [].slice.call(tests,0)),
+            uglifiedModularBuild = uglify( modularBuild, ['--extra', '--unsafe'] );
+
         // Track the different builds
         _gaq.push(['_trackPageview', '/build/'+[].slice.call($('ul li input:checked').map(function(key, val){ return ($(this).closest('li')[0].id || undefined); }), 0).join("^")]);
-        // Check if we need to replace the iframe
-        if (run) {
-          $('#cframe').replaceWith($('<iframe class="source-area" id="cframe" src="compressedframe.html"></iframe>').bind('load', function(){
-            handleInjection(modularBuild);
-          }));
-        }
-        else {
-          handleInjection(modularBuild);
- 
-          // Dirty bit
-          run = true;
-        }
 
-        // Inject into the textarea
-        // $('#generatedSource').val(modularBuild);
-        
+        handleInjection(uglifiedModularBuild);
+
         // Create Download Button
-        /*Downloadify.create('modulizrize',{
+        Downloadify.create('modulizrize',{
           filename: function(){
-            return 'modernizr.custom.'+(+new Date)+'.js';
+            return 'modernizr.custom.'+((+new Date) + "").substr(8)+'.js';
           },
           data: function(){ 
-            return modularBuild;
+            return uglifiedModularBuild;
           },
-          swf: 'media/downloadify.swf',
-          downloadImage: 'media/download.png',
+          swf: '../media/downloadify.swf',
+          downloadImage: '../media/download.png',
           width: 100,
           height: 30,
           transparent: true,
           append: false
         });
         
-        $('#buildArea').fadeIn();*/
+        $('#buildArea').fadeIn();
       }
     });
   });

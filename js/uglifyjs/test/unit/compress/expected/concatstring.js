@@ -1,0 +1,1 @@
+var a=a+"ab1"+c,b=a+"cds123"+c,c=a+"c123"+d+"ds"+c
