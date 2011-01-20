@@ -182,7 +182,8 @@ jQuery(function($){
     checkbox.each(function(){
       $(this).attr('checked', !$(this).is(':checked'));
     });
-    event.preventDefault();
+    //event.preventDefault();
+    return false;
   });
   $("legend.title").append('<a href="#" class="toggle-group">toggle</a>');
 
