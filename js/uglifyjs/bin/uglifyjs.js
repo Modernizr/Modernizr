@@ -17,7 +17,7 @@ var uglify = {
 
 pro.set_logger(function(msg){
 //>> Start Uglifui
-        global.console.log(msg); // TODO:: Wrap this so there is visual output as well
+        //global.console.log(msg); // TODO:: Wrap this so there is visual output as well
 //>> End Uglifui
 });
 
@@ -211,7 +211,6 @@ function squeeze_it(code) {
                 sys.debug(sys.inspect(ex));
                 sys.debug(JSON.stringify(ex));
 */
-                global.console.debug( ex );
           //>> End Uglifui
 
         }
@@ -223,8 +222,8 @@ function time_it(name, cont) {
         var t1 = new Date().getTime();
         try { return cont(); }
         //>> Start Uglifui
+        catch(e){}
         //finally { sys.debug("// " + name + ": " + ((new Date().getTime() - t1) / 1000).toFixed(3) + " sec."); }
-        finally { global.console.debug("// " + name + ": " + ((new Date().getTime() - t1) / 1000).toFixed(3) + " sec."); }
         //>> End Uglifui
 
 };
