@@ -17,6 +17,13 @@
 		li b {
 			color: #000;
 		}
+		li:after  { content: " CSS2.1"; }
+		li::after { content: " CSS3"; } // CSS 3 pseudo-element
+		
+		img { content: "hello"; }
+		h1:after { content: ", world	"; }
+		h1 { content: "hello"; }
+		span { content: "hello"; }
 	</style>
 
 
@@ -73,6 +80,12 @@ Modernizr.addTest('datauri',function(){
 	<h1>Modernizr</h1>
 	
 	<a href="./test/index.html">View Test Suite</a>
+	
+	<input type="text" />
+	
+	<img src="http://jsfiddle.net/img/logo.png" />
+	
+	<span id="span">Dude</span>
   
 	<ol >
 <script>

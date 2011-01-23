@@ -613,14 +613,14 @@ window.Modernizr = (function(window,document,undefined){
         sheet, bool,
         head = docHead || docElement,
         style = document.createElement("style"),
-        div = document.createElement('div'),
+		div = document.createElement("div"),
         impl = document.implementation || { hasFeature: function() { return false; } };
         
         style.type = 'text/css';
         head.insertBefore(style, head.firstChild);
-        div.id = "modernizr";
+		div.id = modElem.nodeName;
         docElement.appendChild(div);
-        sheet = style.sheet || style.styleSheet;
+        sheet = document.styleSheets[0];
 
         var supportGeneratedContent = impl.hasFeature('CSS2', '') ?
                 function(rule) {
@@ -628,7 +628,8 @@ window.Modernizr = (function(window,document,undefined){
                     var result = false;
                     try {
                         sheet.insertRule(rule, 0);
-                        result = div.offsetHeight >= 1;
+                        console.log(div.offsetHeight);
+						result = div.offsetHeight >= 1;
                         sheet.deleteRule(sheet.cssRules.length - 1);
                     } catch(e) { }
                     return result;
@@ -636,11 +637,10 @@ window.Modernizr = (function(window,document,undefined){
                 function(rule) {
                     if (!(sheet && rule)) return false;
                     sheet.cssText = rule;
-                    
+                    console.log(div.offsetHeight);
                     return div.offsetHeight >= 1;
                 };
-        
-        bool = supportGeneratedContent('#modernizr:after{content:"'+smile+'";}');
+        bool = supportGeneratedContent('#'+div.id+':after{content:"'+ smile +'";}');
         head.removeChild(style);
         div.parentNode.removeChild(div);
         return bool;
