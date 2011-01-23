@@ -241,31 +241,7 @@ test('Modernizr.audio and Modernizr.video',function(){
   }
   
   
-})
-
-asyncTest('async @font-face test',4,function(){
-  
-  // we do this to verify our callback indeed will run.
-  start();
-  ok(Modernizr._fontfaceready,'passing a method to Modernizr._fontfaceready')
-  stop();
-  
-  Modernizr._fontfaceready(function(bool){
-    
-    ok(bool === true || bool === false,'passed argument is a boolean');
-    equals(bool,Modernizr.fontface,'Modernizr prop matches passed arg');
-    
-    var expectedclass = (Modernizr.fontface ? '' : 'no-') + 'fontface';
-    
-    ok(document.documentElement.className.indexOf(' '+expectedclass) >= 0,
-       'correct class added to documentElement');
-       
-       
-    start();
-  });
-  
-  
-})
+});
 
 
 test('Modernizr results match expected values',function(){
