@@ -102,7 +102,8 @@
 			<fieldset class="features" id="group-plugins">
 				<legend class="title">Plug-ins</legend>
 				<ul>
-					<li id="iepp"><label><input type="checkbox" checked value="iepp" /> IEPP/HTML5 Shim</label></li>
+                                  <li id="iepp"><label><input type="checkbox" checked value="iepp" /> IEPP/HTML5 Shim</label></li>
+                                  <li id="load"><label><input type="checkbox" checked value="load" /> Modernizr.load (yepnope.js)</label></li>
 				</ul>
 			</fieldset>
 			
@@ -186,11 +187,42 @@ jQuery(function($){
   $('#generate').click(function(){
     // Get all the tests and enhancements
     var tests = $('.features input:checked').map(function(){
+      // Special case for Modernizr.load
+      if ( this.value === 'load' ) {
+        return;
+      }
       return this.value;
     });
 
     function handleInjection(modularBuild) {
       $("#generatedSource").addClass('sourceView').val( modularBuild );
+    }
+
+    function buildFile( modularBuild, appended ) {
+      var uglifiedModularBuild = uglify( modularBuild + ( appended || '' ), ['--extra', '--unsafe'] );
+
+      // Track the different builds
+      _gaq.push(['_trackPageview', '/build/'+[].slice.call($('ul li input:checked').map(function(key, val){ return ($(this).closest('li')[0].id || undefined); }), 0).join("^")]);
+
+      handleInjection(uglifiedModularBuild);
+
+      // Create Download Button
+      Downloadify.create('modulizrize',{
+        filename: function(){
+          return 'modernizr.custom.'+((+new Date) + "").substr(8)+'.js';
+        },
+        data: function(){ 
+          return uglifiedModularBuild;
+        },
+        swf: '../media/downloadify.swf',
+        downloadImage: '../media/download.png',
+        width: 170,
+        height: 38,
+        transparent: true,
+        append: false
+      });
+
+      $('#buildArea').fadeIn();
     }
 
     // Grab the modernizr source and run it through modulizr
@@ -201,31 +233,21 @@ jQuery(function($){
       url: '../js/modernizr.prebuild1.6.js',
       success:function(script) {
         // Call the modulr function to create a modular build
-        var modularBuild = Modulizr.ize(script, [].slice.call(tests,0)),
-            uglifiedModularBuild = uglify( modularBuild, ['--extra', '--unsafe'] );
-
-        // Track the different builds
-        _gaq.push(['_trackPageview', '/build/'+[].slice.call($('ul li input:checked').map(function(key, val){ return ($(this).closest('li')[0].id || undefined); }), 0).join("^")]);
-
-        handleInjection(uglifiedModularBuild);
-
-        // Create Download Button
-        Downloadify.create('modulizrize',{
-          filename: function(){
-            return 'modernizr.custom.'+((+new Date) + "").substr(8)+'.js';
-          },
-          data: function(){ 
-            return uglifiedModularBuild;
-          },
-          swf: '../media/downloadify.swf',
-          downloadImage: '../media/download.png',
-          width: 170,
-          height: 38,
-          transparent: true,
-          append: false
-        });
-        
-        $('#buildArea').fadeIn();
+        var modularBuild = Modulizr.ize(script, [].slice.call(tests,0));
+        if ( $('#load input:checked').length ) {
+          $.ajax({
+            dataType: 'text',
+            cache   : false,
+            type    : 'GET',
+            url     : '../js/modernizr.load.js',
+            success : function ( loader ) {
+              buildFile( modularBuild, loader );
+            }
+          });
+        }
+        else {
+          buildFile( modularBuild );
+        }
       }
     });
   });
