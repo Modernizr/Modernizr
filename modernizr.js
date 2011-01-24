@@ -600,7 +600,7 @@ window.Modernizr = (function(window,document,undefined){
                             .indexOf(rule.split(' ')[0]) === 0;
                 };
         
-        bool = supportAtRule('@font-face { font-family: "font"; src: url(font.ttf); }');
+        bool = supportAtRule('@font-face { font-family: "font"; src: url(data:,); }');
         head.removeChild(style);
         return bool;
     };
@@ -753,10 +753,9 @@ window.Modernizr = (function(window,document,undefined){
                 inputElem.setAttribute('type', props[i]);
                 bool = inputElem.type !== 'text';
                 
-                // Chrome likes to falsely purport support, so we feed it a textual value;
+                // Webkit likes to falsely purport support, so we feed it a textual value;
                 // if that doesnt succeed then we know there's a custom UI
                 if (bool){  
-
                     inputElem.value = smile;
      
                     if (/^range$/.test(inputElem.type) && inputElem.style.WebkitAppearance !== undefined){
@@ -782,10 +781,13 @@ window.Modernizr = (function(window,document,undefined){
                       //  even make it here.
                       
                     } else if (/^(url|email)$/.test(inputElem.type)) {
-
                       // Real url and email support comes with prebaked validation.
                       bool = inputElem.checkValidity && inputElem.checkValidity() === false;
-                      
+
+                    } else if (inputElem.type === "number"){
+                        // Safari 5.0.3 accepts the smile for number fields, which it actually does support...
+                        bool = inputElem.value != smile || inputElem.checkValidity && inputElem.checkValidity() === false
+	
                     } else {
                       // If the upgraded input compontent rejects the :) text, we got a winner
                       bool = inputElem.value != smile;
