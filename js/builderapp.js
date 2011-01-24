@@ -17,7 +17,9 @@ jQuery(function($){
   // Generate the custom download
   $('#generate').click(function(){
     // Get all the tests and enhancements
-    var tests = [];
+    var tests = [],
+        mLoad =  $('#load input:checked').length,
+        selections = $('#selectioncomment input:checked').length;
     
     $('.features input:checked').each(function(){
       // Special case for Modernizr.load and selection comment
@@ -26,9 +28,8 @@ jQuery(function($){
       }
     });
 
-    function handleInjection(modularBuild) {
-      var mLoad =  $('#load input:checked').length,
-          selections = $('#selectioncomment input:checked').length;
+    function addExtras (modularBuild) {
+
 
       if ( selections ) {
         if ( mLoad ) {
@@ -36,6 +37,10 @@ jQuery(function($){
         }
         modularBuild = "\/* Modernizr Build: " + tests.join(' | ') + " *\/\n" + modularBuild;
       }
+      return modularBuild;
+    }
+
+    function handleInjection(modularBuild) {
       window.location = '#' + tests.join('-') + ( mLoad ? '-load' : '') + ( selections ? '-selectioncomment' : '' );
       $("#generatedSource").addClass('sourceView').val( modularBuild );
     }
@@ -45,7 +50,8 @@ jQuery(function($){
 
       // Track the different builds
       _gaq.push(['_trackPageview', '/build/'+[].slice.call($('ul li input:checked').map(function(key, val){ return ($(this).closest('li')[0].id || undefined); }), 0).join("^")]);
-
+      
+      uglifiedModularBuild = addExtras(uglifiedModularBuild);
       handleInjection(uglifiedModularBuild);
 
       // Create Download Button

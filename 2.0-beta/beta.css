@@ -272,6 +272,11 @@ textarea:focus {
 	color: rgba(14,14,14,.7);
 	text-transform: uppercase;
 }
+.source-area.default.sourceView {
+	font-size: 11px;
+	text-transform: none;
+	line-height: 14px;
+}
 
 
 .button {
