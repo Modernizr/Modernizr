@@ -100,25 +100,22 @@
 				</ul>
 			</fieldset>
 			<fieldset class="features" id="group-plugins">
-				<legend class="title">Plug-ins</legend>
+				<legend class="title">Other</legend>
 				<ul>
                                   <li id="iepp"><label><input type="checkbox" checked value="iepp" /> IEPP/HTML5 Shim</label></li>
-                                  <li id="load"><label><input type="checkbox" checked value="load" /> Modernizr.load (yepnope.js)</label></li>
+                                  <li id="load"><label><input type="checkbox" checked value="load" /> Modernizr.load (<a href="http://yepnopejs.com/">yepnope.js</a>)</label></li>
+                                  <li id="selectioncomment"><label><input type="checkbox" checked value="selectioncomment" /> Test Selection Commment</label></li>
 				</ul>
 			</fieldset>
 			
 			<div class="buttons-area">
 				<input type="button" class="button" id="generate" value="Generate it!">
-				<!-- Downloading will become available once Google Closure supports a cross-domain API  -->
-				<!-- <input type="button" class="button" id="download" value="Download" disabled="disabled"> -->
-				<small>After generating, copy the source below</small>
+				<small>After generating, copy the source below or hit the download button</small>
 			</div>
 		</form>
 
-		<!-- Generated source. No more regular, only compressed -->
 		<div id="source">
 			<textarea readonly="readonly" class="source-area default" id="generatedSource" rows="10" cols="80">// Minified source</textarea>
-			<!--iframe class="source-area" id="cframe" src="compressedframe.html"></iframe-->
                         <p id="modulizrize"></p>
                 </div>
 		
@@ -186,15 +183,26 @@ jQuery(function($){
   // Generate the custom download
   $('#generate').click(function(){
     // Get all the tests and enhancements
-    var tests = $('.features input:checked').map(function(){
-      // Special case for Modernizr.load
-      if ( this.value === 'load' ) {
-        return;
+    var tests = [];
+    
+    $('.features input:checked').each(function(){
+      // Special case for Modernizr.load and selection comment
+      if ( this.value !== 'load' && this.value !== 'selectioncomment' ) {
+        tests.push( this.value );
       }
-      return this.value;
     });
 
     function handleInjection(modularBuild) {
+      var mLoad =  $('#load input:checked').length,
+          selections = $('#selectioncomment input:checked').length;
+
+      if ( selections ) {
+        if ( mLoad ) {
+          modularBuild = "\/* Modernizr.load enabled *\/\n" + modularBuild;
+        }
+        modularBuild = "\/* Modernizr Build: " + tests.join(' | ') + " *\/\n" + modularBuild;
+      }
+      window.location = '#' + tests.join('|') + ( mLoad ? '|load' : '') + ( selections ? '|selectioncomment' : '' );
       $("#generatedSource").addClass('sourceView').val( modularBuild );
     }
 
@@ -251,6 +259,22 @@ jQuery(function($){
       }
     });
   });
+
+  // Check for preselections
+  function loadFromHash () {
+    var hash = window.location.hash;
+    if ( hash ) {
+      hash = hash.substr(1);
+      var selections = hash.split('|');
+      // Unselect everything
+      $('input[type="checkbox"]').removeAttr('checked');
+      for(var i in selections) {
+        $('input[value="'+selections[i]+'"]').attr('checked', 'checked');
+      }
+      $('#generate').click();
+    }
+  }
+  loadFromHash();
 });
 </script>	
 </body>
