@@ -202,7 +202,7 @@ jQuery(function($){
         }
         modularBuild = "\/* Modernizr Build: " + tests.join(' | ') + " *\/\n" + modularBuild;
       }
-      window.location = '#' + tests.join('|') + ( mLoad ? '|load' : '') + ( selections ? '|selectioncomment' : '' );
+      window.location = '#' + tests.join('-') + ( mLoad ? '-load' : '') + ( selections ? '-selectioncomment' : '' );
       $("#generatedSource").addClass('sourceView').val( modularBuild );
     }
 
@@ -263,9 +263,9 @@ jQuery(function($){
   // Check for preselections
   function loadFromHash () {
     var hash = window.location.hash;
-    if ( hash ) {
+    if ( hash.length > 1 ) {
       hash = hash.substr(1);
-      var selections = hash.split('|');
+      var selections = hash.split('-');
       // Unselect everything
       $('input[type="checkbox"]').removeAttr('checked');
       for(var i in selections) {
