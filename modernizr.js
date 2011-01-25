@@ -68,7 +68,9 @@ window.Modernizr = (function(window,document,undefined){
      */
     inputElem = document.createElement( 'input' ),
     
-    smile = ':)',
+    smile = ':)', 
+    
+    shy = '&shy;',
     
     tostring = Object.prototype.toString,
     
@@ -102,22 +104,33 @@ window.Modernizr = (function(window,document,undefined){
     // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
     testMediaQuery = function(mq){
 
-      var st = document.createElement('style'),
-          div = document.createElement('div'),
-          ret;
+      return injectElementWithStyles(mq + '{#modernizr{height:3px}}',function(node,rule){
+        var height = node.offsetHeight;
+        node.parentNode.removeChild(node);
+        return height === 3;
+      });
 
-      st.textContent = mq + '{#modernizr{height:3px}}';
-      docHead.appendChild(st);
-      div.id = 'modernizr';
+    },
+    
+    // Inject element with style element and some CSS rules
+    injectElementWithStyles = function(rule,callback){
+    
+      var style, ret,
+          div = document.createElement('div');
+    
+      // <style> elements in IE6/7 are considered 'NoScope' elements and therefore will be removed 
+      // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element 
+      // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
+      // http://msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
+      style = [shy,'<style>',rule,'</style>'].join(''),
+      div.id = mod;
+      div.innerHTML = style;
       docElement.appendChild(div);
-
-      ret = div.offsetHeight === 3;
-
-      st.parentNode.removeChild(st);
-      div.parentNode.removeChild(div);
-
+      
+      ret = callback(div,rule);
+      
       return !!ret;
-
+    
     },
     
     
@@ -303,11 +316,11 @@ window.Modernizr = (function(window,document,undefined){
         
         try {
             if (elem.getContext('webgl')){ return true; }
-        } catch(e){	}
+        } catch(e){    }
         
         try {
             if (elem.getContext('experimental-webgl')){ return true; }
-        } catch(e){	}
+        } catch(e){    }
 
         return false;
     };
@@ -569,81 +582,32 @@ window.Modernizr = (function(window,document,undefined){
     // http://javascript.nwbox.com/CSSSupport/
     tests['fontface'] = function(){
 
-        var 
-        sheet, bool,
-        head = docHead || docElement,
-        style = document.createElement("style"),
-        impl = document.implementation || { hasFeature: function() { return false; } };
-        
-        style.type = 'text/css';
-        head.insertBefore(style, head.firstChild);
-        sheet = style.sheet || style.styleSheet;
-
-        var supportAtRule = impl.hasFeature('CSS2', '') ?
-                function(rule) {
-                    if (!(sheet && rule)) return false;
-                    var result = false;
-                    try {
-                        sheet.insertRule(rule, 0);
-                        result = (/src/i).test(sheet.cssRules[0].cssText);
-                        sheet.deleteRule(sheet.cssRules.length - 1);
-                    } catch(e) { }
-                    return result;
-                } :
-                function(rule) {
-                    if (!(sheet && rule)) return false;
-                    sheet.cssText = rule;
-                    
-                    return sheet.cssText.length !== 0 && (/src/i).test(sheet.cssText) &&
-                      sheet.cssText
+        return injectElementWithStyles('@font-face { font-family: "font"; src: url(font.ttf); }',
+               function(node,rule) {
+                    var style = document.styleSheets[document.styleSheets.length-1],
+                        cssText = style.cssText || style.cssRules[0].cssText,
+                        result = (/src/i).test(cssText) &&
+                         cssText
                             .replace(/\r+|\n+/g, '')
-                            .indexOf(rule.split(' ')[0]) === 0;
-                };
-        
-        bool = supportAtRule('@font-face { font-family: "font"; src: url(font.ttf); }');
-        head.removeChild(style);
-        return bool;
+                            .indexOf(rule.split(' ')[0]) === 0;;
+
+                    node.parentNode.removeChild(node);
+                    
+                    return result;
+               });
     };
-	
-	
+    
+    
     // CSS generated content detection
     tests['generatedcontent'] = function(){
-
-        var 
-        sheet, bool,
-        head = docHead || docElement,
-        style = document.createElement("style"),
-		div = document.createElement("div"),
-        impl = document.implementation || { hasFeature: function() { return false; } };
         
-        style.type = 'text/css';
-        head.insertBefore(style, head.firstChild);
-		div.id = modElem.nodeName;
-        docElement.appendChild(div);
-        sheet = document.styleSheets[0];
-
-        var supportGeneratedContent = impl.hasFeature('CSS2', '') ?
-                function(rule) {
-                    if (!(sheet && rule)) return false;
-                    var result = false;
-                    try {
-                        sheet.insertRule(rule, 0);
-                        console.log(div.offsetHeight);
-						result = div.offsetHeight >= 1;
-                        sheet.deleteRule(sheet.cssRules.length - 1);
-                    } catch(e) { }
-                    return result;
-                } :
-                function(rule) {
-                    if (!(sheet && rule)) return false;
-                    sheet.cssText = rule;
-                    console.log(div.offsetHeight);
-                    return div.offsetHeight >= 1;
-                };
-        bool = supportGeneratedContent('#'+div.id+':after{content:"'+ smile +'";}');
-        head.removeChild(style);
-        div.parentNode.removeChild(div);
-        return bool;
+        return injectElementWithStyles('#'+mod+':after{content:"'+smile+'";}',
+               function(node) {
+                    var height = node.offsetHeight;
+                    node.parentNode.removeChild(node);
+                    
+                    return height >= 1;
+               });
     };
     
 
@@ -763,8 +727,7 @@ window.Modernizr = (function(window,document,undefined){
         // Possibly returns a false positive in Safari 3.2?
         return !!document.createElementNS && /SVG/.test(tostring.call(document.createElementNS(ns.svg,'clipPath')));
     };
-
-
+    
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
     function webforms(){

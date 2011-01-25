@@ -17,13 +17,6 @@
 		li b {
 			color: #000;
 		}
-		li:after  { content: " CSS2.1"; }
-		li::after { content: " CSS3"; } // CSS 3 pseudo-element
-		
-		img { content: "hello"; }
-		h1:after { content: ", world	"; }
-		h1 { content: "hello"; }
-		span { content: "hello"; }
 	</style>
 
 
@@ -80,12 +73,6 @@ Modernizr.addTest('datauri',function(){
 	<h1>Modernizr</h1>
 	
 	<a href="./test/index.html">View Test Suite</a>
-	
-	<input type="text" />
-	
-	<img src="http://jsfiddle.net/img/logo.png" />
-	
-	<span id="span">Dude</span>
   
 	<ol >
 <script>
@@ -116,7 +103,7 @@ Modernizr.addTest('datauri',function(){
 
 
 
-function _bBeaconComplete(data){
+/*function _bBeaconComplete(data){
   window.console && console.log('beaconComplete',data);
 }
 
@@ -144,7 +131,7 @@ for (var feat in Modernizr) {
   var scripts = document.getElementsByTagName('script');
   var lastScript = scripts[scripts.length - 1];
   lastScript.parentNode.insertBefore(_bScript, lastScript);
-})();
+})();*/
 
 
 </script>
@@ -154,7 +141,6 @@ for (var feat in Modernizr) {
 <script>
 document.write('<p> HTML element className = ' + document.documentElement.className + '</p>');
 </script>
-
 
 </body>
 </html>
