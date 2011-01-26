@@ -298,18 +298,7 @@ window.Modernizr = (function(window,document,undefined){
     
     
     tests['webgl'] = function(){
-
-        var elem = document.createElement( 'canvas' ); 
-        
-        try {
-            if (elem.getContext('webgl')){ return true; }
-        } catch(e){	}
-        
-        try {
-            if (elem.getContext('experimental-webgl')){ return true; }
-        } catch(e){	}
-
-        return false;
+        return !!window.WebGLRenderingContext;
     };
     
     /*
