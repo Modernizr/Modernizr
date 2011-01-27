@@ -118,7 +118,7 @@ window.Modernizr = (function(window,document,undefined){
       var style, ret,
           div = document.createElement('div');
     
-      // <style> elements in IE6/7 are considered 'NoScope' elements and therefore will be removed 
+      // <style> elements in IE6-8 are considered 'NoScope' elements and therefore will be removed 
       // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element 
       // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
       // http://msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
@@ -589,7 +589,7 @@ window.Modernizr = (function(window,document,undefined){
                         result = (/src/i).test(cssText) &&
                          cssText
                             .replace(/\r+|\n+/g, '')
-                            .indexOf(rule.split(' ')[0]) === 0;;
+                            .indexOf(rule.split(' ')[0]) === 0;
 
                     node.parentNode.removeChild(node);
                     
@@ -604,11 +604,26 @@ window.Modernizr = (function(window,document,undefined){
         return injectElementWithStyles('#'+mod+':after{content:"'+smile+'";}',
                function(node) {
                     var height = node.offsetHeight;
+                    
                     node.parentNode.removeChild(node);
                     
                     return height >= 1;
                });
     };
+	
+    // CSS3 generated content detection
+    tests['generatedcontentcss3'] = function(){
+        
+        return injectElementWithStyles('#'+mod+'{content:"'+smile+'"; display: inline;}',
+               function(node) {
+                    var width = node.offsetWidth;
+                    
+                    node.parentNode.removeChild(node);
+                    
+                    return width !== 0;
+               });
+    };
+	
     
 
     // These tests evaluate support of the video/audio elements, as well as
