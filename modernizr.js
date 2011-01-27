@@ -1,5 +1,5 @@
 /*!
- * Modernizr v1.6
+ * Modernizr v1.7pre
  * http://www.modernizr.com
  *
  * Developed by: 
@@ -32,7 +32,7 @@
 
 window.Modernizr = (function(window,document,undefined){
     
-    var version = '1.6',
+    var version = '1.7pre',
 
     ret = {},
 
@@ -855,6 +855,7 @@ window.Modernizr = (function(window,document,undefined){
     set_css( '' );
     modElem = inputElem = null;
 
+    //>>BEGIN IEPP
     // Enable HTML 5 elements for styling in IE. 
     // fyi: jscript version does not reflect trident version
     //      therefore ie9 in ie7 mode will still have a jScript v.9
@@ -942,6 +943,7 @@ window.Modernizr = (function(window,document,undefined){
           );
         })(window, document);
     }
+    //>>END IEPP
 
     // Assign private properties to the return object with prefix
     ret._enableHTML5     = enableHTML5;
