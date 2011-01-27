@@ -78,7 +78,7 @@ jQuery(function($){
       dataType: 'text',
       cache: false,
       type: 'GET',
-      url: '../js/modernizr.prebuild1.6.js',
+      url: $('script[src*=modernizr]').attr('src'),
       success:function(script) {
         // Call the modulr function to create a modular build
         var modularBuild = Modulizr.ize(script, [].slice.call(tests,0));
