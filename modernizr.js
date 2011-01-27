@@ -1,5 +1,5 @@
 /*!
- * Modernizr v1.6
+ * Modernizr v1.7pre
  * http://www.modernizr.com
  *
  * Developed by: 
@@ -32,7 +32,7 @@
 
 window.Modernizr = (function(window,document,undefined){
     
-    var version = '1.6',
+    var version = '1.7pre',
 
     ret = {},
 
@@ -312,17 +312,8 @@ window.Modernizr = (function(window,document,undefined){
     
     tests['webgl'] = function(){
 
-        var elem = document.createElement( 'canvas' ); 
-        
-        try {
-            if (elem.getContext('webgl')){ return true; }
-        } catch(e){    }
-        
-        try {
-            if (elem.getContext('experimental-webgl')){ return true; }
-        } catch(e){    }
-
-        return false;
+        return !!window.WebGLRenderingContext;
+		
     };
     
     /*
@@ -609,6 +600,7 @@ window.Modernizr = (function(window,document,undefined){
                     
                     return height >= 1;
                });
+
     };
 	
     // CSS3 generated content detection
@@ -767,44 +759,53 @@ window.Modernizr = (function(window,document,undefined){
         
         // Big thanks to @miketaylr for the html5 forms expertise. http://miketaylr.com/
         ret['inputtypes'] = (function(props) {
-            for (var i = 0, bool, len=props.length ; i < len ; i++) {
+          
+            for (var i = 0, bool, inputElemType, defaultView, len=props.length; i < len; i++) {
               
-                inputElem.setAttribute('type', props[i]);
+                inputElem.setAttribute('type', inputElemType = props[i]);
                 bool = inputElem.type !== 'text';
                 
-                // Chrome likes to falsely purport support, so we feed it a textual value;
-                // if that doesnt succeed then we know there's a custom UI
+                // We first check to see if the type we give it sticks.. 
+                // If the type does, we feed it a textual value, which shouldn't be valid.
+                // If the value doesn't stick, we know there's input sanitization which infers a custom UI
                 if (bool){  
-
-                    inputElem.value = smile;
+                  
+                    inputElem.value         = smile;
+                    inputElem.style.cssText = 'position:absolute;visibility:hidden;';
      
-                    if (/^range$/.test(inputElem.type) && inputElem.style.WebkitAppearance !== undefined){
+                    if (/^range$/.test(inputElemType) && inputElem.style.WebkitAppearance !== undefined){
                       
                       docElement.appendChild(inputElem);
-                      var defaultView = document.defaultView;
+                      defaultView = document.defaultView;
                       
                       // Safari 2-4 allows the smiley as a value, despite making a slider
                       bool =  defaultView.getComputedStyle && 
-                              defaultView.getComputedStyle(inputElem, null).WebkitAppearance !== 'textfield' && 
-                      
+                              defaultView.getComputedStyle(inputElem, null).WebkitAppearance !== 'textfield' &&                  
                               // Mobile android web browser has false positive, so must
                               // check the height to see if the widget is actually there.
                               (inputElem.offsetHeight !== 0);
                               
                       docElement.removeChild(inputElem);
                               
-                    } else if (/^(search|tel)$/.test(inputElem.type)){
+                    } else if (/^(search|tel)$/.test(inputElemType)){
                       // Spec doesnt define any special parsing or detectable UI 
                       //   behaviors so we pass these through as true
                       
                       // Interestingly, opera fails the earlier test, so it doesn't
                       //  even make it here.
                       
-                    } else if (/^(url|email)$/.test(inputElem.type)) {
-
+                    } else if (/^(url|email)$/.test(inputElemType)) {
                       // Real url and email support comes with prebaked validation.
                       bool = inputElem.checkValidity && inputElem.checkValidity() === false;
                       
+                    } else if (/^color$/.test(inputElemType)) {
+                        // chuck into DOM and force reflow for Opera bug in 11.00
+                        // github.com/Modernizr/Modernizr/issues#issue/159
+                        docElement.appendChild(inputElem);
+                        docElement.offsetWidth; 
+                        bool = inputElem.value != smile;
+                        docElement.removeChild(inputElem);
+
                     } else {
                       // If the upgraded input compontent rejects the :) text, we got a winner
                       bool = inputElem.value != smile;
@@ -876,6 +877,7 @@ window.Modernizr = (function(window,document,undefined){
     set_css( '' );
     modElem = inputElem = null;
 
+    //>>BEGIN IEPP
     // Enable HTML 5 elements for styling in IE. 
     // fyi: jscript version does not reflect trident version
     //      therefore ie9 in ie7 mode will still have a jScript v.9
@@ -963,6 +965,7 @@ window.Modernizr = (function(window,document,undefined){
           );
         })(window, document);
     }
+    //>>END IEPP
 
     // Assign private properties to the return object with prefix
     ret._enableHTML5     = enableHTML5;
