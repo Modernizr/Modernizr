@@ -19,7 +19,7 @@ jQuery(function($){
     // Get all the tests and enhancements
     var tests = [],
         mLoad =  $('#load input:checked').length,
-        selections = $('#selectioncomment input:checked').length;
+        selections = true; // ALWAYS ON !!!!! $('#selectioncomment input:checked').length;
     
     $('.features input:checked').each(function(){
       // Special case for Modernizr.load and selection comment
@@ -35,13 +35,13 @@ jQuery(function($){
         if ( mLoad ) {
           modularBuild = "\/* Modernizr.load enabled *\/\n" + modularBuild;
         }
-        modularBuild = "\/* Modernizr Build: " + tests.join(' | ') + " *\/\n" + modularBuild;
+        modularBuild = "\/* Modernizr custom build of " + Modernizr._version + ": " + tests.join(' | ') + " *\/\n" + modularBuild;
       }
       return modularBuild;
     }
 
     function handleInjection(modularBuild) {
-      window.location = '#' + tests.join('-') + ( mLoad ? '-load' : '') + ( selections ? '-selectioncomment' : '' );
+      window.location = '#' + tests.join('-') + ( mLoad ? '-load' : ''); // I killed it cuz it's always on now. + ( selections ? '-selectioncomment' : '' );
       $("#generatedSource").addClass('sourceView').val( modularBuild );
     }
 
@@ -78,7 +78,7 @@ jQuery(function($){
       dataType: 'text',
       cache: false,
       type: 'GET',
-      url: '../js/modernizr.prebuild1.6.js',
+      url: $('script[src*=modernizr]').attr('src'),
       success:function(script) {
         // Call the modulr function to create a modular build
         var modularBuild = Modulizr.ize(script, [].slice.call(tests,0));
