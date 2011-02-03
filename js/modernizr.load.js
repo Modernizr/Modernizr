@@ -1,77 +1,57 @@
 /**
- * yepnope.js 1.0pre
- * by Alex Sexton - AlexSexton@gmail.com
- * &
- * Ralph Holzmann - ralphholzmann@gmail.com
- *
- * Tri-Licensed WTFPL, BSD, & MIT
+ * yepnope.js 1.0 RC1
+ * Alex Sexton & Ralph Holzmann
+ * WTFPL BSD & MIT
 */
 ( function ( window, doc, undef ) {
 
 var docElement            = doc.documentElement,
     sTimeout              = window.setTimeout,
-    NULL                  = null,
-    FALSE                 = !!0,
-    TRUE                  = !!1,
-    docFirst              = docElement.firstChild,
+    docFirst              = doc.getElementsByTagName( 'head' )[ 0 ],
     toString              = {}.toString,
-    jsType                = 'j',
-    cssType               = 'c',
-    strComplete           = "complete",
-    strScript             = "script",
-    strShift              = "shift",
-    strReadyState         = "readyState",
-    strOnReadyStateChange = "onreadystatechange",
-    strOnLoad             = "onload",
-    strObject             = "object",
-    strImg                = "img",
-    strPreobj             = "[" + strObject + " ",
     execStack             = [],
     started               = 0,
-    strAppear             = 'Appearance',
-    isGecko               = ( "Moz" + strAppear in docElement.style ),
+    // Before you get mad about browser sniffs, please read:
+    // https://github.com/Modernizr/Modernizr/wiki/Undetectables
+    // If you have a better solution, we are actively looking to solve the problem
+    isGecko               = ( 'MozAppearance' in docElement.style ),
     isGecko18             = isGecko && !! window.Event.prototype.preventBubble,
-    // Thanks to @jdalton for this opera detection
-    isOpera               = window.opera && toString.call( window.opera ) == strPreobj + "Opera]",
-    isWebkit              = ( "webkit" + strAppear in docElement.style ),
-    strJsElem             = isOpera || ( isGecko && ! isGecko18 ) ? strImg : ( isGecko ? strObject : strScript ),
-    strCssElem            = isWebkit ? strImg : strJsElem,
+    // Thanks to @jdalton for showing us this opera detection (by way of @kangax) (and probably @miketaylr too, or whatever...)
+    isOpera               = window.opera && toString.call( window.opera ) == '[object Opera]',
+    isWebkit              = ( 'webkitAppearance' in docElement.style ),
+    strJsElem             = isOpera || ( isGecko && ! isGecko18 ) ? 'img' : ( isGecko ? 'object' : 'script' ),
+    strCssElem            = isWebkit ? 'img' : strJsElem,
     isArray               = Array.isArray || function ( obj ) {
-      return toString.call( obj ) == strPreobj + "Array]";
+      return toString.call( obj ) == '[object Array]';
     },
     isObject              = function ( obj ) {
       // Lame object detection, but don't pass it stupid stuff?
-      return typeof obj == strObject;
+      return typeof obj == 'object';
     },
     isString              = function ( s ) {
-      return typeof s == "string";
+      return typeof s == 'string';
     },
     isFunction            = function ( fn ) {
-      return toString.call( fn ) == strPreobj + 'Function]';
+      return toString.call( fn ) == '[object Function]';
     },
     globalFilters         = [],
-    prefixes              = {
-      'css': function ( resource ) {
-        resource.forceCSS = TRUE;
-        return resource;
-      }
-    },
+    prefixes              = {},
+    handler,
     yepnope;
 
   /* Loader helper functions */
-  function isFileReady ( injectedElem ) {
+  function isFileReady ( readyState ) {
     // Check to see if any of the ways a file can be ready are available as properties on the file's element
-    return ( ! injectedElem[ strReadyState ] || injectedElem[ strReadyState ] == "loaded" || injectedElem[ strReadyState ] == strComplete );
+    return ( ! readyState || readyState == 'loaded' || readyState == 'complete' );
   }
 
   function execWhenReady () {
     var execStackReady = 1,
-        len,
-        i;
+        i              = -1;
 
     // Loop through the stack of scripts in the cue and execute them when all scripts in a group are ready
-    for ( i = -1, len = execStack.length; ++i < len; ) {
-      if ( execStack[ i ].src && ! ( execStackReady = execStack[ i ].ready ) ) {
+    while ( execStack.length - ++i ) {
+      if ( execStack[ i ].s && ! ( execStackReady = execStack[ i ].r ) ) {
         // As soon as we encounter a script that isn't ready, stop looking for more
         break;
       }
@@ -85,24 +65,24 @@ var docElement            = doc.documentElement,
   // Takes a preloaded js obj (changes in different browsers) and injects it into the head
   // in the appropriate order
   function injectJs ( oldObj ) {
-
-    var script = doc.createElement( strScript ),
+    var script = doc.createElement( 'script' ),
         done;
 
-    script.src = oldObj.src;
+    script.src = oldObj.s;
 
     // Bind to load events
-    script[ strOnReadyStateChange ] = script[ strOnLoad ] = function () {
+    script.onreadystatechange = script.onload = function () {
 
-      if ( ! done && isFileReady( script ) ) {
+      if ( ! done && isFileReady( script.readyState ) ) {
 
         // Set done to prevent this function from being called twice.
         done = 1;
         execWhenReady();
 
         // Handle memory leak in IE
-        script[ strOnLoad ] = script[ strOnReadyStateChange ] = NULL;
-        docElement.removeChild( script );
+        script.onload = script.onreadystatechange = null;
+        // Only remove it if we appended it to begin with
+        ! oldObj.e && docElement.removeChild( script );
       }
     };
 
@@ -110,16 +90,25 @@ var docElement            = doc.documentElement,
     sTimeout( function () {
       if ( ! done ) {
         done = 1;
+        docElement.removeChild( script );
         execWhenReady();
       }
     }, yepnope.errorTimeout );
 
     // Inject script into to document
-    docElement.appendChild( script );
+    // or immediately callback if we know there
+    // was previously a timeout error
+    if ( oldObj.e ) {
+      script.onload();
+    }
+    else {
+      docElement.appendChild( script );
+    }
   }
 
   // Takes a preloaded css obj (changes in different browsers) and injects it into the head
   // in the appropriate order
+  // Many credits to John Hann (@unscriptable) for a lot of the ideas here - found in the css! plugin for RequireJS
   function injectCss ( oldObj ) {
 
     // Create stylesheet link
@@ -127,7 +116,7 @@ var docElement            = doc.documentElement,
         done;
 
     // Add attributes
-    link.href = oldObj.src;
+    link.href = oldObj.s;
     link.rel  = 'stylesheet';
     link.type = 'text/css';
 
@@ -144,7 +133,7 @@ var docElement            = doc.documentElement,
               // In supporting browsers, we can see the length of the cssRules of the file go up
               if ( link.sheet && link.sheet.cssRules && link.sheet.cssRules.length ) {
                 // Then turn off the poll
-                done = TRUE;
+                done = 1;
                 // And execute a function to execute callbacks when all dependencies are met
                 execWhenReady();
               }
@@ -156,9 +145,9 @@ var docElement            = doc.documentElement,
             catch ( ex ) {
               // In the case that the browser does not support the cssRules array (cross domain)
               // just check the error message to see if it's a security error
-              if ( ( ex.code == 1000 ) || ( ex.message.match( /security|denied/i ) ) ) {
+              if ( ( ex.code == 1e3 ) || ( ex.message.match( /security|denied/i ) ) ) {
                 // if it's a security error, that means it loaded a cross domain file, so stop the timeout loop
-                done = TRUE;
+                done = 1;
                 // and execute a check to see if we can run the callback(s) immediately after this function ends
                 sTimeout( function () {
                   execWhenReady();
@@ -170,7 +159,7 @@ var docElement            = doc.documentElement,
               }
             }
           }
-        }, 13 );
+        }, 0 );
       } )( link );
 
     }
@@ -180,7 +169,7 @@ var docElement            = doc.documentElement,
       link.onload = function () {
         if ( ! done ) {
           // Set our flag to complete
-          done = TRUE;
+          done = 1;
           // Check to see if we can call the callback
           sTimeout( function () {
             execWhenReady();
@@ -192,7 +181,8 @@ var docElement            = doc.documentElement,
     // 404 Fallback
     sTimeout( function () {
       if ( ! done ) {
-        done = TRUE;
+        done = 1;
+        docElement.removeChild( link );
         execWhenReady();
       }
     }, yepnope.errorTimeout );
@@ -203,29 +193,31 @@ var docElement            = doc.documentElement,
 
   function executeStack ( a ) {
     // shift an element off of the stack
-    var i   = execStack[ strShift ](),
-        src = i ? i.src  : undef,
-        t   = i ? i.type : undef;
+    var i   = execStack.shift(),
+        src = i ? i.s  : undef,
+        t   = i ? i.t : undef;
 
     started = 1;
 
-    // if a exists and has a src
+    // if a is truthy and the first item in the stack has an src
     if ( a && src ) {
       // Pop another off the stack
-      i = execStack[ strShift ]();
+      i = execStack.shift();
       // unset the src
       src = undef;
     }
 
     if ( i ) {
       // if it's a script, inject it into the head with no type attribute
-      if ( src && t == jsType ) {
+      if ( src && t == 'j' ) {
+        // Inject after a timeout so FF has time to be a jerk about it and
+        // not double load (ignore the cache)
         sTimeout( function () {
           injectJs( i );
         }, 0 );
       }
       // If it's a css file, fun the css injection function
-      else if ( src && t == cssType ) {
+      else if ( src && t == 'c' ) {
         injectCss( i );
       }
       // Otherwise, just call the function and potentially run the stack
@@ -248,27 +240,25 @@ var docElement            = doc.documentElement,
     var preloadElem = doc.createElement( elem ),
         done        = 0,
         stackObject = {
-          type: type,
-          src: url,
-          ready: FALSE 
+          t: type,  // type
+          s: url    // src
+        //r: 0      // ready
+        //e: 0      // error
         };
 
     function onload () {
 
       // If the script/css file is loaded
-      if ( ! done && isFileReady( preloadElem ) ) {
+      if ( ! done && isFileReady( preloadElem.readyState ) ) {
 
         // Set done to prevent this function from being called twice.
-        stackObject.ready = done = 1;
+        stackObject.r = done = 1;
 
-        // If the type is set, that means that we're offloading execution
-        if ( ! type || ( type && ! started ) ) {
-          execWhenReady();
-        }
+        ! started && execWhenReady();
 
         // Handle memory leak in IE
-        preloadElem[ strOnLoad ] = preloadElem[ strOnReadyStateChange ] = NULL;
-        type && docElement.removeChild( preloadElem );
+        preloadElem.onload = preloadElem.onreadystatechange = null;
+        docElement.removeChild( preloadElem );
       }
     }
 
@@ -279,23 +269,23 @@ var docElement            = doc.documentElement,
     preloadElem.width = preloadElem.height = '0';
 
     // Only if we have a type to add should we set the type attribute (a real script has no type)
-    if ( type && elem != strObject ) {
+    if ( elem != 'object' ) {
       preloadElem.type = type;
     }
 
     // Attach handlers for all browsers
-    preloadElem[ strOnLoad ] = preloadElem[ strOnReadyStateChange ] = onload;
+    preloadElem.onload = preloadElem.onreadystatechange = onload;
 
     // If it's an image
-    if ( elem == strImg ) {
+    if ( elem == 'img' ) {
       // Use the onerror callback as the 'completed' indicator
       preloadElem.onerror = onload;
     }
     // Otherwise, if it's a script element
-    else if ( elem == strScript ) {
+    else if ( elem == 'script' ) {
       // handle errors on script elements when we can
       preloadElem.onerror = function () {
-        stackObject.ready = 1;
+        stackObject.r = 1;
         executeStack( 1 );
       };
     }
@@ -308,13 +298,18 @@ var docElement            = doc.documentElement,
     docElement.appendChild( preloadElem );
 
     // Special case for opera, since error handling is how we detect onload
-    // (with images) - we can't have a real error handler. So in opera, we
+    // we can't have a real error handler. So in opera, we
     // have a timeout in order to throw an error if something never loads.
     // Better solutions welcomed.
-    if ( ( isOpera && elem == strScript ) || elem == strObject ) {
+    if ( ( isOpera && elem == 'script' ) || elem == 'object' ) {
       sTimeout( function () {
         if ( ! done ) {
-        stackObject.ready = done = 1;
+          // Remove the node from the dom
+          docElement.removeChild( preloadElem );
+          // Set it to ready to move on
+          // indicate that this had a timeout error on our stack object
+          stackObject.r = stackObject.e = done = 1;
+          // Continue on
           execWhenReady();
         }
       }, yepnope.errorTimeout );
@@ -323,37 +318,31 @@ var docElement            = doc.documentElement,
 
   function load ( resource, type ) {
 
-    var app   = this,
-        elem  = ( type == 'c' ? strCssElem : strJsElem );
+    var elem  = ( type == 'c' ? strCssElem : strJsElem );
 
     // We'll do 'j' for js and 'c' for css, yay for unreadable minification tactics
-    type = type || jsType;
+    type = type || 'j';
     if ( isString( resource ) ) {
       // if the resource passed in here is a string, preload the file
       // use the head when we can (which is the documentElement when the head element doesn't exist)
       // and use the body element for objects. Images seem fine in the head, for some odd reason.
-      preloadFile( elem, resource, type, app.i++, docElement );
+      preloadFile( elem, resource, type, this.i++, docElement );
     } else {
       // Otherwise it's a resource object and we can splice it into the app at the current location
-      execStack.splice( app.i++, 0, resource );
+      execStack.splice( this.i++, 0, resource );
     }
 
     // OMG is this jQueries? For chaining...
-    return app;
-  }
-
-  function getLoader () {
-    // this is a function to maintain state and return a fresh loader
-    return {
-      load: load,
-      i : 0
-    };
+    return this;
   }
 
   // return the yepnope object with a fresh loader attached
   function getYepnope () {
     var y = yepnope;
-    y.loader = getLoader();
+    y.loader = {
+      load: load,
+      i : 0
+    };
     return y;
   }
 
@@ -363,64 +352,51 @@ var docElement            = doc.documentElement,
 
     var i,
         need,
-        nlen  = needs.length,
         // start the chain as a plain instance
-        chain = this.yepnope.loader || getLoader();
+        chain = this.yepnope.loader;
 
     function satisfyPrefixes ( url ) {
-      // make sure we have a url
-      if ( url ) {
-        // split all prefixes out
-        var parts   = url.split( '!' ),
-            pLen    = parts.length,
-            gLen    = globalFilters.length,
-            origUrl = parts[ pLen - 1 ],
-            res     = {
-              url      : origUrl,
-              // keep this one static for callback variable consistency
-              origUrl  : origUrl,
-              prefixes : ( pLen > 1 ) ? parts.slice( 0, pLen - 1 ) : undef
-            },
-            mFunc,
-            j,
-            z;
+      // split all prefixes out
+      var parts   = url.split( '!' ),
+      gLen    = globalFilters.length,
+      origUrl = parts.pop(),
+      pLen    = parts.length,
+      res     = {
+        url      : origUrl,
+        // keep this one static for callback variable consistency
+        origUrl  : origUrl,
+        prefixes : parts
+      },
+      mFunc,
+      j;
 
-        // loop through prefixes
-        // if there are none, this automatically gets skipped
-        for ( j = 0; j < pLen - 1; j++ ) {
-          mFunc = prefixes[ parts[ j ] ];
-          if ( mFunc ) {
-            res = mFunc( res );
-          }
+      // loop through prefixes
+      // if there are none, this automatically gets skipped
+      for ( j = 0; j < pLen; j++ ) {
+        mFunc = prefixes[ parts[ j ] ];
+        if ( mFunc ) {
+          res = mFunc( res );
         }
-
-        // Go through our global filters
-        for ( z = 0; z < gLen; z++ ) {
-          res = globalFilters[ z ]( res );
-        }
-
-        // return the final url
-        return res;
       }
-      return FALSE;
+
+      // Go through our global filters
+      for ( j = 0; j < gLen; j++ ) {
+        res = globalFilters[ j ]( res );
+      }
+
+      // return the final url
+      return res;
     }
 
     function loadScriptOrStyle ( input, callback, chain, index, testResult ) {
       // run through our set of prefixes
-      var resource = satisfyPrefixes( input );
+      var resource     = satisfyPrefixes( input ),
+          autoCallback = resource.autoCallback;
 
-      // if no object is returned or the url is empty/false just exit the load
-      if ( ! resource || !resource.url || resource.bypass ) {
-        return chain;
+      // if no object is returned or the url is empty/0 just exit the load
+      if ( resource.bypass ) {
+        return;
       }
-
-      var inc          = resource.url,
-          origInc      = resource.origUrl,
-          incLen       = inc.length,
-          instead      = resource.instead,
-          autoCallback = resource.autoCallback,
-          forceJS      = resource.forceJS,
-          forceCSS     = resource.forceCSS;
 
       // Determine callback, if any
       if ( callback ) {
@@ -428,36 +404,32 @@ var docElement            = doc.documentElement,
       }
 
       // if someone is overriding all normal functionality
-      if ( instead ) {
-        return instead( input, callback, chain, index, testResult );
+      if ( resource.instead ) {
+        return resource.instead( input, callback, chain, index, testResult );
       }
       else {
 
-        chain.load( inc, ( incLen > 4 && ( forceCSS || ( ! forceJS && inc.substr( incLen - 4 ) === '.css' ) ) ) ? cssType : undef );
+        chain.load( resource.url, ( ( resource.forceCSS || ( ! resource.forceJS && /css$/.test( resource.url ) ) ) ) ? 'c' : undef );
 
         // If we have a callback, we'll start the chain over
         if ( isFunction( callback ) || isFunction( autoCallback ) ) {
           // Call getJS with our current stack of things
           chain.load( function () {
             // Hijack yepnope and restart index counter
-            // NOTE:: This can't get minified... perhaps we need to pass it as a param isntead?
-            var innernope = getYepnope();
+            getYepnope();
             // Call our callbacks with this set of data
-            // TODO :: get CSS preloading working so we can use innernope there too
-            callback && callback( origInc, testResult, index, innernope );
-            autoCallback && autoCallback( origInc, testResult, index, innernope );
+            callback && callback( resource.origUrl, testResult, index );
+            autoCallback && autoCallback( resource.origUrl, testResult, index );
           } );
         }
       }
-
-      return chain;
     }
 
     function loadFromTestObject ( testObject, chain) {
-        var testResult = !! ( testObject.test ),
-            group      = ( testResult ) ? testObject.yep : testObject.nope,
+        var testResult = !! testObject.test,
+            group      = testResult ? testObject.yep : testObject.nope,
             always     = testObject.load || testObject.both,
-            callback   = testObject.callback || undef,
+            callback   = testObject.callback,
             callbackKey;
 
         // Reusable function for dealing with the different input types
@@ -467,7 +439,7 @@ var docElement            = doc.documentElement,
           // If it's a string
           if ( isString( needGroup ) ) {
             // Just load the script of style
-            chain = loadScriptOrStyle( needGroup, callback, chain, 0, testResult );
+            loadScriptOrStyle( needGroup, callback, chain, 0, testResult );
           }
           // See if we have an object. Doesn't matter if it's an array or a key/val hash
           // Note:: order cannot be guaranteed on an key value object with multiple elements
@@ -478,7 +450,7 @@ var docElement            = doc.documentElement,
               // patch if needed. Kangax has a nice shim for it. Or just remove the check
               // and promise not to extend the object prototype.
               if ( needGroup.hasOwnProperty( callbackKey ) ) {
-                chain = loadScriptOrStyle( needGroup[ callbackKey ], callback, chain, callbackKey, testResult );
+                loadScriptOrStyle( needGroup[ callbackKey ], callback, chain, callbackKey, testResult );
               }
             }
           }
@@ -491,44 +463,40 @@ var docElement            = doc.documentElement,
         handleGroup( always );
 
         // Fire complete callback
-        if ( testObject[ strComplete ] ) {
-          chain = chain.load( testObject[ strComplete ] );
+        if ( testObject.complete ) {
+          chain.load( testObject.complete );
         }
 
-        return chain;
     }
 
     // Someone just decides to load a single script or css file as a string
     if ( isString( needs ) ) {
-      chain = loadScriptOrStyle( needs, FALSE, chain, 0 );
+      loadScriptOrStyle( needs, 0, chain, 0 );
     }
     // Normal case is likely an array of different types of loading options
     else if ( isArray( needs ) ) {
       // go through the list of needs
-      for( i = 0; i < nlen; i++ ) {
+      for( i = 0; i < needs.length; i++ ) {
         need = needs[ i ];
 
         // if it's a string, just load it
         if ( isString( need ) ) {
-          chain = loadScriptOrStyle( need, FALSE, chain, 0 );
+          loadScriptOrStyle( need, 0, chain, 0 );
         }
         // if it's an array, call our function recursively
         else if ( isArray( need ) ) {
-          chain = yepnope( need );
+          yepnope( need );
         }
         // if it's an object, use our modernizr logic to win
         else if ( isObject( need ) ) {
-          chain = loadFromTestObject( need, chain );
+          loadFromTestObject( need, chain );
         }
       }
     }
     // Allow a single object to be passed in
     else if ( isObject( needs ) ) {
-      chain = loadFromTestObject( needs, chain );
+      loadFromTestObject( needs, chain );
     }
-
-    // allow more loading on this chain
-    return chain;
   };
 
   // This publicly exposed function is for allowing
@@ -562,28 +530,21 @@ var docElement            = doc.documentElement,
 
   // Webreflection readystate hack
   // safe for jQuery 1.4+ ( i.e. don't use yepnope with jQuery 1.3.2 )
-  ( function ( addEvent, domLoaded, handler ) {
-    // if the readyState is null and we have a listener
-    if ( doc[ strReadyState ] == NULL && doc[ addEvent ] ) {
-      // set the ready state to loading
-      doc[ strReadyState ] = "loading";
-      // call the listener
-      doc[ addEvent ]( domLoaded, handler = function () {
-        // Remove the listener
-        doc.removeEventListener( domLoaded, handler, FALSE );
-        // Set it to ready
-        doc[ strReadyState ] = strComplete;
-      }, FALSE );
-    }
-  } )( "addEventListener", "DOMContentLoaded" );
-
+  // if the readyState is null and we have a listener
+  if ( doc.readyState == null && doc.addEventListener ) {
+    // set the ready state to loading
+    doc.readyState = 'loading';
+    // call the listener
+    doc.addEventListener( 'DOMContentLoaded', handler = function () {
+      // Remove the listener
+      doc.removeEventListener( 'DOMContentLoaded', handler, 0 );
+      // Set it to ready
+      doc.readyState = 'complete';
+    }, 0 );
+  }
 
   // Attach loader &
   // Leak it
-  // Leak as Modernizr.load for Modernizr
   window.yepnope = yepnope = getYepnope();
 
 } )( this, this.document );
-
-// Make it a family affair
-Modernizr.load = function (){ yepnope.apply(window, [].slice.call(arguments, 0)); };
