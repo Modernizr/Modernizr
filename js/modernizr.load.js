@@ -548,3 +548,4 @@ var docElement            = doc.documentElement,
   window.yepnope = yepnope = getYepnope();
 
 } )( this, this.document );
+Modernizr.load = function () { yepnope.apply( window, [].slice.call( arguments, 0 ) ); };
