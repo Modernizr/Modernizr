@@ -98,19 +98,7 @@ window.Modernizr = (function(window,document,undefined){
     classes = [],
     
     featurename, // used in testing loop
-    
-    
-    
-    // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
-    testMediaQuery = function(mq){
 
-      return injectElementWithStyles(mq + '{#modernizr{height:3px}}',function(node,rule){
-        var height = node.offsetHeight;
-        node.parentNode.removeChild(node);
-        return height === 3;
-      });
-
-    },
     
     // Inject element with style element and some CSS rules
     injectElementWithStyles = function(rule,callback){
@@ -118,7 +106,7 @@ window.Modernizr = (function(window,document,undefined){
       var style, ret,
           div = document.createElement('div');
     
-      // <style> elements in IE6-8 are considered 'NoScope' elements and therefore will be removed 
+      // <style> elements in IE6-9 are considered 'NoScope' elements and therefore will be removed 
       // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element 
       // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
       // http://msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
@@ -245,6 +233,35 @@ window.Modernizr = (function(window,document,undefined){
 
         return !!test_props( props, callback );
     }
+	
+	/**
+     * test_bundle tests a list of CSS features that require element and style injection.
+     *   By bundling them together we can reduce the need to touch the DOM multiple times.
+     */
+    var test_bundle = (function( styles, tests ) {
+		
+		injectElementWithStyles(styles.join(''),function(node,rule){
+			var style = document.styleSheets[document.styleSheets.length-1],
+				cssText = style.cssText || style.cssRules[0].cssText;
+				
+			ret[tests[0]] = ('ontouchstart' in window) || node.offsetTop === 9;
+			ret[tests[1]] = node.offsetLeft === 9;
+			ret[tests[2]] = node.offsetHeight >= 1;
+			ret[tests[3]] = (/src/i).test(cssText) &&
+				 cssText
+					.replace(/\r+|\n+/g, '')
+					.indexOf(rule.split(' ')[0]) === 0;
+			
+			node.parentNode.removeChild(node);
+		});
+		
+    })([
+		// Pass in styles to be injected into document
+		'@font-face {font-family:"font";src:url(font.ttf)}',
+		['#',mod,':after{content:"',smile,'"}'].join(''),
+		['@media (',prefixes.join('touch-enabled),('),mod,')','{#',mod,'{top:9px;position:absolute}}'].join(''),
+		['@media (',prefixes.join('transform-3d),('),mod,')','{#',mod,'{left:9px;position:absolute}}'].join('')
+	],'touch csstransforms3d generatedcontent fontface'.split(' '));
     
 
     /**
@@ -332,7 +349,7 @@ window.Modernizr = (function(window,document,undefined){
      
     tests['touch'] = function() {
 
-        return ('ontouchstart' in window) || testMediaQuery('@media ('+prefixes.join('touch-enabled),(')+'modernizr)');
+        return ret['touch'];
 
     };
 
@@ -548,19 +565,19 @@ window.Modernizr = (function(window,document,undefined){
     
     tests['csstransforms3d'] = function() {
         
-        var ret = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
+        var rett = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
         
         // Webkit’s 3D transforms are passed off to the browser's own graphics renderer.
         //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in
         //   some conditions. As a result, Webkit typically recognizes the syntax but 
         //   will sometimes throw a false positive, thus we must do a more thorough check:
-        if (ret && 'webkitPerspective' in docElement.style){
+        if (rett && 'webkitPerspective' in docElement.style){
           
           // Webkit allows this media query to succeed only if the feature is enabled.    
           // `@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){ ... }`    
-          ret = testMediaQuery('@media ('+prefixes.join('transform-3d),(')+'modernizr)');
+          rett = ret['csstransforms3d'];
         }
-        return ret;
+        return rett;
     };
     
     
@@ -572,48 +589,12 @@ window.Modernizr = (function(window,document,undefined){
     // @font-face detection routine by Diego Perini
     // http://javascript.nwbox.com/CSSSupport/
     tests['fontface'] = function(){
-
-        return injectElementWithStyles('@font-face { font-family: "font"; src: url(font.ttf); }',
-               function(node,rule) {
-                    var style = document.styleSheets[document.styleSheets.length-1],
-                        cssText = style.cssText || style.cssRules[0].cssText,
-                        result = (/src/i).test(cssText) &&
-                         cssText
-                            .replace(/\r+|\n+/g, '')
-                            .indexOf(rule.split(' ')[0]) === 0;
-
-                    node.parentNode.removeChild(node);
-                    
-                    return result;
-               });
-    };
-    
-    
-    // CSS generated content detection
-    tests['generatedcontent'] = function(){
-        
-        return injectElementWithStyles('#'+mod+':after{content:"'+smile+'";}',
-               function(node) {
-                    var height = node.offsetHeight;
-                    
-                    node.parentNode.removeChild(node);
-                    
-                    return height >= 1;
-               });
-
+		return ret['fontface'];
     };
 	
-    // CSS3 generated content detection
-    tests['generatedcontentcss3'] = function(){
-        
-        return injectElementWithStyles('#'+mod+'{content:"'+smile+'"; display: inline;}',
-               function(node) {
-                    var width = node.offsetWidth;
-                    
-                    node.parentNode.removeChild(node);
-                    
-                    return width !== 0;
-               });
+    // CSS generated content detection
+    tests['generatedcontent'] = function(){ 
+        return ret['generatedcontent'];
     };
 	
     
