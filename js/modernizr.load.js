@@ -1,5 +1,5 @@
 /*
-yepnope.js 1.0 RC3
+yepnope.js 1.0 RC4
 Alex Sexton & Ralph Holzmann
 WTFPL
 */
@@ -336,6 +336,7 @@ var docElement            = doc.documentElement,
     } else {
       // Otherwise it's a resource object and we can splice it into the app at the current location
       execStack.splice( this.i++, 0, resource );
+      execStack.length == 1 && executeStack();
     }
 
     // OMG is this jQueries? For chaining...
@@ -431,7 +432,7 @@ var docElement            = doc.documentElement,
       }
     }
 
-    function loadFromTestObject ( testObject, chain) {
+    function loadFromTestObject ( testObject, chain ) {
         var testResult = !! testObject.test,
             group      = testResult ? testObject.yep : testObject.nope,
             always     = testObject.load || testObject.both,

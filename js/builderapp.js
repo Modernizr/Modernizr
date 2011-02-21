@@ -28,6 +28,11 @@ jQuery(function($){
       }
     });
 
+    function fixUglifyBugs( modBuild ) {
+      // !! needs to be there, unfortch.
+      return modBuild.replace( "return a.history&&history.pushState", "return !!(a.history&&history.pushState)" );
+    }
+
     function addExtras (modularBuild) {
 
 
@@ -51,7 +56,7 @@ jQuery(function($){
       // Track the different builds
       _gaq.push(['_trackPageview', '/build/'+[].slice.call($('ul li input:checked').map(function(key, val){ return ($(this).closest('li')[0].id || undefined); }), 0).join("^")]);
       
-      uglifiedModularBuild = addExtras(uglifiedModularBuild);
+      uglifiedModularBuild = fixUglifyBugs( addExtras( uglifiedModularBuild ) );
       handleInjection(uglifiedModularBuild);
 
       // Create Download Button
