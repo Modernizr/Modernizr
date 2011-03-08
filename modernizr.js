@@ -1,5 +1,5 @@
 /*!
- * Modernizr v1.7
+ * Modernizr v1.8pre
  * http://www.modernizr.com
  *
  * Developed by: 
@@ -32,12 +32,12 @@
 
 window.Modernizr = (function(window,document,undefined){
     
-    var version = '1.7',
+    var version = '1.8pre',
 
     ret = {},
 
     /**
-     * !! DEPRECATED !!
+     * DEPRECATED
      * 
      * enableHTML5 is a private property for advanced use only. If enabled,
      * it will make Modernizr.init() run through a brief while() loop in
@@ -592,7 +592,7 @@ window.Modernizr = (function(window,document,undefined){
                             .indexOf(rule.split(' ')[0]) === 0;
                 };
         
-        bool = supportAtRule('@font-face { font-family: "font"; src: url(data:,); }');
+        bool = supportAtRule('@font-face { font-family: "font"; src: url("//:"); }');
         head.removeChild(style);
         return bool;
     };
