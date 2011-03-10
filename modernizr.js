@@ -97,28 +97,48 @@ window.Modernizr = (function(window,document,undefined){
     
     featurename, // used in testing loop
     
+    refNode = document.getElementsByTagName('script')[0],
     
+    
+
+    // matchMedia polyfill by Scott Jehl and Paul Irish 
+    // gist.github.com/786768
     
     // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
     testMediaQuery = function(mq){
 
-      var st = document.createElement('style'),
-          div = document.createElement('div'),
-          ret;
+      var cache = {},
+          fakeBody = document.createElement('body'),
+          testDiv = document.createElement('div');
 
-      st.textContent = mq + '{#modernizr{height:3px}}';
-      docHead.appendChild(st);
-      div.id = 'modernizr';
-      docElement.appendChild(div);
+      testDiv.id = mod + '-mqtest';
+      fakeBody.appendChild(testDiv);
 
-      ret = div.offsetHeight === 3;
-
-      st.parentNode.removeChild(st);
-      div.parentNode.removeChild(div);
-
-      return !!ret;
+      return function(mq){
+        if (cache[mq] == undefined) {
+          var styleBlock = document.createElement('style'),
+            cssrule = '@media ' + mq + ' { #' + mod + '-mqtest { position: absolute; } }';
+          // must set type for IE  
+          styleBlock.type = "text/css";  
+          if (styleBlock.styleSheet){ 
+            styleBlock.styleSheet.cssText = cssrule;
+          } 
+          else {
+            styleBlock.appendChild(document.createTextNode(cssrule));
+          } 
+          refNode.parentNode.insertBefore(fakeBody, refNode);
+          refNode.parentNode.insertBefore(styleBlock, refNode);
+          cache[mq] = ((window.getComputedStyle ? getComputedStyle(testDiv, null) : testDiv.currentStyle)['position'] == 'absolute');
+          fakeBody.parentNode.removeChild(fakeBody);
+          styleBlock.parentNode.removeChild(styleBlock);
+        }
+        return cache[mq];
+      };
 
     },
+
+
+
     
     
     /**
