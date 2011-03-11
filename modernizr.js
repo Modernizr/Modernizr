@@ -529,6 +529,13 @@ window.Modernizr = (function(window,document,undefined){
     };
     
     
+    tests['cssresize'] = function() {
+        // Test for CSS 3 UI "resize" property
+        // http://www.w3.org/TR/css3-ui/#resize
+        return test_props_all( 'resize' );    
+    };
+    
+    
     tests['csstransforms'] = function() {
         return !!test_props([ 'transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform' ]);
     };
