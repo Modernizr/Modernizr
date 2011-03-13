@@ -101,10 +101,22 @@ window.Modernizr = (function(window,document,undefined){
 
     
     // Inject element with style element and some CSS rules
-    injectElementWithStyles = function(rule,callback){
+    injectElementWithStyles = function(rule,callback,nodes){
 	  
       var style, ret,
           div = document.createElement('div');
+		  
+	  if(typeof nodes == "number") {
+	      var node;
+		  
+		  // In order not to give false positives we create a node for each test
+		  // This also allows the method to scale for unspecified uses
+		  for(var i = 0; i < nodes; i++) {
+		      node = document.createElement('div');
+			  node.id = "test"+(i+1);
+			  div.appendChild(node);
+		  }
+	  }
     
       // <style> elements in IE6-9 are considered 'NoScope' elements and therefore will be removed 
       // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element 
@@ -112,7 +124,7 @@ window.Modernizr = (function(window,document,undefined){
       // http://msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
       style = [shy,'<style>',rule,'</style>'].join(''),
       div.id = mod;
-      div.innerHTML = style;
+      div.innerHTML += style;
       docElement.appendChild(div);
       
       ret = callback(div,rule);
@@ -238,28 +250,31 @@ window.Modernizr = (function(window,document,undefined){
      *   By bundling them together we can reduce the need to touch the DOM multiple times.
      */
     var test_bundle = (function( styles, tests ) {
+		var style = styles.join(''),
+		    len = tests.length;
 		
-		injectElementWithStyles(styles.join(''),function(node,rule){
+		injectElementWithStyles(style,function(node,rule){
 			var style = document.styleSheets[document.styleSheets.length-1],
-				cssText = style.cssText || style.cssRules[0].cssText;
+				cssText = style.cssText || style.cssRules[0].cssText,
+				children = node.childNodes
 				
-			ret[tests[0]] = ('ontouchstart' in window) || node.offsetTop === 9;
-			ret[tests[1]] = node.offsetLeft === 9;
-			ret[tests[2]] = node.offsetHeight >= 1;
+			ret[tests[0]] = ('ontouchstart' in window) || node.childNodes[2].offsetTop === 9;
+			ret[tests[1]] = node.childNodes[3].offsetLeft === 9;
+			ret[tests[2]] = node.childNodes[1].offsetHeight >= 1;
 			ret[tests[3]] = (/src/i).test(cssText) &&
 				 cssText
 					.replace(/\r+|\n+/g, '')
 					.indexOf(rule.split(' ')[0]) === 0;
 			
 			node.parentNode.removeChild(node);
-		});
+		}, len);
 		
     })([
 		// Pass in styles to be injected into document
 		'@font-face {font-family:"font";src:url(font.ttf)}',
-		['#',mod,':after{content:"',smile,'"}'].join(''),
-		['@media (',prefixes.join('touch-enabled),('),mod,')','{#',mod,'{top:9px;position:absolute}}'].join(''),
-		['@media (',prefixes.join('transform-3d),('),mod,')','{#',mod,'{left:9px;position:absolute}}'].join('')
+		['#test2:after{content:"',smile,'"}'].join(''),
+		['@media (',prefixes.join('touch-enabled),('),mod,')','{#test3{top:9px;position:absolute}}'].join(''),
+		['@media (',prefixes.join('transform-3d),('),mod,')','{#test4{left:9px;position:absolute}}'].join('')
 	],'touch csstransforms3d generatedcontent fontface'.split(' '));
     
 
