@@ -102,7 +102,7 @@ window.Modernizr = (function(window,document,undefined){
     
     // Inject element with style element and some CSS rules
     injectElementWithStyles = function(rule,callback){
-    
+	  
       var style, ret,
           div = document.createElement('div');
     
@@ -164,8 +164,7 @@ window.Modernizr = (function(window,document,undefined){
       }
       return isEventSupported;
     })();
-    
-    
+	
     // hasOwnProperty shim by kangax needed for Safari 2.0 support
     var _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
     if (!is(_hasOwnProperty, undefined) && !is(_hasOwnProperty.call, undefined)) {
@@ -719,7 +718,6 @@ window.Modernizr = (function(window,document,undefined){
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
     function webforms(){
-    
         // Run through HTML5's new input attributes to see if the UA understands any.
         // We're using f which is the <input> element created early on
         // Mike Taylr has created a comprehensive resource for testing these attributes
@@ -797,7 +795,6 @@ window.Modernizr = (function(window,document,undefined){
             }
             return inputs;
         })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
-
     }
 
 
