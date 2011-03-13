@@ -1,12 +1,12 @@
 /*!
- * Modernizr v1.7pre
+ * Modernizr v1.8pre
  * http://www.modernizr.com
  *
  * Developed by: 
  * - Faruk Ates  http://farukat.es/
  * - Paul Irish  http://paulirish.com/
  *
- * Copyright (c) 2009-2010
+ * Copyright (c) 2009-2011
  * Dual-licensed under the BSD or MIT licenses.
  * http://www.modernizr.com/license/
  */
@@ -26,18 +26,18 @@
  * 
  * @author        Faruk Ates
  * @author        Paul Irish
- * @copyright     (c) 2009-2010 Faruk Ates.
+ * @copyright     (c) 2009-2011 Faruk Ates.
  * @contributor   Ben Alman
  */
 
 window.Modernizr = (function(window,document,undefined){
     
-    var version = '1.7pre',
+    var version = '1.8pre',
 
     ret = {},
 
     /**
-     * !! DEPRECATED !!
+     * DEPRECATED
      * 
      * enableHTML5 is a private property for advanced use only. If enabled,
      * it will make Modernizr.init() run through a brief while() loop in
@@ -324,12 +324,13 @@ window.Modernizr = (function(window,document,undefined){
     tests['canvastext'] = function() {
         return !!(ret['canvas'] && is(document.createElement( 'canvas' ).getContext('2d').fillText, 'function'));
     };
-    
-    
-    tests['webgl'] = function(){
 
+    // This WebGL test false positives in FF depending on graphics hardware. But really it's quite impossible to know
+    // wether webgl will succeed until after you create the context. You might have hardware that can support
+    // a 100x100 webgl canvas, but will not support a 1000x1000 webgl canvas. So this feature inference is weak, 
+    // but intentionally so.
+    tests['webgl'] = function(){
         return !!window.WebGLRenderingContext;
-		
     };
     
     /*
