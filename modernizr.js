@@ -524,6 +524,27 @@ window.Modernizr = (function(window,document,undefined){
     };
     
     
+    tests['cssradialgradients'] = function() {
+        /**
+         * For CSS Gradients syntax, please see:
+         * http://webkit.org/blog/175/introducing-css-gradients/
+         * https://developer.mozilla.org/en/CSS/-moz-linear-gradient
+         * https://developer.mozilla.org/en/CSS/-moz-radial-gradient
+         * http://dev.w3.org/csswg/css3-images/#gradients-
+         */
+        
+        var str1 = 'background-image:',
+            str2 = 'gradient(radial, 0 0, 0, 0 0, 20, from(#9f9),to(white));',
+            str3 = 'radial-gradient(#9f9, white);';
+        
+        set_css(
+            (str1 + prefixes.join(str2 + str1) + prefixes.join(str3 + str1)).slice(0,-str1.length)
+        );
+        
+        return contains( m_style.backgroundImage, 'radial' );
+    };
+    
+    
     tests['cssreflections'] = function() {
         return test_props_all( 'boxReflect' );
     };
