@@ -525,13 +525,6 @@ window.Modernizr = (function(window,document,undefined){
     
     
     tests['cssradialgradients'] = function() {
-        /**
-         * For CSS Gradients syntax, please see:
-         * http://webkit.org/blog/175/introducing-css-gradients/
-         * https://developer.mozilla.org/en/CSS/-moz-linear-gradient
-         * https://developer.mozilla.org/en/CSS/-moz-radial-gradient
-         * http://dev.w3.org/csswg/css3-images/#gradients-
-         */
         
         var str1 = 'background-image:',
             str2 = 'gradient(radial, 0 0, 0, 0 0, 20, from(#9f9),to(white));',
