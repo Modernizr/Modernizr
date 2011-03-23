@@ -5,7 +5,7 @@ window.TEST = {
   // note some unique members of the Modernizr object
   inputs    : ['input','inputtypes'],
   audvid    : ['video','audio'],
-  API       : ['addTest'],
+  API       : ['addTest', 'mq'],
   privates  : ['_enableHTML5','_version','_fontfaceready'],
   deprecated : [
                 { oldish : 'crosswindowmessaging', newish : 'postmessage'},
@@ -126,9 +126,12 @@ test('html classes are looking good',function(){
     newprops--;
   });
   
-  
   equals(classes.length,newprops,'equal number of classes and global object props');
   
+  if (classes.length !== newprops){
+    console.log(classes, modprops);
+    
+  }
   
   for (var i = 0, len = classes.length, aclass; i <len; i++){
     aclass = classes[i];
@@ -252,6 +255,16 @@ test('Modernizr results match expected values',function(){
   equals(!!window.Worker,Modernizr.webworkers,'web workers test consistent')
   
 });
+
+
+
+
+test('media query testing',function(){
+   
+  ok(Modernizr.mq('only screen'),'Modernizr.mq() doesn\' freak out.');
+  
+});
+
 
 
 

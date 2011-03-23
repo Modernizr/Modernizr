@@ -105,7 +105,7 @@ window.Modernizr = (function(window,document,undefined){
     // gist.github.com/786768
     
     // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
-    testMediaQuery = function(mq){
+    testMediaQuery = (function(mq){
 
       var cache = {},
           fakeBody = document.createElement('body'),
@@ -135,7 +135,7 @@ window.Modernizr = (function(window,document,undefined){
         return cache[mq];
       };
 
-    },
+    })(),
 
 
 
@@ -971,6 +971,10 @@ window.Modernizr = (function(window,document,undefined){
     // Assign private properties to the return object with prefix
     ret._enableHTML5     = enableHTML5;
     ret._version         = version;
+    
+    
+    // expose methods
+    ret.mq = testMediaQuery; // mAYBE???!?!!?
 
     // Remove "no-js" class from <html> element, if it exists:
     docElement.className = docElement.className.replace(/\bno-js\b/,'') 
