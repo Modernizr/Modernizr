@@ -715,6 +715,10 @@ window.Modernizr = (function(window,document,undefined){
         return !!document.createElementNS && /SVG/.test(tostring.call(document.createElementNS(ns.svg,'clipPath')));
     };
 
+    tests['json'] = function() {
+      return !!JSON && !!JSON.parse;
+    };
+
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
