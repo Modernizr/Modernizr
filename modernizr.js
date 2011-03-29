@@ -370,18 +370,17 @@ window.Modernizr = (function(window,document,undefined){
       return result;
     };
     
-    // Vendors have inconsistent prefixing with the experimental Indexed DB:
-    // - Firefox is shipping indexedDB in FF4 as moz_indexedDB
+    // Vendors had inconsistent prefixing with the experimental Indexed DB:
     // - Webkit's implementation is accessible through webkitIndexedDB
-    // We test both styles.
+    // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
+    // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function(){
       for (var i = -1, len = domPrefixes.length; ++i < len; ){ 
-        var prefix = domPrefixes[i].toLowerCase();
-        if (window[prefix + '_indexedDB'] || window[prefix + 'IndexedDB']){
+        if (window[ domPrefixes[i].toLowerCase() + 'IndexedDB']){
           return true;
         } 
       }
-      return false;
+      return !!window.indexedDB;
     };
 
     // documentMode logic from YUI to filter out IE8 Compat Mode
