@@ -980,7 +980,9 @@ window.Modernizr = (function(window,document,undefined){
     
     
     // expose methods
-    ret.mq = testMediaQuery; // mAYBE???!?!!?
+    ret.mq = testMediaQuery; 
+    ret.isEventSupported = isEventSupported; // maybe rename to Modernizr.event() ?
+    
 
     // Remove "no-js" class from <html> element, if it exists:
     docElement.className = docElement.className.replace(/\bno-js\b/,'') 
