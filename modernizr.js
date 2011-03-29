@@ -101,7 +101,8 @@ window.Modernizr = (function(window,document,undefined){
     
     
 
-    // matchMedia polyfill by Scott Jehl and Paul Irish 
+    // adapted from matchMedia polyfill 
+    // by Scott Jehl and Paul Irish 
     // gist.github.com/786768
     
     // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
@@ -116,10 +117,13 @@ window.Modernizr = (function(window,document,undefined){
 
       return function(mq){
         if (cache[mq] == undefined) {
+          if (window.matchMedia){
+            return (cache[mq] = matchMedia(mq).matches);
+          }
           var styleBlock = document.createElement('style'),
-            cssrule = '@media ' + mq + ' { #' + mod + '-mqtest { position: absolute; } }';
-          // must set type for IE  
-          styleBlock.type = "text/css";  
+              cssrule = '@media ' + mq + ' { #' + mod + '-mqtest { position: absolute; } }';
+          
+          styleBlock.type = "text/css";  // must set type for IE  
           if (styleBlock.styleSheet){ 
             styleBlock.styleSheet.cssText = cssrule;
           } 
@@ -128,7 +132,9 @@ window.Modernizr = (function(window,document,undefined){
           } 
           refNode.parentNode.insertBefore(fakeBody, refNode);
           refNode.parentNode.insertBefore(styleBlock, refNode);
-          cache[mq] = ((window.getComputedStyle ? getComputedStyle(testDiv, null) : testDiv.currentStyle)['position'] == 'absolute');
+          cache[mq] = (window.getComputedStyle ? 
+                      getComputedStyle(testDiv, null) : 
+                      testDiv.currentStyle)['position'] == 'absolute';
           fakeBody.parentNode.removeChild(fakeBody);
           styleBlock.parentNode.removeChild(styleBlock);
         }
@@ -340,7 +346,7 @@ window.Modernizr = (function(window,document,undefined){
      
     tests['touch'] = function() {
 
-        return ('ontouchstart' in window) || testMediaQuery('@media ('+prefixes.join('touch-enabled),(')+'modernizr)');
+        return ('ontouchstart' in window) || testMediaQuery('('+prefixes.join('touch-enabled),(')+'modernizr)');
 
     };
 
@@ -566,7 +572,7 @@ window.Modernizr = (function(window,document,undefined){
           
           // Webkit allows this media query to succeed only if the feature is enabled.    
           // `@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){ ... }`    
-          ret = testMediaQuery('@media ('+prefixes.join('transform-3d),(')+'modernizr)');
+          ret = testMediaQuery('('+prefixes.join('transform-3d),(')+'modernizr)');
         }
         return ret;
     };
