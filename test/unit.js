@@ -5,7 +5,8 @@ window.TEST = {
   // note some unique members of the Modernizr object
   inputs    : ['input','inputtypes'],
   audvid    : ['video','audio'],
-  API       : ['addTest'],
+  API       : ['addTest', 'mq', 'isEventSupported'],
+  extraclass: ['js'],
   privates  : ['_enableHTML5','_version','_fontfaceready'],
   deprecated : [
                 { oldish : 'crosswindowmessaging', newish : 'postmessage'},
@@ -99,7 +100,7 @@ test('html shim worked', function(){
   ok( elem.childNodes.length === 1 , 'unknown elements dont collapse');
   
   document.body.appendChild(elem);
-  ok( elem.childNodes[0].style.color == 'red', 'unknown elements are styleable')
+  ok( /red|#ff0000/i.test(elem.childNodes[0].style.color), 'unknown elements are styleable')
   
 });
 
@@ -108,27 +109,35 @@ test('html classes are looking good',function(){
   
   var classes = TEST.trim(document.documentElement.className).split(/\s+/);
   
-  var modprops = getMembers(Modernizr).length, 
+  var modprops = getMembers(Modernizr), 
       newprops = modprops;
 
   // decrement for the properties that are private
-  for (var i = -1, len = TEST.privates.length; ++i < len;){
-    if (Modernizr[TEST.privates[i]] != undefined) newprops--;
+  for (var i = -1, len = TEST.privates.length; ++i < len; ){
+    var item = TEST.privates[i];
+    equals(-1, TEST.inArray(item, classes), 'private Modernizr object '+ item +'should not have matching classes');
+    equals(-1, TEST.inArray('no-' + item, classes), 'private Modernizr object no-'+item+' should not have matching classes');
   }
   
   // decrement for the non-boolean objects
-  for (var i = -1, len = TEST.inputs.length; ++i < len;){
-    if (Modernizr[TEST.inputs[i]] != undefined) newprops--;
-  }
+//  for (var i = -1, len = TEST.inputs.length; ++i < len; ){
+//    if (Modernizr[TEST.inputs[i]] != undefined) newprops--;
+//  }
+  
+  // TODO decrement for the extraclasses
   
   // decrement for deprecated ones.
   $.each( TEST.deprecated, function(key, val){
-    newprops--;
+    newprops.splice(  TEST.inArray(item, newprops), 1);
   });
   
   
-  equals(classes.length,newprops,'equal number of classes and global object props');
+  //equals(classes,newprops,'equal number of classes and global object props');
   
+  if (classes.length !== newprops){
+    console.log(classes, newprops);
+    
+  }
   
   for (var i = 0, len = classes.length, aclass; i <len; i++){
     aclass = classes[i];
@@ -250,6 +259,33 @@ test('Modernizr results match expected values',function(){
   equals(!!document.createElement('canvas').getContext,Modernizr.canvas,'canvas test consistent');
   
   equals(!!window.Worker,Modernizr.webworkers,'web workers test consistent')
+  
+});
+
+
+
+
+test('Modernizr.mq: media query testing',function(){
+   
+  ok(Modernizr.mq,'Modernizr.mq() doesn\' freak out.');
+  
+  equals(true, Modernizr.mq('only screen'),'screen media query passes');
+  
+  equals(Modernizr.mq('only all'), Modernizr.mq('only all'), 'Cache hit matches');
+  
+  
+});
+
+
+
+
+test('Modernizr.isEventSupported',function(){
+   
+  ok(Modernizr.isEventSupported,'Modernizr.isEventSupported() doesn\' freak out.');
+  
+ 
+  equals(Modernizr.isEventSupported('click'), true,'click event is supported');
+
   
 });
 
