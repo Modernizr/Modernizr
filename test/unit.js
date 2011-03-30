@@ -94,13 +94,12 @@ test('html shim worked', function(){
   expect(2);
   
   // the exact test we use in the script
-  var elem = document.createElement("div");
-  elem.innerHTML = "<elem style='color:red'></elem>";
-  
+  var elem = document.getElementsByTagName("section")[0];
+
   ok( elem.childNodes.length === 1 , 'unknown elements dont collapse');
   
-  document.body.appendChild(elem);
-  ok( /red|#ff0000/i.test(elem.childNodes[0].style.color), 'unknown elements are styleable')
+  elem.style.color = 'red';
+  ok( /red|#ff0000/i.test(elem.style.color), 'unknown elements are styleable')
   
 });
 
@@ -266,10 +265,43 @@ test('Modernizr results match expected values',function(){
 
 
 test('Modernizr.mq: media query testing',function(){
+  
+  var $html = $('html');
+  $.mobile = {};
+  
+  // from jquery mobile
+
+  $.mobile.media = (function() {
+  	// TODO: use window.matchMedia once at least one UA implements it
+  	var cache = {},
+  		testDiv = $( "<div id='jquery-mediatest'>" ),
+  		fakeBody = $( "<body>" ).append( testDiv );
+
+  	return function( query ) {
+  		if ( !( query in cache ) ) {
+  			var styleBlock = document.createElement('style'),
+          		cssrule = "@media " + query + " { #jquery-mediatest { position:absolute; } }";
+  	        //must set type for IE!	
+  	        styleBlock.type = "text/css";
+  	        if (styleBlock.styleSheet){ 
+  	          styleBlock.styleSheet.cssText = cssrule;
+  	        } 
+  	        else {
+  	          styleBlock.appendChild(document.createTextNode(cssrule));
+  	        } 
+
+  			$html.prepend( fakeBody ).prepend( styleBlock );
+  			cache[ query ] = testDiv.css( "position" ) === "absolute";
+  			fakeBody.add( styleBlock ).remove();
+  		}
+  		return cache[ query ];
+  	};
+  })();
+  
    
   ok(Modernizr.mq,'Modernizr.mq() doesn\' freak out.');
   
-  equals(true, Modernizr.mq('only screen'),'screen media query passes');
+  equals($.mobile.media('only screen'), Modernizr.mq('only screen'),'screen media query matches jQuery mobile\'s result');
   
   equals(Modernizr.mq('only all'), Modernizr.mq('only all'), 'Cache hit matches');
   
