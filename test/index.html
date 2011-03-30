@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 	<title>Modernizr Test Suite</title>
-	<link rel="stylesheet" href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css" media="screen">
+	<link rel="stylesheet" href="qunit/qunit.css" media="screen">
 	<style>
 	    #testbed { font-family: Helvetica; color: #444; padding-bottom: 100px;}
 	    #testbed button { margin: 30px; font-size: 13px;}
@@ -14,8 +14,8 @@
 	   table tbody tr:hover td, table tbody tr:hover th { background: #e1e100!important;}
 	   td.wrong { background:red!important;}
 	</style>
-	<script type="text/javascript" src="http://github.com/jquery/qunit/raw/master/qunit/qunit.js"></script>
-	<script src="http://github.com/Modernizr/Modernizr/raw/master/test/jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="qunit/qunit.js"></script>
+	<script src="jquery-1.4.2.js"></script>
 	
 	<script>
     window.__globals = [];
@@ -32,37 +32,10 @@
     
     window.__globals = getMembers(window);
     
-    
-    
-
-    // test helper object
-    window.TEST = {
-      // note some unique members of the Modernizr object
-      inputs    : ['input','inputtypes'],
-      audvid    : ['video','audio'],
-      API       : ['addTest'],
-      privates  : ['_enableHTML5','_version','_fontfaceready'],
-
-      // utility methods
-      inArray: function(elem, array) {
-          if (array.indexOf) {
-              return array.indexOf(elem);
-          }
-          for (var i = 0, length = array.length; i < length; i++) {
-              if (array[i] === elem) {
-                  return i;
-              }
-          }
-          return -1;
-      },
-      trim : function(str){
-        return str.replace(/^\s*/, "").replace(/\s*$/, "");
-      }
-    };
 
 	</script>
-	<script type="text/javascript" src="http://github.com/Modernizr/Modernizr/raw/master/modernizr.js"></script>
-	<script type="text/javascript" src="http://github.com/Modernizr/Modernizr/raw/master/test/unit.js"></script>
+	<script type="text/javascript" src="../modernizr.js"></script>
+	<script type="text/javascript" src="unit.js"></script>
 </head>
 <body>
 	<h1 id="qunit-header">Modernizr Test Suite</h1>
@@ -76,7 +49,7 @@
 	
 	<br>
 	<a href="../output.html">View Modernizr output</a>
-	
+	<section><aside>this is an aside within a section</aside></section>
 	  <script>
 
 
