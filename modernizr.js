@@ -884,25 +884,27 @@ window.Modernizr = (function(window,document,undefined){
     modElem = inputElem = null;
 
     //>>BEGIN IEPP
-    // Enable HTML 5 elements for styling in IE. 
-    // fyi: jscript version does not reflect trident version
-    //      therefore ie9 in ie7 mode will still have a jScript v.9
+    // Enable HTML 5 elements for styling (and printing) in IE. 
     if ( enableHTML5 && window.attachEvent && (function(){ var elem = document.createElement("div");
                                       elem.innerHTML = "<elem></elem>";
                                       return elem.childNodes.length !== 1; })()) {
-        // iepp v1.6.2 by @jon_neal : code.google.com/p/ie-print-protector
+        // iepp v2 by @jon_neal & afarkas : github.com/aFarkas/iepp/
         (function(win, doc) {
-          var elems = 'abbr|article|aside|audio|canvas|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video',
+          win.iepp = win.iepp || {};
+          var iepp = win.iepp,
+            elems = iepp.html5elements || 'abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video',
             elemsArr = elems.split('|'),
             elemsArrLen = elemsArr.length,
             elemRegExp = new RegExp('(^|\\s)('+elems+')', 'gi'), 
             tagRegExp = new RegExp('<(\/*)('+elems+')', 'gi'),
+            filterReg = /^\s*[\{\}]\s*$/,
             ruleRegExp = new RegExp('(^|[^\\n]*?\\s)('+elems+')([^\\n]*)({[\\n\\w\\W]*?})', 'gi'),
             docFrag = doc.createDocumentFragment(),
             html = doc.documentElement,
             head = html.firstChild,
             bodyElem = doc.createElement('body'),
             styleElem = doc.createElement('style'),
+            printMedias = /print|all/,
             body;
           function shim(doc) {
             var a = -1;
@@ -910,64 +912,97 @@ window.Modernizr = (function(window,document,undefined){
               // Use createElement so IE allows HTML5-named elements in a document
               doc.createElement(elemsArr[a]);
           }
-          function getCSS(styleSheetList, mediaType) {
+
+          iepp.getCSS = function(styleSheetList, mediaType) {
+            if(styleSheetList+'' === undefined){return '';}
             var a = -1,
               len = styleSheetList.length,
               styleSheet,
               cssTextArr = [];
             while (++a < len) {
               styleSheet = styleSheetList[a];
+              //currently no test for disabled/alternate stylesheets
+              if(styleSheet.disabled){continue;}
+              mediaType = styleSheet.media || mediaType;
               // Get css from all non-screen stylesheets and their imports
-              if ((mediaType = styleSheet.media || mediaType) != 'screen') cssTextArr.push(getCSS(styleSheet.imports, mediaType), styleSheet.cssText);
+              if (printMedias.test(mediaType)) cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), styleSheet.cssText);
+              //reset mediaType to all with every new *not imported* stylesheet
+              mediaType = 'all';
             }
             return cssTextArr.join('');
-          }
+          };
+
+          iepp.parseCSS = function(cssText) {
+            var cssTextArr = [],
+              rule;
+            while ((rule = ruleRegExp.exec(cssText)) != null){
+              // Replace all html5 element references with iepp substitute classnames
+              cssTextArr.push(( (filterReg.exec(rule[1]) ? '\n' : rule[1]) +rule[2]+rule[3]).replace(elemRegExp, '$1.iepp_$2')+rule[4]);
+            }
+            return cssTextArr.join('\n');
+          };
+
+          iepp.writeHTML = function() {
+            var a = -1;
+            body = body || doc.body;
+            while (++a < elemsArrLen) {
+              var nodeList = doc.getElementsByTagName(elemsArr[a]),
+                nodeListLen = nodeList.length,
+                b = -1;
+              while (++b < nodeListLen)
+                if (nodeList[b].className.indexOf('iepp_') < 0)
+                  // Append iepp substitute classnames to all html5 elements
+                  nodeList[b].className += ' iepp_'+elemsArr[a];
+            }
+            docFrag.appendChild(body);
+            html.appendChild(bodyElem);
+            // Write iepp substitute print-safe document
+            bodyElem.className = body.className;
+            bodyElem.id = body.id;
+            // Replace HTML5 elements with <font> which is print-safe and shouldn't conflict since it isn't part of html5
+            bodyElem.innerHTML = body.innerHTML.replace(tagRegExp, '<$1font');
+          };
+
+
+          iepp._beforePrint = function() {
+            // Write iepp custom print CSS
+            styleElem.styleSheet.cssText = iepp.parseCSS(iepp.getCSS(doc.styleSheets, 'all'));
+            iepp.writeHTML();
+          };
+
+          iepp.restoreHTML = function(){
+            // Undo everything done in onbeforeprint
+            bodyElem.innerHTML = '';
+            html.removeChild(bodyElem);
+            html.appendChild(body);
+          };
+
+          iepp._afterPrint = function(){
+            // Undo everything done in onbeforeprint
+            iepp.restoreHTML();
+            styleElem.styleSheet.cssText = '';
+          };
+
+
+
           // Shim the document and iepp fragment
           shim(doc);
           shim(docFrag);
+
+          //
+          if(iepp.disablePP){return;}
+
           // Add iepp custom print style element
           head.insertBefore(styleElem, head.firstChild);
           styleElem.media = 'print';
+          styleElem.className = 'iepp-printshim';
           win.attachEvent(
             'onbeforeprint',
-            function() {
-              var a = -1,
-                cssText = getCSS(doc.styleSheets, 'all'),
-                cssTextArr = [],
-                rule;
-              body = body || doc.body;
-              // Get only rules which reference HTML5 elements by name
-              while ((rule = ruleRegExp.exec(cssText)) != null)
-                // Replace all html5 element references with iepp substitute classnames
-                cssTextArr.push((rule[1]+rule[2]+rule[3]).replace(elemRegExp, '$1.iepp_$2')+rule[4]);
-              // Write iepp custom print CSS
-              styleElem.styleSheet.cssText = cssTextArr.join('\n');
-              while (++a < elemsArrLen) {
-                var nodeList = doc.getElementsByTagName(elemsArr[a]),
-                  nodeListLen = nodeList.length,
-                  b = -1;
-                while (++b < nodeListLen)
-                  if (nodeList[b].className.indexOf('iepp_') < 0)
-                    // Append iepp substitute classnames to all html5 elements
-                    nodeList[b].className += ' iepp_'+elemsArr[a];
-              }
-              docFrag.appendChild(body);
-              html.appendChild(bodyElem);
-              // Write iepp substitute print-safe document
-              bodyElem.className = body.className;
-              // Replace HTML5 elements with <font> which is print-safe and shouldn't conflict since it isn't part of html5
-              bodyElem.innerHTML = body.innerHTML.replace(tagRegExp, '<$1font');
-            }
+            iepp._beforePrint
           );
           win.attachEvent(
             'onafterprint',
-            function() {
-              // Undo everything done in onbeforeprint
-              bodyElem.innerHTML = '';
-              html.removeChild(bodyElem);
-              html.appendChild(body);
-              styleElem.styleSheet.cssText = '';
-            }
+            iepp._afterPrint
           );
         })(window, document);
     }
