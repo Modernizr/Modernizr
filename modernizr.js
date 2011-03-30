@@ -229,7 +229,7 @@ window.Modernizr = (function(window,document,undefined){
      * contains returns a boolean for if substr is found within str.
      */
     function contains( str, substr ) {
-        return ~(''+str).indexOf( substr );
+        return !!~(''+str).indexOf( substr );
     }
 
     /**
@@ -840,7 +840,7 @@ window.Modernizr = (function(window,document,undefined){
             //   then based on that boolean, define an appropriate className
             //   and push it into an array of classes we'll join later.
             featurename  = feature.toLowerCase();
-            ret[ featurename ] = !!tests[ feature ]();
+            ret[ featurename ] = tests[ feature ]();
 
             classes.push( ( ret[ featurename ] ? '' : 'no-' ) + featurename );
         }
