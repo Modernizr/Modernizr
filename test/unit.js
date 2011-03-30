@@ -76,7 +76,6 @@ test("document.documentElement is valid and correct",1, function() {
 
 
 test("no-js class is gone.", function() {
-  expect(3);
   
 	equals(document.documentElement.className.indexOf('no-js') , -1,
 	       'no-js is gone.'); 
@@ -134,7 +133,7 @@ test('html classes are looking good',function(){
   //equals(classes,newprops,'equal number of classes and global object props');
   
   if (classes.length !== newprops){
-    console.log(classes, newprops);
+    window.console && console.log(classes, newprops);
     
   }
   
