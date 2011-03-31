@@ -111,10 +111,10 @@ window.Modernizr = (function(window,document,undefined){
           
           // In order not to give false positives we create a node for each test
           // This also allows the method to scale for unspecified uses
-          for(var i = 0; i < nodes; i++) {
+          while(--nodes) {
               node = document.createElement('div');
-              node.id = "test"+(i+1);
-              div.appendChild(node);
+              node.id = "test"+(nodes+1);
+              div.appendChild(node); 
           }
       }
     
@@ -122,7 +122,7 @@ window.Modernizr = (function(window,document,undefined){
       // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element 
       // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
       // http://msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
-      style = [shy,'<style>',rule,'</style>'].join(''),
+      style = [shy,'<style>',rule,'</style>'].join('');
       div.id = mod;
       div.innerHTML += style;
       docElement.appendChild(div);
@@ -286,11 +286,11 @@ window.Modernizr = (function(window,document,undefined){
         injectElementWithStyles(style,function(node,rule){
             var style = document.styleSheets[document.styleSheets.length-1],
                 cssText = style.cssText || style.cssRules[0].cssText,
-                children = node.childNodes
-                
-            ret[tests[0]] = ('ontouchstart' in window) || node.childNodes[2].offsetTop === 9;
-            ret[tests[1]] = node.childNodes[3].offsetLeft === 9;
-            ret[tests[2]] = node.childNodes[1].offsetHeight >= 1;
+                children = node.childNodes;
+ 
+            ret[tests[0]] = ('ontouchstart' in window) || children[1].offsetTop === 9;
+            ret[tests[1]] = children[0].offsetLeft === 9;
+            ret[tests[2]] = children[2].offsetHeight >= 1;
             ret[tests[3]] = (/src/i).test(cssText) &&
                  cssText
                     .replace(/\r+|\n+/g, '')
