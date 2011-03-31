@@ -716,6 +716,12 @@ window.Modernizr = (function(window,document,undefined){
     tests['applicationcache'] =  function() {
         return !!window.applicationCache;
     };
+    
+
+    // Safari 5 supports most of the File API, but not FileReader
+    tests['fileapi'] = function(){
+        return !!window.FileReader;
+    };    
 
  
     // Thanks to Erik Dahlstrom
