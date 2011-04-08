@@ -1014,8 +1014,11 @@ window.Modernizr = (function(window,document,undefined){
     
     
     // expose methods
-    ret.mq = testMediaQuery; 
-    ret.isEventSupported = isEventSupported; // maybe rename to Modernizr.event() ?
+    ret.mq            = testMediaQuery;   // Modernizr.mq('only screen and (max-width:768)')
+    ret.event         = isEventSupported; // Modernizr.hasEvent('gesturestart')
+    ret.testProp      = test_props_all;   // Modernizr.testAllProps('box-sizing')
+    ret.testAllProps  = test_props;       // Modernizr.testProp('pointer-events')
+  //ret.addElem       = injectElementWithStyles; // Modernizr.addElem('div','position:absolute') i think?
     
 
     // Remove "no-js" class from <html> element, if it exists:
