@@ -111,9 +111,9 @@ window.Modernizr = (function(window,document,undefined){
           
           // In order not to give false positives we create a node for each test
           // This also allows the method to scale for unspecified uses
-          while(--nodes) {
+          while(nodes--) {
               node = document.createElement('div');
-              node.id = "test"+(nodes+1);
+              node.id = arguments[3] ? arguments[3][nodes] : "test"+(nodes+1);
               div.appendChild(node); 
           }
       }
@@ -279,6 +279,7 @@ window.Modernizr = (function(window,document,undefined){
      * test_bundle tests a list of CSS features that require element and style injection.
      *   By bundling them together we can reduce the need to touch the DOM multiple times.
      */
+    /*>>test_bundle*/
     var test_bundle = (function( styles, tests ) {
         var style = styles.join(''),
             len = tests.length;
@@ -286,26 +287,34 @@ window.Modernizr = (function(window,document,undefined){
         injectElementWithStyles(style,function(node,rule){
             var style = document.styleSheets[document.styleSheets.length-1],
                 cssText = style.cssText || style.cssRules[0].cssText,
-                children = node.childNodes;
- 
-            ret[tests[0]] = ('ontouchstart' in window) || children[1].offsetTop === 9;
-            ret[tests[1]] = children[0].offsetLeft === 9;
-            ret[tests[2]] = children[2].offsetHeight >= 1;
-            ret[tests[3]] = (/src/i).test(cssText) &&
-                 cssText
-                    .replace(/\r+|\n+/g, '')
-                    .indexOf(rule.split(' ')[0]) === 0;
+                children = node.childNodes, hash = {};
             
+            while(len--) {
+                hash[children[len].id] = children[len];
+            }
+            
+            /*>>touch*/ret["touch"] = ('ontouchstart' in window) || hash["touch"].offsetTop === 9;/*>>touch*/
+            /*>>csstransforms3d*/ret["csstransforms3d"] = hash["csstransforms3d"].offsetLeft === 9;/*>>csstransforms3d*/
+            /*>>generatedcontent*/ret["generatedcontent"] = hash["generatedcontent"].offsetHeight >= 1;/*>>generatedcontent*/
+            /*>>fontface*/ret["fontface"] = (new RegExp("src","i")).test(cssText) &&
+                 cssText
+                    .indexOf(rule.split(' ')[0]) === 0;/*>>fontface*/
+
             node.parentNode.removeChild(node);
-        }, len);
+        }, len, tests);
         
     })([
         // Pass in styles to be injected into document
-        '@font-face {font-family:"font";src:url(font.ttf)}',
-        ['#test2:after{content:"',smile,'"}'].join(''),
-        ['@media (',prefixes.join('touch-enabled),('),mod,')','{#test3{top:9px;position:absolute}}'].join(''),
-        ['@media (',prefixes.join('transform-3d),('),mod,')','{#test4{left:9px;position:absolute}}'].join('')
-    ],'touch csstransforms3d generatedcontent fontface'.split(' '));
+        /*>>fontface*/'@font-face {font-family:"font";src:url(font.ttf)}',/*>>fontface*/
+        /*>>touch*/['@media (',prefixes.join('touch-enabled),('),mod,')','{#touch{top:9px;position:absolute}}'].join(''),/*>>touch*/
+        /*>>csstransforms3d*/['@media (',prefixes.join('transform-3d),('),mod,')','{#csstransforms3d{left:9px;position:absolute}}'].join('')/*>>csstransforms3d*/
+        /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'"}'].join('')/*>>generatedcontent*/
+    ],[
+        /*>>fontface*/'fontface',/*>>fontface*/
+        /*>>touch*/'touch',/*>>touch*/
+        /*>>csstransforms3d*/'csstransforms3d'/*>>csstransforms3d*/
+        /*>>generatedcontent*/,'generatedcontent'/*>>generatedcontent*/
+    ]);/*>>test_bundle*/
     
 
     /**
@@ -628,11 +637,13 @@ window.Modernizr = (function(window,document,undefined){
     };
 
 
+    /*>>fontface*/
     // @font-face detection routine by Diego Perini
     // http://javascript.nwbox.com/CSSSupport/
     tests['fontface'] = function(){
         return ret['fontface'];
     };
+    /*>>fontface*/
     
     // CSS generated content detection
     tests['generatedcontent'] = function(){ 
