@@ -285,7 +285,7 @@ window.Modernizr = (function(window,document,undefined){
             /*>>touch*/ret["touch"] = ('ontouchstart' in window) || hash["touch"].offsetTop === 9;/*>>touch*/
             /*>>csstransforms3d*/ret["csstransforms3d"] = hash["csstransforms3d"].offsetLeft === 9;/*>>csstransforms3d*/
             /*>>generatedcontent*/ret["generatedcontent"] = hash["generatedcontent"].offsetHeight >= 1;/*>>generatedcontent*/
-            /*>>fontface*/ret["fontface"] = (new RegExp("src","i")).test(cssText) &&
+            /*>>fontface*/ret["fontface"] = /src/i.test(cssText) &&
                  cssText
                     .indexOf(rule.split(' ')[0]) === 0;/*>>fontface*/
         }, len, tests);
@@ -503,7 +503,7 @@ window.Modernizr = (function(window,document,undefined){
         // If the UA supports multiple backgrounds, there should be three occurrences
         //   of the string "url(" in the return value for elemStyle.background
 
-        return new RegExp("(url\\s*\\(.*?){3}").test(mStyle.background);
+        return /(url\s*\(.*?){3}/.test(mStyle.background);
     };
 
 
