@@ -128,6 +128,7 @@ window.Modernizr = (function(window,document,undefined){
       docElement.appendChild(div);
       
       ret = callback(div,rule);
+      div.parentNode.removeChild(div);
       
       return !!ret;
     
@@ -154,8 +155,6 @@ window.Modernizr = (function(window,document,undefined){
             cache[mq] = (window.getComputedStyle ? 
                       getComputedStyle(node, null) : 
                       node.currentStyle)['position'] == 'absolute';
-                      
-            node.parentNode.removeChild(node);
           });
         }
         return cache[mq];
@@ -292,15 +291,13 @@ window.Modernizr = (function(window,document,undefined){
             while(len--) {
                 hash[children[len].id] = children[len];
             }
-            
+                
             /*>>touch*/ret["touch"] = ('ontouchstart' in window) || hash["touch"].offsetTop === 9;/*>>touch*/
             /*>>csstransforms3d*/ret["csstransforms3d"] = hash["csstransforms3d"].offsetLeft === 9;/*>>csstransforms3d*/
             /*>>generatedcontent*/ret["generatedcontent"] = hash["generatedcontent"].offsetHeight >= 1;/*>>generatedcontent*/
             /*>>fontface*/ret["fontface"] = (new RegExp("src","i")).test(cssText) &&
                  cssText
                     .indexOf(rule.split(' ')[0]) === 0;/*>>fontface*/
-
-            node.parentNode.removeChild(node);
         }, len, tests);
         
     })([
