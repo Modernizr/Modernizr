@@ -5,7 +5,7 @@ window.TEST = {
   // note some unique members of the Modernizr object
   inputs    : ['input','inputtypes'],
   audvid    : ['video','audio'],
-  API       : ['addTest', 'mq', 'isEventSupported'],
+  API       : ['addTest', 'mq', 'event', 'testProp', 'testAllProps'],
   extraclass: ['js'],
   privates  : ['_enableHTML5','_version','_fontfaceready'],
   deprecated : [
@@ -310,12 +310,12 @@ test('Modernizr.mq: media query testing',function(){
 
 
 
-test('Modernizr.isEventSupported',function(){
+test('Modernizr.event',function(){
    
-  ok(Modernizr.isEventSupported,'Modernizr.isEventSupported() doesn\' freak out.');
+  ok(Modernizr.event,'Modernizr.event() doesn\' freak out.');
   
  
-  equals(Modernizr.isEventSupported('click'), true,'click event is supported');
+  equals(Modernizr.event('click'), true,'click event is supported');
 
   
 });
