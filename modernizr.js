@@ -34,7 +34,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     var version = '1.8pre',
 
-    ret = {},
+    Modernizr = {},
 
     /**
      * DEPRECATED
@@ -282,10 +282,10 @@ window.Modernizr = (function( window, document, undefined ) {
                 hash[children[len].id] = children[len];
             }
 
-            /*>>touch*/ret['touch'] = ('ontouchstart' in window) || hash['touch'].offsetTop === 9;/*>>touch*/
-            /*>>csstransforms3d*/ret['csstransforms3d'] = hash['csstransforms3d'].offsetLeft === 9;/*>>csstransforms3d*/
-            /*>>generatedcontent*/ret['generatedcontent'] = hash['generatedcontent'].offsetHeight >= 1;/*>>generatedcontent*/
-            /*>>fontface*/ret['fontface'] = /src/i.test(cssText) &&
+            /*>>touch*/Modernizr['touch'] = ('ontouchstart' in window) || hash['touch'].offsetTop === 9;/*>>touch*/
+            /*>>csstransforms3d*/Modernizr['csstransforms3d'] = hash['csstransforms3d'].offsetLeft === 9;/*>>csstransforms3d*/
+            /*>>generatedcontent*/Modernizr['generatedcontent'] = hash['generatedcontent'].offsetHeight >= 1;/*>>generatedcontent*/
+            /*>>fontface*/Modernizr['fontface'] = /src/i.test(cssText) &&
                  cssText
                     .indexOf(rule.split(' ')[0]) === 0;/*>>fontface*/
         }, len, tests);
@@ -363,7 +363,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     tests['canvastext'] = function() {
-        return !!(ret['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
+        return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
     };
 
     // This WebGL test false positives in FF depending on graphics hardware. But really it's quite impossible to know
@@ -389,7 +389,7 @@ window.Modernizr = (function( window, document, undefined ) {
      */
 
     tests['touch'] = function() {
-        return ret['touch'];
+        return Modernizr['touch'];
     };
 
 
@@ -603,19 +603,19 @@ window.Modernizr = (function( window, document, undefined ) {
 
     tests['csstransforms3d'] = function() {
 
-        var rett = !!testProps(['perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective']);
+        var ret = !!testProps(['perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective']);
 
         // Webkit’s 3D transforms are passed off to the browser's own graphics renderer.
         //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in
         //   some conditions. As a result, Webkit typically recognizes the syntax but
         //   will sometimes throw a false positive, thus we must do a more thorough check:
-        if ( rett && 'webkitPerspective' in docElement.style ) {
+        if ( ret && 'webkitPerspective' in docElement.style ) {
 
           // Webkit allows this media query to succeed only if the feature is enabled.
           // `@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){ ... }`
-          rett = ret['csstransforms3d'];
+          ret = Modernizr['csstransforms3d'];
         }
-        return rett;
+        return ret;
     };
 
 
@@ -628,13 +628,13 @@ window.Modernizr = (function( window, document, undefined ) {
     // @font-face detection routine by Diego Perini
     // http://javascript.nwbox.com/CSSSupport/
     tests['fontface'] = function() {
-        return ret['fontface'];
+        return Modernizr['fontface'];
     };
     /*>>fontface*/
 
     // CSS generated content detection
     tests['generatedcontent'] = function() {
-        return ret['generatedcontent'];
+        return Modernizr['generatedcontent'];
     };
 
 
@@ -765,7 +765,7 @@ window.Modernizr = (function( window, document, undefined ) {
         //   when applied to all input types:
         //   http://miketaylr.com/code/input-type-attr.html
         // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
-        ret['input'] = (function( props ) {
+        Modernizr['input'] = (function( props ) {
             for ( var i = 0, len = props.length; i < len; i++ ) {
                 attrs[ props[i] ] = !!(props[i] in inputElem);
             }
@@ -778,7 +778,7 @@ window.Modernizr = (function( window, document, undefined ) {
         //   containing each input type with its corresponding true/false value
 
         // Big thanks to @miketaylr for the html5 forms expertise. http://miketaylr.com/
-        ret['inputtypes'] = (function(props) {
+        Modernizr['inputtypes'] = (function(props) {
 
             for ( var i = 0, bool, inputElemType, defaultView, len = props.length; i < len; i++ ) {
 
@@ -853,40 +853,40 @@ window.Modernizr = (function( window, document, undefined ) {
             //   then based on that boolean, define an appropriate className
             //   and push it into an array of classes we'll join later.
             featureName  = feature.toLowerCase();
-            ret[featureName] = tests[feature]();
+            Modernizr[featureName] = tests[feature]();
 
-            classes.push((ret[featureName] ? '' : 'no-') + featureName);
+            classes.push((Modernizr[featureName] ? '' : 'no-') + featureName);
         }
     }
 
     // input tests need to run.
-    ret.input || webforms();
+    Modernizr.input || webforms();
 
 
     // Per 1.6: deprecated API is still accesible for now:
-    ret.crosswindowmessaging = ret.postmessage;
-    ret.historymanagement = ret.history;
+    Modernizr.crosswindowmessaging = Modernizr.postmessage;
+    Modernizr.historymanagement = Modernizr.history;
 
 
 
     /**
-     * Addtest allows the user to define their own feature tests
+     * addTest allows the user to define their own feature tests
      * the result will be added onto the Modernizr object,
      * as well as an appropriate className set on the html element
      *
      * @param feature - String naming the feature
      * @param test - Function returning true if feature is supported, false if not
      */
-    ret.addTest = function ( feature, test ) {
+    Modernizr.addTest = function ( feature, test ) {
       feature = feature.toLowerCase();
 
-      if ( ret[feature] ) {
+      if ( Modernizr[feature] ) {
         return; // quit if you're trying to overwrite an existing test
       }
       test = !!test();
       docElement.className += ' ' + (test ? '' : 'no-') + feature;
-      ret[feature] = test;
-      return ret; // allow chaining.
+      Modernizr[feature] = test;
+      return Modernizr; // allow chaining.
     };
 
     /**
@@ -1021,16 +1021,16 @@ window.Modernizr = (function( window, document, undefined ) {
     //>>END IEPP
 
     // Assign private properties to the return object with prefix
-    ret._enableHTML5     = enableHTML5;
-    ret._version         = version;
+    Modernizr._enableHTML5  = enableHTML5;
+    Modernizr._version      = version;
 
 
     // expose methods
-    ret.mq            = testMediaQuery;   // Modernizr.mq('only screen and (max-width:768)')
-    ret.event         = isEventSupported; // Modernizr.hasEvent('gesturestart')
-    ret.testProp      = testPropsAll;   // Modernizr.testAllProps('box-sizing')
-    ret.testAllProps  = testProps;       // Modernizr.testProp('pointer-events')
-    ret.styleElem     = injectElementWithStyles; // Modernizr.styleElem('#omg { position:absolute }',callback)
+    Modernizr.mq            = testMediaQuery;   // Modernizr.mq('only screen and (max-width:768)')
+    Modernizr.event         = isEventSupported; // Modernizr.hasEvent('gesturestart')
+    Modernizr.testProp      = testPropsAll;   // Modernizr.testAllProps('box-sizing')
+    Modernizr.testAllProps  = testProps;       // Modernizr.testProp('pointer-events')
+    Modernizr.styleElem     = injectElementWithStyles; // Modernizr.styleElem('#omg { position:absolute }',callback)
 
 
     // Remove "no-js" class from <html> element, if it exists:
@@ -1040,6 +1040,6 @@ window.Modernizr = (function( window, document, undefined ) {
                             // Add the new classes to the <html> element.
                             + classes.join(' ');
 
-    return ret;
+    return Modernizr;
 
 })(this, this.document);
