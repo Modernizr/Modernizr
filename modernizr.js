@@ -234,7 +234,7 @@ window.Modernizr = (function( window, document, undefined ) {
      * contains returns a boolean for if substr is found within str.
      */
     function contains( str, substr ) {
-        return !!~(''+str).indexOf( substr );
+        return !!~('' + str).indexOf(substr);
     }
 
     /**
@@ -244,7 +244,7 @@ window.Modernizr = (function( window, document, undefined ) {
      */
     function testProps( props, callback ) {
         for ( var i in props ) {
-            if ( mStyle[ props[i] ] !== undefined && ( !callback || callback(props[i], modElem) ) ) {
+            if ( mStyle[ props[i] ] !== undefined && (!callback || callback(props[i], modElem)) ) {
                 return true;
             }
         }
@@ -274,7 +274,7 @@ window.Modernizr = (function( window, document, undefined ) {
             len = tests.length;
 
         injectElementWithStyles(style, function( node, rule ) {
-            var style = document.styleSheets[document.styleSheets.length-1],
+            var style = document.styleSheets[document.styleSheets.length - 1],
                 cssText = style.cssText || style.cssRules[0].cssText,
                 children = node.childNodes, hash = {};
 
