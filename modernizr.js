@@ -68,7 +68,9 @@ window.Modernizr = (function(window,document,undefined){
      */
     inputElem = document.createElement( 'input' ),
     
-    smile = ':)',
+    smile = ':)', 
+    
+    shy = '&shy;',
     
     tostring = Object.prototype.toString,
     
@@ -96,8 +98,41 @@ window.Modernizr = (function(window,document,undefined){
     classes = [],
     
     featurename, // used in testing loop
+
     
-    refNode = document.getElementsByTagName('script')[0],
+    // Inject element with style element and some CSS rules
+    injectElementWithStyles = function(rule,callback,nodes){
+      
+      var style, ret,
+          div = document.createElement('div');
+          
+      if(!!parseInt(nodes,10)) {
+          var node;
+          
+          // In order not to give false positives we create a node for each test
+          // This also allows the method to scale for unspecified uses
+          while(nodes--) {
+              node = document.createElement('div');
+              node.id = arguments[3] ? arguments[3][nodes] : "test"+(nodes+1);
+              div.appendChild(node); 
+          }
+      }
+    
+      // <style> elements in IE6-9 are considered 'NoScope' elements and therefore will be removed 
+      // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element 
+      // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
+      // http://msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
+      style = [shy,'<style>',rule,'</style>'].join('');
+      div.id = mod;
+      div.innerHTML += style;
+      docElement.appendChild(div);
+      
+      ret = callback(div,rule);
+      div.parentNode.removeChild(div);
+      
+      return !!ret;
+    
+    },
     
     
 
@@ -108,43 +143,24 @@ window.Modernizr = (function(window,document,undefined){
     // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
     testMediaQuery = (function(mq){
 
-      var cache = {},
-          fakeBody = document.createElement('body'),
-          testDiv = document.createElement('div');
-
-      testDiv.id = mod + '-mqtest';
-      fakeBody.appendChild(testDiv);
+      var cache = {};
 
       return function(mq){
         if (cache[mq] == undefined) {
           if (window.matchMedia){
             return (cache[mq] = matchMedia(mq).matches);
           }
-          var styleBlock = document.createElement('style'),
-              cssrule = '@media ' + mq + ' { #' + mod + '-mqtest { position: absolute; } }';
           
-          styleBlock.type = "text/css";  // must set type for IE  
-          if (styleBlock.styleSheet){ 
-            styleBlock.styleSheet.cssText = cssrule;
-          } 
-          else {
-            styleBlock.appendChild(document.createTextNode(cssrule));
-          } 
-          refNode.parentNode.insertBefore(fakeBody, refNode);
-          refNode.parentNode.insertBefore(styleBlock, refNode);
-          cache[mq] = (window.getComputedStyle ? 
-                      getComputedStyle(testDiv, null) : 
-                      testDiv.currentStyle)['position'] == 'absolute';
-          fakeBody.parentNode.removeChild(fakeBody);
-          styleBlock.parentNode.removeChild(styleBlock);
+          injectElementWithStyles('@media ' + mq + ' { #' + mod + ' { position: absolute; } }',function(node){
+            cache[mq] = (window.getComputedStyle ? 
+                      getComputedStyle(node, null) : 
+                      node.currentStyle)['position'] == 'absolute';
+          });
         }
         return cache[mq];
       };
 
     })(),
-
-
-
     
     
     /**
@@ -189,7 +205,6 @@ window.Modernizr = (function(window,document,undefined){
       }
       return isEventSupported;
     })();
-    
     
     // hasOwnProperty shim by kangax needed for Safari 2.0 support
     var _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
@@ -259,6 +274,45 @@ window.Modernizr = (function(window,document,undefined){
         return !!test_props( props, callback );
     }
     
+    /**
+     * test_bundle tests a list of CSS features that require element and style injection.
+     *   By bundling them together we can reduce the need to touch the DOM multiple times.
+     */
+    /*>>test_bundle*/
+    var test_bundle = (function( styles, tests ) {
+        var style = styles.join(''),
+            len = tests.length;
+        
+        injectElementWithStyles(style,function(node,rule){
+            var style = document.styleSheets[document.styleSheets.length-1],
+                cssText = style.cssText || style.cssRules[0].cssText,
+                children = node.childNodes, hash = {};
+            
+            while(len--) {
+                hash[children[len].id] = children[len];
+            }
+                
+            /*>>touch*/ret["touch"] = ('ontouchstart' in window) || hash["touch"].offsetTop === 9;/*>>touch*/
+            /*>>csstransforms3d*/ret["csstransforms3d"] = hash["csstransforms3d"].offsetLeft === 9;/*>>csstransforms3d*/
+            /*>>generatedcontent*/ret["generatedcontent"] = hash["generatedcontent"].offsetHeight >= 1;/*>>generatedcontent*/
+            /*>>fontface*/ret["fontface"] = (new RegExp("src","i")).test(cssText) &&
+                 cssText
+                    .indexOf(rule.split(' ')[0]) === 0;/*>>fontface*/
+        }, len, tests);
+        
+    })([
+        // Pass in styles to be injected into document
+        /*>>fontface*/'@font-face {font-family:"font";src:url(font.ttf)}',/*>>fontface*/
+        /*>>touch*/['@media (',prefixes.join('touch-enabled),('),mod,')','{#touch{top:9px;position:absolute}}'].join(''),/*>>touch*/
+        /*>>csstransforms3d*/['@media (',prefixes.join('transform-3d),('),mod,')','{#csstransforms3d{left:9px;position:absolute}}'].join('')/*>>csstransforms3d*/
+        /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'"}'].join('')/*>>generatedcontent*/
+    ],[
+        /*>>fontface*/'fontface',/*>>fontface*/
+        /*>>touch*/'touch',/*>>touch*/
+        /*>>csstransforms3d*/'csstransforms3d'/*>>csstransforms3d*/
+        /*>>generatedcontent*/,'generatedcontent'/*>>generatedcontent*/
+    ]);/*>>test_bundle*/
+    
 
     /**
      * Tests
@@ -321,7 +375,7 @@ window.Modernizr = (function(window,document,undefined){
     tests['canvastext'] = function() {
         return !!(ret['canvas'] && is(document.createElement( 'canvas' ).getContext('2d').fillText, 'function'));
     };
-    
+
     // This WebGL test false positives in FF depending on graphics hardware. But really it's quite impossible to know
     // wether webgl will succeed until after you create the context. You might have hardware that can support
     // a 100x100 webgl canvas, but will not support a 1000x1000 webgl canvas. So this feature inference is weak, 
@@ -345,9 +399,7 @@ window.Modernizr = (function(window,document,undefined){
      */
      
     tests['touch'] = function() {
-
-        return ('ontouchstart' in window) || testMediaQuery('('+prefixes.join('touch-enabled),(')+'modernizr)');
-
+        return ret['touch'];
     };
 
 
@@ -561,19 +613,19 @@ window.Modernizr = (function(window,document,undefined){
     
     tests['csstransforms3d'] = function() {
         
-        var ret = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
+        var rett = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
         
         // Webkit’s 3D transforms are passed off to the browser's own graphics renderer.
         //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in
         //   some conditions. As a result, Webkit typically recognizes the syntax but 
         //   will sometimes throw a false positive, thus we must do a more thorough check:
-        if (ret && 'webkitPerspective' in docElement.style){
+        if (rett && 'webkitPerspective' in docElement.style){
           
           // Webkit allows this media query to succeed only if the feature is enabled.    
           // `@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){ ... }`    
-          ret = testMediaQuery('('+prefixes.join('transform-3d),(')+'modernizr)');
+          rett = ret['csstransforms3d'];
         }
-        return ret;
+        return rett;
     };
     
     
@@ -582,45 +634,19 @@ window.Modernizr = (function(window,document,undefined){
     };
 
 
+    /*>>fontface*/
     // @font-face detection routine by Diego Perini
     // http://javascript.nwbox.com/CSSSupport/
     tests['fontface'] = function(){
-
-        var 
-        sheet, bool,
-        head = docHead || docElement,
-        style = document.createElement("style"),
-        impl = document.implementation || { hasFeature: function() { return false; } };
-        
-        style.type = 'text/css';
-        head.insertBefore(style, head.firstChild);
-        sheet = style.sheet || style.styleSheet;
-
-        var supportAtRule = impl.hasFeature('CSS2', '') ?
-                function(rule) {
-                    if (!(sheet && rule)) return false;
-                    var result = false;
-                    try {
-                        sheet.insertRule(rule, 0);
-                        result = (/src/i).test(sheet.cssRules[0].cssText);
-                        sheet.deleteRule(sheet.cssRules.length - 1);
-                    } catch(e) { }
-                    return result;
-                } :
-                function(rule) {
-                    if (!(sheet && rule)) return false;
-                    sheet.cssText = rule;
-                    
-                    return sheet.cssText.length !== 0 && (/src/i).test(sheet.cssText) &&
-                      sheet.cssText
-                            .replace(/\r+|\n+/g, '')
-                            .indexOf(rule.split(' ')[0]) === 0;
-                };
-        
-        bool = supportAtRule('@font-face { font-family: "font"; src: url("//:"); }');
-        head.removeChild(style);
-        return bool;
+        return ret['fontface'];
     };
+    /*>>fontface*/
+    
+    // CSS generated content detection
+    tests['generatedcontent'] = function(){ 
+        return ret['generatedcontent'];
+    };
+    
     
 
     // These tests evaluate support of the video/audio elements, as well as
@@ -739,12 +765,10 @@ window.Modernizr = (function(window,document,undefined){
         // Possibly returns a false positive in Safari 3.2?
         return !!document.createElementNS && /SVG/.test(tostring.call(document.createElementNS(ns.svg,'clipPath')));
     };
-
-
+    
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
     function webforms(){
-    
         // Run through HTML5's new input attributes to see if the UA understands any.
         // We're using f which is the <input> element created early on
         // Mike Taylr has created a comprehensive resource for testing these attributes
@@ -822,7 +846,6 @@ window.Modernizr = (function(window,document,undefined){
             }
             return inputs;
         })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
-
     }
 
 
