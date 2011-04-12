@@ -70,8 +70,6 @@ window.Modernizr = (function(window,document,undefined){
     
     smile = ':)', 
     
-    shy = '&shy;',
-    
     tostring = Object.prototype.toString,
     
     // List of property values to set for css tests. See ticket #21
@@ -101,19 +99,17 @@ window.Modernizr = (function(window,document,undefined){
 
     
     // Inject element with style element and some CSS rules
-    injectElementWithStyles = function(rule,callback,nodes){
+    injectElementWithStyles = function(rule, callback, nodes, testnames){
       
-      var style, ret,
+      var style, ret, node,
           div = document.createElement('div');
           
-      if(!!parseInt(nodes,10)) {
-          var node;
-          
+      if (parseInt(nodes,10)) {
           // In order not to give false positives we create a node for each test
           // This also allows the method to scale for unspecified uses
           while(nodes--) {
               node = document.createElement('div');
-              node.id = arguments[3] ? arguments[3][nodes] : "test"+(nodes+1);
+              node.id = testnames ? testnames[nodes] : "test" + (nodes + 1);
               div.appendChild(node); 
           }
       }
@@ -122,7 +118,7 @@ window.Modernizr = (function(window,document,undefined){
       // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element 
       // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
       // http://msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
-      style = [shy,'<style>',rule,'</style>'].join('');
+      style = ['&shy;','<style>',rule,'</style>'].join('');
       div.id = mod;
       div.innerHTML += style;
       docElement.appendChild(div);
@@ -1041,7 +1037,7 @@ window.Modernizr = (function(window,document,undefined){
     ret.event         = isEventSupported; // Modernizr.hasEvent('gesturestart')
     ret.testProp      = test_props_all;   // Modernizr.testAllProps('box-sizing')
     ret.testAllProps  = test_props;       // Modernizr.testProp('pointer-events')
-  //ret.addElem       = injectElementWithStyles; // Modernizr.addElem('div','position:absolute') i think?
+    ret.styleElem     = injectElementWithStyles; // Modernizr.styleElem('#omg { position:absolute }',callback) 
     
 
     // Remove "no-js" class from <html> element, if it exists:
