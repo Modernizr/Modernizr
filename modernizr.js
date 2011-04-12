@@ -61,7 +61,7 @@ window.Modernizr = (function(window,document,undefined){
      */
     mod = 'modernizr',
     modElem = document.createElement( mod ),
-    m_style = modElem.style,
+    mStyle = modElem.style,
 
     /**
      * Create the input element for various Web Forms feature tests.
@@ -212,17 +212,17 @@ window.Modernizr = (function(window,document,undefined){
     }
     
     /**
-     * set_css applies given styles to the Modernizr DOM node.
+     * setCss applies given styles to the Modernizr DOM node.
      */
-    function set_css( str ) {
-        m_style.cssText = str;
+    function setCss( str ) {
+        mStyle.cssText = str;
     }
 
     /**
-     * set_css_all extrapolates all vendor-specific css strings.
+     * setCssAll extrapolates all vendor-specific css strings.
      */
-    function set_css_all( str1, str2 ) {
-        return set_css(prefixes.join(str1 + ';') + ( str2 || '' ));
+    function setCssAll( str1, str2 ) {
+        return setCss(prefixes.join(str1 + ';') + ( str2 || '' ));
     }
 
     /**
@@ -240,38 +240,38 @@ window.Modernizr = (function(window,document,undefined){
     }
 
     /**
-     * test_props is a generic CSS / DOM property test; if a browser supports
+     * testProps is a generic CSS / DOM property test; if a browser supports
      *   a certain property, it won't return undefined for it.
      *   A supported CSS property returns empty string when its not yet set.
      */
-    function test_props( props, callback ) {
+    function testProps( props, callback ) {
         for ( var i in props ) {
-            if ( m_style[ props[i] ] !== undefined && ( !callback || callback( props[i], modElem ) ) ) {
+            if ( mStyle[ props[i] ] !== undefined && ( !callback || callback( props[i], modElem ) ) ) {
                 return true;
             }
         }
     }
 
     /**
-     * test_props_all tests a list of DOM properties we want to check against.
+     * testPropsAll tests a list of DOM properties we want to check against.
      *   We specify literally ALL possible (known and/or likely) properties on 
      *   the element including the non-vendor prefixed one, for forward-
      *   compatibility.
      */
-    function test_props_all( prop, callback ) {
+    function testPropsAll( prop, callback ) {
       
-        var uc_prop = prop.charAt(0).toUpperCase() + prop.substr(1),
-            props   = (prop + ' ' + domPrefixes.join(uc_prop + ' ') + uc_prop).split(' ');
+        var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
+            props   = (prop + ' ' + domPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
-        return !!test_props( props, callback );
+        return !!testProps( props, callback );
     }
     
     /**
-     * test_bundle tests a list of CSS features that require element and style injection.
+     * testBundle tests a list of CSS features that require element and style injection.
      *   By bundling them together we can reduce the need to touch the DOM multiple times.
      */
-    /*>>test_bundle*/
-    var test_bundle = (function( styles, tests ) {
+    /*>>testBundle*/
+    var testBundle = (function( styles, tests ) {
         var style = styles.join(''),
             len = tests.length;
         
@@ -303,7 +303,7 @@ window.Modernizr = (function(window,document,undefined){
         /*>>touch*/'touch',/*>>touch*/
         /*>>csstransforms3d*/'csstransforms3d'/*>>csstransforms3d*/
         /*>>generatedcontent*/,'generatedcontent'/*>>generatedcontent*/
-    ]);/*>>test_bundle*/
+    ]);/*>>testBundle*/
     
 
     /**
@@ -313,7 +313,7 @@ window.Modernizr = (function(window,document,undefined){
 
     tests['flexbox'] = function() {
         /**
-         * set_prefixed_value_css sets the property of a specified element
+         * setPrefixedValueCSS sets the property of a specified element
          * adding vendor prefixes to the VALUE of the property.
          * @param {Element} element
          * @param {string} property The property name. This will not be prefixed.
@@ -321,13 +321,13 @@ window.Modernizr = (function(window,document,undefined){
          * @param {string=} extra Additional CSS to append unmodified to the end of
          * the CSS string.
          */
-        function set_prefixed_value_css(element, property, value, extra) {
+        function setPrefixedValueCSS(element, property, value, extra) {
             property += ':';
             element.style.cssText = (property + prefixes.join(value + ';' + property)).slice(0, -property.length) + (extra || '');
         }
 
         /**
-         * set_prefixed_property_css sets the property of a specified element
+         * setPrefixedPropertyCSS sets the property of a specified element
          * adding vendor prefixes to the NAME of the property.
          * @param {Element} element
          * @param {string} property The property name. This WILL be prefixed.
@@ -335,15 +335,15 @@ window.Modernizr = (function(window,document,undefined){
          * @param {string=} extra Additional CSS to append unmodified to the end of
          * the CSS string.
          */
-        function set_prefixed_property_css(element, property, value, extra) {
+        function setPrefixedPropertyCSS(element, property, value, extra) {
             element.style.cssText = prefixes.join(property + ':' + value + ';') + (extra || '');
         }
 
         var c = document.createElement('div'),
             elem = document.createElement('div');
 
-        set_prefixed_value_css(c, 'display', 'box', 'width:42px;padding:0;');
-        set_prefixed_property_css(elem, 'box-flex', '1', 'width:10px;');
+        setPrefixedValueCSS(c, 'display', 'box', 'width:42px;padding:0;');
+        setPrefixedPropertyCSS(elem, 'box-flex', '1', 'width:10px;');
 
         c.appendChild(elem);
         docElement.appendChild(c);
@@ -481,18 +481,18 @@ window.Modernizr = (function(window,document,undefined){
     tests['rgba'] = function() {
         // Set an rgba() color and check the returned value
         
-        set_css(  'background-color:rgba(150,255,150,.5)' );
+        setCss(  'background-color:rgba(150,255,150,.5)' );
         
-        return contains( m_style.backgroundColor, 'rgba' );
+        return contains( mStyle.backgroundColor, 'rgba' );
     };
     
     tests['hsla'] = function() {
         // Same as rgba(), in fact, browsers re-map hsla() to rgba() internally,
         //   except IE9 who retains it as hsla
         
-        set_css('background-color:hsla(120,40%,100%,.5)' );
+        setCss('background-color:hsla(120,40%,100%,.5)' );
         
-        return contains( m_style.backgroundColor, 'rgba' ) || contains( m_style.backgroundColor, 'hsla' );
+        return contains( mStyle.backgroundColor, 'rgba' ) || contains( mStyle.backgroundColor, 'hsla' );
     };
     
     tests['multiplebgs'] = function() {
@@ -500,12 +500,12 @@ window.Modernizr = (function(window,document,undefined){
         //  and then querying the style.background property value for the number of
         //  occurrences of "url(" is a reliable method for detecting ACTUAL support for this!
         
-        set_css( 'background:url(//:),url(//:),red url(//:)' );
+        setCss( 'background:url(//:),url(//:),red url(//:)' );
         
         // If the UA supports multiple backgrounds, there should be three occurrences
-        //   of the string "url(" in the return value for elem_style.background
+        //   of the string "url(" in the return value for elemStyle.background
 
-        return new RegExp("(url\\s*\\(.*?){3}").test(m_style.background);
+        return new RegExp("(url\\s*\\(.*?){3}").test(mStyle.background);
     };
     
     
@@ -520,11 +520,11 @@ window.Modernizr = (function(window,document,undefined){
     
 
     tests['backgroundsize'] = function() {
-        return test_props_all( 'backgroundSize' );
+        return testPropsAll( 'backgroundSize' );
     };
     
     tests['borderimage'] = function() {
-        return test_props_all( 'borderImage' );
+        return testPropsAll( 'borderImage' );
     };
     
     
@@ -532,14 +532,14 @@ window.Modernizr = (function(window,document,undefined){
     // border-radius: http://muddledramblings.com/table-of-css3-border-radius-compliance
     
     tests['borderradius'] = function() {
-        return test_props_all( 'borderRadius', '', function( prop ) {
+        return testPropsAll( 'borderRadius', '', function( prop ) {
             return contains( prop, 'orderRadius' );
         });
     };
     
     // WebOS unfortunately false positives on this test.
     tests['boxshadow'] = function() {
-        return test_props_all( 'boxShadow' );
+        return testPropsAll( 'boxShadow' );
     };
     
     // FF3.0 will false positive on this test 
@@ -553,22 +553,22 @@ window.Modernizr = (function(window,document,undefined){
         //  according to spec, which means their return values are within the
         //  range of [0.0,1.0] - including the leading zero.
         
-        set_css_all( 'opacity:.55' );
+        setCssAll( 'opacity:.55' );
         
         // The non-literal . in this regex is intentional:
         //   German Chrome returns this value as 0,55
         // https://github.com/Modernizr/Modernizr/issues/#issue/59/comment/516632
-        return /^0.55$/.test(m_style.opacity);
+        return /^0.55$/.test(mStyle.opacity);
     };
     
     
     tests['cssanimations'] = function() {
-        return test_props_all( 'animationName' );
+        return testPropsAll( 'animationName' );
     };
     
     
     tests['csscolumns'] = function() {
-        return test_props_all( 'columnCount' );
+        return testPropsAll( 'columnCount' );
     };
     
     
@@ -585,27 +585,27 @@ window.Modernizr = (function(window,document,undefined){
             str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));',
             str3 = 'linear-gradient(left top,#9f9, white);';
         
-        set_css(
+        setCss(
             (str1 + prefixes.join(str2 + str1) + prefixes.join(str3 + str1)).slice(0,-str1.length)
         );
         
-        return contains( m_style.backgroundImage, 'gradient' );
+        return contains( mStyle.backgroundImage, 'gradient' );
     };
     
     
     tests['cssreflections'] = function() {
-        return test_props_all( 'boxReflect' );
+        return testPropsAll( 'boxReflect' );
     };
     
     
     tests['csstransforms'] = function() {
-        return !!test_props([ 'transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform' ]);
+        return !!testProps([ 'transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform' ]);
     };
     
     
     tests['csstransforms3d'] = function() {
         
-        var rett = !!test_props([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
+        var rett = !!testProps([ 'perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective' ]);
         
         // Webkit’s 3D transforms are passed off to the browser's own graphics renderer.
         //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in
@@ -622,7 +622,7 @@ window.Modernizr = (function(window,document,undefined){
     
     
     tests['csstransitions'] = function() {
-        return test_props_all( 'transitionProperty' );
+        return testPropsAll( 'transitionProperty' );
     };
 
 
@@ -895,7 +895,7 @@ window.Modernizr = (function(window,document,undefined){
     /**
      * Reset m.style.cssText to nothing to reduce memory footprint.
      */
-    set_css( '' );
+    setCss( '' );
     modElem = inputElem = null;
 
     //>>BEGIN IEPP
@@ -1031,8 +1031,8 @@ window.Modernizr = (function(window,document,undefined){
     // expose methods
     ret.mq            = testMediaQuery;   // Modernizr.mq('only screen and (max-width:768)')
     ret.event         = isEventSupported; // Modernizr.hasEvent('gesturestart')
-    ret.testProp      = test_props_all;   // Modernizr.testAllProps('box-sizing')
-    ret.testAllProps  = test_props;       // Modernizr.testProp('pointer-events')
+    ret.testProp      = testPropsAll;   // Modernizr.testAllProps('box-sizing')
+    ret.testAllProps  = testProps;       // Modernizr.testProp('pointer-events')
     ret.styleElem     = injectElementWithStyles; // Modernizr.styleElem('#omg { position:absolute }',callback) 
     
 
