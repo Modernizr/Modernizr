@@ -30,7 +30,7 @@
  * @contributor   Ben Alman
  */
 
-window.Modernizr = (function(window,document,undefined){
+window.Modernizr = (function( window, document, undefined ) {
 
     var version = '1.8pre',
 
@@ -70,7 +70,7 @@ window.Modernizr = (function(window,document,undefined){
 
     smile = ':)',
 
-    tostring = Object.prototype.toString,
+    toString = Object.prototype.toString,
 
     // List of property values to set for css tests. See ticket #21
     prefixes = ' -webkit- -moz- -o- -ms- -khtml- '.split(' '),
@@ -104,7 +104,7 @@ window.Modernizr = (function(window,document,undefined){
       var style, ret, node,
           div = document.createElement('div');
 
-      if ( parseInt(nodes,10) ) {
+      if ( parseInt(nodes, 10) ) {
           // In order not to give false positives we create a node for each test
           // This also allows the method to scale for unspecified uses
           while ( nodes-- ) {
@@ -123,7 +123,7 @@ window.Modernizr = (function(window,document,undefined){
       div.innerHTML += style;
       docElement.appendChild(div);
 
-      ret = callback(div,rule);
+      ret = callback(div, rule);
       div.parentNode.removeChild(div);
 
       return !!ret;
@@ -142,7 +142,7 @@ window.Modernizr = (function(window,document,undefined){
 
       var bool;
 
-      injectElementWithStyles('@media ' + mq + ' { #' + mod + ' { position: absolute; } }',function( node ) {
+      injectElementWithStyles('@media ' + mq + ' { #' + mod + ' { position: absolute; } }', function( node ) {
         bool = (window.getComputedStyle ?
                   getComputedStyle(node, null) :
                   node.currentStyle)['position'] == 'absolute';
@@ -584,7 +584,7 @@ window.Modernizr = (function(window,document,undefined){
             str3 = 'linear-gradient(left top,#9f9, white);';
 
         setCss(
-            (str1 + prefixes.join(str2 + str1) + prefixes.join(str3 + str1)).slice(0,-str1.length)
+            (str1 + prefixes.join(str2 + str1) + prefixes.join(str3 + str1)).slice(0, -str1.length)
         );
 
         return contains(mStyle.backgroundImage, 'gradient');
@@ -748,12 +748,12 @@ window.Modernizr = (function(window,document,undefined){
     // Thanks to F1lt3r and lucideer
     // http://github.com/Modernizr/Modernizr/issues#issue/35
     tests['smil'] = function() {
-        return !!document.createElementNS && /SVG/.test(tostring.call(document.createElementNS(ns.svg,'animate')));
+        return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
     };
 
     tests['svgclippaths'] = function() {
         // Possibly returns a false positive in Safari 3.2?
-        return !!document.createElementNS && /SVG/.test(tostring.call(document.createElementNS(ns.svg,'clipPath')));
+        return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
     };
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
@@ -1042,4 +1042,4 @@ window.Modernizr = (function(window,document,undefined){
 
     return ret;
 
-})(this,this.document);
+})(this, this.document);
