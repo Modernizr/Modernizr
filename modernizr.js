@@ -136,27 +136,23 @@ window.Modernizr = (function(window,document,undefined){
     // by Scott Jehl and Paul Irish 
     // gist.github.com/786768
     
-    // todo: consider using http://javascript.nwbox.com/CSSSupport/css-support.js instead
-    testMediaQuery = (function(mq){
+    testMediaQuery = function(mq){
 
-      var cache = {};
-
-      return function(mq){
-        if (cache[mq] == undefined) {
-          if (window.matchMedia){
-            return (cache[mq] = matchMedia(mq).matches);
-          }
-          
-          injectElementWithStyles('@media ' + mq + ' { #' + mod + ' { position: absolute; } }',function(node){
-            cache[mq] = (window.getComputedStyle ? 
-                      getComputedStyle(node, null) : 
-                      node.currentStyle)['position'] == 'absolute';
-          });
-        }
-        return cache[mq];
-      };
-
-    })(),
+      if (window.matchMedia){
+        return matchMedia(mq).matches;
+      }
+      
+      var bool;
+      
+      injectElementWithStyles('@media ' + mq + ' { #' + mod + ' { position: absolute; } }',function(node){
+        bool = (window.getComputedStyle ? 
+                  getComputedStyle(node, null) : 
+                  node.currentStyle)['position'] == 'absolute';
+      });
+      
+      return bool;
+  
+     },
     
     
     /**
