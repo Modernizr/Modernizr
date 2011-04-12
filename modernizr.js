@@ -95,7 +95,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     classes = [],
 
-    featurename, // used in testing loop
+    featureName, // used in testing loop
 
 
     // Inject element with style element and some CSS rules
@@ -109,7 +109,7 @@ window.Modernizr = (function( window, document, undefined ) {
           // This also allows the method to scale for unspecified uses
           while ( nodes-- ) {
               node = document.createElement('div');
-              node.id = testnames ? testnames[nodes] : "test" + (nodes + 1);
+              node.id = testnames ? testnames[nodes] : 'test' + (nodes + 1);
               div.appendChild(node);
           }
       }
@@ -282,10 +282,10 @@ window.Modernizr = (function( window, document, undefined ) {
                 hash[children[len].id] = children[len];
             }
 
-            /*>>touch*/ret["touch"] = ('ontouchstart' in window) || hash["touch"].offsetTop === 9;/*>>touch*/
-            /*>>csstransforms3d*/ret["csstransforms3d"] = hash["csstransforms3d"].offsetLeft === 9;/*>>csstransforms3d*/
-            /*>>generatedcontent*/ret["generatedcontent"] = hash["generatedcontent"].offsetHeight >= 1;/*>>generatedcontent*/
-            /*>>fontface*/ret["fontface"] = /src/i.test(cssText) &&
+            /*>>touch*/ret['touch'] = ('ontouchstart' in window) || hash['touch'].offsetTop === 9;/*>>touch*/
+            /*>>csstransforms3d*/ret['csstransforms3d'] = hash['csstransforms3d'].offsetLeft === 9;/*>>csstransforms3d*/
+            /*>>generatedcontent*/ret['generatedcontent'] = hash['generatedcontent'].offsetHeight >= 1;/*>>generatedcontent*/
+            /*>>fontface*/ret['fontface'] = /src/i.test(cssText) &&
                  cssText
                     .indexOf(rule.split(' ')[0]) === 0;/*>>fontface*/
         }, len, tests);
@@ -736,7 +736,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // Thanks to Erik Dahlstrom
     tests['svg'] = function() {
-        return !!document.createElementNS && !!document.createElementNS(ns.svg, "svg").createSVGRect;
+        return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
     };
 
     tests['inlinesvg'] = function() {
@@ -766,7 +766,7 @@ window.Modernizr = (function( window, document, undefined ) {
         //   http://miketaylr.com/code/input-type-attr.html
         // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
         ret['input'] = (function( props ) {
-            for ( var i = 0, len = props.length; i<len; i++ ) {
+            for ( var i = 0, len = props.length; i < len; i++ ) {
                 attrs[ props[i] ] = !!(props[i] in inputElem);
             }
             return attrs;
@@ -852,10 +852,10 @@ window.Modernizr = (function( window, document, undefined ) {
             // run the test, throw the return value into the Modernizr,
             //   then based on that boolean, define an appropriate className
             //   and push it into an array of classes we'll join later.
-            featurename  = feature.toLowerCase();
-            ret[featurename] = tests[feature]();
+            featureName  = feature.toLowerCase();
+            ret[featureName] = tests[feature]();
 
-            classes.push((ret[featurename] ? '' : 'no-') + featurename);
+            classes.push((ret[featureName] ? '' : 'no-') + featureName);
         }
     }
 
@@ -897,8 +897,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     //>>BEGIN IEPP
     // Enable HTML 5 elements for styling (and printing) in IE.
-    if ( enableHTML5 && window.attachEvent && (function(){ var elem = document.createElement("div");
-                                      elem.innerHTML = "<elem></elem>";
+    if ( enableHTML5 && window.attachEvent && (function(){ var elem = document.createElement('div');
+                                      elem.innerHTML = '<elem></elem>';
                                       return elem.childNodes.length !== 1; })() ) {
         // iepp v2 by @jon_neal & afarkas : github.com/aFarkas/iepp/
         (function(win, doc) {
