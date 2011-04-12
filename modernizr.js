@@ -358,12 +358,12 @@ window.Modernizr = (function(window,document,undefined){
     // http://github.com/Modernizr/Modernizr/issues/issue/97/
 
     tests['canvas'] = function() {
-        var elem = document.createElement( 'canvas' );
+        var elem = document.createElement('canvas');
         return !!(elem.getContext && elem.getContext('2d'));
     };
 
     tests['canvastext'] = function() {
-        return !!(ret['canvas'] && is(document.createElement( 'canvas' ).getContext('2d').fillText, 'function'));
+        return !!(ret['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
     };
 
     // This WebGL test false positives in FF depending on graphics hardware. But really it's quite impossible to know
