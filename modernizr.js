@@ -1024,11 +1024,14 @@ window.Modernizr = (function( window, document, undefined ) {
     Modernizr._enableHTML5  = enableHTML5;
     Modernizr._version      = version;
 
+    Modernizr._prefixes     = prefixes;
+    Modernizr._domPrefixes  = domPrefixes;
+    
 
     Modernizr.mq            = testMediaQuery;   // Modernizr.mq('only screen and (max-width:768)')
     Modernizr.event         = isEventSupported; // Modernizr.hasEvent('gesturestart')
-    Modernizr.testAllProps  = testPropsAll;   // Modernizr.testAllProps('box-sizing')
-    Modernizr.testProp      = testProps;       // Modernizr.testProp('pointer-events')
+    Modernizr.testAllProps  = testPropsAll;     // Modernizr.testAllProps('box-sizing')
+    Modernizr.testProp      = testProps;        // Modernizr.testProp('pointer-events')
     Modernizr.styleElem     = injectElementWithStyles; // Modernizr.styleElem('#omg { position:absolute }',callback)
 
     // Remove "no-js" class from <html> element, if it exists:
