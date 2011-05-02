@@ -544,7 +544,17 @@ window.Modernizr = (function( window, document, undefined ) {
     tests['textshadow'] = function() {
         return document.createElement('div').style.textShadow === '';
     };
+    
+    tests['rem'] = function() {
+        // "The 'rem' unit ('root em') is relative to the computed 
+        // value of the 'font-size' value of the root element."
+        // http://www.w3.org/TR/css3-values/#relative0
+        // you can test by checking if the prop was ditched
 
+        setCss('font-size: 3rem');
+
+        return contains(mStyle.fontSize, 'rem');
+    };
 
     tests['opacity'] = function() {
         // Browsers that actually have CSS Opacity implemented have done so
