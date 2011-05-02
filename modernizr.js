@@ -632,6 +632,14 @@ window.Modernizr = (function( window, document, undefined ) {
     };
     /*>>fontface*/
 
+    // Test for support for the 'rem' unit
+    // Based on http://ahedg.es/w/rem.html
+    tests['remunit'] = function () {
+        var elem = document.createElement('p');
+        elem.style.cssText = 'font-size: 1.5rem;';
+        return elem.style.fontSize.indexOf('rem') > -1;
+    };
+
     // CSS generated content detection
     tests['generatedcontent'] = function() {
         return Modernizr['generatedcontent'];
