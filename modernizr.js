@@ -770,7 +770,12 @@ window.Modernizr = (function( window, document, undefined ) {
                 attrs[ props[i] ] = !!(props[i] in inputElem);
             }
             return attrs;
-        })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
+        })('autocomplete autofocus list max min multiple pattern required step'.split(' '));
+
+        // input/@placeholder support doesn't guarantee textarea/@placeholder support
+        Modernizr.input.placeholder = new Boolean('placeholder' in inputElem);
+        Modernizr.input.placeholder.input = Modernizr.input.placeholder;
+        Modernizr.input.placeholder.textarea = 'placeholder' in document.createElement('textarea');
 
         // Run through HTML5's new input types to see if the UA understands any.
         //   This is put behind the tests runloop because it doesn't return a
