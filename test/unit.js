@@ -34,36 +34,36 @@ window.TEST = {
 
 
 test("globals set up",2, function() {
-  
+
 	ok(window.Modernizr, 'global modernizr object created');
-	
+
 	var remainingGlobals = getMembers(window);
-	
+
 	// thx opera for globalizing IDs...
 	for (var len = remainingGlobals.length; len-- ;){
 	  if (document.getElementById(remainingGlobals[len])){
 	    remainingGlobals.splice(len,1);
 	  }
 	}
-	
-	var count = remainingGlobals.length - window.__globals.length 
+
+	var count = remainingGlobals.length - window.__globals.length
 	    // jQuery and $ are included before the first globals are grabbed, so not included here.
-	     - (window.TEST   ? 1 : 0) 
+	     - (window.TEST   ? 1 : 0)
        - (window.backuphtml      ? 1 : 0)
        - (window.cbfunc ? 1 : 0)
        - ('onhashchange' in window && !window.onhashchange ? 1 : 0)
-   
-	ok( ! (count > 1) , 'no more than one global object created'); 
-	      
-	/*  * /    
+
+	ok( ! (count > 1) , 'no more than one global object created');
+
+	/*  * /
 	var arr = [];
 	var x = $.each(remainingGlobals,function(k,v){
 	  if ( $.inArray(v,window.__globals) === -1) arr.push(v);
 	});
-	
+
 	alert(remainingGlobals.length + ', ' + window.__globals.length + ' : ('+arr.length+') '+  arr.join(', '));
   /* */
-  
+
 });
 
 
@@ -71,43 +71,43 @@ test("globals set up",2, function() {
 
 
 test("document.documentElement is valid and correct",1, function() {
-	equals(document.documentElement,document.getElementsByTagName('html')[0]); 
+	equals(document.documentElement,document.getElementsByTagName('html')[0]);
 });
 
 
 test("no-js class is gone.", function() {
-  
+
 	equals(document.documentElement.className.indexOf('no-js') , -1,
-	       'no-js is gone.'); 
-	       
+	       'no-js is gone.');
+
 	ok(/\bjs /.test(document.documentElement.className),
 	   'html.js class is present')
-	
+
 	if (document.querySelector){
-	  ok(document.querySelector('html.js') == document.documentElement, 
+	  ok(document.querySelector('html.js') == document.documentElement,
 	     "document.querySelector('html.js') matches.");
 	}
 });
 
 test('html shim worked', function(){
   expect(2);
-  
+
   // the exact test we use in the script
   var elem = document.getElementsByTagName("section")[0];
 
   ok( elem.childNodes.length === 1 , 'unknown elements dont collapse');
-  
+
   elem.style.color = 'red';
   ok( /red|#ff0000/i.test(elem.style.color), 'unknown elements are styleable')
-  
+
 });
 
 
 test('html classes are looking good',function(){
-  
+
   var classes = TEST.trim(document.documentElement.className).split(/\s+/);
-  
-  var modprops = getMembers(Modernizr), 
+
+  var modprops = getMembers(Modernizr),
       newprops = modprops;
 
   // decrement for the properties that are private
@@ -116,71 +116,71 @@ test('html classes are looking good',function(){
     equals(-1, TEST.inArray(item, classes), 'private Modernizr object '+ item +'should not have matching classes');
     equals(-1, TEST.inArray('no-' + item, classes), 'private Modernizr object no-'+item+' should not have matching classes');
   }
-  
+
   // decrement for the non-boolean objects
 //  for (var i = -1, len = TEST.inputs.length; ++i < len; ){
 //    if (Modernizr[TEST.inputs[i]] != undefined) newprops--;
 //  }
-  
+
   // TODO decrement for the extraclasses
-  
+
   // decrement for deprecated ones.
   $.each( TEST.deprecated, function(key, val){
     newprops.splice(  TEST.inArray(item, newprops), 1);
   });
-  
-  
+
+
   //equals(classes,newprops,'equal number of classes and global object props');
-  
+
   if (classes.length !== newprops){
     window.console && console.log(classes, newprops);
-    
+
   }
-  
+
   for (var i = 0, len = classes.length, aclass; i <len; i++){
     aclass = classes[i];
-    
+
     if (aclass === 'js') continue;
-    
+
     if (aclass.indexOf('no-') === 0){
       aclass = aclass.replace('no-','');
-    
-      equals(Modernizr[aclass], false, 
+
+      equals(Modernizr[aclass], false,
             aclass + ' is correctly false in the classes and object')
-            
+
     } else {
-      equals(Modernizr[aclass], true, 
+      equals(Modernizr[aclass], true,
              aclass + ' is correctly true in the classes and object')
     }
   }
-  
-  
+
+
   for (var i = 0, len = classes.length, aclass; i <len; i++){
     equals(classes[i],classes[i].toLowerCase(),'all classes are lowerCase.');
   }
-  
+
   equals(/[^\s]no-/.test(document.documentElement.className),false,
          'whitespace between all classes.');
-  
-  
+
+
 })
 
 
 test('Modernizr properties are looking good',function(){
-  
+
   var count = 0,
       nobool = TEST.API.concat(TEST.inputs)
                 .concat(TEST.audvid).concat(TEST.privates);
-      
+
   for (var prop in window.Modernizr){
     if (window.Modernizr.hasOwnProperty(prop)){
-      
+
       if (TEST.inArray(prop,nobool) >= 0) continue;
-      
+
       ok(Modernizr[prop] === true || Modernizr[prop] === false,
         'Modernizr.'+prop+' is a straight up boolean');
-        
-        
+
+
       equals(prop,prop.toLowerCase(),'all properties are lowerCase.')
     }
   }
@@ -192,37 +192,37 @@ test('Modernizr.addTest()',9,function(){
   Modernizr.addTest('testtrue',function(){
     return true;
   });
-  
+
   Modernizr.addTest('testtruthy',function(){
     return 100;
   });
-  
+
   Modernizr.addTest('testfalse',function(){
     return false;
   });
-  
+
   Modernizr.addTest('testfalsy',function(){
     return undefined;
   });
-  
+
   ok(document.documentElement.className.indexOf(' testtrue') >= 0,'positive class added');
   equals(Modernizr.testtrue,true,'positive prop added');
-  
+
   ok(document.documentElement.className.indexOf(' testtruthy') >= 0,'positive class added');
   equals(Modernizr.testtruthy,true,'positive prop added');
-  
+
   ok(document.documentElement.className.indexOf(' no-testfalse') >= 0,'negative class added');
   equals(Modernizr.testfalse,false,'negative prop added');
-  
+
   ok(document.documentElement.className.indexOf(' no-testfalsy') >= 0,'negative class added');
   equals(Modernizr.testfalsy,false,'negative prop added');
-  
-  
-  
+
+
+
   Modernizr.addTest('camelCase',function(){
      return true;
    });
-   
+
   ok(document.documentElement.className.indexOf(' camelCase') === -1,
      'camelCase test name toLowerCase()\'d');
 
@@ -230,44 +230,44 @@ test('Modernizr.addTest()',9,function(){
 
 
 test('Modernizr.audio and Modernizr.video',function(){
-  
+
   for (var i = -1, len = TEST.audvid.length; ++i < len;){
     var prop = TEST.audvid[i];
-  
+
     if (Modernizr[prop].toString() == 'true'){
-      
+
       ok(Modernizr[prop],                             'Modernizr.'+prop+' is truthy.');
       equals(Modernizr[prop] == true,true,            'Modernizr.'+prop+' is == true')
       equals(typeof Modernizr[prop] === 'object',true,'Moderizr.'+prop+' is truly an object');
       equals(Modernizr[prop] !== true,true,           'Modernizr.'+prop+' is !== true')
-      
+
     } else {
-      
+
       equals(Modernizr[prop] != true,true,            'Modernizr.'+prop+' is != true')
     }
   }
-  
-  
+
+
 });
 
 
 test('Modernizr results match expected values',function(){
-  
+
   // i'm bringing over a few tests from inside Modernizr.js
   equals(!!document.createElement('canvas').getContext,Modernizr.canvas,'canvas test consistent');
-  
+
   equals(!!window.Worker,Modernizr.webworkers,'web workers test consistent')
-  
+
 });
 
 
 
 
 test('Modernizr.mq: media query testing',function(){
-  
+
   var $html = $('html');
   $.mobile = {};
-  
+
   // from jquery mobile
 
   $.mobile.media = (function() {
@@ -280,14 +280,14 @@ test('Modernizr.mq: media query testing',function(){
   		if ( !( query in cache ) ) {
   			var styleBlock = document.createElement('style'),
           		cssrule = "@media " + query + " { #jquery-mediatest { position:absolute; } }";
-  	        //must set type for IE!	
+  	        //must set type for IE!
   	        styleBlock.type = "text/css";
-  	        if (styleBlock.styleSheet){ 
+  	        if (styleBlock.styleSheet){
   	          styleBlock.styleSheet.cssText = cssrule;
-  	        } 
+  	        }
   	        else {
   	          styleBlock.appendChild(document.createTextNode(cssrule));
-  	        } 
+  	        }
 
   			$html.prepend( fakeBody ).prepend( styleBlock );
   			cache[ query ] = testDiv.css( "position" ) === "absolute";
@@ -296,28 +296,28 @@ test('Modernizr.mq: media query testing',function(){
   		return cache[ query ];
   	};
   })();
-  
-   
+
+
   ok(Modernizr.mq,'Modernizr.mq() doesn\' freak out.');
-  
+
   equals($.mobile.media('only screen'), Modernizr.mq('only screen'),'screen media query matches jQuery mobile\'s result');
-  
+
   equals(Modernizr.mq('only all'), Modernizr.mq('only all'), 'Cache hit matches');
-  
-  
+
+
 });
 
 
 
 
 test('Modernizr.event',function(){
-   
+
   ok(Modernizr.event,'Modernizr.event() doesn\' freak out.');
-  
- 
+
+
   equals(Modernizr.event('click'), true,'click event is supported');
 
-  
+
 });
 
 
@@ -328,17 +328,17 @@ test('Modernizr.event',function(){
 
 /**
  * We're going to test the current browser results against the www.findmebyip.com data tables
- * These tables are originaly sourced from Modernizr results but get enough eyeballs to perhaps 
+ * These tables are originaly sourced from Modernizr results but get enough eyeballs to perhaps
  * trust them more.
  * However, as testing has shown, there are many inconsistencies in their results.
- 
- * Regardless, having *a* baseline to test feature detection results against is worthwhile, 
+
+ * Regardless, having *a* baseline to test feature detection results against is worthwhile,
  * even if its flawed.
  * In the future, I'd like to test against the whencaniuse.com tables.
 */
 
 $(function fmbip() {
-  
+
   var isDataAdded = false;
   var testbed = document.getElementById('testbed');
 
@@ -384,7 +384,7 @@ $(function fmbip() {
     })
   };
 
-  // determine the modernizr property we're testing. 
+  // determine the modernizr property we're testing.
   // also we'll handle video/audio/input here
   function getModernizrProperty(testname) {
     var splitz = testname.split(':');
@@ -413,10 +413,10 @@ $(function fmbip() {
 
 
   function testAgainstTables() {
-    
+
     if (testAgainstTables.isRun) return;
     testAgainstTables.isRun = true;
-    
+
     // remove css3 selectors
     $('#css3-selectors').next().andSelf().remove();
 
@@ -470,7 +470,7 @@ $(function fmbip() {
               }
             }
 
-            // ie6 should fail on everything ie7 does.       
+            // ie6 should fail on everything ie7 does.
             if (sniff.version < thisver && modresult !== undefined) {
 
               if (bool === false) {
@@ -549,24 +549,24 @@ $(function fmbip() {
     }
     script.src = 'http://jsonpify.com/api?url=http://www.findmebyip.com/litmus/&format=string&jsonp=cbfunc';
     document.body.appendChild(script);
-    
+
     // opera is weak with script onerror
     setTimeout(function(){
-      if ( isDataAdded) return;
+      if (isDataAdded) return;
       script.onerror();
-    },1200);
+    }, 1200);
   });
 
 
- 
+
 
   window.cbfunc = function (data) {
     isDataAdded = true;
-    
+
     var html = data.replace(/\s+|\n/g, ' ').match(/(<h2 id="css3-properties.*)<div class="data-notes/)[1];
     testbed.innerHTML += html;
 
     testAgainstTables();
   };
 
-})
+});
