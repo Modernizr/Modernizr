@@ -55,6 +55,8 @@ jQuery(function($){
 
       // Track the different builds
       _gaq.push(['_trackPageview', '/build/'+[].slice.call($('ul li input:checked').map(function(key, val){ return ($(this).closest('li')[0].id || undefined); }), 0).join("^")]);
+
+      GoSquared.DefaultTracker.TrackView('/build/2.0-b1/', 'Download: 2.0 beta 1');
       
       uglifiedModularBuild = fixUglifyBugs( addExtras( uglifiedModularBuild ) );
       handleInjection(uglifiedModularBuild);
