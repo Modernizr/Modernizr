@@ -814,10 +814,6 @@ window.Modernizr = (function( window, document, undefined ) {
                       // Interestingly, opera fails the earlier test, so it doesn't
                       //  even make it here.
 
-                    } else if ( /^(url|email)$/.test(inputElemType) ) {
-                      // Real url and email support comes with prebaked validation.
-                      bool = inputElem.checkValidity && inputElem.checkValidity() === false;
-
                     } else if ( /^color$/.test(inputElemType) ) {
                         // chuck into DOM and force reflow for Opera bug in 11.00
                         // github.com/Modernizr/Modernizr/issues#issue/159
@@ -827,8 +823,11 @@ window.Modernizr = (function( window, document, undefined ) {
                         docElement.removeChild(inputElem);
 
                     } else {
-                      // If the upgraded input compontent rejects the :) text, we got a winner
-                      bool = inputElem.value != smile;
+                      // If the upgraded input component rejects the :) text,
+                      // we got a winner. Otherwise, check prebaked validation.
+                      bool = inputElem.value != smile
+                             ? true
+                             : (inputElem.checkValidity && inputElem.checkValidity() === false);
                     }
                 }
 
