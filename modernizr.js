@@ -724,7 +724,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    tests['webWorkers'] = function() {
+    tests['webworkers'] = function() {
         return !!window.Worker;
     };
 
