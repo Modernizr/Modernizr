@@ -756,6 +756,16 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
     };
 
+
+    tests['calc'] = function() {
+         var str1 = 'width:',
+             str2 = 'calc(10px);';
+
+        setCss((str1 + prefixes.join(str2 + str1)));
+        
+        return contains(mStyle.width, 'calc');
+    };
+
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
     function webforms() {
