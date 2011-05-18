@@ -7,14 +7,11 @@
 Modernizr.addTest( "display-table",function(){
   
   var doc   = window.document,
-      docElem = doc.documentElement,    
-      create  = function( el ){
-        return doc.createElement( el );
-      },
-    parent  = create( "div" ),
-    child = create( "div" ),
-    childb  = create( "div" ),
-    ret;
+      docElem = doc.documentElement,   
+      parent  = doc.createElement( "div" ),
+      child = doc.createElement( "div" ),
+      childb  = doc.createElement( "div" ),
+      ret;
       
   parent.style.display = "table";
   child.style.display = childb.style.display = "table-cell";
