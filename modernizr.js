@@ -291,13 +291,17 @@ window.Modernizr = (function( window, document, undefined ) {
 
     })([
         // Pass in styles to be injected into document
-        /*>>fontface*/        '@font-face {font-family:"font";src:url(font.ttf)}'         /*>>fontface*/
+        /*>>fontface*/        '@font-face {font-family:"font";src:url("//:")}'         /*>>fontface*/
+        
         /*>>touch*/           ,['@media (',prefixes.join('touch-enabled),('),mod,')',
                                 '{#touch{top:9px;position:absolute}}'].join('')           /*>>touch*/
+                                
         /*>>csstransforms3d*/ ,['@media (',prefixes.join('transform-3d),('),mod,')',
                                 '{#csstransforms3d{left:9px;position:absolute}}'].join('')/*>>csstransforms3d*/
+                                
         /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'"}'].join('')  /*>>generatedcontent*/
-    ],[
+    ],
+      [
         /*>>fontface*/        'fontface'          /*>>fontface*/
         /*>>touch*/           ,'touch'            /*>>touch*/
         /*>>csstransforms3d*/ ,'csstransforms3d'  /*>>csstransforms3d*/
