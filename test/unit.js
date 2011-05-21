@@ -5,7 +5,7 @@ window.TEST = {
   // note some unique members of the Modernizr object
   inputs    : ['input','inputtypes'],
   audvid    : ['video','audio'],
-  API       : ['addTest', 'mq', 'event', 'testProp', 'testAllProps', 'styleElem'],
+  API       : ['addTest', 'mq', 'event', 'testProp', 'testAllProps', 'styleElem', '_prefixes', '_domPrefixes'],
   extraclass: ['js'],
   privates  : ['_enableHTML5','_version','_fontfaceready'],
   deprecated : [
