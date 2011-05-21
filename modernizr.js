@@ -35,6 +35,9 @@ window.Modernizr = (function( window, document, undefined ) {
     var version = '1.8pre',
 
     Modernizr = {},
+    
+    // option for enabling the HTML classes to be added
+    enableClasses = true,
 
     docElement = document.documentElement,
     docHead = document.head || document.getElementsByTagName('head')[0],
@@ -1023,7 +1026,6 @@ window.Modernizr = (function( window, document, undefined ) {
     //>>END IEPP
 
     // Assign private properties to the return object with prefix
-    Modernizr._enableHTML5  = enableHTML5;
     Modernizr._version      = version;
 
     Modernizr._prefixes     = prefixes;
@@ -1038,10 +1040,9 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // Remove "no-js" class from <html> element, if it exists:
     docElement.className = docElement.className.replace(/\bno-js\b/, '')
-                            + ' js '
-
+                            
                             // Add the new classes to the <html> element.
-                            + classes.join(' ');
+                            + (enableClasses ? ' js ' + classes.join(' ') : '');
 
     return Modernizr;
 
