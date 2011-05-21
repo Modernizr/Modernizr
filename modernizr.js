@@ -36,23 +36,6 @@ window.Modernizr = (function( window, document, undefined ) {
 
     Modernizr = {},
 
-    /**
-     * DEPRECATED
-     *
-     * enableHTML5 is a private property for advanced use only. If enabled,
-     * it will make Modernizr.init() run through a brief while() loop in
-     * which it will create all HTML5 elements in the DOM to allow for
-     * styling them in Internet Explorer, which does not recognize any
-     * non-HTML4 elements unless created in the DOM this way.
-     *
-     * enableHTML5 is ON by default.
-     *
-     * The enableHTML5 toggle option is DEPRECATED as per 1.6, and will be
-     * replaced in 2.0 in lieu of the modular, configurable nature of 2.0.
-     */
-    enableHTML5 = true,
-
-
     docElement = document.documentElement,
     docHead = document.head || document.getElementsByTagName('head')[0],
 
@@ -915,9 +898,10 @@ window.Modernizr = (function( window, document, undefined ) {
 
     //>>BEGIN IEPP
     // Enable HTML 5 elements for styling (and printing) in IE.
-    if ( enableHTML5 && window.attachEvent && (function(){ var elem = document.createElement('div');
-                                      elem.innerHTML = '<elem></elem>';
-                                      return elem.childNodes.length !== 1; })() ) {
+    if ( window.attachEvent && (function(){ var elem = document.createElement('div');
+                                            elem.innerHTML = '<elem></elem>';
+                                            return elem.childNodes.length !== 1; })() ) {
+                                              
         // iepp v2 by @jon_neal & afarkas : github.com/aFarkas/iepp/
         (function(win, doc) {
           win.iepp = win.iepp || {};
