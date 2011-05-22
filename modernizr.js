@@ -880,17 +880,37 @@ window.Modernizr = (function( window, document, undefined ) {
      * @param feature - String naming the feature
      * @param test - Function returning true if feature is supported, false if not
      */
-    Modernizr.addTest = function ( feature, test ) {
-      feature = feature.toLowerCase();
+     Modernizr.addTest = function ( feature, test ) {
+       if ( typeof feature === "object" ) {
+         for ( var key in feature ) {
+           if ( hasOwnProperty( feature, key ) ) { 
+             Modernizr.addTest( key, feature[ key ] );
+           }
+         }
+       } else {
+           // assume strings
 
-      if ( Modernizr[feature] ) {
-        return; // quit if you're trying to overwrite an existing test
-      }
-      test = !!test();
-      docElement.className += ' ' + (test ? '' : 'no-') + feature;
-      Modernizr[feature] = test;
-      return Modernizr; // allow chaining.
-    };
+         feature = feature.toLowerCase();
+
+         if ( Modernizr[feature] ) {
+           // we're going to quit if you're trying to overwrite an existing test
+           // if we were to allow it, we'd do this:
+           //   var re = new RegExp("\\b(no-)?" + feature + "\\b");  // f'n strings need \\
+           //   docElement.className = docElement.className.replace( re, '' );
+           // but, no rly, stuff 'em.
+           return; 
+         }
+
+         test = typeof test === "boolean" ? test : !!test();
+
+         docElement.className += ' ' + (test ? '' : 'no-') + feature;
+         Modernizr[feature] = test;
+
+       }
+
+       return Modernizr; // allow chaining.
+     };
+    
 
     /**
      * Reset m.style.cssText to nothing to reduce memory footprint.
