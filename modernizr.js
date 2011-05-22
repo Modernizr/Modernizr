@@ -359,10 +359,13 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
     };
 
-    // This WebGL test false positives in FF depending on graphics hardware. But really it's quite impossible to know
-    // wether webgl will succeed until after you create the context. You might have hardware that can support
-    // a 100x100 webgl canvas, but will not support a 1000x1000 webgl canvas. So this feature inference is weak,
-    // but intentionally so.
+    // This WebGL test may false positive. 
+    // But really it's quite impossible to know whether webgl will succeed until after you create the context. 
+    // You might have hardware that can support a 100x100 webgl canvas, but will not support a 1000x1000 webgl 
+    // canvas. So this feature inference is weak, but intentionally so.
+    
+    // It is known to false positive in FF4 with certain hardware and the iPad 2.
+    
     tests['webgl'] = function() {
         return !!window.WebGLRenderingContext;
     };
@@ -738,14 +741,15 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
     };
 
+    // specifically for SVG inline in HTML, not within XHTML
+    // test page: paulirish.com/demo/inline-svg
     tests['inlinesvg'] = function() {
       var div = document.createElement('div');
       div.innerHTML = '<svg/>';
       return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
     };
 
-    // Thanks to F1lt3r and lucideer
-    // http://github.com/Modernizr/Modernizr/issues#issue/35
+    // Thanks to F1lt3r and lucideer, ticket #35
     tests['smil'] = function() {
         return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
     };
