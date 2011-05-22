@@ -188,7 +188,11 @@ test('Modernizr properties are looking good',function(){
 
 
 
-test('Modernizr.addTest()',9,function(){
+test('Modernizr.addTest()',21,function(){
+  
+  var docEl = document.documentElement;
+  
+  
   Modernizr.addTest('testtrue',function(){
     return true;
   });
@@ -205,17 +209,17 @@ test('Modernizr.addTest()',9,function(){
     return undefined;
   });
   
-  ok(document.documentElement.className.indexOf(' testtrue') >= 0,'positive class added');
+  ok(docEl.className.indexOf(' testtrue') >= 0,'positive class added');
   equals(Modernizr.testtrue,true,'positive prop added');
   
-  ok(document.documentElement.className.indexOf(' testtruthy') >= 0,'positive class added');
-  equals(Modernizr.testtruthy,true,'positive prop added');
+  ok(docEl.className.indexOf(' testtruthy') >= 0,'positive class added');
+  equals(Modernizr.testtruthy,true,'truthy value casted to straight boolean');
   
-  ok(document.documentElement.className.indexOf(' no-testfalse') >= 0,'negative class added');
+  ok(docEl.className.indexOf(' no-testfalse') >= 0,'negative class added');
   equals(Modernizr.testfalse,false,'negative prop added');
   
-  ok(document.documentElement.className.indexOf(' no-testfalsy') >= 0,'negative class added');
-  equals(Modernizr.testfalsy,false,'negative prop added');
+  ok(docEl.className.indexOf(' no-testfalsy') >= 0,'negative class added');
+  equals(Modernizr.testfalsy,false,'falsy value casted to straight boolean');
   
   
   
@@ -223,10 +227,51 @@ test('Modernizr.addTest()',9,function(){
      return true;
    });
    
-  ok(document.documentElement.className.indexOf(' camelCase') === -1,
+  ok(docEl.className.indexOf(' camelCase') === -1,
      'camelCase test name toLowerCase()\'d');
 
-})
+
+  // okay new signature for this API! woo
+
+  Modernizr.addTest('testboolfalse', false);
+
+  ok(~docEl.className.indexOf(' no-testboolfalse'), 'Modernizr.addTest(feature, bool): negative class added');
+  equals(Modernizr.testboolfalse, false, 'Modernizr.addTest(feature, bool): negative prop added');
+
+
+
+  Modernizr.addTest('testbooltrue', true);
+
+  ok(~docEl.className.indexOf(' testbooltrue'), 'Modernizr.addTest(feature, bool): positive class added');
+  equals(Modernizr.testbooltrue, true, 'Modernizr.addTest(feature, bool): positive prop added');
+
+
+
+  Modernizr.addTest({'testobjboolfalse': false,
+                     'testobjbooltrue' : true   });
+
+  ok(~docEl.className.indexOf(' no-testobjboolfalse'), 'Modernizr.addTest({feature: bool}): negative class added');
+  equals(Modernizr.testobjboolfalse, false, 'Modernizr.addTest({feature: bool}): negative prop added');
+
+  ok(~docEl.className.indexOf(' testobjbooltrue'), 'Modernizr.addTest({feature: bool}): positive class added');
+  equals(Modernizr.testobjbooltrue, true, 'Modernizr.addTest({feature: bool}): positive prop added');
+
+
+
+
+  Modernizr.addTest({'testobjfnfalse': function(){ return false },
+                     'testobjfntrue' : function(){ return true }   });
+
+
+  ok(~docEl.className.indexOf(' no-testobjfnfalse'), 'Modernizr.addTest({feature: bool}): negative class added');
+  equals(Modernizr.testobjfnfalse, false, 'Modernizr.addTest({feature: bool}): negative prop added');
+
+  ok(~docEl.className.indexOf(' testobjfntrue'), 'Modernizr.addTest({feature: bool}): positive class added');
+  equals(Modernizr.testobjfntrue, true, 'Modernizr.addTest({feature: bool}): positive prop added');
+
+
+
+}); // eo addTest
 
 
 test('Modernizr.audio and Modernizr.video',function(){
