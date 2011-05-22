@@ -228,9 +228,9 @@ window.Modernizr = (function( window, document, undefined ) {
      *   a certain property, it won't return undefined for it.
      *   A supported CSS property returns empty string when its not yet set.
      */
-    function testProps( props, callback, prefixed ) {
+    function testProps( props, prefixed ) {
         for ( var i in props ) {
-            if ( mStyle[ props[i] ] !== undefined && (!callback || callback(props[i], modElem)) ) {
+            if ( mStyle[ props[i] ] !== undefined ) {
                 return prefixed == 'pfx' ? props[i] : true;
             }
         }
@@ -243,12 +243,12 @@ window.Modernizr = (function( window, document, undefined ) {
      *   the element including the non-vendor prefixed one, for forward-
      *   compatibility.
      */
-    function testPropsAll( prop, callback, prefixed ) {
+    function testPropsAll( prop, prefixed ) {
 
         var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
             props   = (prop + ' ' + domPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
-        return testProps(props, callback, prefixed);
+        return testProps(props, prefixed);
     }
 
     /**
@@ -523,9 +523,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // border-radius: http://muddledramblings.com/table-of-css3-border-radius-compliance
 
     tests['borderradius'] = function() {
-        return testPropsAll('borderRadius', function( prop ) {
-            return contains( prop, 'orderRadius' );
-        });
+        return testPropsAll('borderRadius');
     };
 
     // WebOS unfortunately false positives on this test.
@@ -1049,7 +1047,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // str.replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
     
     Modernizr.prefixed      = function(prop){
-      return testPropsAll(prop, undefined, 'pfx');
+      return testPropsAll(prop, 'pfx');
     }
 
     // Remove "no-js" class from <html> element, if it exists:
