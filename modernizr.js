@@ -893,6 +893,35 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     /**
+     * addTests allows the user to add multiple tests which share some internal 
+     * implemenatation features. The results will be added onto the Modernizr object,
+     * as well as an appropriate className set on the html element
+     * 
+     * @param features - Array of strings naming the features
+     * @param test - Function returning object of booleans corresponding to true if feature is supported, false if not
+     *                    e.g {cssLastChild: false, cssFirstChild: true}
+     *		    [can also optionally accept the array of feature names as a parameter 
+     *                (useful for e.g. running only part of the function if only some of the test results are needed)]
+     */
+    ret.addTests = function(features, tests) {
+	var results,
+	    name;
+	
+	function singleTest(feature) {
+            return function() {
+	        if(!results) {
+	            results = tests(features);
+		}
+	        return results[feature];
+	    }
+	}
+	while(features.length) {
+	    name = features.pop();
+	    ret.addTest(name, singleTest(name)); 
+	}
+    }
+
+    /**
      * Reset m.style.cssText to nothing to reduce memory footprint.
      */
     setCss('');
