@@ -188,7 +188,7 @@ test('Modernizr properties are looking good',function(){
 
 
 
-test('Modernizr.addTest()',21,function(){
+test('Modernizr.addTest()',22,function(){
   
   var docEl = document.documentElement;
   
@@ -269,6 +269,9 @@ test('Modernizr.addTest()',21,function(){
   ok(~docEl.className.indexOf(' testobjfntrue'), 'Modernizr.addTest({feature: bool}): positive class added');
   equals(Modernizr.testobjfntrue, true, 'Modernizr.addTest({feature: bool}): positive prop added');
 
+
+  Modernizr.addTest('chainone', true).addTest({ chaintwo: true }).addTest('chainthree', function(){ return true; });
+  ok( Modernizr.chainone == Modernizr.chaintwo == Modernizr.chainthree, 'addTest is chainable');
 
 
 }); // eo addTest

@@ -881,27 +881,26 @@ window.Modernizr = (function( window, document, undefined ) {
      * @param test - Function returning true if feature is supported, false if not
      */
      Modernizr.addTest = function ( feature, test ) {
-       if ( typeof feature === "object" ) {
+       if ( typeof feature == "object" ) {
          for ( var key in feature ) {
            if ( hasOwnProperty( feature, key ) ) { 
              Modernizr.addTest( key, feature[ key ] );
            }
          }
        } else {
-           // assume strings
 
          feature = feature.toLowerCase();
 
-         if ( Modernizr[feature] ) {
+         if ( Modernizr[feature] !== undefined ) {
            // we're going to quit if you're trying to overwrite an existing test
            // if we were to allow it, we'd do this:
-           //   var re = new RegExp("\\b(no-)?" + feature + "\\b");  // f'n strings need \\
+           //   var re = new RegExp("\\b(no-)?" + feature + "\\b");  
            //   docElement.className = docElement.className.replace( re, '' );
            // but, no rly, stuff 'em.
            return; 
          }
 
-         test = typeof test === "boolean" ? test : !!test();
+         test = typeof test == "boolean" ? test : !!test();
 
          docElement.className += ' ' + (test ? '' : 'no-') + feature;
          Modernizr[feature] = test;
@@ -912,9 +911,7 @@ window.Modernizr = (function( window, document, undefined ) {
      };
     
 
-    /**
-     * Reset m.style.cssText to nothing to reduce memory footprint.
-     */
+    // Reset modElem.cssText to nothing to reduce memory footprint.
     setCss('');
     modElem = inputElem = null;
 
@@ -1050,8 +1047,14 @@ window.Modernizr = (function( window, document, undefined ) {
     Modernizr._prefixes     = prefixes;
     Modernizr._domPrefixes  = domPrefixes;
     
-
+    // Modernizr.mq tests a given media query, live against the current state of the window
+    // A few important distinctions:
+    //   * If a browser does not support media queries at all (eg. oldIE) the mq() will always return false
+    //   * A max-width or orientation query will be evaluated against the current state, which may change later.
+    
     Modernizr.mq            = testMediaQuery;   // Modernizr.mq('only screen and (max-width:768)')
+    
+    
     Modernizr.event         = isEventSupported; // Modernizr.hasEvent('gesturestart')
     Modernizr.testAllProps  = testPropsAll;     // Modernizr.testAllProps('box-sizing')
     Modernizr.testProp      = testProps;        // Modernizr.testProp('pointer-events')
