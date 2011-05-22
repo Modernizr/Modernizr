@@ -228,12 +228,13 @@ window.Modernizr = (function( window, document, undefined ) {
      *   a certain property, it won't return undefined for it.
      *   A supported CSS property returns empty string when its not yet set.
      */
-    function testProps( props, callback ) {
+    function testProps( props, callback, prefixed ) {
         for ( var i in props ) {
             if ( mStyle[ props[i] ] !== undefined && (!callback || callback(props[i], modElem)) ) {
-                return true;
+                return prefixed == 'pfx' ? props[i] : true;
             }
         }
+        return false;
     }
 
     /**
@@ -242,12 +243,12 @@ window.Modernizr = (function( window, document, undefined ) {
      *   the element including the non-vendor prefixed one, for forward-
      *   compatibility.
      */
-    function testPropsAll( prop, callback ) {
+    function testPropsAll( prop, callback, prefixed ) {
 
         var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
             props   = (prop + ' ' + domPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
-        return !!testProps(props, callback);
+        return testProps(props, callback, prefixed);
     }
 
     /**
@@ -522,7 +523,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // border-radius: http://muddledramblings.com/table-of-css3-border-radius-compliance
 
     tests['borderradius'] = function() {
-        return testPropsAll('borderRadius', '', function( prop ) {
+        return testPropsAll('borderRadius', function( prop ) {
             return contains( prop, 'orderRadius' );
         });
     };
@@ -1037,6 +1038,19 @@ window.Modernizr = (function( window, document, undefined ) {
     Modernizr.testAllProps  = testPropsAll;     // Modernizr.testAllProps('box-sizing')
     Modernizr.testProp      = testProps;        // Modernizr.testProp('pointer-events')
     Modernizr.styleElem     = injectElementWithStyles; // Modernizr.styleElem('#omg { position:absolute }',callback)
+
+
+
+    // Modernizr.prefixed() returns the prefixed or nonprefixed property name variant of your input
+    // Modernizr.prefixed('boxSizing') // 'MozBoxSizing'
+    
+    // Properties must be passed as dom-style camelcase, rather than `box-sizing` hypentated style.
+    // return values will also be the camelCase variant, if you need to translate that to hypenated style use:
+    // str.replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
+    
+    Modernizr.prefixed      = function(prop){
+      return testPropsAll(prop, undefined, 'pfx');
+    }
 
     // Remove "no-js" class from <html> element, if it exists:
     docElement.className = docElement.className.replace(/\bno-js\b/, '')
