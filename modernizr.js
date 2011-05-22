@@ -915,7 +915,7 @@ window.Modernizr = (function(window,document,undefined){
 	        return results[feature];
 	    }
 	}
-	while(fetaures.length) {
+	while(features.length) {
 	    name = features.pop();
 	    ret.addTest(name, singleTest(name)); 
 	}
