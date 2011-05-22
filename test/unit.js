@@ -5,7 +5,7 @@ window.TEST = {
   // note some unique members of the Modernizr object
   inputs    : ['input','inputtypes'],
   audvid    : ['video','audio'],
-  API       : ['addTest', 'mq', 'event', 'testProp', 'testAllProps', 'styleElem', '_prefixes', '_domPrefixes'],
+  API       : ['addTest', 'mq', 'event', 'testProp', 'testAllProps', 'styleElem', '_prefixes', '_domPrefixes', 'prefixed'],
   extraclass: ['js'],
   privates  : ['_enableHTML5','_version','_fontfaceready'],
   deprecated : [
@@ -320,6 +320,41 @@ test('Modernizr.event',function(){
   
 });
 
+
+
+
+test('Modernizr.prefixed()', function(){
+  // https://gist.github.com/523692
+  
+  function gimmePrefix(prop){
+    var prefixes = ['Moz','Khtml','Webkit','O','ms'],
+        elem     = document.createElement('div'),
+        upper    = prop.charAt(0).toUpperCase() + prop.slice(1);
+
+    if (prop in elem.style)
+      return prop;
+
+    for (var len = prefixes.length; len--; ){
+      if ((prefixes[len] + upper)  in elem.style)
+        return (prefixes[len] + upper);
+    }
+
+
+    return false;
+  }
+  
+  var propArr = ['transition', 'backgroundSize', 'boxSizing', 'borderImage', 
+                 'borderRadius', 'boxShadow', 'columnCount'];
+  
+  
+  for (var i = -1, len = propArr.length; ++i < len; ){
+    var prop = propArr[i];
+    equals( Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
+  }
+  
+  
+  
+});
 
 
 
