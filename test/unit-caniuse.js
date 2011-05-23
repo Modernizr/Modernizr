@@ -52,6 +52,9 @@ window.caniusecb = function(scriptdata) {
   
   window.doo = scriptdata;
 
+  // quit if JSONSelect didn't make it.
+  if (!window.JSONSelect) return;
+
   var testdata     = scriptdata.data,
 
       // parse the current UA with uaparser
