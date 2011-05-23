@@ -6,9 +6,17 @@
     function getPropertyDescriptors(object) {
       var props = { };
       for (var prop in object) {
-        props[prop] = {
-          type: typeof object[prop],
-          value: object[prop]
+        
+        // nerfing for firefox who goes crazy over some objects like sessionStorage
+        try {
+          
+          props[prop] = {
+            type:  typeof object[prop],
+            value: object[prop]
+          };
+          
+        } catch(e){
+          props[prop] = {}; 
         }
       }
       return props;
@@ -128,7 +136,8 @@
       'Scriptaculous':    'Autocompleter Builder Control Draggable Draggables Droppables Effect Sortable SortableObserver Sound Scriptaculous'.split(' '),
       'Firebug':          'loadFirebugConsole console _getFirebugConsoleElement _FirebugConsole _FirebugCommandLine _firebug'.split(' '),
       'Mozilla':          'Components XPCNativeWrapper XPCSafeJSObjectWrapper getInterface netscape GetWeakReference'.split(' '),
-      'GoogleAnalytics':  'gaJsHost gaGlobal _gat _gaq pageTracker'.split(' ')
+      'GoogleAnalytics':  'gaJsHost gaGlobal _gat _gaq pageTracker'.split(' '),
+      'lazyGlobals':      'onhashchange'.split(' ')
     };
     
     // initConfigPopup(); // disable because we're going UI-less.
