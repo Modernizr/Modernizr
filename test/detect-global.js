@@ -1,3 +1,7 @@
+// https://github.com/kangax/detect-global
+
+// tweaked to run without a UI.
+
 (function () {
     function getPropertyDescriptors(object) {
       var props = { };
@@ -13,7 +17,10 @@
     function getCleanWindow() {
       var elIframe = document.createElement('iframe');
       elIframe.style.display = 'none';
-      document.body.appendChild(elIframe);
+      
+      var ref = document.getElementsByTagName('script')[0];
+      ref.parentNode.insertBefore(elIframe, ref);
+      
       elIframe.src = 'about:blank';
       return elIframe.contentWindow;
     }
@@ -72,7 +79,8 @@
       appendAnalyze(el);
       appendCancel(el);
       
-      document.body.appendChild(el);
+      var ref = document.getElementsByTagName('script')[0];
+      ref.parentNode.insertBefore(el, ref);
     }
     
     function getPropsCount(object) {
@@ -87,7 +95,7 @@
       for (var prop in propSets) {
         var elCheckbox = document.getElementById('__' + prop);
         var isPropInSet = propSets[prop].indexOf(propToCheck) > -1;
-        if (elCheckbox.checked && isPropInSet) {
+        if (isPropInSet && (elCheckbox ? elCheckbox.checked : true) ) {
           return true;
         }
       }
@@ -109,8 +117,8 @@
         }
       }
       
+      console.log('Total number of global properties: ' + (window.__globalsCount = getPropsCount(globalProps)));
       console.dir(globalProps);
-      console.log('Total number of properties: ' + getPropsCount(globalProps));
     }
     
     var propSets = {
@@ -123,7 +131,11 @@
       'GoogleAnalytics':  'gaJsHost gaGlobal _gat _gaq pageTracker'.split(' ')
     };
     
-    initConfigPopup();
+    // initConfigPopup(); // disable because we're going UI-less.
     
-    document.getElementById('__analyze').onclick = analyze;
+    var analyzeElem = document.getElementById('__analyze');
+    analyzeElem && (analyzeElem.onclick = analyze);
+    
+    analyze(); // and assign total added globals to window.__globalsCount
+    
 })();
