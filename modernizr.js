@@ -1052,9 +1052,11 @@ window.Modernizr = (function( window, document, undefined ) {
     Modernizr._domPrefixes  = domPrefixes;
     
     // Modernizr.mq tests a given media query, live against the current state of the window
-    // A few important distinctions:
+    // A few important notes:
     //   * If a browser does not support media queries at all (eg. oldIE) the mq() will always return false
     //   * A max-width or orientation query will be evaluated against the current state, which may change later.
+    //   * You must specify values. Eg. If you are testing support for the min-width media query use: 
+    //       Modernizr.mq('(min-width:0)')
     
     Modernizr.mq            = testMediaQuery;   // Modernizr.mq('only screen and (max-width:768)')
     
