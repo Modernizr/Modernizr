@@ -35,7 +35,7 @@ jQuery(function($){
 
     function addExtras (modularBuild) {
 
-
+      modularBuild = ';'+modularBuild+';';
       if ( selections ) {
         if ( mLoad ) {
           modularBuild = "\/* Modernizr.load enabled *\/\n" + modularBuild;
