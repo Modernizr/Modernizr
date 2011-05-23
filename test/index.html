@@ -14,25 +14,13 @@
 	   table tbody tr:hover td, table tbody tr:hover th { background: #e1e100!important;}
 	   td.wrong { background:red!important;}
 	</style>
+	
+	<script src="../modernizr.js"></script>
+	<script src="detect-global.js"></script>
+  
 	<script src="qunit/qunit.js"></script>
 	<script src="jquery-1.4.2.js"></script>
-	<script>
-	window.__globals = [];
-
-	function getMembers(thing){
-		var things = [],
-		    x;
-		for (x in thing) {
-			if (thing.hasOwnProperty && thing.hasOwnProperty(x)){
-				things.push(x);
-			}
-		}
-		return things;
-	}
-
-	window.__globals = getMembers(window);
-	</script>
-	<script src="../modernizr.js"></script>
+	
 	<script src="unit.js"></script>
 </head>
 <body>

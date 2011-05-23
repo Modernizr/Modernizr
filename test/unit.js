@@ -30,6 +30,12 @@ window.TEST = {
   }
 };
 
+if (!Object.keys) Object.keys = function(o){
+  if (o !== Object(o)) throw new TypeError('Object.keys called on non-object');
+  var ret=[], p;
+  for (p in o) if(Object.prototype.hasOwnProperty.call(o,p)) ret.push(p);
+  return ret;
+};
 
 
 
@@ -37,33 +43,9 @@ test("globals set up",2, function() {
   
 	ok(window.Modernizr, 'global modernizr object created');
 	
-	var remainingGlobals = getMembers(window);
-	
-	// thx opera for globalizing IDs...
-	for (var len = remainingGlobals.length; len-- ;){
-	  if (document.getElementById(remainingGlobals[len])){
-	    remainingGlobals.splice(len,1);
-	  }
-	}
-	
-	var count = remainingGlobals.length - window.__globals.length 
-	    // jQuery and $ are included before the first globals are grabbed, so not included here.
-	     - (window.TEST   ? 1 : 0) 
-       - (window.backuphtml      ? 1 : 0)
-       - (window.cbfunc ? 1 : 0)
-       - ('onhashchange' in window && !window.onhashchange ? 1 : 0)
-   
-	ok( ! (count > 1) , 'no more than one global object created'); 
-	      
-	/*  * /    
-	var arr = [];
-	var x = $.each(remainingGlobals,function(k,v){
-	  if ( $.inArray(v,window.__globals) === -1) arr.push(v);
-	});
-	
-	alert(remainingGlobals.length + ', ' + window.__globals.length + ' : ('+arr.length+') '+  arr.join(', '));
-  /* */
-  
+  // this comes from kangax's detect-global.js
+	equals(1, __globalsCount, 'no more than one global object created'); 
+
 });
 
 
@@ -107,7 +89,7 @@ test('html classes are looking good',function(){
   
   var classes = TEST.trim(document.documentElement.className).split(/\s+/);
   
-  var modprops = getMembers(Modernizr), 
+  var modprops = Object.keys(Modernizr), 
       newprops = modprops;
 
   // decrement for the properties that are private
