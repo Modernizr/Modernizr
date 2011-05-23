@@ -188,12 +188,13 @@ test('html classes are looking good',function(){
 
 test('Modernizr properties are looking good',function(){
   
-  var count = 0,
+  var count  = 0,
       nobool = TEST.API.concat(TEST.inputs)
-                .concat(TEST.audvid).concat(TEST.privates);
+                       .concat(TEST.audvid)
+                       .concat(TEST.privates);
       
   for (var prop in window.Modernizr){
-    if (window.Modernizr.hasOwnProperty(prop)){
+    if (Modernizr.hasOwnProperty(prop)){
       
       if (TEST.inArray(prop,nobool) >= 0) continue;
       

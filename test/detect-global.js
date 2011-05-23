@@ -125,8 +125,11 @@
         }
       }
       
-      console.log('Total number of global properties: ' + (window.__globalsCount = getPropsCount(globalProps)));
-      console.dir(globalProps);
+      window.__globalsCount = getPropsCount(globalProps);
+      window.__globals      = globalProps;
+      
+      window.console && console.log('Total number of global properties: ' + __globalsCount);
+      window.console && console.dir(__globals);
     }
     
     var propSets = {
@@ -135,7 +138,7 @@
                         
       'Scriptaculous':    'Autocompleter Builder Control Draggable Draggables Droppables Effect Sortable SortableObserver Sound Scriptaculous'.split(' '),
       'Firebug':          'loadFirebugConsole console _getFirebugConsoleElement _FirebugConsole _FirebugCommandLine _firebug'.split(' '),
-      'Mozilla':          'Components XPCNativeWrapper XPCSafeJSObjectWrapper getInterface netscape GetWeakReference'.split(' '),
+      'Mozilla':          'Components XPCNativeWrapper XPCSafeJSObjectWrapper getInterface netscape GetWeakReference GeckoActiveXObject'.split(' '),
       'GoogleAnalytics':  'gaJsHost gaGlobal _gat _gaq pageTracker'.split(' '),
       'lazyGlobals':      'onhashchange'.split(' ')
     };
