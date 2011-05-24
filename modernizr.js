@@ -1061,7 +1061,7 @@ window.Modernizr = (function( window, document, undefined ) {
     Modernizr.mq            = testMediaQuery;   // Modernizr.mq('only screen and (max-width:768)')
     
     
-    Modernizr.event         = isEventSupported; // Modernizr.hasEvent('gesturestart')
+    Modernizr.hasEvent      = isEventSupported; // Modernizr.hasEvent('gesturestart')
     Modernizr.testAllProps  = testPropsAll;     // Modernizr.testAllProps('box-sizing')
     Modernizr.testProp      = testProps;        // Modernizr.testProp('pointer-events')
     Modernizr.styleElem     = injectElementWithStyles; // Modernizr.styleElem('#omg { position:absolute }',callback)
