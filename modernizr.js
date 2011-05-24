@@ -389,19 +389,6 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     /**
-     * file tests for the File API specification
-     *   Tests for objects specific to the File API W3C specification without
-     *   being redundant (don't bother testing for Blob since it is assumed
-     *   to be the File object's prototype.
-     *
-     *   Will fail in Safari 5 due to its lack of support for the standards
-     *   defined FileReader object.
-     */
-    tests['file'] = function() {
-        return !!(window.File && window.FileList && window.FileReader);
-    };
-
-    /**
      * geolocation tests for the new Geolocation API specification.
      *   This test is a standards compliant-only test; for more complete
      *   testing, including a Google Gears fallback, please see:
