@@ -1,3 +1,9 @@
+module('Basics', {
+    setup:function() {
+    },
+    teardown:function() {
+    }
+});
 
 test("globals set up",2, function() {
   
@@ -36,12 +42,21 @@ test('html shim worked', function(){
   
   // the exact test we use in the script
   var elem = document.getElementsByTagName("section")[0];
+  elem.id = "html5section";
 
   ok( elem.childNodes.length === 1 , 'unknown elements dont collapse');
   
   elem.style.color = 'red';
   ok( /red|#ff0000/i.test(elem.style.color), 'unknown elements are styleable')
   
+});
+
+
+module('Modernizr classes and bools', {
+    setup:function() {
+    },
+    teardown:function() {
+    }
 });
 
 
@@ -130,6 +145,46 @@ test('Modernizr properties are looking good',function(){
 })
 
 
+
+test('Modernizr.audio and Modernizr.video',function(){
+  
+  for (var i = -1, len = TEST.audvid.length; ++i < len;){
+    var prop = TEST.audvid[i];
+  
+    if (Modernizr[prop].toString() == 'true'){
+      
+      ok(Modernizr[prop],                             'Modernizr.'+prop+' is truthy.');
+      equals(Modernizr[prop] == true,true,            'Modernizr.'+prop+' is == true')
+      equals(typeof Modernizr[prop] === 'object',true,'Moderizr.'+prop+' is truly an object');
+      equals(Modernizr[prop] !== true,true,           'Modernizr.'+prop+' is !== true')
+      
+    } else {
+      
+      equals(Modernizr[prop] != true,true,            'Modernizr.'+prop+' is != true')
+    }
+  }
+  
+  
+});
+
+
+test('Modernizr results match expected values',function(){
+  
+  // i'm bringing over a few tests from inside Modernizr.js
+  equals(!!document.createElement('canvas').getContext,Modernizr.canvas,'canvas test consistent');
+  
+  equals(!!window.Worker,Modernizr.webworkers,'web workers test consistent')
+  
+});
+
+
+
+module('Modernizr\'s API methods', {
+    setup:function() {
+    },
+    teardown:function() {
+    }
+});
 
 test('Modernizr.addTest()',22,function(){
   
@@ -220,37 +275,6 @@ test('Modernizr.addTest()',22,function(){
 }); // eo addTest
 
 
-test('Modernizr.audio and Modernizr.video',function(){
-  
-  for (var i = -1, len = TEST.audvid.length; ++i < len;){
-    var prop = TEST.audvid[i];
-  
-    if (Modernizr[prop].toString() == 'true'){
-      
-      ok(Modernizr[prop],                             'Modernizr.'+prop+' is truthy.');
-      equals(Modernizr[prop] == true,true,            'Modernizr.'+prop+' is == true')
-      equals(typeof Modernizr[prop] === 'object',true,'Moderizr.'+prop+' is truly an object');
-      equals(Modernizr[prop] !== true,true,           'Modernizr.'+prop+' is !== true')
-      
-    } else {
-      
-      equals(Modernizr[prop] != true,true,            'Modernizr.'+prop+' is != true')
-    }
-  }
-  
-  
-});
-
-
-test('Modernizr results match expected values',function(){
-  
-  // i'm bringing over a few tests from inside Modernizr.js
-  equals(!!document.createElement('canvas').getContext,Modernizr.canvas,'canvas test consistent');
-  
-  equals(!!window.Worker,Modernizr.webworkers,'web workers test consistent')
-  
-});
-
 
 
 
@@ -301,15 +325,26 @@ test('Modernizr.mq: media query testing',function(){
 
 
 
-test('Modernizr.event',function(){
+test('Modernizr.hasEvent()',function(){
    
-  ok(Modernizr.event,'Modernizr.event() doesn\'t freak out.');
+  ok(Modernizr.hasEvent,'Modernizr.event() doesn\'t freak out.');
   
  
-  equals(Modernizr.event('click'), true,'click event is supported');
+  equals(Modernizr.hasEvent('click'), true,'click event is supported');
 
+  equals(Modernizr.hasEvent('modernizrcustomevent'), false,'random event is definitely not supported');
+  
+  equals(  Modernizr.hasEvent('resize', window),
+          !Modernizr.hasEvent('resize', document.body),
+          'Resize is supported in window but not doc.body, typically...');
   
 });
+
+
+
+
+
+
 
 
 
