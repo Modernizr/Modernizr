@@ -95,7 +95,7 @@ window.Modernizr = (function( window, document, undefined ) {
           // This also allows the method to scale for unspecified uses
           while ( nodes-- ) {
               node = document.createElement('div');
-              node.id = testnames ? testnames[nodes] : 'test' + (nodes + 1);
+              node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
               div.appendChild(node);
           }
       }
@@ -1048,6 +1048,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // Assign private properties to the return object with prefix
     Modernizr._version      = version;
 
+    // expose these for the plugin API. Look in the source for how to join() them against your input
     Modernizr._prefixes     = prefixes;
     Modernizr._domPrefixes  = domPrefixes;
     
@@ -1057,15 +1058,32 @@ window.Modernizr = (function( window, document, undefined ) {
     //   * A max-width or orientation query will be evaluated against the current state, which may change later.
     //   * You must specify values. Eg. If you are testing support for the min-width media query use: 
     //       Modernizr.mq('(min-width:0)')
+    // usage:
+    // Modernizr.mq('only screen and (max-width:768)')
+    Modernizr.mq            = testMediaQuery;   
     
-    Modernizr.mq            = testMediaQuery;   // Modernizr.mq('only screen and (max-width:768)')
-    
-    
-    Modernizr.hasEvent      = isEventSupported; // Modernizr.hasEvent('gesturestart')
-    Modernizr.testAllProps  = testPropsAll;     // Modernizr.testAllProps('box-sizing')
-    Modernizr.testProp      = testProps;        // Modernizr.testProp('pointer-events')
-    Modernizr.styleElem     = injectElementWithStyles; // Modernizr.styleElem('#omg { position:absolute }',callback)
+    // Modernizr.hasEvent() detects support for a given event, with an optional element to test on
+    // Modernizr.hasEvent('gesturestart', elem)
+    Modernizr.hasEvent      = isEventSupported; 
 
+    // Modernizr.testProp() investigates whether a given style property is recognized
+    // Note that the property names must be provided in the camelCase variant.
+    // Modernizr.testProp('pointerEvents')
+    Modernizr.testProp      = function(prop){
+        return testProps([prop]);
+    };        
+
+    // Modernizr.testAllProps() investigates whether a given style property,
+    //   or any of its vendor-prefixed variants, is recognized
+    // Note that the property names must be provided in the camelCase variant.
+    // Modernizr.testAllProps('boxSizing')    
+    Modernizr.testAllProps  = testPropsAll;     
+
+
+    
+    // Modernizr.testStyles() allows you to add custom styles to the document and test an element afterwards
+    // Modernizr.testStyles('#modernizr { position:absolute }', function(elem, rule){ ... })
+    Modernizr.testStyles    = injectElementWithStyles; 
 
 
     // Modernizr.prefixed() returns the prefixed or nonprefixed property name variant of your input
@@ -1073,21 +1091,23 @@ window.Modernizr = (function( window, document, undefined ) {
     
     // Properties must be passed as dom-style camelcase, rather than `box-sizing` hypentated style.
     // Return values will also be the camelCase variant, if you need to translate that to hypenated style use:
+    //
     //     str.replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
     
     // If you're trying to ascertain which transition end event to bind to, you might do something like...
-    // var transEndEventNames = {
-    //   'WebkitTransition' : 'webkitTransitionEnd',
-    //   'MozTransition'    : 'transitionend',
-    //   'OTransition'      : 'oTransitionEnd',
-    //   'msTransition'     : 'msTransitionEnd', // maybe?
-    //   'transition'       : 'transitionEnd'
-    // },
-    // transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
+    // 
+    //     var transEndEventNames = {
+    //       'WebkitTransition' : 'webkitTransitionEnd',
+    //       'MozTransition'    : 'transitionend',
+    //       'OTransition'      : 'oTransitionEnd',
+    //       'msTransition'     : 'msTransitionEnd', // maybe?
+    //       'transition'       : 'transitionEnd'
+    //     },
+    //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
     
     Modernizr.prefixed      = function(prop){
       return testPropsAll(prop, 'pfx');
-    }
+    };
 
 
 
