@@ -334,15 +334,67 @@ test('Modernizr.hasEvent()',function(){
 
   equals(Modernizr.hasEvent('modernizrcustomevent'), false,'random event is definitely not supported');
   
+  /* works fine in webkit but not gecko
   equals(  Modernizr.hasEvent('resize', window),
-          !Modernizr.hasEvent('resize', document.body),
-          'Resize is supported in window but not doc.body, typically...');
+          !Modernizr.hasEvent('resize', document.createElement('div')),
+          'Resize is supported in window but not a div, typically...');
+  */
   
 });
 
 
 
 
+
+test('Modernizr.testStyles()',function(){
+   
+  equals(typeof Modernizr.testStyles, 'function','Modernizr.testStyles() is a function');
+  
+  var style = '#modernizr{ width: 9px; height: 4px; color: papayawhip;';
+  
+  Modernizr.testStyles(style, function(elem, rule){
+      equals(style, rule, 'rule passsed back matches what i gave it.')
+      equals(elem.offsetWidth, 9, 'width was set through the style');
+      equals(elem.offsetHeight, 4, 'height was set through the style');
+      equals(elem.id, 'modernizr', 'element is indeed the modernizr element');
+  });
+  
+});
+
+
+test('Modernizr._[properties]',function(){
+   
+  equals(7, Modernizr._prefixes.length, 'Modernizr._prefixes has 7 items');
+  
+  equals(5, Modernizr._domPrefixes.length, 'Modernizr.domPrefixes has 5 items');
+  
+});
+
+test('Modernizr.testProp()',function(){
+   
+  equals(true, Modernizr.testProp('margin'), 'Everyone supports margin');
+  
+  equals(false, Modernizr.testProp('happiness'), 'Nobody supports the happiness style. :(');
+  
+  equals('pointerEvents' in  document.createElement('div').style,
+         Modernizr.testProp('pointerEvents'),
+         'results for `pointer-events` are consistent with a homegrown feature test');
+
+});
+
+
+
+test('Modernizr.testAllProps()',function(){
+   
+  equals(true, Modernizr.testAllProps('margin'), 'Everyone supports margin');
+  
+  equals(false, Modernizr.testAllProps('happiness'), 'Nobody supports the happiness style. :(');
+
+  equals(Modernizr.csstransitions, Modernizr.testAllProps('transition'), 'Modernizr result matches API result: csstransitions');
+  
+  equals(Modernizr.csscolumns, Modernizr.testAllProps('columnCount'), 'Modernizr result matches API result: csscolumns')
+  
+});
 
 
 
