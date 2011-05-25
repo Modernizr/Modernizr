@@ -12,14 +12,13 @@ Modernizr.addTest( "display-table",function(){
       child = doc.createElement( "div" ),
       childb  = doc.createElement( "div" ),
       ret;
-      
-  parent.style.display = "table";
-  child.style.display = childb.style.display = "table-cell";
-  child.style.padding = childb.style.padding = "10px";
-    
+          
   parent.appendChild( child );
   parent.appendChild( childb );
   docElem.insertBefore( parent, docElem.firstChild );
+  
+  parent.style.cssText = "display: table";
+  child.style.cssText = childb.style.cssText = "display: table-cell; padding: 10px";
   
   ret = child.offsetLeft < childb.offsetLeft;
   docElem.removeChild(parent);
