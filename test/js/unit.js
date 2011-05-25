@@ -5,12 +5,24 @@ module('Basics', {
     }
 });
 
-test("globals set up",2, function() {
+test("globals set up", function() {
   
 	ok(window.Modernizr, 'global modernizr object created');
 	
   // this comes from kangax's detect-global.js
-	equals(1, __globalsCount, 'no more than one global object created'); 
+  
+    var globArr = Object.keys(__globals);
+    
+    // remove Modernizr and iepp
+    var leakedGlobArr = [''].concat(globArr).concat([''])
+                            .join(',')
+                            .replace(',Modernizr','').replace(',iepp','')
+                            .split(',');
+    
+    equals('', leakedGlobArr.pop(), 'retrieved my empty item from the end');
+    equals('', leakedGlobArr.shift(), 'retrieved my empty item from the front');
+
+	equals(leakedGlobArr.toString(), [].toString(), 'no global variables should leak (other than Modernizr and iepp)'); 
 
 });
 
@@ -350,7 +362,7 @@ test('Modernizr.testStyles()',function(){
    
   equals(typeof Modernizr.testStyles, 'function','Modernizr.testStyles() is a function');
   
-  var style = '#modernizr{ width: 9px; height: 4px; color: papayawhip;';
+  var style = '#modernizr{ width: 9px; height: 4px; color: papayawhip; }';
   
   Modernizr.testStyles(style, function(elem, rule){
       equals(style, rule, 'rule passsed back matches what i gave it.')
