@@ -327,7 +327,7 @@ test('Modernizr.mq: media query testing',function(){
 
 test('Modernizr.hasEvent()',function(){
    
-  ok(Modernizr.hasEvent,'Modernizr.event() doesn\'t freak out.');
+  ok(typeof Modernizr.hasEvent == 'function','Modernizr.hasEvent() is a function');
   
  
   equals(Modernizr.hasEvent('click'), true,'click event is supported');
