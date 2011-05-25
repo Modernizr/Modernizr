@@ -100,6 +100,15 @@ window.caniusecb = function(scriptdata) {
     );
   }
   
+  
+  module('caniuse.com data matches', {
+      setup:function() {
+      },
+      teardown:function() {
+      }
+  });
+
+
   test("we match caniuse data", function() {
   
     for (var feature in Modernizr){
