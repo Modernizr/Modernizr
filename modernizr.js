@@ -870,12 +870,6 @@ window.Modernizr = (function( window, document, undefined ) {
     Modernizr.input || webforms();
 
 
-    // Per 1.6: deprecated API is still accesible for now:
-    Modernizr.crosswindowmessaging = Modernizr.postmessage;
-    Modernizr.historymanagement = Modernizr.history;
-
-
-
     /**
      * addTest allows the user to define their own feature tests
      * the result will be added onto the Modernizr object,
