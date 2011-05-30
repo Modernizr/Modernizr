@@ -850,6 +850,12 @@ window.Modernizr = (function( window, document, undefined ) {
         return document.createElement('progress').max != undefined;
     };
 
+	//tests for meter-support. All browsers that don't support progressbar returns undefined =)
+	tests['meter'] = function() {
+        return document.createElement('meter').max != undefined;
+    };
+
+
     // End of test definitions
     // -----------------------
 
