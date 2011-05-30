@@ -845,16 +845,6 @@ window.Modernizr = (function( window, document, undefined ) {
         })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
     }
 
-	//tests for progressbar-support. All browsers that don't support progressbar returns undefined =)
-	tests['progressbar'] = function() {
-        return document.createElement('progress').max != undefined;
-    };
-
-	//tests for meter-support. All browsers that don't support progressbar returns undefined =)
-	tests['meter'] = function() {
-        return document.createElement('meter').max != undefined;
-    };
-
 
     // End of test definitions
     // -----------------------
