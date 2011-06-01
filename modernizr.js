@@ -853,7 +853,6 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
 
-
     // End of test definitions
     // -----------------------
 
