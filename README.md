@@ -12,7 +12,7 @@ In addition to that, Modernizr will add classes to the `<html>`
 element of the page, one for each cutting-edge feature. If the UA
 supports it, a class like `cssgradients` will be added. If not,
 the class name will be `no-cssgradients`. This allows for simple
-if-conditionals in CSS styling, making it easily to have fine
+if-conditionals in CSS styling, making it easy to have fine
 control over the look and feel of your website.
 
 Modernizr is dual-licensed under the BSD and MIT licenses.
