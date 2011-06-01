@@ -1,38 +1,33 @@
 /*!
- * Modernizr v1.8pre
+ * Modernizr v2.0
  * http://www.modernizr.com
  *
- * Developed by:
- * - Faruk Ates  http://farukat.es/
- * - Paul Irish  http://paulirish.com/
- *
- * Copyright (c) 2009-2011
- * Dual-licensed under the BSD or MIT licenses.
- * http://www.modernizr.com/license/
+ * Copyright (c) 2009-2011 Faruk Ates, Paul Irish, Alex Sexton
+ * Dual-licensed under the BSD or MIT licenses: www.modernizr.com/license/
  */
 
-
 /*
- * Modernizr is a script that detects native CSS3 and HTML5 features
- * available in the current UA and provides an object containing all
- * features with a true/false value, depending on whether the UA has
- * native support for it or not.
+ * Modernizr tests which native CSS3 and HTML5 features are available in
+ * the current UA and makes the results available to you in two ways:
+ * as properties on a global Modernizr object, and as classes on the
+ * <html> element. This information allows you to progressively enhance
+ * your pages with a granular level of control over the experience.
  *
- * Modernizr will also add classes to the <html> element of the page,
- * one for each feature it detects. If the UA supports it, a class
- * like "cssgradients" will be added. If not, the class name will be
- * "no-cssgradients". This allows for simple if-conditionals in your
- * CSS, giving you fine control over the look & feel of your website.
+ * Modernizr has an optional (not included) conditional resource loader
+ * called Modernizr.load(), based on Yepnope.js (yepnopejs.com).
+ * To get a build that includes Modernizr.load(), as well as choosing
+ * which tests to include, go to www.modernizr.com/download/
  *
  * @author        Faruk Ates
  * @author        Paul Irish
- * @copyright     (c) 2009-2011 Faruk Ates.
+ * @author        Alex Sexton
+ * @copyright     (c) 2009-2011
  * @contributor   Ben Alman
  */
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '1.8pre',
+    var version = '2.0',
 
     Modernizr = {},
     
