@@ -466,7 +466,14 @@ window.Modernizr = (function( window, document, undefined ) {
         return isEventSupported('dragstart') && isEventSupported('drop');
     };
 
+    // Mozilla is targeting to land MozWebSocket for FF6
+    // bugzil.la/659324
     tests['websockets'] = function() {
+        for ( var i = -1, len = domPrefixes.length; ++i < len; ){
+          if ( window[domPrefixes[i] + 'WebSocket'] ){
+            return true;
+          }
+        }
         return 'WebSocket' in window;
     };
 
