@@ -3,24 +3,27 @@ Modernizr
 
 ### a JavaScript library allowing you to use CSS3 & HTML5 while maintaining control over unsupported browsers 
 
-Modernizr is a script that will detect native CSS3 and HTML5 features
-available in the current UA and provide an object containing all
-features with a true/false value, depending on whether the UA has
-native support for it or not.
+Modernizr tests which native CSS3 and HTML5 features are available in
+the current UA and makes the results available to you in two ways:
+as properties on a global Modernizr object, and as classes on the
+`<html>` element. This information allows you to progressively enhance
+your pages with a granular level of control over the experience.
 
-In addition to that, Modernizr will add classes to the `<html>`
-element of the page, one for each cutting-edge feature. If the UA
-supports it, a class like `cssgradients` will be added. If not,
-the class name will be `no-cssgradients`. This allows for simple
-if-conditionals in CSS styling, making it easy to have fine
-control over the look and feel of your website.
+Modernizr has an optional (*not included*) conditional resource loader
+called Modernizr.load(), based on Yepnope.js ([yepnopejs.com](http://yepnopejs.com/)).
+To get a build that includes Modernizr.load(), as well as choosing
+which tests to include, go to [www.modernizr.com/download/](http://www.modernizr.com/download/)
 
-Modernizr is dual-licensed under the BSD and MIT licenses.
+[Full documentation on modernizr.com/docs/](http://www.modernizr.com/docs/)
+
+* * *
+
+Modernizr is dual-licensed under the [BSD and MIT licenses](http://www.modernizr.com/license/).
 
 [http://www.modernizr.com/](http://www.modernizr.com/)
 
 
-##### Try it out: 
+#### Try it out: 
 
 Run the library: [http://modernizr.github.com/Modernizr/output.html](http://modernizr.github.com/Modernizr/output.html)
 
