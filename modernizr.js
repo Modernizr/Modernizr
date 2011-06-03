@@ -257,7 +257,10 @@ window.Modernizr = (function( window, document, undefined ) {
 
         injectElementWithStyles(style, function( node, rule ) {
             var style = document.styleSheets[document.styleSheets.length - 1],
-                cssText = style.cssText || style.cssRules[0].cssText,
+                // IE8 will bork if you create a custom build that excludes both fontface and generatedcontent tests.
+                // So we check if cssText is empty or not.
+                // More here: https://github.com/Modernizr/Modernizr/issues/288
+                cssText = style.cssText.length >= 0 ? style.cssText : style.cssRules[0].cssText,
                 children = node.childNodes, hash = {};
 
             while ( len-- ) {
