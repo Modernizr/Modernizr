@@ -1,5 +1,5 @@
 /*!
- * Modernizr v2.0
+ * Modernizr v2.0.1
  * http://www.modernizr.com
  *
  * Copyright (c) 2009-2011 Faruk Ates, Paul Irish, Alex Sexton
@@ -18,16 +18,13 @@
  * To get a build that includes Modernizr.load(), as well as choosing
  * which tests to include, go to www.modernizr.com/download/
  *
- * @author        Faruk Ates
- * @author        Paul Irish
- * @author        Alex Sexton
- * @copyright     (c) 2009-2011
- * @contributor   Ben Alman
+ * Authors        Faruk Ates, Paul Irish, Alex Sexton, 
+ * Contributors   Ryan Seddon, Ben Alman
  */
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.0',
+    var version = '2.0.1',
 
     Modernizr = {},
     
