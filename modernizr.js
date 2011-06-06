@@ -260,7 +260,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 // IE8 will bork if you create a custom build that excludes both fontface and generatedcontent tests.
                 // So we check if cssText is empty or not.
                 // More here: https://github.com/Modernizr/Modernizr/issues/288
-                cssText = style.cssText.length >= 0 ? style.cssText : style.cssRules[0].cssText,
+                cssText = style.cssRules ? style.cssRules[0].cssText : style.cssText,
                 children = node.childNodes, hash = {};
 
             while ( len-- ) {
