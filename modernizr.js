@@ -1,5 +1,5 @@
 /*!
- * Modernizr v2.0.2
+ * Modernizr v2.0.3
  * http://www.modernizr.com
  *
  * Copyright (c) 2009-2011 Faruk Ates, Paul Irish, Alex Sexton
@@ -24,7 +24,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.0.2',
+    var version = '2.0.3',
 
     Modernizr = {},
     
@@ -255,9 +255,9 @@ window.Modernizr = (function( window, document, undefined ) {
         injectElementWithStyles(style, function( node, rule ) {
             var style = document.styleSheets[document.styleSheets.length - 1],
                 // IE8 will bork if you create a custom build that excludes both fontface and generatedcontent tests.
-                // So we check if cssText is empty or not.
-                // More here: https://github.com/Modernizr/Modernizr/issues/288
-                cssText = style.cssRules ? style.cssRules[0].cssText : style.cssText,
+                // So we check for cssRules and that there is a rule available
+                // More here: https://github.com/Modernizr/Modernizr/issues/288 & https://github.com/Modernizr/Modernizr/issues/293
+                cssText = style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || "",
                 children = node.childNodes, hash = {};
 
             while ( len-- ) {
