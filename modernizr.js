@@ -1,5 +1,5 @@
 /*!
- * Modernizr v2.0.4
+ * Modernizr v2.0.5
  * http://www.modernizr.com
  *
  * Copyright (c) 2009-2011 Faruk Ates, Paul Irish, Alex Sexton
@@ -24,7 +24,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.0.4',
+    var version = '2.0.5',
 
     Modernizr = {},
     
@@ -281,7 +281,7 @@ window.Modernizr = (function( window, document, undefined ) {
         /*>>csstransforms3d*/ ,['@media (',prefixes.join('transform-3d),('),mod,')',
                                 '{#csstransforms3d{left:9px;position:absolute}}'].join('')/*>>csstransforms3d*/
                                 
-        /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'"}'].join('')  /*>>generatedcontent*/
+        /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,';visibility:hidden"}'].join('')  /*>>generatedcontent*/
     ],
       [
         /*>>fontface*/        'fontface'          /*>>fontface*/
