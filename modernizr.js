@@ -1,5 +1,5 @@
 /*!
- * Modernizr v2.0.3
+ * Modernizr v2.0.6
  * http://www.modernizr.com
  *
  * Copyright (c) 2009-2011 Faruk Ates, Paul Irish, Alex Sexton
@@ -24,7 +24,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.0.3',
+    var version = '2.0.6',
 
     Modernizr = {},
     
@@ -273,7 +273,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     })([
         // Pass in styles to be injected into document
-        /*>>fontface*/        '@font-face {font-family:"font";src:url("//:")}'         /*>>fontface*/
+        /*>>fontface*/        '@font-face {font-family:"font";src:url("https://")}'         /*>>fontface*/
         
         /*>>touch*/           ,['@media (',prefixes.join('touch-enabled),('),mod,')',
                                 '{#touch{top:9px;position:absolute}}'].join('')           /*>>touch*/
@@ -281,7 +281,7 @@ window.Modernizr = (function( window, document, undefined ) {
         /*>>csstransforms3d*/ ,['@media (',prefixes.join('transform-3d),('),mod,')',
                                 '{#csstransforms3d{left:9px;position:absolute}}'].join('')/*>>csstransforms3d*/
                                 
-        /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'"}'].join('')  /*>>generatedcontent*/
+        /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'";visibility:hidden}'].join('')  /*>>generatedcontent*/
     ],
       [
         /*>>fontface*/        'fontface'          /*>>fontface*/
@@ -496,7 +496,7 @@ window.Modernizr = (function( window, document, undefined ) {
         //  and then querying the style.background property value for the number of
         //  occurrences of "url(" is a reliable method for detecting ACTUAL support for this!
 
-        setCss('background:url(//:),url(//:),red url(//:)');
+        setCss('background:url(https://),url(https://),red url(https://)');
 
         // If the UA supports multiple backgrounds, there should be three occurrences
         //   of the string "url(" in the return value for elemStyle.background
