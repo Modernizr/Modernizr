@@ -3,7 +3,7 @@
 // github.com/Modernizr/Modernizr/issues/248
 
 Modernizr.addTest("boxsizing",function(){
-    return Modernizr.testAllProps("box-sizing");
+    return Modernizr.testAllProps("boxSizing");
 });
 
 
