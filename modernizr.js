@@ -383,7 +383,6 @@ window.Modernizr = (function( window, document, undefined ) {
         return Modernizr['touch'];
     };
 
-
     /**
      * geolocation tests for the new Geolocation API specification.
      *   This test is a standards compliant-only test; for more complete
