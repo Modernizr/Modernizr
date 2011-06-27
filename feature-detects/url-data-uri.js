@@ -2,7 +2,7 @@
 // https://github.com/Modernizr/Modernizr/issues/14
 
 
-// This test is ascynchronous. Watch out.
+// This test is asynchronous. Watch out.
 
 (function(){
 
