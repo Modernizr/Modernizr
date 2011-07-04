@@ -1,6 +1,6 @@
 // This implementation is rather compact. The reason is that it makes some
 // assumptions, which are based on the W3C spec and lots of tests (see the test
-// case [here](http://jsfiddle.net/gravof/nUN8k/6/), so it is highly likely that
+// case [here](http://jsfiddle.net/gravof/nUN8k/7/), so it is highly likely that
 // they will be correct in most current & future browsers. The following is a
 // list of these assumptions:
 //
@@ -18,7 +18,6 @@ Modernizr.interactivevalidation = (function() {
 	var form = document.createElement('form');
 
 	// Prevent form from being submitted
-	var submitFired = false;
 	form.onsubmit = function(e) {
 		e.preventDefault();
 	}
@@ -28,7 +27,9 @@ Modernizr.interactivevalidation = (function() {
 	form.innerHTML = '<input required><button></button>';
 
 	// FF4 doesn't trigger "invalid" event if form is not in the DOM tree
-	form.style.display = 'none';
+	// Chrome throws error if invalid input is not visible when submitting 
+	form.style.position = 'absolute';
+	form.style.top = '-99999em'
 	document.body.appendChild(form);
 
 	var input = form.getElementsByTagName('input')[0];	
