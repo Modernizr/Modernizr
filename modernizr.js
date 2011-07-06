@@ -48,7 +48,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     smile = ':)',
 
-    toString = Object.prototype.toString,
+    toString = ({}).toString,
 
     // List of property values to set for css tests. See ticket #21
     prefixes = ' -webkit- -moz- -o- -ms- -khtml- '.split(' '),
