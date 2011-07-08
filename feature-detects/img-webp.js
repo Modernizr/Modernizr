@@ -2,12 +2,11 @@
 // by rich bradshaw, ryan seddon, and paul irish
 
 
-// This test is ascynchronous. Watch out.
+// This test is asynchronous. Watch out.
 
 (function(){
 
   var image = new Image();
-
 
   image.onerror = function() {
       Modernizr.addTest('webp', false);
@@ -16,6 +15,6 @@
       Modernizr.addTest('webp', function() { return image.width == 4; });
   };
 
-  image.src = 'data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAAAQAgCdASoEAAQAAAcIhYWIhYSIgIIADA1gAAUAAAEAAAEAAP7%2F2fIAAAAA';
+  image.src = 'data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACyAgCdASoBAAEALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA==';
 
 }());
