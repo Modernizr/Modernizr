@@ -1,6 +1,6 @@
 // This implementation is rather compact. The reason is that it makes some
 // assumptions, which are based on the W3C spec and lots of tests (see the test
-// case [here](http://jsfiddle.net/gravof/nUN8k/7/), so it is highly likely that
+// case [here](http://jsfiddle.net/gravof/nUN8k/14/), so it is highly likely that
 // they will be correct in most current & future browsers. The following is a
 // list of these assumptions:
 //
@@ -9,7 +9,7 @@
 // 2.  If "required" validation triggers "invalid" event when form is submitted,
 //     then other types of validations also trigger "invalid" event.
 // 3.  If "invalid" event is fired, form will be prevented from submitting.
-Modernizr.interactivevalidation = (function() {
+Modernizr.interactivevalidation = (function(document) {
 	// Assuption No.1
 	if (!Modernizr.input.required) {
 		return false;
@@ -30,6 +30,16 @@ Modernizr.interactivevalidation = (function() {
 	// Chrome throws error if invalid input is not visible when submitting 
 	form.style.position = 'absolute';
 	form.style.top = '-99999em'
+
+	// We might in <head> in which case we need to create body manually
+	var body = document.body;
+	var html = document.documentElement;
+	var bodyFaked = false;
+	if (!body) {
+		bodyFaked = true;
+		body = document.createElement('body');
+		html.appendChild(body);
+	}
 	document.body.appendChild(form);
 
 	var input = form.getElementsByTagName('input')[0];	
@@ -44,8 +54,9 @@ Modernizr.interactivevalidation = (function() {
 	var button = form.getElementsByTagName('button')[0];
 	button.click();
 
-	// Don't forget to remove form from the DOM tree
-	document.body.removeChild(form);
+	// Don't forget to clean up
+	body.removeChild(form);
+	bodyFaked && html.removeChild(body);
 
 	return invaildFired;
-})();
+})(document);
