@@ -900,7 +900,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
          test = typeof test == "boolean" ? test : !!test();
 
-         docElement.className += ' ' + (test ? '' : 'no-') + feature;
+         if ( enableClasses ) docElement.className += ' ' + (test ? '' : 'no-') + feature;
          Modernizr[feature] = test;
 
        }
