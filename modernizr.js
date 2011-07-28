@@ -205,6 +205,10 @@ window.Modernizr = (function( window, document, undefined ) {
      * is returns a boolean for if typeof obj is exactly type.
      */
     function is( obj, type ) {
+        // typeof [] returns 'object' so an additional check is required for arrays
+        if ( type && type.toLowerCase() === 'array' ) {
+          return (typeof obj.join === 'function');
+        }
         return typeof obj === type;
     }
 
