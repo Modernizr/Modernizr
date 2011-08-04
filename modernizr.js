@@ -646,6 +646,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // Note: in FF 3.5.1 and 3.5.0, "no" was a return value instead of empty string.
     //   Modernizr does not normalize for that.
+    //   It was fixed in 3.5.2
 
     tests['video'] = function() {
         var elem = document.createElement('video'),
@@ -900,7 +901,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
          test = typeof test == "boolean" ? test : !!test();
 
-         if ( enableClasses ) docElement.className += ' ' + (test ? '' : 'no-') + feature;
+         docElement.className += ' ' + (test ? '' : 'no-') + feature;
          Modernizr[feature] = test;
 
        }
