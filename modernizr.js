@@ -644,9 +644,10 @@ window.Modernizr = (function( window, document, undefined ) {
     // Codec values from : http://github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
     //                     thx to NielsLeenheer and zcorpan
 
-    // Note: in FF 3.5.1 and 3.5.0, "no" was a return value instead of empty string.
-    //   Modernizr does not normalize for that.
-    //   It was fixed in 3.5.2
+    // Note: in some older browsers, "no" was a return value instead of empty string.
+    //   It was live in FF3.5.0 and 3.5.1, but fixed in 3.5.2
+    //   It was also live in Safari 4.0.0 - 4.0.4, but fixed in 4.0.5
+    //   Modernizr does not normalize for this.
 
     tests['video'] = function() {
         var elem = document.createElement('video'),
