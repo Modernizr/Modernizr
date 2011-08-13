@@ -53,6 +53,9 @@ Modernizr.interactivevalidation = (function(document) {
 	// Submit form by clicking submit button
 	var button = form.getElementsByTagName('button')[0];
 	button.click();
+	// FF5 in Mac displays the talking bubble
+	// even if the form is outsite the viewport
+	input.blur();
 
 	// Don't forget to clean up
 	body.removeChild(form);
