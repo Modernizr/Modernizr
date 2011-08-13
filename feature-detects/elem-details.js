@@ -22,4 +22,4 @@ Modernizr.addTest('details', function() {
     root.removeChild(el);
     fake && root.parentNode.removeChild(root);
     return diff;
-}(document));
+});
