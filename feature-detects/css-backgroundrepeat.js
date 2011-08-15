@@ -6,26 +6,29 @@
 
 // test page: jsbin.com/uzesun/
 
+(function(){
 
+
+function getBgRepeatValue(elem){
+    return (window.getComputedStyle ?
+             getComputedStyle(elem, null).getPropertyValue('background-repeat') :
+             elem.currentStyle['background-repeat']);
+}
+  
 
 Modernizr.testStyles(' #modernizr { background-repeat: round; } ', function(elem, rule){ 
 
-  var bool = (window.getComputedStyle ?
-              getComputedStyle(elem, null) :
-              elem.currentStyle)['background-repeat'] == 'round';
-            
-  Modernizr.addTest('bgrepeatround', bool);
+  Modernizr.addTest('bgrepeatround', getBgRepeatValue(elem) == 'round');
+
 });
 
 
 
 Modernizr.testStyles(' #modernizr { background-repeat: space; } ', function(elem, rule){ 
 
-  var bool = (window.getComputedStyle ?
-              getComputedStyle(elem, null) :
-              elem.currentStyle)['background-repeat'] == 'space';
-            
-  Modernizr.addTest('bgrepeatspace', bool);
+  Modernizr.addTest('bgrepeatspace', getBgRepeatValue(elem) == 'space');
+
 });
 
 
+})();
