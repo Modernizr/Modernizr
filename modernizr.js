@@ -457,7 +457,8 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     tests['draganddrop'] = function() {
-        return isEventSupported('dragstart') && isEventSupported('drop');
+        var div = document.createElement('div');
+        return 'draggable' in div;
     };
 
     // Mozilla is targeting to land MozWebSocket for FF6
