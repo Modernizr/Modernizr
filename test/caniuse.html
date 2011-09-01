@@ -1312,6 +1312,25 @@ setResult('css-canvas0', 'getCSSCanvasContext' in document)
 <tr><th><h3>CSS Reflections [unoff]</h3><span class="links">[<a href="http://caniuse.com/css-reflections">Table</a>] [<a href="http://tests.caniuse.com/?feat=css-reflections&prefix=all">Single feat</a>]</span></th><td class="current pass">&nbsp;<span>-pre-</span></td><td>
 <div class="test_wrap"><h3>Auto (m)</h3><div id="css-reflections0" class="auto pass"></div><script>setResult('css-reflections0', Modernizr.cssreflections);</script><div class="info">Modernizr test for: "cssreflections"</div></div>
 
+
+<div class="test_wrap"><h3>Visual-square</h3><div id="border-radius1" class="visual-square"></div><div class="square">
+
+  <div style="width:30px; height:30px; overflow:hidden; position:relative; background:red;">
+ <div style="background: lime;
+            height: 30px;
+            position: relative;
+            top: -30px;
+            width: 30px;
+            -webkit-box-reflect: below 0;
+               -moz-box-reflect: below 0;
+                -ms-box-reflect: below 0;
+                 -o-box-reflect: below 0;
+                    box-reflect: below 0;
+            "></div>
+
+</div></div></div>
+
+
 </td></tr>
 <tr><th><h3>Web SQL Database [unoff]</h3><span class="links">[<a href="http://caniuse.com/sql-storage">Table</a>] [<a href="http://tests.caniuse.com/?feat=sql-storage&prefix=all">Single feat</a>]</span></th><td class="current pass">&nbsp;</td><td>
 <div class="test_wrap"><h3>Auto (m)</h3><div id="sql-storage0" class="auto pass"></div><script>setResult('sql-storage0', Modernizr.websqldatabase);</script><div class="info">Modernizr test for: "websqldatabase"</div></div>
