@@ -383,7 +383,7 @@ setResult('fileapi0', !!window.FileReader);
 	btn.onclick = function() {
 		var feat = document.getElementById('geolocation2');
 		navigator.geolocation.getCurrentPosition(function(pos) {
-			feat.innerHTML = '<p>Result:<br>LAT: ' + pos.coords.latitude + '<br>LON: ' + pos.coords.latitude + '</p>';
+			feat.innerHTML = '<p>Result:<br>LAT: ' + pos.coords.latitude + '<br>LON: ' + pos.coords.longitude + '</p>';
 		}, function(error) {
 			feat.innerHTML = '<p>Error:' + error.message + '</p>';
 		});
