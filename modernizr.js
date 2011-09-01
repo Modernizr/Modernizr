@@ -457,7 +457,8 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     tests['draganddrop'] = function() {
-        return isEventSupported('dragstart') && isEventSupported('drop');
+        var div = document.createElement('div');
+        return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
     };
 
     // Mozilla is targeting to land MozWebSocket for FF6
@@ -1122,7 +1123,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     // Remove "no-js" class from <html> element, if it exists:
-    docElement.className = docElement.className.replace(/\bno-js\b/, '')
+    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2')
                             
                             // Add the new classes to the <html> element.
                             + (enableClasses ? ' js ' + classes.join(' ') : '');
