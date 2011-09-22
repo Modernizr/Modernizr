@@ -38,3 +38,5 @@ Modernizr.serialize = function (onlyTrueVariables, replacer, space) {
 	};
 	return JSON.stringify(Modernizr, replacer, space);
 };
+// Sample usage
+// console.log(Modernizr.serialize(true, null, "\t"));
