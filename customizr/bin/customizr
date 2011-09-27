@@ -16,6 +16,7 @@ var fs       = require('fs')
   , parser   = require('uglify-js').parser
   , uglify   = require('uglify-js').uglify
 
+
   // Constants
   , ModernizrVersion = '2.0.6'
   , groups  = [
@@ -84,19 +85,16 @@ var fs       = require('fs')
 	"cssclasses"]
   , validConfigNames = ['output', 'all', 'extras', 'groups', 'tests', 'not'];
 
-function list(val) {
-	return val.split(',');
-}
 
 program
   .version('0.0.1, Modernizr ' + ModernizrVersion)
-  .option('-c, --config [fileName]', 'The name of a conifguration file containing a JSON object that has properties for any of the following options. If no name is provided, uses modernizr-config.json')
-  .option('-o, --output <fileName>', 'Write generated Modernizr build to this output file')
-  .option('-a, --all', 'Include all tests')
-  .option('-e, --extras <items>', 'Include extras', list)
-  .option('-g, --groups <groups>', 'Include tests by group (html5, css3, misc)', list)
-  .option('-t, --tests <tests>', 'Include tests explicitly', list)
-  .option('-n, --not <groups|tests|extras>', 'Exclude specific groups, tests, or extras')
+  .option('-c|--config <fileName>', 'The name of a conifguration file containing a JSON object that has properties for any of the following options. If no name is provided, uses modernizr-config.json')
+  .option('-o|--output [fileName]', 'Write generated Modernizr build to this output file')
+  .option('-a|--all', 'Include all tests')
+  .option('-e|--extras [items]', 'Include extras')
+  .option('-g|--groups [groups]', 'Include tests by group (html5, css3, misc)')
+  .option('-t|--tests [tests]', 'Include tests explicitly')
+  .option('-n|--not [groups|tests|extras]', 'Exclude specific groups, tests, or extras')
   .parse(process.argv);
 
 
@@ -106,6 +104,15 @@ if (program.rawArgs.length < 3) {
   process.stdout.write(program.helpInformation());
   process.exit();
 }
+
+
+// Build parameter arrays - allows for "-g css3 html5" instead of "-g css3,html5"
+
+['groups', 'extras', 'tests', 'not'].forEach(function(el) {
+  if(program[el]) {
+    program[el] = buildParameterArray(el[0], el);
+  }
+});
 
 
 // Input: customizr -v|--version
@@ -179,6 +186,36 @@ if(program.output) {
 } else {
   process.stdout.write(fileContents);
   process.exit();
+}
+
+
+
+function buildParameterArray(shortName, longName) {
+	var capture = false
+	  , args = program.rawArgs.slice(2);
+
+	shortName = '-' + shortName;
+	longName = '--' + longName;
+	
+	return args.reduce(function(prev, item) {
+		if(capture) {
+			if(item.indexOf('-') === 0) {
+				// Stop at the next parameter
+				capture = false;
+			
+				return prev;
+			}
+		
+			// Capture all values in an array
+			prev.push(item)
+		
+		} else if(item === shortName || item === longName) {
+			// Start at the parameter we're looking for
+			capture = true;
+		}
+	
+		return prev;
+	}, []);
 }
 
 
