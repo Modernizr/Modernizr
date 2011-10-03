@@ -1,6 +1,6 @@
 Modernizr.addTest('emoji', function() {
   var node = document.createElement('canvas');
-  if (!node.getContext) return false;
+  if (!(node.getContext && node.getContext('2d'))) return false;
   var ctx = node.getContext('2d');
   ctx.textBaseline = "top";
   ctx.font = "32px Arial";
