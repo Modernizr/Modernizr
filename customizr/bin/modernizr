@@ -342,7 +342,7 @@ function generateFile(tests, selectedExtras) {
   function addExtras (modularBuild) {
     modularBuild = ';'+modularBuild+';';
 
-    return "\/* Modernizr custom build of " + ModernizrVersion + ": " + tests.concat(selectedExtras).join(' | ') + " *\/\n" + modularBuild;
+	return "\/* Modernizr " + ModernizrVersion + " (Custom Build) | MIT & BSD\n * Build: http://www.modernizr.com/download/#-" + tests.join('-') + "\n */\n" + modularBuild;
   }
 
   function buildFile(modularBuild, appended) {
