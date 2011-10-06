@@ -1,16 +1,14 @@
-# Customizr
-
-Modernizr custom build tool utility written with nodejs.
+# Modernizr custom build tool
 
 ## Installation
 
-   $ npm install -g customizr
+   $ npm install -g modernizr
 
 ## Usage
 
 ```bash
 
-Usage: customizr [options]
+Usage: modernizr [options]
 
 Options:
 
@@ -29,22 +27,22 @@ Options:
 ## Examples
 
 All (except .load + .respond)
-   customizr --all -o output.js
+   modernizr --all -o output.js
 
 All + extras
-   customizr --all --extras load,respond
+   modernizr --all --extras load,respond
 
 Groups
-   customizr --groups html5,css3 >> output.js
+   modernizr --groups html5,css3 >> output.js
 
 Explicit
-   customizr --tests svg,fontface -o output.js
+   modernizr --tests svg,fontface -o output.js
 
 Subtractive
-   customizr --all --not svg,css3 >> output.js
+   modernizr --all --not svg,css3 >> output.js
 
 Config
-   customizr --config modernizr-config.json
+   modernizr --config modernizr-config.json
 
 Where `modernizr-config.json` contains:
    {
