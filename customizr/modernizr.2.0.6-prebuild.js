@@ -18,8 +18,11 @@
  * To get a build that includes Modernizr.load(), as well as choosing
  * which tests to include, go to www.modernizr.com/download/
  *
- * Authors        Faruk Ates, Paul Irish, Alex Sexton, 
- * Contributors   Ryan Seddon, Ben Alman
+ * @author        Faruk Ates
+ * @author        Paul Irish
+ * @author        Alex Sexton
+ * @copyright     (c) 2009-2011
+ * @contributor   Ben Alman
  */
 
 window.Modernizr = (function( window, document, undefined ) {
@@ -29,7 +32,9 @@ window.Modernizr = (function( window, document, undefined ) {
     Modernizr = {},
     
     // option for enabling the HTML classes to be added
+    /*>>cssclasses*/
     enableClasses = true,
+    /*>>cssclasses*/
 
     docElement = document.documentElement,
     docHead = document.head || document.getElementsByTagName('head')[0],
@@ -44,14 +49,18 @@ window.Modernizr = (function( window, document, undefined ) {
     /**
      * Create the input element for various Web Forms feature tests.
      */
-    inputElem = document.createElement('input'),
+    inputElem  /*>>inputelem*/ = document.createElement('input') /*>>inputelem*/ ,
 
+    /*>>smile*/
     smile = ':)',
+    /*>>smile*/
 
-    toString = {}.toString,
+    toString = Object.prototype.toString,
 
+    /*>>prefixes*/
     // List of property values to set for css tests. See ticket #21
     prefixes = ' -webkit- -moz- -o- -ms- -khtml- '.split(' '),
+    /*>>prefixes*/
 
     // Following spec is to expose vendor-specific style properties as:
     //   elem.style.WebkitBorderRadius
@@ -62,10 +71,14 @@ window.Modernizr = (function( window, document, undefined ) {
     // Microsoft foregoes prefixes entirely <= IE8, but appears to
     //   use a lowercase `ms` instead of the correct `Ms` in IE9
 
+    /*>>domprefixes*/
     // More here: http://github.com/Modernizr/Modernizr/issues/issue/21
     domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+    /*>>domprefixes*/
 
+    /*>>ns*/
     ns = {'svg': 'http://www.w3.org/2000/svg'},
+    /*>>ns*/
 
     tests = {},
     inputs = {},
@@ -73,9 +86,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     classes = [],
 
-    featureName, // used in testing loop
-
-
+    
+    /*>>teststyles*/
     // Inject element with style element and some CSS rules
     injectElementWithStyles = function( rule, callback, nodes, testnames ) {
 
@@ -107,8 +119,10 @@ window.Modernizr = (function( window, document, undefined ) {
       return !!ret;
 
     },
+    /*>>teststyles*/
 
 
+    /*>>mq*/
     // adapted from matchMedia polyfill
     // by Scott Jehl and Paul Irish
     // gist.github.com/786768
@@ -129,8 +143,10 @@ window.Modernizr = (function( window, document, undefined ) {
       return bool;
 
      },
+     /*>>mq*/
 
 
+    /*>>hasevent*/
     /**
       * isEventSupported determines if a given element supports the given event
       * function from http://yura.thinkweb2.com/isEventSupported/
@@ -161,7 +177,7 @@ window.Modernizr = (function( window, document, undefined ) {
             isSupported = is(element[eventName], 'function');
 
             // If property was created, "remove it" (by setting value to `undefined`)
-            if ( !is(element[eventName], 'undefined') ) {
+            if ( !is(element[eventName], undefined) ) {
               element[eventName] = undefined;
             }
             element.removeAttribute(eventName);
@@ -172,18 +188,22 @@ window.Modernizr = (function( window, document, undefined ) {
         return isSupported;
       }
       return isEventSupported;
-    })();
+    })(),
+    /*>>hasevent*/
 
+    featureName; // used in testing loop
+
+    
     // hasOwnProperty shim by kangax needed for Safari 2.0 support
     var _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
-    if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
+    if ( !is(_hasOwnProperty, undefined) && !is(_hasOwnProperty.call, undefined) ) {
       hasOwnProperty = function (object, property) {
         return _hasOwnProperty.call(object, property);
       };
     }
     else {
       hasOwnProperty = function (object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
-        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
+        return ((property in object) && is(object.constructor.prototype[property], undefined));
       };
     }
 
@@ -215,6 +235,7 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!~('' + str).indexOf(substr);
     }
 
+    /*>>testprop*/
     /**
      * testProps is a generic CSS / DOM property test; if a browser supports
      *   a certain property, it won't return undefined for it.
@@ -228,7 +249,9 @@ window.Modernizr = (function( window, document, undefined ) {
         }
         return false;
     }
+    /*>>testprop*/
 
+    /*>>testallprops*/
     /**
      * testPropsAll tests a list of DOM properties we want to check against.
      *   We specify literally ALL possible (known and/or likely) properties on
@@ -242,12 +265,13 @@ window.Modernizr = (function( window, document, undefined ) {
 
         return testProps(props, prefixed);
     }
+    /*>>testallprops*/
 
     /**
      * testBundle tests a list of CSS features that require element and style injection.
      *   By bundling them together we can reduce the need to touch the DOM multiple times.
      */
-    /*>>testBundle*/
+    /*>>testbundle*/
     var testBundle = (function( styles, tests ) {
         var style = styles.join(''),
             len = tests.length;
@@ -264,9 +288,9 @@ window.Modernizr = (function( window, document, undefined ) {
                 hash[children[len].id] = children[len];
             }
 
-             /*>>touch*/           Modernizr['touch'] = ('ontouchstart' in window) || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
-            /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = (hash['csstransforms3d'] && hash['csstransforms3d'].offsetLeft) === 9;          /*>>csstransforms3d*/
-            /*>>generatedcontent*/Modernizr['generatedcontent'] = (hash['generatedcontent'] && hash['generatedcontent'].offsetHeight) >= 1;       /*>>generatedcontent*/
+            /*>>touch*/           Modernizr['touch'] = ('ontouchstart' in window) || hash['touch'].offsetTop === 9; /*>>touch*/
+            /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = hash['csstransforms3d'].offsetLeft === 9;          /*>>csstransforms3d*/
+            /*>>generatedcontent*/Modernizr['generatedcontent'] = hash['generatedcontent'].offsetHeight >= 1;       /*>>generatedcontent*/
             /*>>fontface*/        Modernizr['fontface'] = /src/i.test(cssText) &&
                                                                   cssText.indexOf(rule.split(' ')[0]) === 0;        /*>>fontface*/
         }, len, tests);
@@ -289,7 +313,7 @@ window.Modernizr = (function( window, document, undefined ) {
         /*>>csstransforms3d*/ ,'csstransforms3d'  /*>>csstransforms3d*/
         /*>>generatedcontent*/,'generatedcontent' /*>>generatedcontent*/
         
-    ]);/*>>testBundle*/
+    ]);/*>>testbundle*/
 
 
     /**
@@ -383,6 +407,7 @@ window.Modernizr = (function( window, document, undefined ) {
         return Modernizr['touch'];
     };
 
+
     /**
      * geolocation tests for the new Geolocation API specification.
      *   This test is a standards compliant-only test; for more complete
@@ -457,8 +482,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     tests['draganddrop'] = function() {
-        var div = document.createElement('div');
-        return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
+        return isEventSupported('dragstart') && isEventSupported('drop');
     };
 
     // Mozilla is targeting to land MozWebSocket for FF6
@@ -471,7 +495,6 @@ window.Modernizr = (function( window, document, undefined ) {
         }
         return 'WebSocket' in window;
     };
-
 
     // http://css-tricks.com/rgba-browser-support/
     tests['rgba'] = function() {
@@ -601,7 +624,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
         var ret = !!testProps(['perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective']);
 
-        // Webkit's 3D transforms are passed off to the browser's own graphics renderer.
+        // Webkit’s 3D transforms are passed off to the browser's own graphics renderer.
         //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in
         //   some conditions. As a result, Webkit typically recognizes the syntax but
         //   will sometimes throw a false positive, thus we must do a more thorough check:
@@ -645,10 +668,8 @@ window.Modernizr = (function( window, document, undefined ) {
     // Codec values from : http://github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
     //                     thx to NielsLeenheer and zcorpan
 
-    // Note: in some older browsers, "no" was a return value instead of empty string.
-    //   It was live in FF3.5.0 and 3.5.1, but fixed in 3.5.2
-    //   It was also live in Safari 4.0.0 - 4.0.4, but fixed in 4.0.5
-    //   Modernizr does not normalize for this.
+    // Note: in FF 3.5.1 and 3.5.0, "no" was a return value instead of empty string.
+    //   Modernizr does not normalize for that.
 
     tests['video'] = function() {
         var elem = document.createElement('video'),
@@ -763,9 +784,11 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
     };
 
+    /*>>webforms*/
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
     function webforms() {
+        /*>>input*/
         // Run through HTML5's new input attributes to see if the UA understands any.
         // We're using f which is the <input> element created early on
         // Mike Taylr has created a comprehensive resource for testing these attributes
@@ -782,7 +805,9 @@ window.Modernizr = (function( window, document, undefined ) {
             }
             return attrs;
         })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
+        /*>>input*/
 
+        /*>>inputtypes*/
         // Run through HTML5's new input types to see if the UA understands any.
         //   This is put behind the tests runloop because it doesn't return a
         //   true/false like all the other tests; instead, it returns an object
@@ -847,7 +872,10 @@ window.Modernizr = (function( window, document, undefined ) {
             }
             return inputs;
         })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
+        /*>>inputtypes*/
     }
+    /*>>webforms*/
+
 
 
     // End of test definitions
@@ -869,10 +897,12 @@ window.Modernizr = (function( window, document, undefined ) {
         }
     }
 
+    /*>>webforms*/
     // input tests need to run.
     Modernizr.input || webforms();
+    /*>>webforms*/
 
-
+    /*>>addtest*/
     /**
      * addTest allows the user to define their own feature tests
      * the result will be added onto the Modernizr object,
@@ -910,53 +940,46 @@ window.Modernizr = (function( window, document, undefined ) {
 
        return Modernizr; // allow chaining.
      };
+     /*>>addtest*/
     
 
     // Reset modElem.cssText to nothing to reduce memory footprint.
     setCss('');
     modElem = inputElem = null;
 
-    //>>BEGIN IEPP
+    /*>>iepp*/
     // Enable HTML 5 elements for styling (and printing) in IE.
     if ( window.attachEvent && (function(){ var elem = document.createElement('div');
                                             elem.innerHTML = '<elem></elem>';
                                             return elem.childNodes.length !== 1; })() ) {
                                               
-        // iepp v2.1pre by @jon_neal & afarkas : github.com/aFarkas/iepp/
+        // iepp v2 by @jon_neal & afarkas : github.com/aFarkas/iepp/
         (function(win, doc) {
           win.iepp = win.iepp || {};
           var iepp = win.iepp,
-            elems = iepp.html5elements || 'abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|subline|summary|time|video',
+            elems = iepp.html5elements || 'abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video',
             elemsArr = elems.split('|'),
             elemsArrLen = elemsArr.length,
-            elemRegExp = new RegExp('(^|\\s)('+elems+')', 'gi'), 
+            elemRegExp = new RegExp('(^|\\s)('+elems+')', 'gi'),
             tagRegExp = new RegExp('<(\/*)('+elems+')', 'gi'),
             filterReg = /^\s*[\{\}]\s*$/,
             ruleRegExp = new RegExp('(^|[^\\n]*?\\s)('+elems+')([^\\n]*)({[\\n\\w\\W]*?})', 'gi'),
             docFrag = doc.createDocumentFragment(),
             html = doc.documentElement,
-            head = doc.getElementsByTagName('script')[0].parentNode,
+            head = html.firstChild,
             bodyElem = doc.createElement('body'),
             styleElem = doc.createElement('style'),
             printMedias = /print|all/,
             body;
-
           function shim(doc) {
             var a = -1;
-            while (++a < elemsArrLen) {
+            while (++a < elemsArrLen)
               // Use createElement so IE allows HTML5-named elements in a document
               doc.createElement(elemsArr[a]);
-            }
           }
 
           iepp.getCSS = function(styleSheetList, mediaType) {
-            try {
-              if(styleSheetList+'' === undefined){
-                return '';
-              }
-            } catch(er){
-              return '';
-            }
+            if(styleSheetList+'' === undefined){return '';}
             var a = -1,
               len = styleSheetList.length,
               styleSheet,
@@ -964,14 +987,10 @@ window.Modernizr = (function( window, document, undefined ) {
             while (++a < len) {
               styleSheet = styleSheetList[a];
               //currently no test for disabled/alternate stylesheets
-              if(styleSheet.disabled){
-                continue;
-              }
+              if(styleSheet.disabled){continue;}
               mediaType = styleSheet.media || mediaType;
               // Get css from all non-screen stylesheets and their imports
-              if (printMedias.test(mediaType)){
-                cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), styleSheet.cssText);
-              }
+              if (printMedias.test(mediaType)) cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), styleSheet.cssText);
               //reset mediaType to all with every new *not imported* stylesheet
               mediaType = 'all';
             }
@@ -983,7 +1002,7 @@ window.Modernizr = (function( window, document, undefined ) {
               rule;
             while ((rule = ruleRegExp.exec(cssText)) != null){
               // Replace all html5 element references with iepp substitute classnames
-              cssTextArr.push(( (filterReg.exec(rule[1]) ? '\n' : rule[1]) + rule[2] + rule[3]).replace(elemRegExp, '$1.iepp-$2') + rule[4]);
+              cssTextArr.push(( (filterReg.exec(rule[1]) ? '\n' : rule[1]) +rule[2]+rule[3]).replace(elemRegExp, '$1.iepp_$2')+rule[4]);
             }
             return cssTextArr.join('\n');
           };
@@ -995,13 +1014,10 @@ window.Modernizr = (function( window, document, undefined ) {
               var nodeList = doc.getElementsByTagName(elemsArr[a]),
                 nodeListLen = nodeList.length,
                 b = -1;
-              while (++b < nodeListLen){
-                if (nodeList[b].className.indexOf('iepp-') < 0){
+              while (++b < nodeListLen)
+                if (nodeList[b].className.indexOf('iepp_') < 0)
                   // Append iepp substitute classnames to all html5 elements
-                  nodeList[b].className += ' iepp-'+elemsArr[a];
-                }
-              }
-
+                  nodeList[b].className += ' iepp_'+elemsArr[a];
             }
             docFrag.appendChild(body);
             html.appendChild(bodyElem);
@@ -1012,33 +1028,34 @@ window.Modernizr = (function( window, document, undefined ) {
             bodyElem.innerHTML = body.innerHTML.replace(tagRegExp, '<$1font');
           };
 
+
           iepp._beforePrint = function() {
-            if(iepp.disablePP){return;}
             // Write iepp custom print CSS
             styleElem.styleSheet.cssText = iepp.parseCSS(iepp.getCSS(doc.styleSheets, 'all'));
             iepp.writeHTML();
           };
 
-          iepp.restoreHTML = function() {
-            if(iepp.disablePP){return;}
+          iepp.restoreHTML = function(){
             // Undo everything done in onbeforeprint
-            bodyElem.swapNode(body);
+            bodyElem.innerHTML = '';
+            html.removeChild(bodyElem);
+            html.appendChild(body);
           };
 
-          iepp._afterPrint = function() {
+          iepp._afterPrint = function(){
             // Undo everything done in onbeforeprint
             iepp.restoreHTML();
             styleElem.styleSheet.cssText = '';
           };
+
+
 
           // Shim the document and iepp fragment
           shim(doc);
           shim(docFrag);
 
           //
-          if(iepp.disablePP){
-            return;
-          }
+          if(iepp.disablePP){return;}
 
           // Add iepp custom print style element
           head.insertBefore(styleElem, head.firstChild);
@@ -1054,15 +1071,20 @@ window.Modernizr = (function( window, document, undefined ) {
           );
         })(window, document);
     }
-    //>>END IEPP
+    /*>>iepp*/
 
     // Assign private properties to the return object with prefix
     Modernizr._version      = version;
 
     // expose these for the plugin API. Look in the source for how to join() them against your input
+    /*>>prefixes*/
     Modernizr._prefixes     = prefixes;
+    /*>>prefixes*/
+    /*>>domprefixes*/
     Modernizr._domPrefixes  = domPrefixes;
-    
+    /*>>domprefixes*/
+
+    /*>>mq*/
     // Modernizr.mq tests a given media query, live against the current state of the window
     // A few important notes:
     //   * If a browser does not support media queries at all (eg. oldIE) the mq() will always return false
@@ -1072,30 +1094,36 @@ window.Modernizr = (function( window, document, undefined ) {
     // usage:
     // Modernizr.mq('only screen and (max-width:768)')
     Modernizr.mq            = testMediaQuery;   
-    
+    /*>>mq*/
+
+    /*>>hasevent*/
     // Modernizr.hasEvent() detects support for a given event, with an optional element to test on
     // Modernizr.hasEvent('gesturestart', elem)
     Modernizr.hasEvent      = isEventSupported; 
+    /*>>hasevent*/
 
+    /*>>testprop*/
     // Modernizr.testProp() investigates whether a given style property is recognized
     // Note that the property names must be provided in the camelCase variant.
     // Modernizr.testProp('pointerEvents')
     Modernizr.testProp      = function(prop){
         return testProps([prop]);
-    };        
+    };
+    /*>>testprop*/
 
+    /*>>testallprops*/
     // Modernizr.testAllProps() investigates whether a given style property,
     //   or any of its vendor-prefixed variants, is recognized
     // Note that the property names must be provided in the camelCase variant.
     // Modernizr.testAllProps('boxSizing')    
     Modernizr.testAllProps  = testPropsAll;     
+    /*>>testallprops*/
 
-
-    
+    /*>>teststyles*/
     // Modernizr.testStyles() allows you to add custom styles to the document and test an element afterwards
     // Modernizr.testStyles('#modernizr { position:absolute }', function(elem, rule){ ... })
     Modernizr.testStyles    = injectElementWithStyles; 
-
+    /*>>teststyles*/
 
     // Modernizr.prefixed() returns the prefixed or nonprefixed property name variant of your input
     // Modernizr.prefixed('boxSizing') // 'MozBoxSizing'
@@ -1116,17 +1144,21 @@ window.Modernizr = (function( window, document, undefined ) {
     //     },
     //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
     
+    /*>>prefixed*/
     Modernizr.prefixed      = function(prop){
       return testPropsAll(prop, 'pfx');
     };
+    /*>>prefixed*/
 
 
 
+    /*>>cssclasses*/
     // Remove "no-js" class from <html> element, if it exists:
-    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2')
+    docElement.className = docElement.className.replace(/\bno-js\b/, '')
                             
                             // Add the new classes to the <html> element.
                             + (enableClasses ? ' js ' + classes.join(' ') : '');
+    /*>>cssclasses*/
 
     return Modernizr;
 
