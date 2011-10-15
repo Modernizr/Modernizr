@@ -185,9 +185,7 @@ if(program.output) {
   });
 } else {
   process.stdout.write(fileContents);
-  setTimeout(function (){
-    process.exit();
-  }, 200);
+
   return;
 }
 
