@@ -253,6 +253,49 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     /**
+     * testPropsAllForValue tests a list of values for a CSS property.
+     * Returns all successful applied values.
+     */
+    function testPropsAllForValue( prop, values ) {
+
+        if(testPropsAll(prop)) { //pre-test the property
+
+          var successValues = [],
+              currentPrefix = false,
+              testStyle = function(elem,p,v) {
+                return (window.getComputedStyle ? getComputedStyle(elem, null) : elem.currentStyle)[p] == v;
+              }
+          for(var i = 0; i < values.length; i++) {
+            var value = values[i],
+                styles = Modernizr._prefixes.join(prop + ":" + value + "; ");
+
+            injectElementWithStyles('#modernizr { '+styles+' }', function(elem, rule){
+
+                if(currentPrefix) {
+                    if(testStyle(elem, currentPrefix + testProp, value)) {
+                      successValues.push(value);
+                    }
+
+                } else {
+                  for(var j = 0; j < Modernizr._prefixes.length; j++) {
+                    if(testStyle(elem, Modernizr._prefixes[j] + testProp, value)) {
+                      successValues.push(value);
+                      currentPrefix = Modernizr._prefixes[j];
+                      break;
+                    }
+                  }
+
+                }
+            });
+          }
+          return successValues;
+
+        }
+
+        return false;
+    }
+
+    /**
      * testBundle tests a list of CSS features that require element and style injection.
      *   By bundling them together we can reduce the need to touch the DOM multiple times.
      */
@@ -1099,23 +1142,29 @@ window.Modernizr = (function( window, document, undefined ) {
     // Modernizr.testAllProps('boxSizing')    
     Modernizr.testAllProps  = testPropsAll;     
 
+    // Modernizr.testPropsAllForValue() investigates whether given values for a given style property,
+    //   or any of its vendor-prefixed variants, are recognized.
+    // Note that the property names must be provided in the camelCase variant.
+    // Modernizr.testAllPropsForValue('overflowScrolling',['auto','touch']);
+    Modernizr.testAllPropsForValue  = testPropsAllForValue;
 
-    
+
+
     // Modernizr.testStyles() allows you to add custom styles to the document and test an element afterwards
     // Modernizr.testStyles('#modernizr { position:absolute }', function(elem, rule){ ... })
-    Modernizr.testStyles    = injectElementWithStyles; 
+    Modernizr.testStyles    = injectElementWithStyles;
 
 
     // Modernizr.prefixed() returns the prefixed or nonprefixed property name variant of your input
     // Modernizr.prefixed('boxSizing') // 'MozBoxSizing'
-    
+
     // Properties must be passed as dom-style camelcase, rather than `box-sizing` hypentated style.
     // Return values will also be the camelCase variant, if you need to translate that to hypenated style use:
     //
     //     str.replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
-    
+
     // If you're trying to ascertain which transition end event to bind to, you might do something like...
-    // 
+    //
     //     var transEndEventNames = {
     //       'WebkitTransition' : 'webkitTransitionEnd',
     //       'MozTransition'    : 'transitionend',
