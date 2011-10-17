@@ -253,10 +253,10 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     /**
-     * testPropsAllForValue tests a list of values for a CSS property.
+     * testPropsAllForValues tests a list of values for a CSS property.
      * Returns all successful applied values.
      */
-    function testPropsAllForValue( prop, values ) {
+    function testPropsAllForValues( prop, values ) {
 
         if(testPropsAll(prop)) { //pre-test the property
 
@@ -1142,11 +1142,11 @@ window.Modernizr = (function( window, document, undefined ) {
     // Modernizr.testAllProps('boxSizing')    
     Modernizr.testAllProps  = testPropsAll;     
 
-    // Modernizr.testAllPropsForValue() investigates whether given values for a given style property,
+    // Modernizr.testAllPropsForValues() investigates whether given values for a given style property,
     //   or any of its vendor-prefixed variants, are recognized.
     // Note that the property names must be provided in the camelCase variant.
-    // Modernizr.testAllPropsForValue('overflowScrolling',['auto','touch']);
-    Modernizr.testAllPropsForValue  = testPropsAllForValue;
+    // Modernizr.testAllPropsForValues('overflowScrolling',['auto','touch']);
+    Modernizr.testAllPropsForValues  = testPropsAllForValues;
 
 
 
