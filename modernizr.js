@@ -1142,7 +1142,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // Modernizr.testAllProps('boxSizing')    
     Modernizr.testAllProps  = testPropsAll;     
 
-    // Modernizr.testPropsAllForValue() investigates whether given values for a given style property,
+    // Modernizr.testAllPropsForValue() investigates whether given values for a given style property,
     //   or any of its vendor-prefixed variants, are recognized.
     // Note that the property names must be provided in the camelCase variant.
     // Modernizr.testAllPropsForValue('overflowScrolling',['auto','touch']);
