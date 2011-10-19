@@ -359,7 +359,8 @@ window.Modernizr = (function( window, document, undefined ) {
     // You might have hardware that can support a 100x100 webgl canvas, but will not support a 1000x1000 webgl 
     // canvas. So this feature inference is weak, but intentionally so.
     
-    // It is known to false positive in FF4 with certain hardware and the iPad 2.
+    // It is known to false positive in FF4 with certain hardware, the iPad 2, and iOS5
+    // webk.it/70117 is tracking a legit feature detect proposal
     
     tests['webgl'] = function() {
         return !!window.WebGLRenderingContext;
