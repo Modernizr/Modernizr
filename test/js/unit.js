@@ -17,6 +17,7 @@ test("globals set up", function() {
     var leakedGlobArr = [''].concat(globArr).concat([''])
                             .join(',')
                             .replace(',Modernizr','').replace(',iepp','')
+                            .replace(/,script\w+/,'') // placed by jQuery
                             .split(',');
     
     equals('', leakedGlobArr.pop(), 'retrieved my empty item from the end');
