@@ -80,7 +80,11 @@ window.Modernizr = (function( window, document, undefined ) {
     injectElementWithStyles = function( rule, callback, nodes, testnames ) {
 
       var style, ret, node,
-          div = document.createElement('div');
+          div = document.createElement('div'),
+          // After page load injecting a fake body doesn't work so check if body exists
+          body = document.body, 
+          // IE6 and 7 won't return offsetWidth or offsetHeight unless it's in the body element, so we fake it.
+          fakeBody = body ? body : document.createElement("body");
 
       if ( parseInt(nodes, 10) ) {
           // In order not to give false positives we create a node for each test
@@ -96,13 +100,18 @@ window.Modernizr = (function( window, document, undefined ) {
       // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element
       // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
       // http://msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
-      style = ['&shy;', '<style>', rule, '</style>'].join('');
+      // Documents served as xml will throw if using &shy; so use xml friendly encoded version. See issue #277
+      style = ['&#173;','<style>', rule, '</style>'].join('');
       div.id = mod;
-      div.innerHTML += style;
-      docElement.appendChild(div);
+      // IE6 will false positive on some tests due to the style element inside the test div somehow interfering offsetHeight, so insert it into body or fakebody.
+      // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
+      fakeBody.innerHTML += style;
+      fakeBody.appendChild(div);
+      docElement.appendChild(fakeBody);
 
       ret = callback(div, rule);
-      div.parentNode.removeChild(div);
+      // If this is done after page load we don't want to remove the body so check if body exists
+      !body ? fakeBody.parentNode.removeChild(fakeBody) : div.parentNode.removeChild(div);
 
       return !!ret;
 
@@ -377,7 +386,7 @@ window.Modernizr = (function( window, document, undefined ) {
      *
      * We also test for Firefox 4 Multitouch Support.
      *
-     * For more info, see: http://modernizr.github.com/Modernizr/touch.html
+     * For more info, see: http://modernizr.github.com/Modernizr    ouch.html
      */
 
     tests['touch'] = function() {
@@ -526,7 +535,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     // Super comprehensive table about all the unique implementations of
-    // border-radius: http://muddledramblings.com/table-of-css3-border-radius-compliance
+    // border-radius: http://muddledramblings.com    able-of-css3-border-radius-compliance
 
     tests['borderradius'] = function() {
         return testPropsAll('borderRadius');
@@ -770,7 +779,7 @@ window.Modernizr = (function( window, document, undefined ) {
         // Mike Taylr has created a comprehensive resource for testing these attributes
         //   when applied to all input types:
         //   http://miketaylr.com/code/input-type-attr.html
-        // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
+        // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage    he-input-element.html#input-type-attr-summary
         
         // Only input placeholder is tested while textarea's placeholder is not. 
         // Currently Safari 4 and Opera 11 have support only for the input placeholder
