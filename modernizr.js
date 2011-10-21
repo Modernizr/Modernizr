@@ -696,17 +696,15 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    // Firefox has made these tests rather unfun.
-
     // In FF4, if disabled, window.localStorage should === null.
 
     // Normally, we could not test that directly and need to do a
     //   `('localStorage' in window) && ` test first because otherwise Firefox will
     //   throw http://bugzil.la/365772 if cookies are disabled
 
-    // However, in Firefox 4 betas, if dom.storage.enabled == false, just mentioning
-    //   the property will throw an exception. http://bugzil.la/599479
-    // This looks to be fixed for FF4 Final.
+    // Also in iOS5 Private Browsing mode, attepting to use localStorage
+    // will throw the exception:
+    //   QUOTA_EXCEEDED_ERRROR DOM Exception 22.
 
     // Because we are forced to try/catch this, we'll go aggressive.
 
@@ -716,7 +714,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     tests['localstorage'] = function() {
         try {
-            return !!localStorage.getItem;
+            return !!localStorage.getItem('getItem');
         } catch(e) {
             return false;
         }
