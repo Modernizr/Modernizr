@@ -1,5 +1,5 @@
 /*!
- * Modernizr v2.0.7
+ * Modernizr v2.1pre
  * http://www.modernizr.com
  *
  * Copyright (c) 2009-2011 Faruk Ates, Paul Irish, Alex Sexton
@@ -24,7 +24,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.0.6',
+    var version = '2.1pre',
 
     Modernizr = {},
     
@@ -368,7 +368,8 @@ window.Modernizr = (function( window, document, undefined ) {
     // You might have hardware that can support a 100x100 webgl canvas, but will not support a 1000x1000 webgl 
     // canvas. So this feature inference is weak, but intentionally so.
     
-    // It is known to false positive in FF4 with certain hardware and the iPad 2.
+    // It is known to false positive in FF4 with certain hardware, the iPad 2, and iOS5
+    // webk.it/70117 is tracking a legit feature detect proposal
     
     tests['webgl'] = function() {
         return !!window.WebGLRenderingContext;
@@ -704,27 +705,28 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    // Firefox has made these tests rather unfun.
-
     // In FF4, if disabled, window.localStorage should === null.
 
     // Normally, we could not test that directly and need to do a
     //   `('localStorage' in window) && ` test first because otherwise Firefox will
     //   throw http://bugzil.la/365772 if cookies are disabled
 
-    // However, in Firefox 4 betas, if dom.storage.enabled == false, just mentioning
-    //   the property will throw an exception. http://bugzil.la/599479
-    // This looks to be fixed for FF4 Final.
+    // Also in iOS5 Private Browsing mode, attepting to use localStorage.setItem
+    // will throw the exception:
+    //   QUOTA_EXCEEDED_ERRROR DOM Exception 22.
+    // Peculiarly, getItem and removeItem calls do not throw.
 
     // Because we are forced to try/catch this, we'll go aggressive.
 
-    // FWIW: IE8 Compat mode supports these features completely:
+    // Just FWIW: IE8 Compat mode supports these features completely:
     //   http://www.quirksmode.org/dom/html5.html
     // But IE8 doesn't support either with local files
 
     tests['localstorage'] = function() {
         try {
-            return !!localStorage.getItem;
+            localStorage.setItem(mod, mod);
+            localStorage.removeItem(mod);
+            return true;
         } catch(e) {
             return false;
         }
