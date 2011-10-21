@@ -155,7 +155,8 @@ test('Modernizr properties are looking good',function(){
   var count  = 0,
       nobool = TEST.API.concat(TEST.inputs)
                        .concat(TEST.audvid)
-                       .concat(TEST.privates);
+                       .concat(TEST.privates)
+                       .concat(['textarea']); // due to forms-placeholder.js test
       
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){
