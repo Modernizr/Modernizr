@@ -1,5 +1,5 @@
 /*!
- * Modernizr v2.0.6
+ * Modernizr v2.1pre
  * http://www.modernizr.com
  *
  * Copyright (c) 2009-2011 Faruk Ates, Paul Irish, Alex Sexton
@@ -24,7 +24,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.0.6',
+    var version = '2.1pre',
 
     Modernizr = {},
     
