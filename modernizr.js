@@ -711,19 +711,22 @@ window.Modernizr = (function( window, document, undefined ) {
     //   `('localStorage' in window) && ` test first because otherwise Firefox will
     //   throw http://bugzil.la/365772 if cookies are disabled
 
-    // Also in iOS5 Private Browsing mode, attepting to use localStorage
+    // Also in iOS5 Private Browsing mode, attepting to use localStorage.setItem
     // will throw the exception:
     //   QUOTA_EXCEEDED_ERRROR DOM Exception 22.
+    // Peculiarly, getItem and removeItem calls do not throw.
 
     // Because we are forced to try/catch this, we'll go aggressive.
 
-    // FWIW: IE8 Compat mode supports these features completely:
+    // Just FWIW: IE8 Compat mode supports these features completely:
     //   http://www.quirksmode.org/dom/html5.html
     // But IE8 doesn't support either with local files
 
     tests['localstorage'] = function() {
         try {
-            return !!localStorage.getItem('getItem');
+            localStorage.setItem(mod, mod);
+            localStorage.removeItem(mod);
+            return true;
         } catch(e) {
             return false;
         }
