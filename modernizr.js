@@ -352,7 +352,8 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     // On the S60 and BB Storm, getContext exists, but always returns undefined
-    // http://github.com/Modernizr/Modernizr/issues/issue/97/
+    // so we actually have to call getContext() to verify
+    // github.com/Modernizr/Modernizr/issues/issue/97/
 
     tests['canvas'] = function() {
         var elem = document.createElement('canvas');
@@ -363,16 +364,19 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
     };
 
-    // This WebGL test may false positive. 
-    // But really it's quite impossible to know whether webgl will succeed until after you create the context. 
-    // You might have hardware that can support a 100x100 webgl canvas, but will not support a 1000x1000 webgl 
-    // canvas. So this feature inference is weak, but intentionally so.
-    
-    // It is known to false positive in FF4 with certain hardware, the iPad 2, and iOS5
+    // this test initiates a new webgl context. 
     // webk.it/70117 is tracking a legit feature detect proposal
     
     tests['webgl'] = function() {
-        return !!window.WebGLRenderingContext;
+        try {
+            var canvas = document.createElement('canvas'),
+                ret;
+            ret = !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+            canvas = undefined;
+        } catch (e){
+            ret = false;
+        }
+        return ret;
     };
 
     /*
