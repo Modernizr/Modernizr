@@ -390,7 +390,7 @@ window.Modernizr = (function( window, document, undefined ) {
      *
      * We also test for Firefox 4 Multitouch Support.
      *
-     * For more info, see: modernizr.github.com/Modernizr    ouch.html
+     * For more info, see: modernizr.github.com/Modernizr/touch.html
      */
 
     tests['touch'] = function() {
@@ -522,7 +522,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     // Super comprehensive table about all the unique implementations of
-    // border-radius: muddledramblings.com    able-of-css3-border-radius-compliance
+    // border-radius: muddledramblings.com/table-of-css3-border-radius-compliance
 
     tests['borderradius'] = function() {
         return testPropsAll('borderRadius');
@@ -769,7 +769,7 @@ window.Modernizr = (function( window, document, undefined ) {
         // Mike Taylr has created a comprehensive resource for testing these attributes
         //   when applied to all input types:
         //   miketaylr.com/code/input-type-attr.html
-        // spec: www.whatwg.org/specs/web-apps/current-work/multipage    he-input-element.html#input-type-attr-summary
+        // spec: www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
         
         // Only input placeholder is tested while textarea's placeholder is not. 
         // Currently Safari 4 and Opera 11 have support only for the input placeholder
