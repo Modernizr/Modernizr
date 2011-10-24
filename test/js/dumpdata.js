@@ -9,6 +9,8 @@ function dumpModernizr(){
       else dumpModernizr.old[prop] = true;
                 
       if (typeof Modernizr[prop] === 'function') continue;
+      // skip unit test items
+      if (/^test/.test(prop)) continue;
       
       if (~TEST.inputs.indexOf(prop)) {
         str += '<li><b>'+prop+'{}</b><ul>';
@@ -54,8 +56,7 @@ function resultsToDOM(){
   if (Modernizr.csscolumns) ref.parentNode.insertBefore(modOutput, ref);
 }
 
-resultsToDOM();
-
-grabFeatDetects();
-
+/* uno  */ resultsToDOM();
+/* dos  */ grabFeatDetects();
+/* tres */ setTimeout(resultsToDOM, 5e3);
 
