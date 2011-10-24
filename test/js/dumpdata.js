@@ -35,7 +35,11 @@ function grabFeatDetects(){
     for (var file in data.blobs){
       var match = file.match(/^feature-detects\/(.*)/);
       if (!match) continue;
-      filenames.push('../' + match[0]);
+
+      var relpath = location.host == "modernizr.github.com" ? 
+                      'https://raw.github.com/Modernizr/Modernizr/master/' : '../';
+                      
+      filenames.push(relpath + match[0]);
     }
 
     var jqxhrs = filenames.map(function(filename){
