@@ -249,11 +249,11 @@ test('Modernizr.addTest()',22,function(){
   
   
   
-  Modernizr.addTest('camelCase',function(){
+  Modernizr.addTest('testcamelCase',function(){
      return true;
    });
    
-  ok(docEl.className.indexOf(' camelCase') === -1,
+  ok(docEl.className.indexOf(' testcamelCase') === -1,
      'camelCase test name toLowerCase()\'d');
 
 
@@ -296,8 +296,12 @@ test('Modernizr.addTest()',22,function(){
   equals(Modernizr.testobjfntrue, true, 'Modernizr.addTest({feature: bool}): positive prop added');
 
 
-  Modernizr.addTest('chainone', true).addTest({ chaintwo: true }).addTest('chainthree', function(){ return true; });
-  ok( Modernizr.chainone == Modernizr.chaintwo == Modernizr.chainthree, 'addTest is chainable');
+  Modernizr
+    .addTest('testchainone', true)
+    .addTest({ testchaintwo: true })
+    .addTest('testchainthree', function(){ return true; });
+    
+  ok( Modernizr.testchainone == Modernizr.testchaintwo == Modernizr.testchainthree, 'addTest is chainable');
 
 
 }); // eo addTest
