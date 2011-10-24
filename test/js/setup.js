@@ -2,7 +2,7 @@
 // test helper object
 window.TEST = {
   // note some unique members of the Modernizr object
-  inputs    : ['input','inputtypes'],
+  inputs    : ['input','inputtypes', 'textarea'],
   audvid    : ['video','audio'],
   API       : ['addTest', 'mq', 'hasEvent', 'testProp', 'testAllProps', 'testStyles', '_prefixes', '_domPrefixes', 'prefixed'],
   extraclass: ['js'],
