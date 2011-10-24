@@ -1,0 +1,371 @@
+#!/usr/bin/env node
+
+/**
+ * Customizr
+ * Modernizr Custom Build Tool
+ * Command-line tool for building custom Modernizr
+ * 
+ * @Author  Kevin Gorski - kevin.gorski@gmail.com
+ */
+
+// Modules
+var fs       = require('fs')
+  , path     = require('path')
+  , program  = require('commander')
+  , Modulizr = require('../modulizr')
+  , parser   = require('uglify-js').parser
+  , uglify   = require('uglify-js').uglify
+
+
+  // Constants
+  , ModernizrVersion = '2.0.6'
+  , groups  = [
+	{
+		name: "css3",
+		tests: [
+			"fontface"
+			, "backgroundsize"
+			, "borderimage"
+			, "borderradius"
+			, "boxshadow"
+			, "flexbox"
+			, "hsla"
+			, "multiplebgs"
+			, "opacity"
+			, "rgba"
+			, "textshadow"
+			, "cssanimations"
+			, "csscolumns"
+			, "cssgradients"
+			, "cssreflections"
+			, "csstransforms"
+			, "csstransforms3d"
+			, "csstransitions"
+		]
+	}, {
+		name: "html5",
+		tests: [
+			"applicationcache"
+			, "canvas"
+			, "canvastext"
+			, "draganddrop"
+			, "hashchange"
+			, "history"
+			, "audio"
+			, "video"
+			, "indexeddb"
+			, "localstorage"
+			, "postmessage"
+			, "sessionstorage"
+			, "websockets"
+			, "websqldatabase"
+			, "webworkers"
+		]
+	}, {
+		name: "misc",
+		tests: [
+			"geolocation"
+			, "inlinesvg"
+			, "smil"
+			, "svg"
+			, "svgclippaths"
+			, "touch"
+			, "webgl"
+		]
+	}]
+  , extras   = [
+	"iepp",
+	"load",
+	"respond",
+	"mq",
+	"cssclasses"]
+  , defaultExtras = [
+	"iepp",
+	"mq",
+	"cssclasses"]
+  , validConfigNames = ['output', 'all', 'extras', 'groups', 'tests', 'not'];
+
+
+program
+  .version('0.0.1, Modernizr ' + ModernizrVersion)
+  .option('-c|--config <fileName>', 'The name of a conifguration file containing a JSON object that has properties for any of the following options. If no name is provided, uses modernizr-config.json')
+  .option('-o|--output [fileName]', 'Write generated Modernizr build to this output file')
+  .option('-a|--all', 'Include all tests')
+  .option('-e|--extras [items]', 'Include extras')
+  .option('-g|--groups [groups]', 'Include tests by group (html5, css3, misc)')
+  .option('-t|--tests [tests]', 'Include tests explicitly')
+  .option('-n|--not [groups|tests|extras]', 'Exclude specific groups, tests, or extras')
+  .parse(process.argv);
+
+
+// Input: customizr || customizr -h|--help
+
+if (program.rawArgs.length < 3) {
+  process.stdout.write(program.helpInformation());
+  process.exit();
+}
+
+
+// Build parameter arrays - allows for "-g css3 html5" instead of "-g css3,html5"
+
+['groups', 'extras', 'tests', 'not'].forEach(function(el) {
+  if(program[el]) {
+    program[el] = buildParameterArray(el[0], el);
+  }
+});
+
+
+// Input: customizr -v|--version
+// Version handled by commander
+
+
+// Clean up the console on exit if not running the default options above
+
+process.on('exit', function() { console.log(); });
+
+
+// Finally, generate the file and write it out
+
+var fileContents
+  , selectedExtras;
+
+
+// Input: customizr -c|--config <filename>
+// filename defaults to modernizr-config.json
+
+if(program.config) {
+	var configFileName = (String(program.config) === program.config)
+		? program.config
+		: 'modernizr-config.json',
+		config;
+	
+	try {
+		fileContents = fs.readFileSync(path.join(process.cwd(), configFileName), 'utf8');
+		
+		config = JSON.parse(fileContents);
+	} catch(err) {
+		process.stderr.write(err);
+		process.exit(1);
+	}
+	
+	for(prop in config) {
+		if(validConfigNames.indexOf(prop) === -1) {
+			console.error('Property "%s" in "%s" is not a known configuration value. Try one of these: %s', prop, configFileName, validConfigNames.join(', '));
+			
+			process.exit(1);
+		}
+		
+		program[prop] = config[prop];
+	}
+}
+
+
+try {
+  if(program.extras)
+    selectedExtras = program.extras.filter(function(el) { 
+      return defaultExtras.every(function(ex) { return el !== ex; });
+    });
+
+  fileContents = generateFile(buildTestsArray(), selectedExtras);
+} catch(err) {
+  process.stderr.write(err);
+  process.exit(1);
+}
+
+
+// Input: customizr -o|--output <filename>
+
+if(program.output) {
+  console.log('Writing to %s', program.output);
+
+  fs.writeFile(program.output, fileContents, function(err) {
+    if(err) throw err;
+
+    process.exit();
+  });
+} else {
+  process.stdout.write(fileContents);
+
+  return;
+}
+
+
+
+function buildParameterArray(shortName, longName) {
+	var capture = false
+	  , args = program.rawArgs.slice(2);
+
+	shortName = '-' + shortName;
+	longName = '--' + longName;
+	
+	return args.reduce(function(prev, item) {
+		if(capture) {
+			if(item.indexOf('-') === 0) {
+				// Stop at the next parameter
+				capture = false;
+			
+				return prev;
+			}
+		
+			// Capture all values in an array
+			prev.push(item)
+		
+		} else if(item === shortName || item === longName) {
+			// Start at the parameter we're looking for
+			capture = true;
+		}
+	
+		return prev;
+	}, []);
+}
+
+
+function buildTestsArray() {
+  var tests = [];
+
+  // -a|--all
+  if(program.all) {
+	groups.forEach(function(group) {
+	    tests = tests.concat(group.tests);
+	});
+  }
+
+
+  // -g|--groups
+  if(program.groups) {
+    program.groups.forEach(function(input) {
+      var group = groups.filter(function(el) {
+        return input === el.name;
+      });
+
+      if(group.length === 0) {
+        console.error('Group "%s" not found. Try these: %s', input, groups.map(function(el) { return el.name; }).join(', '));
+
+        process.exit(1);
+      }
+    });
+
+    groups.forEach(function(group) {
+      if(program.groups.indexOf(group.name) === -1) return;
+
+      tests = tests.concat(group.tests);
+    });
+  }
+
+
+  // -e|--extras
+  if(program.extras) {
+    program.extras.forEach(function(el) {
+      if(extras.indexOf(el) === -1) {
+        console.error('Extra "%s" not found. Try these: %s', el, extras.join(', '));
+
+        process.exit(1);
+      }
+    });
+
+    var selectedExtras = program.extras.filter(
+        function(el){ return defaultExtras.some(
+          function(ex) { return el === ex; }); });
+  
+    tests = tests.concat(selectedExtras);
+  } else {
+    tests = tests.concat(defaultExtras);
+  }
+
+
+  // -t|--tests
+  if(program.tests) {
+    var allTests = [];
+
+    groups.forEach(function(group) {
+      allTests = allTests.concat(group.tests);
+    });
+
+    program.tests.forEach(function(test) {
+      if(allTests.indexOf(test) === -1) {
+        console.error('Test "%s" not found.', test);
+
+        process.exit(1);
+      }
+    });
+
+    tests = tests.concat(program.tests);
+  }
+
+
+  // -n|--not
+  if(program.not) {
+	// Filter groups
+	groups.forEach(function(group) {
+		if(program.not.indexOf(group.name) > -1) {
+			tests = tests.filter(function(el) { return group.tests.indexOf(el) === -1; });
+		}
+	});
+	
+    // Filter explicit tests/extras
+    tests = tests.filter(function(el) { return program.not.indexOf(el) === -1; });
+  }
+
+
+  // Dependencies
+  tests.forEach(function(el) {
+    var dependencies = Modulizr._dependencies[el];
+
+    if(!dependencies) return;
+
+    dependencies.forEach(function(dep) {
+      if(tests.indexOf(dep)===-1) tests.push(dep);
+    });
+  });
+
+  return tests;
+}
+
+function generateFile(tests, selectedExtras) {
+  if(!tests.length) throw 'No tests selected!';
+
+  if(!selectedExtras) selectedExtras = [];
+
+  function compress(script) {
+	// Compressing code
+	var ast = parser.parse(script); // parse code and get the initial AST
+	ast = uglify.ast_mangle(ast); // get a new AST with mangled names
+	ast = uglify.ast_squeeze(ast); // get an AST with compression optimizations
+	
+	return uglify.gen_code(ast); // compressed code here
+  };
+	
+  function fixUglifyBugs(modularBuild) {
+    // !! needs to be there, unfortch.
+    return modularBuild.replace("return a.history&&history.pushState", "return !!(a.history&&history.pushState)");
+  }
+
+  function addExtras (modularBuild) {
+    modularBuild = ';'+modularBuild+';';
+
+	return "\/* Modernizr " + ModernizrVersion + " (Custom Build) | MIT & BSD\n * Build: http://www.modernizr.com/download/#-" + tests.join('-') + "\n */\n" + modularBuild;
+  }
+
+  function buildFile(modularBuild, appended) {
+    var uglifiedModularBuild = compress(modularBuild + (appended || ''), ['--extra', '--unsafe']);
+
+    return fixUglifyBugs(addExtras(uglifiedModularBuild));
+  }
+
+  // Grab the modernizr source and run it through modulizr
+  var script = fs.readFileSync(path.join(__dirname, '../modernizr.' + ModernizrVersion + '-prebuild.js'), 'utf8');
+
+  // Call the modulr function to create a modular build
+  var modularBuild = Modulizr.ize(script, [].slice.call(tests,0));
+  var toAppend;
+
+  if(selectedExtras.some(function(el){ return el == 'load' })) {
+    toAppend = fs.readFileSync(path.join(__dirname, '../modernizr.load.js'));
+  }
+
+  if(selectedExtras.some(function(el){ return el == 'respond' })) {
+    toAppend = (toAppend || '') + fs.readFileSync(path.join(__dirname, '../respond.js'), 'utf8');
+  }
+
+  return buildFile(modularBuild, toAppend);
+}
