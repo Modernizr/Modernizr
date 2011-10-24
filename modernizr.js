@@ -252,47 +252,40 @@ window.Modernizr = (function( window, document, undefined ) {
         return testProps(props, prefixed);
     }
 
+    /*
+     * schreib irgendwas sinnvolles
+     */
+    function testStyle: (function() { 
+      if (window.getComputedStyle) {
+        return function(elem,p,v) { return getComputedStyle(elem, null) }
+      } else {
+        return function(elem,p,v) { return elem.currentStyle)[p] == v }
+      }
+    })()
+
     /**
      * testPropsAllForValues tests a list of values for a CSS property.
      * Returns all successful applied values.
      */
     function testPropsAllForValues( prop, values ) {
-
-        if(testPropsAll(prop)) { //pre-test the property
-
-          var successValues = [],
-              currentPrefix = false,
-              testStyle = function(elem,p,v) {
-                return (window.getComputedStyle ? getComputedStyle(elem, null) : elem.currentStyle)[p] == v;
-              }
-          for(var i = 0; i < values.length; i++) {
-            var value = values[i],
-                styles = Modernizr._prefixes.join(prop + ":" + value + "; ");
-
-            injectElementWithStyles('#modernizr { '+styles+' }', function(elem, rule){
-
-                if(currentPrefix) {
-                    if(testStyle(elem, currentPrefix + testProp, value)) {
-                      successValues.push(value);
-                    }
-
-                } else {
-                  for(var j = 0; j < Modernizr._prefixes.length; j++) {
-                    if(testStyle(elem, Modernizr._prefixes[j] + testProp, value)) {
-                      successValues.push(value);
-                      currentPrefix = Modernizr._prefixes[j];
-                      break;
-                    }
-                  }
-
-                }
-            });
+      if(!testPropsAll(prop)) { return false; }
+      var successValues = []
+      for(var i = 0; i < values.length; i++) {
+        var value = values[i],
+            styles = Modernizr._prefixes.join(prop + ":" + value + "; "),
+            start = 0,
+            plength = Modernizr._prefixes.length-1;
+        injectElementWithStyles('#modernizr { '+styles+' }', function(elem, rule){
+          for(var j = start; j <= plength; j++) {
+            if(testStyle(elem, Modernizr._prefixes[j] + testProp, value)) {
+              successValues.push(value);
+              start = j
+              break;
+            }
           }
-          return successValues;
-
-        }
-
-        return false;
+        });
+      }
+      return successValues;
     }
 
     /**
