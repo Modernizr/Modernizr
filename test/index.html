@@ -16,15 +16,18 @@
      td.wrong { background:red!important;}
      #html5section { visibility: hidden; }
      h1 label { display:none;}
-     #mod-output { padding: 0 0 0 16px;}
-     #mod-output ul { margin: 0;}
-     #mod-output li { color: #854747; }
-     #mod-output li.yes{color:#090;}
-     #mod-output li b{color:#000;}
-     #mod-output {font:14px/1.3 Inconsolata,Consolas,monospace;
+     .output { padding: 0 0 0 16px;}
+     .output ul { margin: 0;}
+     .output li { color: #854747; }
+     .output li.yes{color:#090;}
+     .output li b{color:#000;}
+     .output {font:14px/1.3 Inconsolata,Consolas,monospace;
                     -webkit-column-count: 5;
                        -moz-column-count: 5;
                             column-count: 5;}
+      .output + .output {
+        border-top: 5px solid #ccc;
+      }
   </style>
   
   <script src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
@@ -34,7 +37,7 @@
   <script src="js/lib/detect-global.js"></script>
   
   <script src="qunit/qunit.js"></script>
-  <script src="js/lib/jquery-1.4.2.js"></script>
+  <script src="js/lib/jquery-1.7b2.js"></script>
   
   <script src="js/lib/jsonselect.js"></script>
   <script src="js/lib/uaparser.js"></script>
@@ -53,7 +56,9 @@
   <h2 id="qunit-userAgent"></h2>
 
   <ol id="qunit-tests"></ol>
-  <div id="mod-output"></div>
+
+  <div id="mod-output" class=output></div>
+  <div id="mod-feattest-output" class=output></div>
 
 
   <br>
@@ -61,57 +66,7 @@
   <section><aside>this is an aside within a section</aside></section>
   
 
-  <!-- plugin tests! need a more automated way than this rabble -->
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/css-backgroundrepeat.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/css-backgroundsizecover.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/css-boxsizing.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/css-cubicbezierrange.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/css-displaytable.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/css-overflow-scrolling.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/css-pointerevents.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/css-userselect.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/custom-protocol-handler.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/dom-createElement-attrs.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/elem-details.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/elem-progress-meter.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/emoji.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/event-deviceorientation-motion.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/file-api.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/forms-placeholder.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/hyphens.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/img-webp.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/url-data-uri.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/window-framed.js"></script>
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/feature-detects/workers-sharedworkers.js"></script>
 
-  <script>
-  (function(){
-
-    var str = '';
-    for (var prop in Modernizr) {
-      
-      if (typeof Modernizr[prop] === 'function') continue;
-      
-      if (prop == 'inputtypes' || prop == 'input') {
-        str += '<li><b>'+prop+'{}</b><ul>';
-        for (var field in Modernizr[prop]) {
-          str += '<li class="' + (Modernizr[prop][field] ? 'yes' : '') + '">' + field + ': ' + Modernizr[prop][field] + '</li>';
-        }
-        str += '</ul></li>';
-      } else {
-        str += '<li  id="'+prop+'" class="' + (Modernizr[prop] ? 'yes' : '') + '">' + prop + ': ' + Modernizr[prop] + '</li>';
-      }
-    }
-    
-    setTimeout(function(){
-      var modOutput = document.getElementById('mod-output')
-      modOutput.innerHTML = str;
-      if (Modernizr.csscolumns) modOutput.parentNode.insertBefore(modOutput, document.getElementById('qunit-tests'));
-    }, 100);
-    
-  })();
-  
-  </script>
   
   
   
@@ -121,6 +76,7 @@
                 style="font-size: 38px; font-family: monospace">Show the Ref Tests from Caniuse and Modernizr</a>
 
 
+  <script src="js/dumpdata.js"></script>
   <script>
     function revealreftests(a){
         
