@@ -5,14 +5,15 @@
 // developer.mozilla.org/en/CSS/background-repeat
 
 // test page: jsbin.com/uzesun/
+// http://jsfiddle.net/ryanseddon/yMLTQ/6/    
 
 (function(){
 
 
 function getBgRepeatValue(elem){
     return (window.getComputedStyle ?
-             getComputedStyle(elem, null).getPropertyValue('background-repeat') :
-             elem.currentStyle['background-repeat']);
+             getComputedStyle(elem, null).getPropertyValue('background') :
+             elem.currentStyle['background']);
 }
   
 
