@@ -253,7 +253,7 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     /*
-     * schreib irgendwas sinnvolles
+     * testStyle tests a CSS property
      */
     function testStyle: (function() { 
       if (window.getComputedStyle) {
