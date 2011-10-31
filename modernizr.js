@@ -269,21 +269,21 @@ window.Modernizr = (function( window, document, undefined ) {
      */
     function testPropsAllForValues( prop, values ) {
       if(!testPropsAll(prop)) { return false; }
-      var successValues = []
+      var successValues = [];
       for(var i = 0; i < values.length; i++) {
         var value = values[i],
             styles = Modernizr._prefixes.join(prop + ":" + value + "; "),
             start = 0,
             plength = Modernizr._prefixes.length-1;
-        injectElementWithStyles('#modernizr { '+styles+' }', function(elem, rule){
+        injectElementWithStyles('#modernizr { '+styles+' }', (function(my) { return function(elem, rule){
           for(var j = start; j <= plength; j++) {
-            if(testStyle(elem, Modernizr._prefixes[j] + testProp, value)) {
+            if(my.testStyle(elem, Modernizr._prefixes[j] + testProp, value)) {
               successValues.push(value);
               start = j
               break;
             }
           }
-        });
+        }) })(this);
       }
       return successValues;
     }
