@@ -76,6 +76,10 @@ window.caniusecb = function(scriptdata) {
   function testify(o){
     
     var ciubool = bool(o.ciuresult);
+
+    // caniuse says audio/video are yes/no, Modernizr has more detail which we'll dumb down.
+    if (~TEST.audvid.indexOf(o.feature))
+      o.result = !!o.result;
     
     // if caniuse gave us a 'partial', lets let it pass with a note.
     if (o.ciuresult == 'a'){
@@ -120,7 +124,7 @@ window.caniusecb = function(scriptdata) {
       var ciufeatdata = testdata[ciufeatname];
       
       if (ciufeatdata === undefined) throw 'unknown key of caniusedata';
-      
+
       // get results for this feature for all versions of this browser
       var browserResults = ciufeatdata.stats[currBrowser];
     

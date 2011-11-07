@@ -17,6 +17,7 @@ test("globals set up", function() {
     var leakedGlobArr = [''].concat(globArr).concat([''])
                             .join(',')
                             .replace(',Modernizr','').replace(',iepp','')
+                            .replace(/,script\w+/,'') // placed by jQuery
                             .split(',');
     
     equals('', leakedGlobArr.pop(), 'retrieved my empty item from the end');
@@ -37,12 +38,21 @@ test("document.documentElement is valid and correct",1, function() {
 
 test("no-js class is gone.", function() {
   
-	equals(document.documentElement.className.indexOf('no-js') , -1,
-	       'no-js is gone.'); 
+	ok(!/(?:^|\s)no-js(?:^|\s)/.test(document.documentElement.className),
+	   'no-js class is gone');
 	       
-	ok(/\bjs /.test(document.documentElement.className),
-	   'html.js class is present')
-	
+	ok(/(?:^|\s)js(?:^|\s)/.test(document.documentElement.className),
+	   'html.js class is present');
+
+	ok(/(?:^|\s)\+no-js(?:\s|$)/.test(document.documentElement.className),
+	   'html.+no-js class is still present');
+
+	ok(/(?:^|\s)no-js-(?:\s|$)/.test(document.documentElement.className),
+	   'html.no-js- class is still present');
+
+	ok(/(?:^|\s)i-has-no-js(?:\s|$)/.test(document.documentElement.className),
+	   'html.i-has-no-js class is still present');
+
 	if (document.querySelector){
 	  ok(document.querySelector('html.js') == document.documentElement, 
 	     "document.querySelector('html.js') matches.");
@@ -109,7 +119,8 @@ test('html classes are looking good',function(){
   for (var i = 0, len = classes.length, aclass; i <len; i++){
     aclass = classes[i];
     
-    if (aclass === 'js') continue;
+    // Skip js related classes.
+    if (/^(?:js|\+no-js|no-js-|i-has-no-js)$/.test(aclass)) continue;
     
     if (aclass.indexOf('no-') === 0){
       aclass = aclass.replace('no-','');
@@ -128,9 +139,13 @@ test('html classes are looking good',function(){
     equals(classes[i],classes[i].toLowerCase(),'all classes are lowerCase.');
   }
   
-  equals(/[^\s]no-/.test(document.documentElement.className),false,
-         'whitespace between all classes.');
-  
+  // Remove fake no-js classes before test.
+  var docElClass = document.documentElement.className;
+  $.each(['\\+no-js', 'no-js-', 'i-has-no-js'], function(i, fakeClass) {
+    docElClass = docElClass.replace(new RegExp('(^|\\s)' + fakeClass + '(\\s|$)', 'g'), '$1$2');
+  });
+  equals(/[^\s]no-/.test(docElClass), false, 'whitespace between all classes.');
+
   
 })
 
@@ -140,7 +155,8 @@ test('Modernizr properties are looking good',function(){
   var count  = 0,
       nobool = TEST.API.concat(TEST.inputs)
                        .concat(TEST.audvid)
-                       .concat(TEST.privates);
+                       .concat(TEST.privates)
+                       .concat(['textarea']); // due to forms-placeholder.js test
       
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){
@@ -233,11 +249,11 @@ test('Modernizr.addTest()',22,function(){
   
   
   
-  Modernizr.addTest('camelCase',function(){
+  Modernizr.addTest('testcamelCase',function(){
      return true;
    });
    
-  ok(docEl.className.indexOf(' camelCase') === -1,
+  ok(docEl.className.indexOf(' testcamelCase') === -1,
      'camelCase test name toLowerCase()\'d');
 
 
@@ -280,8 +296,12 @@ test('Modernizr.addTest()',22,function(){
   equals(Modernizr.testobjfntrue, true, 'Modernizr.addTest({feature: bool}): positive prop added');
 
 
-  Modernizr.addTest('chainone', true).addTest({ chaintwo: true }).addTest('chainthree', function(){ return true; });
-  ok( Modernizr.chainone == Modernizr.chaintwo == Modernizr.chainthree, 'addTest is chainable');
+  Modernizr
+    .addTest('testchainone', true)
+    .addTest({ testchaintwo: true })
+    .addTest('testchainthree', function(){ return true; });
+    
+  ok( Modernizr.testchainone == Modernizr.testchaintwo == Modernizr.testchainthree, 'addTest is chainable');
 
 
 }); // eo addTest

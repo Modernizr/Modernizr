@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="+no-js no-js- no-js i-has-no-js">
 <head>
   <meta charset="UTF-8">
   <title>Modernizr Test Suite</title>
@@ -16,28 +16,34 @@
      td.wrong { background:red!important;}
      #html5section { visibility: hidden; }
      h1 label { display:none;}
-     #mod-output { padding: 0 0 0 16px;}
-     #mod-output ul { margin: 0;}
-     #mod-output li { color: #854747; }
-     #mod-output li.yes{color:#090;}
-     #mod-output li b{color:#000;}
-     #mod-output {font:14px/1.3 Inconsolata,Consolas,monospace;
+     .output { padding: 0 0 0 16px;}
+     .output ul { margin: 0;}
+     .output li { color: #854747; }
+     .output li.yes{color:#090;}
+     .output li b{color:#000;}
+     .output {font:14px/1.3 Inconsolata,Consolas,monospace;
                     -webkit-column-count: 5;
                        -moz-column-count: 5;
                             column-count: 5;}
+      .output + .output {
+        border-top: 5px solid #ccc;
+      }
   </style>
   
-  <script src="../modernizr.js"></script>
-  <script src="js/polyfills.js"></script>
-  <script src="js/detect-global.js"></script>
+  <script src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
+  <script>window.Modernizr || document.write('<script src="../modernizr.js"><\/script>')</script>
+
+  <script src="js/lib/polyfills.js"></script>
+  <script src="js/lib/detect-global.js"></script>
   
   <script src="qunit/qunit.js"></script>
-  <script src="js/jquery-1.4.2.js"></script>
+  <script src="js/lib/jquery-1.7b2.js"></script>
   
-  <script src="js/jsonselect.js"></script>
-  <script src="js/uaparser.js"></script>
+  <script src="js/lib/jsonselect.js"></script>
+  <script src="js/lib/uaparser.js"></script>
+  <script src="js/lib/github.js"></script>
   
-  <script src="js/test-setup.js"></script>
+  <script src="js/setup.js"></script>
   
   <script src="js/unit.js"></script>
   <script src="js/unit-caniuse.js"></script>
@@ -49,41 +55,17 @@
   <h2 id="qunit-userAgent"></h2>
 
   <ol id="qunit-tests"></ol>
-  <div id="mod-output"></div>
+
+  <div id="mod-output" class=output></div>
+  <div id="mod-feattest-output" class=output></div>
 
 
   <br>
  
   <section><aside>this is an aside within a section</aside></section>
   
-  <script>
-  (function(){
 
-    var str = '';
-    for (var prop in Modernizr) {
-      
-      if (typeof Modernizr[prop] === 'function') continue;
-      
-      if (prop == 'inputtypes' || prop == 'input') {
-        str += '<li><b>'+prop+'{}</b><ul>';
-        for (var field in Modernizr[prop]) {
-          str += '<li class="' + (Modernizr[prop][field] ? 'yes' : '') + '">' + field + ': ' + Modernizr[prop][field] + '</li>';
-        }
-        str += '</ul></li>';
-      } else {
-        str += '<li  id="'+prop+'" class="' + (Modernizr[prop] ? 'yes' : '') + '">' + prop + ': ' + Modernizr[prop] + '</li>';
-      }
-    }
-    
-    setTimeout(function(){
-      var modOutput = document.getElementById('mod-output')
-      modOutput.innerHTML = str;
-      if (Modernizr.csscolumns) modOutput.parentNode.insertBefore(modOutput, document.getElementById('qunit-tests'));
-    }, 100);
-    
-  })();
-  
-  </script>
+
   
   
   
@@ -93,6 +75,7 @@
                 style="font-size: 38px; font-family: monospace">Show the Ref Tests from Caniuse and Modernizr</a>
 
 
+  <script src="js/dumpdata.js"></script>
   <script>
     function revealreftests(a){
         
