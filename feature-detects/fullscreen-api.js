@@ -1,6 +1,7 @@
-Modernizr.addTest('fullscreen',function(){
-     for(var i = 0, len = Modernizr._domPrefixes.length; i < len; i++) {
-          if(document[Modernizr._domPrefixes[i].toLowerCase() + 'CancelFullScreen'] || document[Modernizr._domPrefixes[i].toLowerCase() + 'ExitFullscreen']) {
+Modernizr.addTest('fullscreen',function() {
+     for(var i = 0, len = Modernizr._domPrefixes.length, pfx; i < len; i++) {
+          pfx = Modernizr._domPrefixes[i].toLowerCase();
+          if(document[pfx + 'CancelFullScreen'] || document[pfx + 'ExitFullscreen']) {
                return true;
           }
      }
