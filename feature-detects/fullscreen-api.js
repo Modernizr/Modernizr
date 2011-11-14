@@ -1,9 +1,10 @@
 Modernizr.addTest('fullscreen',function(){
-     for(var i = 0; i < Modernizr._domPrefixes.length; i++) {
-        if( document[Modernizr._domPrefixes[i].toLowerCase() + 'CancelFullScreen'])
-            return true;
+     for(var i = 0, len = Modernizr._domPrefixes.length; i < len; i++) {
+          if(document[Modernizr._domPrefixes[i].toLowerCase() + 'CancelFullScreen'] || document[Modernizr._domPrefixes[i].toLowerCase() + 'ExitFullscreen']) {
+               return true;
+          }
      }
-     return !!document['cancelFullScreen'] || false;
+     return !!document['exitFullscreen'] || false;
 });
 
 // http://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/ControllingMediaWithJavaScript/ControllingMediaWithJavaScript.html#//apple_ref/doc/uid/TP40009523-CH3-SW20
