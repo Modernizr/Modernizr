@@ -882,7 +882,7 @@ window.Modernizr = (function( window, document, undefined ) {
      Modernizr.addTest = function ( feature, test ) {
        if ( typeof feature == "object" ) {
          for ( var key in feature ) {
-           if ( hasOwnProperty( feature, key ) ) { 
+           if ( hasOwnProperty( feature, key ) ) {
              Modernizr.addTest( key, feature[ key ] );
            }
          }
@@ -893,10 +893,10 @@ window.Modernizr = (function( window, document, undefined ) {
          if ( Modernizr[feature] !== undefined ) {
            // we're going to quit if you're trying to overwrite an existing test
            // if we were to allow it, we'd do this:
-           //   var re = new RegExp("\\b(no-)?" + feature + "\\b");  
+           //   var re = new RegExp("\\b(no-)?" + feature + "\\b");
            //   docElement.className = docElement.className.replace( re, '' );
            // but, no rly, stuff 'em.
-           return; 
+           return Modernizr;
          }
 
          test = typeof test == "boolean" ? test : !!test();
@@ -908,7 +908,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
        return Modernizr; // allow chaining.
      };
-    
+
 
     // Reset modElem.cssText to nothing to reduce memory footprint.
     setCss('');
