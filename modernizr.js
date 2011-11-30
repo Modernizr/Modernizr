@@ -899,10 +899,10 @@ window.Modernizr = (function( window, document, undefined ) {
            return; 
          }
 
-         test = typeof test == "boolean" ? test : !!test();
+         test = typeof test == 'function' ? test() : test;
 
          docElement.className += ' ' + (test ? '' : 'no-') + feature;
-         Modernizr[feature] = test;
+         Modernizr[feature] = !!test;
 
        }
 
