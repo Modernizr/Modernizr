@@ -721,8 +721,10 @@ window.Modernizr = (function( window, document, undefined ) {
 
     tests['sessionstorage'] = function() {
         try {
-            return !!sessionStorage.getItem;
-        } catch(e){
+            sessionStorage.setItem(mod, mod);
+            sessionStorage.removeItem(mod);
+            return true;
+        } catch(e) {
             return false;
         }
     };
