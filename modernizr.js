@@ -123,7 +123,8 @@ window.Modernizr = (function( window, document, undefined ) {
     // gist.github.com/786768
     testMediaQuery = function( mq ) {
 
-      if ( window.matchMedia ) {
+      var matchMedia = window.matchMedia || window.msMatchMedia;
+      if ( matchMedia ) {
         return matchMedia(mq).matches;
       }
 
