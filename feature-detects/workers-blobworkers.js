@@ -7,8 +7,11 @@
 
 (function(){
   try {
+
+    // we're avoiding using Modernizr._domPrefixes as the prefix capitalization on
+    // these guys are notoriously peculiar. 
     var BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder || window.OBlobBuilder || window.BlobBuilder,
-	URL         = window.MozURL || window.webkitURL || window.MSURL || window.OURL || window.URL;
+        URL         = window.MozURL || window.webkitURL || window.MSURL || window.OURL || window.URL;
 
     var data    = 'Modernizr',
         bb      = new BlobBuilder();
