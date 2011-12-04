@@ -922,8 +922,9 @@ window.Modernizr = (function( window, document, undefined ) {
                                             elem.innerHTML = '<elem></elem>';
                                             return elem.childNodes.length !== 1; })() ) {
                                               
-        // iepp v2.1pre by @jon_neal & afarkas : github.com/aFarkas/iepp/
+        // iepp v2.2 MIT/GPL2 @jon_neal & afarkas  : github.com/aFarkas/iepp/ 
         (function(win, doc) {
+
           win.iepp = win.iepp || {};
           var iepp = win.iepp,
             elems = iepp.html5elements || 'abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|subline|summary|time|video',
@@ -933,6 +934,7 @@ window.Modernizr = (function( window, document, undefined ) {
             tagRegExp = new RegExp('<(\/*)('+elems+')', 'gi'),
             filterReg = /^\s*[\{\}]\s*$/,
             ruleRegExp = new RegExp('(^|[^\\n]*?\\s)('+elems+')([^\\n]*)({[\\n\\w\\W]*?})', 'gi'),
+            nonPrintMedias = /@media +(?![Print|All])[^{]+\{([^{}]+\{[^{}]+\})+[^}]+\}/g,
             docFrag = doc.createDocumentFragment(),
             html = doc.documentElement,
             head = doc.getElementsByTagName('script')[0].parentNode,
@@ -948,7 +950,7 @@ window.Modernizr = (function( window, document, undefined ) {
               doc.createElement(elemsArr[a]);
             }
           }
-
+          
           iepp.getCSS = function(styleSheetList, mediaType) {
             try {
               if(styleSheetList+'' === undefined){
@@ -960,6 +962,7 @@ window.Modernizr = (function( window, document, undefined ) {
             var a = -1,
               len = styleSheetList.length,
               styleSheet,
+              cssText,
               cssTextArr = [];
             while (++a < len) {
               styleSheet = styleSheetList[a];
@@ -970,14 +973,18 @@ window.Modernizr = (function( window, document, undefined ) {
               mediaType = styleSheet.media || mediaType;
               // Get css from all non-screen stylesheets and their imports
               if (printMedias.test(mediaType)){
-                cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), styleSheet.cssText);
+                cssText = styleSheet.cssText;
+                if(mediaType != 'print'){
+                  cssText = cssText.replace(nonPrintMedias, "");
+                }
+                cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), cssText);
               }
               //reset mediaType to all with every new *not imported* stylesheet
               mediaType = 'all';
             }
             return cssTextArr.join('');
           };
-
+          
           iepp.parseCSS = function(cssText) {
             var cssTextArr = [],
               rule;
@@ -987,7 +994,7 @@ window.Modernizr = (function( window, document, undefined ) {
             }
             return cssTextArr.join('\n');
           };
-
+          
           iepp.writeHTML = function() {
             var a = -1;
             body = body || doc.body;
@@ -1001,7 +1008,7 @@ window.Modernizr = (function( window, document, undefined ) {
                   nodeList[b].className += ' iepp-'+elemsArr[a];
                 }
               }
-
+                
             }
             docFrag.appendChild(body);
             html.appendChild(bodyElem);
@@ -1011,35 +1018,35 @@ window.Modernizr = (function( window, document, undefined ) {
             // Replace HTML5 elements with <font> which is print-safe and shouldn't conflict since it isn't part of html5
             bodyElem.innerHTML = body.innerHTML.replace(tagRegExp, '<$1font');
           };
-
+          
           iepp._beforePrint = function() {
             if(iepp.disablePP){return;}
             // Write iepp custom print CSS
             styleElem.styleSheet.cssText = iepp.parseCSS(iepp.getCSS(doc.styleSheets, 'all'));
             iepp.writeHTML();
           };
-
+          
           iepp.restoreHTML = function() {
             if(iepp.disablePP){return;}
             // Undo everything done in onbeforeprint
             bodyElem.swapNode(body);
           };
-
+          
           iepp._afterPrint = function() {
             // Undo everything done in onbeforeprint
             iepp.restoreHTML();
             styleElem.styleSheet.cssText = '';
           };
-
+          
           // Shim the document and iepp fragment
           shim(doc);
           shim(docFrag);
-
+          
           //
           if(iepp.disablePP){
             return;
           }
-
+          
           // Add iepp custom print style element
           head.insertBefore(styleElem, head.firstChild);
           styleElem.media = 'print';
