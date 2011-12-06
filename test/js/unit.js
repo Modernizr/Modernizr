@@ -239,13 +239,13 @@ test('Modernizr.addTest()',22,function(){
   equals(Modernizr.testtrue,true,'positive prop added');
   
   ok(docEl.className.indexOf(' testtruthy') >= 0,'positive class added');
-  equals(Modernizr.testtruthy,true,'truthy value casted to straight boolean');
+  equals(Modernizr.testtruthy,100,'truthy value is not casted to straight boolean');
   
   ok(docEl.className.indexOf(' no-testfalse') >= 0,'negative class added');
   equals(Modernizr.testfalse,false,'negative prop added');
   
   ok(docEl.className.indexOf(' no-testfalsy') >= 0,'negative class added');
-  equals(Modernizr.testfalsy,false,'falsy value casted to straight boolean');
+  equals(Modernizr.testfalsy,undefined,'falsy value is not casted to straight boolean');
   
   
   

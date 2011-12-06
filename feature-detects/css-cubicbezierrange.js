@@ -4,5 +4,5 @@
 Modernizr.addTest('cubicbezierrange', function() {
     el = document.createElement('div');
     el.style.cssText = Modernizr._prefixes.join('transition-timing-function' + ':cubic-bezier(1,0,0,1.1); ');
-    return el.style.length;
+    return !!el.style.length;
 });
