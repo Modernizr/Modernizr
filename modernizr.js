@@ -1,6 +1,6 @@
 /*!
  * Modernizr v2.1pre
- * http://www.modernizr.com
+ * www.modernizr.com
  *
  * Copyright (c) 2009-2011 Faruk Ates, Paul Irish, Alex Sexton
  * Dual-licensed under the BSD or MIT licenses: www.modernizr.com/license/
@@ -62,7 +62,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // Microsoft foregoes prefixes entirely <= IE8, but appears to
     //   use a lowercase `ms` instead of the correct `Ms` in IE9
 
-    // More here: http://github.com/Modernizr/Modernizr/issues/issue/21
+    // More here: github.com/Modernizr/Modernizr/issues/issue/21
     domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
 
     ns = {'svg': 'http://www.w3.org/2000/svg'},
@@ -99,7 +99,7 @@ window.Modernizr = (function( window, document, undefined ) {
       // <style> elements in IE6-9 are considered 'NoScope' elements and therefore will be removed
       // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element
       // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
-      // http://msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
+      // msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
       // Documents served as xml will throw if using &shy; so use xml friendly encoded version. See issue #277
       style = ['&#173;','<style>', rule, '</style>'].join('');
       div.id = mod;
@@ -123,7 +123,8 @@ window.Modernizr = (function( window, document, undefined ) {
     // gist.github.com/786768
     testMediaQuery = function( mq ) {
 
-      if ( window.matchMedia ) {
+      var matchMedia = window.matchMedia || window.msMatchMedia;
+      if ( matchMedia ) {
         return matchMedia(mq).matches;
       }
 
@@ -142,7 +143,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     /**
       * isEventSupported determines if a given element supports the given event
-      * function from http://yura.thinkweb2.com/isEventSupported/
+      * function from yura.thinkweb2.com/isEventSupported/
       */
     isEventSupported = (function() {
 
@@ -265,8 +266,8 @@ window.Modernizr = (function( window, document, undefined ) {
             var style = document.styleSheets[document.styleSheets.length - 1],
                 // IE8 will bork if you create a custom build that excludes both fontface and generatedcontent tests.
                 // So we check for cssRules and that there is a rule available
-                // More here: https://github.com/Modernizr/Modernizr/issues/288 & https://github.com/Modernizr/Modernizr/issues/293
-                cssText = style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || "",
+                // More here: github.com/Modernizr/Modernizr/issues/288 & github.com/Modernizr/Modernizr/issues/293
+                cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || "") : "",
                 children = node.childNodes, hash = {};
 
             while ( len-- ) {
@@ -352,7 +353,8 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     // On the S60 and BB Storm, getContext exists, but always returns undefined
-    // http://github.com/Modernizr/Modernizr/issues/issue/97/
+    // so we actually have to call getContext() to verify
+    // github.com/Modernizr/Modernizr/issues/issue/97/
 
     tests['canvas'] = function() {
         var elem = document.createElement('canvas');
@@ -363,16 +365,19 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
     };
 
-    // This WebGL test may false positive. 
-    // But really it's quite impossible to know whether webgl will succeed until after you create the context. 
-    // You might have hardware that can support a 100x100 webgl canvas, but will not support a 1000x1000 webgl 
-    // canvas. So this feature inference is weak, but intentionally so.
-    
-    // It is known to false positive in FF4 with certain hardware, the iPad 2, and iOS5
+    // this test initiates a new webgl context. 
     // webk.it/70117 is tracking a legit feature detect proposal
     
     tests['webgl'] = function() {
-        return !!window.WebGLRenderingContext;
+        try {
+            var canvas = document.createElement('canvas'),
+                ret;
+            ret = !!(window.WebGLRenderingContext && (canvas.getContext('experimental-webgl') || canvas.getContext('webgl')));
+            canvas = undefined;
+        } catch (e){
+            ret = false;
+        }
+        return ret;
     };
 
     /*
@@ -382,11 +387,11 @@ window.Modernizr = (function( window, document, undefined ) {
      *    the Palm Pre / WebOS (touch) phones.
      *
      * Additionally, Chrome (desktop) used to lie about its support on this,
-     *    but that has since been rectified: http://crbug.com/36415
+     *    but that has since been rectified: crbug.com/36415
      *
      * We also test for Firefox 4 Multitouch Support.
      *
-     * For more info, see: http://modernizr.github.com/Modernizr    ouch.html
+     * For more info, see: modernizr.github.com/Modernizr/touch.html
      */
 
     tests['touch'] = function() {
@@ -397,9 +402,9 @@ window.Modernizr = (function( window, document, undefined ) {
      * geolocation tests for the new Geolocation API specification.
      *   This test is a standards compliant-only test; for more complete
      *   testing, including a Google Gears fallback, please see:
-     *   http://code.google.com/p/geo-location-javascript/
+     *   code.google.com/p/geo-location-javascript/
      * or view a fallback solution using google's geo API:
-     *   http://gist.github.com/366184
+     *   gist.github.com/366184
      */
     tests['geolocation'] = function() {
         return !!navigator.geolocation;
@@ -414,28 +419,11 @@ window.Modernizr = (function( window, document, undefined ) {
       return !!window.postMessage;
     };
 
-    // Web SQL database detection is tricky:
 
-    // In chrome incognito mode, openDatabase is truthy, but using it will
-    //   throw an exception: http://crbug.com/42380
-    // We can create a dummy database, but there is no way to delete it afterwards.
-
-    // Meanwhile, Safari users can get prompted on any database creation.
-    //   If they do, any page with Modernizr will give them a prompt:
-    //   http://github.com/Modernizr/Modernizr/issues/closed#issue/113
-
-    // We have chosen to allow the Chrome incognito false positive, so that Modernizr
-    //   doesn't litter the web with these test databases. As a developer, you'll have
-    //   to account for this gotcha yourself.
+    // Chrome incognito mode used to throw an exception when using openDatabase 
+    // It doesn't anymore.
     tests['websqldatabase'] = function() {
-      var result = !!window.openDatabase;
-      /*  if (result){
-            try {
-              result = !!openDatabase( mod + "testdb", "1.0", mod + "testdb", 2e4);
-            } catch(e) {
-            }
-          }  */
-      return result;
+      return !!window.openDatabase;
     };
 
     // Vendors had inconsistent prefixing with the experimental Indexed DB:
@@ -483,7 +471,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    // http://css-tricks.com/rgba-browser-support/
+    // css-tricks.com/rgba-browser-support/
     tests['rgba'] = function() {
         // Set an rgba() color and check the returned value
 
@@ -535,7 +523,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     // Super comprehensive table about all the unique implementations of
-    // border-radius: http://muddledramblings.com    able-of-css3-border-radius-compliance
+    // border-radius: muddledramblings.com/table-of-css3-border-radius-compliance
 
     tests['borderradius'] = function() {
         return testPropsAll('borderRadius');
@@ -561,7 +549,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
         // The non-literal . in this regex is intentional:
         //   German Chrome returns this value as 0,55
-        // https://github.com/Modernizr/Modernizr/issues/#issue/59/comment/516632
+        // github.com/Modernizr/Modernizr/issues/#issue/59/comment/516632
         return /^0.55$/.test(mStyle.opacity);
     };
 
@@ -579,10 +567,10 @@ window.Modernizr = (function( window, document, undefined ) {
     tests['cssgradients'] = function() {
         /**
          * For CSS Gradients syntax, please see:
-         * http://webkit.org/blog/175/introducing-css-gradients/
-         * https://developer.mozilla.org/en/CSS/-moz-linear-gradient
-         * https://developer.mozilla.org/en/CSS/-moz-radial-gradient
-         * http://dev.w3.org/csswg/css3-images/#gradients-
+         * webkit.org/blog/175/introducing-css-gradients/
+         * developer.mozilla.org/en/CSS/-moz-linear-gradient
+         * developer.mozilla.org/en/CSS/-moz-radial-gradient
+         * dev.w3.org/csswg/css3-images/#gradients-
          */
 
         var str1 = 'background-image:',
@@ -632,7 +620,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     /*>>fontface*/
     // @font-face detection routine by Diego Perini
-    // http://javascript.nwbox.com/CSSSupport/
+    // javascript.nwbox.com/CSSSupport/
     tests['fontface'] = function() {
         return Modernizr['fontface'];
     };
@@ -652,7 +640,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // e.g.  Modernizr.video     // true
     //       Modernizr.video.ogg // 'probably'
     //
-    // Codec values from : http://github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
+    // Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
     //                     thx to NielsLeenheer and zcorpan
 
     // Note: in some older browsers, "no" was a return value instead of empty string.
@@ -694,8 +682,8 @@ window.Modernizr = (function( window, document, undefined ) {
                 bool.mp3  = elem.canPlayType('audio/mpeg;');
 
                 // Mimetypes accepted:
-                //   https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
-                //   http://bit.ly/iphoneoscodecs
+                //   developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
+                //   bit.ly/iphoneoscodecs
                 bool.wav  = elem.canPlayType('audio/wav; codecs="1"');
                 bool.m4a  = elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;');
             }
@@ -709,7 +697,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // Normally, we could not test that directly and need to do a
     //   `('localStorage' in window) && ` test first because otherwise Firefox will
-    //   throw http://bugzil.la/365772 if cookies are disabled
+    //   throw bugzil.la/365772 if cookies are disabled
 
     // Also in iOS5 Private Browsing mode, attepting to use localStorage.setItem
     // will throw the exception:
@@ -719,7 +707,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // Because we are forced to try/catch this, we'll go aggressive.
 
     // Just FWIW: IE8 Compat mode supports these features completely:
-    //   http://www.quirksmode.org/dom/html5.html
+    //   www.quirksmode.org/dom/html5.html
     // But IE8 doesn't support either with local files
 
     tests['localstorage'] = function() {
@@ -734,8 +722,10 @@ window.Modernizr = (function( window, document, undefined ) {
 
     tests['sessionstorage'] = function() {
         try {
-            return !!sessionStorage.getItem;
-        } catch(e){
+            sessionStorage.setItem(mod, mod);
+            sessionStorage.removeItem(mod);
+            return true;
+        } catch(e) {
             return false;
         }
     };
@@ -781,8 +771,8 @@ window.Modernizr = (function( window, document, undefined ) {
         // We're using f which is the <input> element created early on
         // Mike Taylr has created a comprehensive resource for testing these attributes
         //   when applied to all input types:
-        //   http://miketaylr.com/code/input-type-attr.html
-        // spec: http://www.whatwg.org/specs/web-apps/current-work/multipage    he-input-element.html#input-type-attr-summary
+        //   miketaylr.com/code/input-type-attr.html
+        // spec: www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
         
         // Only input placeholder is tested while textarea's placeholder is not. 
         // Currently Safari 4 and Opera 11 have support only for the input placeholder
@@ -799,7 +789,7 @@ window.Modernizr = (function( window, document, undefined ) {
         //   true/false like all the other tests; instead, it returns an object
         //   containing each input type with its corresponding true/false value
 
-        // Big thanks to @miketaylr for the html5 forms expertise. http://miketaylr.com/
+        // Big thanks to @miketaylr for the html5 forms expertise. miketaylr.com/
         Modernizr['inputtypes'] = (function(props) {
 
             for ( var i = 0, bool, inputElemType, defaultView, len = props.length; i < len; i++ ) {
@@ -895,7 +885,7 @@ window.Modernizr = (function( window, document, undefined ) {
      Modernizr.addTest = function ( feature, test ) {
        if ( typeof feature == "object" ) {
          for ( var key in feature ) {
-           if ( hasOwnProperty( feature, key ) ) { 
+           if ( hasOwnProperty( feature, key ) ) {
              Modernizr.addTest( key, feature[ key ] );
            }
          }
@@ -906,13 +896,13 @@ window.Modernizr = (function( window, document, undefined ) {
          if ( Modernizr[feature] !== undefined ) {
            // we're going to quit if you're trying to overwrite an existing test
            // if we were to allow it, we'd do this:
-           //   var re = new RegExp("\\b(no-)?" + feature + "\\b");  
+           //   var re = new RegExp("\\b(no-)?" + feature + "\\b");
            //   docElement.className = docElement.className.replace( re, '' );
            // but, no rly, stuff 'em.
-           return; 
+           return Modernizr;
          }
 
-         test = typeof test == "boolean" ? test : !!test();
+         test = typeof test == 'function' ? test() : test;
 
          docElement.className += ' ' + (test ? '' : 'no-') + feature;
          Modernizr[feature] = test;
@@ -921,7 +911,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
        return Modernizr; // allow chaining.
      };
-    
+
 
     // Reset modElem.cssText to nothing to reduce memory footprint.
     setCss('');
@@ -933,8 +923,9 @@ window.Modernizr = (function( window, document, undefined ) {
                                             elem.innerHTML = '<elem></elem>';
                                             return elem.childNodes.length !== 1; })() ) {
                                               
-        // iepp v2.1pre by @jon_neal & afarkas : github.com/aFarkas/iepp/
+        // iepp v2.2 MIT/GPL2 @jon_neal & afarkas  : github.com/aFarkas/iepp/ 
         (function(win, doc) {
+
           win.iepp = win.iepp || {};
           var iepp = win.iepp,
             elems = iepp.html5elements || 'abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|subline|summary|time|video',
@@ -944,6 +935,7 @@ window.Modernizr = (function( window, document, undefined ) {
             tagRegExp = new RegExp('<(\/*)('+elems+')', 'gi'),
             filterReg = /^\s*[\{\}]\s*$/,
             ruleRegExp = new RegExp('(^|[^\\n]*?\\s)('+elems+')([^\\n]*)({[\\n\\w\\W]*?})', 'gi'),
+            nonPrintMedias = /@media +(?![Print|All])[^{]+\{([^{}]+\{[^{}]+\})+[^}]+\}/g,
             docFrag = doc.createDocumentFragment(),
             html = doc.documentElement,
             head = doc.getElementsByTagName('script')[0].parentNode,
@@ -959,7 +951,7 @@ window.Modernizr = (function( window, document, undefined ) {
               doc.createElement(elemsArr[a]);
             }
           }
-
+          
           iepp.getCSS = function(styleSheetList, mediaType) {
             try {
               if(styleSheetList+'' === undefined){
@@ -971,6 +963,7 @@ window.Modernizr = (function( window, document, undefined ) {
             var a = -1,
               len = styleSheetList.length,
               styleSheet,
+              cssText,
               cssTextArr = [];
             while (++a < len) {
               styleSheet = styleSheetList[a];
@@ -981,14 +974,18 @@ window.Modernizr = (function( window, document, undefined ) {
               mediaType = styleSheet.media || mediaType;
               // Get css from all non-screen stylesheets and their imports
               if (printMedias.test(mediaType)){
-                cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), styleSheet.cssText);
+                cssText = styleSheet.cssText;
+                if(mediaType != 'print'){
+                  cssText = cssText.replace(nonPrintMedias, "");
+                }
+                cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), cssText);
               }
               //reset mediaType to all with every new *not imported* stylesheet
               mediaType = 'all';
             }
             return cssTextArr.join('');
           };
-
+          
           iepp.parseCSS = function(cssText) {
             var cssTextArr = [],
               rule;
@@ -998,7 +995,7 @@ window.Modernizr = (function( window, document, undefined ) {
             }
             return cssTextArr.join('\n');
           };
-
+          
           iepp.writeHTML = function() {
             var a = -1;
             body = body || doc.body;
@@ -1012,7 +1009,7 @@ window.Modernizr = (function( window, document, undefined ) {
                   nodeList[b].className += ' iepp-'+elemsArr[a];
                 }
               }
-
+                
             }
             docFrag.appendChild(body);
             html.appendChild(bodyElem);
@@ -1022,35 +1019,35 @@ window.Modernizr = (function( window, document, undefined ) {
             // Replace HTML5 elements with <font> which is print-safe and shouldn't conflict since it isn't part of html5
             bodyElem.innerHTML = body.innerHTML.replace(tagRegExp, '<$1font');
           };
-
+          
           iepp._beforePrint = function() {
             if(iepp.disablePP){return;}
             // Write iepp custom print CSS
             styleElem.styleSheet.cssText = iepp.parseCSS(iepp.getCSS(doc.styleSheets, 'all'));
             iepp.writeHTML();
           };
-
+          
           iepp.restoreHTML = function() {
             if(iepp.disablePP){return;}
             // Undo everything done in onbeforeprint
             bodyElem.swapNode(body);
           };
-
+          
           iepp._afterPrint = function() {
             // Undo everything done in onbeforeprint
             iepp.restoreHTML();
             styleElem.styleSheet.cssText = '';
           };
-
+          
           // Shim the document and iepp fragment
           shim(doc);
           shim(docFrag);
-
+          
           //
           if(iepp.disablePP){
             return;
           }
-
+          
           // Add iepp custom print style element
           head.insertBefore(styleElem, head.firstChild);
           styleElem.media = 'print';
