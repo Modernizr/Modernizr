@@ -1,4 +1,3 @@
-
 // determining low-bandwidth via navigator.connection
 
 // There are two iterations of the navigator.connection interface:
@@ -13,11 +12,11 @@
 // unknown devices are assumed as fast
 // for more rigorous network testing, consider boomerang.js: github.com/bluesmoon/boomerang/
 
-Modernizr.addTest('lowbandwidth', function(){
+Modernizr.addTest('lowbandwidth', function() {
     
-  var connection = navigator.connection || {type:0, UNKNOWN: 0};  // polyfill
+  var connection = navigator.connection || { type: 0 }; // polyfill
 
-  return connection.type === 3 // connection.CELL_2G 
-      || connection.type === 4 // connection.CELL_3G
-      || !!navigator.connection.type.match(/^(?:2g|3g)$/); // string value in new spec
+  return connection.type == 3 // connection.CELL_2G 
+      || connection.type == 4 // connection.CELL_3G
+      || /^(?:2g|3g)$/.test(connection.type); // string value in new spec
 });
