@@ -18,5 +18,5 @@ Modernizr.addTest('lowbandwidth', function() {
 
   return connection.type == 3 // connection.CELL_2G 
       || connection.type == 4 // connection.CELL_3G
-      || /^(?:2g|3g)$/.test(connection.type); // string value in new spec
+      || /^[23]g$/.test(connection.type); // string value in new spec
 });
