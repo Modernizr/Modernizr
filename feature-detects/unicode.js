@@ -16,7 +16,7 @@ Modernizr.addTest('unicode', function() {
 		
 		star = document.createElement('span');
 
-	Modernizr.testStyles('#modernizr{font-family:Arial,sans;}', function(node) {
+	Modernizr.testStyles('#modernizr{font-family:Arial,sans;font-size:300em;}', function(node) {
 
 		missingGlyph.innerHTML = '&#5987';
 		star.innerHTML = '&#9734';		
