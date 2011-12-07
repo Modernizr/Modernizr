@@ -59,8 +59,8 @@ window.Modernizr = (function( window, document, undefined ) {
     //   elem.style.webkitBorderRadius
 
     // Webkit ghosts their properties in lowercase but Opera & Moz do not.
-    // Microsoft foregoes prefixes entirely <= IE8, but appears to
-    //   use a lowercase `ms` instead of the correct `Ms` in IE9
+    // Microsoft uses a lowercase `ms` instead of the correct `Ms` in IE8+
+    //   erik.eae.net/archives/2008/03/10/21.48.10/
 
     // More here: github.com/Modernizr/Modernizr/issues/issue/21
     domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
