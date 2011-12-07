@@ -274,7 +274,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 hash[children[len].id] = children[len];
             }
 
-             /*>>touch*/           Modernizr['touch'] = ('ontouchstart' in window) || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
+             /*>>touch*/          Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
             /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = (hash['csstransforms3d'] && hash['csstransforms3d'].offsetLeft) === 9;          /*>>csstransforms3d*/
             /*>>generatedcontent*/Modernizr['generatedcontent'] = (hash['generatedcontent'] && hash['generatedcontent'].offsetHeight) >= 1;       /*>>generatedcontent*/
             /*>>fontface*/        Modernizr['fontface'] = /src/i.test(cssText) &&
