@@ -663,7 +663,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 var h264 = 'video/mp4; codecs="avc1.42E01E';
                 bool.h264 = elem.canPlayType(h264 + '"') || elem.canPlayType(h264 + ', mp4a.40.2"');
 
-                bool.webm = elem.canPlayType('video/webm; codecs=f"vp8, vorbis"');
+                bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
             }
             
         } catch(e) { }
