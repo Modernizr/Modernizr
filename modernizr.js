@@ -84,7 +84,7 @@ window.Modernizr = (function( window, document, undefined ) {
           // After page load injecting a fake body doesn't work so check if body exists
           body = document.body, 
           // IE6 and 7 won't return offsetWidth or offsetHeight unless it's in the body element, so we fake it.
-          fakeBody = body ? body : document.createElement("body");
+          fakeBody = body ? body : document.createElement('body');
 
       if ( parseInt(nodes, 10) ) {
           // In order not to give false positives we create a node for each test
@@ -267,7 +267,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 // IE8 will bork if you create a custom build that excludes both fontface and generatedcontent tests.
                 // So we check for cssRules and that there is a rule available
                 // More here: github.com/Modernizr/Modernizr/issues/288 & github.com/Modernizr/Modernizr/issues/293
-                cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || "") : "",
+                cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || '') : '',
                 children = node.childNodes, hash = {};
 
             while ( len-- ) {
@@ -663,7 +663,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 var h264 = 'video/mp4; codecs="avc1.42E01E';
                 bool.h264 = elem.canPlayType(h264 + '"') || elem.canPlayType(h264 + ', mp4a.40.2"');
 
-                bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
+                bool.webm = elem.canPlayType('video/webm; codecs=f"vp8, vorbis"');
             }
             
         } catch(e) { }
@@ -883,7 +883,7 @@ window.Modernizr = (function( window, document, undefined ) {
      * @param test - Function returning true if feature is supported, false if not
      */
      Modernizr.addTest = function ( feature, test ) {
-       if ( typeof feature == "object" ) {
+       if ( typeof feature == 'object' ) {
          for ( var key in feature ) {
            if ( hasOwnProperty( feature, key ) ) {
              Modernizr.addTest( key, feature[ key ] );
@@ -976,7 +976,7 @@ window.Modernizr = (function( window, document, undefined ) {
               if (printMedias.test(mediaType)){
                 cssText = styleSheet.cssText;
                 if(mediaType != 'print'){
-                  cssText = cssText.replace(nonPrintMedias, "");
+                  cssText = cssText.replace(nonPrintMedias, '');
                 }
                 cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), cssText);
               }
