@@ -1054,6 +1054,10 @@ window.Modernizr = (function( window, document, undefined ) {
     // Modernizr.mq('only screen and (max-width:768)')
     Modernizr.mq            = testMediaQuery;   
     
+    // test support for min/max-width media queries and add appropriate class
+    if ( ! Modernizr.mq('(min-width:0)') ) { classes.push('no-mq') }
+    else { classes.push('mq') }
+
     // Modernizr.hasEvent() detects support for a given event, with an optional element to test on
     // Modernizr.hasEvent('gesturestart', elem)
     Modernizr.hasEvent      = isEventSupported; 
