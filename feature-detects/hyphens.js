@@ -1,6 +1,17 @@
 /* see http://dev.davidnewton.ca/the-current-state-of-hyphenation-on-the-web */
 
+/* these tests currently require document.body to be present */
+
+/* There are three tests:
+	 1. csshyphens 			- tests hyphens:auto actually adds hyphens to text
+	 2. softhyphens 		- tests that &shy; does its job
+	 3. softhyphensfind - tests that in-browser Find functionality still works correctly with &shy;
+
+*/
+
 (function() {
+
+	// for the softhyphens test
 	function test_hyphens(delimiter, testWidth) {
 		try {
 			/* create a div container and a span within that
@@ -48,6 +59,7 @@
 		}
 	}
 
+	// testing if in-browser Find functionality will work on hyphenated text
 	function test_hyphens_find(delimiter) {
 		try {
 			/* create a dummy input for resetting selection location, and a div container
@@ -59,12 +71,13 @@
 				testword = 'lebowski',
 				result = false,
 				textrange;
+
 			document.body.appendChild(dummy);
 			document.body.appendChild(div);
 			div.innerHTML = testword + delimiter + testword;
 
 			/* reset the selection to the dummy input element, i.e. BEFORE the div container
-			 * this conditional block based on http://stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area */
+			 *   stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area */
 			if (dummy.setSelectionRange) {
 				dummy.focus();
 				dummy.setSelectionRange(0,0);
@@ -95,6 +108,7 @@
 		}
 	}
 
+	// functional test of adding hyphens:auto
 	function test_hyphens_css() {
 		try {
 			/* create a div container and a span within that
@@ -117,7 +131,10 @@
 			spanWidth = span.offsetWidth;
 
 			/* compare size with hyphenated text */
-			divStyle.cssText = 'position:absolute;top:0;left:0;width:5em;text-align:justify;text-justification:newspaper;-moz-hyphens:auto;-webkit-hyphens:auto;-o-hyphens:auto;-ms-hyphens:auto;hyphens:auto;';
+			divStyle.cssText = 'position:absolute;top:0;left:0;width:5em;text-align:justify;'+
+												 'text-justification:newspaper;' 
+												 + Modernizr._prefixes.join('hyphens:auto; ');
+
 			result = (span.offsetHeight != spanHeight || span.offsetWidth != spanWidth);
 
 			/* results and cleanup */
@@ -132,10 +149,12 @@
 
 
 	Modernizr.addTest("csshyphens", function() {
-		return Modernizr.testAllProps('hyphens');
-	});
 
-	Modernizr.addTest("workingcsshyphens", function() {
+		if (!Modernizr.testAllProps('hyphens')) return false;
+
+		/* Chrome lies about its hyphens support so we need a more robust test
+				crbug.com/107111
+		*/
 		try {
 			return test_hyphens_css();
 		} catch(e) {
@@ -145,7 +164,8 @@
 
 	Modernizr.addTest("softhyphens", function() {
 		try {
-			return test_hyphens('&#173;', true) && test_hyphens('&#8203;', false); // use numeric entity instead of &shy; in case it's XHTML
+			// use numeric entity instead of &shy; in case it's XHTML
+			return test_hyphens('&#173;', true) && test_hyphens('&#8203;', false); 
 		} catch(e) {
 			return false;
 		}
@@ -158,4 +178,5 @@
 			return false;
 		}
 	});
+	
 })();
