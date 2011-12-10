@@ -1,4 +1,6 @@
-#/bin/bash
+#/bin/sh
+
+# sudo npm install -g uglify-js
 
 IN=modernizr.js
 OUT=modernizr.min.js
