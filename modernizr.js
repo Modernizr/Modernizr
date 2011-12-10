@@ -590,6 +590,8 @@ window.Modernizr = (function( window, document, undefined ) {
     /*>>fontface*/
     // @font-face detection routine by Diego Perini
     // javascript.nwbox.com/CSSSupport/
+
+    // false positives in Camino and WebOS: github.com/Modernizr/Modernizr/issues/342
     tests['fontface'] = function() {
         return Modernizr['fontface'];
     };
