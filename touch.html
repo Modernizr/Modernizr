@@ -30,7 +30,7 @@
 			<th>typeof TouchEvent != "undefined"</th>
 			<th>typeof Touch == "object"</th>			
 			<th>"ontouchend" in document</th>
-      <th>NW.Event<br>.isEventSupported('touchstart')</th>
+      <th>NW.Event<br>.isSupported('touchstart')</th>
       
 		</thead>
 		<tbody>
@@ -63,7 +63,7 @@ var _bTestResults = {
   'typeof_touch_not_undefined': (!!(typeof TouchEvent != "undefined") ? 1 : 0),
   'typeof_touch_object': (!!(typeof Touch == "object") ? 1 : 0),
   'ontouchend_in_document': (!!('ontouchend' in document) ? 1 : 0),
-  'nwevents' : ( NW.Event.isEventSupported('touchstart')  ? 1 : 0)
+  'nwevents' : ( NW.Event.isSupported('touchstart') ? 1 : 0)
 };
 
 
