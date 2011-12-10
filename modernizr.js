@@ -307,49 +307,18 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
+    // The *new* flexbox
+    // dev.w3.org/csswg/css3-flexbox
+
     tests['flexbox'] = function() {
-        /**
-         * setPrefixedValueCSS sets the property of a specified element
-         * adding vendor prefixes to the VALUE of the property.
-         * @param {Element} element
-         * @param {string} property The property name. This will not be prefixed.
-         * @param {string} value The value of the property. This WILL be prefixed.
-         * @param {string=} extra Additional CSS to append unmodified to the end of
-         * the CSS string.
-         */
-        function setPrefixedValueCSS( element, property, value, extra ) {
-            property += ':';
-            element.style.cssText = (property + prefixes.join(value + ';' + property)).slice(0, -property.length) + (extra || '');
-        }
+      return testPropsAll('flexOrder');
+    };
 
-        /**
-         * setPrefixedPropertyCSS sets the property of a specified element
-         * adding vendor prefixes to the NAME of the property.
-         * @param {Element} element
-         * @param {string} property The property name. This WILL be prefixed.
-         * @param {string} value The value of the property. This will not be prefixed.
-         * @param {string=} extra Additional CSS to append unmodified to the end of
-         * the CSS string.
-         */
-        function setPrefixedPropertyCSS( element, property, value, extra ) {
-            element.style.cssText = prefixes.join(property + ':' + value + ';') + (extra || '');
-        }
+    // The *old* flexbox
+    // www.w3.org/TR/2009/WD-css3-flexbox-20090723/
 
-        var c = document.createElement('div'),
-            elem = document.createElement('div');
-
-        setPrefixedValueCSS(c, 'display', 'box', 'width:42px;padding:0;');
-        setPrefixedPropertyCSS(elem, 'box-flex', '1', 'width:10px;');
-
-        c.appendChild(elem);
-        docElement.appendChild(c);
-
-        var ret = elem.offsetWidth === 42;
-
-        c.removeChild(elem);
-        docElement.removeChild(c);
-
-        return ret;
+    tests['flexbox-legacy'] = function() {
+        return testPropsAll('boxDirection');
     };
 
     // On the S60 and BB Storm, getContext exists, but always returns undefined
