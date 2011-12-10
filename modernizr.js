@@ -729,8 +729,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     tests['svgclippaths'] = function() {
-        // Possibly returns a false positive in Safari 3.2?
-        return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
+        return !!document.createElementNS && /SVGClipPath/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
     };
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
