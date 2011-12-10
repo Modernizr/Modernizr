@@ -63,7 +63,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //   erik.eae.net/archives/2008/03/10/21.48.10/
 
     // More here: github.com/Modernizr/Modernizr/issues/issue/21
-    domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+    cssomPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
 
     ns = {'svg': 'http://www.w3.org/2000/svg'},
 
@@ -248,7 +248,7 @@ window.Modernizr = (function( window, document, undefined ) {
     function testPropsAll( prop, prefixed ) {
 
         var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
-            props   = (prop + ' ' + domPrefixes.join(ucProp + ' ') + ucProp).split(' ');
+            props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
         return testProps(props, prefixed);
     }
@@ -431,8 +431,8 @@ window.Modernizr = (function( window, document, undefined ) {
     // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
     // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function() {
-      for ( var i = -1, len = domPrefixes.length; ++i < len; ){
-        if ( window[domPrefixes[i].toLowerCase() + 'IndexedDB'] ){
+      for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
+        if ( window[cssomPrefixes[i].toLowerCase() + 'IndexedDB'] ){
           return true;
         }
       }
@@ -462,8 +462,8 @@ window.Modernizr = (function( window, document, undefined ) {
     // Mozilla is targeting to land MozWebSocket for FF6
     // bugzil.la/659324
     tests['websockets'] = function() {
-        for ( var i = -1, len = domPrefixes.length; ++i < len; ){
-          if ( window[domPrefixes[i] + 'WebSocket'] ){
+        for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
+          if ( window[cssomPrefixes[i] + 'WebSocket'] ){
             return true;
           }
         }
@@ -1069,7 +1069,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // expose these for the plugin API. Look in the source for how to join() them against your input
     Modernizr._prefixes     = prefixes;
-    Modernizr._domPrefixes  = domPrefixes;
+    Modernizr._domPrefixes  = cssomPrefixes;
     
     // Modernizr.mq tests a given media query, live against the current state of the window
     // A few important notes:
