@@ -732,6 +732,15 @@ window.Modernizr = (function( window, document, undefined ) {
         // Possibly returns a false positive in Safari 3.2?
         return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
     };
+    
+    // Added by David Kendal
+    tests['meter'] = function(){
+        return 'value' in document.createElement('meter');
+    }
+    
+    tests['progress'] = function(){
+        return 'value' in document.createElement('progress');
+    }
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
