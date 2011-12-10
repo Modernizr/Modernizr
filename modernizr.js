@@ -617,7 +617,6 @@ window.Modernizr = (function( window, document, undefined ) {
     // Note: in some older browsers, "no" was a return value instead of empty string.
     //   It was live in FF3.5.0 and 3.5.1, but fixed in 3.5.2
     //   It was also live in Safari 4.0.0 - 4.0.4, but fixed in 4.0.5
-    //   Modernizr does not normalize for this.
 
     tests['video'] = function() {
         var elem = document.createElement('video'),
@@ -627,11 +626,11 @@ window.Modernizr = (function( window, document, undefined ) {
         try {
             if ( bool = !!elem.canPlayType ) {
                 bool      = new Boolean(bool);
-                bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"');
+                bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"')      .replace(/^no$/,'');
 
-                bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"');
+                bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"') .replace(/^no$/,'');
 
-                bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
+                bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,'');
             }
             
         } catch(e) { }
@@ -646,14 +645,15 @@ window.Modernizr = (function( window, document, undefined ) {
         try { 
             if ( bool = !!elem.canPlayType ) {
                 bool      = new Boolean(bool);
-                bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"');
-                bool.mp3  = elem.canPlayType('audio/mpeg;');
+                bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,'');
+                bool.mp3  = elem.canPlayType('audio/mpeg;')               .replace(/^no$/,'');
 
                 // Mimetypes accepted:
                 //   developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
                 //   bit.ly/iphoneoscodecs
-                bool.wav  = elem.canPlayType('audio/wav; codecs="1"');
-                bool.m4a  = elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;');
+                bool.wav  = elem.canPlayType('audio/wav; codecs="1"')     .replace(/^no$/,'');
+                bool.m4a  = ( elem.canPlayType('audio/x-m4a;')            || 
+                              elem.canPlayType('audio/aac;'))             .replace(/^no$/,'');
             }
         } catch(e) { }
         
