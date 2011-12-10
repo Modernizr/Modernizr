@@ -723,9 +723,9 @@ window.Modernizr = (function( window, document, undefined ) {
       return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
     };
 
-    // Thanks to F1lt3r and lucideer, ticket #35
+    // SVG SMIL animation
     tests['smil'] = function() {
-        return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
+        return !!document.createElementNS && /SVGAnimate/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
     };
 
     tests['svgclippaths'] = function() {
