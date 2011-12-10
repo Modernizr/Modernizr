@@ -12,9 +12,9 @@
       Modernizr.addTest('webp', false);
   };  
   image.onload = function() {
-      Modernizr.addTest('webp', function() { return image.width == 4; });
+      Modernizr.addTest('webp', function() { return image.width == 1; });
   };
 
-  image.src = 'data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACyAgCdASoBAAEALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA==';
+  image.src = 'data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAAAUAgCdASoBAAEAL/3+/3+CAB/AAAFzrNsAAP5QAAAAAA==';
 
 }());
