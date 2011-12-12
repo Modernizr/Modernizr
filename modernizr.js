@@ -753,6 +753,11 @@ window.Modernizr = (function( window, document, undefined ) {
             for ( var i = 0, len = props.length; i < len; i++ ) {
                 attrs[ props[i] ] = !!(props[i] in inputElem);
             }
+            if (attrs.list){
+              // safari false positive's on datalist: webk.it/74252
+              // see also github.com/Modernizr/Modernizr/issues/146
+              attrs.list = !!(document.createElement('datalist') && window.HTMLDataListElement);
+            }
             return attrs;
         })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
 
