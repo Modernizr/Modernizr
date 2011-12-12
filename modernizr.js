@@ -601,6 +601,12 @@ window.Modernizr = (function( window, document, undefined ) {
     tests['generatedcontent'] = function() {
         return Modernizr['generatedcontent'];
     };
+    
+    // Device Pixel Density
+    // High res devices should have devicePixelRatio and a pixel density around 2, otherwise assume low res
+    tests['highres'] = function() {
+        return !!(window.devicePixelRatio > 1.5);
+    };
 
 
 
