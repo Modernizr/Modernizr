@@ -803,8 +803,9 @@ window.Modernizr = (function( window, document, undefined ) {
                       // Interestingly, opera fails the earlier test, so it doesn't
                       //  even make it here.
 
-                    } else if ( /^(url|email)$/.test(inputElemType) ) {
-                      // Real url and email support comes with prebaked validation.
+                    } else if ( /^(url|email|datetime|date|month|week|time|datetime-local|number)$/.test(inputElemType) ) {
+                      // Real url, email, datetime, date, month, week, time, datetime-local, number
+                      // support come with prebaked validation.
                       bool = inputElem.checkValidity && inputElem.checkValidity() === false;
 
                     } else if ( /^color$/.test(inputElemType) ) {
