@@ -25,9 +25,9 @@
                     -webkit-column-count: 5;
                        -moz-column-count: 5;
                             column-count: 5;}
-      .output + .output {
-        border-top: 5px solid #ccc;
-      }
+      .output + .output { border-top: 5px solid #ccc; }
+      textarea { width: 100%; min-height: 75px;}
+      #caniusetrigger { font-size: 38px; font-family: monospace; display:block; }
   </style>
   
   <script src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
@@ -67,12 +67,12 @@
 
 
   
-  
-  
+  <h5>JSON.stringify(Modernizr)</h5>
+  <textarea></textarea>
   <a href="#"   id="caniusetrigger" 
                 onclick="return revealreftests(this)" 
                 title="add a #caniuse hash to this page to make this automatic"
-                style="font-size: 38px; font-family: monospace">Show the Ref Tests from Caniuse and Modernizr</a>
+                >Show the Ref Tests from Caniuse and Modernizr</a>
 
 
   <script src="js/dumpdata.js"></script>

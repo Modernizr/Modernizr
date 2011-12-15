@@ -58,6 +58,9 @@ function resultsToDOM(){
   modOutput.className = 'output';
   modOutput.innerHTML = dumpModernizr();
   if (Modernizr.csscolumns) ref.parentNode.insertBefore(modOutput, ref);
+
+  // Modernizr object as text
+  document.getElementsByTagName('textarea')[0].value = JSON.stringify(Modernizr);
 }
 
 /* uno  */ resultsToDOM();
