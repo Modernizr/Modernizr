@@ -478,7 +478,6 @@ test('Modernizr.prefixed()', function(){
 
   for (var i = -1, len = domPropArr.length; ++i < len; ){
     var prop = domPropArr[i];
-    console.log(Modernizr.prefixed(prop.prop, prop.obj),gimmePrefix(prop.prop, prop.obj));
     equals( Modernizr.prefixed(prop.prop, prop.obj), gimmePrefix(prop.prop, prop.obj), 'results for ' + prop.prop + ' match the homebaked prefix finder');
   }
 
