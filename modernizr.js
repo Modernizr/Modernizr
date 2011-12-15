@@ -422,12 +422,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
     // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function() {
-      for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
-        if ( window[cssomPrefixes[i].toLowerCase() + 'IndexedDB'] ){
-          return true;
-        }
-      }
-      return !!window.indexedDB;
+      return !!testPropsAll("indexedDB",window);
     };
 
     // documentMode logic from YUI to filter out IE8 Compat Mode
