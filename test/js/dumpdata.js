@@ -52,6 +52,7 @@ function grabFeatDetects(){
 }
 
 function resultsToDOM(){
+
   var modOutput = document.createElement('div'),
       ref = document.getElementById('qunit-testresult') || document.getElementById('qunit-tests');
 
@@ -60,7 +61,8 @@ function resultsToDOM(){
   if (Modernizr.csscolumns) ref.parentNode.insertBefore(modOutput, ref);
 
   // Modernizr object as text
-  document.getElementsByTagName('textarea')[0].value = JSON.stringify(Modernizr);
+  document.getElementsByTagName('textarea')[0].innerHTML = JSON.stringify(Modernizr);
+
 }
 
 /* uno  */ resultsToDOM();
