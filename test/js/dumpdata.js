@@ -65,7 +65,7 @@ function resultsToDOM(){
 
 }
 
-/* uno  */ resultsToDOM();
-/* dos  */ grabFeatDetects();
-/* tres */ setTimeout(resultsToDOM, 5e3);
-
+/* uno    */ resultsToDOM();
+/* dos    */ grabFeatDetects();
+/* tres   */ setTimeout(resultsToDOM,  5e3);
+/* quatro */ setTimeout(resultsToDOM, 15e3);
