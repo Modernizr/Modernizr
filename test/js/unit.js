@@ -436,17 +436,28 @@ test('Modernizr.testAllProps()',function(){
 test('Modernizr.prefixed()', function(){
   // https://gist.github.com/523692
   
-  function gimmePrefix(prop){
+  function gimmePrefix(prop, obj){
     var prefixes = ['Moz','Khtml','Webkit','O','ms'],
+        domPrefixes = ['moz','khtml','webkit','o','ms'],
         elem     = document.createElement('div'),
         upper    = prop.charAt(0).toUpperCase() + prop.slice(1);
 
-    if (prop in elem.style)
-      return prop;
+    if(!obj) {
+      if (prop in elem.style)
+        return prop;
 
-    for (var len = prefixes.length; len--; ){
-      if ((prefixes[len] + upper)  in elem.style)
-        return (prefixes[len] + upper);
+      for (var len = prefixes.length; len--; ){
+        if ((prefixes[len] + upper)  in elem.style)
+          return (prefixes[len] + upper);
+      }
+    } else {
+      if (prop in obj)
+        return prop;
+
+      for (var len = domPrefixes.length; len--; ){
+        if ((domPrefixes[len] + upper)  in obj)
+          return (domPrefixes[len] + upper);
+      }
     }
 
 
@@ -456,11 +467,21 @@ test('Modernizr.prefixed()', function(){
   var propArr = ['transition', 'backgroundSize', 'boxSizing', 'borderImage', 
                  'borderRadius', 'boxShadow', 'columnCount'];
   
-  
+  var domPropArr = [{ 'prop': 'requestAnimationFrame', 'obj': window }, 
+                    { 'prop': 'querySelectorAll', 'obj': document }, 
+                    { 'prop': 'matchesSelector', 'obj': document.createElement('div') }];
+
   for (var i = -1, len = propArr.length; ++i < len; ){
     var prop = propArr[i];
     equals( Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
   }
+
+  for (var i = -1, len = domPropArr.length; ++i < len; ){
+    var prop = domPropArr[i];
+    console.log(Modernizr.prefixed(prop.prop, prop.obj),gimmePrefix(prop.prop, prop.obj));
+    equals( Modernizr.prefixed(prop.prop, prop.obj), gimmePrefix(prop.prop, prop.obj), 'results for ' + prop.prop + ' match the homebaked prefix finder');
+  }
+
   
   
   

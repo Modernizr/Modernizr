@@ -63,7 +63,11 @@ window.Modernizr = (function( window, document, undefined ) {
     //   erik.eae.net/archives/2008/03/10/21.48.10/
 
     // More here: github.com/Modernizr/Modernizr/issues/issue/21
-    cssomPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+    omPrefixes = 'Webkit Moz O ms Khtml',
+
+    cssomPrefixes = omPrefixes.split(' '),
+
+    domPrefixes = omPrefixes.toLowerCase().split(' '),
 
     ns = {'svg': 'http://www.w3.org/2000/svg'},
 
@@ -240,6 +244,19 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     /**
+     * testDOMProps is a generic DOM property test; if a browser supports
+     *   a certain property, it won't return undefined for it.
+     */
+    function testDOMProps( props, obj ) {
+        for ( var i in props ) {
+            if ( obj[ props[i] ] !== undefined) {
+                return props[i];
+            }
+        }
+        return false;
+    }
+
+    /**
      * testPropsAll tests a list of DOM properties we want to check against.
      *   We specify literally ALL possible (known and/or likely) properties on
      *   the element including the non-vendor prefixed one, for forward-
@@ -250,7 +267,12 @@ window.Modernizr = (function( window, document, undefined ) {
         var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
             props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
-        return testProps(props, prefixed);
+        if(!is(prefixed, "object")) {
+          return testProps(props, prefixed);
+        } else {
+          props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
+          return testDOMProps(props, prefixed);
+        }
     }
 
     /**
@@ -1107,8 +1129,13 @@ window.Modernizr = (function( window, document, undefined ) {
     //     },
     //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
     
-    Modernizr.prefixed      = function(prop){
-      return testPropsAll(prop, 'pfx');
+    Modernizr.prefixed      = function(prop, obj){
+      if(!obj) {
+        return testPropsAll(prop, 'pfx');
+      } else {
+        // Testing DOM property e.g. Modernizr.prefixed('requestAnimationFrame', window) // 'mozRequestAnimationFrame'
+        return testPropsAll(prop, obj);
+      }
     };
 
 
