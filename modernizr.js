@@ -59,11 +59,11 @@ window.Modernizr = (function( window, document, undefined ) {
     //   elem.style.webkitBorderRadius
 
     // Webkit ghosts their properties in lowercase but Opera & Moz do not.
-    // Microsoft foregoes prefixes entirely <= IE8, but appears to
-    //   use a lowercase `ms` instead of the correct `Ms` in IE9
+    // Microsoft uses a lowercase `ms` instead of the correct `Ms` in IE8+
+    //   erik.eae.net/archives/2008/03/10/21.48.10/
 
     // More here: github.com/Modernizr/Modernizr/issues/issue/21
-    domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+    cssomPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
 
     ns = {'svg': 'http://www.w3.org/2000/svg'},
 
@@ -84,7 +84,7 @@ window.Modernizr = (function( window, document, undefined ) {
           // After page load injecting a fake body doesn't work so check if body exists
           body = document.body, 
           // IE6 and 7 won't return offsetWidth or offsetHeight unless it's in the body element, so we fake it.
-          fakeBody = body ? body : document.createElement("body");
+          fakeBody = body ? body : document.createElement('body');
 
       if ( parseInt(nodes, 10) ) {
           // In order not to give false positives we create a node for each test
@@ -248,7 +248,7 @@ window.Modernizr = (function( window, document, undefined ) {
     function testPropsAll( prop, prefixed ) {
 
         var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
-            props   = (prop + ' ' + domPrefixes.join(ucProp + ' ') + ucProp).split(' ');
+            props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
         return testProps(props, prefixed);
     }
@@ -267,14 +267,14 @@ window.Modernizr = (function( window, document, undefined ) {
                 // IE8 will bork if you create a custom build that excludes both fontface and generatedcontent tests.
                 // So we check for cssRules and that there is a rule available
                 // More here: github.com/Modernizr/Modernizr/issues/288 & github.com/Modernizr/Modernizr/issues/293
-                cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || "") : "",
+                cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || '') : '',
                 children = node.childNodes, hash = {};
 
             while ( len-- ) {
                 hash[children[len].id] = children[len];
             }
 
-             /*>>touch*/           Modernizr['touch'] = ('ontouchstart' in window) || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
+             /*>>touch*/          Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
             /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = (hash['csstransforms3d'] && hash['csstransforms3d'].offsetLeft) === 9;          /*>>csstransforms3d*/
             /*>>generatedcontent*/Modernizr['generatedcontent'] = (hash['generatedcontent'] && hash['generatedcontent'].offsetHeight) >= 1;       /*>>generatedcontent*/
             /*>>fontface*/        Modernizr['fontface'] = /src/i.test(cssText) &&
@@ -307,49 +307,18 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
+    // The *new* flexbox
+    // dev.w3.org/csswg/css3-flexbox
+
     tests['flexbox'] = function() {
-        /**
-         * setPrefixedValueCSS sets the property of a specified element
-         * adding vendor prefixes to the VALUE of the property.
-         * @param {Element} element
-         * @param {string} property The property name. This will not be prefixed.
-         * @param {string} value The value of the property. This WILL be prefixed.
-         * @param {string=} extra Additional CSS to append unmodified to the end of
-         * the CSS string.
-         */
-        function setPrefixedValueCSS( element, property, value, extra ) {
-            property += ':';
-            element.style.cssText = (property + prefixes.join(value + ';' + property)).slice(0, -property.length) + (extra || '');
-        }
+      return testPropsAll('flexOrder');
+    };
 
-        /**
-         * setPrefixedPropertyCSS sets the property of a specified element
-         * adding vendor prefixes to the NAME of the property.
-         * @param {Element} element
-         * @param {string} property The property name. This WILL be prefixed.
-         * @param {string} value The value of the property. This will not be prefixed.
-         * @param {string=} extra Additional CSS to append unmodified to the end of
-         * the CSS string.
-         */
-        function setPrefixedPropertyCSS( element, property, value, extra ) {
-            element.style.cssText = prefixes.join(property + ':' + value + ';') + (extra || '');
-        }
+    // The *old* flexbox
+    // www.w3.org/TR/2009/WD-css3-flexbox-20090723/
 
-        var c = document.createElement('div'),
-            elem = document.createElement('div');
-
-        setPrefixedValueCSS(c, 'display', 'box', 'width:42px;padding:0;');
-        setPrefixedPropertyCSS(elem, 'box-flex', '1', 'width:10px;');
-
-        c.appendChild(elem);
-        docElement.appendChild(c);
-
-        var ret = elem.offsetWidth === 42;
-
-        c.removeChild(elem);
-        docElement.removeChild(c);
-
-        return ret;
+    tests['flexbox-legacy'] = function() {
+        return testPropsAll('boxDirection');
     };
 
     // On the S60 and BB Storm, getContext exists, but always returns undefined
@@ -431,8 +400,8 @@ window.Modernizr = (function( window, document, undefined ) {
     // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
     // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function() {
-      for ( var i = -1, len = domPrefixes.length; ++i < len; ){
-        if ( window[domPrefixes[i].toLowerCase() + 'IndexedDB'] ){
+      for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
+        if ( window[cssomPrefixes[i].toLowerCase() + 'IndexedDB'] ){
           return true;
         }
       }
@@ -462,8 +431,8 @@ window.Modernizr = (function( window, document, undefined ) {
     // Mozilla is targeting to land MozWebSocket for FF6
     // bugzil.la/659324
     tests['websockets'] = function() {
-        for ( var i = -1, len = domPrefixes.length; ++i < len; ){
-          if ( window[domPrefixes[i] + 'WebSocket'] ){
+        for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
+          if ( window[cssomPrefixes[i] + 'WebSocket'] ){
             return true;
           }
         }
@@ -554,6 +523,9 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
+    // Note, Android < 4 will pass this test, but can only animate 
+    //   a single property at a time
+    //   daneden.me/2011/12/putting-up-with-androids-bullshit/
     tests['cssanimations'] = function() {
         return testPropsAll('animationName');
     };
@@ -578,7 +550,10 @@ window.Modernizr = (function( window, document, undefined ) {
             str3 = 'linear-gradient(left top,#9f9, white);';
 
         setCss(
-            (str1 + prefixes.join(str2 + str1) + prefixes.join(str3 + str1)).slice(0, -str1.length)
+             // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
+              (str1 + '-webkit- '.split(' ').join(str2 + str1) 
+             // standard syntax             // trailing 'background-image:' 
+              + prefixes.join(str3 + str1)).slice(0, -str1.length)
         );
 
         return contains(mStyle.backgroundImage, 'gradient');
@@ -621,6 +596,8 @@ window.Modernizr = (function( window, document, undefined ) {
     /*>>fontface*/
     // @font-face detection routine by Diego Perini
     // javascript.nwbox.com/CSSSupport/
+
+    // false positives in WebOS: github.com/Modernizr/Modernizr/issues/342
     tests['fontface'] = function() {
         return Modernizr['fontface'];
     };
@@ -646,7 +623,6 @@ window.Modernizr = (function( window, document, undefined ) {
     // Note: in some older browsers, "no" was a return value instead of empty string.
     //   It was live in FF3.5.0 and 3.5.1, but fixed in 3.5.2
     //   It was also live in Safari 4.0.0 - 4.0.4, but fixed in 4.0.5
-    //   Modernizr does not normalize for this.
 
     tests['video'] = function() {
         var elem = document.createElement('video'),
@@ -656,14 +632,11 @@ window.Modernizr = (function( window, document, undefined ) {
         try {
             if ( bool = !!elem.canPlayType ) {
                 bool      = new Boolean(bool);
-                bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"');
+                bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"')      .replace(/^no$/,'');
 
-                // Workaround required for IE9, which doesn't report video support without audio codec specified.
-                //   bug 599718 @ msft connect
-                var h264 = 'video/mp4; codecs="avc1.42E01E';
-                bool.h264 = elem.canPlayType(h264 + '"') || elem.canPlayType(h264 + ', mp4a.40.2"');
+                bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"') .replace(/^no$/,'');
 
-                bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"');
+                bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,'');
             }
             
         } catch(e) { }
@@ -678,14 +651,15 @@ window.Modernizr = (function( window, document, undefined ) {
         try { 
             if ( bool = !!elem.canPlayType ) {
                 bool      = new Boolean(bool);
-                bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"');
-                bool.mp3  = elem.canPlayType('audio/mpeg;');
+                bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,'');
+                bool.mp3  = elem.canPlayType('audio/mpeg;')               .replace(/^no$/,'');
 
                 // Mimetypes accepted:
                 //   developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
                 //   bit.ly/iphoneoscodecs
-                bool.wav  = elem.canPlayType('audio/wav; codecs="1"');
-                bool.m4a  = elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;');
+                bool.wav  = elem.canPlayType('audio/wav; codecs="1"')     .replace(/^no$/,'');
+                bool.m4a  = ( elem.canPlayType('audio/x-m4a;')            || 
+                              elem.canPlayType('audio/aac;'))             .replace(/^no$/,'');
             }
         } catch(e) { }
         
@@ -754,14 +728,18 @@ window.Modernizr = (function( window, document, undefined ) {
       return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
     };
 
-    // Thanks to F1lt3r and lucideer, ticket #35
+    // SVG SMIL animation
     tests['smil'] = function() {
-        return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
+        return !!document.createElementNS && /SVGAnimate/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
     };
 
+    // This test is only for clip paths in SVG proper, not clip paths on HTML content
+    // demo: srufaculty.sru.edu/david.dailey/svg/newstuff/clipPath4.svg
+
+    // However read the comments to dig into applying SVG clippaths to HTML content here:
+    //   github.com/Modernizr/Modernizr/issues/213#issuecomment-1149491
     tests['svgclippaths'] = function() {
-        // Possibly returns a false positive in Safari 3.2?
-        return !!document.createElementNS && /SVG/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
+        return !!document.createElementNS && /SVGClipPath/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
     };
 
     // input features and input types go directly onto the ret object, bypassing the tests loop.
@@ -780,6 +758,11 @@ window.Modernizr = (function( window, document, undefined ) {
         Modernizr['input'] = (function( props ) {
             for ( var i = 0, len = props.length; i < len; i++ ) {
                 attrs[ props[i] ] = !!(props[i] in inputElem);
+            }
+            if (attrs.list){
+              // safari false positive's on datalist: webk.it/74252
+              // see also github.com/Modernizr/Modernizr/issues/146
+              attrs.list = !!(document.createElement('datalist') && window.HTMLDataListElement);
             }
             return attrs;
         })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
@@ -883,7 +866,7 @@ window.Modernizr = (function( window, document, undefined ) {
      * @param test - Function returning true if feature is supported, false if not
      */
      Modernizr.addTest = function ( feature, test ) {
-       if ( typeof feature == "object" ) {
+       if ( typeof feature == 'object' ) {
          for ( var key in feature ) {
            if ( hasOwnProperty( feature, key ) ) {
              Modernizr.addTest( key, feature[ key ] );
@@ -976,7 +959,7 @@ window.Modernizr = (function( window, document, undefined ) {
               if (printMedias.test(mediaType)){
                 cssText = styleSheet.cssText;
                 if(mediaType != 'print'){
-                  cssText = cssText.replace(nonPrintMedias, "");
+                  cssText = cssText.replace(nonPrintMedias, '');
                 }
                 cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), cssText);
               }
@@ -1069,7 +1052,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // expose these for the plugin API. Look in the source for how to join() them against your input
     Modernizr._prefixes     = prefixes;
-    Modernizr._domPrefixes  = domPrefixes;
+    Modernizr._domPrefixes  = cssomPrefixes;
     
     // Modernizr.mq tests a given media query, live against the current state of the window
     // A few important notes:
