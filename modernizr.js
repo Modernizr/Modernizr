@@ -445,8 +445,8 @@ window.Modernizr = (function( window, document, undefined ) {
         return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
     };
 
-    // Mozilla is targeting to land MozWebSocket for FF6
-    // bugzil.la/659324
+    // FIXME: Once FF10 is sunsetted, we can drop prefixed MozWebSocket
+    // bugzil.la/695635
     tests['websockets'] = function() {
         for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
           if ( window[cssomPrefixes[i] + 'WebSocket'] ){
