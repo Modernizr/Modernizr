@@ -1,22 +1,20 @@
-
-// MathML omg!
-// http://www.w3.org/Math/
-
-// this tests MathML in HTML, not MathML as XML.
-// test by Niels Leenheer
-
-// demo: 
-// http://www1.chapman.edu/~jipsen/mathml/mathhtmltest.htm
+// MathML
+// Details: http://www.w3.org/Math/ 
 
 Modernizr.addTest('mathml', function(){
-
-  var e = document.createElement('div');
-      e.innerHTML = '<math></math>';
-      
-  var bool = e.firstChild 
-  && "namespaceURI" in e.firstChild 
-  && e.firstChild.namespaceURI == 'http://www.w3.org/1998/Math/MathML';
-
-  return bool;  
-
+	var hasMathML = false;
+	if ( document.createElementNS ) {
+	var ns = "http://www.w3.org/1998/Math/MathML",
+	    div = document.createElement("div");
+	    div.style.position = "absolute"; 
+	var mfrac = div.appendChild(document.createElementNS(_namespace,"math"))
+	               .appendChild(document.createElementNS(_namespace,"mfrac"));
+	mfrac.appendChild(document.createElementNS(_namespace,"mi"))
+	     .appendChild(document.createTextNode("xx"));
+	mfrac.appendChild(document.createElementNS(_namespace,"mi"))
+	     .appendChild(document.createTextNode("yy"));
+	document.body.appendChild(div);
+	hasMathML = div.offsetHeight > div.offsetWidth;
+	}
+	return hasMathML;
 });
