@@ -1,5 +1,8 @@
 // MathML
-// Details: http://www.w3.org/Math/ 
+// http://www.w3.org/Math/ 
+// By Addy Osmani
+// Based on work by Davide (@dpvc) and David (@davidcarlisle)
+// in https://github.com/mathjax/MathJax/issues/182
 
 Modernizr.addTest('mathml', function(){
 	var hasMathML = false;
