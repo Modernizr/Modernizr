@@ -1102,8 +1102,8 @@ window.Modernizr = (function( window, document, undefined ) {
     //       'WebkitTransition' : 'webkitTransitionEnd',
     //       'MozTransition'    : 'transitionend',
     //       'OTransition'      : 'oTransitionEnd',
-    //       'msTransition'     : 'msTransitionEnd', // maybe?
-    //       'transition'       : 'transitionEnd'
+    //       'msTransition'     : 'MSTransitionEnd',
+    //       'transition'       : 'transitionend'
     //     },
     //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
     
