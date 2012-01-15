@@ -4,10 +4,4 @@
 // http://dvcs.w3.org/hg/webperf/raw-file/tip/specs/RequestAnimationFrame/Overview.html
 // By Addy Osmani
 
-Modernizr.addTest('raf', function() {
-      return  window.requestAnimationFrame       || 
-              window.webkitRequestAnimationFrame || 
-              window.mozRequestAnimationFrame    || 
-              window.oRequestAnimationFrame      || 
-              window.msRequestAnimationFrame;
-});
+Modernizr.addTest('raf', !!Modernizr.prefixed('requestAnimationFrame', window));
