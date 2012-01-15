@@ -5,6 +5,7 @@
 // https://groups.google.com/a/chromium.org/group/chromium-html5/msg/5261d24266ba4366
 // By Addy Osmani
 
-Modernizr.addTest('quotamanagement', 
-  !!('TEMPORARY' in webkitStorageInfo && 'PERSISTENT' in webkitStorageInfo) 
-);
+Modernizr.addTest('quotamanagement', function(){
+  var storage = Modernizr.prefixed('StorageInfo', window);
+  return !!('TEMPORARY' in storage && 'PERSISTENT' in storage);
+});
