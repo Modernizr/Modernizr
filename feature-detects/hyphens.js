@@ -51,7 +51,6 @@ More details at https://github.com/Modernizr/Modernizr/issues/312
 			div.removeChild(span);
 			document.body.removeChild(div);
 			return result;
-			return result;
 		} catch(e) {
 			return false;
 		}
