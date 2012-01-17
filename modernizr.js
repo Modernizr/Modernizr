@@ -32,7 +32,6 @@ window.Modernizr = (function( window, document, undefined ) {
     enableClasses = true,
 
     docElement = document.documentElement,
-    docHead = document.head || document.getElementsByTagName('head')[0],
 
     /**
      * Create our "modernizr" element that we do most feature tests on.
