@@ -605,7 +605,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     tests['csstransitions'] = function() {
-        return testPropsAll('transitionProperty');
+        return testPropsAll('transition');
     };
 
 
