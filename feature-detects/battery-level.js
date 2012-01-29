@@ -6,8 +6,6 @@
 
 Modernizr.addTest('lowbattery', function () {
 	var minLevel = 0.20,
-		nav = window.navigator,
-		battery = nav.battery || nav.webkitBattery || nav.mozBattery,
-		low = battery && !battery.charging && battery.level <= minLevel;
-	return !!low;
+		battery = navigator[Modernizr.prefixed('battery', navigator)];
+	return !!(battery && !battery.charging && battery.level <= minLevel);
 });
