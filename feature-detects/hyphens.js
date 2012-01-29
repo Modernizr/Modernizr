@@ -147,6 +147,7 @@ More details at https://github.com/Modernizr/Modernizr/issues/312
 			}
 			document.body.removeChild(div);
 			document.body.removeChild(dummy);
+			window.scroll(0,0);
 			return result;
 		} catch(e) {
 			return false;
