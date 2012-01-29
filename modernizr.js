@@ -50,7 +50,7 @@ window.Modernizr = (function( window, document, undefined ) {
     toString = {}.toString,
 
     // List of property values to set for css tests. See ticket #21
-    prefixes = ' -webkit- -moz- -o- -ms- -khtml- '.split(' '),
+    prefixes = ' -webkit- -moz- -o- -ms- '.split(' '),
 
     // Following spec is to expose vendor-specific style properties as:
     //   elem.style.WebkitBorderRadius
@@ -62,7 +62,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //   erik.eae.net/archives/2008/03/10/21.48.10/
 
     // More here: github.com/Modernizr/Modernizr/issues/issue/21
-    omPrefixes = 'Webkit Moz O ms Khtml',
+    omPrefixes = 'Webkit Moz O ms',
 
     cssomPrefixes = omPrefixes.split(' '),
 
