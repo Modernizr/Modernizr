@@ -1068,7 +1068,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // expose these for the plugin API. Look in the source for how to join() them against your input
     Modernizr._prefixes     = prefixes;
-    Modernizr._domPrefixes  = cssomPrefixes;
+    Modernizr._domPrefixes  = domPrefixes;
+    Modernizr._cssomPrefixes  = cssomPrefixes;
     
     // Modernizr.mq tests a given media query, live against the current state of the window
     // A few important notes:
