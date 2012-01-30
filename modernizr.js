@@ -917,7 +917,7 @@ window.Modernizr = (function( window, document, undefined ) {
     modElem = inputElem = null;
 
     //>>BEGIN IEPP
-    // Enable HTML 5 elements for styling in IE.
+    // Enable HTML 5 elements for styling in IE & add HTML5 css
 
     /*! HTML5 Shiv v3.1 | @jon_neal @afarkas @rem | MIT/GPL2 Licensed */
     (function (win, doc) {
