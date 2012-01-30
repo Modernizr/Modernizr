@@ -473,12 +473,12 @@ test('Modernizr.prefixed()', function(){
 
   for (var i = -1, len = propArr.length; ++i < len; ){
     var prop = propArr[i];
-    equals( Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
+    equals(Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
   }
 
   for (var i = -1, len = domPropArr.length; ++i < len; ){
     var prop = domPropArr[i];
-    equals( Modernizr.prefixed(prop.prop, prop.obj), gimmePrefix(prop.prop, prop.obj), 'results for ' + prop.prop + ' match the homebaked prefix finder');
+    ok(!!~Modernizr.prefixed(prop.prop, prop.obj).toString().indexOf(gimmePrefix(prop.prop, prop.obj)), 'results for ' + prop.prop + ' match the homebaked prefix finder');
   }
 
   
