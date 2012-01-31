@@ -919,104 +919,109 @@ window.Modernizr = (function( window, document, undefined ) {
     //>>BEGIN IEPP
     // Enable HTML 5 elements for styling in IE & add HTML5 css
 
-    /*! HTML5 Shiv v3.1 | @jon_neal @afarkas @rem | MIT/GPL2 Licensed */
+    /*! HTML5 Shiv v3.2 | @jon_neal @afarkas @rem | MIT/GPL2 Licensed */
     (function (win, doc) {
-      // feature detection: whether the browser supports unknown elements
-      var supportsUnknownElements = (function (a) {
-        a.innerHTML = '<x-element></x-element>';
-        return a.childNodes.length === 1;
-      })(doc.createElement('a'));
+        // feature detection: whether the browser supports default html5 styles
+        var supportsHtml5Styles = (function(a, docEl, compStyle) {
+            var fake, supported, root = doc.body || (fake = docEl.insertBefore(doc.createElement('body'), docEl.firstChild));
 
-      // feature detection: whether the browser supports default html5 styles
-      var supportsHtml5Styles = (function (nav, docEl, compStyle) {
-        docEl.appendChild(nav);
-        return (compStyle = (compStyle ? compStyle(nav) : nav.currentStyle).display) && docEl.removeChild(nav) && compStyle === 'block';
-      })(doc.createElement('nav'), doc.documentElement, win.getComputedStyle);
-      
-      // html5 global so that more elements can be shived and also so that existing shiving can be detected on iframes
-      // more elements can be added and shived with the following code: html5.elements.push('element-name'); shivDocument(document);
-      var html5 = {
-        // a list of html5 elements
-        elements: 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video'.split(' '),
-        fixDomMethods: true,
-        shivDom: function(scopeDocument){
-          if (scopeDocument.documentShived) {
-            return;
-          }
-          var
-          documentCreateElement = scopeDocument.createElement,
-          documentCreateDocumentFragment = scopeDocument.createDocumentFragment,
-          documentCreateElementReplaceFunction = function (m) {
-            documentCreateElement(m);
-          };
-          
-          // shiv the document
-          for (var i = 0, l = html5.elements.length; i < l; ++i) {
-            documentCreateElement(html5.elements[i]);
-          }
+            root.insertBefore(a, root.firstChild);
 
-          // shiv document create element function
-          scopeDocument.createElement = function (nodeName) {
-            var element = documentCreateElement(nodeName);
-            if (html5.fixDomMethods && element.canHaveChildren && !(element.xmlns || element.tagUrn)) {
-              html5.shivDom(element.document);
-            } 
-            return element;
-          };
+            a.hidden = true;
 
-          // shiv document create document fragment function
-          scopeDocument.createDocumentFragment = function () {
-            var frag = documentCreateDocumentFragment();
-            if(html5.fixDomMethods){
-              html5.shivDom(frag);
+            supported = (compStyle ? compStyle(a, null) : a.currentStyle).display === 'none';
+
+            root.removeChild(a);
+
+            fake && docEl.removeChild(fake);
+
+            return supported;
+        })(doc.createElement('a'), doc.documentElement, win.getComputedStyle);
+
+        // feature detection: whether the browser supports unknown elements
+        var supportsUnknownElements = (function (a) {
+            a.innerHTML = '<x-element></x-element>';
+
+            return a.childNodes.length === 1;
+        })(doc.createElement('a'));
+
+        var call = Date.call;
+
+        var defaultHtml5Elements = 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video';
+
+        var html5 = win.html5 || {};
+
+        // html5 global so that more elements can be shived and also so that existing shiving can be detected on iframes
+        // more elements can be added and shived: html5.elements.push('element-name'); html5.shivDocument(document);
+        // defaults can be changed before the script is included: html5 = { shivMethods: false, shivCSS: false, elements: 'foo bar' };
+        html5 = {
+            // a list of html5 elements
+            'elements': (typeof html5.elements === 'object') ? html5.elements : (html5.elements || defaultHtml5Elements).split(' '),
+            'shivCSS': !(html5.shivCSS === false),
+            'shivMethods': !(html5.shivMethods === false),
+            'shivDocument': function (scopeDocument) {
+                if (!supportsUnknownElements && !scopeDocument.documentShived) {
+                    var documentCreateElement = scopeDocument.createElement, documentCreateDocumentFragment = scopeDocument.createDocumentFragment;
+
+                    // shiv the document
+                    for (var i = 0, elements = html5.elements, l = elements.length; i < l; ++i) {
+                        call.call(documentCreateElement, scopeDocument, elements[i]);
+                    }
+
+                    // shiv the document create element method
+                    scopeDocument.createElement = function (nodeName) {
+                        var element = call.call(documentCreateElement, scopeDocument, nodeName);
+
+                        // shiv only supported elements (supporting children, not namespaced)
+                        if (html5.shivMethods && element.canHaveChildren && !(element.xmlns || element.tagUrn)) {
+                            html5.shivDocument(element.document);
+                        }
+
+                        return element;
+                    };
+
+                    // shiv the document create document fragment method
+                    scopeDocument.createDocumentFragment = function () {
+                        var frag = call.call(documentCreateDocumentFragment, scopeDocument);
+
+                        return (html5.shivMethods) ? html5.shivDocument(frag) : frag;
+                    };
+                }
+
+                // set the document head variable
+                var documentHead = scopeDocument.getElementsByTagName('head')[0];
+
+                // shiv the default html5 styles
+                if (html5.shivCSS && !supportsHtml5Styles && documentHead) {
+                    var p = scopeDocument.createElement('p');
+
+                    p.innerHTML = 'x<style>' +
+                        'article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}' + // Corrects block display not defined in IE6/7/8/9
+                        'audio{display:none}' + // Corrects audio display not defined in IE6/7/8/9
+                        'canvas,video{display:inline-block;*display:inline;*zoom:1}' + // Corrects canvas and video display not defined in IE6/7/8/9
+                        '[hidden]{display:none}audio[controls]{display:inline-block;*display:inline;*zoom:1}' + // Corrects 'hidden' attribute and audio[controls] display not present in IE7/8/9
+                        'mark{background:#FF0;color:#000}' + // Addresses styling not present in IE6/7/8/9
+                    '</style>';
+
+                    documentHead.insertBefore(p.lastChild, documentHead.firstChild);
+                }
+
+                // set the document as shivved
+                scopeDocument.documentShived = true;
+
+                // return the document
+                return scopeDocument;
             }
-            return frag;
-          };
-        },
-        // the shiv function
-        shivDocument: function (scopeDocument) {
-          scopeDocument = scopeDocument || doc;
+        };
 
-          // test if the document has already been shived
-          if (scopeDocument.documentShived) {
-            return;
-          }
+        // expose shiv type
+        html5.type = 'default';
 
-          // set local variables
-          var
-          documentHead = scopeDocument.getElementsByTagName('head')[0];
+        // expose html5
+        win.html5 = html5;
 
-          // shiv for unknown elements
-          
-          if (!supportsUnknownElements && html5.fixDomMethods) {
-            html5.shivDom(scopeDocument);
-          }
-          scopeDocument.documentShived = true;
-
-          // shiv for default html5 styles
-          if (!supportsHtml5Styles && documentHead) {
-            var div = scopeDocument.createElement('div');
-            div.innerHTML = ['x<style>',
-              'article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}', // Corrects block display not defined in IE6/7/8/9
-              'audio{display:none}', // Corrects audio display not defined in IE6/7/8/9
-              'canvas,video{display:inline-block;*display:inline;*zoom:1}', // Corrects canvas and video display not defined in IE6/7/8/9 (audio[controls] in IE7)
-              '[hidden]{display:none}audio[controls]{display:inline-block;*display:inline;*zoom:1}', // Corrects 'hidden' attribute and audio[controls] display not present in IE7/8/9
-              'mark{background:#FF0;color:#000}', // Addresses styling not present in IE6/7/8/9
-            '</style>'].join('');
-            documentHead.insertBefore(div.lastChild, documentHead.firstChild);
-          }
-
-          // return document (for potential chaining)
-          return scopeDocument;
-        }
-      };
-
-      // shiv the document
-      html5.shivDocument(doc);
-      
-      html5.type = 'default';
-
-      win.html5 = html5;
+        // shiv the document
+        html5.shivDocument(doc);
     })(this, document);
 
     //>>END IEPP
