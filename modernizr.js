@@ -296,7 +296,7 @@ window.Modernizr = (function( window, document, undefined ) {
             }
 
              /*>>touch*/          Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
-            /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = (hash['csstransforms3d'] && hash['csstransforms3d'].offsetLeft) === 9;          /*>>csstransforms3d*/
+            /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = (hash['csstransforms3d'] && hash['csstransforms3d'].offsetLeft) === 9 && hash['csstransforms3d'].offsetHeight === 3;          /*>>csstransforms3d*/
             /*>>generatedcontent*/Modernizr['generatedcontent'] = (hash['generatedcontent'] && hash['generatedcontent'].offsetHeight) >= 1;       /*>>generatedcontent*/
             /*>>fontface*/        Modernizr['fontface'] = /src/i.test(cssText) &&
                                                                   cssText.indexOf(rule.split(' ')[0]) === 0;        /*>>fontface*/
@@ -310,7 +310,7 @@ window.Modernizr = (function( window, document, undefined ) {
                                 '{#touch{top:9px;position:absolute}}'].join('')           /*>>touch*/
                                 
         /*>>csstransforms3d*/ ,['@media (',prefixes.join('transform-3d),('),mod,')',
-                                '{#csstransforms3d{left:9px;position:absolute}}'].join('')/*>>csstransforms3d*/
+                                '{#csstransforms3d{left:9px;position:absolute;height:3px;}}'].join('')/*>>csstransforms3d*/
                                 
         /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'";visibility:hidden}'].join('')  /*>>generatedcontent*/
     ],
