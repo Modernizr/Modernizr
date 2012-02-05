@@ -200,6 +200,52 @@ window.Modernizr = (function( window, document, undefined ) {
       };
     }
 
+    // Taken from ES5-shim https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js
+    // ES-5 15.3.4.5
+    // http://es5.github.com/#x15.3.4.5
+
+    if (!Function.prototype.bind) {
+      Function.prototype.bind = function bind(that) {
+        
+        var target = this;
+        
+        if (typeof target != "function") {
+            throw new TypeError();
+        }
+        
+        var args = slice.call(arguments, 1),
+            bound = function () {
+
+            if (this instanceof bound) {
+              
+              var F = function(){};
+              F.prototype = target.prototype;
+              var self = new F;
+
+              var result = target.apply(
+                  self,
+                  args.concat(slice.call(arguments))
+              );
+              if (Object(result) === result) {
+                  return result;
+              }
+              return self;
+
+            } else {
+              
+              return target.apply(
+                  that,
+                  args.concat(slice.call(arguments))
+              );
+
+            }
+
+        };
+        
+        return bound;
+      };
+    }
+
     /**
      * setCss applies given styles to the Modernizr DOM node.
      */
@@ -246,10 +292,10 @@ window.Modernizr = (function( window, document, undefined ) {
      * testDOMProps is a generic DOM property test; if a browser supports
      *   a certain property, it won't return undefined for it.
      */
-    function testDOMProps( props, obj ) {
+    function testDOMProps( props, obj, elem ) {
         for ( var i in props ) {
             if ( obj[ props[i] ] !== undefined) {
-                return props[i];
+                return elem ? obj[props[i]].bind(elem) : obj[props[i]];
             }
         }
         return false;
@@ -261,7 +307,7 @@ window.Modernizr = (function( window, document, undefined ) {
      *   the element including the non-vendor prefixed one, for forward-
      *   compatibility.
      */
-    function testPropsAll( prop, prefixed ) {
+    function testPropsAll( prop, prefixed, elem ) {
 
         var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
             props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
@@ -270,7 +316,7 @@ window.Modernizr = (function( window, document, undefined ) {
           return testProps(props, prefixed);
         } else {
           props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
-          return testDOMProps(props, prefixed);
+          return testDOMProps(props, prefixed, elem);
         }
     }
 
@@ -1087,12 +1133,12 @@ window.Modernizr = (function( window, document, undefined ) {
     //     },
     //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
     
-    Modernizr.prefixed      = function(prop, obj){
+    Modernizr.prefixed      = function(prop, obj, elem){
       if(!obj) {
         return testPropsAll(prop, 'pfx');
       } else {
         // Testing DOM property e.g. Modernizr.prefixed('requestAnimationFrame', window) // 'mozRequestAnimationFrame'
-        return testPropsAll(prop, obj);
+        return testPropsAll(prop, obj, elem);
       }
     };
 
