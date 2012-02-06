@@ -76,6 +76,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     classes = [],
 
+    slice = classes.slice,
+
     featureName, // used in testing loop
 
 
@@ -205,6 +207,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // http://es5.github.com/#x15.3.4.5
 
     if (!Function.prototype.bind) {
+      
       Function.prototype.bind = function bind(that) {
         
         var target = this;
