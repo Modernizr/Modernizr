@@ -13,10 +13,10 @@ test("globals set up", function() {
   
     var globArr = Object.keys(__globals);
     
-    // remove Modernizr and iepp
+    // remove Modernizr and html5
     var leakedGlobArr = [''].concat(globArr).concat([''])
                             .join(',')
-                            .replace(',Modernizr','').replace(',iepp','')
+                            .replace(',Modernizr','').replace(',html5','')
                             .replace(/,script\w+/,'') // placed by jQuery
                             .split(',');
     
@@ -396,9 +396,9 @@ test('Modernizr.testStyles()',function(){
 
 test('Modernizr._[properties]',function(){
    
-  equals(7, Modernizr._prefixes.length, 'Modernizr._prefixes has 7 items');
+  equals(6, Modernizr._prefixes.length, 'Modernizr._prefixes has 6 items');
   
-  equals(5, Modernizr._domPrefixes.length, 'Modernizr.domPrefixes has 5 items');
+  equals(4, Modernizr._domPrefixes.length, 'Modernizr.domPrefixes has 4 items');
   
 });
 
