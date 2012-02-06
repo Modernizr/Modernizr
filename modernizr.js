@@ -295,7 +295,12 @@ window.Modernizr = (function( window, document, undefined ) {
     function testDOMProps( props, obj, elem ) {
         for ( var i in props ) {
             if ( obj[ props[i] ] !== undefined) {
-                return elem ? obj[props[i]].bind(elem) : obj[props[i]];
+                        // bind!
+                return elem           ? obj[props[i]].bind(elem) : 
+                        // return the property name as a string
+                       elem === false ? props[i] :
+                        // return the unbound function or obj or value
+                                        obj[props[i]];
             }
         }
         return false;
@@ -312,8 +317,11 @@ window.Modernizr = (function( window, document, undefined ) {
         var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
             props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
-        if(!is(prefixed, "object")) {
+        // did they call .prefixed('boxSizing') or are we just testing a prop?
+        if(is(prefixed, "string") || is(prefixed, "undefined")) {
           return testProps(props, prefixed);
+
+        // otherwise, they called .prefixed('requestAnimationFrame', window[, elem])
         } else {
           props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
           return testDOMProps(props, prefixed, elem);
@@ -1145,10 +1153,10 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     // Remove "no-js" class from <html> element, if it exists:
-    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2')
+    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
                             
                             // Add the new classes to the <html> element.
-                            + (enableClasses ? ' js ' + classes.join(' ') : '');
+                            (enableClasses ? ' js ' + classes.join(' ') : '');
 
     return Modernizr;
 

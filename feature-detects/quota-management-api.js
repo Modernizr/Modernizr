@@ -7,6 +7,6 @@
 // By Addy Osmani
 
 Modernizr.addTest('quotamanagement', function(){
-  var storage = window[ Modernizr.prefixed('StorageInfo', window) ];
+  var storage = Modernizr.prefixed('StorageInfo', window);
   return !!('TEMPORARY' in storage && 'PERSISTENT' in storage);
 });

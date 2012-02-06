@@ -433,7 +433,7 @@ test('Modernizr.testAllProps()',function(){
 
 
 
-test('Modernizr.prefixed()', function(){
+test('Modernizr.prefixed() - css and DOM resolving', function(){
   // https://gist.github.com/523692
   
   function gimmePrefix(prop, obj){
@@ -467,9 +467,9 @@ test('Modernizr.prefixed()', function(){
   var propArr = ['transition', 'backgroundSize', 'boxSizing', 'borderImage', 
                  'borderRadius', 'boxShadow', 'columnCount'];
   
-  var domPropArr = [{ 'prop': 'requestAnimationFrame', 'obj': window }, 
-                    { 'prop': 'querySelectorAll', 'obj': document }, 
-                    { 'prop': 'matchesSelector', 'obj': document.createElement('div') }];
+  var domPropArr = [{ 'prop': 'requestAnimationFrame',  'obj': window }, 
+                    { 'prop': 'querySelectorAll',       'obj': document }, 
+                    { 'prop': 'matchesSelector',        'obj': document.createElement('div') }];
 
   for (var i = -1, len = propArr.length; ++i < len; ){
     var prop = propArr[i];
@@ -484,6 +484,91 @@ test('Modernizr.prefixed()', function(){
   
   
   
+});
+
+
+// FIXME: so like all of these are whitelisting for webkit. i'd like to improve that.
+test('Modernizr.prefixed autobind', function(){
+  
+  if (window.webkitRequestAnimationFrame){
+    // rAF returns a function
+    equals(
+      'function', 
+      typeof Modernizr.prefixed('requestAnimationFrame', window), 
+      "Modernizr.prefixed('requestAnimationFrame', window) returns a function")
+
+    // unless we false it to a string
+    equals(
+      'webkitRequestAnimationFrame', 
+      Modernizr.prefixed('requestAnimationFrame', window, false), 
+      "Modernizr.prefixed('requestAnimationFrame', window, false) returns a string (the prop name)")
+
+  }
+
+  if (document.body.webkitMatchesSelector){
+
+    var fn = Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body);
+
+    //returns function
+    equals(
+      'function', 
+      typeof fn, 
+      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) returns a function");
+
+      // fn scoping
+    equals(
+      true, 
+      fn('body'), 
+      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) is scoped to the body")
+
+  }
+
+  if (window.webkitNotifications){
+    // should be an object.
+
+    equals(
+      'object', 
+      typeof Modernizr.prefixed('Notifications', window), 
+      "Modernizr.prefixed('Notifications') returns an object");
+
+  }
+
+  if (typeof document.webkitIsFullScreen !== 'undefined'){
+    // boolean
+
+    equals(
+      'boolean', 
+      typeof Modernizr.prefixed('isFullScreen', document), 
+      "Modernizr.prefixed('isFullScreen') returns a boolean");
+  }
+
+  if (document.body.style.webkitAnimation){
+    // string
+
+    equals(
+      '', 
+      typeof Modernizr.prefixed('animation', document.body.style), 
+      "Modernizr.prefixed('animation', document.body.style) returns value of that, as a string");
+
+    equals(
+      'webkitAnimation', 
+      typeof Modernizr.prefixed('animation', document.body.style, false), 
+      "Modernizr.prefixed('animation', document.body.style, false) returns the name of the property: webkitAnimation");
+
+    // I don't know how to handle this. currently it returns a string, but should it return the name of the property instead?
+  }
+
+  equals(
+    false,
+    Modernizr.prefixed('doSomethingAmazing$#$', window),
+    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj) returns false");
+  
+  equals(
+    false,
+    Modernizr.prefixed('doSomethingAmazing$#$', window, document.body),
+    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj, scope) returns false");
+
+
 });
 
 
