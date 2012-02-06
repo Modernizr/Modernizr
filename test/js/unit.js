@@ -478,7 +478,7 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
 
   for (var i = -1, len = domPropArr.length; ++i < len; ){
     var prop = domPropArr[i];
-    ok(!!~Modernizr.prefixed(prop.prop, prop.obj).toString().indexOf(gimmePrefix(prop.prop, prop.obj)), 'results for ' + prop.prop + ' match the homebaked prefix finder');
+    ok(!!~Modernizr.prefixed(prop.prop, prop.obj, false).toString().indexOf(gimmePrefix(prop.prop, prop.obj)), 'results for ' + prop.prop + ' match the homebaked prefix finder');
   }
 
   
@@ -487,10 +487,18 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
 });
 
 
-// FIXME: so like all of these are whitelisting for webkit. i'd like to improve that.
+// FIXME: so a few of these are whitelisting for webkit. i'd like to improve that.
 test('Modernizr.prefixed autobind', function(){
   
-  if (window.webkitRequestAnimationFrame){
+  var rAFName;
+
+  // quick sniff to find the local rAF prefixed name.
+  var vendors = ['ms', 'moz', 'webkit', 'o'];
+  for(var x = 0; x < vendors.length && !rAFName; ++x) {
+    rAFName = window[vendors[x]+'RequestAnimationFrame'] && vendors[x]+'RequestAnimationFrame';
+  }
+
+  if (rAFName){
     // rAF returns a function
     equals(
       'function', 
@@ -499,13 +507,13 @@ test('Modernizr.prefixed autobind', function(){
 
     // unless we false it to a string
     equals(
-      'webkitRequestAnimationFrame', 
+      rAFName, 
       Modernizr.prefixed('requestAnimationFrame', window, false), 
       "Modernizr.prefixed('requestAnimationFrame', window, false) returns a string (the prop name)")
 
   }
 
-  if (document.body.webkitMatchesSelector){
+  if (document.body.webkitMatchesSelector || document.body.mozMatchesSelector){
 
     var fn = Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body);
 
@@ -523,8 +531,9 @@ test('Modernizr.prefixed autobind', function(){
 
   }
 
+  // Webkit only: are there other objects that are prefixed?
   if (window.webkitNotifications){
-    // should be an object.
+    // should be an object. 
 
     equals(
       'object', 
@@ -533,6 +542,7 @@ test('Modernizr.prefixed autobind', function(){
 
   }
 
+  // Webkit only: 
   if (typeof document.webkitIsFullScreen !== 'undefined'){
     // boolean
 
@@ -542,20 +552,35 @@ test('Modernizr.prefixed autobind', function(){
       "Modernizr.prefixed('isFullScreen') returns a boolean");
   }
 
-  if (document.body.style.webkitAnimation){
+
+  
+  // Moz only: 
+  if (typeof document.mozFullScreen !== 'undefined'){
+    // boolean
+
+    equals(
+      'boolean', 
+      typeof Modernizr.prefixed('fullScreen', document), 
+      "Modernizr.prefixed('fullScreen') returns a boolean");
+  }
+
+
+
+
+  // Webkit-only.. takes advantage of Webkit's mixed case of prefixes
+  if (document.body.style.WebkitAnimation){
     // string
 
     equals(
-      '', 
+      'string', 
       typeof Modernizr.prefixed('animation', document.body.style), 
       "Modernizr.prefixed('animation', document.body.style) returns value of that, as a string");
 
     equals(
-      'webkitAnimation', 
-      typeof Modernizr.prefixed('animation', document.body.style, false), 
-      "Modernizr.prefixed('animation', document.body.style, false) returns the name of the property: webkitAnimation");
+      animationStyle.toLowerCase(), 
+      Modernizr.prefixed('animation', document.body.style, false).toLowerCase(), 
+      "Modernizr.prefixed('animation', document.body.style, false) returns the (case-normalized) name of the property: webkitanimation");
 
-    // I don't know how to handle this. currently it returns a string, but should it return the name of the property instead?
   }
 
   equals(
@@ -567,6 +592,12 @@ test('Modernizr.prefixed autobind', function(){
     false,
     Modernizr.prefixed('doSomethingAmazing$#$', window, document.body),
     "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj, scope) returns false");
+
+
+  equals(
+    false,
+    Modernizr.prefixed('doSomethingAmazing$#$', window, false),
+    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj, false) returns false");
 
 
 });
