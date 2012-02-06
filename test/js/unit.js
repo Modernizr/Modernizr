@@ -27,7 +27,18 @@ test("globals set up", function() {
 
 });
 
+test("bind is implemented", function() {
+  
+	ok(Function.prototype.bind, 'bind is a member of Function.prototype');
+	
+    var a = function(){
+        return this.modernizr;
+    };
+    a = a.bind({modernizr: 'just awsome'});
 
+    equals("just awsome", a(), 'bind works as expected');
+
+});
 
 
 
