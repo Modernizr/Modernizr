@@ -565,8 +565,6 @@ test('Modernizr.prefixed autobind', function(){
   }
 
 
-
-
   // Webkit-only.. takes advantage of Webkit's mixed case of prefixes
   if (document.body.style.WebkitAnimation){
     // string
