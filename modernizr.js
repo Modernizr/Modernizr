@@ -1,9 +1,9 @@
 /*!
- * Modernizr v2.1pre
+ * Modernizr v2.5b
  * www.modernizr.com
  *
- * Copyright (c) 2009-2011 Faruk Ates, Paul Irish, Alex Sexton
- * Dual-licensed under the BSD or MIT licenses: www.modernizr.com/license/
+ * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton
+ * Available under the BSD and MIT licenses: www.modernizr.com/license/
  */
 
 /*
@@ -18,13 +18,13 @@
  * To get a build that includes Modernizr.load(), as well as choosing
  * which tests to include, go to www.modernizr.com/download/
  *
- * Authors        Faruk Ates, Paul Irish, Alex Sexton, 
+ * Authors        Faruk Ates, Paul Irish, Alex Sexton
  * Contributors   Ryan Seddon, Ben Alman
  */
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.1pre',
+    var version = '2.5b',
 
     Modernizr = {},
     
@@ -32,7 +32,6 @@ window.Modernizr = (function( window, document, undefined ) {
     enableClasses = true,
 
     docElement = document.documentElement,
-    docHead = document.head || document.getElementsByTagName('head')[0],
 
     /**
      * Create our "modernizr" element that we do most feature tests on.
@@ -51,7 +50,7 @@ window.Modernizr = (function( window, document, undefined ) {
     toString = {}.toString,
 
     // List of property values to set for css tests. See ticket #21
-    prefixes = ' -webkit- -moz- -o- -ms- -khtml- '.split(' '),
+    prefixes = ' -webkit- -moz- -o- -ms- '.split(' '),
 
     // Following spec is to expose vendor-specific style properties as:
     //   elem.style.WebkitBorderRadius
@@ -63,7 +62,11 @@ window.Modernizr = (function( window, document, undefined ) {
     //   erik.eae.net/archives/2008/03/10/21.48.10/
 
     // More here: github.com/Modernizr/Modernizr/issues/issue/21
-    cssomPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+    omPrefixes = 'Webkit Moz O ms',
+
+    cssomPrefixes = omPrefixes.split(' '),
+
+    domPrefixes = omPrefixes.toLowerCase().split(' '),
 
     ns = {'svg': 'http://www.w3.org/2000/svg'},
 
@@ -197,6 +200,52 @@ window.Modernizr = (function( window, document, undefined ) {
       };
     }
 
+    // Taken from ES5-shim https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js
+    // ES-5 15.3.4.5
+    // http://es5.github.com/#x15.3.4.5
+
+    if (!Function.prototype.bind) {
+      Function.prototype.bind = function bind(that) {
+        
+        var target = this;
+        
+        if (typeof target != "function") {
+            throw new TypeError();
+        }
+        
+        var args = slice.call(arguments, 1),
+            bound = function () {
+
+            if (this instanceof bound) {
+              
+              var F = function(){};
+              F.prototype = target.prototype;
+              var self = new F;
+
+              var result = target.apply(
+                  self,
+                  args.concat(slice.call(arguments))
+              );
+              if (Object(result) === result) {
+                  return result;
+              }
+              return self;
+
+            } else {
+              
+              return target.apply(
+                  that,
+                  args.concat(slice.call(arguments))
+              );
+
+            }
+
+        };
+        
+        return bound;
+      };
+    }
+
     /**
      * setCss applies given styles to the Modernizr DOM node.
      */
@@ -240,17 +289,50 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     /**
+     * testDOMProps is a generic DOM property test; if a browser supports
+     *   a certain property, it won't return undefined for it.
+     */
+    function testDOMProps( props, obj, elem ) {
+        for ( var i in props ) {
+            var item = obj[props[i]];
+            if ( item !== undefined) {
+
+                // return the property name as a string
+                if (elem === false) return props[i];
+
+                // let's bind a function
+                if (is(item, 'function')){
+                  // default to autobind unless override
+                  return item.bind(elem || obj);
+                }
+                
+                // return the unbound function or obj or value
+                return item;
+            }
+        }
+        return false;
+    }
+
+    /**
      * testPropsAll tests a list of DOM properties we want to check against.
      *   We specify literally ALL possible (known and/or likely) properties on
      *   the element including the non-vendor prefixed one, for forward-
      *   compatibility.
      */
-    function testPropsAll( prop, prefixed ) {
+    function testPropsAll( prop, prefixed, elem ) {
 
         var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
             props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
-        return testProps(props, prefixed);
+        // did they call .prefixed('boxSizing') or are we just testing a prop?
+        if(is(prefixed, "string") || is(prefixed, "undefined")) {
+          return testProps(props, prefixed);
+
+        // otherwise, they called .prefixed('requestAnimationFrame', window[, elem])
+        } else {
+          props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
+          return testDOMProps(props, prefixed, elem);
+        }
     }
 
     /**
@@ -275,7 +357,7 @@ window.Modernizr = (function( window, document, undefined ) {
             }
 
              /*>>touch*/          Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
-            /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = (hash['csstransforms3d'] && hash['csstransforms3d'].offsetLeft) === 9;          /*>>csstransforms3d*/
+            /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = (hash['csstransforms3d'] && hash['csstransforms3d'].offsetLeft) === 9 && hash['csstransforms3d'].offsetHeight === 3;          /*>>csstransforms3d*/
             /*>>generatedcontent*/Modernizr['generatedcontent'] = (hash['generatedcontent'] && hash['generatedcontent'].offsetHeight) >= 1;       /*>>generatedcontent*/
             /*>>fontface*/        Modernizr['fontface'] = /src/i.test(cssText) &&
                                                                   cssText.indexOf(rule.split(' ')[0]) === 0;        /*>>fontface*/
@@ -289,7 +371,7 @@ window.Modernizr = (function( window, document, undefined ) {
                                 '{#touch{top:9px;position:absolute}}'].join('')           /*>>touch*/
                                 
         /*>>csstransforms3d*/ ,['@media (',prefixes.join('transform-3d),('),mod,')',
-                                '{#csstransforms3d{left:9px;position:absolute}}'].join('')/*>>csstransforms3d*/
+                                '{#csstransforms3d{left:9px;position:absolute;height:3px;}}'].join('')/*>>csstransforms3d*/
                                 
         /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'";visibility:hidden}'].join('')  /*>>generatedcontent*/
     ],
@@ -400,12 +482,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
     // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function() {
-      for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
-        if ( window[cssomPrefixes[i].toLowerCase() + 'IndexedDB'] ){
-          return true;
-        }
-      }
-      return !!window.indexedDB;
+      return !!testPropsAll("indexedDB",window);
     };
 
     // documentMode logic from YUI to filter out IE8 Compat Mode
@@ -428,8 +505,8 @@ window.Modernizr = (function( window, document, undefined ) {
         return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
     };
 
-    // Mozilla is targeting to land MozWebSocket for FF6
-    // bugzil.la/659324
+    // FIXME: Once FF10 is sunsetted, we can drop prefixed MozWebSocket
+    // bugzil.la/695635
     tests['websockets'] = function() {
         for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
           if ( window[cssomPrefixes[i] + 'WebSocket'] ){
@@ -566,13 +643,13 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     tests['csstransforms'] = function() {
-        return !!testProps(['transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform']);
+        return !!testPropsAll('transform');
     };
 
 
     tests['csstransforms3d'] = function() {
 
-        var ret = !!testProps(['perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective']);
+        var ret = !!testPropsAll('perspective');
 
         // Webkit's 3D transforms are passed off to the browser's own graphics renderer.
         //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in
@@ -589,7 +666,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     tests['csstransitions'] = function() {
-        return testPropsAll('transitionProperty');
+        return testPropsAll('transition');
     };
 
 
@@ -901,150 +978,113 @@ window.Modernizr = (function( window, document, undefined ) {
     modElem = inputElem = null;
 
     //>>BEGIN IEPP
-    // Enable HTML 5 elements for styling (and printing) in IE.
-    if ( window.attachEvent && (function(){ var elem = document.createElement('div');
-                                            elem.innerHTML = '<elem></elem>';
-                                            return elem.childNodes.length !== 1; })() ) {
-                                              
-        // iepp v2.2 MIT/GPL2 @jon_neal & afarkas  : github.com/aFarkas/iepp/ 
-        (function(win, doc) {
+    // Enable HTML 5 elements for styling in IE & add HTML5 css
 
-          win.iepp = win.iepp || {};
-          var iepp = win.iepp,
-            elems = iepp.html5elements || 'abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|subline|summary|time|video',
-            elemsArr = elems.split('|'),
-            elemsArrLen = elemsArr.length,
-            elemRegExp = new RegExp('(^|\\s)('+elems+')', 'gi'), 
-            tagRegExp = new RegExp('<(\/*)('+elems+')', 'gi'),
-            filterReg = /^\s*[\{\}]\s*$/,
-            ruleRegExp = new RegExp('(^|[^\\n]*?\\s)('+elems+')([^\\n]*)({[\\n\\w\\W]*?})', 'gi'),
-            nonPrintMedias = /@media +(?![Print|All])[^{]+\{([^{}]+\{[^{}]+\})+[^}]+\}/g,
-            docFrag = doc.createDocumentFragment(),
-            html = doc.documentElement,
-            head = doc.getElementsByTagName('script')[0].parentNode,
-            bodyElem = doc.createElement('body'),
-            styleElem = doc.createElement('style'),
-            printMedias = /print|all/,
-            body;
+    /*! HTML5 Shiv v3.2 | @jon_neal @afarkas @rem | MIT/GPL2 Licensed */
+    (function (win, doc) {
+        // feature detection: whether the browser supports default html5 styles
+        var supportsHtml5Styles = (function(a, docEl, compStyle) {
+            var fake, supported, root = doc.body || (fake = docEl.insertBefore(doc.createElement('body'), docEl.firstChild));
 
-          function shim(doc) {
-            var a = -1;
-            while (++a < elemsArrLen) {
-              // Use createElement so IE allows HTML5-named elements in a document
-              doc.createElement(elemsArr[a]);
-            }
-          }
-          
-          iepp.getCSS = function(styleSheetList, mediaType) {
-            try {
-              if(styleSheetList+'' === undefined){
-                return '';
-              }
-            } catch(er){
-              return '';
-            }
-            var a = -1,
-              len = styleSheetList.length,
-              styleSheet,
-              cssText,
-              cssTextArr = [];
-            while (++a < len) {
-              styleSheet = styleSheetList[a];
-              //currently no test for disabled/alternate stylesheets
-              if(styleSheet.disabled){
-                continue;
-              }
-              mediaType = styleSheet.media || mediaType;
-              // Get css from all non-screen stylesheets and their imports
-              if (printMedias.test(mediaType)){
-                cssText = styleSheet.cssText;
-                if(mediaType != 'print'){
-                  cssText = cssText.replace(nonPrintMedias, '');
+            root.insertBefore(a, root.firstChild);
+
+            a.hidden = true;
+
+            supported = (compStyle ? compStyle(a, null) : a.currentStyle).display === 'none';
+
+            root.removeChild(a);
+
+            fake && docEl.removeChild(fake);
+
+            return supported;
+        })(doc.createElement('a'), doc.documentElement, win.getComputedStyle);
+
+        // feature detection: whether the browser supports unknown elements
+        var supportsUnknownElements = (function (a) {
+            a.innerHTML = '<x-element></x-element>';
+
+            return a.childNodes.length === 1;
+        })(doc.createElement('a'));
+
+        var call = Date.call;
+
+        var defaultHtml5Elements = 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video';
+
+        var html5 = win.html5 || {};
+
+        // html5 global so that more elements can be shived and also so that existing shiving can be detected on iframes
+        // more elements can be added and shived: html5.elements.push('element-name'); html5.shivDocument(document);
+        // defaults can be changed before the script is included: html5 = { shivMethods: false, shivCSS: false, elements: 'foo bar' };
+        html5 = {
+            // a list of html5 elements
+            'elements': (typeof html5.elements === 'object') ? html5.elements : (html5.elements || defaultHtml5Elements).split(' '),
+            'shivCSS': !(html5.shivCSS === false),
+            'shivMethods': !(html5.shivMethods === false),
+            'shivDocument': function (scopeDocument) {
+                if (!supportsUnknownElements && !scopeDocument.documentShived) {
+                    var documentCreateElement = scopeDocument.createElement, documentCreateDocumentFragment = scopeDocument.createDocumentFragment;
+
+                    // shiv the document
+                    for (var i = 0, elements = html5.elements, l = elements.length; i < l; ++i) {
+                        call.call(documentCreateElement, scopeDocument, elements[i]);
+                    }
+
+                    // shiv the document create element method
+                    scopeDocument.createElement = function (nodeName) {
+                        var element = call.call(documentCreateElement, scopeDocument, nodeName);
+
+                        // shiv only supported elements (supporting children, not namespaced)
+                        if (html5.shivMethods && element.canHaveChildren && !(element.xmlns || element.tagUrn)) {
+                            html5.shivDocument(element.document);
+                        }
+
+                        return element;
+                    };
+
+                    // shiv the document create document fragment method
+                    scopeDocument.createDocumentFragment = function () {
+                        var frag = call.call(documentCreateDocumentFragment, scopeDocument);
+
+                        return (html5.shivMethods) ? html5.shivDocument(frag) : frag;
+                    };
                 }
-                cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), cssText);
-              }
-              //reset mediaType to all with every new *not imported* stylesheet
-              mediaType = 'all';
-            }
-            return cssTextArr.join('');
-          };
-          
-          iepp.parseCSS = function(cssText) {
-            var cssTextArr = [],
-              rule;
-            while ((rule = ruleRegExp.exec(cssText)) != null){
-              // Replace all html5 element references with iepp substitute classnames
-              cssTextArr.push(( (filterReg.exec(rule[1]) ? '\n' : rule[1]) + rule[2] + rule[3]).replace(elemRegExp, '$1.iepp-$2') + rule[4]);
-            }
-            return cssTextArr.join('\n');
-          };
-          
-          iepp.writeHTML = function() {
-            var a = -1;
-            body = body || doc.body;
-            while (++a < elemsArrLen) {
-              var nodeList = doc.getElementsByTagName(elemsArr[a]),
-                nodeListLen = nodeList.length,
-                b = -1;
-              while (++b < nodeListLen){
-                if (nodeList[b].className.indexOf('iepp-') < 0){
-                  // Append iepp substitute classnames to all html5 elements
-                  nodeList[b].className += ' iepp-'+elemsArr[a];
+
+                // set the document head variable
+                var documentHead = scopeDocument.getElementsByTagName('head')[0];
+
+                // shiv the default html5 styles
+                if (html5.shivCSS && !supportsHtml5Styles && documentHead) {
+                    var p = scopeDocument.createElement('p');
+
+                    p.innerHTML = 'x<style>' +
+                        'article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}' + // Corrects block display not defined in IE6/7/8/9
+                        'audio{display:none}' + // Corrects audio display not defined in IE6/7/8/9
+                        'canvas,video{display:inline-block;*display:inline;*zoom:1}' + // Corrects canvas and video display not defined in IE6/7/8/9
+                        '[hidden]{display:none}audio[controls]{display:inline-block;*display:inline;*zoom:1}' + // Corrects 'hidden' attribute and audio[controls] display not present in IE7/8/9
+                        'mark{background:#FF0;color:#000}' + // Addresses styling not present in IE6/7/8/9
+                    '</style>';
+
+                    documentHead.insertBefore(p.lastChild, documentHead.firstChild);
                 }
-              }
-                
+
+                // set the document as shivved
+                scopeDocument.documentShived = true;
+
+                // return the document
+                return scopeDocument;
             }
-            docFrag.appendChild(body);
-            html.appendChild(bodyElem);
-            // Write iepp substitute print-safe document
-            bodyElem.className = body.className;
-            bodyElem.id = body.id;
-            // Replace HTML5 elements with <font> which is print-safe and shouldn't conflict since it isn't part of html5
-            bodyElem.innerHTML = body.innerHTML.replace(tagRegExp, '<$1font');
-          };
-          
-          iepp._beforePrint = function() {
-            if(iepp.disablePP){return;}
-            // Write iepp custom print CSS
-            styleElem.styleSheet.cssText = iepp.parseCSS(iepp.getCSS(doc.styleSheets, 'all'));
-            iepp.writeHTML();
-          };
-          
-          iepp.restoreHTML = function() {
-            if(iepp.disablePP){return;}
-            // Undo everything done in onbeforeprint
-            bodyElem.swapNode(body);
-          };
-          
-          iepp._afterPrint = function() {
-            // Undo everything done in onbeforeprint
-            iepp.restoreHTML();
-            styleElem.styleSheet.cssText = '';
-          };
-          
-          // Shim the document and iepp fragment
-          shim(doc);
-          shim(docFrag);
-          
-          //
-          if(iepp.disablePP){
-            return;
-          }
-          
-          // Add iepp custom print style element
-          head.insertBefore(styleElem, head.firstChild);
-          styleElem.media = 'print';
-          styleElem.className = 'iepp-printshim';
-          win.attachEvent(
-            'onbeforeprint',
-            iepp._beforePrint
-          );
-          win.attachEvent(
-            'onafterprint',
-            iepp._afterPrint
-          );
-        })(window, document);
-    }
+        };
+
+        // expose shiv type
+        html5.type = 'default';
+
+        // expose html5
+        win.html5 = html5;
+
+        // shiv the document
+        html5.shivDocument(doc);
+    })(this, document);
+
     //>>END IEPP
 
     // Assign private properties to the return object with prefix
@@ -1052,7 +1092,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // expose these for the plugin API. Look in the source for how to join() them against your input
     Modernizr._prefixes     = prefixes;
-    Modernizr._domPrefixes  = cssomPrefixes;
+    Modernizr._domPrefixes  = domPrefixes;
+    Modernizr._cssomPrefixes  = cssomPrefixes;
     
     // Modernizr.mq tests a given media query, live against the current state of the window
     // A few important notes:
@@ -1102,22 +1143,27 @@ window.Modernizr = (function( window, document, undefined ) {
     //       'WebkitTransition' : 'webkitTransitionEnd',
     //       'MozTransition'    : 'transitionend',
     //       'OTransition'      : 'oTransitionEnd',
-    //       'msTransition'     : 'msTransitionEnd', // maybe?
-    //       'transition'       : 'transitionEnd'
+    //       'msTransition'     : 'MsTransitionEnd',
+    //       'transition'       : 'transitionend'
     //     },
     //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
     
-    Modernizr.prefixed      = function(prop){
-      return testPropsAll(prop, 'pfx');
+    Modernizr.prefixed      = function(prop, obj, elem){
+      if(!obj) {
+        return testPropsAll(prop, 'pfx');
+      } else {
+        // Testing DOM property e.g. Modernizr.prefixed('requestAnimationFrame', window) // 'mozRequestAnimationFrame'
+        return testPropsAll(prop, obj, elem);
+      }
     };
 
 
 
     // Remove "no-js" class from <html> element, if it exists:
-    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2')
+    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
                             
                             // Add the new classes to the <html> element.
-                            + (enableClasses ? ' js ' + classes.join(' ') : '');
+                            (enableClasses ? ' js ' + classes.join(' ') : '');
 
     return Modernizr;
 

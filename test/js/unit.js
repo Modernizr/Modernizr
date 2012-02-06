@@ -13,10 +13,10 @@ test("globals set up", function() {
   
     var globArr = Object.keys(__globals);
     
-    // remove Modernizr and iepp
+    // remove Modernizr and html5
     var leakedGlobArr = [''].concat(globArr).concat([''])
                             .join(',')
-                            .replace(',Modernizr','').replace(',iepp','')
+                            .replace(',Modernizr','').replace(',html5','')
                             .replace(/,script\w+/,'') // placed by jQuery
                             .split(',');
     
@@ -396,9 +396,9 @@ test('Modernizr.testStyles()',function(){
 
 test('Modernizr._[properties]',function(){
    
-  equals(7, Modernizr._prefixes.length, 'Modernizr._prefixes has 7 items');
+  equals(6, Modernizr._prefixes.length, 'Modernizr._prefixes has 6 items');
   
-  equals(5, Modernizr._domPrefixes.length, 'Modernizr.domPrefixes has 5 items');
+  equals(4, Modernizr._domPrefixes.length, 'Modernizr.domPrefixes has 4 items');
   
 });
 
@@ -433,20 +433,31 @@ test('Modernizr.testAllProps()',function(){
 
 
 
-test('Modernizr.prefixed()', function(){
+test('Modernizr.prefixed() - css and DOM resolving', function(){
   // https://gist.github.com/523692
   
-  function gimmePrefix(prop){
+  function gimmePrefix(prop, obj){
     var prefixes = ['Moz','Khtml','Webkit','O','ms'],
+        domPrefixes = ['moz','khtml','webkit','o','ms'],
         elem     = document.createElement('div'),
         upper    = prop.charAt(0).toUpperCase() + prop.slice(1);
 
-    if (prop in elem.style)
-      return prop;
+    if(!obj) {
+      if (prop in elem.style)
+        return prop;
 
-    for (var len = prefixes.length; len--; ){
-      if ((prefixes[len] + upper)  in elem.style)
-        return (prefixes[len] + upper);
+      for (var len = prefixes.length; len--; ){
+        if ((prefixes[len] + upper)  in elem.style)
+          return (prefixes[len] + upper);
+      }
+    } else {
+      if (prop in obj)
+        return prop;
+
+      for (var len = domPrefixes.length; len--; ){
+        if ((domPrefixes[len] + upper)  in obj)
+          return (domPrefixes[len] + upper);
+      }
     }
 
 
@@ -456,14 +467,139 @@ test('Modernizr.prefixed()', function(){
   var propArr = ['transition', 'backgroundSize', 'boxSizing', 'borderImage', 
                  'borderRadius', 'boxShadow', 'columnCount'];
   
-  
+  var domPropArr = [{ 'prop': 'requestAnimationFrame',  'obj': window }, 
+                    { 'prop': 'querySelectorAll',       'obj': document }, 
+                    { 'prop': 'matchesSelector',        'obj': document.createElement('div') }];
+
   for (var i = -1, len = propArr.length; ++i < len; ){
     var prop = propArr[i];
-    equals( Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
+    equals(Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
   }
+
+  for (var i = -1, len = domPropArr.length; ++i < len; ){
+    var prop = domPropArr[i];
+    ok(!!~Modernizr.prefixed(prop.prop, prop.obj, false).toString().indexOf(gimmePrefix(prop.prop, prop.obj)), 'results for ' + prop.prop + ' match the homebaked prefix finder');
+  }
+
   
   
   
+});
+
+
+// FIXME: so a few of these are whitelisting for webkit. i'd like to improve that.
+test('Modernizr.prefixed autobind', function(){
+  
+  var rAFName;
+
+  // quick sniff to find the local rAF prefixed name.
+  var vendors = ['ms', 'moz', 'webkit', 'o'];
+  for(var x = 0; x < vendors.length && !rAFName; ++x) {
+    rAFName = window[vendors[x]+'RequestAnimationFrame'] && vendors[x]+'RequestAnimationFrame';
+  }
+
+  if (rAFName){
+    // rAF returns a function
+    equals(
+      'function', 
+      typeof Modernizr.prefixed('requestAnimationFrame', window), 
+      "Modernizr.prefixed('requestAnimationFrame', window) returns a function")
+
+    // unless we false it to a string
+    equals(
+      rAFName, 
+      Modernizr.prefixed('requestAnimationFrame', window, false), 
+      "Modernizr.prefixed('requestAnimationFrame', window, false) returns a string (the prop name)")
+
+  }
+
+  if (document.body.webkitMatchesSelector || document.body.mozMatchesSelector){
+
+    var fn = Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body);
+
+    //returns function
+    equals(
+      'function', 
+      typeof fn, 
+      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) returns a function");
+
+      // fn scoping
+    equals(
+      true, 
+      fn('body'), 
+      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) is scoped to the body")
+
+  }
+
+  // Webkit only: are there other objects that are prefixed?
+  if (window.webkitNotifications){
+    // should be an object. 
+
+    equals(
+      'object', 
+      typeof Modernizr.prefixed('Notifications', window), 
+      "Modernizr.prefixed('Notifications') returns an object");
+
+  }
+
+  // Webkit only: 
+  if (typeof document.webkitIsFullScreen !== 'undefined'){
+    // boolean
+
+    equals(
+      'boolean', 
+      typeof Modernizr.prefixed('isFullScreen', document), 
+      "Modernizr.prefixed('isFullScreen') returns a boolean");
+  }
+
+
+  
+  // Moz only: 
+  if (typeof document.mozFullScreen !== 'undefined'){
+    // boolean
+
+    equals(
+      'boolean', 
+      typeof Modernizr.prefixed('fullScreen', document), 
+      "Modernizr.prefixed('fullScreen') returns a boolean");
+  }
+
+
+
+
+  // Webkit-only.. takes advantage of Webkit's mixed case of prefixes
+  if (document.body.style.WebkitAnimation){
+    // string
+
+    equals(
+      'string', 
+      typeof Modernizr.prefixed('animation', document.body.style), 
+      "Modernizr.prefixed('animation', document.body.style) returns value of that, as a string");
+
+    equals(
+      animationStyle.toLowerCase(), 
+      Modernizr.prefixed('animation', document.body.style, false).toLowerCase(), 
+      "Modernizr.prefixed('animation', document.body.style, false) returns the (case-normalized) name of the property: webkitanimation");
+
+  }
+
+  equals(
+    false,
+    Modernizr.prefixed('doSomethingAmazing$#$', window),
+    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj) returns false");
+  
+  equals(
+    false,
+    Modernizr.prefixed('doSomethingAmazing$#$', window, document.body),
+    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj, scope) returns false");
+
+
+  equals(
+    false,
+    Modernizr.prefixed('doSomethingAmazing$#$', window, false),
+    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj, false) returns false");
+
+
 });
 
 
