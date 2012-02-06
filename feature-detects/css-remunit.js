@@ -11,7 +11,9 @@
 Modernizr.addTest('cssremunit', function(){
 
   var div = document.createElement('div');
-  div.style.fontSize = '3rem';
+  try {
+    div.style.fontSize = '3rem';
+  } catch(er){}
   return /rem/.test(div.style.fontSize)
 
 });

@@ -8,5 +8,5 @@
 
 Modernizr.addTest('quotamanagement', function(){
   var storage = Modernizr.prefixed('StorageInfo', window);
-  return !!('TEMPORARY' in storage && 'PERSISTENT' in storage);
+  return !!(storage && 'TEMPORARY' in storage && 'PERSISTENT' in storage);
 });
