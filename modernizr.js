@@ -112,7 +112,9 @@ window.Modernizr = (function( window, document, undefined ) {
       // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
       fakeBody.innerHTML += style;
       fakeBody.appendChild(div);
-      docElement.appendChild(fakeBody);
+      if(!body){
+          docElement.appendChild(fakeBody);
+      }
 
       ret = callback(div, rule);
       // If this is done after page load we don't want to remove the body so check if body exists
