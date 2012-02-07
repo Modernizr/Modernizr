@@ -1,11 +1,10 @@
-// @mathias was here
+// testing for placeholder attribute in inputs and textareas
+// re-using Modernizr.input if available
 
-;(function() {
+Modernizr.addTest('placeholder', function(){
 
-  var inputPlaceholder = Modernizr.input.placeholder = 'placeholder' in document.createElement('input');
+  return !!( 'placeholder' in ( Modernizr.input    || document.createElement('input')    ) && 
+             'placeholder' in ( Modernizr.textarea || document.createElement('textarea') )
+           );
 
-  if (inputPlaceholder) {
-    (Modernizr.textarea || (Modernizr.textarea = {})).placeholder = 'placeholder' in document.createElement('textarea');
-  }
-  
-}());
+});
