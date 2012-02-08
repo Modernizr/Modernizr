@@ -1,4 +1,3 @@
-
 // IE8 compat mode aka Fake IE7
 // by Erich Ocean
 

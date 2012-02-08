@@ -11,7 +11,7 @@ Modernizr.addTest('pointerevents', function(){
     element.style.pointerEvents = 'auto';
     element.style.pointerEvents = 'x';
     documentElement.appendChild(element);
-    supports = getComputedStyle && 
+    supports = getComputedStyle &&
         getComputedStyle(element, '').pointerEvents === 'auto';
     documentElement.removeChild(element);
     return !!supports;

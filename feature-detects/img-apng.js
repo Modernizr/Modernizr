@@ -4,7 +4,7 @@
 (function () {
 
     if (!Modernizr.canvas) return false;
-    
+
     var image = new Image(),
         canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');

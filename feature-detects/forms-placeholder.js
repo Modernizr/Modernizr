@@ -3,7 +3,7 @@
 
 Modernizr.addTest('placeholder', function(){
 
-  return !!( 'placeholder' in ( Modernizr.input    || document.createElement('input')    ) && 
+  return !!( 'placeholder' in ( Modernizr.input    || document.createElement('input')    ) &&
              'placeholder' in ( Modernizr.textarea || document.createElement('textarea') )
            );
 

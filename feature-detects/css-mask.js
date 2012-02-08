@@ -1,5 +1,3 @@
-
-
 // Non-standard feature available in webkit only, so far.
 
 // http://www.webkit.org/blog/181/css-masks/

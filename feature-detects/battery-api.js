@@ -1,4 +1,3 @@
-
 // Battery API
 // https://developer.mozilla.org/en/DOM/window.navigator.mozBattery
 // By: Paul Sayre
