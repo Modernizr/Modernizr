@@ -25,6 +25,5 @@ Modernizr.addTest('localizedNumber', function() {
     diff = input.type === 'number' && input.valueAsNumber === 1.1 && input.checkValidity();
     root.removeChild(el);
     fake && root.parentNode.removeChild(root);
-    console.log(diff);
     return diff;
 });
