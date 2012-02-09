@@ -21,7 +21,10 @@ Modernizr.addTest('localizedNumber', function() {
     input = el.childNodes[0];
     root.appendChild(el);
     input.focus();
-    doc.execCommand('InsertText', false, '1,1');
+    try {
+        doc.execCommand('InsertText', false, '1,1');
+    } catch(e) { // prevent warnings in IE
+    }
     diff = input.type === 'number' && input.valueAsNumber === 1.1 && input.checkValidity();
     root.removeChild(el);
     fake && root.parentNode.removeChild(root);
