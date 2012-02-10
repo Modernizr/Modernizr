@@ -5,26 +5,11 @@
 // by @matthewlein
 
 Modernizr.addTest('highres', function() {
-    
-    if ( window.devicePixelRatio ) {
-        return !!( window.devicePixelRatio > 1.5 );
-    } else {
-        // vendor names are all over the board
-        var vendors = [   
-            'min--moz-device-pixel-ratio',
-            '-webkit-min-device-pixel-ratio',
-            'min-device-pixel-ratio'
-        ];
-        var isHighRes = false;
-        
-        // loop through vendors, checking non-prefixed first
-        for (var i = vendors.length - 1; i >= 0; i--) {
-            isHighRes = Modernizr.mq( 'only screen and ('+ vendors[i] + ':1.5)' )
-            if ( isHighRes ) {
-                break;
-            }
-        }
-        return isHighRes;
-    }
-    
-})
+ 
+    var dPR = window.devicePixelRatio
+      , str = 'only screen and (min--moz-device-pixel-ratio:1.5)'
+    ;//var
+
+    return dPR && dPR >= 1.5 || Modernizr.mq(str) || Modernizr.mq(str.replace('-moz-', ''));
+
+});
