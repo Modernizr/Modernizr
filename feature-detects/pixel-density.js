@@ -9,7 +9,11 @@ Modernizr.addTest('highres', function() {
     var dPR = window.devicePixelRatio
       , str = 'only screen and (min--moz-device-pixel-ratio:1.5)'
     ;//var
+    
+    if ( dPR ) {
+        return dPR >= 1.5;
+    }
 
-    return dPR && dPR >= 1.5 || Modernizr.mq(str) || Modernizr.mq(str.replace('-moz-', ''));
+    return Modernizr.mq(str) || Modernizr.mq(str.replace('-moz-', ''));
 
 });
