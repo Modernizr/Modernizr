@@ -3,4 +3,4 @@
 
 // https://chromiumcodereview.appspot.com/9232049/
 
-Modernizr.addTest('dart', !!Modernizr.prefixed('StartDart', navigator));
+Modernizr.addTest('dart', !!Modernizr.prefixed('startDart', navigator));
