@@ -1,4 +1,3 @@
-
 // Quota storage management API
 // This API can be used to check how much quota an origin is using and request more
 

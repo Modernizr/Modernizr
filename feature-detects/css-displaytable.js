@@ -5,23 +5,22 @@
 // more testing neccessary perhaps.
 
 Modernizr.addTest( "display-table",function(){
-  
+
   var doc   = window.document,
-      docElem = doc.documentElement,   
+      docElem = doc.documentElement,
       parent  = doc.createElement( "div" ),
       child = doc.createElement( "div" ),
       childb  = doc.createElement( "div" ),
       ret;
-  
+
   parent.style.cssText = "display: table";
-  child.style.cssText = childb.style.cssText = "display: table-cell; padding: 10px";    
-          
+  child.style.cssText = childb.style.cssText = "display: table-cell; padding: 10px";
+
   parent.appendChild( child );
   parent.appendChild( childb );
   docElem.insertBefore( parent, docElem.firstChild );
-  
+
   ret = child.offsetLeft < childb.offsetLeft;
   docElem.removeChild(parent);
-  return ret; 
+  return ret;
 });
-

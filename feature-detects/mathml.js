@@ -1,5 +1,5 @@
 // MathML
-// http://www.w3.org/Math/ 
+// http://www.w3.org/Math/
 // By Addy Osmani
 // Based on work by Davide (@dpvc) and David (@davidcarlisle)
 // in https://github.com/mathjax/MathJax/issues/182
@@ -9,7 +9,7 @@ Modernizr.addTest('mathml', function(){
 	if ( document.createElementNS ) {
 	var ns = "http://www.w3.org/1998/Math/MathML",
 	    div = document.createElement("div");
-	    div.style.position = "absolute"; 
+	    div.style.position = "absolute";
 	var mfrac = div.appendChild(document.createElementNS(ns,"math"))
 	               .appendChild(document.createElementNS(ns,"mfrac"));
 	mfrac.appendChild(document.createElementNS(ns,"mi"))

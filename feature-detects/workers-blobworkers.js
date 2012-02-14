@@ -1,6 +1,5 @@
 // by jussi-kalliokoski
 
-
 // This test is asynchronous. Watch out.
 
 // The test will potentially add garbage to console.
@@ -9,7 +8,7 @@
   try {
 
     // we're avoiding using Modernizr._domPrefixes as the prefix capitalization on
-    // these guys are notoriously peculiar. 
+    // these guys are notoriously peculiar.
     var BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder || window.OBlobBuilder || window.BlobBuilder,
         URL         = window.MozURL || window.webkitURL || window.MSURL || window.OURL || window.URL;
 

@@ -1,4 +1,3 @@
-
 // we can probably retire testing all prefixes for this one soon
 // https://developer.mozilla.org/en/CSS/background-clip
 

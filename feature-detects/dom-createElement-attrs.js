@@ -8,4 +8,3 @@ Modernizr.addTest('createelement-attrs', function() {
     return false;
   }
 });
-

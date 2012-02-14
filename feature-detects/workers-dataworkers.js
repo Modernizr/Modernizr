@@ -1,6 +1,5 @@
 // by jussi-kalliokoski
 
-
 // This test is asynchronous. Watch out.
 
 // The test will potentially add garbage to console.
