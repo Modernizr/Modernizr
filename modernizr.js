@@ -113,6 +113,8 @@ window.Modernizr = (function( window, document, undefined ) {
       fakeBody.innerHTML += style;
       fakeBody.appendChild(div);
       if(!body){
+          //avoid crashing IE8, if background image is used
+          fakeBody.style.background = "";
           docElement.appendChild(fakeBody);
       }
 
