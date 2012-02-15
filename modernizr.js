@@ -986,7 +986,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     //>>BEGIN IEPP
     // Enable HTML 5 elements for styling in IE & add HTML5 css
-    /*! HTML5 Shiv vpre3.4 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed */
+    /*! HTML5 Shiv v3.4 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed */
     ;(function(window, document) {
     
       /** Preset options */
