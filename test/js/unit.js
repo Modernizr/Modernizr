@@ -393,7 +393,7 @@ test('Modernizr.testStyles()',function(){
    
   equals(typeof Modernizr.testStyles, 'function','Modernizr.testStyles() is a function');
   
-  var style = '#modernizr{ width: 9px; height: 4px; color: papayawhip; }';
+  var style = '#modernizr{ width: 9px; height: 4px; font-size: 0; color: papayawhip; }';
   
   Modernizr.testStyles(style, function(elem, rule){
       equals(style, rule, 'rule passsed back matches what i gave it.')
