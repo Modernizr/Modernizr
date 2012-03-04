@@ -124,7 +124,7 @@ window.Modernizr = (function( window, document, undefined ) {
       // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
       (body ? div : fakeBody).innerHTML += style;
       fakeBody.appendChild(div);
-      if(!body){
+      if ( !body ) {
           //avoid crashing IE8, if background image is used
           fakeBody.style.background = "";
           docElement.appendChild(fakeBody);
