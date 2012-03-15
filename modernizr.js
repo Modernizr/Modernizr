@@ -447,19 +447,13 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
     };
 
-    // this test initiates a new webgl context. 
-    // webk.it/70117 is tracking a legit feature detect proposal
+    // webk.it/70117 is tracking a legit WebGL feature detect proposal
+
+    // We do a soft detect which may false positive in order to avoid
+    // an expensive context creation: bugzil.la/732441
 
     tests['webgl'] = function() {
-        try {
-            var canvas = document.createElement('canvas'),
-                ret;
-            ret = !!(window.WebGLRenderingContext && (canvas.getContext('experimental-webgl') || canvas.getContext('webgl')));
-            canvas = undefined;
-        } catch (e){
-            ret = false;
-        }
-        return ret;
+        return !!window.WebGLRenderingContext;
     };
 
     /*
