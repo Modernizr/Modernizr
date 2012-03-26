@@ -822,6 +822,17 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
     };
 
+    // SVG filters support
+    tests['svgfilters'] = function() {
+      var result = false;
+      try {
+        result = typeof SVGFEColorMatrixElement !== undefined &&
+                 SVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_SATURATE==2;
+      }
+      catch(e) {}
+      return result;
+    };
+
     // specifically for SVG inline in HTML, not within XHTML
     // test page: paulirish.com/demo/inline-svg
     tests['inlinesvg'] = function() {
