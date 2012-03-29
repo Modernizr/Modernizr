@@ -14,7 +14,11 @@ Modernizr.addTest('csspositionfixed', function () {
     if ( !( "getBoundingClientRect" in body ) ) {return false;}
     
     el.innerHTML = ' ';
-    el.style.cssText = 'position:fixed;top:'+PIXELS_TO_MOVE+'px;visibility:visible;-webkit-transform:none;-moz-transform:none;transform:none;';
+    
+    /* CSS classes to ensure the element is visible and it doesn't have css transforms. 
+    Transforms can conflict with position fixed in some instances.
+    Visibilty and block are to ensure override of critical styles already in the page. */
+    el.style.cssText = 'position:fixed;top:'+PIXELS_TO_MOVE+'px;visibility:visible;display:block;-webkit-transform:none;-moz-transform:none;transform:none;';
     
     body.appendChild(el);
 
