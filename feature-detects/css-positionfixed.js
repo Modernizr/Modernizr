@@ -1,9 +1,12 @@
-/*  Tested on iPhone 4, iPhone 5, Android 4.0, and modern browsers  */
+/*  
+
+Inspired from https://github.com/kangax/cft/blob/gh-pages/feature_tests.js#L159-187
+
+*/
 
 Modernizr.addTest('csspositionfixed', function () {
     var elementTop, 
         originalHeight, 
-        isSupported, 
         body = document.body,
         el = document.createElement('div'),
         PIXELS_TO_MOVE = 100;
