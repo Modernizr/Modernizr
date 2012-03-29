@@ -99,7 +99,7 @@ window.Modernizr = (function( window, document, undefined ) {
       var style, ret, node,
           div = document.createElement('div'),
           // After page load injecting a fake body doesn't work so check if body exists
-          body = document.body, 
+          body = document.body,
           // IE6 and 7 won't return offsetWidth or offsetHeight unless it's in the body element, so we fake it.
           fakeBody = body ? body : document.createElement('body');
 
@@ -496,7 +496,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    // Chrome incognito mode used to throw an exception when using openDatabase 
+    // Chrome incognito mode used to throw an exception when using openDatabase
     // It doesn't anymore.
     tests['websqldatabase'] = function() {
       return !!window.openDatabase;
@@ -625,7 +625,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    // Note, Android < 4 will pass this test, but can only animate 
+    // Note, Android < 4 will pass this test, but can only animate
     //   a single property at a time
     //   daneden.me/2011/12/putting-up-with-androids-bullshit/
     tests['cssanimations'] = function() {
@@ -653,8 +653,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
         setCss(
              // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
-              (str1 + '-webkit- '.split(' ').join(str2 + str1) 
-             // standard syntax             // trailing 'background-image:' 
+              (str1 + '-webkit- '.split(' ').join(str2 + str1)
+             // standard syntax             // trailing 'background-image:'
               + prefixes.join(str3 + str1)).slice(0, -str1.length)
         );
 
@@ -750,7 +750,7 @@ window.Modernizr = (function( window, document, undefined ) {
         var elem = document.createElement('audio'),
             bool = false;
 
-        try { 
+        try {
             if ( bool = !!elem.canPlayType ) {
                 bool      = new Boolean(bool);
                 bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,'');
@@ -760,7 +760,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 //   developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
                 //   bit.ly/iphoneoscodecs
                 bool.wav  = elem.canPlayType('audio/wav; codecs="1"')     .replace(/^no$/,'');
-                bool.m4a  = ( elem.canPlayType('audio/x-m4a;')            || 
+                bool.m4a  = ( elem.canPlayType('audio/x-m4a;')            ||
                               elem.canPlayType('audio/aac;'))             .replace(/^no$/,'');
             }
         } catch(e) { }
@@ -1225,7 +1225,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // A few important notes:
     //   * If a browser does not support media queries at all (eg. oldIE) the mq() will always return false
     //   * A max-width or orientation query will be evaluated against the current state, which may change later.
-    //   * You must specify values. Eg. If you are testing support for the min-width media query use: 
+    //   * You must specify values. Eg. If you are testing support for the min-width media query use:
     //       Modernizr.mq('(min-width:0)')
     // usage:
     // Modernizr.mq('only screen and (max-width:768)')
@@ -1278,7 +1278,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //       'WebkitTransition' : 'webkitTransitionEnd',
     //       'MozTransition'    : 'transitionend',
     //       'OTransition'      : 'oTransitionEnd',
-    //       'msTransition'     : 'MsTransitionEnd',
+    //       'msTransition'     : 'MSTransitionEnd',
     //       'transition'       : 'transitionend'
     //     },
     //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
