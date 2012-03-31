@@ -1,4 +1,4 @@
-// cubic-bezier values can't be > 1 for Webkit until bug #45761 (https://bugs.webkit.org/show_bug.cgi?id=45761) is fixed
+// Method of allowing calculated values for length units, i.e. width: calc(100%-3em) http://caniuse.com/#search=calc
 // By @calvein
 
 Modernizr.addTest('csscalc', function(el, prop, value) {
