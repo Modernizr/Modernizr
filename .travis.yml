@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - 0.7
+notifications:
+  email: false
+before_script:
+  - "export DISPLAY=:99.0" 
+  - "sh -e /etc/init.d/xvfb start"
+  - npm install connect
+  - sudo node test/js/server.js &
+  - sleep 5
+script: phantomjs test/qunit/run-qunit.js 'http://localhost:80/test/index.html?filter=!caniuse.com'
