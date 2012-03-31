@@ -1,4 +1,4 @@
-Modernizr
+Modernizr [![Build Status](https://secure.travis-ci.org/Modernizr/Modernizr.png?branch=travis-ci)](http://travis-ci.org/Modernizr/Modernizr)
 =========
 
 ### a JavaScript library allowing you to use CSS3 & HTML5 while maintaining control over unsupported browsers 
