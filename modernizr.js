@@ -430,7 +430,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // The *old* flexbox
     // www.w3.org/TR/2009/WD-css3-flexbox-20090723/
 
-    tests['flexbox-legacy'] = function() {
+    tests['flexboxlegacy'] = tests['flexbox-legacy'] = function() {
         return testPropsAll('boxDirection');
     };
 
