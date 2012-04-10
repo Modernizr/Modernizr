@@ -12,7 +12,7 @@ Modernizr.addTest('regions', function() {
 		region = document.createElement('div'),
 		/* we create a random, unlikely to be generated flow number to make sure we don't
 		clash with anything more vanilla, like 'flow', or 'article', or 'f1' */
-		flowName = 'modernizr_flow_' + (Math.random() * 1000000);
+		flowName = 'modernizr_flow_for_regions_check';
 
 		/* First create a div with two adjacent divs inside it. The first will be the
 		content, the second will be the region. To be able to distinguish between the two,
