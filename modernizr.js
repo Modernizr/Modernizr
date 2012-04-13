@@ -483,7 +483,7 @@ window.Modernizr = (function( window, document, undefined ) {
      *   gist.github.com/366184
      */
     tests['geolocation'] = function() {
-        return !!navigator.geolocation;
+        return 'geolocation' in navigator;
     };
 
     // Per 1.6:
