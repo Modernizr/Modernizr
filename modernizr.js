@@ -481,6 +481,9 @@ window.Modernizr = (function( window, document, undefined ) {
      *   code.google.com/p/geo-location-javascript/
      * or view a fallback solution using google's geo API:
      *   gist.github.com/366184
+     *
+     * Directly accessing geolocation in WebKit disables page caching:
+     *   https://bugs.webkit.org/show_bug.cgi?id=43956
      */
     tests['geolocation'] = function() {
         return 'geolocation' in navigator;
