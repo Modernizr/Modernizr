@@ -1,4 +1,4 @@
-// Quota Storage mManagement API
+// Quota Storage Management API
 // This API can be used to check how much quota an origin is using and request more
 
 // Currently only implemented in Chrome.
