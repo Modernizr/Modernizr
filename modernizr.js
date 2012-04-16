@@ -474,26 +474,22 @@ window.Modernizr = (function( window, document, undefined ) {
         return Modernizr['touch'];
     };
 
-    /**
-     * geolocation tests for the new Geolocation API specification.
-     *   This test is a standards compliant-only test; for more complete
-     *   testing, including a Google Gears fallback, please see:
-     *   code.google.com/p/geo-location-javascript/
-     * or view a fallback solution using google's geo API:
-     *   gist.github.com/366184
-     *
-     * Directly accessing geolocation in WebKit disables page caching:
-     *   https://bugs.webkit.org/show_bug.cgi?id=43956
-     */
+
+    // geolocation is often considered a trivial feature detect...
+    // Turns out, it's quite tricky to get right:
+    //
+    // Using !!navigator.geolocation does two things we don't want. It:
+    //   1. Leaks memory in IE9: github.com/Modernizr/Modernizr/issues/513
+    //   2. Disables page caching in WebKit: webk.it/43956
+    //
+    // Meanwhile, in Firefox < 8, an about:config setting could expose
+    // a false positive that would throw an exception: bugzil.la/688158
+
     tests['geolocation'] = function() {
         return 'geolocation' in navigator;
     };
 
-    // Per 1.6:
-    // This used to be Modernizr.crosswindowmessaging but the longer
-    // name has been deprecated in favor of a shorter and property-matching one.
-    // The old API is still available in 1.6, but as of 2.0 will throw a warning,
-    // and in the first release thereafter disappear entirely.
+
     tests['postmessage'] = function() {
       return !!window.postMessage;
     };
