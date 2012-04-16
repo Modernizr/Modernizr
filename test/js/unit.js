@@ -103,6 +103,13 @@ test('html shim worked', function(){
   
 });
 
+test("document.createElement overwrite doesn't break IE", function () {
+  var option = document.createElement("option");
+  option.value = "value";
+  option.text = "label";
+  document.createElement("select").add(option);
+});
+
 
 module('Modernizr classes and bools', {
     setup:function() {

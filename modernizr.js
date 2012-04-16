@@ -1019,7 +1019,7 @@ window.Modernizr = (function( window, document, undefined ) {
       var options = window.html5 || {};
 
       /** Used to skip problem elements */
-      var reSkip = /^<|^(?:button|form|map|select|textarea)$/i;
+      var reSkip = /^<|^(?:button|form|map|option|select|textarea)$/i;
 
       /** Detect whether the browser supports default html5 styles */
       var supportsHtml5Styles;
