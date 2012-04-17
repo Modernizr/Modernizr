@@ -20,7 +20,14 @@ Modernizr.addTest('regions', function() {
 		content.innerText = 'M';
 		container.style.cssText = 'top: 150px; left: 150px; padding: 0px;'
 		region.style.cssText = 'width: 50px; height: 50px; padding: 42px;';
-		region.style.webkitFlowFrom = flowName;
+
+		/* Get the 'flowFrom' property name available in the browser. Either default or vendor prefixed.
+		If the property name can't be found we'll get Boolean 'false' and fail quickly */
+		var flowFromProperty = Modernizr.prefixed("flowFrom")
+		if (!flowFromProperty){
+		    return false
+		}
+		region.style[flowFromProperty] = flowName;
 		container.appendChild(content);
 		container.appendChild(region);
 		document.body.appendChild(container);
@@ -30,7 +37,12 @@ Modernizr.addTest('regions', function() {
 		should reflect the padding of the region div.*/
 		var plainRect, flowedRect, delta;
 		plainRect = content.getBoundingClientRect()
-		content.style.webkitFlowInto = flowName;
+
+		var flowIntoProperty = Modernizr.prefixed("flowInto")
+		if (!flowIntoProperty){
+		    return false
+		}
+		content.style[flowIntoProperty] = flowName;
 		flowedRect = content.getBoundingClientRect();
 		
 		delta = flowedRect.left - plainRect.left;
