@@ -1,4 +1,6 @@
 // Tests for the ability to use Web Intents (http://webintents.org).
+// By Eric Bidelman
+
 Modernizr.addTest('webintents', function() {
-    return !!navigator.startActivity;
+  return !!Modernizr.prefixed('startActivity', navigator);
 });

@@ -1,6 +1,5 @@
 // GamePad API
-// https://wiki.mozilla.org/GamepadAPI
-// Note: this feature detection test has been confirmed with the developers
-// of the GamePad API implementation in FF
-// By Addy Osmani
-Modernizr.addTest('gamepad', 'gamepads' in navigator);
+// https://dvcs.w3.org/hg/gamepad/raw-file/default/gamepad.html
+// By Eric Bidelman
+
+Modernizr.addTest('gamepads', !!Modernizr.prefixed('gamepads', navigator));
