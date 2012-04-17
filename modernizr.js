@@ -1013,28 +1013,41 @@ window.Modernizr = (function( window, document, undefined ) {
     modElem = inputElem = null;
 
     /*>>shiv*/
-    /*! HTML5 Shiv v3.4 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed */
+    /*! HTML5 Shiv v3.5 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed */
     ;(function(window, document) {
-
+    
       /** Preset options */
       var options = window.html5 || {};
-
+    
       /** Used to skip problem elements */
-      var reSkip = /^<|^(?:button|form|map|select|textarea)$/i;
-
+      var reSkip = /^<|^(?:button|form|map|select|textarea|object|iframe|option|optgroup)$/i;
+    
+      /** Not all elements can be cloned in IE (this list can be shortend) **/
+      var saveClones = /^<|^(?:a|b|button|code|div|fieldset|form|h1|h2|h3|h4|h5|h6|i|iframe|img|input|label|li|link|ol|option|p|param|q|script|select|span|strong|style|table|tbody|td|textarea|tfoot|th|thead|tr|ul)$/i;
+    
       /** Detect whether the browser supports default html5 styles */
       var supportsHtml5Styles;
-
+    
       /** Detect whether the browser supports unknown elements */
       var supportsUnknownElements;
-
+    
       (function() {
         var a = document.createElement('a');
-
+    
         a.innerHTML = '<xyz></xyz>';
-
-        //if the hidden property is implemented we can assume, that the browser supports HTML5 Styles
+    
+        //if the hidden property is implemented we can assume, that the browser supports HTML5 Styles | this fails in Chrome 8
         supportsHtml5Styles = ('hidden' in a);
+        //if we are part of Modernizr, we do an additional test to solve the Chrome 8 fail
+        if(supportsHtml5Styles && typeof injectElementWithStyles == 'function'){
+            injectElementWithStyles('#modernizr{}', function(node){
+                node.hidden = true;
+                supportsHtml5Styles = (window.getComputedStyle ?
+                      getComputedStyle(node, null) :
+                      node.currentStyle).display == 'none';
+            });
+        }
+    
         supportsUnknownElements = a.childNodes.length == 1 || (function() {
           // assign a false positive if unable to shiv
           try {
@@ -1049,11 +1062,11 @@ window.Modernizr = (function( window, document, undefined ) {
             typeof frag.createElement == 'undefined'
           );
         }());
-
+    
       }());
-
+    
       /*--------------------------------------------------------------------------*/
-
+    
       /**
        * Creates a style sheet with the given CSS text and adds it to the document.
        * @private
@@ -1064,11 +1077,11 @@ window.Modernizr = (function( window, document, undefined ) {
       function addStyleSheet(ownerDocument, cssText) {
         var p = ownerDocument.createElement('p'),
             parent = ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
-
+    
         p.innerHTML = 'x<style>' + cssText + '</style>';
         return parent.insertBefore(p.lastChild, parent.firstChild);
       }
-
+    
       /**
        * Returns the value of `html5.elements` as an array.
        * @private
@@ -1078,7 +1091,7 @@ window.Modernizr = (function( window, document, undefined ) {
         var elements = html5.elements;
         return typeof elements == 'string' ? elements.split(' ') : elements;
       }
-
+    
       /**
        * Shivs the `createElement` and `createDocumentFragment` methods of the document.
        * @private
@@ -1089,9 +1102,23 @@ window.Modernizr = (function( window, document, undefined ) {
             docCreateElement = ownerDocument.createElement,
             docCreateFragment = ownerDocument.createDocumentFragment,
             frag = docCreateFragment();
-
-
+    
         ownerDocument.createElement = function(nodeName) {
+          //abort shiv
+          if(!html5.shivMethods){
+              return docCreateElement(nodeName);
+          }
+    
+          var node;
+    
+          if(cache[nodeName]){
+              node = cache[nodeName].cloneNode();
+          } else if(saveClones.test(nodeName)){
+               node = (cache[nodeName] = docCreateElement(nodeName)).cloneNode();
+          } else {
+              node = docCreateElement(nodeName);
+          }
+    
           // Avoid adding some elements to fragments in IE < 9 because
           // * Attributes like `name` or `type` cannot be set/changed once an element
           //   is inserted into a document/fragment
@@ -1099,25 +1126,24 @@ window.Modernizr = (function( window, document, undefined ) {
           //   a 403 response, will cause the tab/window to crash
           // * Script elements appended to fragments will execute when their `src`
           //   or `text` property is set
-          var node = (cache[nodeName] || (cache[nodeName] = docCreateElement(nodeName))).cloneNode();
-          return html5.shivMethods && node.canHaveChildren && !reSkip.test(nodeName) ? frag.appendChild(node) : node;
+          return node.canHaveChildren && !reSkip.test(nodeName) ? frag.appendChild(node) : node;
         };
-
+    
         ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
           'var n=f.cloneNode(),c=n.createElement;' +
           'h.shivMethods&&(' +
             // unroll the `createElement` calls
             getElements().join().replace(/\w+/g, function(nodeName) {
-              cache[nodeName] = docCreateElement(nodeName);
+              docCreateElement(nodeName);
               frag.createElement(nodeName);
               return 'c("' + nodeName + '")';
             }) +
           ');return n}'
         )(html5, frag);
       }
-
+    
       /*--------------------------------------------------------------------------*/
-
+    
       /**
        * Shivs the given document.
        * @memberOf html5
@@ -1151,9 +1177,9 @@ window.Modernizr = (function( window, document, undefined ) {
         }
         return ownerDocument;
       }
-
+    
       /*--------------------------------------------------------------------------*/
-
+    
       /**
        * The `html5` object is exposed so that more elements can be shived and
        * existing shiving can be detected on iframes.
@@ -1164,21 +1190,21 @@ window.Modernizr = (function( window, document, undefined ) {
        * html5 = { 'elements': 'mark section', 'shivCSS': false, 'shivMethods': false };
        */
       var html5 = {
-
+    
         /**
          * An array or space separated string of node names of the elements to shiv.
          * @memberOf html5
          * @type Array|String
          */
         'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video',
-
+    
         /**
          * A flag to indicate that the HTML5 style sheet should be inserted.
          * @memberOf html5
          * @type Boolean
          */
         'shivCSS': !(options.shivCSS === false),
-
+    
         /**
          * A flag to indicate that the document's `createElement` and `createDocumentFragment`
          * methods should be overwritten.
@@ -1186,25 +1212,26 @@ window.Modernizr = (function( window, document, undefined ) {
          * @type Boolean
          */
         'shivMethods': !(options.shivMethods === false),
-
+    
         /**
          * A string to describe the type of `html5` object ("default" or "default print").
          * @memberOf html5
          * @type String
          */
         'type': 'default',
+    
         // shivs the document according to the specified `html5` object options
         'shivDocument': shivDocument
       };
-
+    
       /*--------------------------------------------------------------------------*/
-
+    
       // expose html5
       window.html5 = html5;
-
+    
       // shiv the document
       shivDocument(document);
-
+    
     }(this, document));
     /*>>shiv*/
 
