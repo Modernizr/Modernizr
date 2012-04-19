@@ -1,5 +1,5 @@
-/* see dev.davidnewton.ca/the-current-state-of-hyphenation-on-the-web 
-			 dev.davidnewton.ca/demos/hyphenation/test.html 
+/* see http://davidnewton.ca/the-current-state-of-hyphenation-on-the-web 
+			 http://davidnewton.ca/demos/hyphenation/test.html 
 
 
 There are three tests:
