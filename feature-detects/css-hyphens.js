@@ -12,6 +12,8 @@ These tests currently require document.body to be present
 Hyphenation is language specific, sometimes. 
   See for more details: http://code.google.com/p/hyphenator/source/diff?spec=svn975&r=975&format=side&path=/trunk/Hyphenator.js#sc_svn975_313
 
+If loading Hyphenator.js via Modernizr.load, be cautious of issue 158: http://code.google.com/p/hyphenator/issues/detail?id=158
+
 More details at https://github.com/Modernizr/Modernizr/issues/312
 
 */
