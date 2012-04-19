@@ -34,8 +34,6 @@ More details at https://github.com/Modernizr/Modernizr/issues/312
 				spanHeight = 0,
 				spanWidth = 0,
 				result = false,
-				result1 = false,
-				result2 = false,
 				firstChild = document.body.firstElementChild || document.body.firstChild;
 			
 			div.appendChild(span);
