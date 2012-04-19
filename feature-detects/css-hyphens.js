@@ -134,7 +134,7 @@ More details at https://github.com/Modernizr/Modernizr/issues/312
 			div.innerHTML = testword + delimiter + testword;
 
 			document.body.insertBefore(div, firstChild);
-			document.body.insertBefore(dummy, firstChild);
+			document.body.insertBefore(dummy, div);
 
 			
 			/* reset the selection to the dummy input element, i.e. BEFORE the div container
