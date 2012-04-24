@@ -25,12 +25,12 @@ Modernizr.addTest('regions', function() {
 		If the property name can't be found we'll get Boolean 'false' and fail quickly */
 		var flowFromProperty = Modernizr.prefixed("flowFrom")
 		if (!flowFromProperty){
-		    return false
+		    return false;
 		}
 		region.style[flowFromProperty] = flowName;
 		container.appendChild(content);
 		container.appendChild(region);
-		document.body.appendChild(container);
+		document.documentElement.appendChild(container);
 
 		/* Now compute the bounding client rect, before and after attempting to flow the
 		content div in the region div. If regions are enabled, the after bounding rect
@@ -40,13 +40,13 @@ Modernizr.addTest('regions', function() {
 
 		var flowIntoProperty = Modernizr.prefixed("flowInto")
 		if (!flowIntoProperty){
-		    return false
+		    return false;
 		}
 		content.style[flowIntoProperty] = flowName;
 		flowedRect = content.getBoundingClientRect();
 		
 		delta = flowedRect.left - plainRect.left;
-		document.body.removeChild(container);
+		document.documentElement.removeChild(container);
 		delete content;
 		delete region;
 		delete container;
