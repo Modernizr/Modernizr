@@ -5,7 +5,7 @@
 // Simple, CSS parser based
 Modernizr.addTest('regions', function() {
 	/* Attempt a quick-to-fail test */
-	if (Modernizr.testAllProps('flowInto')) {
+	if (Modernizr.testAllProps('flowInto') && Modernizr.testAllProps('flowFrom')) {
 		/* If CSS parsing is there, try to determine if regions actually work. */
 		var container = document.createElement('div'),
 		content = document.createElement('div'),
@@ -23,10 +23,7 @@ Modernizr.addTest('regions', function() {
 
 		/* Get the 'flowFrom' property name available in the browser. Either default or vendor prefixed.
 		If the property name can't be found we'll get Boolean 'false' and fail quickly */
-		var flowFromProperty = Modernizr.prefixed("flowFrom")
-		if (!flowFromProperty){
-		    return false;
-		}
+		var flowFromProperty = Modernizr.prefixed("flowFrom");
 		region.style[flowFromProperty] = flowName;
 		container.appendChild(content);
 		container.appendChild(region);
@@ -38,10 +35,7 @@ Modernizr.addTest('regions', function() {
 		var plainRect, flowedRect, delta;
 		plainRect = content.getBoundingClientRect()
 
-		var flowIntoProperty = Modernizr.prefixed("flowInto")
-		if (!flowIntoProperty){
-		    return false;
-		}
+		var flowIntoProperty = Modernizr.prefixed("flowInto");
 		content.style[flowIntoProperty] = flowName;
 		flowedRect = content.getBoundingClientRect();
 		
