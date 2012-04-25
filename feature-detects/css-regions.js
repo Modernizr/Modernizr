@@ -18,7 +18,7 @@ Modernizr.addTest('regions', function() {
 		content, the second will be the region. To be able to distinguish between the two,
 		we'll give the region a particular padding */
 		content.innerText = 'M';
-		container.style.cssText = 'top: 150px; left: 150px; padding: 0px;'
+		container.style.cssText = 'top: 150px; left: 150px; padding: 0px;';
 		region.style.cssText = 'width: 50px; height: 50px; padding: 42px;';
 
 		/* Get the 'flowFrom' property name available in the browser. Either default or vendor prefixed. */
@@ -32,7 +32,7 @@ Modernizr.addTest('regions', function() {
 		content div in the region div. If regions are enabled, the after bounding rect
 		should reflect the padding of the region div.*/
 		var plainRect, flowedRect, delta;
-		plainRect = content.getBoundingClientRect()
+		plainRect = content.getBoundingClientRect();
 
 		var flowIntoProperty = Modernizr.prefixed("flowInto");
 		content.style[flowIntoProperty] = flowName;
