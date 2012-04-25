@@ -5,28 +5,24 @@
 // Simple, CSS parser based
 Modernizr.addTest('regions', function() {
 	/* Attempt a quick-to-fail test */
-	if (Modernizr.testAllProps('flowInto')) {
+	if (Modernizr.testAllProps('flowInto') && Modernizr.testAllProps('flowFrom')) {
 		/* If CSS parsing is there, try to determine if regions actually work. */
 		var container = document.createElement('div'),
 		content = document.createElement('div'),
 		region = document.createElement('div'),
-		/* we create a random, unlikely to be generated flow number to make sure we don't
-		clash with anything more vanilla, like 'flow', or 'article', or 'f1' */
+		/* Hopefully this flow name will not clash with some user-used flow name
+		in the brief time the elements are on the DOM. */
 		flowName = 'modernizr_flow_for_regions_check';
 
 		/* First create a div with two adjacent divs inside it. The first will be the
 		content, the second will be the region. To be able to distinguish between the two,
 		we'll give the region a particular padding */
 		content.innerText = 'M';
-		container.style.cssText = 'top: 150px; left: 150px; padding: 0px;'
+		container.style.cssText = 'top: 150px; left: 150px; padding: 0px;';
 		region.style.cssText = 'width: 50px; height: 50px; padding: 42px;';
 
-		/* Get the 'flowFrom' property name available in the browser. Either default or vendor prefixed.
-		If the property name can't be found we'll get Boolean 'false' and fail quickly */
-		var flowFromProperty = Modernizr.prefixed("flowFrom")
-		if (!flowFromProperty){
-		    return false;
-		}
+		/* Get the 'flowFrom' property name available in the browser. Either default or vendor prefixed. */
+		var flowFromProperty = Modernizr.prefixed("flowFrom");
 		region.style[flowFromProperty] = flowName;
 		container.appendChild(content);
 		container.appendChild(region);
@@ -36,12 +32,9 @@ Modernizr.addTest('regions', function() {
 		content div in the region div. If regions are enabled, the after bounding rect
 		should reflect the padding of the region div.*/
 		var plainRect, flowedRect, delta;
-		plainRect = content.getBoundingClientRect()
+		plainRect = content.getBoundingClientRect();
 
-		var flowIntoProperty = Modernizr.prefixed("flowInto")
-		if (!flowIntoProperty){
-		    return false;
-		}
+		var flowIntoProperty = Modernizr.prefixed("flowInto");
 		content.style[flowIntoProperty] = flowName;
 		flowedRect = content.getBoundingClientRect();
 		
