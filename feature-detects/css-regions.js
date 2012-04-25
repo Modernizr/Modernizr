@@ -10,8 +10,8 @@ Modernizr.addTest('regions', function() {
 		var container = document.createElement('div'),
 		content = document.createElement('div'),
 		region = document.createElement('div'),
-		/* we create a random, unlikely to be generated flow number to make sure we don't
-		clash with anything more vanilla, like 'flow', or 'article', or 'f1' */
+		/* Hopefully this flow name will not clash with some user-used flow name
+		in the brief time the elements are on the DOM. */
 		flowName = 'modernizr_flow_for_regions_check';
 
 		/* First create a div with two adjacent divs inside it. The first will be the
@@ -21,8 +21,7 @@ Modernizr.addTest('regions', function() {
 		container.style.cssText = 'top: 150px; left: 150px; padding: 0px;'
 		region.style.cssText = 'width: 50px; height: 50px; padding: 42px;';
 
-		/* Get the 'flowFrom' property name available in the browser. Either default or vendor prefixed.
-		If the property name can't be found we'll get Boolean 'false' and fail quickly */
+		/* Get the 'flowFrom' property name available in the browser. Either default or vendor prefixed. */
 		var flowFromProperty = Modernizr.prefixed("flowFrom");
 		region.style[flowFromProperty] = flowName;
 		container.appendChild(content);
