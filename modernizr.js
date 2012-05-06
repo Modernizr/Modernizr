@@ -165,10 +165,13 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     /*>>hasevent*/
-    /**
-      * isEventSupported determines if a given element supports the given event
-      * function from yura.thinkweb2.com/isEventSupported/
-      */
+    //
+    // isEventSupported determines if a given element supports the given event
+    // function from yura.thinkweb2.com/isEventSupported/
+    //
+    // The following results are known incorrects:
+    //   Modernizr.hasEvent("webkitTransitionEnd", elem) // false negative
+    //   ...
     isEventSupported = (function() {
 
       var TAGNAMES = {
