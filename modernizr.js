@@ -1,5 +1,5 @@
 /*!
- * Modernizr v2.5.3
+ * Modernizr v2.6pre
  * www.modernizr.com
  *
  * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton
