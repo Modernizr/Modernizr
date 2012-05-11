@@ -171,6 +171,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //
     // The following results are known incorrects:
     //   Modernizr.hasEvent("webkitTransitionEnd", elem) // false negative
+    //   Modernizr.hasEvent("textInput") // in Webkit. github.com/Modernizr/Modernizr/issues/333
     //   ...
     isEventSupported = (function() {
 
