@@ -304,11 +304,18 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     /*>>testprop*/
-    /**
-     * testProps is a generic CSS / DOM property test; if a browser supports
-     *   a certain property, it won't return undefined for it.
-     *   A supported CSS property returns empty string when its not yet set.
-     */
+
+    // testProps is a generic CSS / DOM property test.
+
+    // In testing support for a given CSS property, it's legit to test:
+    //    `elem.style[styleName] !== undefined`
+    // If the property is supported it will return an empty string,
+    // if unsupported it will return undefined.
+
+    // We'll take advantage of this quick test and skip setting a style
+    // on our modernizr element, but instead just testing undefined vs
+    // empty string.
+
     function testProps( props, prefixed ) {
         for ( var i in props ) {
             if ( mStyle[ props[i] ] !== undefined ) {
@@ -576,15 +583,9 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    // In testing support for a given CSS property, it's legit to test:
-    //    `elem.style[styleName] !== undefined`
-    // If the property is supported it will return an empty string,
-    // if unsupported it will return undefined.
 
-    // We'll take advantage of this quick test and skip setting a style
-    // on our modernizr element, but instead just testing undefined vs
-    // empty string.
-
+    // this will false positive in Opera Mini
+    //   github.com/Modernizr/Modernizr/issues/396
 
     tests['backgroundsize'] = function() {
         return testPropsAll('backgroundSize');
