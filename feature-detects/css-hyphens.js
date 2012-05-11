@@ -12,6 +12,8 @@ These tests currently require document.body to be present
 Hyphenation is language specific, sometimes. 
   See for more details: http://code.google.com/p/hyphenator/source/diff?spec=svn975&r=975&format=side&path=/trunk/Hyphenator.js#sc_svn975_313
 
+If loading Hyphenator.js via Modernizr.load, be cautious of issue 158: http://code.google.com/p/hyphenator/issues/detail?id=158
+
 More details at https://github.com/Modernizr/Modernizr/issues/312
 
 */
@@ -34,8 +36,6 @@ More details at https://github.com/Modernizr/Modernizr/issues/312
 				spanHeight = 0,
 				spanWidth = 0,
 				result = false,
-				result1 = false,
-				result2 = false,
 				firstChild = document.body.firstElementChild || document.body.firstChild;
 			
 			div.appendChild(span);
@@ -134,7 +134,7 @@ More details at https://github.com/Modernizr/Modernizr/issues/312
 			div.innerHTML = testword + delimiter + testword;
 
 			document.body.insertBefore(div, firstChild);
-			document.body.insertBefore(dummy, firstChild);
+			document.body.insertBefore(dummy, div);
 
 			
 			/* reset the selection to the dummy input element, i.e. BEFORE the div container
