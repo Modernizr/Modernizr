@@ -433,7 +433,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // The *old* flexbox
     // www.w3.org/TR/2009/WD-css3-flexbox-20090723/
 
-    tests['flexboxlegacy'] = tests['flexbox-legacy'] = function() {
+    tests['flexboxlegacy'] = function() {
         return testPropsAll('boxDirection');
     };
 
@@ -509,7 +509,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
     // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function() {
-      return !!testPropsAll("indexedDB",window);
+      return !!testPropsAll("indexedDB", window);
     };
 
     // documentMode logic from YUI to filter out IE8 Compat Mode
