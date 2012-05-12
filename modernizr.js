@@ -540,15 +540,12 @@ window.Modernizr = (function( window, document, undefined ) {
         return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
     };
 
-    // FIXME: Once FF10 is sunsetted, we can drop prefixed MozWebSocket
-    // bugzil.la/695635
+    // FF3.6 was EOL'ed on 4/24/12, but the ESR version of FF10
+    // will be supported until FF19 (2/12/13), at which time, ESR becomes FF17.
+    // FF10 still uses prefixes, so check for it until then.
+    // for more ESR info, see: http://www.mozilla.org/en-US/firefox/organizations/faq/
     tests['websockets'] = function() {
-        for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
-          if ( window[cssomPrefixes[i] + 'WebSocket'] ){
-            return true;
-          }
-        }
-        return 'WebSocket' in window;
+        return 'WebSocket' in window || 'MozWebSocket' in window;
     };
 
 
