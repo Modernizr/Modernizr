@@ -923,14 +923,6 @@ window.Modernizr = (function( window, document, undefined ) {
                       // Real url and email support comes with prebaked validation.
                       bool = inputElem.checkValidity && inputElem.checkValidity() === false;
 
-                    } else if ( /^color$/.test(inputElemType) ) {
-                        // chuck into DOM and force reflow for Opera bug in 11.00
-                        // github.com/Modernizr/Modernizr/issues#issue/159
-                        docElement.appendChild(inputElem);
-                        docElement.offsetWidth;
-                        bool = inputElem.value != smile;
-                        docElement.removeChild(inputElem);
-
                     } else {
                       // If the upgraded input compontent rejects the :) text, we got a winner
                       bool = inputElem.value != smile;
