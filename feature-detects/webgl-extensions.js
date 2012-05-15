@@ -12,8 +12,8 @@
 
     var canvas, ctx, exts;
 
-    try { 
-        canvas  = document.createElement('canvas'),
+    try {
+        canvas  = document.createElement('canvas');
         ctx     = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
         exts    = ctx.getSupportedExtensions();
     }
@@ -22,15 +22,15 @@
     }
 
     if (ctx === undefined) {
-        Modernizr.webgl = new Boolean(false);                
+        Modernizr.webgl = new Boolean(false);
     }
     else {
-        Modernizr.webgl = new Boolean(true);        
+        Modernizr.webgl = new Boolean(true);
     }
-        
+
 
     for (var i = -1, len = exts.length; ++i < len; ){
-        Modernizr.webgl[exts[i]] = true;    
+        Modernizr.webgl[exts[i]] = true;
     }
 
     // hack for addressing modernizr testsuite failures. sorry.
@@ -38,5 +38,5 @@
         TEST.audvid.push('webgl');
     }
 
-    canvas = undefined;;
+    canvas = undefined;
 })();

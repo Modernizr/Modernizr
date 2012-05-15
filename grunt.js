@@ -33,20 +33,26 @@ module.exports = function( grunt ) {
         },
         jshint: {
             options: {
-                curly: true,
-                eqeqeq: true,
-                immed: true,
-                latedef: true,
-                newcap: true,
-                noarg: true,
-                sub: true,
-                undef: true,
                 boss: true,
+                browser: true,
+                curly: false,
+                devel: true,
+                eqeqeq: false,
                 eqnull: true,
-                browser: true
+                expr: true,
+                evil: true,
+                immed: false,
+                laxcomma: true,
+                newcap: false,
+                noarg: true,
+                smarttabs: true,
+                sub: true,
+                undef: true
             },
             globals: {
-                Modernizr: true
+                Modernizr: true,
+                DocumentTouch: true,
+                TEST: true
             }
         }
     });

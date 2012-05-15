@@ -9,7 +9,7 @@
   try {
 
     // we're avoiding using Modernizr._domPrefixes as the prefix capitalization on
-    // these guys are notoriously peculiar. 
+    // these guys are notoriously peculiar.
     var BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder || window.OBlobBuilder || window.BlobBuilder,
         URL         = window.MozURL || window.webkitURL || window.MSURL || window.OURL || window.URL;
 
@@ -18,7 +18,7 @@
 
     bb.append('this.onmessage=function(e){postMessage(e.data)}');
 
-    var url     = URL.createObjectURL(bb.getBlob());
+    var url     = URL.createObjectURL(bb.getBlob()),
         worker  = new Worker(url);
 
     bb = null;

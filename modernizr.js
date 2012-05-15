@@ -215,15 +215,15 @@ window.Modernizr = (function( window, document, undefined ) {
     // TODO :: Add flag for hasownprop ? didn't last time
 
     // hasOwnProperty shim by kangax needed for Safari 2.0 support
-    _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
+    _hasOwnProperty = ({}).hasOwnProperty, hasOwnProp;
 
     if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
-      hasOwnProperty = function (object, property) {
+      hasOwnProp = function (object, property) {
         return _hasOwnProperty.call(object, property);
       };
     }
     else {
-      hasOwnProperty = function (object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
+      hasOwnProp = function (object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
         return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
       };
     }
@@ -249,7 +249,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
               var F = function(){};
               F.prototype = target.prototype;
-              var self = new F;
+              var self = new F();
 
               var result = target.apply(
                   self,
@@ -572,7 +572,7 @@ window.Modernizr = (function( window, document, undefined ) {
         // If the UA supports multiple backgrounds, there should be three occurrences
         //   of the string "url(" in the return value for elemStyle.background
 
-        return /(url\s*\(.*?){3}/.test(mStyle.background);
+        return (/(url\s*\(.*?){3}/).test(mStyle.background);
     };
 
 
@@ -623,7 +623,7 @@ window.Modernizr = (function( window, document, undefined ) {
         // The non-literal . in this regex is intentional:
         //   German Chrome returns this value as 0,55
         // github.com/Modernizr/Modernizr/issues/#issue/59/comment/516632
-        return /^0.55$/.test(mStyle.opacity);
+        return (/^0.55$/).test(mStyle.opacity);
     };
 
 
@@ -655,9 +655,9 @@ window.Modernizr = (function( window, document, undefined ) {
 
         setCss(
              // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
-              (str1 + '-webkit- '.split(' ').join(str2 + str1)
+              (str1 + '-webkit- '.split(' ').join(str2 + str1) +
              // standard syntax             // trailing 'background-image:'
-              + prefixes.join(str3 + str1)).slice(0, -str1.length)
+              prefixes.join(str3 + str1)).slice(0, -str1.length)
         );
 
         return contains(mStyle.backgroundImage, 'gradient');
@@ -953,7 +953,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // Run through all tests and detect their support in the current UA.
     // todo: hypothetically we could be doing an array of tests and use a basic loop here.
     for ( var feature in tests ) {
-        if ( hasOwnProperty(tests, feature) ) {
+        if ( hasOwnProp(tests, feature) ) {
             // run the test, throw the return value into the Modernizr,
             //   then based on that boolean, define an appropriate className
             //   and push it into an array of classes we'll join later.
@@ -982,7 +982,7 @@ window.Modernizr = (function( window, document, undefined ) {
      Modernizr.addTest = function ( feature, test ) {
        if ( typeof feature == 'object' ) {
          for ( var key in feature ) {
-           if ( hasOwnProperty( feature, key ) ) {
+           if ( hasOwnProp( feature, key ) ) {
              Modernizr.addTest( key, feature[ key ] );
            }
          }
