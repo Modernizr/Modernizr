@@ -1,5 +1,5 @@
-// Browser support test for the HTML5 <ruby>, <rt> and <rp> elements
-// http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-ruby-element
+// Feature detection test for the HTML5 <ruby>, <rt> and <rp> elements
+// http://dev.w3.org/html5/spec-LC/text-level-semantics.html#the-ruby-element
 //
 // by @alrra
 
