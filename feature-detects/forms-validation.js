@@ -1,15 +1,14 @@
 // This implementation only tests support for interactive form validation.
 // To check validation for a specific type or a specific other constraint,
 // the test can be combined: 
-//    - Modernizr.inputtypes.numer && Modernizr.interactivevalidation (browser supports rangeOverflow, typeMismatch etc. for type=number)
-//    - Modernizr.input.required && Modernizr.interactivevalidation (browser supports valueMissing)
+//    - Modernizr.inputtypes.numer && Modernizr.formvalidation (browser supports rangeOverflow, typeMismatch etc. for type=number)
+//    - Modernizr.input.required && Modernizr.formvalidation (browser supports valueMissing)
 //
 (function(document, Modernizr){
 
 
 Modernizr.formvalidationapi = false;
 Modernizr.formvalidationmessage = false;
-Modernizr.buggyinteractivevalidation = false;
 
 Modernizr.addTest('formvalidation', function(){
     var form = document.createElement('form');
@@ -35,7 +34,6 @@ Modernizr.addTest('formvalidation', function(){
             e.preventDefault();
         }
         e.stopPropagation();
-        Modernizr.buggyinteractivevalidation = true;
     };
 
     // Calling form.submit() doesn't trigger interactive validation, 
