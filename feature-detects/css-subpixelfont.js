@@ -8,7 +8,7 @@
 Modernizr.addTest('subpixelfont',  function() {
 	var container = document.createElement('div'),
 		inner = document.createElement('div'),
-		width, hasSubpixelFontRendering;
+		hasSubpixelFontRendering;
 
 	// style and content
 	container.style.cssText = 'position: absolute; top: -10em; visibility:hidden; font: normal 10px arial;';
@@ -20,12 +20,9 @@ Modernizr.addTest('subpixelfont',  function() {
 	document.body.appendChild(container);
 
 	// get actual width of text
-	width = window.getComputedStyle 
-		? window.getComputedStyle(inner,null).getPropertyValue("width") 
-		: '44px',
-
-	// map this to modernizr or something
-	hasSubpixelFontRendering = width !== '44px';
+	hasSubpixelFontRendering = window.getComputedStyle 
+		? window.getComputedStyle(inner,null).getPropertyValue("width") !== '44px'
+		: false;
 
 	// clean up
 	container.parentNode.removeChild(container);
