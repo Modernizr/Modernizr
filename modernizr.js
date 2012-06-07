@@ -229,49 +229,33 @@ window.Modernizr = (function( window, document, undefined ) {
       };
     }
 
-    // TODO :: Add function proto bind
-    // Taken from ES5-shim https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js
-    // ES-5 15.3.4.5
-    // http://es5.github.com/#x15.3.4.5
+    // Adapted from ES5-shim https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js
+    // es5.github.com/#x15.3.4.5
 
     if (!Function.prototype.bind) {
       Function.prototype.bind = function bind(that) {
 
         var target = this;
+        if (typeof target != "function") throw new TypeError();
 
-        if (typeof target != "function") {
-            throw new TypeError();
-        }
+        var
+        args = slice.call(arguments, 1),
+        bound = function () {
 
-        var args = slice.call(arguments, 1),
-            bound = function () {
+          if (this instanceof bound) {
 
-            if (this instanceof bound) {
+            var F = function(){};
+            F.prototype = target.prototype;
+            var self = new F();
+            var result = target.apply(self, args.concat(slice.call(arguments)));
 
-              var F = function(){};
-              F.prototype = target.prototype;
-              var self = new F;
+            if (Object(result) === result) return result;
+            return self;
 
-              var result = target.apply(
-                  self,
-                  args.concat(slice.call(arguments))
-              );
-              if (Object(result) === result) {
-                  return result;
-              }
-              return self;
-
-            } else {
-
-              return target.apply(
-                  that,
-                  args.concat(slice.call(arguments))
-              );
-
-            }
-
+          } else {
+            return target.apply( that, args.concat(slice.call(arguments)));
+          }
         };
-
         return bound;
       };
     }
