@@ -30,22 +30,23 @@
       #caniusetrigger { font-size: 38px; font-family: monospace; display:block; }
   </style>
 
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
 
   <script>window.Modernizr || document.write('<script src="../modernizr.js"><\/script>')</script>
 
+  <script src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
+
   <script src="js/lib/polyfills.js"></script>
   <script src="js/lib/detect-global.js"></script>
-  
+
   <script src="qunit/qunit.js"></script>
   <script src="js/lib/jquery-1.7b2.js"></script>
-  
+
   <script src="js/lib/jsonselect.js"></script>
   <script src="js/lib/uaparser.js"></script>
   <script src="js/lib/github.js"></script>
-  
+
   <script src="js/setup.js"></script>
-  
+
   <script src="js/unit.js"></script>
   <script src="js/unit-caniuse.js"></script>
 </head>
@@ -62,16 +63,16 @@
 
 
   <br>
- 
+
   <section><aside>this is an aside within a section</aside></section>
-  
 
 
-  
+
+
   <h5>JSON.stringify(Modernizr)</h5>
   <textarea></textarea>
-  <a href="#"   id="caniusetrigger" 
-                onclick="return revealreftests(this)" 
+  <a href="#"   id="caniusetrigger"
+                onclick="return revealreftests(this)"
                 title="add a #caniuse hash to this page to make this automatic"
                 >Show the Ref Tests from Caniuse and Modernizr</a>
 
@@ -79,25 +80,25 @@
   <script src="js/dumpdata.js"></script>
   <script>
     function revealreftests(a){
-        
+
         if (!a) a = document.getElementById('caniusetrigger');
         a.parentNode && a.parentNode.removeChild(a);
-        
+
         var iframe = document.createElement('iframe');
         iframe.src = 'caniuse.html';
         iframe.style.cssText = 'width: 100%; height: 7000px; border: 15px double #F0C; \
                                 -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; ';
         document.body.appendChild(iframe);
-        
+
         return false;
     }
-    
+
     if (location.hash.replace(/^#/,'') == 'caniuse'){
         setTimeout(revealreftests, 100);
     }
-  
+
   </script>
-  
-  
+
+
 </body>
-</html> 
+</html>
