@@ -58,6 +58,52 @@ test("bind is implemented", function() {
   equals("just awsome", a(), 'bind works as expected');
 
 
+  // thank you webkit layoutTests
+
+
+  var result;
+
+  function F(x, y)
+  {
+      result = this + " -> x:" + x + ", y:" + y;
+  }
+
+  G = F.bind("'a'", "'b'");
+  H = G.bind("'Cannot rebind this!'", "'c'");
+
+  F(1,2);
+  equal(result, "[object Window] -> x:1, y:2");
+  G(1,2);
+  equal(result, "\'a\' -> x:\'b\', y:1");
+  H(1,2);
+  equal(result, "\'a\' -> x:\'b\', y:\'c\'");
+
+  var f = new F(1,2);
+  equal(result, "[object Object] -> x:1, y:2");
+  var g = new G(1,2);
+  equal(result, "[object Object] -> x:\'b\', y:1");
+  var h = new H(1,2);
+  equal(result, "[object Object] -> x:\'b\', y:\'c\'");
+
+  ok(f instanceof F, "f instanceof F");
+  ok(g instanceof F, "g instanceof F");
+  ok(h instanceof F, "h instanceof F");
+
+  // Bound functions don't have a 'prototype' property.
+  ok("prototype" in F, '"prototype" in F');
+
+  // The object passed to bind as 'this' must be callable.
+  raises(function(){
+    Function.bind.call(undefined);
+  });
+
+  // Objects that allow call but not construct can be bound, but should throw if used with new.
+  var abcAt = String.prototype.charAt.bind("abc");
+  equals(abcAt(1), "b", 'Objects that allow call but not construct can be bound...');
+
+  equals(1, Function.bind.length, 'it exists');
+
+
 });
 
 
