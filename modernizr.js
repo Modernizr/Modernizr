@@ -118,7 +118,7 @@ window.Modernizr = (function( window, document, undefined ) {
       // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
       // msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
       // Documents served as xml will throw if using &shy; so use xml friendly encoded version. See issue #277
-      style = ['&#173;','<style>', rule, '</style>'].join('');
+      style = ['&#173;','<style id="s', mod, '">', rule, '</style>'].join('');
       div.id = mod;
       // IE6 will false positive on some tests due to the style element inside the test div somehow interfering offsetHeight, so insert it into body or fakebody.
       // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
@@ -655,8 +655,9 @@ window.Modernizr = (function( window, document, undefined ) {
         var bool;
 
         injectElementWithStyles('@font-face {font-family:"font";src:url("https://")}', function( node, rule ) {
-          var style = document.styleSheets[document.styleSheets.length - 1],
-              cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || '') : '';
+          var style = document.getElementById('smodernizr'),
+              sheet = style.sheet || style.styleSheet,
+              cssText = sheet ? (sheet.cssRules && sheet.cssRules[0] ? sheet.cssRules[0].cssText : sheet.cssText || '') : '';
 
           bool = /src/i.test(cssText) && cssText.indexOf(rule.split(' ')[0]) === 0;
         });
