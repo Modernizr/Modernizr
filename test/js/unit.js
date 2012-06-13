@@ -71,8 +71,6 @@ test("bind is implemented", function() {
   G = F.bind("'a'", "'b'");
   H = G.bind("'Cannot rebind this!'", "'c'");
 
-  F(1,2);
-  equal(result, "[object Window] -> x:1, y:2");
   G(1,2);
   equal(result, "\'a\' -> x:\'b\', y:1");
   H(1,2);
