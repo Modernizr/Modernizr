@@ -371,7 +371,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // dev.w3.org/csswg/css3-flexbox
 
     tests['flexbox'] = function() {
-      return testPropsAll('flexOrder');
+      return testPropsAll('flexWrap');
     };
 
     // The *old* flexbox
