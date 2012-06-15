@@ -1,7 +1,7 @@
 
 // Low Battery Level
 // Enable a developer to remove CPU intensive CSS/JS when battery is low
-// https://developer.mozilla.org/en/DOM/window.navigator.mozBattery
+// developer.mozilla.org/en/DOM/window.navigator.mozBattery
 // By: Paul Sayre
 
 Modernizr.addTest('lowbattery', function () {
