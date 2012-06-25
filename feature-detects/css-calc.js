@@ -5,6 +5,6 @@ Modernizr.addTest('csscalc', function(el, prop, value) {
     prop = 'width:';
     value = 'calc(10px);';
     el = document.createElement('div');
-    el.style.cssText = prop + Modernizr._prefixes.join(value + prop)
+    el.style.cssText = prop + Modernizr._prefixes.join(value + prop);
     return !!el.style.length;
 });
