@@ -1,7 +1,3 @@
-
-
-
-
 // developer.mozilla.org/en/CSS/background-repeat
 
 // test page: jsbin.com/uzesun/

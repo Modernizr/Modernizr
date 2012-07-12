@@ -7,6 +7,6 @@
  *   Will fail in Safari 5 due to its lack of support for the standards
  *   defined FileReader object
  */
-Modernizr.addTest('file', function () {
+Modernizr.addTest('filereader', function () {
     return !!(window.File && window.FileList && window.FileReader);
 });

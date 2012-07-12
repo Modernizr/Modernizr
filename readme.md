@@ -1,4 +1,4 @@
-Modernizr
+Modernizr [![Build Status](https://secure.travis-ci.org/Modernizr/Modernizr.png?branch=master)](http://travis-ci.org/Modernizr/Modernizr)
 =========
 
 ### a JavaScript library allowing you to use CSS3 & HTML5 while maintaining control over unsupported browsers 
@@ -20,11 +20,9 @@ which tests to include, go to [www.modernizr.com/download/](http://www.modernizr
 
 Modernizr is dual-licensed under the [BSD and MIT licenses](http://www.modernizr.com/license/).
 
-[http://www.modernizr.com/](http://www.modernizr.com/)
+[modernizr.com](http://www.modernizr.com/)
 
 
 #### Try it out: 
-
-Run the library: [http://modernizr.github.com/Modernizr/output.html](http://modernizr.github.com/Modernizr/output.html)
 
 Run the test suite: [http://modernizr.github.com/Modernizr/test/](http://modernizr.github.com/Modernizr/test/)

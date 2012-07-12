@@ -1,0 +1,8 @@
+; editorconfig.org
+root = true
+
+; Unix-style newlines
+[*]
+end_of_line = LF
+indent_style = space
+indent_size = 2

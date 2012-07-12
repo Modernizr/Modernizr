@@ -1,5 +1,12 @@
+
 // developer.mozilla.org/en/CSS/pointer-events
-// github.com/ausi/Feature-detection-technique-for-pointer-events
+
+// Test and project pages:
+// ausi.github.com/Feature-detection-technique-for-pointer-events/
+// github.com/ausi/Feature-detection-technique-for-pointer-events/wiki
+// github.com/Modernizr/Modernizr/issues/80
+
+
 Modernizr.addTest('pointerevents', function(){
     var element = document.createElement('x'),
         documentElement = document.documentElement,
@@ -11,7 +18,7 @@ Modernizr.addTest('pointerevents', function(){
     element.style.pointerEvents = 'auto';
     element.style.pointerEvents = 'x';
     documentElement.appendChild(element);
-    supports = getComputedStyle && 
+    supports = getComputedStyle &&
         getComputedStyle(element, '').pointerEvents === 'auto';
     documentElement.removeChild(element);
     return !!supports;
