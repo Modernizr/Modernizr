@@ -360,7 +360,7 @@ window.Modernizr = (function( window, document, undefined ) {
      */
     function testPropsAll( prop, prefixed, elem ) {
 
-        var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
+        var ucProp  = prop.charAt(0).toUpperCase() + prop.slice(1),
             props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
         // did they call .prefixed('boxSizing') or are we just testing a prop?
