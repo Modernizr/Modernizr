@@ -52,7 +52,9 @@ module.exports = function( grunt ) {
             globals: {
                 Modernizr: true,
                 DocumentTouch: true,
-                TEST: true
+                TEST: true,
+                SVGFEColorMatrixElement : true,
+                Blob: true
             }
         }
     });
