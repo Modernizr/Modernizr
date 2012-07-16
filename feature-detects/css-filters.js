@@ -1,6 +1,5 @@
 // https://github.com/Modernizr/Modernizr/issues/615
-// http://www.inserthtml.com/2012/06/css-filters/
-// https://developer.mozilla.org/en/CSS/filter#Gecko_notes
+// documentMode is needed for false positives in oldIE, please see issue above
 Modernizr.addTest('cssfilters', function() {
     el = document.createElement('div');
     el.style.cssText = Modernizr._prefixes.join('filter' + ':blur(2px); ');
