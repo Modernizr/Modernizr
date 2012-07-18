@@ -1347,7 +1347,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //       'WebkitTransition' : 'webkitTransitionEnd',
     //       'MozTransition'    : 'transitionend',
     //       'OTransition'      : 'oTransitionEnd',
-    //       'msTransition'     : 'MSTransitionEnd',
+    //       'msTransition'     : 'transitionend',
     //       'transition'       : 'transitionend'
     //     },
     //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
