@@ -1,6 +1,17 @@
 // EXIF Orientation test
-// iOS respects EXIF Orientation flag in jpgs, while other browsers do not
-// By: Paul Sayre
+
+// iOS looks at the EXIF Orientation flag in jpgs and rotates the image
+// accordingly. Looks like most desktop browsers just ignore this data.
+
+// description: www.impulseadventure.com/photo/exif-orientation.html
+
+// Bug trackers:
+//    bugzil.la/298619 (unimplemented)
+//    crbug.com/56845 (looks incomplete)
+//    webk.it/19688 (available upstream but its up all ports to turn on individually)
+//
+
+// detect by Paul Sayre
 
 
 (function(){
@@ -9,7 +20,7 @@
 
   img.onerror = function() {
       Modernizr.addTest('exif-orientation', function () { return false; });
-  };  
+  };
 
   img.onload = function() {
       Modernizr.addTest('exif-orientation', function () { return img.width !== 2; });
