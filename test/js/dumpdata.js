@@ -41,7 +41,7 @@ function processTree(data){
     if (!match) continue;
 
     var relpath = location.host == "modernizr.github.com" ?
-                    'https://raw.github.com/Modernizr/Modernizr/master/' : '../';
+                    '../modernizr-git/' : '../';
 
     filenames.push(relpath + match[0]);
   }
@@ -61,7 +61,8 @@ function resultsToDOM(){
 
   modOutput.className = 'output';
   modOutput.innerHTML = dumpModernizr();
-  if (Modernizr.csscolumns) ref.parentNode.insertBefore(modOutput, ref);
+
+  ref.parentNode.insertBefore(modOutput, ref);
 
   // Modernizr object as text
   document.getElementsByTagName('textarea')[0].innerHTML = JSON.stringify(Modernizr);
