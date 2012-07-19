@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Modernizr Test Suite</title>
-  <link rel="stylesheet" href="qunit/qunit.css">
+
+  <!-- because gh-pages has a weird relationship with master, this is mostly a shell and not a mirror of the test suite -->
+
+  <link rel="stylesheet" href="../modernizr-git/test/qunit/qunit.css">
   <style>
      body { margin-bottom: 150px;}
      #testbed { font-family: Helvetica; color: #444; padding-bottom: 100px;}
@@ -30,26 +33,25 @@
       #caniusetrigger { font-size: 38px; font-family: monospace; display:block; }
   </style>
 
-
-  <script>window.Modernizr || document.write('<script src="../modernizr.js"><\/script>')</script>
+  <!-- on the hosted version we want to pull freshest always -->
 
   <script src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
 
-  <script src="js/lib/polyfills.js"></script>
-  <script src="js/lib/detect-global.js"></script>
+  <!--  IE doesnt like the above file -->
+  <script>window.Modernizr || document.write('<script src="../modernizr-git/modernizr.js"><\/script>')</script>
 
-  <script src="qunit/qunit.js"></script>
-  <script src="js/lib/jquery-1.7b2.js"></script>
 
-  <script src="js/lib/jsonselect.js"></script>
-  <script src="js/lib/uaparser.js"></script>
-  <script src="js/lib/github.js"></script>
-
-  <script src="js/setup.js"></script>
-
-  <script src="js/unit.js"></script>
-  <script src="js/unit-caniuse.js"></script>
-</head>
+  <script src="../modernizr-git/test/js/lib/polyfills.js"></script>
+  <script src="../modernizr-git/test/js/lib/detect-global.js"></script>
+  <script src="../modernizr-git/test/qunit/qunit.js"></script>
+  <script src="../modernizr-git/test/js/lib/jquery-1.7b2.js"></script>
+  <script src="../modernizr-git/test/js/lib/jsonselect.js"></script>
+  <script src="../modernizr-git/test/js/lib/uaparser.js"></script>
+  <script src="../modernizr-git/test/js/lib/github.js"></script>
+  <script src="../modernizr-git/test/js/setup.js"></script>
+  <script src="../modernizr-git/test/js/unit.js"></script>
+  <script src="../modernizr-git/test/js/unit-caniuse.js"></script>
+</head>.
 <body>
   <h1 id="qunit-header">Modernizr Test Suite</h1>
   <h2 id="qunit-banner"></h2>
@@ -77,7 +79,7 @@
                 >Show the Ref Tests from Caniuse and Modernizr</a>
 
 
-  <script src="js/dumpdata.js"></script>
+  <script src="../modernizr-git/test/js/dumpdata.js"></script>
   <script>
     function revealreftests(a){
 
@@ -85,7 +87,7 @@
         a.parentNode && a.parentNode.removeChild(a);
 
         var iframe = document.createElement('iframe');
-        iframe.src = 'caniuse.html';
+        iframe.src = '../modernizr-git/test/caniuse.html';
         iframe.style.cssText = 'width: 100%; height: 7000px; border: 15px double #F0C; \
                                 -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; ';
         document.body.appendChild(iframe);
