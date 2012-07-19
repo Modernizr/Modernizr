@@ -11,7 +11,7 @@
         eStyle = elem.style,
         val = "right 10px bottom 10px";
 
-    Modernizr.addTest('bgpositionfourvalues', function(){
+    Modernizr.addTest('bgpositionshorthand', function(){
         eStyle.cssText = "background-position: " + val + ";";
         return (eStyle.backgroundPosition === val);
     });
