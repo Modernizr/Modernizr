@@ -36,6 +36,7 @@ test("globals set up", function() {
     var leakedGlobArr = [''].concat(globArr).concat([''])
                             .join(',')
                             .replace(',Modernizr','').replace(',html5','')
+                            .replace('URL','') // lazily added in Opera it seems.
                             .replace(/,script\w+/,'') // placed by jQuery
                             .split(',');
 
