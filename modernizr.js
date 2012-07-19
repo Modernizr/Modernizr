@@ -175,38 +175,60 @@ window.Modernizr = (function( window, document, undefined ) {
     //   ...
     isEventSupported = (function() {
 
-      var TAGNAMES = {
+      var TAGNAMES = {// special defaults for when no element is provided:
         'select': 'input', 'change': 'input',
         'submit': 'form', 'reset': 'form',
         'error': 'img', 'load': 'img', 'abort': 'img'
-      };
+      },
 
+      // Detect whether we need to fix event detection so that we can
+      // fail faster where the fix is not needed. Use a DOM element for
+      // the test and the `blur` event b/c it should always be there. If
+      // it's not then we need "the fix" ( bit.ly/event-detection )
+      FIX = !('onblur' in docElement);
+      
+      /**
+       * @param  {string|*}           eventName  is the name of an event to test for (e.g. "resize")
+       * @param  {(Object|string|*)=} element    is a DOM element|document|window|tagName to test on
+       * @return {boolean}
+       */
       function isEventSupported( eventName, element ) {
 
-        element = element || document.createElement(TAGNAMES[eventName] || 'div');
+        if ( !eventName ) { return false; }
+        var isSupported;
         eventName = 'on' + eventName;
-
-        // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize", whereas `in` "catches" those
-        var isSupported = eventName in element;
-
-        if ( !isSupported ) {
-          // If it has no `setAttribute` (i.e. doesn't implement Node interface), try generic element
-          if ( !element.setAttribute ) {
-            element = document.createElement('div');
-          }
-          if ( element.setAttribute && element.removeAttribute ) {
-            element.setAttribute(eventName, '');
-            isSupported = is(element[eventName], 'function');
-
-            // If property was created, "remove it" (by setting value to `undefined`)
-            if ( !is(element[eventName], 'undefined') ) {
-              element[eventName] = undefined;
-            }
-            element.removeAttribute(eventName);
-          }
+        
+        if ( !element || typeof element === 'string' ) {
+            element = document.createElement(element || TAGNAMES[eventName] || 'div');
+        } else if ( typeof element !== 'object' ) {
+            return false; // `element` was invalid type
         }
 
-        element = null;
+        // The technique for modern browsers and IE is the `in` operator. (When using the
+        // `setAttribute` fallback, IE skips "unload", WebKit skips "unload" and "resize", 
+		// whereas `in` "catches" those.)
+        isSupported = eventName in element;
+
+        // We're done unless we need the fix:              
+        if ( !isSupported && FIX ) {
+            if ( !element.setAttribute ) {
+                // Switch to generic element if it doesn't have `setAttribute` (e.g. `document`)
+                element = document.createElement('div'); 
+            }
+            if (element.setAttribute && element.removeAttribute) {
+                // Fix for old Firefox - bit.ly/event-detection
+                element.setAttribute(eventName, '');
+                isSupported = is(element[eventName], 'function');
+
+                // If property was created, "remove it" (by setting value to `undefined`)
+                if (element[eventName] != null) {
+                    element[eventName] = undefined; 
+                }
+                element.removeAttribute(eventName);
+            }
+        }
+        
+        element = null; // cleanup (closure compiler removes this but uglify does not)
         return isSupported;
       }
       return isEventSupported;
