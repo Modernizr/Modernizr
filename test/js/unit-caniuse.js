@@ -98,7 +98,7 @@ window.caniusecb = function(scriptdata) {
     }
 
     // where we actually do most our assertions
-    equals(o.result, ciubool,
+    equal(o.result, ciubool,
       o.browser + o.version + ': Caniuse result for ' + o.ciufeature +
       ' matches Modernizr\'s ' + (o.fp ? '*false positive*' : 'result') + ' for ' + o.feature
     );
