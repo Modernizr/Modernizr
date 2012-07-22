@@ -8,7 +8,7 @@ Modernizr.addTest('cssvhunit', function() {
                       getComputedStyle(elem, null) :
                       elem.currentStyle)["height"],10);
         
-        bool= !!(compStyle == height);
+        bool= (compStyle == height);
     });
     return bool;
 });

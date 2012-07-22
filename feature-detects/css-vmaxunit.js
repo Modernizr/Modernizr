@@ -8,7 +8,7 @@ Modernizr.addTest('cssvmaxunit', function(){
             compWidth = parseInt((window.getComputedStyle ?
                                   getComputedStyle(elem, null) :
                                   elem.currentStyle)['width'],10);
-        bool = !!( parseInt(Math.max(one_vw, one_vh)*50,10) == compWidth );
+        bool = ( parseInt(Math.max(one_vw, one_vh)*50,10) == compWidth );
     });
     return bool;
 });
