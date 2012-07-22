@@ -8,7 +8,7 @@ Modernizr.addTest('cssvminunit', function(){
             compWidth = parseInt((window.getComputedStyle ?
                                   getComputedStyle(elem, null) :
                                   elem.currentStyle)['width'],10);
-        bool = !!( parseInt(Math.min(one_vw, one_vh)*50,10) == compWidth );
+        bool = ( parseInt(Math.min(one_vw, one_vh)*50,10) == compWidth );
     });
     return bool;
 });
