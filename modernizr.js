@@ -698,8 +698,12 @@ window.Modernizr = (function( window, document, undefined ) {
 
         return bool;
     };
-
-
+    
+    
+    // High res device
+    tests['highres'] = function() {
+        return Modernizr['highres'];
+    };
 
     // These tests evaluate support of the video/audio elements, as well as
     // testing what types of content they support.
