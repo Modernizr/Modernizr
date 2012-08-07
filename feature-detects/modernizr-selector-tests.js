@@ -10,45 +10,9 @@ Modernizr.testStyles('#modernizr div:last-child {height:20px;}', function(elem, 
   }, 3);
 
 
-//nth-child(odd)
-Modernizr.testStyles('#modernizr div:nth-child(odd) {height:20px;}', function(elem, rule){
-    Modernizr.addTest('nthchildodd', function() {
-        
-        for(var i=0;i<=elem.getElementsByTagName('div').length-1;i++) {
-
-              if (((i+1)%2 == 1) || (i == 0)) { //odd
-                   if (elem.getElementsByTagName('div')[i].offsetHeight != 20) {
-                     return false;
-                   }
-              }
-        }
-        
-        return true;
-    });
-  }, 6);
-
-
-//nth-child(even)
-Modernizr.testStyles('#modernizr div:nth-child(even) {height:20px;}', function(elem, rule){
-    Modernizr.addTest('nthchildeven', function() {
-        
-        for(var i=0;i<=elem.getElementsByTagName('div').length-1;i++) {
-
-              if (((i+1)%2 == 0) && (i != 0)) { //even
-                   if (elem.getElementsByTagName('div')[i].offsetHeight != 20) {
-                     return false;
-                   }
-              } 
-        }
-        
-        return true;
-    });
-  }, 6);
-
-
-//nth-child(n) - n=1 ....n=total
+//nth-child
 Modernizr.testStyles('#modernizr div:nth-child(3) {height:20px;}', function(elem, rule){
-    Modernizr.addTest('nthchildn', function() {
+    Modernizr.addTest('nthchild', function() {
         
         var nthVal = 3;
         
@@ -66,10 +30,9 @@ Modernizr.testStyles('#modernizr div:nth-child(3) {height:20px;}', function(elem
   }, 6);
 
 
-//:nth-of-type(n)
-//nth-of-type(odd)
+//:nth-of-type
 Modernizr.testStyles('#modernizr p:nth-of-type(odd) {height:20px;}', function(elem, rule){
-    Modernizr.addTest('nthoftypeodd', function() {
+    Modernizr.addTest('nthoftype', function() {
         
          for (var i=1;i<=3;i++) {
             elem.appendChild(document.createElement("p"));
@@ -88,69 +51,34 @@ Modernizr.testStyles('#modernizr p:nth-of-type(odd) {height:20px;}', function(el
   }, 3);
 
 
-
-// attribute selectors
-// [att^=val] – the “begins with” selector
-Modernizr.testStyles('#modernizr div[id^="test"] {height:20px;}', function(elem, rule){
+// all CSS3 attribute selectors
+// div[id^="test"], div[id*="this"], div[id$="end"] 
+Modernizr.testStyles('#modernizr div[id^="beginswith"], #modernizr div[id*="contains"], #modernizr div[id$="end"]  {height:20px;}', function(elem, rule){
     
-    Modernizr.addTest('attrbegins', function() {
+    Modernizr.addTest('css3attrselector', function() {
         
-        //add an element with attribute value
-        var new_div = document.createElement("div");
-        new_div.setAttribute("id","testthisout");
-        elem.appendChild(new_div);
-         
-        if (elem.lastChild.offsetHeight == 20) {
-            return true;
+        //div[id^="beginswith"] - add an element with attribute value
+        var new_div1 = document.createElement("div");
+        new_div1.setAttribute("id","beginswithtest");
+        elem.appendChild(new_div1);
+        
+        //div[id*="contains"] - add an element with attribute value        
+        var new_div2 = document.createElement("div");
+        new_div2.setAttribute("id","testingcontainsstr");
+        elem.appendChild(new_div2);
+        
+        //div[id$="end"] - add an element with attribute value        
+        var new_div3 = document.createElement("div");
+        new_div3.setAttribute("id","testingend");
+        elem.appendChild(new_div3);       
+        
+        // Test all three selector attributes are supported
+        var elemList = elem.getElementsByTagName('div');
+        
+        for (var i=0; i<= elemList.length - 1; i++) {
+            if (elemList[i].offsetHeight != 20) { return false; }
         }
         
-        return false;
+        return true
     });
   });
-
-
-// [att$=val] – the “ends with” selector
-Modernizr.testStyles('#modernizr div[id$="out"] {height:20px;}', function(elem, rule){
-    
-    Modernizr.addTest('attrends', function() {
-        
-        //add an element with attribute value
-        var new_div = document.createElement("div");
-        new_div.setAttribute("id","testthisout");
-        elem.appendChild(new_div);
-         
-        if (elem.lastChild.offsetHeight == 20) {
-            return true;
-        }
-        
-        return false;
-    });
-  });
-
-
-
-// [att*=val] – the “contains” selector
-Modernizr.testStyles('#modernizr div[id*="this"] {height:20px;}', function(elem, rule){
-    
-    Modernizr.addTest('attrcontains', function() {
-        
-        //add an element with attribute value
-        var new_div = document.createElement("div");
-        new_div.setAttribute("id","testthisout");
-        elem.appendChild(new_div);
-         
-        if (elem.lastChild.offsetHeight == 20) {
-            return true;
-        }
-        
-        return false;
-    });
-  });
-
-
-
-
-
-
-
-
