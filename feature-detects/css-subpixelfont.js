@@ -14,9 +14,9 @@ Modernizr.addTest('subpixelfont', function() {
 
         subpixel.innerHTML = 'This is a text written in Arial';
 
-        bool = window.getComputedStyle
-            ? window.getComputedStyle(subpixel, null).getPropertyValue("width") !== '44px'
-            : false;   
+        bool = window.getComputedStyle ?
+            window.getComputedStyle(subpixel, null).getPropertyValue("width") !== '44px'
+            : false;
     }, 1, ['subpixel']);
 
     return bool;
