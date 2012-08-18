@@ -14,9 +14,9 @@
 // Blackberry Browser < 10.0
 // CanIUse Compatibility Reference: http://caniuse.com/typedarrays
 // Mozilla Developer Network:
-// 		https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays
+//   https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays
 // TypedArray Specification:
-// 		http://www.khronos.org/registry/typedarray/specs/latest/
+//   http://www.khronos.org/registry/typedarray/specs/latest/
 //
 // by Stanley Stuart <fivetanley>
 
