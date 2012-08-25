@@ -2,7 +2,7 @@
 // Demo at http://thewebrocks.com/demos/context-menu/
 Modernizr.addTest(
   'contextmenu', 
-  ('contextMenu' in document.body && 'HTMLMenuItemElement' in window) 
+  ('contextMenu' in document.documentElement && 'HTMLMenuItemElement' in window) 
 );
 
 
