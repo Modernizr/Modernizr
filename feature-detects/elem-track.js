@@ -6,6 +6,6 @@
 // By Addy Osmani
 Modernizr.addTest({
 	texttrackapi: (typeof (document.createElement('video').addTextTrack) === 'function'),
-	//a more strict test for track including UI support: document.createElement('track').kind === 'subtitles'
+	// a more strict test for track including UI support: document.createElement('track').kind === 'subtitles'
 	track: ('kind' in document.createElement('track'))
 });
