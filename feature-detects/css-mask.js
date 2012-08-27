@@ -1,4 +1,3 @@
-
 // this tests passes for webkit's proprietary `-webkit-mask` feature
 //   www.webkit.org/blog/181/css-masks/
 //   developer.apple.com/library/safari/#documentation/InternetWeb/Conceptual/SafariVisualEffectsProgGuide/Masks/Masks.html
@@ -10,4 +9,4 @@
 
 // Can combine with clippaths for awesomeness: http://generic.cx/for/webkit/test.html
 
-Modernizr.addTest('cssmask', Modernizr.testAllProps('mask-repeat'));
+Modernizr.addTest('cssmask', Modernizr.testAllProps('maskRepeat'));
