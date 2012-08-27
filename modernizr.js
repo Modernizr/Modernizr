@@ -126,9 +126,9 @@ window.Modernizr = (function( window, document, undefined ) {
       fakeBody.appendChild(div);
       if ( !body ) {
           //avoid crashing IE8, if background image is used
-          fakeBody.style.background = "";
+          fakeBody.style.background = '';
           //Safari 5.13/5.1.4 OSX stops loading if ::-webkit-scrollbar is used and scrollbars are visible
-          fakeBody.style.overflow = "hidden";
+          fakeBody.style.overflow = 'hidden';
           docOverflow = docElement.style.overflow;
           docElement.style.overflow = 'hidden';
           docElement.appendChild(fakeBody);
