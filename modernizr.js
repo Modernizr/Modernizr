@@ -640,6 +640,17 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
+    tests['sticky'] = function() {
+        /* Sticky positioning - constrains an element to be positioned inside the
+         * intersection of its container box, and the viewport. */
+        var str1 = 'position:',
+            str2 = 'sticky;';
+
+        setCss(str1 + prefixes.join(str2 + str1).slice(0, -str1.length));
+
+        return contains(mStyle.position, 'sticky');
+    };
+
     tests['cssreflections'] = function() {
         return testPropsAll('boxReflect');
     };
