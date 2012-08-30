@@ -64,6 +64,10 @@ window.caniusecb = function(scriptdata) {
       browserKey   = JSONSelect.match('.agents .browser', scriptdata).indexOf(ua.family),
       currBrowser  = Object.keys(scriptdata.agents)[browserKey];
 
+  // So Phantom doesn't kill the caniuse.com matching exit out as it's useless anyway within PhantomJS
+  if(navigator.userAgent.indexOf("PhantomJS") != -1) {
+    return;
+  }
 
   // translate 'y' 'n' or 'a' into a boolean that Modernizr uses
   function bool(ciuresult){
