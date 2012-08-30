@@ -11,6 +11,9 @@ module.exports = function( grunt ) {
             ' * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton\n' +
             ' * Available under the BSD and MIT licenses: www.modernizr.com/license/\n */'
         },
+        qunit: {
+            files: ['test/index.html']
+        },
         lint: {
             files: [
                 'grunt.js',
@@ -61,4 +64,6 @@ module.exports = function( grunt ) {
 
     grunt.registerTask('default', 'min');
 
+    // Travis CI task.
+    grunt.registerTask('travis', 'qunit');
 };
