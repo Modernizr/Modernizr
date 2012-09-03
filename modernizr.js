@@ -355,8 +355,9 @@ window.Modernizr = (function( window, document, undefined ) {
                 // return the property name as a string
                 if (elem === false) return props[i];
 
-                // let's bind a function
-                if (is(item, 'function')){
+                // let's bind a function (and it has a bind method -- certain native objects that report that they are a
+                // function don't [such as webkitAudioContext])
+                if (is(item, 'function') && 'bind' in item){
                   // default to autobind unless override
                   return item.bind(elem || obj);
                 }
