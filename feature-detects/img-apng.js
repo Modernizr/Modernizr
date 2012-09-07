@@ -1,6 +1,6 @@
 // Animated PNG
 // http://en.wikipedia.org/wiki/APNG
-// By Addy Osmani
+
 (function () {
 
     if (!Modernizr.canvas) return false;
