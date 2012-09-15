@@ -7,9 +7,9 @@ module.exports = function( grunt ) {
           version: '2.6.3pre',
           banner: '/*!\n' +
             ' * Modernizr v<%= meta.version %>\n' +
-            ' * www.modernizr.com\n *\n' +
+            ' * modernizr.com\n *\n' +
             ' * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton\n' +
-            ' * Available under the BSD and MIT licenses: www.modernizr.com/license/\n */'
+            ' * MIT License\n */'
         },
         qunit: {
             files: ['test/index.html']
