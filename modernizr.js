@@ -400,12 +400,6 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
-    // Canvas text
-
-    tests['canvastext'] = function() {
-        return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
-    };
-
     // webk.it/70117 is tracking a legit WebGL feature detect proposal
 
     // We do a soft detect which may false positive in order to avoid
