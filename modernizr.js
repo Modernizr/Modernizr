@@ -400,13 +400,6 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
-    // The *old* flexbox
-    // www.w3.org/TR/2009/WD-css3-flexbox-20090723/
-
-    tests['flexboxlegacy'] = function() {
-        return testPropsAll('boxDirection');
-    };
-
     // On the S60 and BB Storm, getContext exists, but always returns undefined
     // so we actually have to call getContext() to verify
     // github.com/Modernizr/Modernizr/issues/issue/97/
