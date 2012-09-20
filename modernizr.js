@@ -400,14 +400,7 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
-    // On the S60 and BB Storm, getContext exists, but always returns undefined
-    // so we actually have to call getContext() to verify
-    // github.com/Modernizr/Modernizr/issues/issue/97/
-
-    tests['canvas'] = function() {
-        var elem = document.createElement('canvas');
-        return !!(elem.getContext && elem.getContext('2d'));
-    };
+    // Canvas text
 
     tests['canvastext'] = function() {
         return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
