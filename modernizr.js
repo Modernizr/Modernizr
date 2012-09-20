@@ -78,10 +78,6 @@ window.Modernizr = (function( window, document, undefined ) {
     domPrefixes = omPrefixes.toLowerCase().split(' '),
     /*>>domprefixes*/
 
-    /*>>ns*/
-    ns = {'svg': 'http://www.w3.org/2000/svg'},
-    /*>>ns*/
-
     tests = {},
     inputs = {},
     attrs = {},
