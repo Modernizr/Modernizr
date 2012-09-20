@@ -712,11 +712,6 @@ window.Modernizr = (function( window, document, undefined ) {
       return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
     };
 
-    // SVG SMIL animation
-    tests['smil'] = function() {
-        return !!document.createElementNS && /SVGAnimate/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
-    };
-
     /*>>webforms*/
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
