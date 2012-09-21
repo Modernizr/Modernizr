@@ -490,11 +490,6 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    tests['csscolumns'] = function() {
-        return testPropsAll('columnCount');
-    };
-
-
     tests['cssgradients'] = function() {
         /**
          * For CSS Gradients syntax, please see:
