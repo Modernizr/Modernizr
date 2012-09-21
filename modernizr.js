@@ -400,12 +400,6 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
-    // documentMode logic from YUI to filter out IE8 Compat Mode
-    //   which false positives.
-    tests['hashchange'] = function() {
-      return isEventSupported('hashchange', window) && (document.documentMode === undefined || document.documentMode > 7);
-    };
-
     // Per 1.6:
     // This used to be Modernizr.historymanagement but the longer
     // name has been deprecated in favor of a shorter and property-matching one.
