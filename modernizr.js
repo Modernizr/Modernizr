@@ -519,11 +519,6 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    tests['cssreflections'] = function() {
-        return testPropsAll('boxReflect');
-    };
-
-
     /*>>webforms*/
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
