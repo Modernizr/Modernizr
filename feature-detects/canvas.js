@@ -6,5 +6,5 @@
 
 Modernizr.addTest('canvas', function() {
   var elem = document.createElement('canvas');
-  Modernizr.canvas = !!(elem.getContext && elem.getContext('2d'));
+  return !!(elem.getContext && elem.getContext('2d'));
 });

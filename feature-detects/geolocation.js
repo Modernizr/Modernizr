@@ -9,4 +9,4 @@
 // Meanwhile, in Firefox < 8, an about:config setting could expose
 // a false positive that would throw an exception: bugzil.la/688158
 
-Modernizr.addTest('geolocation', Modernizr.geolocation = 'geolocation' in navigator);
+Modernizr.addTest('geolocation', 'geolocation' in navigator);

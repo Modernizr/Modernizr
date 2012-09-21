@@ -24,5 +24,5 @@ Modernizr.addTest('touch', function() {
         });
     }
 
-    Modernizr.touch = bool;
+    return bool;
 });
