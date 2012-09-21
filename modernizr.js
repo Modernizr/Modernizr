@@ -674,16 +674,6 @@ window.Modernizr = (function( window, document, undefined ) {
         }
     };
 
-    tests['sessionstorage'] = function() {
-        try {
-            sessionStorage.setItem(mod, mod);
-            sessionStorage.removeItem(mod);
-            return true;
-        } catch(e) {
-            return false;
-        }
-    };
-
 
     /*>>webforms*/
     // input features and input types go directly onto the ret object, bypassing the tests loop.
