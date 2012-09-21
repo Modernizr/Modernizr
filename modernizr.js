@@ -576,17 +576,6 @@ window.Modernizr = (function( window, document, undefined ) {
     };
     /*>>fontface*/
 
-    // CSS generated content detection
-    tests['generatedcontent'] = function() {
-        var bool;
-
-        injectElementWithStyles(['#',mod,'{font:0/0 a}#',mod,':after{content:"',smile,'";visibility:hidden;font:3px/1 a}'].join(''), function( node ) {
-          bool = node.offsetHeight >= 3;
-        });
-
-        return bool;
-    };
-
 
     /*>>webforms*/
     // input features and input types go directly onto the ret object, bypassing the tests loop.
