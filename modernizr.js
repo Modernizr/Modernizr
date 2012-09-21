@@ -685,10 +685,6 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    tests['webworkers'] = function() {
-        return !!window.Worker;
-    };
-
     /*>>webforms*/
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
