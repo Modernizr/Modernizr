@@ -400,11 +400,6 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
-    tests['draganddrop'] = function() {
-        var div = document.createElement('div');
-        return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
-    };
-
     // FF3.6 was EOL'ed on 4/24/12, but the ESR version of FF10
     // will be supported until FF19 (2/12/13), at which time, ESR becomes FF17.
     // FF10 still uses prefixes, so check for it until then.
