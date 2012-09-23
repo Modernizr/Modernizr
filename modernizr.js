@@ -400,15 +400,6 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
-    // css-tricks.com/rgba-browser-support/
-    tests['rgba'] = function() {
-        // Set an rgba() color and check the returned value
-
-        setCss('background-color:rgba(150,255,150,.5)');
-
-        return contains(mStyle.backgroundColor, 'rgba');
-    };
-
     tests['hsla'] = function() {
         // Same as rgba(), in fact, browsers re-map hsla() to rgba() internally,
         //   except IE9 who retains it as hsla
