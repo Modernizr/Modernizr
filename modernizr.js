@@ -400,13 +400,6 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
-    // this will false positive in Opera Mini
-    //   github.com/Modernizr/Modernizr/issues/396
-
-    tests['backgroundsize'] = function() {
-        return testPropsAll('backgroundSize');
-    };
-
     tests['borderimage'] = function() {
         return testPropsAll('borderImage');
     };
