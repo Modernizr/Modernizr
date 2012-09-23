@@ -400,11 +400,6 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
-    // WebOS unfortunately false positives on this test.
-    tests['boxshadow'] = function() {
-        return testPropsAll('boxShadow');
-    };
-
     // FF3.0 will false positive on this test
     tests['textshadow'] = function() {
         return document.createElement('div').style.textShadow === '';
