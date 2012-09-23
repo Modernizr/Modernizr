@@ -400,11 +400,6 @@ window.Modernizr = (function( window, document, undefined ) {
      * -----
      */
 
-    tests['borderimage'] = function() {
-        return testPropsAll('borderImage');
-    };
-
-
     // Super comprehensive table about all the unique implementations of
     // border-radius: muddledramblings.com/table-of-css3-border-radius-compliance
 
