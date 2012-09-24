@@ -35,8 +35,6 @@
 //	by Stanley Stuart <fivetanley>
 
 Modernizr.addTest( 'clipboard', function(){
-  // Earlier versions of Internet Explorer use document.createEventObject
-  var create = document.createEvent || document.createEventObject;
   // The spec mentions a ClipboardEvent constructor.
   // If the browser implements that, it probably implements the Clipboard API.
   if ( Modernizr.prefixed( 'ClipboardEvent', window, false ) ) return true;
