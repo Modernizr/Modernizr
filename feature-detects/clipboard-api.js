@@ -12,22 +12,15 @@
 //
 //	See the pull request for more info on why an **accurate** test must be run
 //		manually.
-//
-//	Link to **MANUAL** test: http://jsbin.com/igitud/14/edit
 // 
 //	Using the test above, these browsers have been tested and found to
 //		implement the Clipboard API:
 //		- Chrome 21
 //		- Safari 5.1
-//	These browsers have been tested and found to NOT implement Clipboard API:
-//		- Firefox 14
 //
 //	The test below first checks for a ClipboardEvent constructor, then checks
-//		for an `paste` event on the `document` object if the ClipboardEvent 
+//		for a `paste` event on the `document` object if the ClipboardEvent 
 //		constructor is not found.
-//	The W3C does not specify a `clipboardData` property for
-//		the `Event` interface, so it is to be considered a less reliable test
-//		and only to be used as a last resort.
 //
 //	The test below has the same results as the manual test above.
 //
