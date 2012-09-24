@@ -23,10 +23,9 @@
 //		- Firefox 14
 //
 //	The test below first checks for a ClipboardEvent constructor, then checks
-//		for a `clipboardData` property (does not matter whether its value is
-//		`undefined` or not) when creating a new Event through the
-//		`document.createEvent` interface if the ClipboardEvent constructor
-//		is not found.  The W3C does not specify a `clipboardData` property for
+//		for an `paste` event on the `document` object if the ClipboardEvent 
+//		constructor is not found.
+//	The W3C does not specify a `clipboardData` property for
 //		the `Event` interface, so it is to be considered a less reliable test
 //		and only to be used as a last resort.
 //
