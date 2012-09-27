@@ -5,4 +5,4 @@
 // We do a soft detect which may false positive in order to avoid
 // an expensive context creation: bugzil.la/732441
 
-Modernizr.addTests('webgl', !!window.WebGLRenderingContext);
+Modernizr.addTest('webgl', !!window.WebGLRenderingContext);

@@ -1,6 +1,9 @@
 
 // Canvas text
 
-Modernizr.addTest('canvastext',
-  !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'))
-);
+// depends on canvas test.
+
+Modernizr.addTest('canvastext', function(){
+  if (Modernizr.canvas  === false) return false;
+  return typeof document.createElement('canvas').getContext('2d').fillText == 'function';
+});
