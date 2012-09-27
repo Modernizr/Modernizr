@@ -4,10 +4,13 @@
 // range of [0.0,1.0] - including the leading zero.
 
 Modernizr.addTest('opacity', function() {
-    setCssAll('opacity:.55');
+
+    var elem = document.createElement('div');
+    var style = elem.style;
+    style.cssText = Modernizr._prefixes.join('opacity:.55;');
 
     // The non-literal . in this regex is intentional:
     // German Chrome returns this value as 0,55
     // github.com/Modernizr/Modernizr/issues/#issue/59/comment/516632
-    return (/^0.55$/).test(mStyle.opacity);
+    return (/^0.55$/).test(style.opacity);
 });
