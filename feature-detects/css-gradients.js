@@ -13,12 +13,16 @@ Modernizr.addTest('cssgradients', function() {
         str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));',
         str3 = 'linear-gradient(left top,#9f9, white);';
 
-    setCss(
+    var css =
         // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
         (str1 + '-webkit- '.split(' ').join(str2 + str1) +
         // standard syntax             // trailing 'background-image:'
-        prefixes.join(str3 + str1)).slice(0, -str1.length)
-    );
+        Modernizr._prefixes.join(str3 + str1)).slice(0, -str1.length);
 
-    return contains(mStyle.backgroundImage, 'gradient');
+    var elem = document.createElement('div');
+    var style = elem.style;
+    style.cssText = css;
+
+    // IE6 returns undefined so cast to string
+    return ('' + style.backgroundImage).indexOf('gradient') > -1;
 });
