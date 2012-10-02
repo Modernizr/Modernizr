@@ -3,25 +3,16 @@
 
 // all additional table display values are here: http://pastebin.com/Gk9PeVaQ though Scott has seen some IE false positives with that sort of weak detection.
 // more testing neccessary perhaps.
+// If a document is in rtl mode this test will fail so we force ltr mode on the injeced element https://github.com/Modernizr/Modernizr/issues/716
 
-Modernizr.addTest( "display-table",function(){
+Modernizr.addTest("display-table", function() {
+  var ret;
   
-  var doc   = window.document,
-      docElem = doc.documentElement,   
-      parent  = doc.createElement( "div" ),
-      child = doc.createElement( "div" ),
-      childb  = doc.createElement( "div" ),
-      ret;
-  
-  parent.style.cssText = "display: table";
-  child.style.cssText = childb.style.cssText = "display: table-cell; padding: 10px";    
-          
-  parent.appendChild( child );
-  parent.appendChild( childb );
-  docElem.insertBefore( parent, docElem.firstChild );
-  
-  ret = child.offsetLeft < childb.offsetLeft;
-  docElem.removeChild(parent);
-  return ret; 
+  Modernizr.testStyles("#modernizr{display: table; direction: ltr}#modernizr div{display: table-cell; padding: 10px}", function(elem) {
+    var child = elem.children;
+
+    ret = child[0].offsetLeft < child[1].offsetLeft;
+  },2);
+
+  return ret;
 });
-
