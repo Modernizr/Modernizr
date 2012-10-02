@@ -1,6 +1,6 @@
 
 // dev.opera.com/articles/view/css3-object-fit-object-position/
 
-Modernizr.addTest('object-fit',
+Modernizr.addTest('objectfit',
 	!!Modernizr.prefixed('objectFit')
 );

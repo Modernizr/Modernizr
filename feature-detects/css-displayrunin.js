@@ -12,7 +12,7 @@ Modernizr.testStyles(' #modernizr { display: run-in; } ', function(elem, rule){
          getComputedStyle(elem, null).getPropertyValue('display') :
          elem.currentStyle['display']);
 
-  Modernizr.addTest('display-runin', ret == 'run-in');
+  Modernizr.addTest('displayrunin', ret == 'run-in');
 
 });
 

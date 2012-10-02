@@ -5,7 +5,7 @@
 // more testing neccessary perhaps.
 // If a document is in rtl mode this test will fail so we force ltr mode on the injeced element https://github.com/Modernizr/Modernizr/issues/716
 
-Modernizr.addTest("display-table", function() {
+Modernizr.addTest("displaytable", function() {
   var ret;
   
   Modernizr.testStyles("#modernizr{display: table; direction: ltr}#modernizr div{display: table-cell; padding: 10px}", function(elem) {
