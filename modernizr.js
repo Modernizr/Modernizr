@@ -743,14 +743,14 @@ window.Modernizr = (function( window, document, undefined ) {
             }
 
         } catch(e) { }
-
+                bool.preload=elem.preload!=undefined;
+                bool.loop=elem.loop!=undefined;
         return bool;
     };
 
     tests['audio'] = function() {
         var elem = document.createElement('audio'),
             bool = false;
-
         try {
             if ( bool = !!elem.canPlayType ) {
                 bool      = new Boolean(bool);
@@ -765,7 +765,8 @@ window.Modernizr = (function( window, document, undefined ) {
                               elem.canPlayType('audio/aac;'))             .replace(/^no$/,'');
             }
         } catch(e) { }
-
+                bool.preload=elem.preload!=undefined;
+                bool.loop=elem.loop!=undefined;
         return bool;
     };
 
