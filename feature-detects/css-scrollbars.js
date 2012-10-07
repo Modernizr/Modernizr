@@ -3,7 +3,7 @@ Modernizr.addTest('cssscrollbar', function() {
 
 	var bool,
 
-		styles = "#modernizr{overflow: scroll; width: 40px }#" +
+		styles = "#modernizr{overflow: scroll; width: 40px; height: 40px; }#" +
 			Modernizr._prefixes
 				.join("scrollbar{width:0px}"+' #modernizr::')
 				.split('#')
@@ -11,7 +11,7 @@ Modernizr.addTest('cssscrollbar', function() {
 				.join('#') + "scrollbar{width:0px}";
 
 	Modernizr.testStyles(styles, function(node) {
-		bool = 'scrollWidth' in node && node.scrollWidth == 40;
+		bool = node.scrollWidth == 40;
 	});
 
 	return bool;
