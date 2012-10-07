@@ -8,22 +8,26 @@ Modernizr.addTest("formattribute", function() {
 		attr,
 		bool = false;
 
-		form.id = id;
+	form.id = id;
 
-	//IE6/7 confuses the form idl attribute and the form content attribute
-	if(document.createAttribute){
-		attr = document.createAttribute("form");
-		attr.nodeValue = id;
-		input.setAttributeNode(attr);
-		div.appendChild(form);
-		div.appendChild(input);
-
-		document.documentElement.appendChild(div);
-
-		bool = form.elements.length === 1 && input.form == form;
-
-		div.parentNode.removeChild(div);
+	//IE6/7 confuses the form idl attribute and the form content attribute, so we use document.createAttribute
+	try {
+		input.setAttribute("form", id);
+	} catch(e){
+		if(document.createAttribute){
+			attr = document.createAttribute("form");
+			attr.nodeValue = id;
+			input.setAttributeNode(attr);
+		}
 	}
+	
+	div.appendChild(form);
+	div.appendChild(input);
 
+	document.documentElement.appendChild(div);
+
+	bool = form.elements.length === 1 && input.form == form;
+
+	div.parentNode.removeChild(div);
 	return bool;
 });
