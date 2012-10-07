@@ -1,4 +1,4 @@
 // Mozilla Audio Data API
 // https://wiki.mozilla.org/Audio_Data_API
 // by Addy Osmani
-Modernizr.addTest('audiodata', !!((new window.Audio()).mozSetup));
+Modernizr.addTest('audiodata', !!(new window.Audio()).mozSetup);
