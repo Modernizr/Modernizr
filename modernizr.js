@@ -527,6 +527,12 @@ window.Modernizr = (function( window, document, undefined ) {
         return 'WebSocket' in window || 'MozWebSocket' in window;
     };
 
+    // IE doesn't support it yet
+    tests['serversentEvents'] = function() {
+ 
+        return typeof(EventSource) !== 'undefined' && !!window.EventSource;
+
+    };
 
     // css-tricks.com/rgba-browser-support/
     tests['rgba'] = function() {
