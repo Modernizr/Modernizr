@@ -5,6 +5,6 @@
 
 
 Modernizr.addTest("userselect",function(){
-    return Modernizr.testAllProps("user-select");
+    return Modernizr.testAllProps("userSelect");
 });
 

@@ -3,8 +3,9 @@
 // https://github.com/Modernizr/Modernizr/issues/191
 
 Modernizr.addTest('cookies', function () {
-  // Quick test if browser has cookieEnabled host property
-  if (navigator.cookieEnabled) return true;
+
+  // navigator.cookieEnabled is in IE9 but always true. Don't rely on it.
+
   // Create cookie
   document.cookie = "cookietest=1";
   var ret = document.cookie.indexOf("cookietest=") != -1;

@@ -1,22 +1,23 @@
 /*!
- * Modernizr v2.6pre
- * www.modernizr.com
+ * Modernizr v2.6.3pre
+ * modernizr.com
  *
  * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton
- * Available under the BSD and MIT licenses: www.modernizr.com/license/
+ * MIT License
  */
 
 /*
- * Modernizr tests which native CSS3 and HTML5 features are available in
- * the current UA and makes the results available to you in two ways:
- * as properties on a global Modernizr object, and as classes on the
- * <html> element. This information allows you to progressively enhance
- * your pages with a granular level of control over the experience.
+ * Modernizr tests which native CSS3 and HTML5 features are available in the
+ * current UA and makes the results available to you in two ways: as properties on
+ * a global `Modernizr` object, and as classes on the `<html>` element. This
+ * information allows you to progressively enhance your pages with a granular level
+ * of control over the experience.
  *
- * Modernizr has an optional (not included) conditional resource loader
- * called Modernizr.load(), based on Yepnope.js (yepnopejs.com).
- * To get a build that includes Modernizr.load(), as well as choosing
- * which tests to include, go to www.modernizr.com/download/
+ * Modernizr has an optional (*not included*) conditional resource loader called
+ * `Modernizr.load()`, based on [Yepnope.js](http://yepnopejs.com). You can get a
+ * build that includes `Modernizr.load()`, as well as choosing which feature tests
+ * to include on the [Download page](http://www.modernizr.com/download/).
+ *
  *
  * Authors        Faruk Ates, Paul Irish, Alex Sexton
  * Contributors   Ryan Seddon, Ben Alman
@@ -24,7 +25,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.5.3',
+    var version = '2.6.3pre',
 
     Modernizr = {},
 
@@ -96,12 +97,12 @@ window.Modernizr = (function( window, document, undefined ) {
     // Inject element with style element and some CSS rules
     injectElementWithStyles = function( rule, callback, nodes, testnames ) {
 
-      var style, ret, node,
+      var style, ret, node, docOverflow,
           div = document.createElement('div'),
           // After page load injecting a fake body doesn't work so check if body exists
           body = document.body,
           // IE6 and 7 won't return offsetWidth or offsetHeight unless it's in the body element, so we fake it.
-          fakeBody = body ? body : document.createElement('body');
+          fakeBody = body || document.createElement('body');
 
       if ( parseInt(nodes, 10) ) {
           // In order not to give false positives we create a node for each test
@@ -126,13 +127,22 @@ window.Modernizr = (function( window, document, undefined ) {
       fakeBody.appendChild(div);
       if ( !body ) {
           //avoid crashing IE8, if background image is used
-          fakeBody.style.background = "";
+          fakeBody.style.background = '';
+          //Safari 5.13/5.1.4 OSX stops loading if ::-webkit-scrollbar is used and scrollbars are visible
+          fakeBody.style.overflow = 'hidden';
+          docOverflow = docElement.style.overflow;
+          docElement.style.overflow = 'hidden';
           docElement.appendChild(fakeBody);
       }
 
       ret = callback(div, rule);
       // If this is done after page load we don't want to remove the body so check if body exists
-      !body ? fakeBody.parentNode.removeChild(fakeBody) : div.parentNode.removeChild(div);
+      if ( !body ) {
+          fakeBody.parentNode.removeChild(fakeBody);
+          docElement.style.overflow = docOverflow;
+      } else {
+          div.parentNode.removeChild(div);
+      }
 
       return !!ret;
 
@@ -315,10 +325,18 @@ window.Modernizr = (function( window, document, undefined ) {
     // on our modernizr element, but instead just testing undefined vs
     // empty string.
 
+    // Because the testing of the CSS property names (with "-", as
+    // opposed to the camelCase DOM properties) is non-portable and
+    // non-standard but works in WebKit and IE (but not Gecko or Opera),
+    // we explicitly reject properties with dashes so that authors
+    // developing in WebKit or IE first don't end up with
+    // browser-specific content by accident.
+
     function testProps( props, prefixed ) {
         for ( var i in props ) {
-            if ( mStyle[ props[i] ] !== undefined ) {
-                return prefixed == 'pfx' ? props[i] : true;
+            var prop = props[i];
+            if ( !contains(prop, "-") && mStyle[prop] !== undefined ) {
+                return prefixed == 'pfx' ? prop : true;
             }
         }
         return false;
@@ -338,8 +356,9 @@ window.Modernizr = (function( window, document, undefined ) {
                 // return the property name as a string
                 if (elem === false) return props[i];
 
-                // let's bind a function
-                if (is(item, 'function')){
+                // let's bind a function (and it has a bind method -- certain native objects that report that they are a
+                // function don't [such as webkitAudioContext])
+                if (is(item, 'function') && 'bind' in item){
                   // default to autobind unless override
                   return item.bind(elem || obj);
                 }
@@ -360,7 +379,7 @@ window.Modernizr = (function( window, document, undefined ) {
      */
     function testPropsAll( prop, prefixed, elem ) {
 
-        var ucProp  = prop.charAt(0).toUpperCase() + prop.substr(1),
+        var ucProp  = prop.charAt(0).toUpperCase() + prop.slice(1),
             props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
         // did they call .prefixed('boxSizing') or are we just testing a prop?
@@ -684,8 +703,8 @@ window.Modernizr = (function( window, document, undefined ) {
     tests['generatedcontent'] = function() {
         var bool;
 
-        injectElementWithStyles(['#modernizr:after{content:"',smile,'";visibility:hidden}'].join(''), function( node ) {
-          bool = node.offsetHeight >= 1;
+        injectElementWithStyles(['#',mod,'{font:0/0 a}#',mod,':after{content:"',smile,'";visibility:hidden;font:3px/1 a}'].join(''), function( node ) {
+          bool = node.offsetHeight >= 3;
         });
 
         return bool;
@@ -941,7 +960,6 @@ window.Modernizr = (function( window, document, undefined ) {
     /*>>webforms*/
 
 
-    /*>>addtest*/
     /**
      * addTest allows the user to define their own feature tests
      * the result will be added onto the Modernizr object,
@@ -972,7 +990,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
          test = typeof test == 'function' ? test() : test;
 
-         if (enableClasses) {
+         if (typeof enableClasses !== "undefined" && enableClasses) {
            docElement.className += ' ' + (test ? '' : 'no-') + feature;
          }
          Modernizr[feature] = test;
@@ -981,7 +999,6 @@ window.Modernizr = (function( window, document, undefined ) {
 
        return Modernizr; // allow chaining.
      };
-     /*>>addtest*/
 
 
     // Reset modElem.cssText to nothing to reduce memory footprint.
@@ -989,55 +1006,54 @@ window.Modernizr = (function( window, document, undefined ) {
     modElem = inputElem = null;
 
     /*>>shiv*/
-    /*! HTML5 Shiv v3.5 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed */
+    /*! HTML5 Shiv v3.6.1 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed */
     ;(function(window, document) {
-
+    /*jshint evil:true */
       /** Preset options */
       var options = window.html5 || {};
 
       /** Used to skip problem elements */
-      var reSkip = /^<|^(?:button|form|map|select|textarea|object|iframe|option|optgroup)$/i;
+      var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
 
-      /** Not all elements can be cloned in IE (this list can be shortend) **/
-      var saveClones = /^<|^(?:a|b|button|code|div|fieldset|form|h1|h2|h3|h4|h5|h6|i|iframe|img|input|label|li|link|ol|option|p|param|q|script|select|span|strong|style|table|tbody|td|textarea|tfoot|th|thead|tr|ul)$/i;
+      /** Not all elements can be cloned in IE **/
+      var saveClones = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i;
 
       /** Detect whether the browser supports default html5 styles */
       var supportsHtml5Styles;
+
+      /** Name of the expando, to work with multiple documents or to re-shiv one document */
+      var expando = '_html5shiv';
+
+      /** The id for the the documents expando */
+      var expanID = 0;
+
+      /** Cached data for each document */
+      var expandoData = {};
 
       /** Detect whether the browser supports unknown elements */
       var supportsUnknownElements;
 
       (function() {
-        var a = document.createElement('a');
+        try {
+            var a = document.createElement('a');
+            a.innerHTML = '<xyz></xyz>';
+            //if the hidden property is implemented we can assume, that the browser supports basic HTML5 Styles
+            supportsHtml5Styles = ('hidden' in a);
 
-        a.innerHTML = '<xyz></xyz>';
-
-        //if the hidden property is implemented we can assume, that the browser supports HTML5 Styles | this fails in Chrome 8
-        supportsHtml5Styles = ('hidden' in a);
-        //if we are part of Modernizr, we do an additional test to solve the Chrome 8 fail
-        if(supportsHtml5Styles && typeof injectElementWithStyles == 'function'){
-            injectElementWithStyles('#modernizr{}', function(node){
-                node.hidden = true;
-                supportsHtml5Styles = (window.getComputedStyle ?
-                      getComputedStyle(node, null) :
-                      node.currentStyle).display == 'none';
-            });
+            supportsUnknownElements = a.childNodes.length == 1 || (function() {
+              // assign a false positive if unable to shiv
+              (document.createElement)('a');
+              var frag = document.createDocumentFragment();
+              return (
+                typeof frag.cloneNode == 'undefined' ||
+                typeof frag.createDocumentFragment == 'undefined' ||
+                typeof frag.createElement == 'undefined'
+              );
+            }());
+        } catch(e) {
+          supportsHtml5Styles = true;
+          supportsUnknownElements = true;
         }
-
-        supportsUnknownElements = a.childNodes.length == 1 || (function() {
-          // assign a false positive if unable to shiv
-          try {
-            (document.createElement)('a');
-          } catch(e) {
-            return true;
-          }
-          var frag = document.createDocumentFragment();
-          return (
-            typeof frag.cloneNode == 'undefined' ||
-            typeof frag.createDocumentFragment == 'undefined' ||
-            typeof frag.createElement == 'undefined'
-          );
-        }());
 
       }());
 
@@ -1068,41 +1084,105 @@ window.Modernizr = (function( window, document, undefined ) {
         return typeof elements == 'string' ? elements.split(' ') : elements;
       }
 
+        /**
+       * Returns the data associated to the given document
+       * @private
+       * @param {Document} ownerDocument The document.
+       * @returns {Object} An object of data.
+       */
+      function getExpandoData(ownerDocument) {
+        var data = expandoData[ownerDocument[expando]];
+        if (!data) {
+            data = {};
+            expanID++;
+            ownerDocument[expando] = expanID;
+            expandoData[expanID] = data;
+        }
+        return data;
+      }
+
+      /**
+       * returns a shived element for the given nodeName and document
+       * @memberOf html5
+       * @param {String} nodeName name of the element
+       * @param {Document} ownerDocument The context document.
+       * @returns {Object} The shived element.
+       */
+      function createElement(nodeName, ownerDocument, data){
+        if (!ownerDocument) {
+            ownerDocument = document;
+        }
+        if(supportsUnknownElements){
+            return ownerDocument.createElement(nodeName);
+        }
+        if (!data) {
+            data = getExpandoData(ownerDocument);
+        }
+        var node;
+
+        if (data.cache[nodeName]) {
+            node = data.cache[nodeName].cloneNode();
+        } else if (saveClones.test(nodeName)) {
+            node = (data.cache[nodeName] = data.createElem(nodeName)).cloneNode();
+        } else {
+            node = data.createElem(nodeName);
+        }
+
+        // Avoid adding some elements to fragments in IE < 9 because
+        // * Attributes like `name` or `type` cannot be set/changed once an element
+        //   is inserted into a document/fragment
+        // * Link elements with `src` attributes that are inaccessible, as with
+        //   a 403 response, will cause the tab/window to crash
+        // * Script elements appended to fragments will execute when their `src`
+        //   or `text` property is set
+        return node.canHaveChildren && !reSkip.test(nodeName) ? data.frag.appendChild(node) : node;
+      }
+
+      /**
+       * returns a shived DocumentFragment for the given document
+       * @memberOf html5
+       * @param {Document} ownerDocument The context document.
+       * @returns {Object} The shived DocumentFragment.
+       */
+      function createDocumentFragment(ownerDocument, data){
+        if (!ownerDocument) {
+            ownerDocument = document;
+        }
+        if(supportsUnknownElements){
+            return ownerDocument.createDocumentFragment();
+        }
+        data = data || getExpandoData(ownerDocument);
+        var clone = data.frag.cloneNode(),
+            i = 0,
+            elems = getElements(),
+            l = elems.length;
+        for(;i<l;i++){
+            clone.createElement(elems[i]);
+        }
+        return clone;
+      }
+
       /**
        * Shivs the `createElement` and `createDocumentFragment` methods of the document.
        * @private
        * @param {Document|DocumentFragment} ownerDocument The document.
+       * @param {Object} data of the document.
        */
-      function shivMethods(ownerDocument) {
-        var cache = {},
-            docCreateElement = ownerDocument.createElement,
-            docCreateFragment = ownerDocument.createDocumentFragment,
-            frag = docCreateFragment();
+      function shivMethods(ownerDocument, data) {
+        if (!data.cache) {
+            data.cache = {};
+            data.createElem = ownerDocument.createElement;
+            data.createFrag = ownerDocument.createDocumentFragment;
+            data.frag = data.createFrag();
+        }
+
 
         ownerDocument.createElement = function(nodeName) {
           //abort shiv
-          if(!html5.shivMethods){
-              return docCreateElement(nodeName);
+          if (!html5.shivMethods) {
+              return data.createElem(nodeName);
           }
-
-          var node;
-
-          if(cache[nodeName]){
-              node = cache[nodeName].cloneNode();
-          } else if(saveClones.test(nodeName)){
-               node = (cache[nodeName] = docCreateElement(nodeName)).cloneNode();
-          } else {
-              node = docCreateElement(nodeName);
-          }
-
-          // Avoid adding some elements to fragments in IE < 9 because
-          // * Attributes like `name` or `type` cannot be set/changed once an element
-          //   is inserted into a document/fragment
-          // * Link elements with `src` attributes that are inaccessible, as with
-          //   a 403 response, will cause the tab/window to crash
-          // * Script elements appended to fragments will execute when their `src`
-          //   or `text` property is set
-          return node.canHaveChildren && !reSkip.test(nodeName) ? frag.appendChild(node) : node;
+          return createElement(nodeName, ownerDocument, data);
         };
 
         ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
@@ -1110,12 +1190,12 @@ window.Modernizr = (function( window, document, undefined ) {
           'h.shivMethods&&(' +
             // unroll the `createElement` calls
             getElements().join().replace(/\w+/g, function(nodeName) {
-              docCreateElement(nodeName);
-              frag.createElement(nodeName);
+              data.createElem(nodeName);
+              data.frag.createElement(nodeName);
               return 'c("' + nodeName + '")';
             }) +
           ');return n}'
-        )(html5, frag);
+        )(html5, data.frag);
       }
 
       /*--------------------------------------------------------------------------*/
@@ -1127,29 +1207,21 @@ window.Modernizr = (function( window, document, undefined ) {
        * @returns {Document} The shived document.
        */
       function shivDocument(ownerDocument) {
-        var shived;
-        if (ownerDocument.documentShived) {
-          return ownerDocument;
+        if (!ownerDocument) {
+            ownerDocument = document;
         }
-        if (html5.shivCSS && !supportsHtml5Styles) {
-          shived = !!addStyleSheet(ownerDocument,
+        var data = getExpandoData(ownerDocument);
+
+        if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
+          data.hasCSS = !!addStyleSheet(ownerDocument,
             // corrects block display not defined in IE6/7/8/9
-            'article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
-            // corrects audio display not defined in IE6/7/8/9
-            'audio{display:none}' +
-            // corrects canvas and video display not defined in IE6/7/8/9
-            'canvas,video{display:inline-block;*display:inline;*zoom:1}' +
-            // corrects 'hidden' attribute and audio[controls] display not present in IE7/8/9
-            '[hidden]{display:none}audio[controls]{display:inline-block;*display:inline;*zoom:1}' +
+            'article,aside,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
             // adds styling not present in IE6/7/8/9
             'mark{background:#FF0;color:#000}'
           );
         }
         if (!supportsUnknownElements) {
-          shived = !shivMethods(ownerDocument);
-        }
-        if (shived) {
-          ownerDocument.documentShived = shived;
+          shivMethods(ownerDocument, data);
         }
         return ownerDocument;
       }
@@ -1179,7 +1251,14 @@ window.Modernizr = (function( window, document, undefined ) {
          * @memberOf html5
          * @type Boolean
          */
-        'shivCSS': !(options.shivCSS === false),
+        'shivCSS': (options.shivCSS !== false),
+
+        /**
+         * Is equal to true if a browser supports creating unknown/HTML5 elements
+         * @memberOf html5
+         * @type boolean
+         */
+        'supportsUnknownElements': supportsUnknownElements,
 
         /**
          * A flag to indicate that the document's `createElement` and `createDocumentFragment`
@@ -1187,7 +1266,7 @@ window.Modernizr = (function( window, document, undefined ) {
          * @memberOf html5
          * @type Boolean
          */
-        'shivMethods': !(options.shivMethods === false),
+        'shivMethods': (options.shivMethods !== false),
 
         /**
          * A string to describe the type of `html5` object ("default" or "default print").
@@ -1197,7 +1276,13 @@ window.Modernizr = (function( window, document, undefined ) {
         'type': 'default',
 
         // shivs the document according to the specified `html5` object options
-        'shivDocument': shivDocument
+        'shivDocument': shivDocument,
+
+        //creates a shived element
+        createElement: createElement,
+
+        //creates a shived documentFragment
+        createDocumentFragment: createDocumentFragment
       };
 
       /*--------------------------------------------------------------------------*/

@@ -64,6 +64,10 @@ window.caniusecb = function(scriptdata) {
       browserKey   = JSONSelect.match('.agents .browser', scriptdata).indexOf(ua.family),
       currBrowser  = Object.keys(scriptdata.agents)[browserKey];
 
+  // So Phantom doesn't kill the caniuse.com matching exit out as it's useless anyway within PhantomJS
+  if(navigator.userAgent.indexOf("PhantomJS") != -1) {
+    return;
+  }
 
   // translate 'y' 'n' or 'a' into a boolean that Modernizr uses
   function bool(ciuresult){
@@ -98,7 +102,7 @@ window.caniusecb = function(scriptdata) {
     }
 
     // where we actually do most our assertions
-    equals(o.result, ciubool,
+    equal(o.result, ciubool,
       o.browser + o.version + ': Caniuse result for ' + o.ciufeature +
       ' matches Modernizr\'s ' + (o.fp ? '*false positive*' : 'result') + ' for ' + o.feature
     );

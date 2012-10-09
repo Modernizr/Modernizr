@@ -4,12 +4,15 @@ module.exports = function( grunt ) {
 
     grunt.initConfig({
         meta: {
-          version: '2.5.3',
+          version: '2.6.3pre',
           banner: '/*!\n' +
             ' * Modernizr v<%= meta.version %>\n' +
-            ' * www.modernizr.com\n *\n' +
+            ' * modernizr.com\n *\n' +
             ' * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton\n' +
-            ' * Available under the BSD and MIT licenses: www.modernizr.com/license/\n */'
+            ' * MIT License\n */'
+        },
+        qunit: {
+            files: ['test/index.html']
         },
         lint: {
             files: [
@@ -52,11 +55,15 @@ module.exports = function( grunt ) {
             globals: {
                 Modernizr: true,
                 DocumentTouch: true,
-                TEST: true
+                TEST: true,
+                SVGFEColorMatrixElement : true,
+                Blob: true
             }
         }
     });
 
     grunt.registerTask('default', 'min');
 
+    // Travis CI task.
+    grunt.registerTask('travis', 'qunit');
 };

@@ -7,11 +7,11 @@ function dumpModernizr(){
       // skip previously done ones.
       if (dumpModernizr.old[prop]) continue;
       else dumpModernizr.old[prop] = true;
-                
+
       if (typeof Modernizr[prop] === 'function') continue;
       // skip unit test items
       if (/^test/.test(prop)) continue;
-      
+
       if (~TEST.inputs.indexOf(prop)) {
         str += '<li><b>'+prop+'{}</b><ul>';
         for (var field in Modernizr[prop]) {
@@ -28,27 +28,30 @@ function dumpModernizr(){
 
 function grabFeatDetects(){
   // thx github.js
-  gh.object("Modernizr", "Modernizr").blobAll('master', function (data) { 
-    
-    var filenames = [];
+  $.getScript('https://api.github.com/repos/Modernizr/Modernizr/git/trees/master?recursive=1&callback=processTree');
+}
 
-    for (var file in data.blobs){
-      var match = file.match(/^feature-detects\/(.*)/);
-      if (!match) continue;
 
-      var relpath = location.host == "modernizr.github.com" ? 
-                      'https://raw.github.com/Modernizr/Modernizr/master/' : '../';
-                      
-      filenames.push(relpath + match[0]);
-    }
+function processTree(data){
+  var filenames = [];
 
-    var jqxhrs = filenames.map(function(filename){
-      return jQuery.getScript(filename);
-    });
+  for (var i = 0; i < data.data.tree.length; i++){
+    var file = data.data.tree[i];
+    var match = file.path.match(/^feature-detects\/(.*)/);
+    if (!match) continue;
 
-    jQuery.when.apply(jQuery, jqxhrs).done(resultsToDOM);
+    var relpath = location.host == "modernizr.github.com" ?
+                    '../modernizr-git/' : '../';
 
+    filenames.push(relpath + match[0]);
+  }
+
+  var jqxhrs = filenames.map(function(filename){
+    return jQuery.getScript(filename);
   });
+
+  jQuery.when.apply(jQuery, jqxhrs).done(resultsToDOM);
+
 }
 
 function resultsToDOM(){
@@ -58,7 +61,8 @@ function resultsToDOM(){
 
   modOutput.className = 'output';
   modOutput.innerHTML = dumpModernizr();
-  if (Modernizr.csscolumns) ref.parentNode.insertBefore(modOutput, ref);
+
+  ref.parentNode.insertBefore(modOutput, ref);
 
   // Modernizr object as text
   document.getElementsByTagName('textarea')[0].innerHTML = JSON.stringify(Modernizr);
