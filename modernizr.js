@@ -529,9 +529,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // IE doesn't support it yet
     tests['serversentEvents'] = function() {
- 
         return typeof(EventSource) !== 'undefined' && !!window.EventSource;
-
     };
 
     // css-tricks.com/rgba-browser-support/
