@@ -7,7 +7,7 @@ Modernizr.addTest('cssvwunit', function(){
             compStyle = parseInt((window.getComputedStyle ?
                       getComputedStyle(elem, null) :
                       elem.currentStyle)["width"],10);
-        
+
         bool= (compStyle == width);
     });
     return bool;

@@ -10,7 +10,7 @@
 
 (function() {
 	var test_id;
-	
+
 	function showResult(r) {
 		if(test_id && window.parent.setResult) {
 			parent.setResult(test_id, r);
@@ -18,11 +18,11 @@
 			alert(r);
 		}
 	}
-	
+
 	if(location.hash.length) {
 		test_id = location.hash.substr(1);
 	}
-	
+
 	if(history.pushState) {
 		var rand = Math.random();
 		setTimeout(function() {
@@ -30,8 +30,8 @@
 			var result = (location.href.indexOf(rand) > -1);
 			showResult(result);
 		}, 100);
-	} 
-	
+	}
+
 })();
 
 </script>
