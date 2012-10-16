@@ -61,12 +61,13 @@ function processTree(data){
     return jQuery.getScript(filename);
   });
 
-  jQuery.when.apply(jQuery, jqxhrs).done(resultsToDOM);
+  jQuery.when.apply(jQuery, jqxhrs).done(function(){
+    QUnit.start();
+    resultsToDOM();
+  });
 
 }
-
 function resultsToDOM(){
-
   var modOutput = document.createElement('div'),
       ref = document.getElementById('qunit-testresult') || document.getElementById('qunit-tests');
 
@@ -77,7 +78,6 @@ function resultsToDOM(){
 
   // Modernizr object as text
   document.getElementsByTagName('textarea')[0].innerHTML = JSON.stringify(Modernizr);
-
 }
 
 /* uno    */ resultsToDOM();
