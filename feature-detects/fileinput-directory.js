@@ -6,5 +6,5 @@
 Modernizr.addTest('fileinputdirectory', function() {
   var el = document.createElement('input');
   el.type = 'file';
-  return typeof el.webkitdirectory !== 'undefined' || typeof el.directory !== 'undefined';
+  return typeof el.webkitdirectory !== 'undefined' || typeof el.mozdirectory !== 'undefined' || typeof el.directory !== 'undefined';
 });
