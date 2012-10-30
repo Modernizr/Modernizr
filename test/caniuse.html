@@ -17,29 +17,29 @@ function setResult(id, result) {
 
 </script>
 
-</head><body><h2>The <a href="http://caniuse.com/">When can I use...</a> test suite... <small>(originally from <a href="http://tests.caniuse.com/">tests.caniuse.com</a>)</small></h2> 
+</head><body><h2>The <a href="http://caniuse.com/">When can I use...</a> test suite... <small>(originally from <a href="http://tests.caniuse.com/">tests.caniuse.com</a>)</small></h2>
 <div id="intro">
 	<p>This is a basic test suite of various web technologies for the <a href="./caniuse_files/caniuse.html">When Can I Use</a> website.</p>
 	<p>It is used to quickly test basic support for features in upcoming browsers, rather than any full support of the feature's specification.</p>
 	<p>Results on this page generally match the results as they appear on the When Can I Use site, but <strong>may not always</strong> due to a variety of circumstances (test may pass but support is actually buggy, not tested well enough, has alternative method, etc).</p>
-	
+
 	<p>Four different types of tests are used:</p>
 	<dl>
 		<dt>Auto</dt>
 		<dd>Automated JS-based tests. (m) means <a href="http://modernizr.com/">Modernizr</a> is used.</dd>
-	
+
 		<dt>Visual</dt>
 		<dd>Requires visual confirmation/comparison to confirm</dd>
-	
+
 		<dt>Visual-square</dt>
 		<dd>Test must create a 30x30px green (lime) square</dd>
-	
+
 		<dt>Interactive</dt>
 		<dd>Requires interaction to confirm support</dd>
 	</dl>
-	
+
 	<p>If you are interested in contributing tests you can contact me at: when (at) caniuse (dotcom).</p>
-	
+
 </div>
 
 
@@ -127,7 +127,7 @@ border-radius: 150px;
 <div class="test_wrap"><h3>Visual-square</h3><div id="canvas1" class="visual-square"></div><div class="square"><canvas width="30" height="30" style="background:red;" id="canv_test"></canvas>
 
 <script>
-var canvas = $('#canv_test')[0], 
+var canvas = $('#canv_test')[0],
     ctx    = canvas.getContext && canvas.getContext('2d');
 
 if (ctx){
@@ -200,7 +200,7 @@ animation: staylime 60s infinite;
 
 </style>
 
-<div id="css-animation1test" style="width:30px;height:30px;"></div></div><div class="info">animation: staylime 60s infinite; 
+<div id="css-animation1test" style="width:30px;height:30px;"></div></div><div class="info">animation: staylime 60s infinite;
 
 @keyframes staylime {
 	from { background-color: lime; }
@@ -247,7 +247,7 @@ box-shadow: inset lime 0px 0px 150px;
 <div class="test_wrap"><h3>Auto (m)</h3><div id="css-textshadow0" class="auto pass"></div><script>setResult('css-textshadow0', Modernizr.textshadow);</script><div class="info">Modernizr test for: "textshadow"</div></div>
 
 <div class="test_wrap"><h3>Visual</h3><div id="css-textshadow1" class="visual"></div><div class="vis_test"><div style="width:30px;height:30px;overflow:hidden" id="css-textshadow1">
- 
+
 <div style="font:25px/25px Times New Roman, Times; color:white;-webkit-text-shadow:25px 0 3px lime;-moz-text-shadow:25px 0 3px lime;-ms-text-shadow:25px 0 3px lime;-o-text-shadow:25px 0 3px lime;text-shadow:25px 0 3px lime;position:relative; left:-25px;">A</div>
 
 </div></div><div class="vis_ref"><img src="./caniuse_files/text-shadow1.png"></div><div class="info">font-size: 25px;
@@ -387,9 +387,9 @@ setResult('fileapi0', !!window.FileReader);
 		}, function(error) {
 			feat.innerHTML = '<p>Error:' + error.message + '</p>';
 		});
-		
+
 		feat.innerHTML = '<p>Waiting for response...</p>';
-		
+
 		return false;
 	}
 })();
@@ -598,8 +598,8 @@ setResult('queryselector0', !!document.querySelectorAll && !!document.querySelec
 <tr><th><h3>Inline SVG in HTML5</h3><span class="links">[<a href="http://caniuse.com/svg-html5">Table</a>] [<a href="http://tests.caniuse.com/?feat=svg-html5&prefix=all">Single feat</a>]</span></th><td class="current pass">&nbsp;</td><td>
 <div class="test_wrap"><h3>Auto (m)</h3><div id="svg-html50" class="auto pass"></div><script>setResult('svg-html50', Modernizr.inlinesvg);</script><div class="info">Modernizr test for: "inlinesvg"</div></div>
 
-<div class="test_wrap"><h3>Visual-square</h3><div id="svg-html51" class="visual-square"></div><div class="square"><svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" style="background:red;"> 
-    <rect height="30" width="30" y="0" x="0" fill="#00ff00"></rect> 
+<div class="test_wrap"><h3>Visual-square</h3><div id="svg-html51" class="visual-square"></div><div class="square"><svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" style="background:red;">
+    <rect height="30" width="30" y="0" x="0" fill="#00ff00"></rect>
 </svg>
 </div></div>
 
@@ -646,7 +646,7 @@ setResult('queryselector0', !!document.querySelectorAll && !!document.querySelec
 
 }
 
-#transforms3d1test { 
+#transforms3d1test {
 	width:400px; height:100px;
 	background: lime;
 	position: relative;
@@ -701,12 +701,12 @@ setResult('video0', !!document.createElement('video').canPlayType);
 try {
 
 	var w = new Worker('worker.js');
-	
+
 	w.onmessage = function (event) {
 	  var success = (event.data && event.data === 'worker works');
 	  setResult('webworkers1', success);
 	}
-	
+
 	w.postMessage('');
 
 } catch(e) {
@@ -744,7 +744,7 @@ setResult('xhr20', (progEv && fdata));
  content: 'Z';
 }
 </style>
-<span id="gencontent">-</span></div><div class="vis_ref"><img src="./caniuse_files/before-after.png"></div><div class="info">Element with CSS: 
+<span id="gencontent">-</span></div><div class="vis_ref"><img src="./caniuse_files/before-after.png"></div><div class="info">Element with CSS:
 #gencontent:before {
  content: 'A';
 }
@@ -872,9 +872,9 @@ border-right: calc(0.5em) solid lime;</div></div>
 <tr><th><h3>CSS Grid Layout</h3><span class="links">[<a href="http://caniuse.com/css-grid">Table</a>] [<a href="http://tests.caniuse.com/?feat=css-grid&prefix=all">Single feat</a>]</span></th><td class="current unknown">&nbsp;</td><td>
 <div class="test_wrap"><h3>Visual-square</h3><div id="css-grid0" class="visual-square"></div><div class="square"><style>
 #css-grid0grid {
-	display: -webkit-grid; 	display: -moz-grid; 	display: -ms-grid; 	display: -o-grid; 	display: grid; 
-	-webkit-grid-columns: 15px 1fr; 	-moz-grid-columns: 15px 1fr; 	-ms-grid-columns: 15px 1fr; 	-o-grid-columns: 15px 1fr; 	grid-columns: 15px 1fr; 
-	-webkit-grid-rows: 15px 15px; 	-moz-grid-rows: 15px 15px; 	-ms-grid-rows: 15px 15px; 	-o-grid-rows: 15px 15px; 	grid-rows: 15px 15px; 
+	display: -webkit-grid; 	display: -moz-grid; 	display: -ms-grid; 	display: -o-grid; 	display: grid;
+	-webkit-grid-columns: 15px 1fr; 	-moz-grid-columns: 15px 1fr; 	-ms-grid-columns: 15px 1fr; 	-o-grid-columns: 15px 1fr; 	grid-columns: 15px 1fr;
+	-webkit-grid-rows: 15px 15px; 	-moz-grid-rows: 15px 15px; 	-ms-grid-rows: 15px 15px; 	-o-grid-rows: 15px 15px; 	grid-rows: 15px 15px;
 
 }
 
@@ -883,19 +883,19 @@ border-right: calc(0.5em) solid lime;</div></div>
 }
 
 #css-grid0a {
-	-webkit-grid-row: 1; 	-moz-grid-row: 1; 	-ms-grid-row: 1; 	-o-grid-row: 1; 	grid-row: 1; 
-	-webkit-grid-column: 1; 	-moz-grid-column: 1; 	-ms-grid-column: 1; 	-o-grid-column: 1; 	grid-column: 1; 
+	-webkit-grid-row: 1; 	-moz-grid-row: 1; 	-ms-grid-row: 1; 	-o-grid-row: 1; 	grid-row: 1;
+	-webkit-grid-column: 1; 	-moz-grid-column: 1; 	-ms-grid-column: 1; 	-o-grid-column: 1; 	grid-column: 1;
 }
 
 #css-grid0b {
-	-webkit-grid-row: 1; 	-moz-grid-row: 1; 	-ms-grid-row: 1; 	-o-grid-row: 1; 	grid-row: 1; 
-	-webkit-grid-column: 2; 	-moz-grid-column: 2; 	-ms-grid-column: 2; 	-o-grid-column: 2; 	grid-column: 2; 
+	-webkit-grid-row: 1; 	-moz-grid-row: 1; 	-ms-grid-row: 1; 	-o-grid-row: 1; 	grid-row: 1;
+	-webkit-grid-column: 2; 	-moz-grid-column: 2; 	-ms-grid-column: 2; 	-o-grid-column: 2; 	grid-column: 2;
 }
 
 #css-grid0c {
-	-webkit-grid-row: 2; 	-moz-grid-row: 2; 	-ms-grid-row: 2; 	-o-grid-row: 2; 	grid-row: 2; 
-	-webkit-grid-column: 1; 	-moz-grid-column: 1; 	-ms-grid-column: 1; 	-o-grid-column: 1; 	grid-column: 1; 
-	-webkit-grid-column-span: 2; 	-moz-grid-column-span: 2; 	-ms-grid-column-span: 2; 	-o-grid-column-span: 2; 	grid-column-span: 2; 
+	-webkit-grid-row: 2; 	-moz-grid-row: 2; 	-ms-grid-row: 2; 	-o-grid-row: 2; 	grid-row: 2;
+	-webkit-grid-column: 1; 	-moz-grid-column: 1; 	-ms-grid-column: 1; 	-o-grid-column: 1; 	grid-column: 1;
+	-webkit-grid-column-span: 2; 	-moz-grid-column-span: 2; 	-ms-grid-column-span: 2; 	-o-grid-column-span: 2; 	grid-column-span: 2;
 }
 </style>
 
@@ -1136,7 +1136,7 @@ try {
     g     = elem.getContext && elem.getContext('experimental-webgl');
 } catch(e){};
 
-if (g){    
+if (g){
   g.clearColor(0,1,0,1);
   g.clear(g.COLOR_BUFFER_BIT);
 }
@@ -1146,8 +1146,8 @@ if (g){
 </td></tr>
 <tr><th><h3>SVG fonts</h3><span class="links">[<a href="http://caniuse.com/svg-fonts">Table</a>] [<a href="http://tests.caniuse.com/?feat=svg-fonts&prefix=all">Single feat</a>]</span></th><td class="current pass">&nbsp;</td><td>
 <div class="test_wrap"><h3>Visual</h3><div id="svg-fonts0" class="visual"></div><div class="vis_test"><style>
-@font-face { 
-  font-family: Windsong_svg; 
+@font-face {
+  font-family: Windsong_svg;
   src: url(caniuse_files/Windsong-webfont.svg#webfontuOn4Eelr) format("svg");
 }
 #windsong_svg {
@@ -1227,7 +1227,7 @@ if (g){
 </td></tr>
 <tr><th><h3>MPEG-4/H.264 video format</h3><span class="links">[<a href="http://caniuse.com/mpeg4">Table</a>] [<a href="http://tests.caniuse.com/?feat=mpeg4&prefix=all">Single feat</a>]</span></th><td class="current fail">&nbsp;</td><td>
 <div class="test_wrap"><h3>Auto</h3><div id="mpeg40" class="auto pass"></div><script>
-var v = document.createElement('video'); 
+var v = document.createElement('video');
 setResult('mpeg40', !!(v.canPlayType && v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, '')));
 </script></div>
 
@@ -1244,7 +1244,7 @@ setResult('mpeg40', !!(v.canPlayType && v.canPlayType('video/mp4; codecs="avc1.4
 </td></tr>
 <tr><th><h3>Ogg/Theora video format</h3><span class="links">[<a href="http://caniuse.com/ogv">Table</a>] [<a href="http://tests.caniuse.com/?feat=ogv&prefix=all">Single feat</a>]</span></th><td class="current pass">&nbsp;</td><td>
 <div class="test_wrap"><h3>Auto</h3><div id="ogv0" class="auto pass"></div><script>
-var v = document.createElement('video'); 
+var v = document.createElement('video');
 setResult('ogv0', !!(v.canPlayType && v.canPlayType('video/ogg; codecs="theora"').replace(/no/, '')));
 </script></div>
 
@@ -1261,7 +1261,7 @@ setResult('ogv0', !!(v.canPlayType && v.canPlayType('video/ogg; codecs="theora"'
 </td></tr>
 <tr><th><h3>WebM/VP8 video format</h3><span class="links">[<a href="http://caniuse.com/webm">Table</a>] [<a href="http://tests.caniuse.com/?feat=webm&prefix=all">Single feat</a>]</span></th><td class="current pass">&nbsp;</td><td>
 <div class="test_wrap"><h3>Auto</h3><div id="webm0" class="auto pass"></div><script>
-var v = document.createElement('video'); 
+var v = document.createElement('video');
 setResult('webm0', !!(v.canPlayType && v.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/no/, '')));
 </script></div>
 
@@ -1377,13 +1377,13 @@ mask-image: url(caniuse_files/alpha.png);
  display: inline-block;
  overflow: hidden;
  font: 16px courier, monospace;
--webkit-text-overflow: ellipsis; 
--moz-text-overflow: ellipsis; 
--ms-text-overflow: ellipsis; 
--o-text-overflow: ellipsis; 
-text-overflow: ellipsis; 
+-webkit-text-overflow: ellipsis;
+-moz-text-overflow: ellipsis;
+-ms-text-overflow: ellipsis;
+-o-text-overflow: ellipsis;
+text-overflow: ellipsis;
 
- text-overflow: ellipsis; 
+ text-overflow: ellipsis;
 }
 </style>
 

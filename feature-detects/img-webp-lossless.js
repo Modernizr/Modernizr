@@ -10,7 +10,7 @@
 
   image.onerror = function() {
       Modernizr.addTest('webp-lossless', false);
-  };  
+  };
   image.onload = function() {
       Modernizr.addTest('webp-lossless', function() { return image.width == 1; });
   };
