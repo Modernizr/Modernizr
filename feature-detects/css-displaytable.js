@@ -7,7 +7,7 @@
 
 Modernizr.addTest("display-table", function() {
   var ret;
-  
+
   Modernizr.testStyles("#modernizr{display: table; direction: ltr}#modernizr div{display: table-cell; padding: 10px}", function(elem) {
     var child = elem.children;
 

@@ -2,7 +2,7 @@
 // by @alrra
 
 
-// `webkitSpeech` in elem 
+// `webkitSpeech` in elem
 // doesn`t work correctly in all versions of Chromium based browsers.
 //   It can return false even if they have support for speech i.imgur.com/2Y40n.png
 //  Testing with 'onwebkitspeechchange' seems to fix this problem
@@ -14,6 +14,6 @@
 // FIXME: add support for detecting the new spec'd behavior
 
 Modernizr.addTest('speechinput', function(){
-    var elem = document.createElement('input'); 
-    return 'speech' in elem || 'onwebkitspeechchange' in elem; 
+    var elem = document.createElement('input');
+    return 'speech' in elem || 'onwebkitspeechchange' in elem;
 });
