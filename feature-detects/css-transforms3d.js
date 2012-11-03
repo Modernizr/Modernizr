@@ -11,7 +11,8 @@ Modernizr.addTest('csstransforms3d', function() {
 
       // Webkit allows this media query to succeed only if the feature is enabled.
       // `@media (transform-3d),(-webkit-transform-3d){ ... }`
-      Modernizr.testStyles('@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;}}', function( node, rule ) {
+      // If loaded inside the body tag and the test element inherits any padding, margin or borders it will fail #740
+      Modernizr.testStyles('@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;margin:0;padding:0;border:0}}', function( node, rule ) {
         ret = node.offsetLeft === 9 && node.offsetHeight === 3;
       });
     }
