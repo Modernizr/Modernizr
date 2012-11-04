@@ -20,7 +20,7 @@ Modernizr.addTest("formattribute", function() {
 			input.setAttributeNode(attr);
 		}
 	}
-	
+
 	div.appendChild(form);
 	div.appendChild(input);
 

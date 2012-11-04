@@ -1,8 +1,8 @@
 /*
 	Allan Lei https://github.com/allanlei
-	
+
 	Check adapted from https://github.com/brandonaaron/jquery-cssHooks/blob/master/bgpos.js
-	
+
 	Test: http://jsfiddle.net/allanlei/R8AYS/
 */
 Modernizr.addTest('bgpositionxy', function() {

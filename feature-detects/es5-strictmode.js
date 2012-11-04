@@ -3,5 +3,5 @@
 // test by @kangax
 
 Modernizr.addTest('strictmode', function(){
-	return (function(){ "use strict"; return !this; })(); 
+	return (function(){ "use strict"; return !this; })();
 });

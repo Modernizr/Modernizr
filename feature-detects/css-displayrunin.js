@@ -6,7 +6,7 @@
 
 
 
-Modernizr.testStyles(' #modernizr { display: run-in; } ', function(elem, rule){ 
+Modernizr.testStyles(' #modernizr { display: run-in; } ', function(elem, rule){
 
   var ret = (window.getComputedStyle ?
          getComputedStyle(elem, null).getPropertyValue('display') :
