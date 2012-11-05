@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js" lang=en>
+<head>
+  <title>Modular Modernizr Demo Page</title>
+</head>
+<body>
+Console, yo.
+<script src="src/require.js"></script>
+<script>
+  require.config({
+    baseUrl : 'src/',
+    paths : {
+      'test' : '../feature-detects'
+    }
+  });
+
+  require([
+    // Stuff we always need
+    'ModernizrProto', 'Modernizr', 'testRunner', 'setClasses',
+    // Extras
+    'addTest', 'html5printshiv',
+    // Tests, yay.
+    'test/a-download',
+    'test/applicationcache',
+    'test/audio-audiodata-api',
+    'test/audio',
+    'test/battery-api',
+    'test/battery-level',
+    'test/blob-constructor',
+    'test/canvas-todataurl-type',
+    'test/canvas',
+    'test/canvastext',
+    'test/contenteditable',
+    'test/contentsecuritypolicy',
+    'test/contextmenu',
+    'test/cookies',
+    'test/cors',
+    'test/css-animations',
+    'test/css-backgroundposition-shorthand',
+    'test/css-backgroundposition-xy'
+  ], function( ModernizrProto, Modernizr, testRunner, setClasses, addTest ) {
+    // Run each test
+    testRunner();
+
+    // Remove the 'no-js' class if it exists
+    setClasses();
+
+    // Ovveride the addTest class with one that works
+    // after the tests have run and kill the async
+    // test function, since it doesn't make sense anymore
+    ModernizrProto.addTest = addTest;
+    delete ModernizrProto.addAsyncTest;
+
+    // Leak Modernizr namespace
+    window.Modernizr = Modernizr;
+
+    console.dir(window.Modernizr);
+  });
+</script>
+</body>
+</html>
