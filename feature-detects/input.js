@@ -1,4 +1,4 @@
-define(['Modernizr', 'createElement', 'attrs', 'inputattrs'], function( Modernizr, createElement, attrs, inputattrs ) {
+define(['Modernizr', 'createElement', 'attrs', 'inputattrs', 'inputElem'], function( Modernizr, createElement, attrs, inputattrs, inputElem ) {
   // Run through HTML5's new input attributes to see if the UA understands any.
   // We're using f which is the <input> element created early on
   // Mike Taylr has created a comprehensive resource for testing these attributes

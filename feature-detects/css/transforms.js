@@ -1,4 +1,3 @@
-
-Modernizr.addTest('csstransforms', function() {
-    return !!Modernizr.testAllProps('transform');
+define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+  Modernizr.addTest('csstransforms', !!testAllProps('transform'));
 });

@@ -1,4 +1,3 @@
-
-Modernizr.addTest('csstransitions', function() {
-    return Modernizr.testAllProps('transition');
+define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+  Modernizr.addTest('csstransitions', testAllProps('transition'));
 });

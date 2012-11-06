@@ -1,10 +1,7 @@
-// -moz-user-select:none test.
+define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+  // -moz-user-select:none test.
+  // by ryan seddon
+  //https://github.com/Modernizr/Modernizr/issues/250
 
-// by ryan seddon
-//https://github.com/Modernizr/Modernizr/issues/250
-
-
-Modernizr.addTest("userselect",function(){
-    return Modernizr.testAllProps("userSelect");
+  Modernizr.addTest('userselect', testAllProps('userSelect'));
 });
-
