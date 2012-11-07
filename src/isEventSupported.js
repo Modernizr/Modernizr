@@ -44,9 +44,5 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
     return isEventSupportedInner;
   })();
 
-  // Modernizr.hasEvent() detects support for a given event, with an optional element to test on
-  // Modernizr.hasEvent('gesturestart', elem)
-  ModernizrProto.hasEvent = isEventSupported;
-
   return isEventSupported;
 });

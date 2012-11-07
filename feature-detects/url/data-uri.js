@@ -1,26 +1,23 @@
-// data uri test.
-// https://github.com/Modernizr/Modernizr/issues/14
+define(['Modernizr'], function( Modernizr ) {
+  // data uri test.
+  // https://github.com/Modernizr/Modernizr/issues/14
 
-// This test is asynchronous. Watch out.
+  // This test is asynchronous. Watch out.
 
+  // in IE7 in HTTPS this can cause a Mixed Content security popup.
+  //  github.com/Modernizr/Modernizr/issues/362
+  // To avoid that you can create a new iframe and inject this.. perhaps..
 
-// in IE7 in HTTPS this can cause a Mixed Content security popup.
-//  github.com/Modernizr/Modernizr/issues/362
-// To avoid that you can create a new iframe and inject this.. perhaps..
+  Modernizr.addAsyncTest(function() {
+    var datauri = new Image();
 
+    datauri.onerror = function() {
+      Modernizr.addTest('datauri', false);
+    };
+    datauri.onload = function() {
+      Modernizr.addTest('datauri', datauri.width == 1 && datauri.height == 1);
+    };
 
-(function(){
-
-  var datauri = new Image();
-
-
-  datauri.onerror = function() {
-      Modernizr.addTest('datauri', function () { return false; });
-  };
-  datauri.onload = function() {
-      Modernizr.addTest('datauri', function () { return (datauri.width == 1 && datauri.height == 1); });
-  };
-
-  datauri.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-
-})();
+    datauri.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+  });
+});

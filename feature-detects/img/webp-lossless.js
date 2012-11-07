@@ -1,20 +1,21 @@
-// code.google.com/speed/webp/
-// tests for lossless webp support, as detailed in https://developers.google.com/speed/webp/docs/webp_lossless_bitstream_specification
-// by @amandeep - based off of the img-webp-test
+define(['Modernizr'], function( Modernizr ) {
+  // code.google.com/speed/webp/
+  // tests for lossless webp support, as detailed in https://developers.google.com/speed/webp/docs/webp_lossless_bitstream_specification
+  // by @amandeep - based off of the img-webp-test
 
-// This test is asynchronous. Watch out.
+  // This test is asynchronous. Watch out.
 
-(function(){
+  Modernizr.addAsyncTest(function(){
+    var image = new Image();
 
-  var image = new Image();
-
-  image.onerror = function() {
+    image.onerror = function() {
       Modernizr.addTest('webp-lossless', false);
-  };
-  image.onload = function() {
-      Modernizr.addTest('webp-lossless', function() { return image.width == 1; });
-  };
+    };
 
-  image.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
+    image.onload = function() {
+      Modernizr.addTest('webp-lossless', image.width == 1);
+    };
 
-}());
+    image.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
+  });
+});

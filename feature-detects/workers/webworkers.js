@@ -1,4 +1,3 @@
-
-Modernizr.addTest('webworkers', function() {
-    return !!window.Worker;
+define(['Modernizr'], function( Modernizr ) {
+  Modernizr.addTest('webworkers', !!window.Worker);
 });
