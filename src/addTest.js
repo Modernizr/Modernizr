@@ -11,7 +11,7 @@ define(['ModernizrProto', 'Modernizr', 'docElement', 'hasOwnProp'], function( Mo
     if ( typeof feature == 'object' ) {
       for ( var key in feature ) {
         if ( hasOwnProp( feature, key ) ) {
-          Modernizr.addTest( key, feature[ key ] );
+          addTest( key, feature[ key ] );
         }
       }
     } else {

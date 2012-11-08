@@ -19,12 +19,11 @@
       //Remove AMD ceremony for use without require.js or almond.js
       contents = contents.replace(/define\(.*?\{/, '');
 
-      if ( contents.match(/return.*[^return]*$/) ) {
+      contents = contents.replace(/\}\);\s*?$/,'');
+
+      if ( !contents.match(/Modernizr\.addTest\(/) && !contents.match(/Modernizr\.addAsyncTest\(/) ) {
         //remove last return statement and trailing })
         contents = contents.replace(/return.*[^return]*$/,'');
-      }
-      else {
-        contents = contents.replace(/\}\);\s*?$/,'');
       }
     }
     else if ((/require\([^\{]*?\{/).test(contents)) {

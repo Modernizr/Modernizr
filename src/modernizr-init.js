@@ -165,6 +165,4 @@ require([
 
   // Leak Modernizr namespace
   window.Modernizr = Modernizr;
-
-  console.dir(window.Modernizr);
 });
