@@ -38,7 +38,7 @@ define(['ModernizrProto', 'Modernizr', 'docElement', 'hasOwnProp'], function( Mo
     }
 
     return Modernizr; // allow chaining.
-  };
+  }
 
   return addTest;
 });

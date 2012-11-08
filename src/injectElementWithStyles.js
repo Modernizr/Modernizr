@@ -1,6 +1,6 @@
 define(['ModernizrProto', 'docElement', 'createElement'], function( ModernizrProto, docElement, createElement ) {
   // Inject element with style element and some CSS rules
-  var injectElementWithStyles = function( rule, callback, nodes, testnames ) {
+  function injectElementWithStyles( rule, callback, nodes, testnames ) {
     var mod = 'modernizr';
     var style;
     var ret;
@@ -54,11 +54,7 @@ define(['ModernizrProto', 'docElement', 'createElement'], function( ModernizrPro
 
     return !!ret;
 
-  };
-
-  // Modernizr.testStyles() allows you to add custom styles to the document and test an element afterwards
-  // Modernizr.testStyles('#modernizr { position:absolute }', function(elem, rule){ ... })
-  ModernizrProto.testStyles = injectElementWithStyles;
+  }
 
   return injectElementWithStyles;
 });

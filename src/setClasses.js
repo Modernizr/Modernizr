@@ -8,7 +8,7 @@ define(['Modernizr', 'docElement', 'classes'], function( Modernizr, docElement, 
     theElem.className = theElem.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
                            // Add the new classes to the <html> element.
                            (Modernizr._config.enableClasses ? ' js ' + classes.join(' ') : '');
-  };
+  }
 
   return setClasses;
 });
