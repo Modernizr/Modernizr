@@ -5,3 +5,4 @@ rm -rf dist
 mkdir dist
 cp build/src/modernizr-build.js dist/modernizr-build.js
 rm -rf build
+node stripdefine.js
