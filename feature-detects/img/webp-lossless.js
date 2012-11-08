@@ -1,4 +1,4 @@
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   // code.google.com/speed/webp/
   // tests for lossless webp support, as detailed in https://developers.google.com/speed/webp/docs/webp_lossless_bitstream_specification
   // by @amandeep - based off of the img-webp-test
@@ -9,11 +9,11 @@ define(['Modernizr'], function( Modernizr ) {
     var image = new Image();
 
     image.onerror = function() {
-      Modernizr.addTest('webp-lossless', false);
+      addTest('webp-lossless', false);
     };
 
     image.onload = function() {
-      Modernizr.addTest('webp-lossless', image.width == 1);
+      addTest('webp-lossless', image.width == 1);
     };
 
     image.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';

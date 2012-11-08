@@ -1,4 +1,4 @@
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   // EXIF Orientation test
 
   // iOS looks at the EXIF Orientation flag in jpgs and rotates the image
@@ -20,11 +20,11 @@ define(['Modernizr'], function( Modernizr ) {
     var img = new Image();
 
     img.onerror = function() {
-      Modernizr.addTest('exif-orientation', false);
+      addTest('exif-orientation', false);
     };
 
     img.onload = function() {
-      Modernizr.addTest('exif-orientation', img.width !== 2);
+      addTest('exif-orientation', img.width !== 2);
     };
 
     // There may be a way to shrink this more, it's a 1x2 white jpg with the orientation flag set to 6

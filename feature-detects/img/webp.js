@@ -1,4 +1,4 @@
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   // code.google.com/speed/webp/
   // by rich bradshaw, ryan seddon, and paul irish
 
@@ -8,11 +8,11 @@ define(['Modernizr'], function( Modernizr ) {
     var image = new Image();
 
     image.onerror = function() {
-      Modernizr.addTest('webp', false);
+      addTest('webp', false);
     };
 
     image.onload = function() {
-      Modernizr.addTest('webp', image.width == 1);
+      addTest('webp', image.width == 1);
     };
 
     image.src = 'data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAAAUAgCdASoBAAEAL/3+/3+CAB/AAAFzrNsAAP5QAAAAAA==';

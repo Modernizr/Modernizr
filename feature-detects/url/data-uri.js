@@ -1,4 +1,4 @@
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   // data uri test.
   // https://github.com/Modernizr/Modernizr/issues/14
 
@@ -12,10 +12,10 @@ define(['Modernizr'], function( Modernizr ) {
     var datauri = new Image();
 
     datauri.onerror = function() {
-      Modernizr.addTest('datauri', false);
+      addTest('datauri', false);
     };
     datauri.onload = function() {
-      Modernizr.addTest('datauri', datauri.width == 1 && datauri.height == 1);
+      addTest('datauri', datauri.width == 1 && datauri.height == 1);
     };
 
     datauri.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";

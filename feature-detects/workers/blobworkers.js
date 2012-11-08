@@ -1,4 +1,4 @@
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   // by jussi-kalliokoski
   // This test is asynchronous. Watch out.
   // The test will potentially add garbage to console.
@@ -22,26 +22,23 @@ define(['Modernizr'], function( Modernizr ) {
       worker.onmessage = function(e) {
         worker.terminate();
         URL.revokeObjectURL(url);
-        Modernizr.addTest('blobworkers', data === e.data);
+        addTest('blobworkers', data === e.data);
         worker = null;
       };
 
       // Just in case...
       worker.onerror = function() {
-        Modernizr.addTest('blobworkers', false);
+        addTest('blobworkers', false);
         worker = null;
       };
 
       setTimeout(function() {
-        Modernizr.addTest('blobworkers', false);
+        addTest('blobworkers', false);
       }, 200);
 
       worker.postMessage(data);
     } catch (e) {
-      // Must be async
-      setTimeout(function() {
-        Modernizr.addTest('blobworkers', false);
-      }, 0);
+      addTest('blobworkers', false);
     }
   });
 });

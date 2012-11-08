@@ -1,4 +1,4 @@
-define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function( Modernizr, createElement, addTest ) {
   // Animated PNG
   // http://en.wikipedia.org/wiki/APNG
 
@@ -11,9 +11,8 @@ define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, creat
     var canvas = createElement('canvas');
     var ctx = canvas.getContext('2d');
 
-
     image.onload = function () {
-      Modernizr.addTest('apng', function () {
+      addTest('apng', function () {
         if (typeof canvas.getContext == 'undefined') {
           return false;
         } else {
