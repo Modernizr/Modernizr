@@ -8,7 +8,6 @@ define(['ModernizrProto', 'Modernizr', 'docElement', 'hasOwnProp'], function( Mo
    * @param test - Function returning true if feature is supported, false if not
    */
   function addTest( feature, test ) {
-    console.log('post run test', feature);
     if ( typeof feature == 'object' ) {
       for ( var key in feature ) {
         if ( hasOwnProp( feature, key ) ) {
