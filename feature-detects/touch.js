@@ -1,4 +1,3 @@
-
 //
 // The Modernizr.touch test only indicates if the browser supports
 //    touch events, which does not necessarily reflect a touchscreen
@@ -18,7 +17,11 @@ Modernizr.addTest('touch', function() {
 
     if(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
         bool = true;
-    } else {
+    } 
+    } else if (window.navigator.msMaxTouchPoints) {
+        bool = window.navigator.msMaxTouchPoints > 0;
+    }
+    else {
         var query = ['@media (',Modernizr._prefixes.join('touch-enabled),('),'heartz',')','{#modernizr{top:9px;position:absolute}}'].join('');
         Modernizr.testStyles(query, function( node ) {
             bool = node.offsetTop === 9;
