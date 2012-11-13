@@ -11,7 +11,7 @@ Modernizr.addTest('history', function() {
     var ua = navigator.userAgent;
     var properCheck = !!(window.history && history.pushState);
 
-    if (ua.indexOf("Android") === -1) {
+    if (ua.indexOf("Android 2") === -1) {
         // No Android, simply return the 'proper' check
         return properCheck;
     } else {
