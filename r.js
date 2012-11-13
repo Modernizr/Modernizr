@@ -1,5 +1,5 @@
 /**
- * @license r.js 2.1.1 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
+ * @license r.js 2.1.1+ Sun, 11 Nov 2012 02:07:28 GMT Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/jrburke/requirejs for details
  */
@@ -13,14 +13,15 @@
 
 /*jslint evil: true, nomen: true, sloppy: true */
 /*global readFile: true, process: false, Packages: false, print: false,
-console: false, java: false, module: false, requirejsVars */
+console: false, java: false, module: false, requirejsVars, navigator,
+document */
 
 var requirejs, require, define;
 (function (console, args, readFileFunc) {
 
     var fileName, env, fs, vm, path, exec, rhinoContext, dir, nodeRequire,
         nodeDefine, exists, reqMain, loadedOptimizedLib, existsForNode,
-        version = '2.1.1',
+        version = '2.1.1+ Sun, 11 Nov 2012 02:07:28 GMT',
         jsSuffixRegExp = /\.js$/,
         commandOption = '',
         useLibLoaded = {},
@@ -32,7 +33,24 @@ var requirejs, require, define;
         console.log('See https://github.com/jrburke/r.js for usage.');
     }
 
-    if (typeof Packages !== 'undefined') {
+    if ((typeof navigator !== 'undefined' && typeof document !== 'undefined') ||
+            (typeof importScripts !== 'undefined' && typeof self !== 'undefined')) {
+        env = 'browser';
+
+        readFile = function (path) {
+            return fs.readFileSync(path, 'utf8');
+        };
+
+        exec = function (string, name) {
+            return eval(string);
+        };
+
+        exists = function (fileName) {
+            console.log('x.js exists not applicable in browser env');
+            return false;
+        };
+
+    } else if (typeof Packages !== 'undefined') {
         env = 'rhino';
 
         fileName = args[0];
@@ -105,7 +123,7 @@ var requirejs, require, define;
     }
 
     /** vim: et:ts=4:sw=4:sts=4
- * @license RequireJS 2.1.1 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
+ * @license RequireJS 2.1.1+ Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/jrburke/requirejs for details
  */
@@ -118,7 +136,7 @@ var requirejs, require, define;
 (function (global) {
     var req, s, head, baseElement, dataMain, src,
         interactiveScript, currentlyAddingScript, mainScript, subPath,
-        version = '2.1.1',
+        version = '2.1.1+',
         commentRegExp = /(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)/mg,
         cjsRequireRegExp = /[^.]\s*require\s*\(\s*["']([^'"\s]+)["']\s*\)/g,
         jsSuffixRegExp = /\.js$/,
@@ -187,6 +205,10 @@ var requirejs, require, define;
         return hasOwn.call(obj, prop);
     }
 
+    function getOwn(obj, prop) {
+        return hasProp(obj, prop) && obj[prop];
+    }
+
     /**
      * Cycles over properties in an object and calls a function for each
      * property value. If the function returns a truthy value, then the
@@ -195,7 +217,7 @@ var requirejs, require, define;
     function eachProp(obj, func) {
         var prop;
         for (prop in obj) {
-            if (obj.hasOwnProperty(prop)) {
+            if (hasProp(obj, prop)) {
                 if (func(obj[prop], prop)) {
                     break;
                 }
@@ -367,7 +389,7 @@ var requirejs, require, define;
                 //otherwise, assume it is a top-level require that will
                 //be relative to baseUrl in the end.
                 if (baseName) {
-                    if (config.pkgs[baseName]) {
+                    if (getOwn(config.pkgs, baseName)) {
                         //If the baseName is a package name, then just treat it as one
                         //name to concat the name with.
                         normalizedBaseParts = baseParts = [baseName];
@@ -385,7 +407,7 @@ var requirejs, require, define;
 
                     //Some use of packages may use a . path to reference the
                     //'main' module name, so normalize for that.
-                    pkgConfig = config.pkgs[(pkgName = name[0])];
+                    pkgConfig = getOwn(config.pkgs, (pkgName = name[0]));
                     name = name.join('/');
                     if (pkgConfig && name === pkgName + '/' + pkgConfig.main) {
                         name = pkgName;
@@ -408,12 +430,12 @@ var requirejs, require, define;
                         //Find the longest baseName segment match in the config.
                         //So, do joins on the biggest to smallest lengths of baseParts.
                         for (j = baseParts.length; j > 0; j -= 1) {
-                            mapValue = map[baseParts.slice(0, j).join('/')];
+                            mapValue = getOwn(map, baseParts.slice(0, j).join('/'));
 
                             //baseName segment has config, find if it has one for
                             //this name.
                             if (mapValue) {
-                                mapValue = mapValue[nameSegment];
+                                mapValue = getOwn(mapValue, nameSegment);
                                 if (mapValue) {
                                     //Match, update name to the new value.
                                     foundMap = mapValue;
@@ -431,8 +453,8 @@ var requirejs, require, define;
                     //Check for a star map match, but just hold on to it,
                     //if there is a shorter segment match later in a matching
                     //config, then favor over this star map.
-                    if (!foundStarMap && starMap && starMap[nameSegment]) {
-                        foundStarMap = starMap[nameSegment];
+                    if (!foundStarMap && starMap && getOwn(starMap, nameSegment)) {
+                        foundStarMap = getOwn(starMap, nameSegment);
                         starI = i;
                     }
                 }
@@ -464,7 +486,7 @@ var requirejs, require, define;
         }
 
         function hasPathFallback(id) {
-            var pathConfig = config.paths[id];
+            var pathConfig = getOwn(config.paths, id);
             if (pathConfig && isArray(pathConfig) && pathConfig.length > 1) {
                 removeScript(id);
                 //Pop off the first array value, since it failed, and
@@ -525,7 +547,7 @@ var requirejs, require, define;
 
             if (prefix) {
                 prefix = normalize(prefix, parentName, applyMap);
-                pluginModule = defined[prefix];
+                pluginModule = getOwn(defined, prefix);
             }
 
             //Account for relative paths if there is a base name.
@@ -578,7 +600,7 @@ var requirejs, require, define;
 
         function getModule(depMap) {
             var id = depMap.id,
-                mod = registry[id];
+                mod = getOwn(registry, id);
 
             if (!mod) {
                 mod = registry[id] = new context.Module(depMap);
@@ -589,7 +611,7 @@ var requirejs, require, define;
 
         function on(depMap, name, fn) {
             var id = depMap.id,
-                mod = registry[id];
+                mod = getOwn(registry, id);
 
             if (hasProp(defined, id) &&
                     (!mod || mod.defineEmitComplete)) {
@@ -609,7 +631,7 @@ var requirejs, require, define;
                 errback(err);
             } else {
                 each(ids, function (id) {
-                    var mod = registry[id];
+                    var mod = getOwn(registry, id);
                     if (mod) {
                         //Set error on module, so it skips timeout checks.
                         mod.error = err;
@@ -668,7 +690,7 @@ var requirejs, require, define;
                         id: mod.map.id,
                         uri: mod.map.url,
                         config: function () {
-                            return (config.config && config.config[mod.map.id]) || {};
+                            return (config.config && getOwn(config.config, mod.map.id)) || {};
                         },
                         exports: defined[mod.map.id]
                     });
@@ -690,14 +712,14 @@ var requirejs, require, define;
                 traced[id] = true;
                 each(mod.depMaps, function (depMap, i) {
                     var depId = depMap.id,
-                        dep = registry[depId];
+                        dep = getOwn(registry, depId);
 
                     //Only force things that have not completed
                     //being defined, so still in the registry,
                     //and only if it has not been matched up
                     //in the module already.
                     if (dep && !mod.depMatched[i] && !processed[depId]) {
-                        if (traced[depId]) {
+                        if (getOwn(traced, depId)) {
                             mod.defineDep(i, defined[depId]);
                             mod.check(); //pass false?
                         } else {
@@ -797,9 +819,9 @@ var requirejs, require, define;
         }
 
         Module = function (map) {
-            this.events = undefEvents[map.id] || {};
+            this.events = getOwn(undefEvents, map.id) || {};
             this.map = map;
-            this.shim = config.shim[map.id];
+            this.shim = getOwn(config.shim, map.id);
             this.depExports = [];
             this.depMaps = [];
             this.depMatched = [];
@@ -1046,7 +1068,7 @@ var requirejs, require, define;
                                 });
                             }));
 
-                        normalizedMod = registry[normalizedMap.id];
+                        normalizedMod = getOwn(registry, normalizedMap.id);
                         if (normalizedMod) {
                             //Mark this as a dependency for this plugin, so it
                             //can be traced for cycles.
@@ -1166,7 +1188,7 @@ var requirejs, require, define;
                                                !this.skipMap);
                         this.depMaps[i] = depMap;
 
-                        handler = handlers[depMap.id];
+                        handler = getOwn(handlers, depMap.id);
 
                         if (handler) {
                             this.depExports[i] = handler(this);
@@ -1191,7 +1213,7 @@ var requirejs, require, define;
                     //Skip special modules like 'require', 'exports', 'module'
                     //Also, don't call enable if it is already enabled,
                     //important in circular dependency cases.
-                    if (!handlers[id] && mod && !mod.enabled) {
+                    if (!hasProp(handlers, id) && mod && !mod.enabled) {
                         context.enable(depMap, this);
                     }
                 }));
@@ -1199,7 +1221,7 @@ var requirejs, require, define;
                 //Enable each plugin that is used in
                 //a dependency
                 eachProp(this.pluginMaps, bind(this, function (pluginMap) {
-                    var mod = registry[pluginMap.id];
+                    var mod = getOwn(registry, pluginMap.id);
                     if (mod && !mod.enabled) {
                         context.enable(pluginMap, this);
                     }
@@ -1431,7 +1453,7 @@ var requirejs, require, define;
                         //If require|exports|module are requested, get the
                         //value for them from the special handlers. Caveat:
                         //this only works while module is being defined.
-                        if (relMap && handlers[deps]) {
+                        if (relMap && hasProp(handlers, deps)) {
                             return handlers[deps](registry[relMap.id]);
                         }
 
@@ -1519,7 +1541,7 @@ var requirejs, require, define;
                         takeGlobalQueue();
 
                         var map = makeModuleMap(id, relMap, true),
-                            mod = registry[id];
+                            mod = getOwn(registry, id);
 
                         delete defined[id];
                         delete urlFetched[map.url];
@@ -1547,7 +1569,7 @@ var requirejs, require, define;
              * used by the optimizer.
              */
             enable: function (depMap, parent) {
-                var mod = registry[depMap.id];
+                var mod = getOwn(registry, depMap.id);
                 if (mod) {
                     getModule(depMap).enable();
                 }
@@ -1561,7 +1583,7 @@ var requirejs, require, define;
              */
             completeLoad: function (moduleName) {
                 var found, args, mod,
-                    shim = config.shim[moduleName] || {},
+                    shim = getOwn(config.shim, moduleName) || {},
                     shExports = shim.exports;
 
                 takeGlobalQueue();
@@ -1587,9 +1609,9 @@ var requirejs, require, define;
 
                 //Do this after the cycle of callGetModule in case the result
                 //of those calls/init calls changes the registry.
-                mod = registry[moduleName];
+                mod = getOwn(registry, moduleName);
 
-                if (!found && !defined[moduleName] && mod && !mod.inited) {
+                if (!found && !hasProp(defined, moduleName) && mod && !mod.inited) {
                     if (config.enforceDefine && (!shExports || !getGlobal(shExports))) {
                         if (hasPathFallback(moduleName)) {
                             return;
@@ -1640,8 +1662,8 @@ var requirejs, require, define;
                     //and work up from it.
                     for (i = syms.length; i > 0; i -= 1) {
                         parentModule = syms.slice(0, i).join('/');
-                        pkg = pkgs[parentModule];
-                        parentPath = paths[parentModule];
+                        pkg = getOwn(pkgs, parentModule);
+                        parentPath = getOwn(paths, parentModule);
                         if (parentPath) {
                             //If an array, it means there are a few choices,
                             //Choose the one that is desired
@@ -1766,7 +1788,7 @@ var requirejs, require, define;
             contextName = config.context;
         }
 
-        context = contexts[contextName];
+        context = getOwn(contexts, contextName);
         if (!context) {
             context = contexts[contextName] = req.s.newContext(contextName);
         }
@@ -2087,7 +2109,35 @@ var requirejs, require, define;
 }(this));
 
 
-    if (env === 'rhino') {
+    if (env === 'browser') {
+        /**
+ * @license RequireJS rhino Copyright (c) 2012, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/requirejs for details
+ */
+
+//sloppy since eval enclosed with use strict causes problems if the source
+//text is not strict-compliant.
+/*jslint sloppy: true, evil: true */
+/*global require, XMLHttpRequest */
+
+(function () {
+    require.load = function (context, moduleName, url) {
+        var xhr = new XMLHttpRequest();
+
+        //Oh yeah, that is right SYNC IO. Behold its glory
+        //and horrible blocking behavior.
+        xhr.open('GET', url, false);
+        xhr.send();
+
+        eval(xhr.responseText);
+
+        //Support anonymous modules.
+        context.completeLoad(moduleName);
+    };
+
+}());
+    } else if (env === 'rhino') {
         /**
  * @license RequireJS rhino Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -2143,7 +2193,12 @@ var requirejs, require, define;
         path = nodeReq('path'),
         vm = nodeReq('vm'),
         //In Node 0.7+ existsSync is on fs.
-        exists = fs.existsSync || path.existsSync;
+        exists = fs.existsSync || path.existsSync,
+        hasOwn = Object.prototype.hasOwnProperty;
+
+    function hasProp(obj, prop) {
+        return hasOwn.call(obj, prop);
+    }
 
     function syncTick(fn) {
         fn();
@@ -2161,7 +2216,7 @@ var requirejs, require, define;
         //Normalize module name, if it contains . or ..
         moduleName = moduleMap.id;
 
-        if (context.defined.hasOwnProperty(moduleName)) {
+        if (hasProp(context.defined, moduleName)) {
             ret = context.defined[moduleName];
         } else {
             if (ret === undefined) {
@@ -2234,7 +2289,7 @@ var requirejs, require, define;
             def(moduleName, function () {
                 //Get the original name, since relative requires may be
                 //resolved differently in node (issue #202)
-                var originalName = context.registry[moduleName] &&
+                var originalName = hasProp(context.registry, moduleName) &&
                             context.registry[moduleName].map.originalName;
 
                 try {
@@ -2297,7 +2352,8 @@ var requirejs, require, define;
         env = 'rhino';
     } else if (typeof process !== 'undefined') {
         env = 'node';
-    } else if (typeof window !== "undefined" && navigator && document) {
+    } else if ((typeof navigator !== 'undefined' && typeof document !== 'undefined') ||
+            (typeof importScripts !== 'undefined' && typeof self !== 'undefined')) {
         env = 'browser';
     }
 
@@ -2322,6 +2378,23 @@ var requirejs, require, define;
         }
     });
 }());
+if(env === 'browser') {
+/**
+ * @license RequireJS Copyright (c) 2012, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/requirejs for details
+ */
+
+/*jslint strict: false */
+/*global define: false, load: false */
+
+//Just a stub for use with uglify's consolidator.js
+define('browser/assert', function () {
+    return {};
+});
+
+}
+
 if(env === 'node') {
 /**
  * @license RequireJS Copyright (c) 2012, The Dojo Foundation All Rights Reserved.
@@ -2352,6 +2425,23 @@ if(env === 'rhino') {
 //Just a stub for use with uglify's consolidator.js
 define('rhino/assert', function () {
     return {};
+});
+
+}
+
+if(env === 'browser') {
+/**
+ * @license Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/requirejs for details
+ */
+
+/*jslint strict: false */
+/*global define: false, process: false */
+
+define('browser/args', function () {
+    //Always expect config via an API call
+    return [];
 });
 
 }
@@ -2405,6 +2495,26 @@ define('rhino/args', function () {
 
 }
 
+if(env === 'browser') {
+/**
+ * @license RequireJS Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/requirejs for details
+ */
+
+/*jslint strict: false */
+/*global define: false, console: false */
+
+define('browser/load', ['./file'], function (file) {
+    function load(fileName) {
+        eval(file.readFile(fileName));
+    }
+
+    return load;
+});
+
+}
+
 if(env === 'node') {
 /**
  * @license RequireJS Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
@@ -2438,6 +2548,146 @@ if(env === 'rhino') {
 
 define('rhino/load', function () {
     return load;
+});
+
+}
+
+if(env === 'browser') {
+/**
+ * @license Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/requirejs for details
+ */
+
+/*jslint sloppy: true */
+/*global define, console, XMLHttpRequest, requirejs */
+
+define('browser/file', function () {
+
+    var file;
+
+    function frontSlash(path) {
+        return path.replace(/\\/g, '/');
+    }
+
+    function exists(path) {
+        var status, xhr = new XMLHttpRequest();
+
+        //Oh yeah, that is right SYNC IO. Behold its glory
+        //and horrible blocking behavior.
+        xhr.open('HEAD', path, false);
+        xhr.send();
+        status = xhr.status;
+
+        return status === 200 || status === 304;
+    }
+
+    function mkDir(dir) {
+        console.log('mkDir is no-op in browser');
+    }
+
+    function mkFullDir(dir) {
+        console.log('mkFullDir is no-op in browser');
+    }
+
+    file = {
+        backSlashRegExp: /\\/g,
+        exclusionRegExp: /^\./,
+        getLineSeparator: function () {
+            return '/';
+        },
+
+        exists: function (fileName) {
+            return exists(fileName);
+        },
+
+        parent: function (fileName) {
+            var parts = fileName.split('/');
+            parts.pop();
+            return parts.join('/');
+        },
+
+        /**
+         * Gets the absolute file path as a string, normalized
+         * to using front slashes for path separators.
+         * @param {String} fileName
+         */
+        absPath: function (fileName) {
+            return fileName;
+        },
+
+        normalize: function (fileName) {
+            return fileName;
+        },
+
+        isFile: function (path) {
+            return true;
+        },
+
+        isDirectory: function (path) {
+            return false;
+        },
+
+        getFilteredFileList: function (startDir, regExpFilters, makeUnixPaths) {
+            console.log('file.getFilteredFileList is no-op in browser');
+        },
+
+        copyDir: function (srcDir, destDir, regExpFilter, onlyCopyNew) {
+            console.log('file.copyDir is no-op in browser');
+
+        },
+
+        copyFile: function (srcFileName, destFileName, onlyCopyNew) {
+            console.log('file.copyFile is no-op in browser');
+        },
+
+        /**
+         * Renames a file. May fail if "to" already exists or is on another drive.
+         */
+        renameFile: function (from, to) {
+            console.log('file.renameFile is no-op in browser');
+        },
+
+        /**
+         * Reads a *text* file.
+         */
+        readFile: function (path, encoding) {
+            var text,
+                xhr = new XMLHttpRequest();
+
+            //Oh yeah, that is right SYNC IO. Behold its glory
+            //and horrible blocking behavior.
+            xhr.open('GET', path, false);
+            xhr.send();
+
+            text = xhr.responseText;
+
+            return text;
+        },
+
+        saveUtf8File: function (fileName, fileContents) {
+            //summary: saves a *text* file using UTF-8 encoding.
+            file.saveFile(fileName, fileContents, "utf8");
+        },
+
+        saveFile: function (fileName, fileContents, encoding) {
+            requirejs.browser.saveFile(fileName, fileContents, encoding);
+        },
+
+        deleteFile: function (fileName) {
+            console.log('file.deleteFile is no-op in browser');
+        },
+
+        /**
+         * Deletes any empty directories under the given directory.
+         */
+        deleteEmptyDirs: function (startDir) {
+            console.log('file.deleteEmptyDirs is no-op in browser');
+        }
+    };
+
+    return file;
+
 });
 
 }
@@ -3026,6 +3276,15 @@ define('rhino/file', function () {
 
 }
 
+if(env === 'browser') {
+/*global process */
+define('browser/quit', function () {
+    'use strict';
+    return function (code) {
+    };
+});
+}
+
 if(env === 'node') {
 /*global process */
 define('node/quit', function () {
@@ -3058,7 +3317,14 @@ define('rhino/quit', function () {
 define('lang', function () {
     'use strict';
 
-    var lang = {
+    var lang,
+        hasOwn = Object.prototype.hasOwnProperty;
+
+    function hasProp(obj, prop) {
+        return hasOwn.call(obj, prop);
+    }
+
+    lang = {
         backSlashRegExp: /\\/g,
         ostring: Object.prototype.toString,
 
@@ -3072,6 +3338,19 @@ define('lang', function () {
 
         isRegExp: function(it) {
             return it && it instanceof RegExp;
+        },
+
+        hasProp: hasProp,
+
+        //returns true if the object does not have an own property prop,
+        //or if it does, it is a falsy value.
+        falseProp: function (obj, prop) {
+            return !hasProp(obj, prop) || !obj[prop];
+        },
+
+        //gets own property value for given prop on object
+        getOwn: function (obj, prop) {
+            return hasProp(obj, prop) && obj[prop];
         },
 
         _mixin: function(dest, source, override){
@@ -3143,7 +3422,7 @@ define('lang', function () {
         eachProp: function eachProp(obj, func) {
             var prop;
             for (prop in obj) {
-                if (obj.hasOwnProperty(prop)) {
+                if (hasProp(obj, prop)) {
                     if (func(obj[prop], prop)) {
                         break;
                     }
@@ -3172,6 +3451,26 @@ define('lang', function () {
     };
     return lang;
 });
+
+if(env === 'browser') {
+/**
+ * @license RequireJS Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/requirejs for details
+ */
+
+/*jslint strict: false */
+/*global define: false, console: false */
+
+define('browser/print', function () {
+    function print(msg) {
+        console.log(msg);
+    }
+
+    return print;
+});
+
+}
 
 if(env === 'node') {
 /**
@@ -12965,6 +13264,20 @@ define('pragma', ['parse', 'logger'], function (parse, logger) {
 
     return pragma;
 });
+if(env === 'browser') {
+/**
+ * @license Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/requirejs for details
+ */
+
+/*jslint strict: false */
+/*global define: false */
+
+define('browser/optimize', {});
+
+}
+
 if(env === 'node') {
 /**
  * @license Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
@@ -13472,7 +13785,10 @@ function (lang,   logger,   envOptimize,        file,           parse,
 define('requirePatch', [ 'env!env/file', 'pragma', 'parse', 'lang', 'logger', 'commonJs'],
 function (file,           pragma,   parse,   lang,   logger,   commonJs) {
 
-    var allowRun = true;
+    var allowRun = true,
+        hasProp = lang.hasProp,
+        falseProp = lang.falseProp,
+        getOwn = lang.getOwn;
 
     //This method should be called when the patches to require should take hold.
     return function () {
@@ -13583,14 +13899,16 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
                         parentId = parent && parent.map.id,
                         needFullExec = context.needFullExec,
                         fullExec = context.fullExec,
-                        mod = context.registry[id];
+                        mod = getOwn(context.registry, id);
 
                     if (mod && !mod.defined) {
-                        if (parentId && needFullExec[parentId]) {
+                        if (parentId && getOwn(needFullExec, parentId)) {
                             needFullExec[id] = true;
                         }
-                    } else if ((needFullExec[id] && !fullExec[id]) ||
-                               (parentId && needFullExec[parentId] && !fullExec[id])) {
+
+                    } else if ((getOwn(needFullExec, id) && falseProp(fullExec, id)) ||
+                               (parentId && getOwn(needFullExec, parentId) &&
+                                falseProp(fullExec, id))) {
                         context.require.undef(id);
                     }
 
@@ -13624,14 +13942,15 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
                         layer.buildPathMap[moduleName] = url;
                         layer.buildFileToModule[url] = moduleName;
 
-                        if (context.plugins.hasOwnProperty(moduleName)) {
+                        if (hasProp(context.plugins, moduleName)) {
                             //plugins need to have their source evaled as-is.
                             context.needFullExec[moduleName] = true;
                         }
 
                         try {
-                            if (require._cachedFileContents.hasOwnProperty(url) &&
-                                (!context.needFullExec[moduleName] || context.fullExec[moduleName])) {
+                            if (hasProp(require._cachedFileContents, url) &&
+                                    (falseProp(context.needFullExec, moduleName) ||
+                                    getOwn(context.fullExec, moduleName))) {
                                 contents = require._cachedFileContents[url];
 
                                 //If it defines require, mark it so it can be hoisted.
@@ -13670,7 +13989,7 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
                                                     'for file: ' + url + '\n' + e1);
                                 }
 
-                                if (context.plugins.hasOwnProperty(moduleName)) {
+                                if (hasProp(context.plugins, moduleName)) {
                                     //This is a loader plugin, check to see if it has a build extension,
                                     //otherwise the plugin will act as the plugin builder too.
                                     pluginBuilderMatch = pluginBuilderRegExp.exec(contents);
@@ -13688,7 +14007,7 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
                                 //Do this even for plugins in case they have their own
                                 //dependencies that may be separate to how the pluginBuilder works.
                                 try {
-                                    if (!context.needFullExec[moduleName]) {
+                                    if (falseProp(context.needFullExec, moduleName)) {
                                         contents = parse(moduleName, url, contents, {
                                             insertNeedsDefine: true,
                                             has: context.config.has,
@@ -13711,8 +14030,8 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
                                 //If have a string shim config, and this is
                                 //a fully executed module, try to see if
                                 //it created a variable in this eval scope
-                                if (context.needFullExec[moduleName]) {
-                                    shim = context.config.shim[moduleName];
+                                if (getOwn(context.needFullExec, moduleName)) {
+                                    shim = getOwn(context.config.shim, moduleName);
                                     if (shim && shim.exports) {
                                         shimExports = eval(shim.exports);
                                         if (typeof shimExports !== 'undefined') {
@@ -13749,15 +14068,15 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
                 //Marks module has having a name, and optionally executes the
                 //callback, but only if it meets certain criteria.
                 context.execCb = function (name, cb, args, exports) {
-                    var buildShimExports = layer.context.buildShimExports[name];
+                    var buildShimExports = getOwn(layer.context.buildShimExports, name);
 
-                    if (!layer.needsDefine[name] && !buildShimExports) {
+                    if (falseProp(layer.needsDefine, name) && !buildShimExports) {
                         layer.modulesWithNames[name] = true;
                     }
 
                     if (buildShimExports) {
                         return buildShimExports;
-                    } else if (cb.__requireJsBuild || layer.context.needFullExec[name]) {
+                    } else if (cb.__requireJsBuild || getOwn(layer.context.needFullExec, name)) {
                         return cb.apply(exports, args);
                     }
                     return undefined;
@@ -13784,14 +14103,14 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
                     var map = this.map,
                         pluginMap = context.makeModuleMap(map.prefix),
                         pluginId = pluginMap.id,
-                        pluginMod = context.registry[pluginId];
+                        pluginMod = getOwn(context.registry, pluginId);
 
                     context.plugins[pluginId] = true;
                     context.needFullExec[pluginId] = true;
 
                     //If the module is not waiting to finish being defined,
                     //undef it and start over, to get full execution.
-                    if (!context.fullExec[pluginId] && (!pluginMod || pluginMod.defined)) {
+                    if (falseProp(context.fullExec, pluginId) && (!pluginMod || pluginMod.defined)) {
                         context.require.undef(pluginMap.id);
                     }
 
@@ -13844,7 +14163,7 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
         //This function signature does not have to be exact, just match what we
         //are looking for.
         define = function (name) {
-            if (typeof name === "string" && !layer.needsDefine[name]) {
+            if (typeof name === "string" && falseProp(layer.needsDefine, name)) {
                 layer.modulesWithNames[name] = true;
             }
             return oldDef.apply(require, arguments);
@@ -13869,13 +14188,13 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
             //that. Only valid for the context used in a build, not for
             //other contexts being run, like for useLib, plain requirejs
             //use in node/rhino.
-            if (context.needFullExec && context.needFullExec[id]) {
+            if (context.needFullExec && getOwn(context.needFullExec, id)) {
                 context.fullExec[id] = true;
             }
 
             //A plugin.
             if (map.prefix) {
-                if (!layer.pathAdded[id]) {
+                if (falseProp(layer.pathAdded, id)) {
                     layer.buildFilePaths.push(id);
                     //For plugins the real path is not knowable, use the name
                     //for both module to file and file to module mappings.
@@ -13888,7 +14207,7 @@ function (file,           pragma,   parse,   lang,   logger,   commonJs) {
                 //If the url has not been added to the layer yet, and it
                 //is from an actual file that was loaded, add it now.
                 url = normalizeUrlWithBase(context, id, map.url);
-                if (!layer.pathAdded[url] && layer.buildPathMap[id]) {
+                if (!layer.pathAdded[url] && getOwn(layer.buildPathMap, id)) {
                     //Remember the list of dependencies for this layer.
                     layer.buildFilePaths.push(url);
                     layer.pathAdded[url] = true;
@@ -14027,6 +14346,9 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
     'use strict';
 
     var build, buildBaseConfig,
+        hasProp = lang.hasProp,
+        getOwn = lang.getOwn,
+        falseProp = lang.falseProp,
         endsWithSemiColonRegExp = /;\s*$/;
 
     buildBaseConfig = {
@@ -14221,14 +14543,14 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
                 //All the paths should be inside the appDir, so just adjust
                 //the paths to use the dirBaseUrl
                 for (prop in paths) {
-                    if (paths.hasOwnProperty(prop)) {
+                    if (hasProp(paths, prop)) {
                         buildPaths[prop] = paths[prop].replace(config.appDir, config.dir);
                     }
                 }
             } else {
                 //If no appDir, then make sure to copy the other paths to this directory.
                 for (prop in paths) {
-                    if (paths.hasOwnProperty(prop)) {
+                    if (hasProp(paths, prop)) {
                         //Set up build path for each path prefix, but only do so
                         //if the path falls out of the current baseUrl
                         if (paths[prop].indexOf(config.baseUrl) === 0) {
@@ -14364,7 +14686,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
                     module.exclude.forEach(function (excludeModule, i) {
                         var excludeLayer = module.excludeLayers[i].layer, map = excludeLayer.buildPathMap, prop;
                         for (prop in map) {
-                            if (map.hasOwnProperty(prop)) {
+                            if (hasProp(map, prop)) {
                                 build.removeModulePath(prop, map[prop], module.layer);
                             }
                         }
@@ -14375,7 +14697,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
                     //shallow exclusions are just that module itself, and not
                     //its nested dependencies.
                     module.excludeShallow.forEach(function (excludeShallowModule) {
-                        var path = module.layer.buildPathMap[excludeShallowModule];
+                        var path = getOwn(module.layer.buildPathMap, excludeShallowModule);
                         if (path) {
                             build.removeModulePath(excludeShallowModule, path, module.layer);
                         }
@@ -14471,7 +14793,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
                 //If there is an override for a specific layer build module,
                 //and this file is that module, mix in the override for use
                 //by optimize.jsFile.
-                moduleIndex = config._buildPathToModuleIndex[fileName];
+                moduleIndex = getOwn(config._buildPathToModuleIndex, fileName);
                 override = moduleIndex === 0 || moduleIndex > 0 ?
                            config.modules[moduleIndex].override : null;
                 if (override) {
@@ -14487,13 +14809,13 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
             context = require.s.contexts._;
 
             for (moduleName in pluginCollector) {
-                if (pluginCollector.hasOwnProperty(moduleName)) {
+                if (hasProp(pluginCollector, moduleName)) {
                     parentModuleMap = context.makeModuleMap(moduleName);
                     resources = pluginCollector[moduleName];
                     for (i = 0; i < resources.length; i++) {
                         resource = resources[i];
                         moduleMap = context.makeModuleMap(resource, parentModuleMap);
-                        if (!context.plugins[moduleMap.prefix]) {
+                        if (falseProp(context.plugins, moduleMap.prefix)) {
                             //Set the value in context.plugins so it
                             //will be evaluated as a full plugin.
                             context.plugins[moduleMap.prefix] = true;
@@ -14515,11 +14837,11 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
                         //Only bother with plugin resources that can be handled
                         //processed by the plugin, via support of the writeFile
                         //method.
-                        if (!pluginProcessed[moduleMap.id]) {
+                        if (falseProp(pluginProcessed, moduleMap.id)) {
                             //Only do the work if the plugin was really loaded.
                             //Using an internal access because the file may
                             //not really be loaded.
-                            plugin = context.defined[moduleMap.prefix];
+                            plugin = getOwn(context.defined, moduleMap.prefix);
                             if (plugin && plugin.writeFile) {
                                 plugin.writeFile(
                                     moduleMap.prefix,
@@ -14578,7 +14900,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
             if (i === parts.length - 1) {
                 result[prop] = value;
             } else {
-                if (!result[prop]) {
+                if (falseProp(result, prop)) {
                     result[prop] = {};
                 }
                 result = result[prop];
@@ -14605,7 +14927,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
 
         if (index !== -1) {
             dotProp = prop.substring(0, index);
-            return build.objProps.hasOwnProperty(dotProp);
+            return hasProp(build.objProps, dotProp);
         }
         return false;
     };
@@ -14643,7 +14965,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
             prop = ary[i].substring(0, separatorIndex);
 
             //Convert to array if necessary
-            if (needArray[prop]) {
+            if (getOwn(needArray, prop)) {
                 value = value.split(",");
             }
 
@@ -14673,7 +14995,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
         if (obj) {
             for (i = 0; i < props.length; i++) {
                 prop = props[i];
-                if (obj.hasOwnProperty(prop) && typeof obj[prop] === 'string') {
+                if (hasProp(obj, prop) && typeof obj[prop] === 'string') {
                     obj[prop] = build.makeAbsPath(obj[prop], absFilePath);
                 }
             }
@@ -14691,7 +15013,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
         for (i = 0; i < props.length; i++) {
             prop = props[i];
 
-            if (config[prop]) {
+            if (getOwn(config, prop)) {
                 //Add abspath if necessary, make sure these paths end in
                 //slashes
                 if (prop === "baseUrl") {
@@ -14734,7 +15056,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
         var prop, value;
 
         for (prop in source) {
-            if (source.hasOwnProperty(prop)) {
+            if (hasProp(source, prop)) {
                 //If the value of the property is a plain object, then
                 //allow a one-level-deep mixing of it.
                 value = source[prop];
@@ -14881,7 +15203,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
         });
 
         //Set final output dir
-        if (config.hasOwnProperty("baseUrl")) {
+        if (hasProp(config, "baseUrl")) {
             if (config.appDir) {
                 config.dirBaseUrl = build.makeAbsPath(config.originalBaseUrl, config.dir);
             } else {
@@ -15007,13 +15329,13 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
         }
 
         //Set file.fileExclusionRegExp if desired
-        if (config.hasOwnProperty('fileExclusionRegExp')) {
+        if (hasProp(config, 'fileExclusionRegExp')) {
             if (typeof config.fileExclusionRegExp === "string") {
                 file.exclusionRegExp = new RegExp(config.fileExclusionRegExp);
             } else {
                 file.exclusionRegExp = config.fileExclusionRegExp;
             }
-        } else if (config.hasOwnProperty('dirExclusionRegExp')) {
+        } else if (hasProp(config, 'dirExclusionRegExp')) {
             //Set file.dirExclusionRegExp if desired, this is the old
             //name for fileExclusionRegExp before 1.0.2. Support for backwards
             //compatibility
@@ -15072,7 +15394,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
      */
     build.traceDependencies = function (module, config) {
         var include, override, layer, context, baseConfig, oldContext,
-            registry, id, idParts, pluginId,
+            registry, id, idParts, pluginId, mod,
             errMessage = '',
             failedPluginMap = {},
             failedPluginIds = [],
@@ -15123,10 +15445,11 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
         //a message on what is left.
         registry = context.registry;
         for (id in registry) {
-            if (registry.hasOwnProperty(id) && id.indexOf('_@r') !== 0) {
-                if (id.indexOf('_unnormalized') === -1 && registry[id].enabled) {
+            if (hasProp(registry, id) && id.indexOf('_@r') !== 0) {
+                mod = getOwn(registry, id);
+                if (id.indexOf('_unnormalized') === -1 && mod && mod.enabled) {
                     errIds.push(id);
-                    errUrl = registry[id].map.url;
+                    errUrl = mod.map.url;
 
                     if (errUrlMap[errUrl]) {
                         hasErrUrl = true;
@@ -15146,7 +15469,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
                 //Look for plugins that did not call load()
                 idParts = id.split('!');
                 pluginId = idParts[0];
-                if (idParts.length > 1 && !failedPluginMap.hasOwnProperty(pluginId)) {
+                if (idParts.length > 1 && falseProp(failedPluginMap, pluginId)) {
                     failedPluginIds.push(pluginId);
                     failedPluginMap[pluginId] = true;
                 }
@@ -15168,7 +15491,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
                               'could be a misconfiguration if that URL only has ' +
                               'one anonymous module in it:';
                 for (prop in errUrlConflicts) {
-                    if (errUrlConflicts.hasOwnProperty(prop)) {
+                    if (hasProp(errUrlConflicts, prop)) {
                         errMessage += '\n' + prop + ': ' +
                                       errUrlConflicts[prop].join(', ');
                     }
@@ -15185,7 +15508,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
 
         lang.mixin(cfg, config, true);
         lang.eachProp(override, function (value, prop) {
-            if (build.objProps.hasOwnProperty(prop)) {
+            if (hasProp(build.objProps, prop)) {
                 //An object property, merge keys. Start a new object
                 //so that source object in config does not get modified.
                 cfg[prop] = {};
@@ -15256,7 +15579,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
             //If the moduleName is for a package main, then update it to the
             //real main value.
             packageConfig = layer.context.config.pkgs &&
-                            layer.context.config.pkgs[moduleName];
+                            getOwn(layer.context.config.pkgs, moduleName);
             if (packageConfig) {
                 moduleName += '/' + packageConfig.main;
             }
@@ -15264,9 +15587,9 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
             //Figure out if the module is a result of a build plugin, and if so,
             //then delegate to that plugin.
             parts = context.makeModuleMap(moduleName);
-            builder = parts.prefix && context.defined[parts.prefix];
+            builder = parts.prefix && getOwn(context.defined, parts.prefix);
             if (builder) {
-                if (builder.onLayerEnd && !onLayerEndAdded[parts.prefix]) {
+                if (builder.onLayerEnd && falseProp(onLayerEndAdded, parts.prefix)) {
                     onLayerEnds.push(builder);
                     onLayerEndAdded[parts.prefix] = true;
                 }
@@ -15290,11 +15613,11 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
                     builder.write(parts.prefix, parts.name, writeApi);
                 }
             } else {
-                if (stubModulesByName.hasOwnProperty(moduleName)) {
+                if (hasProp(stubModulesByName, moduleName)) {
                     //Just want to insert a simple module definition instead
                     //of the source module. Useful for plugins that inline
                     //all their resources.
-                    if (layer.context.plugins.hasOwnProperty(moduleName)) {
+                    if (hasProp(layer.context.plugins, moduleName)) {
                         //Slightly different content for plugins, to indicate
                         //that dynamic loading will not work.
                         currContents = 'define({load: function(id){throw new Error("Dynamic load not allowed: " + id);}});';
@@ -15342,8 +15665,8 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
             //put in a placeholder call so the require does not try to load them
             //after the module is processed.
             //If we have a name, but no defined module, then add in the placeholder.
-            if (moduleName && !layer.modulesWithNames[moduleName] && !config.skipModuleInsertion) {
-                shim = config.shim && config.shim[moduleName];
+            if (moduleName && falseProp(layer.modulesWithNames, moduleName) && !config.skipModuleInsertion) {
+                shim = config.shim && getOwn(config.shim, moduleName);
                 if (shim) {
                     fileContents += '\n' + namespaceWithDot + 'define("' + moduleName + '", ' +
                                      (shim.deps && shim.deps.length ?
@@ -15438,11 +15761,7 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
         }
     }
 
-    //If in Node, and included via a require('requirejs'), just export and
-    //THROW IT ON THE GROUND!
-    if (env === 'node' && reqMain !== module) {
-        setBaseUrl(path.resolve(reqMain ? reqMain.filename : '.'));
-
+    function createRjsApi() {
         //Create a method that will run the optimzer given an object
         //config.
         requirejs.optimize = function (config, callback) {
@@ -15508,8 +15827,21 @@ define('build', [ 'lang', 'logger', 'env!env/file', 'parse', 'optimize', 'pragma
         };
 
         requirejs.define = define;
+    }
+
+    //If in Node, and included via a require('requirejs'), just export and
+    //THROW IT ON THE GROUND!
+    if (env === 'node' && reqMain !== module) {
+        setBaseUrl(path.resolve(reqMain ? reqMain.filename : '.'));
+
+        createRjsApi();
 
         module.exports = requirejs;
+        return;
+    } else if (env === 'browser') {
+        //Only option is to use the API.
+        setBaseUrl(location.href);
+        createRjsApi();
         return;
     }
 
