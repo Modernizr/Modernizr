@@ -1,0 +1,56 @@
+<a name="methods_{{name}}"></a>
+<div class="method item{{#if access}} {{access}}{{/if}}">
+    {{#if final}}<code>final</code> {{/if}}{{#if returnType}}{{#crossLink returnType}}{{/crossLink}} {{/if}}<strong class="name">`{{name}}`</strong>( `{{paramsList}} ` ) {{#if access}}<em>`/* {{access}} method */`</em>{{/if}}
+    <br>
+    <span class="foundat">
+    {{#if overwritten_from}}
+        Defined in <a href="{{overwritten_from/class}}.html#method_{{overwritten_from/name}}">{{overwritten_from/class}}</a> but overwritten locally: 
+    {{else}}
+        {{#if extended_from}} Defined in <a href="{{extended_from}}.html#method_{{name}}">{{extended_from}}</a>: {{/if}}
+    {{/if}}
+        <a href="../{{foundAt}}">`{{file}}:{{line}}`</a>
+    </span><br>
+    {{{methodDescription}}}
+    {{#if params}}
+    <strong>Parameters:</strong>
+    <ul class="params">
+    {{#params}}
+        <li>
+        {{#if optional}}
+            `[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong>
+        {{else}}
+            `{{name}}` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong>
+        {{/if}}
+        {{#if multiple}}
+            <abbr title="Denotes that this argument can contain (n) number">(*..n)</abbr>
+        {{/if}}
+        {{{description}}}
+            {{#if props}}
+            <ul>
+            {{#props}}
+                <li>`{{name}}` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong> {{{description}}}
+                {{#if props}}
+                    <ul>
+                        {{#props}}
+                            <li>`{{name}}` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong> {{{description}}} </li>
+                        {{/props}}
+                    </ul>
+                {{/if}}
+                </li>
+            {{/props}}
+            </ul>
+            {{/if}}
+        </li>
+    {{/params}}
+    </ul>
+    {{/if}}
+    {{#if return}}
+    {{#return}}
+    <br><div class="returns"><strong>Returns:</strong> {{#if type}}&lt;{{#crossLink type}}{{/crossLink}}&gt; {{/if}}{{{description}}}</div>
+    {{/return}}
+    {{/if}}
+    {{#if example}}
+        <h5>Example</h5>
+        {{{example}}}
+    {{/if}}
+</div>
