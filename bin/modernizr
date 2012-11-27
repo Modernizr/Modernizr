@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+node ./lib/generate-init.js $1
+grunt build
+rm -rf ./tmp

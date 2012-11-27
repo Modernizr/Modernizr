@@ -1,4 +1,5 @@
 modernizr.min.js
 build
 dist
+tmp
 .DS_Store
