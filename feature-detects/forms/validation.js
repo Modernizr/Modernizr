@@ -8,7 +8,7 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
 
     Modernizr.addTest('formvalidation', function() {
       var form = createElement('form');
-      if ( !('checkValidity' in form) ) {
+      if ( !('checkValidity' in form) || !('addEventListener' in form) ) {
         return false;
       }
       var body = document.body;
@@ -20,13 +20,13 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
       Modernizr.formvalidationapi =  true;
 
       // Prevent form from being submitted
-      form.onsubmit = function(e) {
+      form.addEventListener('submit', function(e) {
         //Opera does not validate form, if submit is prevented
         if ( !window.opera ) {
           e.preventDefault();
         }
         e.stopPropagation();
-      };
+      }, false);
 
       // Calling form.submit() doesn't trigger interactive validation,
       // use a submit button instead
@@ -52,11 +52,11 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
       input = form.getElementsByTagName('input')[0];
 
       // Record whether "invalid" event is fired
-      input.oninvalid = function(e) {
+      input.addEventListener('invalid', function(e) {
         invaildFired = true;
         e.preventDefault();
         e.stopPropagation();
-      };
+      }, false);
 
       //Opera does not fully support the validationMessage property
       Modernizr.formvalidationmessage = !!input.validationMessage;
