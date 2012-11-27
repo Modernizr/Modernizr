@@ -36,6 +36,11 @@ module.exports = function( grunt ) {
                 dest: 'dist/modernizr-build.min.js'
             }
         },
+        uglify : {
+          mangle: {
+            except: ['Modernizr']
+          }
+        },
         watch: {
             files: '<config:lint.files>',
             tasks: 'lint'
@@ -131,7 +136,7 @@ module.exports = function( grunt ) {
 
     // Travis CI task.
     grunt.registerTask('travis', 'qunit');
-	
+
 	// Build
 	grunt.loadNpmTasks('grunt-contrib');
 	grunt.registerTask('build', 'clean requirejs copy clean:postbuild stripdefine min');
