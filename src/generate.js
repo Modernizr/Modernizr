@@ -1,11 +1,10 @@
 define(['underscore'], function( _ ) {
   return function( config ) {
     // Set some defaults
-    config.options = config.options || [
-      "setClasses",
-      "html5shiv",
-      "addTest"
-    ];
+    if (!config) {
+      config = {};
+    }
+    config.options = config.options || [];
     config["feature-detects"] = config["feature-detects"] || [];
 
     // Some special cases
