@@ -9,19 +9,15 @@ define(['underscore'], function( _ ) {
 
     // Some special cases
     var setClasses = _(config.options).contains('setClasses');
-    var addTest = _(config.options).contains('addTest');
 
     // Remove the special cases
-    config.options = _(config.options).without('setClasses', 'addTest');
+    config.options = _(config.options).without('setClasses');
 
     var output = 'require(["ModernizrProto", "Modernizr", "testRunner"';
 
     // Needed named module requires
     if (setClasses) {
       output += ', "setClasses"';
-    }
-    if (addTest) {
-      output += ', "addTest"';
     }
 
     // Load in the rest of the options (they dont return values, so they aren't declared
@@ -40,9 +36,6 @@ define(['underscore'], function( _ ) {
     if (setClasses) {
       output += ', setClasses';
     }
-    if (addTest) {
-      output += ', addTest';
-    }
 
     output += ') {\n' +
     '    // Run each test\n' +
@@ -56,20 +49,17 @@ define(['underscore'], function( _ ) {
       '\n';
     }
 
-    // Leak the user-facing addTest if they want it
-    if (addTest) {
-      output += '  // Ovveride the addTest class with one that works\n' +
-      '  // after the tests have run and kill the async\n' +
-      '  // test function, since it doesn\'t make sense anymore\n' +
-      '  ModernizrProto.addTest = addTest;\n';
-    }
-    // Otherwise remove the useless one
-    else {
-      output += '  delete ModernizrProto.addTest;\n';
-    }
 
+    output += '  delete ModernizrProto.addTest;\n';
     output += '  delete ModernizrProto.addAsyncTest;\n' +
     '\n';
+
+    // TODO:: if there's a way to figure out if there will be no
+    // items in this queue, then we could avoid the code.
+    output += '  // Run the things that are supposed to run after the tests\n' +
+    '  for (var i = 0; i < Modernizr._q.length; i++) {\n' +
+    '    Modernizr._q[i]();\n' +
+    '  }\n\n';
 
     output += '  // Leak Modernizr namespace\n' +
     '  window.Modernizr = Modernizr;\n' +

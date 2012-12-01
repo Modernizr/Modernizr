@@ -10,6 +10,8 @@ define(['tests'], function ( tests ) {
       enableClasses : true
     },
 
+    _q : [],
+
     addTest : function( name, fn, options ) {
       tests.push({name : name, fn : fn, options : options });
     },
