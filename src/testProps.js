@@ -20,7 +20,7 @@ define(['contains', 'mStyle'], function( contains, mStyle ) {
   function testProps( props, prefixed ) {
     for ( var i in props ) {
       var prop = props[i];
-      if ( !contains(prop, "-") && mStyle[prop] !== undefined ) {
+      if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
         return prefixed == 'pfx' ? prop : true;
       }
     }

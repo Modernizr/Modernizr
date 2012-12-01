@@ -39,5 +39,11 @@ define(['ModernizrProto', 'Modernizr', 'docElement', 'hasOwnProp'], function( Mo
     return Modernizr; // allow chaining.
   }
 
+  // After all the tests are run, add self
+  // to the Modernizr prototype
+  Modernizr._q.push(function() {
+    ModernizrProto.addTest = addTest;
+  });
+
   return addTest;
 });
