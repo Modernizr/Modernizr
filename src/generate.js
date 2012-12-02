@@ -49,7 +49,6 @@ define(['underscore'], function( _ ) {
       '\n';
     }
 
-
     output += '  delete ModernizrProto.addTest;\n';
     output += '  delete ModernizrProto.addAsyncTest;\n' +
     '\n';
