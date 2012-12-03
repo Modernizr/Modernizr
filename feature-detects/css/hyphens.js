@@ -18,10 +18,12 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
     */
 
   Modernizr.addAsyncTest(function() {
-    // Wait 300ms so we can hope for document.body
-    setTimeout(function() {
-      if (!document.body) {
-        window.console && console.warn('document.body doesn\'t exist. Modernizr hyphens test needs it.');
+    var waitTime = 300;
+    setTimeout(runHyphenTest, waitTime);
+    // Wait 1000ms so we can hope for document.body
+    function runHyphenTest() {
+      if (!document.body && !document.getElementsByTagName('body')[0]) {
+        setTimeout(runHyphenTest, waitTime);
         return;
       }
 
@@ -202,6 +204,6 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
         }
       });
 
-    }, 300);
+    }
   });
 });

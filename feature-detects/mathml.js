@@ -6,10 +6,16 @@ define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createEle
   // in https://github.com/mathjax/MathJax/issues/182
 
   Modernizr.addAsyncTest('mathml', function() {
+    var waitTime = 300;
+    setTimeout(runMathMLTest, waitTime);
     // Hack to make sure that the body exists
     // TODO:: find a more reasonable method of
     // doing this.
-    window.setTimeout(function() {
+    function runMathMLTest() {
+      if (!document.body && !document.getElementsByTagName('body')[0]) {
+        setTimeout(runMathMLTest, waitTime);
+        return;
+      }
       addTest(function () {
         var hasMathML = false;
         if ( document.createElementNS ) {
@@ -36,6 +42,6 @@ define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createEle
         }
         return hasMathML;
       });
-    }, 300);
+    }, 1000);
   });
 });
