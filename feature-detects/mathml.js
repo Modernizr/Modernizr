@@ -42,6 +42,6 @@ define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createEle
         }
         return hasMathML;
       });
-    }, 1000);
+    }
   });
 });
