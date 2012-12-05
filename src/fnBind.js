@@ -1,4 +1,4 @@
-define(function() {
+define(['slice'], function( slice ) {
   // Adapted from ES5-shim https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js
   // es5.github.com/#x15.3.4.5
 

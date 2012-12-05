@@ -4,7 +4,8 @@
     "addTest",
     "html5printshiv",
     "load",
-    "testProp"
+    "testProp",
+    "fnBind"
   ],
   "feature-detects": [
     "test/a/download",
