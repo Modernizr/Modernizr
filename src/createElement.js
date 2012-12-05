@@ -1,7 +1,4 @@
-define(function() {
-  var createElement = function() {
-    return document.createElement.apply(document, arguments);
-  };
-
+define(['fnBind'], function() {
+  var createElement = document.createElement.bind(document);
   return createElement;
 });
