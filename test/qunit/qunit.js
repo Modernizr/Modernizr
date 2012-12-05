@@ -666,7 +666,7 @@ extend( QUnit, {
 			updateRate: 1000,
 			blocking: false,
 			autostart: true,
-			autorun: true,
+			autorun: false,
 			filter: "",
 			queue: [],
 			semaphore: 0
