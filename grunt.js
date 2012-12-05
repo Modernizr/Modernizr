@@ -1,3 +1,12 @@
+var requirejs = require('requirejs');
+requirejs.config({
+  appDir : __dirname + '/src/',
+  baseUrl : __dirname + '/src/'
+});
+
+var generateInit = requirejs('generate');
+console.log(generateInit);
+
 /*global module */
 module.exports = function( grunt ) {
   'use strict';
@@ -18,6 +27,11 @@ module.exports = function( grunt ) {
     stripdefine: {
       build: {
         src: ['dist/modernizr-build.js']
+      }
+    },
+    generateinit : {
+      build: {
+        src: ['tmp/modernizr-init.js']
       }
     },
     lint: {
@@ -74,8 +88,8 @@ module.exports = function( grunt ) {
       }
     },
     clean: {
-      build: ['build', 'dist'],
-      postbuild: ['build']
+      build: ['build', 'dist', 'tmp'],
+      postbuild: ['build', 'tmp']
     },
     copy: {
       build: {
@@ -135,11 +149,15 @@ module.exports = function( grunt ) {
             grunt.file.write( 'dist/modernizr-build.js', mod );
           });
 
+          grunt.registerMultiTask('generateinit', "Generate Init file", function() {
+            grunt.file.write('tmp/modernizr-init.js', generateInit(JSON.parse(grunt.file.read('config-all.json'))));
+          });
+
           // Travis CI task.
           grunt.registerTask('travis', 'qunit');
 
           // Build
           grunt.loadNpmTasks('grunt-contrib');
-          grunt.registerTask('build', 'clean requirejs copy clean:postbuild stripdefine min');
+          grunt.registerTask('build', 'clean generateinit requirejs copy clean:postbuild stripdefine min');
           grunt.registerTask('default', 'build');
         };
