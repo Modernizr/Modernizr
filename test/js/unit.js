@@ -11,9 +11,7 @@ module('Basics', {
 });
 
 test("globals set up", function() {
-
 	ok(window.Modernizr, 'global modernizr object created');
-
 });
 
 test("bind is implemented", function() {

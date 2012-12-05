@@ -3,7 +3,8 @@
     "setClasses",
     "addTest",
     "html5printshiv",
-    "load"
+    "load",
+    "testProp"
   ],
   "feature-detects": [
     "test/a/download",
