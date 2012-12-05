@@ -1,4 +1,4 @@
-define(['contains', 'mStyle'], function( contains, mStyle ) {
+define(['contains', 'mStyle', 'createElement'], function( contains, mStyle, createElement ) {
   // testProps is a generic CSS / DOM property test.
 
   // In testing support for a given CSS property, it's legit to test:
@@ -18,12 +18,34 @@ define(['contains', 'mStyle'], function( contains, mStyle ) {
   // browser-specific content by accident.
 
   function testProps( props, prefixed ) {
+    var afterInit;
+
+    // If we don't have a style element, that means
+    // we're running async or after the core tests,
+    // so we'll need to create our own elements to use
+    if ( !mStyle.style ) {
+      afterInit = true;
+      mStyle.modElem = createElement('modernizr');
+      mStyle.style = mStyle.modElem.style;
+    }
+
+    // Delete the objects if we
+    // we created them.
+    function cleanElems() {
+      if (afterInit) {
+        delete mStyle.style;
+        delete mStyle.modElem;
+      }
+    }
+
     for ( var i in props ) {
       var prop = props[i];
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
+        cleanElems();
         return prefixed == 'pfx' ? prop : true;
       }
     }
+    cleanElems();
     return false;
   }
 
