@@ -3,4 +3,5 @@ node_js:
   - 0.8
 before_script:
   - npm install grunt
+  - ./bin/modernizr config-all.json > ./dist/modernizr-build.js
 script: grunt travis --verbose
