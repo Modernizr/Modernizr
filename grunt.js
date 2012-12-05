@@ -125,39 +125,40 @@ module.exports = function( grunt ) {
               //Remove AMD ceremony for use without require.js or almond.js
               contents = contents.replace(/define\(.*?\{/, '');
 
-                                          contents = contents.replace(/\}\);\s*?$/,'');
+              contents = contents.replace(/\}\);\s*?$/,'');
 
-                                          if ( !contents.match(/Modernizr\.addTest\(/) && !contents.match(/Modernizr\.addAsyncTest\(/) ) {
-                                            //remove last return statement and trailing })
-                                            contents = contents.replace(/return.*[^return]*$/,'');
-                                          }
+              if ( !contents.match(/Modernizr\.addTest\(/) && !contents.match(/Modernizr\.addAsyncTest\(/) ) {
+                //remove last return statement and trailing })
+                contents = contents.replace(/return.*[^return]*$/,'');
+              }
             }
             else if ((/require\([^\{]*?\{/).test(contents)) {
               contents = contents.replace(/require[^\{]+\{/, '');
-                contents = contents.replace(/\}\);\s*$/,'');
-              }
-              return contents;
+              contents = contents.replace(/\}\);\s*$/,'');
             }
-            }
-            }
-            }
-          });
 
-          // Strip define fn
-          grunt.registerMultiTask('stripdefine', "Strip define call from dist file", function() {
-            var mod = grunt.file.read( this.file.src[0] ).replace('define("modernizr-init",[], function(){});', '');
-            grunt.file.write( 'dist/modernizr-build.js', mod );
-          });
+            return contents;
+          }
+        }
+      }
+    }
+  });
 
-          grunt.registerMultiTask('generateinit', "Generate Init file", function() {
-            grunt.file.write('tmp/modernizr-init.js', generateInit(JSON.parse(grunt.file.read('config-all.json'))));
-          });
+  // Strip define fn
+  grunt.registerMultiTask('stripdefine', "Strip define call from dist file", function() {
+    var mod = grunt.file.read( this.file.src[0] ).replace('define("modernizr-init",[], function(){});', '');
+    grunt.file.write( 'dist/modernizr-build.js', mod );
+  });
 
-          // Travis CI task.
-          grunt.registerTask('travis', 'qunit');
+  grunt.registerMultiTask('generateinit', "Generate Init file", function() {
+    grunt.file.write('tmp/modernizr-init.js', generateInit(JSON.parse(grunt.file.read('config-all.json'))));
+  });
 
-          // Build
-          grunt.loadNpmTasks('grunt-contrib');
-          grunt.registerTask('build', 'clean generateinit requirejs copy clean:postbuild stripdefine min');
-          grunt.registerTask('default', 'build');
-        };
+  // Travis CI task.
+  grunt.registerTask('travis', 'qunit');
+
+  // Build
+  grunt.loadNpmTasks('grunt-contrib');
+  grunt.registerTask('build', 'clean generateinit requirejs copy clean:postbuild stripdefine min');
+  grunt.registerTask('default', 'build');
+};
