@@ -3011,7 +3011,7 @@ define('browser/file', ['prim'], function (prim) {
                 d = prim();
 
             // MEGA HACK UNTIL I CAN FIGURE SOMETHING OUT
-            if (path === './src/modernizr-init.js') {
+            if (path.indexOf('modernizr-init.js') >= 0) {
                 setTimeout(function () {
                     d.resolve(window.modInit);
                 });
