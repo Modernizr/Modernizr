@@ -5,4 +5,7 @@ before_script:
   - npm install grunt
   - mkdir -p dist
   - node ./lib/generate-init.js config-all.json
+  - cat ./tmp/modernizr-init.js
+  - grunt build
+  - cat ./dist/modernizr-build.js
 script: grunt travis --verbose

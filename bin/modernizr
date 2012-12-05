@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 node ./lib/generate-init.js $1
-grunt build
+grunt build > /dev/null
 rm -rf ./tmp
-cat dist/modernizr-build.js
+cat ./dist/modernizr-build.js
