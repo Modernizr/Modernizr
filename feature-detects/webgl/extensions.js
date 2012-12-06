@@ -28,10 +28,7 @@ define(['Modernizr', 'createElement', 'test/webgl'], function( Modernizr, create
       return;
     }
 
-    if (ctx === undefined) {
-      Modernizr.webglextensions = new Boolean(false);
-    }
-    else {
+    if (ctx !== undefined) {
       Modernizr.webglextensions = new Boolean(true);
     }
 
