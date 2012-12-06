@@ -8,6 +8,9 @@ define(['Modernizr', 'createElement', 'test/webgl'], function( Modernizr, create
   // Not Async but handles it's own self
   Modernizr.addAsyncTest(function() {
 
+    // Not a good candidate for css classes, so we avoid addTest stuff
+    Modernizr.webglextensions = new Boolean(false);
+
     if (!Modernizr.webgl) {
       return;
     }
@@ -22,7 +25,6 @@ define(['Modernizr', 'createElement', 'test/webgl'], function( Modernizr, create
       exts = ctx.getSupportedExtensions();
     }
     catch (e) {
-      Modernizr.webglextensions = false;
       return;
     }
 
