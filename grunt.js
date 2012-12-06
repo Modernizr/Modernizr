@@ -5,11 +5,12 @@ requirejs.config({
 });
 
 var generateInit = requirejs('generate');
-console.log(generateInit);
 
 /*global module */
 module.exports = function( grunt ) {
   'use strict';
+
+  var modConfig = JSON.parse(grunt.file.read('config-all.json'));
 
   grunt.initConfig({
     pkg: '<json:package.json>',
@@ -147,11 +148,16 @@ module.exports = function( grunt ) {
   // Strip define fn
   grunt.registerMultiTask('stripdefine', "Strip define call from dist file", function() {
     var mod = grunt.file.read( this.file.src[0] ).replace('define("modernizr-init",[], function(){});', '');
+
+    // Hack the prefix into place. Anything is way to big for something so small.
+    if ( modConfig && modConfig.classPrefix ) {
+      mod = mod.replace("classPrefix : '',", "classPrefix : '" + modConfig.classPrefix.replace(/"/g, '\\"') + "',");
+    }
     grunt.file.write( 'dist/modernizr-build.js', mod );
   });
 
   grunt.registerMultiTask('generateinit', "Generate Init file", function() {
-    grunt.file.write('tmp/modernizr-init.js', generateInit(JSON.parse(grunt.file.read('config-all.json'))));
+    grunt.file.write('tmp/modernizr-init.js', generateInit(modConfig));
   });
 
   // Travis CI task.
