@@ -209,7 +209,7 @@
     }
 
     require(['src/generate'], function( generate ) {
-      window.modInit = generate(config);
+      var modInit = generate(config);
 
       requirejs.optimize({
         "baseUrl" : "src/",
@@ -219,6 +219,9 @@
           "test" : "../../feature-detects",
         },
         "include" : ["modernizr-init"],
+        rawText: {
+          "modernizr-init" : modInit
+        },
         wrap: {
           start: ";(function(window, document, undefined){",
           end: "})(this, document);"
