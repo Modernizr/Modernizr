@@ -1,5 +1,5 @@
 /**
- * @license r.js 2.1.2 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
+ * @license r.js 2.1.2+ Wed, 05 Dec 2012 21:49:23 GMT Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/jrburke/requirejs for details
  */
@@ -21,7 +21,7 @@ var requirejs, require, define;
 
     var fileName, env, fs, vm, path, exec, rhinoContext, dir, nodeRequire,
         nodeDefine, exists, reqMain, loadedOptimizedLib, existsForNode,
-        version = '2.1.2',
+        version = '2.1.2+ Wed, 05 Dec 2012 21:49:23 GMT',
         jsSuffixRegExp = /\.js$/,
         commandOption = '',
         useLibLoaded = {},
@@ -3009,14 +3009,6 @@ define('browser/file', ['prim'], function (prim) {
         readFileAsync: function (path, encoding) {
             var xhr = new XMLHttpRequest(),
                 d = prim();
-
-            // MEGA HACK UNTIL I CAN FIGURE SOMETHING OUT
-            if (path.indexOf('modernizr-init.js') >= 0) {
-                setTimeout(function () {
-                    d.resolve(window.modInit);
-                });
-                return d.promise;
-            }
 
             xhr.open('GET', path, true);
             xhr.send();
@@ -19644,6 +19636,26 @@ define('parse', ['./esprima'], function (esprima) {
     };
 
     /**
+     * If there is a named define in the file, returns the name. Does not
+     * scan for mulitple names, just the first one.
+     */
+    parse.getNamedDefine = function (fileContents) {
+        var name;
+        traverse(esprima.parse(fileContents), function (node) {
+            if (node && node.type === 'CallExpression' && node.callee &&
+            node.callee.type === 'Identifier' &&
+            node.callee.name === 'define' &&
+            node[argPropName] && node[argPropName][0] &&
+            node[argPropName][0].type === 'Literal') {
+                name = node[argPropName][0].value;
+                return false;
+            }
+        });
+
+        return name;
+    };
+
+    /**
      * Determines if define(), require({}|[]) or requirejs was called in the
      * file. Also finds out if define() is declared and if define.amd is called.
      */
@@ -22915,7 +22927,7 @@ define('build', function (require) {
      */
     build.traceDependencies = function (module, config) {
         var include, override, layer, context, baseConfig, oldContext,
-            registry, id, idParts, pluginId, mod, errUrl,
+            registry, id, idParts, pluginId, mod, errUrl, rawTextByIds,
             errMessage = '',
             failedPluginMap = {},
             failedPluginIds = [],
@@ -22952,6 +22964,16 @@ define('build', function (require) {
             override = lang.mixin({}, baseConfig, true);
             lang.mixin(override, module.override, true);
             require(override);
+        }
+
+        //Now, populate the rawText cache with any values explicitly passed in
+        //via config.
+        rawTextByIds = require.s.contexts._.config.rawText;
+        if (rawTextByIds) {
+            lang.eachProp(rawTextByIds, function (contents, id) {
+                var url = require.toUrl(id);
+                require._cachedRawText[url] = contents;
+            });
         }
 
         //Figure out module layer dependencies by calling require to do the work.
@@ -23069,7 +23091,7 @@ define('build', function (require) {
 
         return prim().start(function () {
             var path, reqIndex, currContents,
-                i, moduleName, shim, packageConfig,
+                i, moduleName, shim, packageConfig, nonPackageName,
                 parts, builder, writeApi, tempPragmas,
                 namespace, namespaceWithDot, stubModulesByName,
                 newConfig = {},
@@ -23111,6 +23133,7 @@ define('build', function (require) {
                     packageConfig = layer.context.config.pkgs &&
                                     getOwn(layer.context.config.pkgs, moduleName);
                     if (packageConfig) {
+                        nonPackageName = moduleName;
                         moduleName += '/' + packageConfig.main;
                     }
 
@@ -23161,6 +23184,8 @@ define('build', function (require) {
                                     return require._cacheReadAsync(path);
                                 }
                             }).then(function (text) {
+                                var hasPackageName;
+
                                 currContents = text;
 
                                 if (config.cjsTranslate) {
@@ -23171,6 +23196,10 @@ define('build', function (require) {
                                     currContents = config.onBuildRead(moduleName, path, currContents);
                                 }
 
+                                if (packageConfig) {
+                                    hasPackageName = (nonPackageName === parse.getNamedDefine(currContents));
+                                }
+
                                 if (namespace) {
                                     currContents = pragma.namespace(currContents, namespace);
                                 }
@@ -23179,7 +23208,7 @@ define('build', function (require) {
                                     useSourceUrl: config.useSourceUrl
                                 });
 
-                                if (packageConfig) {
+                                if (packageConfig && !hasPackageName) {
                                     currContents = addSemiColon(currContents) + '\n';
                                     currContents += namespaceWithDot + "define('" +
                                                     packageConfig.name + "', ['" + moduleName +
