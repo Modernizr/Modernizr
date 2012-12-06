@@ -1,5 +1,5 @@
 
-Modernizr.addTest('columns', function() {
+Modernizr.addTest('csscolumns', function() {
 	
 	var tests = {
 		columncount: Modernizr.testAllProps('columnCount'),
