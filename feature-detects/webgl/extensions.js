@@ -22,23 +22,19 @@ define(['Modernizr', 'createElement', 'test/webgl'], function( Modernizr, create
       exts = ctx.getSupportedExtensions();
     }
     catch (e) {
+      Modernizr.webglextensions = false;
       return;
     }
 
     if (ctx === undefined) {
-      Modernizr.webgl = new Boolean(false);
+      Modernizr.webglextensions = new Boolean(false);
     }
     else {
-      Modernizr.webgl = new Boolean(true);
+      Modernizr.webglextensions = new Boolean(true);
     }
 
     for (var i = -1, len = exts.length; ++i < len; ){
-      Modernizr.webgl[exts[i]] = true;
-    }
-
-    // hack for addressing modernizr testsuite failures. sorry.
-    if (window.TEST && TEST.audvid){
-      TEST.audvid.push('webgl');
+      Modernizr.webglextensions[exts[i]] = true;
     }
 
     canvas = undefined;
