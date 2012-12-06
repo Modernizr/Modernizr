@@ -29,8 +29,8 @@ define(['ModernizrProto', 'Modernizr', 'docElement', 'hasOwnProp'], function( Mo
 
       test = typeof test == 'function' ? test() : test;
 
-      if (typeof Modernizr._config.enableClasses !== "undefined" && Modernizr._config.enableClasses) {
-        docElement.className += ' ' + (test ? '' : 'no-') + feature;
+      if (Modernizr._config.enableClasses) {
+        docElement.className += ' ' + (Modernizr._config.classPrefix || '') + (test ? '' : 'no-') + feature;
       }
       Modernizr[feature] = test;
 
