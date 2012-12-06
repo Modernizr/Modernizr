@@ -11,7 +11,7 @@ Modernizr.addTest('csscolumns', function() {
 	};
 
 	for(var feature in tests){
-		Modernizr.classes.push(((tests[feature]) ? '' : 'no-') + feature);
+		classes.push(((tests[feature]) ? '' : 'no-') + feature);
 	}
 
 	return tests;
