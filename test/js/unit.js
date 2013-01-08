@@ -211,8 +211,7 @@ test('Modernizr properties are looking good',function(){
       ok(Modernizr[prop] === true || Modernizr[prop] === false,
         'Modernizr.'+prop+' is a straight up boolean');
 
-
-      equal(prop,prop.toLowerCase(),'all properties are lowerCase.')
+      equal(prop,prop.replace(/-/g,'').toLowerCase(),'Modernizr.'+prop+' is all lowercase and contains no dashes.');
     }
   }
 })

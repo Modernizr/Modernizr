@@ -11,6 +11,6 @@ define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
     var ret;
     var child = elem.children;
     ret = child[0].offsetLeft < child[1].offsetLeft;
-    Modernizr.addTest('display-table', ret);
+    Modernizr.addTest('displaytable', ret);
   },2);
 });
