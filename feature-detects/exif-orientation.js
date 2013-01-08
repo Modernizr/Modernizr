@@ -21,11 +21,11 @@
   var img = new Image();
 
   img.onerror = function() {
-      Modernizr.addTest('exif-orientation', function () { return false; });
+      Modernizr.addTest('exiforientation', function () { return false; });
   };
 
   img.onload = function() {
-      Modernizr.addTest('exif-orientation', function () { return img.width !== 2; });
+      Modernizr.addTest('exiforientation', function () { return img.width !== 2; });
   };
 
   // There may be a way to shrink this more, it's a 1x2 white jpg with the orientation flag set to 6
