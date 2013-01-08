@@ -20,11 +20,11 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
     var img = new Image();
 
     img.onerror = function() {
-      addTest('exif-orientation', false);
+      addTest('exiforientation', false);
     };
 
     img.onload = function() {
-      addTest('exif-orientation', img.width !== 2);
+      addTest('exiforientation', img.width !== 2);
     };
 
     // There may be a way to shrink this more, it's a 1x2 white jpg with the orientation flag set to 6
