@@ -1,4 +1,19 @@
 
 Modernizr.addTest('csscolumns', function() {
-    return Modernizr.testAllProps('columnCount');
+	
+	var tests = {
+		columncount: Modernizr.testAllProps('columnCount'),
+		columnwidth: Modernizr.testAllProps('columnWidth'),
+		columngap: Modernizr.testAllProps('columnGap'),
+		columnrule: Modernizr.testAllProps('columnRule'),
+		columnspan: Modernizr.testAllProps('columnSpan'),
+		columnfill: Modernizr.testAllProps('columnFill')
+	};
+
+	for(var feature in tests){
+		classes.push(((tests[feature]) ? '' : 'no-') + feature);
+	}
+
+	return tests;
+
 });
