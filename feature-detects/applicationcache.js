@@ -1,4 +1,1 @@
-
-Modernizr.addTest('applicationcache', function() {
-  return !!window.applicationCache;
-});
+Modernizr.addTest('applicationcache', !!window.applicationCache);
