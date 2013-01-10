@@ -211,7 +211,11 @@ test('Modernizr properties are looking good',function(){
       ok(Modernizr[prop] === true || Modernizr[prop] === false,
         'Modernizr.'+prop+' is a straight up boolean');
 
-      equal(prop,prop.replace(/-/g,'').toLowerCase(),'Modernizr.'+prop+' is all lowercase and contains no dashes.');
+      equal(prop,prop.toLowerCase(),'Modernizr.'+prop+' is all lowercase.');
+
+      if (prop.indexOf('-') == -1) continue;
+
+      ok(Modernizr.hasOwnProperty(prop.replace(/-/g, '')), 'Modernizr.'+prop+' has an undashed alias.');
     }
   }
 })

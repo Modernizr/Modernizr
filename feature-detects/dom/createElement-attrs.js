@@ -8,5 +8,7 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
     } catch( e ) {
       return false;
     }
+  }, {
+    aliases: ['createelement-attrs']
   });
 });

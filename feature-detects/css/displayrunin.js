@@ -8,6 +8,6 @@ define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
                getComputedStyle(elem, null).getPropertyValue('display') :
                elem.currentStyle['display']);
 
-    Modernizr.addTest('displayrunin', ret == 'run-in');
+    Modernizr.addTest('displayrunin', ret == 'run-in', { aliases: ['display-runin'] });
   });
 });

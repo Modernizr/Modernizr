@@ -9,11 +9,11 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
     var image = new Image();
 
     image.onerror = function() {
-      addTest('webplossless', false);
+      addTest('webplossless', false, { aliases: ['webp-lossless'] });
     };
 
     image.onload = function() {
-      addTest('webplossless', image.width == 1);
+      addTest('webplossless', image.width == 1, { aliases: ['webp-lossless'] });
     };
 
     image.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';

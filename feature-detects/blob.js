@@ -8,5 +8,7 @@ define(['Modernizr'], function( Modernizr ) {
     } catch (e) {
       return false;
     }
+  }, {
+    aliases: ['blob-constructor']
   });
 });
