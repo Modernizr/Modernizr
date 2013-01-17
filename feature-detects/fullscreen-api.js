@@ -3,7 +3,7 @@ Modernizr.addTest('fullscreen',function(){
         if( document[Modernizr._domPrefixes[i].toLowerCase() + 'CancelFullScreen'])
             return true;
      }
-     return !!document['cancelFullScreen'] || false;
+     return !!document['exitFullscreen'] || false;
 });
 
 // http://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/ControllingMediaWithJavaScript/ControllingMediaWithJavaScript.html#//apple_ref/doc/uid/TP40009523-CH3-SW20
