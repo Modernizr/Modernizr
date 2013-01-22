@@ -114,6 +114,7 @@
     "test/webrtc/getusermedia",
     "test/webrtc/peerconnection",
     "test/audio",
+    "test/typed-arrays",
     "test/battery",
     "test/blob",
     "test/canvas",
