@@ -1,0 +1,23 @@
+<a name="attrs_{{name}}"></a>
+<div class="attrs item">
+    `{{name}}` {{#if type}}<strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong>{{/if}}
+    {{#if extended_from}}<em>`/* Extended from {{extended_from}} */`</em>{{/if}}
+    {{#if overwritten_from}}<em>`/* Overwritten from {{name}} */`</em>{{/if}}
+    <br>
+    <span class="foundat"><a href="../{{foundAt}}">`{{file}}:{{line}}`</a></span>
+    {{{attrDescription}}}
+    {{#if emit}}
+    <div class="emits">
+        Fires: <strong>`{{name}}Change(e)`</strong>
+        <p>Fires when the value for the configuration attribute `{{name}}` is changed. You can listen for the event using the `on` method if you wish to be notified before the attribute's value has changed, or using the `after` method if you wish to be notified after the attribute's value has changed.</p>
+        <strong>Parameters:</strong><br>
+        `e` <strong>&lt;EventFacade&gt;</strong> An Event Facade object with the following attribute specific properties added:
+        <ul>
+            <li>`prevVal` The value of the attribute, prior to it being set</li>
+            <li>`newVal` The value the attribute is to be set to</li>
+            <li>`attrName` The name of the attribute being set</li>
+            <li>`subAttrName` If setting a property within the attribute's value, the name of the sub-attribute property being set</li>
+        </ul>
+    </div>
+    {{/if}}
+</div>

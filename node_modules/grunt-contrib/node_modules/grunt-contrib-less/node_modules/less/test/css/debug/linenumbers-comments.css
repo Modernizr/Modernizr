@@ -1,0 +1,32 @@
+/* line 21, {pathimport}test.less */
+.tst3 {
+  color: grey;
+}
+/* line 13, {path}linenumbers.less */
+.test1 {
+  color: black;
+}
+/* line 4, {path}linenumbers.less */
+.test2 {
+  color: red;
+}
+@media all {
+  /* line 3, {pathimport}test.less */
+  .tst {
+    color: black;
+  }
+}
+@media all and screen {
+  /* line 5, {pathimport}test.less */
+  .tst {
+    color: red;
+  }
+  /* line 7, {pathimport}test.less */
+  .tst .tst3 {
+    color: white;
+  }
+}
+/* line 16, {pathimport}test.less */
+.tst2 {
+  color: white;
+}

@@ -1,32 +1,30 @@
-/**
- * Unicode special character support
- *
- * Detection is made by testing missing glyph box rendering against star character
- * If widths are the same, this "probably" means the browser didn't support the star character and rendered a glyph box instead
- * Just need to ensure the font characters have different widths
- *
- * Warning : positive Unicode support doesn't mean you can use it inside <title>, this seams more related to OS & Language packs
- */
-Modernizr.addTest('unicode', function() {
+define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, createElement, testStyles ) {
+  /**
+   * Unicode special character support
+   *
+   * Detection is made by testing missing glyph box rendering against star character
+   * If widths are the same, this "probably" means the browser didn't support the star character and rendered a glyph box instead
+   * Just need to ensure the font characters have different widths
+   *
+   * Warning : positive Unicode support doesn't mean you can use it inside <title>, this seams more related to OS & Language packs
+   */
+  Modernizr.addTest('unicode', function() {
+    var bool;
+    var missingGlyph = createElement('span');
+    var star = document.createElement('span');
 
+    testStyles('#modernizr{font-family:Arial,sans;font-size:300em;}', function( node ) {
 
-	var bool,
+      missingGlyph.innerHTML = '&#5987';
+      star.innerHTML = '&#9734';
 
-		missingGlyph = document.createElement('span'),
+      node.appendChild(missingGlyph);
+      node.appendChild(star);
 
-		star = document.createElement('span');
+      bool = 'offsetWidth' in missingGlyph && missingGlyph.offsetWidth !== star.offsetWidth;
+    });
 
-	Modernizr.testStyles('#modernizr{font-family:Arial,sans;font-size:300em;}', function(node) {
+    return bool;
 
-		missingGlyph.innerHTML = '&#5987';
-		star.innerHTML = '&#9734';
-
-		node.appendChild(missingGlyph);
-		node.appendChild(star);
-
-		bool = 'offsetWidth' in missingGlyph && missingGlyph.offsetWidth !== star.offsetWidth;
-	});
-
-	return bool;
-
+  });
 });
