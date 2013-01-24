@@ -1,17 +1,34 @@
 // http://www.w3.org/TR/css3-exclusions
 // Examples: http://html.adobe.com/webstandards/cssexclusions
 
-Modernizr.addTest('exclusions', function() {
-    var wrapFlowProperty = Modernizr.testAllProps("wrapFlow");
-    var shapeOutsideProperty = Modernizr.testAllProps("shapeOutside");
-    var shapeInsideProperty = Modernizr.testAllProps("shapeInside");
+// Get prefixed & hyphenated, e.g. input: 'wrapFlow' output: '-webkit-wrap-flow'
+function getPrefixedHyphenatedCSSproperty(prop) {
+    return Modernizr.prefixed(prop).replace(/([A-Z])/g, function (str, m1) { return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
+}
 
-    if (!wrapFlowProperty || !shapeOutsideProperty || !shapeInsideProperty) {
-        return false;
-    }
+// Get prefixed & camel case, e.g. input: 'wrapFlow' output: 'webkitWrapFlow'
+function getPrefixedCamelCaseCSSproperty(prop) {
+    return Modernizr.prefixed(prop, document.documentElement.style, false);
+}
 
-    /* We should add some basic layout testing here later to determine if exclusions actually work. */
+Modernizr.addTest('exclusions', function () {
+    var wrapFlow = Modernizr.testStyles('#modernizr { ' + getPrefixedHyphenatedCSSproperty('wrapFlow') + ':start }', function (elem) {
+        // Check against computed value
+        var styleObj = window.getComputedStyle ? getComputedStyle(elem, null) : elem.currentStyle;
+        return styleObj[getPrefixedCamelCaseCSSproperty('wrapFlow')] == 'start';
+    });
 
-    return true;
+    var shapeOutside = Modernizr.testStyles('#modernizr { ' + getPrefixedHyphenatedCSSproperty('shapeOutside') + ':rectangle(0px, 0px, 100px, 150px) }', function (elem) {
+        // Check against computed value
+        var styleObj = window.getComputedStyle ? getComputedStyle(elem, null) : elem.currentStyle;
+        return styleObj[getPrefixedCamelCaseCSSproperty('shapeOutside')] == 'rectangle(0px, 0px, 100px, 150px)';
+    });
+
+    var shapeInside = Modernizr.testStyles('#modernizr { ' + getPrefixedHyphenatedCSSproperty('shapeInside') + ':rectangle(0px, 0px, 100%, 100%, 25%, 25%) }', function (elem) {
+        // Check against computed value
+        var styleObj = window.getComputedStyle ? getComputedStyle(elem, null) : elem.currentStyle;
+        return styleObj[getPrefixedCamelCaseCSSproperty('shapeInside')] == 'rectangle(0px, 0px, 100%, 100%, 25%, 25%)';
+    });
+
+    return wrapFlow && shapeOutside && shapeInside;
 });
-
