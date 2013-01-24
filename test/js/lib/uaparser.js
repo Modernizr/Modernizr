@@ -7,7 +7,7 @@
 (function(exports){
 
   exports.uaparse = parse;
-  
+
   function parse(ua) {
     for (var i=0; i < parsers.length; i++) {
       var result = parsers[i](ua);
@@ -39,8 +39,8 @@
     if (suffix) { suffix = ' ' + suffix; }
     return this.family + suffix;
   };
-  
-  
+
+
   var regexes = [
       {"pattern":"^(Opera)/(\\d+)\\.(\\d+) \\(Nintendo Wii",
        "v1_replacement":null,
@@ -185,7 +185,7 @@
        "family_replacement":"IE"}
 
   ];
-  
+
   var parsers = regexes.map(function(obj) {
     var regexp = new RegExp(obj.pattern),
         famRep = obj.family_replacement,
@@ -208,8 +208,8 @@
 
     return parser;
   });
-  
-  
+
+
 })(window);
 
 
