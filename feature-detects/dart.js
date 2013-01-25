@@ -1,6 +1,7 @@
-// Dart
-// By Theodoor van Donge
+define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
+  // Dart
+  // By Theodoor van Donge
+  // https://chromiumcodereview.appspot.com/9232049/
 
-// https://chromiumcodereview.appspot.com/9232049/
-
-Modernizr.addTest('dart', !!Modernizr.prefixed('startDart', navigator));
+  Modernizr.addTest('dart', !!prefixed('startDart', navigator));
+});
