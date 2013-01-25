@@ -15,6 +15,45 @@ Modernizr has an optional (*not included*) conditional resource loader called `M
 Run the [test suite](http://modernizr.github.com/Modernizr/test/)
 
 
+## Building Modernizr v3
+
+### To generate everything in 'config-all.json':
+
+```js
+grunt build
+//outputs to ./dist/modernizr-build.js
+```
+
+### To run tests (in phantom):
+
+```js
+grunt qunit
+```
+
+### To run tests (in browser):
+
+```shell
+grunt build
+serve .
+visit <url>/tests
+```
+
+### To see simple build in browser:
+
+serve the root dir, `<url>/modular.html`
+
+
+### To see the build tool:
+
+
+* checkout the modernizr.com code
+* install all your gems and bundles and jekyll and shit
+* `jekyll`
+* `serve ./_sites`
+* visit <url>/download
+* It should be just a big list of things you can build with no frills.
+
+
 ## License
 
 MIT license

@@ -1,0 +1,1 @@
+ Options are passed to the [RequireJS Optimizer](http://requirejs.org/docs/optimization.html).

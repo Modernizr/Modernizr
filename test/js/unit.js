@@ -3,6 +3,9 @@ if(navigator.userAgent.indexOf("PhantomJS") === -1) {
   QUnit.config.autostart = false;
 }
 
+// Save the classes before we add a bunch to them via tests
+var classes = TEST.trim(document.documentElement.className).split(/\s+/);
+
 module('Basics', {
     setup:function() {
     },
@@ -11,9 +14,7 @@ module('Basics', {
 });
 
 test("globals set up", function() {
-
 	ok(window.Modernizr, 'global modernizr object created');
-
 });
 
 test("bind is implemented", function() {
@@ -129,7 +130,6 @@ module('Modernizr classes and bools', {
 
 test('html classes are looking good',function(){
 
-  var classes = TEST.trim(document.documentElement.className).split(/\s+/);
 
   var modprops = Object.keys(Modernizr),
       newprops = modprops;
@@ -201,7 +201,7 @@ test('Modernizr properties are looking good',function(){
       nobool = TEST.API.concat(TEST.inputs)
                        .concat(TEST.audvid)
                        .concat(TEST.privates)
-                       .concat(['textarea']); // due to forms-placeholder.js test
+                       .concat(['textarea', 'testtruthy', 'testfalsy']); // due to forms-placeholder.js test
 
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){
@@ -545,6 +545,11 @@ test('Modernizr.prefixed autobind', function(){
   var vendors = ['ms', 'moz', 'webkit', 'o'];
   for(var x = 0; x < vendors.length && !rAFName; ++x) {
     rAFName = window[vendors[x]+'RequestAnimationFrame'] && vendors[x]+'RequestAnimationFrame';
+  }
+
+  // Some browsers have the unprefixed now
+  if (typeof window.requestAnimationFrame === 'function') {
+    rAFName = 'requestAnimationFrame';
   }
 
   if (rAFName){
