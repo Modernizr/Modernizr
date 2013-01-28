@@ -8,9 +8,7 @@ define(['is', 'fnBind'], function( is ) {
       var item;
       try {
         item = obj[props[i]];
-      } catch (e) {
-        continue;
-      }
+      } catch (e) { }
       if ( item !== undefined) {
 
         // return the property name as a string
