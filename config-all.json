@@ -149,7 +149,7 @@
     "test/quota-management-api",
     "test/requestanimationframe",
     "test/svg",
-    "test/touch",
+    "test/touchevents",
     "test/unicode",
     "test/userdata",
     "test/vibration",

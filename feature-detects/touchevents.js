@@ -13,7 +13,7 @@ define(['Modernizr', 'prefixes', 'testStyles'], function( Modernizr, prefixes, t
   // For more info, see: modernizr.github.com/Modernizr/touch.html
   //
 
-  Modernizr.addTest('touch', function() {
+  Modernizr.addTest('touchevents', function() {
     var bool;
     if(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
       bool = true;
@@ -24,5 +24,7 @@ define(['Modernizr', 'prefixes', 'testStyles'], function( Modernizr, prefixes, t
       });
     }
     return bool;
+  }, {
+    aliases : ['touch']
   });
 });
