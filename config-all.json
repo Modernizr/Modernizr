@@ -144,6 +144,7 @@
     "test/notification",
     "test/pagevisibility-api",
     "test/performance",
+    "test/pointerevents",
     "test/pointerlock-api",
     "test/postmessage",
     "test/quota-management-api",

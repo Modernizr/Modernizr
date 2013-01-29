@@ -97,6 +97,7 @@
 "canvastext",
 "webgl",
 "touchevents",
+"pointerevents",
 "geolocation",
 "postmessage",
 "websqldatabase",
