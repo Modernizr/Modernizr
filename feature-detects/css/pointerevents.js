@@ -6,7 +6,7 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
   // github.com/ausi/Feature-detection-technique-for-pointer-events/wiki
   // github.com/Modernizr/Modernizr/issues/80
 
-  Modernizr.addTest('pointerevents', function() {
+  Modernizr.addTest('csspointerevents', function() {
     var element = createElement('x');
     var getComputedStyle = window.getComputedStyle;
     var supports;
