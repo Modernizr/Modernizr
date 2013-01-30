@@ -1,0 +1,105 @@
+<div id="modules" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Modules</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            {{#modules}}
+                <li><a href="{{../projectRoot}}modules/{{name}}.html">{{displayName}}</a>
+                {{#if submodules}}
+                    <ul>
+                        {{#submodules}}
+                            <li><a href="{{../../../projectRoot}}modules/{{../name}}.html#{{displayName}}">{{displayName}}</a></li>
+                        {{/submodules}}
+                    </ul>
+                {{/if}}
+                </li>
+            {{/modules}}
+        </ul>
+    </div>
+</div>
+
+<div id="classes" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Classes</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            {{#classes}}
+                <li><a href="{{../projectRoot}}classes/{{name}}.html">{{displayName}}</a></li>
+            {{/classes}}
+        </ul>
+    </div>
+</div>
+
+{{#if methods}}
+<div id="methods-on-page" class="sidebox on-page">
+    <div class="hd">
+        <h2 class="no-toc">Methods On Page</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            {{#methods}}
+                <li><a href="#methods_{{name}}">{{name}}</a></li>
+            {{/methods}}
+        </ul>
+    </div>
+</div>
+{{/if}}
+
+{{#if events}}
+<div id="events-on-page" class="sidebox on-page">
+    <div class="hd">
+        <h2 class="no-toc">Events On Page</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            {{#events}}
+                <li><a href="#events_{{name}}">{{name}}</a></li>
+            {{/events}}
+        </ul>
+    </div>
+</div>
+{{/if}}
+
+{{#if props}}
+<div id="props-on-page" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Props On Page</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            {{#events}}
+                <li><a href="#props_{{name}}">{{name}}</a></li>
+            {{/events}}
+        </ul>
+    </div>
+</div>
+{{/if}}
+
+{{#if attributes}}
+<div id="attrs-on-page" class="sidebox on-page">
+    <div class="hd">
+        <h2 class="no-toc">Attributes On Page</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            {{#events}}
+                <li><a href="#attrs_{{name}}">{{name}}</a></li>
+            {{/events}}
+        </ul>
+    </div>
+</div>
+{{/if}}
+
+{{#if fileTree}}
+<div id="fileTree" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Files</h2>
+    </div>
+    <div class="bd">
+        {{#buildFileTree fileTree}}{{/buildFileTree}}
+    </div>
+</div>
+{{/if}}
+

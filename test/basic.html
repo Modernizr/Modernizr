@@ -30,18 +30,16 @@
       #caniusetrigger { font-size: 38px; font-family: monospace; display:block; }
   </style>
 
-  <script src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
-
-  <script>window.Modernizr || document.write('<script src="../modernizr.js"><\/script>')</script>
+  <script src="../dist/modernizr-build.js"></script>
 
   <script src="js/lib/polyfills.js"></script>
   <script src="js/lib/detect-global.js"></script>
-  
+
   <script src="qunit/qunit.js"></script>
   <script src="js/lib/jquery-1.7b2.js"></script>
-  
+
   <script src="js/setup.js"></script>
-  
+
   <script src="js/unit.js"></script>
 </head>
 <body>
@@ -57,9 +55,12 @@
 
 
   <br>
- 
+
   <section><aside>this is an aside within a section</aside></section>
-  
-  
+
+  <script>
+    QUnit.start();
+  </script>
+
 </body>
-</html> 
+</html>
