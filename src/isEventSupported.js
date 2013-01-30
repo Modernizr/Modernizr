@@ -5,40 +5,61 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
   // The following results are known incorrects:
   //   Modernizr.hasEvent("webkitTransitionEnd", elem) // false negative
   //   Modernizr.hasEvent("textInput") // in Webkit. github.com/Modernizr/Modernizr/issues/333
-  var isEventSupported = (function() {
+  var isEventSupported = (function (undefined) {
 
     var TAGNAMES = {
       'select': 'input', 'change': 'input',
       'submit': 'form', 'reset': 'form',
       'error': 'img', 'load': 'img', 'abort': 'img'
-    };
+    }, 
+    
+    // Detect whether event support can be detected via `in`. Use a DOM element
+    // for the test, with the `blur` event b/c it should always be there. If this
+    // is `false` then we need the fallback technique. (bit.ly/event-detection)
+    hasEventHandlerProperty = 'onblur' in document.documentElement;
 
+    /**
+     * @param  {string|*}           eventName  is the name of an event to test for (e.g. "resize")
+     * @param  {(Object|string|*)=} element    is a DOM element|document|window|tagName to test on
+     * @return {boolean}
+     */
     function isEventSupportedInner( eventName, element ) {
 
-      element = element || createElement(TAGNAMES[eventName] || 'div');
+      var isSupported;
+      if ( !eventName ) { return false; }
       eventName = 'on' + eventName;
+      
+      if ( !element || typeof element == 'string' ) {
+        element = createElement(element || TAGNAMES[eventName] || 'div');
+      } else if ( typeof element != 'object' ) {
+        return false; // `element` was invalid type
+      }
 
-      // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize", whereas `in` "catches" those
-      var isSupported = eventName in element;
-
-      if ( !isSupported ) {
-        // If it has no `setAttribute` (i.e. doesn't implement Node interface), try generic element
+      // Testing via the `in` operator is sufficient for modern browsers and IE.
+      // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and  
+      // "resize", whereas `in` "catches" those.
+      isSupported = eventName in element;
+ 
+      // Fallback technique for old Firefox - bit.ly/event-detection
+      if ( !isSupported && !hasEventHandlerProperty ) {
         if ( !element.setAttribute ) {
-          element = createElement('div');
+          // Switch to generic element if it lacks `setAttribute`.
+          // It could be the `document`, `window`, or something else.
+          element = createElement('div'); 
         }
         if ( element.setAttribute && element.removeAttribute ) {
           element.setAttribute(eventName, '');
-          isSupported = is(element[eventName], 'function');
+          isSupported = typeof element[eventName] == 'function';
 
-          // If property was created, "remove it" (by setting value to `undefined`)
-          if ( !is(element[eventName], 'undefined') ) {
-            element[eventName] = undefined;
+          if ( element[eventName] != null ) {
+            // If property was created, "remove it" by setting value to `undefined`.
+            element[eventName] = undefined; 
           }
           element.removeAttribute(eventName);
         }
       }
 
-      element = null;
+      element = null; // Nullify to prevent memory leak.
       return isSupported;
     }
     return isEventSupportedInner;
