@@ -51,7 +51,7 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
           element.setAttribute(eventName, '');
           isSupported = typeof element[eventName] == 'function';
 
-          if ( element[eventName] != null ) {
+          if ( element[eventName] !== undefined ) {
             // If property was created, "remove it" by setting value to `undefined`.
             element[eventName] = undefined; 
           }
