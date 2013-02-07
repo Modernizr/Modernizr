@@ -13,10 +13,9 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
       'error': 'img', 'load': 'img', 'abort': 'img'
     }, 
     
-    // Detect whether event support can be detected via `in`. Use a DOM element
-    // for the test, with the `blur` event b/c it should always be there. If this
-    // is `false` then we need the fallback technique. (bit.ly/event-detection)
-    hasEventHandlerProperty = 'onblur' in document.documentElement;
+    // Detect whether event support can be detected via `in`. Test on a DOM element
+    // using the "blur" event b/c it should always exist. bit.ly/event-detection
+    needsFallback = !('onblur' in document.documentElement);
 
     /**
      * @param  {string|*}           eventName  is the name of an event to test for (e.g. "resize")
@@ -27,8 +26,6 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
 
       var isSupported;
       if ( !eventName ) { return false; }
-      eventName = 'on' + eventName;
-      
       if ( !element || typeof element == 'string' ) {
         element = createElement(element || TAGNAMES[eventName] || 'div');
       } else if ( typeof element != 'object' ) {
@@ -38,10 +35,11 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
       // Testing via the `in` operator is sufficient for modern browsers and IE.
       // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and  
       // "resize", whereas `in` "catches" those.
+      eventName = 'on' + eventName;
       isSupported = eventName in element;
  
       // Fallback technique for old Firefox - bit.ly/event-detection
-      if ( !isSupported && !hasEventHandlerProperty ) {
+      if ( !isSupported && needsFallback ) {
         if ( !element.setAttribute ) {
           // Switch to generic element if it lacks `setAttribute`.
           // It could be the `document`, `window`, or something else.
