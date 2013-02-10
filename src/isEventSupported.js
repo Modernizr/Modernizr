@@ -1,8 +1,9 @@
 define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElement ) {
-  // isEventSupported determines if a given element supports the given event
+  // isEventSupported determines if the given element supports the given event
   // kangax.github.com/iseventsupported/
+  // github.com/Modernizr/Modernizr/pull/636
   //
-  // The following results are known incorrects:
+  // Known incorrects:
   //   Modernizr.hasEvent("webkitTransitionEnd", elem) // false negative
   //   Modernizr.hasEvent("textInput") // in Webkit. github.com/Modernizr/Modernizr/issues/333
   var isEventSupported = (function (undefined) {
@@ -19,7 +20,7 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
 
     /**
      * @param  {string|*}           eventName  is the name of an event to test for (e.g. "resize")
-     * @param  {(Object|string|*)=} element    is a DOM element|document|window|tagName to test on
+     * @param  {(Object|string|*)=} element    is the element|document|window|tagName to test on
      * @return {boolean}
      */
     function isEventSupportedInner( eventName, element ) {
