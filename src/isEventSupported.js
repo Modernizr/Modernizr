@@ -26,9 +26,9 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
 
       var isSupported;
       if ( !eventName ) { return false; }
-      if ( !element || typeof element == 'string' ) {
+      if ( !element || typeof element === 'string' ) {
         element = createElement(element || TAGNAMES[eventName] || 'div');
-      } else if ( typeof element != 'object' ) {
+      } else if ( typeof element !== 'object' ) {
         return false; // `element` was invalid type
       }
 
@@ -47,7 +47,7 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
         }
         if ( element.setAttribute && element.removeAttribute ) {
           element.setAttribute(eventName, '');
-          isSupported = typeof element[eventName] == 'function';
+          isSupported = typeof element[eventName] === 'function';
 
           if ( element[eventName] !== undefined ) {
             // If property was created, "remove it" by setting value to `undefined`.
