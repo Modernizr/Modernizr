@@ -58,7 +58,6 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
         }
       }
 
-      element = null; // Nullify to prevent memory leak.
       return isSupported;
     }
     return isEventSupportedInner;
