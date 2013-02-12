@@ -29,8 +29,6 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
       if ( !eventName ) { return false; }
       if ( !element || typeof element === 'string' ) {
         element = createElement(element || TAGNAMES[eventName] || 'div');
-      } else if ( typeof element !== 'object' ) {
-        return false; // `element` was invalid type
       }
 
       // Testing via the `in` operator is sufficient for modern browsers and IE.
