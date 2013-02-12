@@ -1,3 +1,14 @@
+/*!
+{
+  "name" : "<a> `download` Attribute",
+  "property" : "adownload",
+  "aliases" : [],
+  "tags" : ["media"],
+  "doc" : null,
+  "knownBugs": [],
+  "authors" : []
+}
+!*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   // a[download] attribute
   // When used on an <a>, this attribute signifies that the resource it

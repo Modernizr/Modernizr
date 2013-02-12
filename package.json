@@ -8,7 +8,8 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.3.17",
-    "grunt-contrib": "~0.3.0"
+    "grunt-contrib": "~0.3.0",
+    "file": "0.2.1"
   },
   "scripts": {
     "test": "grunt qunit"
