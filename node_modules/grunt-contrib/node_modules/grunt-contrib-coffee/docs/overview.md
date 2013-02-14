@@ -1,1 +1,0 @@
-Options are passed to [CoffeeScript](http://coffeescript.org/#usage).
