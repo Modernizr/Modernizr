@@ -1,9 +1,22 @@
+/*!
+{
+  "name": "Background Position XY",
+  "property": "bgpositionxy",
+  "aliases": [],
+  "tags": ["css"],
+  "knownBugs": [],
+  "doc" : null,
+  "authors": ["Allan Lei", "Brandom Aaron"],
+  "references": [{
+    "name": "Demo",
+    "href": "http://jsfiddle.net/allanlei/R8AYS/"
+  }, {
+    "name": "Adapted From",
+    "href": "https://github.com/brandonaaron/jquery-cssHooks/blob/master/bgpos.js"
+  }]
+}
+!*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
-  /*
-  Allan Lei https://github.com/allanlei
-  Check adapted from https://github.com/brandonaaron/jquery-cssHooks/blob/master/bgpos.js
-  Test: http://jsfiddle.net/allanlei/R8AYS/
-  */
   Modernizr.addTest('bgpositionxy', function() {
     return testStyles('#modernizr {background-position: 3px 5px;}', function( elem ) {
       var cssStyleDeclaration = window.getComputedStyle ? getComputedStyle(elem, null) : elem.currentStyle;

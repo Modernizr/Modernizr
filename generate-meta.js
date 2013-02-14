@@ -18,6 +18,7 @@ file.walkSync(viewRoot, function (start, dirs, files) {
         metadata = JSON.parse(matches[1]);
       }
       catch(e) {
+        console.log('error parsing: ' + file);
         metadata = {};
       }
       console.log();
@@ -34,7 +35,15 @@ file.walkSync(viewRoot, function (start, dirs, files) {
     }
 
     if (!metadata.async) {
-      metadata.async = null;
+      metadata.async = false;
+    }
+
+    if (!metadata.references) {
+      metadata.references = [];
+    }
+
+    if (!metadata.helptext) {
+      metadata.helptext = null;
     }
 
     if (!metadata.cssclass && metadata.property) {

@@ -3,7 +3,7 @@
   "name" : "HTML5 Audio Element",
   "property": "audio",
   "aliases" : [],
-  "tags" : ["html5", "media"],
+  "tags" : ["html5", "audio", "media"],
   "doc" : "/docs/#audio",
   "knownBugs": [],
   "authors" : []

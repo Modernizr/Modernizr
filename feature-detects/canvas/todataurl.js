@@ -1,6 +1,17 @@
+/*!
+{
+  "name": "canvas.toDataURL type support",
+  "property": ["todataurljpeg", "todataurlwebp"],
+  "aliases": [],
+  "tags": ["canvas"],
+  "async" : true,
+  "knownBugs": [],
+  "doc" : null,
+  "authors": [],
+  "references": ["http://www.w3.org/TR/html5/the-canvas-element.html#dom-canvas-todataurl"]
+}
+!*/
 define(['Modernizr', 'addTest', 'createElement', 'test/canvas'], function( Modernizr, addTest, createElement ) {
-  // canvas.toDataURL type support
-  // http://www.w3.org/TR/html5/the-canvas-element.html#dom-canvas-todataurl
 
   // This is an async test
   Modernizr.addAsyncTest(function () {
