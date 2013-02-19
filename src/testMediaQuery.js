@@ -9,7 +9,7 @@ define(['injectElementWithStyles'], function( injectElementWithStyles ) {
       return matchMedia(mq).matches;
     }
 
-    injectElementWithStyles('@media ' + mq + ' { #' + mod + ' { position: absolute; } }', function( node ) {
+    injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function( node ) {
       bool = (window.getComputedStyle ?
               getComputedStyle(node, null) :
               node.currentStyle)['position'] == 'absolute';
