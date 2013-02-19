@@ -1,17 +1,35 @@
-define(['injectElementWithStyles'], function ( injectElementWithStyles ) {
+define(['injectElementWithStyles', 'prefixes'], function ( injectElementWithStyles, prefixes ) {
     // Function to allow us to use native feature detection functionality if available.
-    // Only accepts the string notation, i.e.: `nativeCSSDetect('(display:flex)')`, not
-    // `nativeCSSDetect('display', 'flex')`
-    function nativeCSSDetect ( str ) {
-        // Start with the W3C version: http://www.w3.org/TR/css3-conditional/#the-css-interface
+    // Follows `(DOMString property, DOMString value)` interface
+    function nativeCSSDetect ( property, value, isPropPrefixed, isValuePrefixed ) {
+        var propPrefixes = isPropPrefixed ? prefixes : [''],
+            valuePrefixes = isValuePrefixed ? prefixes : [''],
+            i = propPrefixes.length;
+        // Start with the JS API: http://www.w3.org/TR/css3-conditional/#the-css-interface
         if ('CSS' in window && 'supports' in window.CSS) {
-            return window.CSS.supports(str);
+            // Try every prefixed variant, of both property and value
+            while (i--) {
+                j = valuePrefixes.length;
+                while (j--) {
+                    if (window.CSS.supports(prefixes[i] + property, prefixes[j] + value)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
-        // Otherwise fall back to the at-rule for Opera: they made a bit of a hash of
-        // `window.CSS.supports()`, by implementing it as `window.supportsCSS()` which
-        // only supported f(property, value) calls rather than f(conditionText)
+        // Otherwise fall back to at-rule
         else if ('CSSSupportsRule' in window) {
-            return injectElementWithStyles('@supports ' + str + ' { #modernizr { position: absolute; } }', function( node ) {
+            // Build a condition string for every prefixed variant
+            var conditionText = [];
+            while (i--) {
+                j = valuePrefixes.length;
+                while (j--) {
+                    conditionText.push('(' + prefixes[i] + property + ':' + prefixes[j] + value + ')');
+                }
+            }
+            conditionText = conditionText.join(' or ');
+            return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function( node ) {
                 return (window.getComputedStyle ?
                         getComputedStyle(node, null) :
                         node.currentStyle)['position'] == 'absolute';
