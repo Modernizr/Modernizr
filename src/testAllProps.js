@@ -1,4 +1,7 @@
 define(['ModernizrProto', 'testPropsAll'], function( ModernizrProto, testPropsAll ) {
-  var testAllProps = ModernizrProto.testAllProps = testPropsAll;
-  return testAllProps;
+    function testAllProps (prop, value) {
+        return testPropsAll(prop, undefined, undefined, value);
+    }
+    ModernizrProto.testAllProps = testAllProps;
+    return testAllProps;
 });

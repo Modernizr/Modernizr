@@ -23,11 +23,9 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
     if (!is(values, 'undefined')) {
       var result = nativeTestProps(props, values);
       if(!is(result, 'undefined')) {
-        console.log('native');
         return result;
       }
     }
-    console.log('manual');
     var afterInit;
 
     // If we don't have a style element, that means

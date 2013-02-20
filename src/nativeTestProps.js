@@ -1,4 +1,4 @@
-define(['injectElementWithStyles', 'prefixes'], function ( injectElementWithStyles, prefixes ) {
+define(['injectElementWithStyles', 'domToHyphenated'], function ( injectElementWithStyles, domToHyphenated ) {
     // Function to allow us to use native feature detection functionality if available.
     // Accepts a list of property names and a list of values
     function nativeTestProps ( props, values ) {
@@ -10,7 +10,7 @@ define(['injectElementWithStyles', 'prefixes'], function ( injectElementWithStyl
             while (i--) {
                 j = values.length;
                 while (j--) {
-                    if (window.CSS.supports(props[i], values[j])) {
+                    if (window.CSS.supports(domToHyphenated(props[i]), values[j])) {
                         return true;
                     }
                 }
@@ -24,7 +24,7 @@ define(['injectElementWithStyles', 'prefixes'], function ( injectElementWithStyl
             while (i--) {
                 j = values.length;
                 while (j--) {
-                    conditionText.push('(' + props[i] + ':' + values[j] + ')');
+                    conditionText.push('(' + domToHyphenated(props[i]) + ':' + values[j] + ')');
                 }
             }
             conditionText = conditionText.join(' or ');
