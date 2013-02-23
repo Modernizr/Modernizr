@@ -1,10 +1,21 @@
+/*!
+{
+  "name" : "HTML5 Audio Element",
+  "property": "audio",
+  "aliases" : [],
+  "tags" : ["html5", "audio", "media"],
+  "doc" : "/docs/#audio",
+  "knownBugs": [],
+  "authors" : []
+}
+!*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   // This tests evaluates support of the audio element, as well as
   // testing what types of content it supports.
   //
   // We're using the Boolean constructor here, so that we can extend the value
   // e.g.  Modernizr.audio     // true
-  //       Modernizr.video.ogg // 'probably'
+  //       Modernizr.audio.ogg // 'probably'
   //
   // Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
   //                     thx to NielsLeenheer and zcorpan
