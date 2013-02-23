@@ -1,1 +1,0 @@
-../requirejs/bin/r.js

@@ -1,2 +1,0 @@
-ParseError: Syntax Error on line 1 in {path}parse-error-curly-bracket.less:1:0
-1 }}
