@@ -1,0 +1,35 @@
+<a name="events_{{name}}"></a>
+<div class="events item">
+    `{{name}}` {{#if type}}<strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong>{{/if}}
+    {{#if extended_from}}<em>`/* Extended from {{extended_from}} */</em>`{{/if}}
+    {{#if overwritten_from}}<em>`/* Overwritten from {{name}} */`</em>{{/if}}
+    <br>
+    <span class="foundat"><a href="../{{foundAt}}">`{{file}}:{{line}}`</a></span>
+    {{{eventDescription}}}
+    {{#if params}}
+    <strong>Extra event object properties:</strong>
+    <ul>
+    {{#params}}
+        <li>
+        {{#if optional}}
+            `[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong>
+        {{else}}
+            `{{name}}` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong>
+        {{/if}}
+        {{#if multiple}}
+            <abbr title="Denotes that this argument can contain (n) number">(*..n)</abbr>
+        {{/if}}
+        {{{description}}}
+            {{#if props}}
+            <ul>
+            {{#props}}
+                <li>`{{name}}` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong> {{{description}}}
+            {{/props}}
+            </ul>
+            {{/if}}
+        </li>
+    {{/params}}
+    </ul>
+    {{/if}}
+</div>
+

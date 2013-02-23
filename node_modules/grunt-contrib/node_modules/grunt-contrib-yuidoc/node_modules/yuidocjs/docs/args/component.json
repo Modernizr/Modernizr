@@ -1,0 +1,7 @@
+{
+    "name"       : "args",
+    "displayName": "Using YUIDoc",
+    "description": "Understanding YUIDoc command line arguments and usage.",
+    "author"     : "davglass",
+    "projectBase": "../"
+}

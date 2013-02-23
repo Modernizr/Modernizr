@@ -1,0 +1,283 @@
+<p>Generating documentation with YUIDoc is as simple as 
+going to the top of your source tree and running:</p>
+```terminal
+$ yuidoc .
+```
+<p>However, you can configure YUIDoc's behavior further using a
+by providing <a href="#command-line">command line options</a>, 
+a <a href="#json">JSON configuration file</a>, or even both.
+This section discusses the `yuidoc` command line tool in more detail.</p>
+
+<h2 id="command-line">Running YUIDoc on the Command Line</h2>
+
+<p>Certain `yuidoc` command line options correspond to entries in the  
+the <a href="#json">`yuidoc.json` configuration file</a>.
+Command line options always take priority.</p>
+
+```terminal
+{{>help}}
+```
+
+<h3 id="server">Running YUIDoc in Server Mode</h3>
+
+<p>
+Most documentation tools (including YUIDoc) involve some sort of build process.
+However, YUIDoc provides a unique feature that allows you to short-circuit this.
+</p>
+<p>
+In <dfn>server mode</dfn>, 
+YUIDoc fires up a small Node.js based server and 
+begins parsing and displaying documentation in real time.
+This greatly speeds up the documentation authoring process,
+as you can just edit your source code and 
+preview changes with a simple browser reload,
+rather than waiting for a build.
+</p>
+
+<p>To activate server mode on `localhost:3000`, run `yuidoc --server`.
+You can optionally specify an alternate port:</p> 
+
+```terminal
+    yuidoc --server
+        or
+    yuidoc --server 5000
+```
+
+Then visit:
+
+```terminal
+    http://127.0.0.1:3000/
+        or
+    http://127.0.0.1:5000/
+```
+
+<p>
+Any changes you make to your YUIDoc comment blocks. 
+will be reflected when you reload the browser. 
+It's that simple!
+</p>
+
+<p><strong>NOTE:</strong> Server mode is not
+a replacement for building and hosting your documentation,
+just a handy previewing tool. 
+For production, you should generate static HTML pages and 
+host them on a real web server.</p> 
+
+<h3>Working with YUIDoc Parsed Data</h3>
+
+<p>
+YUIDoc generates a `data.json` file after it parses your API documentation. 
+The `external.data` config option enables you to import a YUIDoc `data.json` file 
+from another project and mix it into your own documentation. 
+</p>
+
+<p>
+This feature is handy when you are extending another project and would like to link back
+to their API documentation. For example, importing YUI Library's `data.json`
+file would enable YUIDoc to automatically link back to `Base`, `EventTarget`, and
+other core YUI objects that your own API might be extending or mixing in. 
+</p>
+
+<p>
+Currently, importing external data enables YUIDoc to resolve HTML links `@extends` or `@use` keywords, 
+but does <em>not</em> cause YUIDoc to generate complete documentation for the external API.
+Future versions of YUIDoc may provide the option to mix in the data natively 
+and reproduce the external API right along with your own.
+</p>
+
+<h4 id="external-data">Adding External YUIDoc Data to Your Project</h4>
+
+<p>
+    Create an `external` object under the `options` object in your `yuidoc.json` file and give it
+    a property called `data` pointing to the URL of the external `data.json` file you wish to import. 
+    `data` can be a string or an array of strings. 
+</p>
+
+```
+{
+  "options": {
+    "external": {
+      "data": "http://yuilibrary.com/yui/docs/api/data.json"
+    }
+  }
+}
+```
+
+<p>
+<strong>NOTE:</strong> YUIDoc currently fetches external data on each run with no caching. 
+</p>
+
+
+
+<h2 id="json">Configuring YUIDoc with yuidoc.json</h2>
+
+<p>
+You can also store most YUIDoc configurables in a `yuidoc.json` file.
+As mentioned in the <a href="#command-line">command line arguments</a> section,
+command line options always take priority over `yuidoc.json` configuration values.</p>
+</p>
+<p>
+The `yuidoc.json` file must reside in a directory somewhere under where you execute `yuidoc`. 
+YUIDoc will scan the tree for this file before doing anything else.
+</p>
+
+<p>A short example `yuidoc.json` file would resemble:</p>
+
+```
+{
+    "name": "The Foo API",
+    "description": "The Foo API: a library for doing X, Y, and Z",
+    "version": "1.2.1",
+    "url": "http://example.com/",
+    "options": {
+        "outdir": "../build/apidocs"
+    }
+}
+```
+
+See below for <a href="#ex-yui3">more</a> <a href="#ex-yuidoc">examples</a>.
+
+<h3>yuidoc.json Fields</h3>
+
+<h4>General YUIDoc Project Information</h4>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td>`name`</th>
+    <td>A short name for the project.</td>
+</tr>
+<tr>
+    <td>`description`</th>
+    <td>A one or two sentence description of the project.</td>
+</tr>
+<tr>
+    <td>`version`</th>
+    <td>The project's current version, as some kind of meaningful string.</td>
+</tr>
+<tr>
+    <td>`url`</th>
+    <td>The project's primary URL. This does not necessarily have to be the URL of the generated API documentation.</td>
+</tr>
+<tr>
+    <td>`logo`</th>
+    <td>
+        The logo to add to the header of all generated HTML documentation. 
+        If you do not provide a header, YUIDoc will use the YUI logo by default.
+    </td>
+</tr>
+</table>
+
+<h4>YUIDoc Options</h4>
+
+<p>Within the `options` object, you can provide any of the following fields:</p>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td>`linkNatives`</th>
+    <td>Selects whether to autolink native types such as `String` and `Object` over to the Mozilla Developer Network. </td>
+</tr>
+<tr>
+    <td>`attributesEmit`</th>
+    <td>
+        Selects whether YUIDoc should autogenerate documentation for change events 
+        generated by the <a href="http://yuilibrary.com/yui/docs/api/classes/Attribute.html">YUI Attribute API</a>.
+        When a YUI attribute `foo` changes its value, 
+        YUI automatically fires a custom event named `fooChange`.
+        Setting `attributesEmit` to `true` instructs YUIDoc to
+        automatically generate documentation for each of these events.
+        You can set this value to `false` if you think that your audience
+        is well aware of change events and would not benefit from this extra verbiage.
+    </td>
+</tr>
+<tr>
+    <td>`selleck`</th>
+    <td>
+        Selects whether to add <a href="http://rgrove.github.com/selleck/">Selleck</a> metadata. 
+        If `true`, YUIDoc searches for a `component.json` file above the source tree and 
+        attaches that data to the module data as extra information.
+    </td>
+</tr>
+<tr>
+    <td>`ignorePaths`</th>
+    <td>Specifies an array of string paths to ignore when using shell globbing. This only removes top level items from the list to initally scan. Use `exclude` to remove specific directories.</td>
+</tr>
+<tr>
+    <td>`exclude`</th>
+    <td>Specify a comma separated list of names you want to exclude from parses when YUIDoc recurses the source tree.</td>
+</tr>
+<tr>
+    <td>`paths`</th>
+    <td>
+        Specifies a single string `glob` or array of globs 
+        to use when searching the source tree for docs to parse.
+    </td>
+</tr>
+<tr>
+    <td>`outdir`</th>
+    <td>Specifies the directory in which to place the rendered HTML files and assets.</td>
+</tr>
+<tr>
+    <td>`external.data`</th>
+    <td>
+        Provides a link to an external `data.json` file to merge into the local api docs. 
+        For more information, refer to the <a href="#external-data">external data example</a>.
+    </td>
+</tr>
+</table>
+
+<h3 id="ex-yui3">Example: YUI 3 Library API </h3>
+
+<p>
+This sample `yuidoc.json` file is used in the <a href="http://yuilibrary.com/">YUI 3</a>
+project:
+</p>
+
+```
+{
+    "name": "YUI 3",
+    "description": "YUI 3 JavaScript Framework",
+    "version": "3.5.0",
+    "url": "http://yuilibrary.com/",
+    "options": {
+        "linkNatives": "true",        
+        "attributesEmit": "true",
+        "selleck": "true",
+        "ignorePaths": [ "simpleyui" ],
+        "paths": "*/js",
+        "outdir": "../api-js"
+    }
+}
+```
+
+<h3 id="ex-yuidoc">Example: YUIDoc API</h3>
+
+<p>This sample `yuidoc.json` file is used in the YUIDoc project itself:</p>
+
+```
+{
+  "name": "YUIDoc",
+  "description": "YUIDoc documentation tool written in Javascript",
+  "version": "0.2.38",
+  "url": "http://yuilibrary.com/projects/yuidoc",
+  "logo": "http://yuilibrary.com/img/yui-logo.png",
+  "options": {
+    "external": {
+      "data": "http://yuilibrary.com/yui/docs/api/data.json"
+    },
+    "linkNatives": "true",
+    "attributesEmit": "true",
+    "paths": [
+      "./lib"
+    ],
+    "outdir": "./output/api"
+  }
+}
+```

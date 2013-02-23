@@ -38,7 +38,7 @@ var map = {
   applicationcache : 'offline-apps',
   websqldatabase : 'sql-storage',
   svg : 'svg',
-  touch : 'touch',
+  touchevents : 'touch',
   csstransforms : 'transforms2d',
   csstransforms3d : 'transforms3d',
   video: 'video',

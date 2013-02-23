@@ -1,0 +1,1 @@
+Options are passed to [jade](https://github.com/visionmedia/jade#public-api).

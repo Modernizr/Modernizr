@@ -1,0 +1,28 @@
+{
+  "name": "Modernizr",
+  "version": "3.0.0pre",
+  "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.3.17",
+    "grunt-contrib": "~0.3.0"
+  },
+  "scripts": {
+    "test": "grunt qunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Modernizr/Modernizr.git"
+  },
+  "keywords": [
+    "html5",
+    "css3",
+    "browser",
+    "feature detection"
+  ],
+  "author": "Faruk Ates, Paul Irish, Alex Sexton, Ryan Seddon, Alexander Farkas",
+  "license": "MIT"
+}

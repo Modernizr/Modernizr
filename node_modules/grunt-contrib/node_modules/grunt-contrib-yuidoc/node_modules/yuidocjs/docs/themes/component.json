@@ -1,0 +1,7 @@
+{
+    "name"       : "themes",
+    "displayName": "YUIDoc Themes",
+    "description": "How to modify the default YUIDoc theme.",
+    "author"     : "davglass",
+    "projectBase": "../"
+}
