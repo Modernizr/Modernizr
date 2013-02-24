@@ -2,6 +2,7 @@
 {
   "name": "Box Shadow",
   "property": "boxshadow",
+  "caniuse": "css-boxshadow",
   "aliases": [],
   "tags": ["css"],
   "knownBugs": ["WebOS false positives on this test."],

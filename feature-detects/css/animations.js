@@ -2,6 +2,7 @@
 {
   "name": "CSS Animations",
   "property": "cssanimations",
+  "caniuse": "css-animation",
   "aliases": [],
   "tags": ["css"],
   "knownBugs": [],
