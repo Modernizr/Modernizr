@@ -65,6 +65,10 @@ file.walkSync(viewRoot, function (start, dirs, files) {
       metadata.name = metadata.amdPath;
     }
 
+    if (!metadata.polyfills) {
+      metadata.polyfills = [];
+    }
+
     if (!metadata.async) {
       metadata.async = false;
     }

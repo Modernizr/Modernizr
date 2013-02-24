@@ -3,6 +3,7 @@
   "name": "a[download] Attribute",
   "property": "adownload",
   "caniuse" : "download",
+  "polyfills": [],
   "aliases": [],
   "tags": ["media", "attribute"],
   "doc": null,
