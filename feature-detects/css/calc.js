@@ -13,7 +13,15 @@
 }
 !*/
 /* DOC
-Method of allowing calculated values for length units, i.e. width: calc(100%-3em)
+
+Method of allowing calculated values for length units. For example:
+
+```css
+#elem {
+  width: calc(100% - 3em);
+}
+```
+
 */
 define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
   Modernizr.addTest('csscalc', function() {
