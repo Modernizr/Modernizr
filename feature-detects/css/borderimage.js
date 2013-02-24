@@ -7,7 +7,8 @@
   "knownBugs": [],
   "doc" : null,
   "authors": [],
-  "references": []
+  "warnings": [],
+  "notes": []
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
