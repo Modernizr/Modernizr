@@ -7,7 +7,8 @@
   "knownBugs": [],
   "doc" : null,
   "authors": ["Addy Osmani"],
-  "references": [{
+  "warnings" : [],
+  "notes": [{
     "name": "API Documentation",
     "href": "https://wiki.mozilla.org/Audio_Data_API"
   }]

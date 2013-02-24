@@ -7,7 +7,8 @@
   "knownBugs": [],
   "doc" : null,
   "authors": ["Paul Sayre"],
-  "references": [{
+  "warnings": [],
+  "notes": [{
     "name": "MDN Docs",
     "href": "http://developer.mozilla.org/en/DOM/window.navigator.mozBattery"
   }]

@@ -110,6 +110,7 @@
     "test/window/framed",
     "test/workers/blobworkers",
     "test/workers/dataworkers",
+    "test/workers/sharedworkers",
     "test/workers/webworkers",
     "test/applicationcache",
     "test/webrtc/getusermedia",

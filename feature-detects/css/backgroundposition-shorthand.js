@@ -7,7 +7,8 @@
   "knownBugs": [],
   "doc" : null,
   "authors": [],
-  "references": [{
+  "warnings": [],
+  "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/CSS/background-position"
   }, {
