@@ -1,8 +1,25 @@
+/*!
+{
+  "name": "Background Repeat",
+  "property": ["bgrepeatspace", "bgrepeatround"],
+  "aliases": [],
+  "tags": ["css"],
+  "knownBugs": [],
+  "doc" : null,
+  "authors": ["Ryan Seddon"],
+  "references": [{
+    "name": "MDN Docs",
+    "href": "http://developer.mozilla.org/en/CSS/background-repeat"
+  }, {
+    "name": "Test Page",
+    "href": "http://jsbin.com/uzesun/"
+  }, {
+    "name": "Demo",
+    "href": "http://jsfiddle.net/ryanseddon/yMLTQ/6/"
+  }]
+}
+!*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
-  // developer.mozilla.org/en/CSS/background-repeat
-
-  // test page: jsbin.com/uzesun/
-  // http://jsfiddle.net/ryanseddon/yMLTQ/6/
 
   function getBgRepeatValue( elem ) {
     return (window.getComputedStyle ?

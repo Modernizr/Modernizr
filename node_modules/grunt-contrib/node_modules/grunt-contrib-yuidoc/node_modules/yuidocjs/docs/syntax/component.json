@@ -1,7 +1,0 @@
-{
-    "name"       : "syntax",
-    "displayName": "YUIDoc Syntax Reference",
-    "description": "Detailed instructions for writing YUIDoc comment blocks.",
-    "author"     : "davglass",
-    "projectBase": "../"
-}
