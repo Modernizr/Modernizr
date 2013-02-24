@@ -6,9 +6,9 @@
   "aliases": [],
   "polyfills": [{
     "name": "css3-multi-column.js",
-    "author": "Cdric Savarese",
+    "authors": ["Cdric Savarese"],
     "href": "http://www.csscripting.com/css-multi-column/",
-    "license": "CC-GNU LGPL",
+    "licenses": ["CC-GNU LGPL"],
     "notes": [
       "Supported Properties: column-count, column-width, column-gap, column-rule.",
       "Unsupported Properties: column-rule-width (use column-rule instead), column-rule-style (use column-rule instead), column-rule-color (use column-rule instead), column-span, column-width-policy, column-space-distribution"
