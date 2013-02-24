@@ -2,6 +2,7 @@
 {
   "name": "Border Image",
   "property": "borderimage",
+  "caniuse": "border-image",
   "aliases": [],
   "tags": ["css"],
   "knownBugs": [],

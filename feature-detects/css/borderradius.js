@@ -2,6 +2,7 @@
 {
   "name": "Border Radius",
   "property": "borderradius",
+  "caniuse": "border-radius",
   "aliases": [],
   "tags": ["css"],
   "knownBugs": [],
