@@ -7,7 +7,8 @@
   "knownBugs": ["This will false positive in Opera Mini -- http://github.com/Modernizr/Modernizr/issues/396"],
   "doc" : null,
   "authors": [],
-  "references": [{
+  "warnings": [],
+  "notes": [{
     "name": "Related Issue",
     "href": "http://github.com/Modernizr/Modernizr/issues/396"
   }]

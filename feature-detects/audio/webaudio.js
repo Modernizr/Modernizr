@@ -2,6 +2,7 @@
 {
   "name": "Web Audio API",
   "property": "webaudio",
+  "caniuse": "audio-api",
   "aliases": [],
   "tags": ["audio", "media"],
   "knownBugs": [],

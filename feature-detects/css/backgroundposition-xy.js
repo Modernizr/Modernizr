@@ -7,7 +7,8 @@
   "knownBugs": [],
   "doc" : null,
   "authors": ["Allan Lei", "Brandom Aaron"],
-  "references": [{
+  "warnings": [],
+  "notes": [{
     "name": "Demo",
     "href": "http://jsfiddle.net/allanlei/R8AYS/"
   }, {

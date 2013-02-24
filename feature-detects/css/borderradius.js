@@ -7,7 +7,8 @@
   "knownBugs": [],
   "doc" : null,
   "authors": [],
-  "references": [{
+  "warnings": [],
+  "notes": [{
     "name": "Comprehensive Compat Chart",
     "href": "http://muddledramblings.com/table-of-css3-border-radius-compliance"
   }]

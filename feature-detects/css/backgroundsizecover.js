@@ -7,7 +7,8 @@
   "knownBugs": [],
   "doc" : null,
   "authors": [],
-  "references": [{
+  "warnings": [],
+  "notes": [{
     "name" : "MDN Docs",
     "href": "http://developer.mozilla.org/en/CSS/background-size"
   }]
