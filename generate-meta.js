@@ -36,7 +36,7 @@ file.walkSync(viewRoot, function (start, dirs, files) {
     if (docmatches && docmatches[1]) {
       docs = marked(docmatches[1].trim());
     }
-    metadata.docs = docs;
+    metadata.doc = docs;
 
     var deps = [];
     if (depMatches && depMatches[1]) {
@@ -118,4 +118,4 @@ file.walkSync(viewRoot, function (start, dirs, files) {
   });
 });
 
-console.log(JSON.stringify(tests), null, "  ");
+console.log(JSON.stringify(tests, null, "  "));
