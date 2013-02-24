@@ -38,8 +38,12 @@ file.walkSync(viewRoot, function (start, dirs, files) {
       metadata.async = false;
     }
 
-    if (!metadata.references) {
-      metadata.references = [];
+    if (!metadata.notes) {
+      metadata.notes = [];
+    }
+
+    if (!metadata.warnings) {
+      metadata.warnings = [];
     }
 
     if (!metadata.helptext) {

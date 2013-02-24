@@ -7,7 +7,8 @@
   "knownBugs": [],
   "doc" : null,
   "authors": ["Addy Osmani"],
-  "references": [{
+  "warnings": [],
+  "notes": [{
     "name": "W3 Specification",
     "href": "https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html"
   }]

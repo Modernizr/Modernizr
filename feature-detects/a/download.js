@@ -1,13 +1,14 @@
 /*!
 {
-  "name" : "a[download] Attribute",
-  "property" : "adownload",
-  "aliases" : [],
-  "tags" : ["media"],
-  "doc" : null,
+  "name": "a[download] Attribute",
+  "property": "adownload",
+  "aliases": [],
+  "tags": ["media"],
+  "doc": null,
   "knownBugs": [],
-  "authors" : [],
-  "references" : [{
+  "authors": [],
+  "warnings": [],
+  "notes": [{
     "name": "WhatWG Reference",
     "href": "http://developers.whatwg.org/links.html#downloading-resources"
   }]

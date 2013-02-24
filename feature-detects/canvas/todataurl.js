@@ -8,7 +8,11 @@
   "knownBugs": [],
   "doc" : null,
   "authors": [],
-  "references": ["http://www.w3.org/TR/html5/the-canvas-element.html#dom-canvas-todataurl"]
+  "warnings": [],
+  "notes": [{
+    "name": "HTML5 Spec",
+    "href": "http://www.w3.org/TR/html5/the-canvas-element.html#dom-canvas-todataurl"
+  }]
 }
 !*/
 define(['Modernizr', 'addTest', 'createElement', 'test/canvas'], function( Modernizr, addTest, createElement ) {
