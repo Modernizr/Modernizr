@@ -99,8 +99,8 @@ file.walkSync(viewRoot, function (start, dirs, files) {
     }
 
     // If you want markdown parsed code minus the docs and metadata, this'll do it.
-    // On by default for now.
-    metadata.code =  marked('```javascript\n' + test.replace(metaRE, '').replace(docRE, '') + '\n```');
+    // Off by default for now.
+    // metadata.code =  marked('```javascript\n' + test.replace(metaRE, '').replace(docRE, '') + '\n```');
 
     if (!metadata.tags) {
       metadata.tags = [];
@@ -118,4 +118,4 @@ file.walkSync(viewRoot, function (start, dirs, files) {
   });
 });
 
-console.log(JSON.stringify(tests, null, "  "));
+console.log(JSON.stringify(tests), null, "  ");
