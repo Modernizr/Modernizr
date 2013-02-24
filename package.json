@@ -5,7 +5,9 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "file": "~0.2.1"
+  },
   "devDependencies": {
     "grunt": "~0.3.17",
     "grunt-contrib": "~0.3.0"
