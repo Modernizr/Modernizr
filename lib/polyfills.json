@@ -74,5 +74,12 @@
       "Supported Properties: column-count, column-width, column-gap, column-rule.",
       "Unsupported Properties: column-rule-width (use column-rule instead), column-rule-style (use column-rule instead), column-rule-color (use column-rule instead), column-span, column-width-policy, column-space-distribution"
     ]
+  },
+  "polyfilter": {
+    "name": "Polyfilter",
+    "authors": ["Christian \"Schepp\" Schaefer"],
+    "href": "https://github.com/Schepp/CSS-Filters-Polyfill",
+    "licenses": ["MIT"],
+    "notes": ["CSS filter effects for Chrome 20+, Safari 6+, Firefox 4+, IE 6 - 9 and some mobile browsers."]
   }
 }
