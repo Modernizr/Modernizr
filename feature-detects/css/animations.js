@@ -3,6 +3,7 @@
   "name": "CSS Animations",
   "property": "cssanimations",
   "caniuse": "css-animation",
+  "polyfills": ["transformie", "csssandpaper"]
   "aliases": [],
   "tags": ["css"],
   "knownBugs": [],

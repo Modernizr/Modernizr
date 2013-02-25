@@ -11,8 +11,7 @@
   "warnings": [],
   "notes": []
 }
-!*/
-/* DOC
+!*//* DOC
 
 Method of allowing calculated values for length units. For example:
 

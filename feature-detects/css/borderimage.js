@@ -3,6 +3,7 @@
   "name": "Border Image",
   "property": "borderimage",
   "caniuse": "border-image",
+  "polyfills": ["css3pie"],
   "aliases": [],
   "tags": ["css"],
   "knownBugs": [],
