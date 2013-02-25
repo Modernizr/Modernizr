@@ -3,12 +3,8 @@
   "name": "Box Sizing",
   "property": "boxsizing",
   "caniuse": "css3-boxsizing",
-  "aliases": [],
+  "polyfills": ["borderboxmodel", "boxsizingpolyfill", "borderbox"],
   "tags": ["css"],
-  "knownBugs": [],
-  "doc" : null,
-  "authors": [],
-  "warnings": [],
   "notes": [{
     "name": "MDN Docs",
     "href": "http://developer.mozilla.org/en/CSS/box-sizing"
@@ -19,7 +15,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('boxsizing', function() {
-    return testAllProps('boxSizing') && (document.documentMode === undefined || document.documentMode > 7);
-  });
+  Modernizr.addTest('boxsizing', testAllProps('boxSizing') && (document.documentMode === undefined || document.documentMode > 7));
 });

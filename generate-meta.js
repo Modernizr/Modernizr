@@ -1,6 +1,7 @@
 var fs = require('fs');
 var file = require('file');
 var marked = require('marked');
+var polyfills = require('./polyfills.json');
 
 var viewRoot = file.path.abspath(__dirname + '/feature-detects');
 var tests = [];
@@ -65,9 +66,18 @@ file.walkSync(viewRoot, function (start, dirs, files) {
       metadata.name = metadata.amdPath;
     }
 
-    if (!metadata.polyfills) {
-      metadata.polyfills = [];
+    var pfs = [];
+    if (metadata.polyfills && metadata.polyfills.length) {
+      metadata.polyfills.forEach(function(polyname) {
+        if ( polyfills[polyname] ) {
+          pfs.push(polyfills[polyname]);
+        }
+        else {
+          throw new Error("Polyfill not found in `" + file + "`: " + polyname);
+        }
+      });
     }
+    metadata.polyfills = pfs;
 
     if (!metadata.async) {
       metadata.async = false;
