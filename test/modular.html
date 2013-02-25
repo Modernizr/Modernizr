@@ -193,7 +193,7 @@
 
 <script src="r.js"></script>
 
-<script src="node_modules/underscore/underscore-min.js"></script>
+<script src="/node_modules/underscore/underscore-min.js"></script>
 <script>
   var buildButton = document.getElementById('build');
   var configArea = document.getElementById('config-json');
@@ -236,11 +236,11 @@
       return;
     }
 
-    require(['src/generate'], function( generate ) {
+    require(['../src/generate'], function( generate ) {
       var modInit = generate(config);
 
       requirejs.optimize({
-        "baseUrl" : "src/",
+        "baseUrl" : "../src/",
         "optimize"    : "none",
         "optimizeCss" : "none",
         "paths" : {
