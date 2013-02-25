@@ -2,12 +2,7 @@
 {
   "name": "Background Position Shorthand",
   "property": "bgpositionshorthand",
-  "aliases": [],
   "tags": ["css"],
-  "knownBugs": [],
-  "doc" : null,
-  "authors": [],
-  "warnings": [],
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/CSS/background-position"
@@ -21,7 +16,7 @@
 }
 !*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
-    Modernizr.addTest('bgpositionshorthand', function() {
+  Modernizr.addTest('bgpositionshorthand', function() {
     var elem = createElement('a');
     var eStyle = elem.style;
     var val = 'right 10px bottom 10px';

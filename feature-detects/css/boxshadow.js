@@ -3,13 +3,8 @@
   "name": "Box Shadow",
   "property": "boxshadow",
   "caniuse": "css-boxshadow",
-  "aliases": [],
   "tags": ["css"],
-  "knownBugs": ["WebOS false positives on this test."],
-  "doc" : null,
-  "authors": [],
-  "warnings": [],
-  "notes": []
+  "knownBugs": ["WebOS false positives on this test."]
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {

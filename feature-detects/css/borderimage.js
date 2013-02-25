@@ -3,13 +3,8 @@
   "name": "Border Image",
   "property": "borderimage",
   "caniuse": "border-image",
-  "aliases": [],
-  "tags": ["css"],
-  "knownBugs": [],
-  "doc" : null,
-  "authors": [],
-  "warnings": [],
-  "notes": []
+  "polyfills": ["css3pie"],
+  "tags": ["css"]
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {

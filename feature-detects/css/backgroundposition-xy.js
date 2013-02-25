@@ -2,12 +2,8 @@
 {
   "name": "Background Position XY",
   "property": "bgpositionxy",
-  "aliases": [],
   "tags": ["css"],
-  "knownBugs": [],
-  "doc" : null,
   "authors": ["Allan Lei", "Brandom Aaron"],
-  "warnings": [],
   "notes": [{
     "name": "Demo",
     "href": "http://jsfiddle.net/allanlei/R8AYS/"

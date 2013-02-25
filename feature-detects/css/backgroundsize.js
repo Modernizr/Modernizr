@@ -2,12 +2,8 @@
 {
   "name": "Background Size",
   "property": "backgroundsize",
-  "aliases": [],
   "tags": ["css"],
-  "knownBugs": ["This will false positive in Opera Mini -- http://github.com/Modernizr/Modernizr/issues/396"],
-  "doc" : null,
-  "authors": [],
-  "warnings": [],
+  "knownBugs": ["This will false positive in Opera Mini - http://github.com/Modernizr/Modernizr/issues/396"],
   "notes": [{
     "name": "Related Issue",
     "href": "http://github.com/Modernizr/Modernizr/issues/396"
