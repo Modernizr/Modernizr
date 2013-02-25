@@ -81,5 +81,12 @@
     "href": "https://github.com/Schepp/CSS-Filters-Polyfill",
     "licenses": ["MIT"],
     "notes": ["CSS filter effects for Chrome 20+, Safari 6+, Firefox 4+, IE 6 - 9 and some mobile browsers."]
+  },
+  "flexie": {
+    "name": "Flexie",
+    "authors": ["Richard Herrera"],
+    "href": "http://github.com/doctyper/flexie",
+    "licenses": ["MIT"],
+    "notes": ["Flexible box model - old spec from 2009. (flexbox) Supports: box-orient, box-align, box-direction, box-pack, box-flex, box-ordinal-group"]
   }
 }
