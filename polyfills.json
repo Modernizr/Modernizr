@@ -57,7 +57,7 @@
     "href": "https://github.com/Schepp/box-sizing-polyfill",
     "licenses": ["LGPL3"],
     "notes": ["box-sizing: border-box; for IE6 and IE7 via Microsoft's proprietary CSS behavior / .htc-script"]
-  }
+  },
   "borderbox": {
     "name": "Borderbox for Compass",
     "authors": ["Richard Herrera"],

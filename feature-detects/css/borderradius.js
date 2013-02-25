@@ -2,7 +2,7 @@
 {
   "name": "Border Radius",
   "property": "borderradius",
-  "caniuse": "border-radius",,
+  "caniuse": "border-radius",
   "polyfills": ["css3pie"],
   "tags": ["css"],
   "notes": [{

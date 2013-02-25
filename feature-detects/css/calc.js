@@ -4,7 +4,7 @@
   "property": "csscalc",
   "caniuse": "calc",
   "tags": ["css"],
-  "authors": ["@calvein"],
+  "authors": ["@calvein"]
 }
 !*//* DOC
 
