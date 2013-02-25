@@ -40,7 +40,7 @@ visit <url>/tests
 
 ### To see simple build in browser:
 
-serve the root dir, `<url>/modular.html`
+serve the root dir, `<url>/test/modular.html`
 
 
 ### To see the build tool:
