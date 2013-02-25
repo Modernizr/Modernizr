@@ -3,13 +3,7 @@
   "name": "a[download] Attribute",
   "property": "adownload",
   "caniuse" : "download",
-  "polyfills": [],
-  "aliases": [],
   "tags": ["media", "attribute"],
-  "doc": null,
-  "knownBugs": [],
-  "authors": [],
-  "warnings": [],
   "notes": [{
     "name": "WhatWG Reference",
     "href": "http://developers.whatwg.org/links.html#downloading-resources"
@@ -22,8 +16,5 @@ When used on an `<a>`, this attribute signifies that the resource it points to s
 
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
-  // a[download] attribute
-  //
-
   Modernizr.addTest('adownload', 'download' in createElement('a'));
 });

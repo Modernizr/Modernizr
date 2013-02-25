@@ -3,13 +3,8 @@
   "name": "CSS Calc",
   "property": "csscalc",
   "caniuse": "calc",
-  "aliases": [],
   "tags": ["css"],
-  "knownBugs": [],
-  "doc" : null,
   "authors": ["@calvein"],
-  "warnings": [],
-  "notes": []
 }
 !*//* DOC
 

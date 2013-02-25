@@ -2,13 +2,8 @@
 {
   "name": "canvas.toDataURL type support",
   "property": ["todataurljpeg", "todataurlwebp"],
-  "aliases": [],
   "tags": ["canvas"],
   "async" : true,
-  "knownBugs": [],
-  "doc" : null,
-  "authors": [],
-  "warnings": [],
   "notes": [{
     "name": "HTML5 Spec",
     "href": "http://www.w3.org/TR/html5/the-canvas-element.html#dom-canvas-todataurl"
@@ -19,7 +14,6 @@ define(['Modernizr', 'addTest', 'createElement', 'test/canvas'], function( Moder
 
   // This is an async test
   Modernizr.addAsyncTest(function () {
-    // This test is asynchronous. Watch out.
     if (!Modernizr.canvas) {
       Modernizr._addTest('todataurljpeg', false, ['todataurlwebp']);
       return false;

@@ -2,12 +2,7 @@
 {
   "name": "Background Size Cover",
   "property": "bgsizecover",
-  "aliases": [],
   "tags": ["css"],
-  "knownBugs": [],
-  "doc" : null,
-  "authors": [],
-  "warnings": [],
   "notes": [{
     "name" : "MDN Docs",
     "href": "http://developer.mozilla.org/en/CSS/background-size"

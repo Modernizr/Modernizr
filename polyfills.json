@@ -43,5 +43,36 @@
     "href": "http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/",
     "licenses": ["MIT"],
     "notes": []
+  },
+  "borderboxmodel": {
+    "name": "borderBoxModel",
+    "authors": ["Alberto Gasparin"],
+    "href": "https://github.com/albertogasparin/borderBoxModel",
+    "licenses": ["MIT"],
+    "notes": ["box-sizing: border-box; javascript polyfill for IE6+"]
+  },
+  "boxsizingpolyfill": {
+    "name": "box-sizing-polyfill",
+    "authors": ["Christian \"Schepp\" Schaefer"],
+    "href": "https://github.com/Schepp/box-sizing-polyfill",
+    "licenses": ["LGPL3"],
+    "notes": ["box-sizing: border-box; for IE6 and IE7 via Microsoft's proprietary CSS behavior / .htc-script"]
+  }
+  "borderbox": {
+    "name": "Borderbox for Compass",
+    "authors": ["Richard Herrera"],
+    "href": "https://github.com/doctyper/compass-borderbox",
+    "licenses": [],
+    "notes": ["box-sizing: border-box; polyfill for SASS/Compass. Outputs equivalent CSS for IE6 & 7"]
+  },
+  "css3multicolumnjs": {
+    "name": "css3-multi-column.js",
+    "authors": ["Cdric Savarese"],
+    "href": "http://www.csscripting.com/css-multi-column/",
+    "licenses": ["CC-GNU LGPL"],
+    "notes": [
+      "Supported Properties: column-count, column-width, column-gap, column-rule.",
+      "Unsupported Properties: column-rule-width (use column-rule instead), column-rule-style (use column-rule instead), column-rule-color (use column-rule instead), column-span, column-width-policy, column-space-distribution"
+    ]
   }
 }

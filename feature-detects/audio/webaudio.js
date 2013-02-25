@@ -4,12 +4,8 @@
   "property": "webaudio",
   "caniuse": "audio-api",
   "polyfills": ["xaudiojs", "dynamicaudiojs", "audiolibjs"],
-  "aliases": [],
   "tags": ["audio", "media"],
-  "knownBugs": [],
-  "doc" : null,
   "authors": ["Addy Osmani"],
-  "warnings": [],
   "notes": [{
     "name": "W3 Specification",
     "href": "https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html"

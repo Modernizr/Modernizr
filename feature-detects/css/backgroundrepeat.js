@@ -2,12 +2,8 @@
 {
   "name": "Background Repeat",
   "property": ["bgrepeatspace", "bgrepeatround"],
-  "aliases": [],
   "tags": ["css"],
-  "knownBugs": [],
-  "doc" : null,
   "authors": ["Ryan Seddon"],
-  "warnings": [],
   "notes": [{
     "name": "MDN Docs",
     "href": "http://developer.mozilla.org/en/CSS/background-repeat"

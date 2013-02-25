@@ -2,21 +2,17 @@
 {
   "name": "Low Battery Level",
   "property": "lowbattery",
-  "aliases": [],
   "tags": ["hardware", "mobile"],
-  "knownBugs": [],
-  "doc" : null,
   "authors": ["Paul Sayre"],
-  "warnings": [],
   "notes": [{
     "name": "MDN Docs",
     "href": "http://developer.mozilla.org/en/DOM/window.navigator.mozBattery"
   }]
 }
-!*/
+!*//* DOC
+Enable a developer to remove CPU intensive CSS/JS when battery is low
+*/
 define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
-  // Enable a developer to remove CPU intensive CSS/JS when battery is low
-
   Modernizr.addTest('lowbattery', function() {
     var minLevel = 0.20;
     var battery = prefixed('battery', navigator);
