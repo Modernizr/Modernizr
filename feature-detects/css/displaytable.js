@@ -26,6 +26,6 @@ define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
     var ret;
     var child = elem.children;
     ret = child[0].offsetLeft < child[1].offsetLeft;
-    Modernizr.addTest('display-table', ret);
-  }, 2);
+    Modernizr.addTest('displaytable', ret, { aliases: ['display-table'] });
+  },2);
 });
