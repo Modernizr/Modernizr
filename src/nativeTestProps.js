@@ -34,9 +34,7 @@ define(['injectElementWithStyles', 'domToHyphenated'], function ( injectElementW
                         node.currentStyle)['position'] == 'absolute';
             });
         }
-        else {
-            return undefined;
-        }
+        return undefined;
     }
     return nativeTestProps;
 });

@@ -28,7 +28,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
     }
 
     // Otherwise do it properly
-    var afterInit;
+    var afterInit, i, j, prop, value;
 
     // If we don't have a style element, that means
     // we're running async or after the core tests,
@@ -48,15 +48,15 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
       }
     }
 
-    for ( var i in props ) {
-      var prop = props[i];
+    for ( i in props ) {
+      prop = props[i];
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
 
         // If values to test have been passed in, do a set-and-check test
         if (!is(values, 'undefined')) {
-          var j = values.length;
+          j = values.length;
           while (j--) {
-            var value = values[j];
+            value = values[j];
             mStyle.style[prop] = value;
             if (mStyle.style[prop] == value) {
               cleanElems();
