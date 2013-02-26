@@ -462,6 +462,12 @@ test('Modernizr.testProp()',function(){
          Modernizr.testProp('pointerEvents'),
          'results for `pointer-events` are consistent with a homegrown feature test');
 
+  // Native detection tests
+
+  equal(true, Modernizr.testProp('display'), 'Everyone supports display');
+  equal(true, Modernizr.testProp('display', 'block'), 'Everyone supports display:block');
+  equal(false, Modernizr.testProp('display', 'penguin'), 'Nobody supports display:penguin');
+
 });
 
 
@@ -477,6 +483,12 @@ test('Modernizr.testAllProps()',function(){
   equal(Modernizr.csstransitions, Modernizr.testAllProps('transition'), 'Modernizr result matches API result: csstransitions');
 
   equal(Modernizr.csscolumns, Modernizr.testAllProps('columnCount'), 'Modernizr result matches API result: csscolumns')
+
+  // Native detection tests
+
+  equal(true, Modernizr.testAllProps('display'), 'Everyone supports display');
+  equal(true, Modernizr.testAllProps('display', 'block'), 'Everyone supports display:block');
+  equal(false, Modernizr.testAllProps('display', 'penguin'), 'Nobody supports display:penguin');
 
 });
 

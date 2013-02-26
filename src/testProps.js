@@ -1,4 +1,4 @@
-define(['contains', 'mStyle', 'createElement'], function( contains, mStyle, createElement ) {
+define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], function( contains, mStyle, createElement, nativeTestProps, is ) {
   // testProps is a generic CSS / DOM property test.
 
   // In testing support for a given CSS property, it's legit to test:
@@ -17,8 +17,18 @@ define(['contains', 'mStyle', 'createElement'], function( contains, mStyle, crea
   // developing in WebKit or IE first don't end up with
   // browser-specific content by accident.
 
-  function testProps( props, prefixed ) {
-    var afterInit;
+  function testProps( props, prefixed, values ) {
+
+    // Try native detect first
+    if (!is(values, 'undefined')) {
+      var result = nativeTestProps(props, values);
+      if(!is(result, 'undefined')) {
+        return result;
+      }
+    }
+
+    // Otherwise do it properly
+    var afterInit, i, j, prop, value;
 
     // If we don't have a style element, that means
     // we're running async or after the core tests,
@@ -38,11 +48,26 @@ define(['contains', 'mStyle', 'createElement'], function( contains, mStyle, crea
       }
     }
 
-    for ( var i in props ) {
-      var prop = props[i];
+    for ( i in props ) {
+      prop = props[i];
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
-        cleanElems();
-        return prefixed == 'pfx' ? prop : true;
+
+        // If values to test have been passed in, do a set-and-check test
+        if (!is(values, 'undefined')) {
+          j = values.length;
+          while (j--) {
+            value = values[j];
+            mStyle.style[prop] = value;
+            if (mStyle.style[prop] == value) {
+              cleanElems();
+              return prefixed == 'pfx' ? prop : true;
+            }
+          }
+        }
+        else {
+          cleanElems();
+          return prefixed == 'pfx' ? prop : true;
+        }
       }
     }
     cleanElems();
