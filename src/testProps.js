@@ -1,4 +1,4 @@
-define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], function( contains, mStyle, createElement, nativeTestProps, is ) {
+define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'injectElementWithStyles', 'getComputedStyle'], function( contains, mStyle, createElement, nativeTestProps, is, injectElementWithStyles, getComputedStyle ) {
   // testProps is a generic CSS / DOM property test.
 
   // In testing support for a given CSS property, it's legit to test:
@@ -23,9 +23,12 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
     if (!is(values, 'undefined')) {
       var result = nativeTestProps(props, values);
       if(!is(result, 'undefined')) {
+        console.log('native');
         return result;
       }
     }
+
+    // Otherwise do it properly
     var afterInit;
 
     // If we don't have a style element, that means
@@ -45,12 +48,27 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
         delete mStyle.modElem;
       }
     }
-
+    console.log('manual');
     for ( var i in props ) {
       var prop = props[i];
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
-        cleanElems();
-        return prefixed == 'pfx' ? prop : true;
+
+        // If values to test have been passed in, do a set-and-check test
+        if (!is(values, 'undefined')) {
+          var j = values.length;
+          while (j--) {
+            var value = values[j];
+            mStyle.style[prop] = value;
+            if (mStyle.style[prop] == value) {
+              cleanElems();
+              return prefixed == 'pfx' ? prop : true;
+            }
+          }
+        }
+        else {
+          cleanElems();
+          return prefixed == 'pfx' ? prop : true;
+        }
       }
     }
     cleanElems();
