@@ -35,7 +35,7 @@ var license = '/*!\n' +
 module.exports = function( grunt ) {
   'use strict';
 
-  var modConfig = JSON.parse(grunt.file.read('config-all.json'));
+  var modConfig = JSON.parse(grunt.file.read('lib/config-all.json'));
 
   grunt.initConfig({
     pkg: '<json:package.json>',

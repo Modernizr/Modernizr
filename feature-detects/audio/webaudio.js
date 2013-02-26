@@ -1,6 +1,17 @@
+/*!
+{
+  "name": "Web Audio API",
+  "property": "webaudio",
+  "caniuse": "audio-api",
+  "polyfills": ["xaudiojs", "dynamicaudiojs", "audiolibjs"],
+  "tags": ["audio", "media"],
+  "authors": ["Addy Osmani"],
+  "notes": [{
+    "name": "W3 Specification",
+    "href": "https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html"
+  }]
+}
+!*/
 define(['Modernizr'], function( Modernizr ) {
-  // Web Audio API
-  // https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html
-  // By Addy Osmani
   Modernizr.addTest('webaudio', !!(window.webkitAudioContext || window.AudioContext));
 });

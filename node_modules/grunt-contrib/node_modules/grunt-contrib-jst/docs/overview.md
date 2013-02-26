@@ -1,1 +1,0 @@
-This task compiles Underscore compatible templates into functions that can be concatenated and minified with existing source files.

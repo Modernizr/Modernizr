@@ -1,7 +1,23 @@
-define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
-  // Method of allowing calculated values for length units, i.e. width: calc(100%-3em) http://caniuse.com/#search=calc
-  // By @calvein
+/*!
+{
+  "name": "CSS Calc",
+  "property": "csscalc",
+  "caniuse": "calc",
+  "tags": ["css"],
+  "authors": ["@calvein"]
+}
+!*//* DOC
 
+Method of allowing calculated values for length units. For example:
+
+```css
+#elem {
+  width: calc(100% - 3em);
+}
+```
+
+*/
+define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
   Modernizr.addTest('csscalc', function() {
     var prop = 'width:';
     var value = 'calc(10px);';
@@ -11,5 +27,4 @@ define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createEl
 
     return !!el.style.length;
   });
-
 });
