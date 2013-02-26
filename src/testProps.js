@@ -1,4 +1,4 @@
-define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'injectElementWithStyles', 'getComputedStyle'], function( contains, mStyle, createElement, nativeTestProps, is, injectElementWithStyles, getComputedStyle ) {
+define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], function( contains, mStyle, createElement, nativeTestProps, is ) {
   // testProps is a generic CSS / DOM property test.
 
   // In testing support for a given CSS property, it's legit to test:
