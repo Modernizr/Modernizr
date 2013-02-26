@@ -9,7 +9,7 @@ define(function() {
   ;(function(window, document) {
   /*jshint evil:true */
     /** version */
-    var version = '3.6.2pre';
+    var version = '3.6.2';
 
     /** Preset options */
     var options = window.html5 || {};
