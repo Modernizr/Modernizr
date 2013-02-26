@@ -23,7 +23,6 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
     if (!is(values, 'undefined')) {
       var result = nativeTestProps(props, values);
       if(!is(result, 'undefined')) {
-        console.log('native');
         return result;
       }
     }
@@ -48,7 +47,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
         delete mStyle.modElem;
       }
     }
-    console.log('manual');
+
     for ( var i in props ) {
       var prop = props[i];
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
