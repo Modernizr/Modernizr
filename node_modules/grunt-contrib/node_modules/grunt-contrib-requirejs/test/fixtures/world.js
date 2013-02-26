@@ -1,1 +1,0 @@
-define(function(){return "world";});

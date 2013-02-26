@@ -1,4 +1,4 @@
-define(['contains', 'mStyle', 'createElement'], function( contains, mStyle, createElement ) {
+define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], function( contains, mStyle, createElement, nativeTestProps, is ) {
   // testProps is a generic CSS / DOM property test.
 
   // In testing support for a given CSS property, it's legit to test:
@@ -17,7 +17,15 @@ define(['contains', 'mStyle', 'createElement'], function( contains, mStyle, crea
   // developing in WebKit or IE first don't end up with
   // browser-specific content by accident.
 
-  function testProps( props, prefixed ) {
+  function testProps( props, prefixed, values ) {
+
+    // Try native detect first
+    if (!is(values, 'undefined')) {
+      var result = nativeTestProps(props, values);
+      if(!is(result, 'undefined')) {
+        return result;
+      }
+    }
     var afterInit;
 
     // If we don't have a style element, that means
