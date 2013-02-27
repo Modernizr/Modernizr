@@ -7,9 +7,9 @@ define(function() {
    * @preserve HTML5 Shiv v3.6.2pre | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
    */
   ;(function(window, document) {
-    /*jshint evil:true */
+  /*jshint evil:true */
     /** version */
-    var version = '3.6.2pre';
+    var version = '3.6.2';
 
     /** Preset options */
     var options = window.html5 || {};
@@ -53,6 +53,7 @@ define(function() {
           );
         }());
       } catch(e) {
+        // assign a false positive if detection fails => unable to shiv
         supportsHtml5Styles = true;
         supportsUnknownElements = true;
       }
@@ -70,7 +71,7 @@ define(function() {
      */
     function addStyleSheet(ownerDocument, cssText) {
       var p = ownerDocument.createElement('p'),
-      parent = ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
+          parent = ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
 
       p.innerHTML = 'x<style>' + cssText + '</style>';
       return parent.insertBefore(p.lastChild, parent.firstChild);
@@ -86,7 +87,7 @@ define(function() {
       return typeof elements == 'string' ? elements.split(' ') : elements;
     }
 
-    /**
+      /**
      * Returns the data associated to the given document
      * @private
      * @param {Document} ownerDocument The document.
@@ -155,9 +156,9 @@ define(function() {
       }
       data = data || getExpandoData(ownerDocument);
       var clone = data.frag.cloneNode(),
-      i = 0,
-      elems = getElements(),
-      l = elems.length;
+          i = 0,
+          elems = getElements(),
+          l = elems.length;
       for(;i<l;i++){
         clone.createElement(elems[i]);
       }
@@ -188,16 +189,16 @@ define(function() {
       };
 
       ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
-                                                      'var n=f.cloneNode(),c=n.createElement;' +
-                                                      'h.shivMethods&&(' +
-                                                      // unroll the `createElement` calls
-                                                      getElements().join().replace(/\w+/g, function(nodeName) {
-        data.createElem(nodeName);
-        data.frag.createElement(nodeName);
-        return 'c("' + nodeName + '")';
-      }) +
+        'var n=f.cloneNode(),c=n.createElement;' +
+        'h.shivMethods&&(' +
+          // unroll the `createElement` calls
+          getElements().join().replace(/\w+/g, function(nodeName) {
+            data.createElem(nodeName);
+            data.frag.createElement(nodeName);
+            return 'c("' + nodeName + '")';
+          }) +
         ');return n}'
-                                                     )(html5, data.frag);
+      )(html5, data.frag);
     }
 
     /*--------------------------------------------------------------------------*/
@@ -216,11 +217,11 @@ define(function() {
 
       if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
         data.hasCSS = !!addStyleSheet(ownerDocument,
-                                      // corrects block display not defined in IE6/7/8/9
-                                      'article,aside,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
-                                        // adds styling not present in IE6/7/8/9
-                                        'mark{background:#FF0;color:#000}'
-                                     );
+          // corrects block display not defined in IE6/7/8/9
+          'article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
+          // adds styling not present in IE6/7/8/9
+          'mark{background:#FF0;color:#000}'
+        );
       }
       if (!supportsUnknownElements) {
         shivMethods(ownerDocument, data);
@@ -246,7 +247,7 @@ define(function() {
        * @memberOf html5
        * @type Array|String
        */
-      'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video',
+      'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup main mark meter nav output progress section summary time video',
 
       /**
        * current version of html5shiv
@@ -300,7 +301,204 @@ define(function() {
     // shiv the document
     shivDocument(document);
 
-  }(this, document));
+    /*------------------------------- Print Shiv -------------------------------*/
 
+    /** Used to filter media types */
+    var reMedia = /^$|\b(?:all|print)\b/;
+
+    /** Used to namespace printable elements */
+    var shivNamespace = 'html5shiv';
+
+    /** Detect whether the browser supports shivable style sheets */
+    var supportsShivableSheets = !supportsUnknownElements && (function() {
+      // assign a false negative if unable to shiv
+      var docEl = document.documentElement;
+      return !(
+        typeof document.namespaces == 'undefined' ||
+        typeof document.parentWindow == 'undefined' ||
+        typeof docEl.applyElement == 'undefined' ||
+        typeof docEl.removeNode == 'undefined' ||
+        typeof window.attachEvent == 'undefined'
+      );
+    }());
+
+    /*--------------------------------------------------------------------------*/
+
+    /**
+     * Wraps all HTML5 elements in the given document with printable elements.
+     * (eg. the "header" element is wrapped with the "html5shiv:header" element)
+     * @private
+     * @param {Document} ownerDocument The document.
+     * @returns {Array} An array wrappers added.
+     */
+    function addWrappers(ownerDocument) {
+      var node,
+          nodes = ownerDocument.getElementsByTagName('*'),
+          index = nodes.length,
+          reElements = RegExp('^(?:' + getElements().join('|') + ')$', 'i'),
+          result = [];
+
+      while (index--) {
+        node = nodes[index];
+        if (reElements.test(node.nodeName)) {
+          result.push(node.applyElement(createWrapper(node)));
+        }
+      }
+      return result;
+    }
+
+    /**
+     * Creates a printable wrapper for the given element.
+     * @private
+     * @param {Element} element The element.
+     * @returns {Element} The wrapper.
+     */
+    function createWrapper(element) {
+      var node,
+          nodes = element.attributes,
+          index = nodes.length,
+          wrapper = element.ownerDocument.createElement(shivNamespace + ':' + element.nodeName);
+
+      // copy element attributes to the wrapper
+      while (index--) {
+        node = nodes[index];
+        node.specified && wrapper.setAttribute(node.nodeName, node.nodeValue);
+      }
+      // copy element styles to the wrapper
+      wrapper.style.cssText = element.style.cssText;
+      return wrapper;
+    }
+
+    /**
+     * Shivs the given CSS text.
+     * (eg. header{} becomes html5shiv\:header{})
+     * @private
+     * @param {String} cssText The CSS text to shiv.
+     * @returns {String} The shived CSS text.
+     */
+    function shivCssText(cssText) {
+      var pair,
+          parts = cssText.split('{'),
+          index = parts.length,
+          reElements = RegExp('(^|[\\s,>+~])(' + getElements().join('|') + ')(?=[[\\s,>+~#.:]|$)', 'gi'),
+          replacement = '$1' + shivNamespace + '\\:$2';
+
+      while (index--) {
+        pair = parts[index] = parts[index].split('}');
+        pair[pair.length - 1] = pair[pair.length - 1].replace(reElements, replacement);
+        parts[index] = pair.join('}');
+      }
+      return parts.join('{');
+    }
+
+    /**
+     * Removes the given wrappers, leaving the original elements.
+     * @private
+     * @params {Array} wrappers An array of printable wrappers.
+     */
+    function removeWrappers(wrappers) {
+      var index = wrappers.length;
+      while (index--) {
+        wrappers[index].removeNode();
+      }
+    }
+
+    /*--------------------------------------------------------------------------*/
+
+    /**
+     * Shivs the given document for print.
+     * @memberOf html5
+     * @param {Document} ownerDocument The document to shiv.
+     * @returns {Document} The shived document.
+     */
+    function shivPrint(ownerDocument) {
+      var shivedSheet,
+          wrappers,
+          data = getExpandoData(ownerDocument),
+          namespaces = ownerDocument.namespaces,
+          ownerWindow = ownerDocument.parentWindow;
+
+      if (!supportsShivableSheets || ownerDocument.printShived) {
+        return ownerDocument;
+      }
+      if (typeof namespaces[shivNamespace] == 'undefined') {
+        namespaces.add(shivNamespace);
+      }
+
+      function removeSheet() {
+        clearTimeout(data._removeSheetTimer);
+        if (shivedSheet) {
+            shivedSheet.removeNode(true);
+        }
+        shivedSheet= null;
+      }
+
+      ownerWindow.attachEvent('onbeforeprint', function() {
+
+        removeSheet();
+
+        var imports,
+            length,
+            sheet,
+            collection = ownerDocument.styleSheets,
+            cssText = [],
+            index = collection.length,
+            sheets = Array(index);
+
+        // convert styleSheets collection to an array
+        while (index--) {
+          sheets[index] = collection[index];
+        }
+        // concat all style sheet CSS text
+        while ((sheet = sheets.pop())) {
+          // IE does not enforce a same origin policy for external style sheets...
+          // but has trouble with some dynamically created stylesheets
+          if (!sheet.disabled && reMedia.test(sheet.media)) {
+
+            try {
+              imports = sheet.imports;
+              length = imports.length;
+            } catch(er){
+              length = 0;
+            }
+
+            for (index = 0; index < length; index++) {
+              sheets.push(imports[index]);
+            }
+
+            try {
+              cssText.push(sheet.cssText);
+            } catch(er){}
+          }
+        }
+
+        // wrap all HTML5 elements with printable elements and add the shived style sheet
+        cssText = shivCssText(cssText.reverse().join(''));
+        wrappers = addWrappers(ownerDocument);
+        shivedSheet = addStyleSheet(ownerDocument, cssText);
+
+      });
+
+      ownerWindow.attachEvent('onafterprint', function() {
+        // remove wrappers, leaving the original elements, and remove the shived style sheet
+        removeWrappers(wrappers);
+        clearTimeout(data._removeSheetTimer);
+        data._removeSheetTimer = setTimeout(removeSheet, 500);
+      });
+
+      ownerDocument.printShived = true;
+      return ownerDocument;
+    }
+
+    /*--------------------------------------------------------------------------*/
+
+    // expose API
+    html5.type += ' print';
+    html5.shivPrint = shivPrint;
+
+    // shiv for print
+    shivPrint(document);
+
+  }(this, document));
   return html5;
 });

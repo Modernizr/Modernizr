@@ -9,6 +9,6 @@ define(['Modernizr'], function( Modernizr ) {
       return false;
     }
   }, {
-    aliases : ['blob-constructor']
+    aliases: ['blob-constructor']
   });
 });
