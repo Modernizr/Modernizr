@@ -1,10 +1,20 @@
+/*!
+{
+  "name": "@font-face",
+  "property": "fontface",
+  "authors": ["Diego Perini"],
+  "tags": ["css"],
+  "knownBugs": [
+    "False Positive: WebOS http://github.com/Modernizr/Modernizr/issues/342",
+    "False Postive: WP7 http://github.com/Modernizr/Modernizr/issues/538"
+  ],
+  "notes": [{
+    "name": "@font-face detection routine by Diego Perini",
+    "href": "http://javascript.nwbox.com/CSSSupport/"
+  }]
+}
+!*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
-  // @font-face detection routine by Diego Perini
-  // javascript.nwbox.com/CSSSupport/
-
-  // false positives:
-  //   WebOS github.com/Modernizr/Modernizr/issues/342
-  //   WP7   github.com/Modernizr/Modernizr/issues/538
   testStyles('@font-face {font-family:"font";src:url("https://")}', function( node, rule ) {
     var style = document.getElementById('smodernizr');
     var sheet = style.sheet || style.styleSheet;
@@ -13,5 +23,4 @@ define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
 
     Modernizr.addTest('fontface', bool);
   });
-
 });
