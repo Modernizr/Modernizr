@@ -1,5 +1,12 @@
+/*!
+{
+  "name": "CSS Stylable Scrollbars",
+  "caniuse": "",X
+  "property": "cssscrollbar",
+  "tags": ["css"]
+}
+!*/
 define(['Modernizr', 'testStyles', 'prefixes'], function( Modernizr, testStyles, prefixes ) {
-  // Stylable scrollbars detection
   testStyles('#modernizr{overflow: scroll; width: 40px; height: 40px; }#' + prefixes
     .join('scrollbar{width:0px}'+' #modernizr::')
     .split('#')

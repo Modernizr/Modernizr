@@ -1,5 +1,16 @@
+/*!
+{
+  "name": "CSS Object Fit",
+  "caniuse": "",X
+  "property": "overflowscrolling",
+  "tags": ["css"],
+  "warnings": ["Introduced in iOS5b2. API is subject to change."]
+  "notes": [{
+    "name": "Article on iOS overflow scrolling",
+    "href": "http://johanbrook.com/browsers/native-momentum-scrolling-ios-5/"
+  }]
+}
+!*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  // johanbrook.com/browsers/native-momentum-scrolling-ios-5/
-  // introduced in iOS5b2. Possible API may change...
-  Modernizr.addTest("overflowscrolling", testAllProps("overflowScrolling"));
+  Modernizr.addTest('overflowscrolling', testAllProps('overflowScrolling'));
 });
