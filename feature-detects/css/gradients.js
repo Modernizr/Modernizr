@@ -1,11 +1,25 @@
+/*!
+{
+  "name": "CSS Gradients",
+  "caniuse": "",LOOKITUP
+  "property": "cssgradients",
+  "tags": ["css"],
+  "notes": [{
+    "name": "Webkit Gradient Syntax",
+    "href": "http://webkit.org/blog/175/introducing-css-gradients/"
+  },{
+    "name": "Mozilla Linear Gradient Syntax",
+    "href": "http://developer.mozilla.org/en/CSS/-moz-linear-gradient"
+  },{
+    "name": "Mozilla Radial Gradient Syntax",
+    "href": "http://developer.mozilla.org/en/CSS/-moz-radial-gradient"
+  },{
+    "name": "W3C Gradient Spec",
+    "href": "dev.w3.org/csswg/css3-images/#gradients-"
+  }]
+}
+!*/
 define(['Modernizr', 'prefixes', 'createElement'], function( Modernizr, prefixes, createElement ) {
-  //
-  // For CSS Gradients syntax, please see:
-  // webkit.org/blog/175/introducing-css-gradients/
-  // developer.mozilla.org/en/CSS/-moz-linear-gradient
-  // developer.mozilla.org/en/CSS/-moz-radial-gradient
-  // dev.w3.org/csswg/css3-images/#gradients-
-  //
 
   Modernizr.addTest('cssgradients', function() {
 
