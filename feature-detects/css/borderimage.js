@@ -8,5 +8,7 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('borderimage', testAllProps('borderImage'));
+    // Use border-image-width with 0px because it's basically a no-op and is
+    // quicker than defining an image without spewing warnings into the console
+    Modernizr.addTest('borderimage', testAllProps('borderImageWidth', '0px'));
 });

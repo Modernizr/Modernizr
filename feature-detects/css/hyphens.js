@@ -175,7 +175,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
 
       addTest("csshyphens", function() {
 
-        if (!testAllProps('hyphens')) return false;
+        if (!testAllProps('hyphens', 'auto')) return false;
 
         /* Chrome lies about its hyphens support so we need a more robust test
            crbug.com/107111
