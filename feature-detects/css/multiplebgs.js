@@ -1,3 +1,11 @@
+/*!
+{
+  "name": "CSS Multiple Backgrounds",
+  "caniuse": "multibackgrounds",
+  "property": "multiplebgs",
+  "tags": ["css"]
+}
+!*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   // Setting multiple images AND a color on the background shorthand property
   // and then querying the style.background property value for the number of
