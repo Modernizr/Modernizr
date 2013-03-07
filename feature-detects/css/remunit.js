@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Font rem Units",
-  "caniuse": "",X
+  "caniuse": "rem",
   "authors": ["nsfmc"],
   "property": "cssremunit",
   "tags": ["css"],

@@ -1,8 +1,8 @@
 /*!
 {
   "name": "CSS Regions",
-  "caniuse": "",X
-  "authors": ["Mihai Balan"]
+  "caniuse": "css-regions",
+  "authors": ["Mihai Balan"],
   "property": "regions",
   "tags": ["css"],
   "notes": [{

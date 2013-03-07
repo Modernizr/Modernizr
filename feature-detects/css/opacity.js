@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Opacity",
-  "caniuse": "",X
+  "caniuse": "css-opacity",
   "property": "opacity",
   "tags": ["css"],
   "notes": ["Opacity must be be in the range of [0.0,1.0], according to the spec."]

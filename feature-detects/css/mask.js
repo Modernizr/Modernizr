@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Mask",
-  "caniuse": "",X
+  "caniuse": "css-masks",
   "property": "lastchild",
   "tags": ["css"],
   "notes": [

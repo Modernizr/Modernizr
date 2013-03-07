@@ -1,7 +1,6 @@
 /*!
 {
   "name": "CSS position: sticky",
-  "caniuse": "",X
   "property": "csspositionsticky",
   "tags": ["css"]
 }

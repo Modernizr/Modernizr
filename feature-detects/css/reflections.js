@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Reflections",
-  "caniuse": "",X
+  "caniuse": "css-reflections",
   "property": "cssreflections",
   "tags": ["css"]
 }

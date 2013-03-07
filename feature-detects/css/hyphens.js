@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Hyphens",
-  "caniuse": "",X
+  "caniuse": "css-hyphens",
   "property": ["csshyphens", "softhyphens", "softhyphensfind"],
   "tags": ["css"],
   "authors": ["David Newton"],

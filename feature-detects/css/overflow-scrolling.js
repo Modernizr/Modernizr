@@ -1,10 +1,9 @@
 /*!
 {
-  "name": "CSS Object Fit",
-  "caniuse": "",X
+  "name": "CSS Overflow Scrolling",
   "property": "overflowscrolling",
   "tags": ["css"],
-  "warnings": ["Introduced in iOS5b2. API is subject to change."]
+  "warnings": ["Introduced in iOS5b2. API is subject to change."],
   "notes": [{
     "name": "Article on iOS overflow scrolling",
     "href": "http://johanbrook.com/browsers/native-momentum-scrolling-ios-5/"

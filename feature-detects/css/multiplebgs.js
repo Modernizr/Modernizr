@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Multiple Backgrounds",
-  "caniuse": "",X
+  "caniuse": "multibackgrounds",
   "property": "multiplebgs",
   "tags": ["css"]
 }

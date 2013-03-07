@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Object Fit",
-  "caniuse": "",X
+  "caniuse": "object-fit",
   "property": "objectfit",
   "tags": ["css"],
   "notes": [{

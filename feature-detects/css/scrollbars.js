@@ -1,7 +1,6 @@
 /*!
 {
   "name": "CSS Stylable Scrollbars",
-  "caniuse": "",X
   "property": "cssscrollbar",
   "tags": ["css"]
 }

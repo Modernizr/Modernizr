@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS :last-child pseudo-selector",
-  "caniuse": "",X
+  "caniuse": "css-sel3",
   "property": "lastchild",
   "tags": ["css"],
   "notes": [{

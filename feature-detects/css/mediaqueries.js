@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Media Queries",
-  "caniuse": "",X
+  "caniuse": "css-mediaqueries",
   "property": "mediaqueries",
   "tags": ["css"]
 }

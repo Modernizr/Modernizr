@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Pointer Events",
-  "caniuse": "",X
+  "caniuse": "pointer-events",
   "property": "csspointerevents",
   "authors": ["ausi"],
   "tags": ["css"],

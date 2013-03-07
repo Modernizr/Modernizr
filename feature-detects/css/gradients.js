@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Gradients",
-  "caniuse": "",LOOKITUP
+  "caniuse": "css-gradients",
   "property": "cssgradients",
   "tags": ["css"],
   "notes": [{
