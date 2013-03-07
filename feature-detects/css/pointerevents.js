@@ -1,11 +1,29 @@
+/*!
+{
+  "name": "CSS Pointer Events",
+  "caniuse": "pointer-events",
+  "property": "csspointerevents",
+  "authors": ["ausi"],
+  "tags": ["css"],
+  "notes": [
+    {
+      "name": "MDN Docs",
+      "href": "http://developer.mozilla.org/en/CSS/pointer-events"
+    },{
+      "name": "Test Project Page",
+      "href": "http://ausi.github.com/Feature-detection-technique-for-pointer-events/"
+    },{
+      "name": "Test Project Wiki",
+      "href": "http://github.com/ausi/Feature-detection-technique-for-pointer-events/wiki"
+    },
+    {
+      "name": "Related Github Issue",
+      "href": "http://github.com/Modernizr/Modernizr/issues/80"
+    }
+  ]
+}
+!*/
 define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
-  // developer.mozilla.org/en/CSS/pointer-events
-
-  // Test and project pages:
-  // ausi.github.com/Feature-detection-technique-for-pointer-events/
-  // github.com/ausi/Feature-detection-technique-for-pointer-events/wiki
-  // github.com/Modernizr/Modernizr/issues/80
-
   Modernizr.addTest('csspointerevents', function() {
     var element = createElement('x');
     var getComputedStyle = window.getComputedStyle;
