@@ -17,7 +17,8 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
   // developing in WebKit or IE first don't end up with
   // browser-specific content by accident.
 
-  function testProps( props, prefixed, values ) {
+  function testProps( props, prefixed, values, useValue ) {
+    useValue = is(useValue, 'undefined') ? true : useValue;
 
     // Try native detect first
     if (!is(values, 'undefined')) {
@@ -47,17 +48,19 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
         delete mStyle.modElem;
       }
     }
-
+    console.log(props);
     for ( i in props ) {
       prop = props[i];
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
 
         // If values to test have been passed in, do a set-and-check test
-        if (!is(values, 'undefined')) {
+        if (useValue && !is(values, 'undefined')) {
           j = values.length;
           while (j--) {
             value = values[j];
             mStyle.style[prop] = value;
+            console.log(value);
+            console.log(mStyle.style[prop]);
             if (mStyle.style[prop] == value) {
               cleanElems();
               return prefixed == 'pfx' ? prop : true;
