@@ -29,7 +29,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
     }
 
     // Otherwise do it properly
-    var afterInit, i, j, prop, value;
+    var afterInit, i, j, prop, value, before;
 
     // If we don't have a style element, that means
     // we're running async or after the core tests,
@@ -48,9 +48,10 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
         delete mStyle.modElem;
       }
     }
-    console.log(props);
+
     for ( i in props ) {
       prop = props[i];
+      before = mStyle.style[prop];
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
 
         // If values to test have been passed in, do a set-and-check test
@@ -59,9 +60,8 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
           while (j--) {
             value = values[j];
             mStyle.style[prop] = value;
-            console.log(value);
-            console.log(mStyle.style[prop]);
-            if (mStyle.style[prop] == value) {
+
+            if (mStyle.style[prop] != before) {
               cleanElems();
               return prefixed == 'pfx' ? prop : true;
             }
