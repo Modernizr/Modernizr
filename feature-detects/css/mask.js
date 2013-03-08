@@ -10,5 +10,5 @@ define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
 
   // Can combine with clippaths for awesomeness: http://generic.cx/for/webkit/test.html
 
-  Modernizr.addTest('cssmask', testAllProps('maskRepeat'));
+  Modernizr.addTest('cssmask', testAllProps('maskRepeat', 'repeat-x'));
 });
