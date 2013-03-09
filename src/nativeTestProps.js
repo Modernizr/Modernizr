@@ -1,6 +1,7 @@
 define(['injectElementWithStyles', 'domToHyphenated'], function ( injectElementWithStyles, domToHyphenated ) {
     // Function to allow us to use native feature detection functionality if available.
     // Accepts a list of property names and a list of values
+    // Returns `undefined` if native detection not available
     function nativeTestProps ( props, values ) {
         var i = props.length,
             j;
