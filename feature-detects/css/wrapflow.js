@@ -3,18 +3,28 @@ define(['Modernizr', 'prefixed', 'docElement'], function( Modernizr, prefixed, d
     // Examples: http://html.adobe.com/webstandards/cssexclusions
     // Separate test for `wrap-flow` property as IE10 has just implemented this alone
     Modernizr.addTest('wrapflow', function () {
-        var prefixedProperty = prefixed('wrapFlow'),
-            wrapFlowProperty;
-
+        var prefixedProperty = prefixed('wrapFlow');
         if (!prefixedProperty)
             return false;
 
-        wrapFlowProperty = prefixedProperty.replace(/([A-Z])/g, function (str, m1) { return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
+        var wrapFlowProperty = prefixedProperty.replace(/([A-Z])/g, function (str, m1) { return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
 
-        return Modernizr.testStyles('#modernizr { ' + wrapFlowProperty + ':start }', function (elem) {
-            // Check against computed value
-            var styleObj = window.getComputedStyle ? getComputedStyle(elem, null) : elem.currentStyle;
-            return styleObj[prefixed('wrapFlow', docElement.style, false)] == 'start';
-        });
+        var container = createElement('div');
+        var exclusion = createElement('div');
+        var content = createElement('span');
+
+        exclusion.style.cssText = 'position: absolute; left: 50px; width: 100px; height: 20px;' + wrapFlowProperty + ':end;';
+        content.innerText = 'X';
+
+        container.appendChild(exclusion);
+        container.appendChild(content);
+        docElement.appendChild(container);
+
+        var leftOffset = content.offsetLeft;
+
+        docElement.removeChild(container);
+        exclusion = content = container = undefined;
+
+        return (leftOffset == 150);
     });
 });
