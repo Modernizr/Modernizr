@@ -10,17 +10,17 @@
   }]
 }
 !*/
-define(['Modernizr', 'addTest', 'createElement', 'test/canvas'], function( Modernizr, addTest, createElement ) {
+define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
 
   var canvas = createElement('canvas');
 
-  addTest('todataurljpeg', function() {
+  Modernizr.addTest('todataurljpeg', function() {
     return !!Modernizr.canvas && canvas.toDataURL('image/jpeg').indexOf('data:image/jpeg') === 0;
   });
-  addTest('todataurlpng', function() {
+  Modernizr.addTest('todataurlpng', function() {
     return !!Modernizr.canvas && canvas.toDataURL('image/png').indexOf('data:image/png') === 0;
   });
-  addTest('todataurlwebp', function() {
+  Modernizr.addTest('todataurlwebp', function() {
     return !!Modernizr.canvas && canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
   });
 
