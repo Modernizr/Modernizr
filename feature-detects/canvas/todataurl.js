@@ -1,39 +1,27 @@
 /*!
 {
   "name": "canvas.toDataURL type support",
-  "property": ["todataurljpeg", "todataurlwebp"],
+  "property": ["todataurljpeg", "todataurlpng", "todataurlwebp"],
   "tags": ["canvas"],
-  "async" : true,
+  "async" : false,
   "notes": [{
     "name": "HTML5 Spec",
     "href": "http://www.w3.org/TR/html5/the-canvas-element.html#dom-canvas-todataurl"
   }]
 }
 !*/
-define(['Modernizr', 'addTest', 'createElement', 'test/canvas'], function( Modernizr, addTest, createElement ) {
+define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
 
-  // This is an async test
-  Modernizr.addAsyncTest(function () {
-    if (!Modernizr.canvas) {
-      Modernizr._addTest('todataurljpeg', false, ['todataurlwebp']);
-      return false;
-    }
+  var canvas = createElement('canvas');
 
-    var image = new Image(),
-    canvas = createElement('canvas'),
-    ctx = canvas.getContext('2d');
-
-    image.onload = function() {
-      ctx.drawImage(image, 0, 0);
-
-      addTest('todataurljpeg', function() {
-        return canvas.toDataURL('image/jpeg').indexOf('data:image/jpeg') === 0;
-      });
-      addTest('todataurlwebp', function() {
-        return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-      });
-    };
-
-    image.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==';
+  Modernizr.addTest('todataurljpeg', function() {
+    return !!Modernizr.canvas && canvas.toDataURL('image/jpeg').indexOf('data:image/jpeg') === 0;
   });
+  Modernizr.addTest('todataurlpng', function() {
+    return !!Modernizr.canvas && canvas.toDataURL('image/png').indexOf('data:image/png') === 0;
+  });
+  Modernizr.addTest('todataurlwebp', function() {
+    return !!Modernizr.canvas && canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+  });
+
 });
