@@ -35,10 +35,10 @@ var license = '/*!\n' +
 module.exports = function( grunt ) {
   'use strict';
 
-  var modConfig = JSON.parse(grunt.file.read('lib/config-all.json'));
+  var modConfig = grunt.file.readJSON('lib/config-all.json');
 
   grunt.initConfig({
-    pkg: '<json:package.json>',
+    pkg: grunt.file.readJSON('package.json'),
     meta: {
       banner: '/*!\n' +
         ' * <%= pkg.name %> v<%= pkg.version %>\n' +
@@ -60,30 +60,24 @@ module.exports = function( grunt ) {
         src: ['tmp/modernizr-init.js']
       }
     },
-    lint: {
-      files: [
-        'grunt.js',
-        'src/*.js',
-        'feature-detects/*.js'
-      ]
-    },
-    min: {
-      dist: {
+    uglify : {
+      options: {
+	    stripbanners: true,
+		banner: '<%= meta.microbanner %>',
+		mangle: {
+          except: ['Modernizr']
+        }
+	  },
+	  dist: {
         src: [
-          '<banner:meta.microbanner>',
           'dist/modernizr-build.js'
         ],
         dest: 'dist/modernizr-build.min.js'
       }
     },
-    uglify : {
-      mangle: {
-        except: ['Modernizr']
-      }
-    },
     watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint'
+      files: '<%= jshint.files %>',
+      tasks: 'jshint'
     },
     jshint: {
       options: {
@@ -101,17 +95,22 @@ module.exports = function( grunt ) {
         noarg: true,
         smarttabs: true,
         sub: true,
-        undef: true
+        undef: true,
+		globals: {
+			Modernizr: true,
+			DocumentTouch: true,
+			TEST: true,
+			SVGFEColorMatrixElement : true,
+			Blob: true,
+			define: true,
+			require: true
+		}
       },
-      globals: {
-        Modernizr: true,
-        DocumentTouch: true,
-        TEST: true,
-        SVGFEColorMatrixElement : true,
-        Blob: true,
-        define: true,
-        require: true
-      }
+	  files: [
+        'src/*.js',
+        'feature-detects/*.js'
+      ],
+	  gruntfile: 'Gruntfile.js'
     },
     clean: {
       build: ['build', 'dist', 'tmp'],
@@ -169,7 +168,14 @@ module.exports = function( grunt ) {
       }
     }
   });
-
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  
   // Strip define fn
   grunt.registerMultiTask('stripdefine', "Strip define call from dist file", function() {
     var mod = grunt.file.read( this.file.src[0] ).replace('define("modernizr-init",[], function(){});', '');
@@ -189,7 +195,6 @@ module.exports = function( grunt ) {
   grunt.registerTask('travis', 'qunit');
 
   // Build
-  grunt.loadNpmTasks('grunt-contrib');
-  grunt.registerTask('build', 'clean generateinit requirejs copy clean:postbuild stripdefine min');
+  grunt.registerTask('build', ['clean', 'generateinit', 'requirejs', 'copy', 'clean:postbuild', 'stripdefine', 'uglify']);
   grunt.registerTask('default', 'build');
 };
