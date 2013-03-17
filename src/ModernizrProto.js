@@ -17,7 +17,7 @@ define(['tests'], function ( tests ) {
     },
 
     addAsyncTest : function (fn) {
-      tests.push({name : null, fn : fn})
+      tests.push({name : null, fn : fn});
     }
   };
 
