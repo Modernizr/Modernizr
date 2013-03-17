@@ -52,9 +52,9 @@ module.exports = function( grunt ) {
       files: ['test/index.html']
     },
     stripdefine: {
-      build: {
-        src: ['dist/modernizr-build.js']
-      }
+      build: [
+        'dist/modernizr-build.js'
+      ]
     },
     generateinit : {
       build: {
@@ -63,11 +63,11 @@ module.exports = function( grunt ) {
     },
     uglify : {
       options: {
-      stripbanners: true,
-      banner: '<%= meta.microbanner %>',
-      mangle: {
-            except: ['Modernizr']
-          }
+        stripbanners: true,
+        banner: '<%= meta.microbanner %>',
+        mangle: {
+          except: ['Modernizr']
+        }
       },
       dist: {
         src: [
@@ -108,10 +108,10 @@ module.exports = function( grunt ) {
         }
       },
     files: [
+        'Gruntfile.js',
         'src/*.js',
         'feature-detects/*.js'
-      ],
-    gruntfile: 'Gruntfile.js'
+      ]
     },
     clean: {
       build: ['build', 'dist', 'tmp'],
@@ -179,13 +179,15 @@ module.exports = function( grunt ) {
   
   // Strip define fn
   grunt.registerMultiTask('stripdefine', "Strip define call from dist file", function() {
-    var mod = grunt.file.read( this.file.src[0] ).replace('define("modernizr-init",[], function(){});', '');
+    this.filesSrc.forEach(function(filepath) {
+      var mod = grunt.file.read(filepath).replace('define("modernizr-init",[], function(){});', '');
 
-    // Hack the prefix into place. Anything is way to big for something so small.
-    if ( modConfig && modConfig.classPrefix ) {
-      mod = mod.replace("classPrefix : '',", "classPrefix : '" + modConfig.classPrefix.replace(/"/g, '\\"') + "',");
-    }
-    grunt.file.write( 'dist/modernizr-build.js', mod );
+      // Hack the prefix into place. Anything is way to big for something so small.
+      if ( modConfig && modConfig.classPrefix ) {
+        mod = mod.replace("classPrefix : '',", "classPrefix : '" + modConfig.classPrefix.replace(/"/g, '\\"') + "',");
+      }
+      grunt.file.write( 'dist/modernizr-build.js', mod );
+    });
   });
 
   grunt.registerMultiTask('generateinit', "Generate Init file", function() {
