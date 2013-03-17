@@ -169,6 +169,7 @@ module.exports = function( grunt ) {
       }
     }
   });
+  // Load required contrib packages
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -193,9 +194,11 @@ module.exports = function( grunt ) {
   grunt.registerMultiTask('generateinit', "Generate Init file", function() {
     grunt.file.write('tmp/modernizr-init.js', generateInit(modConfig));
   });
+  // Testing tasks
+  grunt.registerTask('test', ['jshint', 'qunit']);
 
   // Travis CI task.
-  grunt.registerTask('travis', 'qunit');
+  grunt.registerTask('travis', 'test');
 
   // Build
   grunt.registerTask('build', ['clean', 'generateinit', 'requirejs', 'copy', 'clean:postbuild', 'stripdefine', 'uglify', 'jshint']);
