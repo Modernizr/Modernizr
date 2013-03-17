@@ -76,6 +76,7 @@
     "test/elem/time",
     "test/elem/track",
     "test/es5/strictmode",
+    "test/es6/contains",
     "test/event/deviceorientation-motion",
     "test/file/api",
     "test/file/filesystem",
