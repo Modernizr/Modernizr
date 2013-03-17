@@ -1,3 +1,5 @@
+/*jshint node: true */
+/*global module */
 var requirejs = require('requirejs');
 requirejs.config({
   appDir : __dirname + '/src/',
@@ -31,14 +33,13 @@ var license = '/*!\n' +
  ' * Contributors   Ryan Seddon, Ben Alman\n' +
  ' */';
 
-/*global module */
 module.exports = function( grunt ) {
   'use strict';
 
-  var modConfig = JSON.parse(grunt.file.read('lib/config-all.json'));
+  var modConfig = grunt.file.readJSON('lib/config-all.json');
 
   grunt.initConfig({
-    pkg: '<json:package.json>',
+    pkg: grunt.file.readJSON('package.json'),
     meta: {
       banner: '/*!\n' +
         ' * <%= pkg.name %> v<%= pkg.version %>\n' +
@@ -51,39 +52,33 @@ module.exports = function( grunt ) {
       files: ['test/index.html']
     },
     stripdefine: {
-      build: {
-        src: ['dist/modernizr-build.js']
-      }
+      build: [
+        'dist/modernizr-build.js'
+      ]
     },
     generateinit : {
       build: {
         src: ['tmp/modernizr-init.js']
       }
     },
-    lint: {
-      files: [
-        'grunt.js',
-        'src/*.js',
-        'feature-detects/*.js'
-      ]
-    },
-    min: {
+    uglify : {
+      options: {
+        stripbanners: true,
+        banner: '<%= meta.microbanner %>',
+        mangle: {
+          except: ['Modernizr']
+        }
+      },
       dist: {
         src: [
-          '<banner:meta.microbanner>',
           'dist/modernizr-build.js'
         ],
         dest: 'dist/modernizr-build.min.js'
       }
     },
-    uglify : {
-      mangle: {
-        except: ['Modernizr']
-      }
-    },
     watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint'
+      files: '<%= jshint.files %>',
+      tasks: 'jshint'
     },
     jshint: {
       options: {
@@ -101,17 +96,22 @@ module.exports = function( grunt ) {
         noarg: true,
         smarttabs: true,
         sub: true,
-        undef: true
+        undef: true,
+        globals: {
+          Modernizr: true,
+          DocumentTouch: true,
+          TEST: true,
+          SVGFEColorMatrixElement : true,
+          Blob: true,
+          define: true,
+          require: true
+        }
       },
-      globals: {
-        Modernizr: true,
-        DocumentTouch: true,
-        TEST: true,
-        SVGFEColorMatrixElement : true,
-        Blob: true,
-        define: true,
-        require: true
-      }
+    files: [
+        'Gruntfile.js',
+        'src/*.js',
+        'feature-detects/*.js'
+      ]
     },
     clean: {
       build: ['build', 'dist', 'tmp'],
@@ -169,27 +169,38 @@ module.exports = function( grunt ) {
       }
     }
   });
-
+  // Load required contrib packages
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  
   // Strip define fn
   grunt.registerMultiTask('stripdefine', "Strip define call from dist file", function() {
-    var mod = grunt.file.read( this.file.src[0] ).replace('define("modernizr-init",[], function(){});', '');
+    this.filesSrc.forEach(function(filepath) {
+      var mod = grunt.file.read(filepath).replace('define("modernizr-init",[], function(){});', '');
 
-    // Hack the prefix into place. Anything is way to big for something so small.
-    if ( modConfig && modConfig.classPrefix ) {
-      mod = mod.replace("classPrefix : '',", "classPrefix : '" + modConfig.classPrefix.replace(/"/g, '\\"') + "',");
-    }
-    grunt.file.write( 'dist/modernizr-build.js', mod );
+      // Hack the prefix into place. Anything is way to big for something so small.
+      if ( modConfig && modConfig.classPrefix ) {
+        mod = mod.replace("classPrefix : '',", "classPrefix : '" + modConfig.classPrefix.replace(/"/g, '\\"') + "',");
+      }
+      grunt.file.write( 'dist/modernizr-build.js', mod );
+    });
   });
 
   grunt.registerMultiTask('generateinit', "Generate Init file", function() {
     grunt.file.write('tmp/modernizr-init.js', generateInit(modConfig));
   });
+  // Testing tasks
+  grunt.registerTask('test', ['jshint', 'qunit']);
 
   // Travis CI task.
-  grunt.registerTask('travis', 'qunit');
+  grunt.registerTask('travis', 'test');
 
   // Build
-  grunt.loadNpmTasks('grunt-contrib');
-  grunt.registerTask('build', 'clean generateinit requirejs copy clean:postbuild stripdefine min');
+  grunt.registerTask('build', ['clean', 'generateinit', 'requirejs', 'copy', 'clean:postbuild', 'stripdefine', 'uglify', 'jshint']);
   grunt.registerTask('default', 'build');
 };

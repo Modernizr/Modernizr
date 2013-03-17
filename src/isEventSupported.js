@@ -1,3 +1,4 @@
+/* global is */
 define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElement ) {
   // isEventSupported determines if a given element supports the given event
   // kangax.github.com/iseventsupported/
