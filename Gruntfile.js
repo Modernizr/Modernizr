@@ -1,3 +1,5 @@
+/*jshint node: true */
+/*global module */
 var requirejs = require('requirejs');
 requirejs.config({
   appDir : __dirname + '/src/',
@@ -31,7 +33,6 @@ var license = '/*!\n' +
  ' * Contributors   Ryan Seddon, Ben Alman\n' +
  ' */';
 
-/*global module */
 module.exports = function( grunt ) {
   'use strict';
 
@@ -62,13 +63,13 @@ module.exports = function( grunt ) {
     },
     uglify : {
       options: {
-	    stripbanners: true,
-		banner: '<%= meta.microbanner %>',
-		mangle: {
-          except: ['Modernizr']
-        }
-	  },
-	  dist: {
+      stripbanners: true,
+      banner: '<%= meta.microbanner %>',
+      mangle: {
+            except: ['Modernizr']
+          }
+      },
+      dist: {
         src: [
           'dist/modernizr-build.js'
         ],
@@ -96,21 +97,21 @@ module.exports = function( grunt ) {
         smarttabs: true,
         sub: true,
         undef: true,
-		globals: {
-			Modernizr: true,
-			DocumentTouch: true,
-			TEST: true,
-			SVGFEColorMatrixElement : true,
-			Blob: true,
-			define: true,
-			require: true
-		}
+        globals: {
+          Modernizr: true,
+          DocumentTouch: true,
+          TEST: true,
+          SVGFEColorMatrixElement : true,
+          Blob: true,
+          define: true,
+          require: true
+        }
       },
-	  files: [
+    files: [
         'src/*.js',
         'feature-detects/*.js'
       ],
-	  gruntfile: 'Gruntfile.js'
+    gruntfile: 'Gruntfile.js'
     },
     clean: {
       build: ['build', 'dist', 'tmp'],
