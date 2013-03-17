@@ -177,11 +177,11 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
-  
+
   // Strip define fn
   grunt.registerMultiTask('stripdefine', "Strip define call from dist file", function() {
     this.filesSrc.forEach(function(filepath) {
-      var mod = grunt.file.read(filepath).replace('define("modernizr-init",[], function(){});', '');
+      var mod = grunt.file.read(filepath).replace('define("modernizr-init", function(){});', '');
 
       // Hack the prefix into place. Anything is way to big for something so small.
       if ( modConfig && modConfig.classPrefix ) {
