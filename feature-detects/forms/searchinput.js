@@ -11,10 +11,11 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
 
     appearance = Modernizr.prefixed('appearance');
     computedAppearance = window.getComputedStyle(el)[ appearance ];
+    Modernizr.searchfield = computedAppearance === 'searchfield'
 
     docElement.removeChild(el);
 
-    return computedAppearance === 'searchfield';
+    return Modernizr.searchfield;
   });
 
 });
