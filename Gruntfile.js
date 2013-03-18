@@ -61,7 +61,11 @@ module.exports = function( grunt ) {
     },
     watch: {
       files: '<%= jshint.files %>',
-      tasks: 'jshint'
+      tasks: 'jshint',
+      tests: {
+        files: '<%= jshint.tests.files.src %>',
+        tasks: ['jshint:tests', 'qunit']
+      }
     },
     jshint: {
       options: {
@@ -90,11 +94,24 @@ module.exports = function( grunt ) {
           require: true
         }
       },
-    files: [
+      files: [
         'Gruntfile.js',
         'src/*.js',
         'feature-detects/*.js'
-      ]
+      ],
+      tests: {
+        options: {
+          jquery: true,
+          globals: {
+            Modernizr: true,
+            TEST: true,
+            QUnit: true
+          }
+        },
+        files: {
+          src: ['test/js/*.js']
+        }
+      }
     },
     clean: {
       build: ['build', 'dist', 'tmp'],

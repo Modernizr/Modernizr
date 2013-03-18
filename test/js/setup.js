@@ -1,4 +1,3 @@
-
 // Avoid `console` errors in browsers that lack a console
 if (!(window.console && console.log)) {
     (function() {
@@ -22,7 +21,7 @@ window.TEST = {
   privates  : ['_enableHTML5','_version','_fontfaceready'],
   deprecated : [
                 { oldish : 'crosswindowmessaging', newish : 'postmessage'},
-                { oldish : 'historymanagement', newish : 'history'},
+                { oldish : 'historymanagement', newish : 'history'}
               ],
 
   // utility methods
