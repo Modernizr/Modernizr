@@ -3,7 +3,7 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
   // // Detects if the search input is behaving with -search-cancel-button and recent searches features.
   // // At the time this test was written, only Webkit has implemented it.
 
-  Modernizr.addTest('searchApperance', function() {
+  Modernizr.addTest('searchAppearance', function() {
     var appearance, computedAppearance;
     var el = createElement('input');
     el.type = 'search';
