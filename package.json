@@ -37,5 +37,6 @@
     "feature detection"
   ],
   "author": "Faruk Ates, Paul Irish, Alex Sexton, Ryan Seddon, Alexander Farkas",
+  "contributors": "Ben Alman",
   "license": "MIT"
 }
