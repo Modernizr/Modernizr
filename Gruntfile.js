@@ -1,38 +1,5 @@
 /*jshint node: true */
 /*global module */
-var requirejs = require('requirejs');
-requirejs.config({
-  appDir : __dirname + '/src/',
-  baseUrl : __dirname + '/src/'
-});
-
-var generateInit = requirejs('generate');
-
-var license = '/*!\n' +
- ' * Modernizr v3.0.0pre\n' +
- ' * modernizr.com\n' +
- ' *\n' +
- ' * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton\n' +
- ' * MIT License\n' +
- '*/\n' +
- ' \n' +
- '/*\n' +
- ' * Modernizr tests which native CSS3 and HTML5 features are available in the\n' +
- ' * current UA and makes the results available to you in two ways: as properties on\n' +
- ' * a global `Modernizr` object, and as classes on the `<html>` element. This\n' +
- ' * information allows you to progressively enhance your pages with a granular level\n' +
- ' * of control over the experience.\n' +
- ' *\n' +
- ' * Modernizr has an optional (*not included*) conditional resource loader called\n' +
- ' * `Modernizr.load()`, based on [Yepnope.js](http://yepnopejs.com). You can get a\n' +
- ' * build that includes `Modernizr.load()`, as well as choosing which feature tests\n' +
- ' * to include on the [Download page](http://www.modernizr.com/download/).\n' +
- ' *\n' +
- ' *\n' +
- ' * Authors        Faruk Ates, Paul Irish, Alex Sexton\n' +
- ' * Contributors   Ryan Seddon, Ben Alman\n' +
- ' */';
-
 module.exports = function( grunt ) {
   'use strict';
 
@@ -40,13 +7,29 @@ module.exports = function( grunt ) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    meta: {
-      banner: '/*!\n' +
+    banner: {
+      compact: '/*! <%= pkg.name %> <%= pkg.version %> (Custom Build) | <%= pkg.license %> */',
+      full: '/*!\n' +
         ' * <%= pkg.name %> v<%= pkg.version %>\n' +
         ' * modernizr.com\n *\n' +
-        ' * Copyright (c) <%= pkg.author %>\n' +
-        ' * <%= pkg.license %> License\n */',
-      microbanner: '/*! <%= pkg.name %> <%= pkg.version %> (Custom Build) | <%= pkg.license %> */'
+        ' * Copyright (c) <%= _.pluck(pkg.contributors, "name").join(", ") %>\n' +
+        ' * <%= pkg.license %> License\n */' +
+        ' \n' +
+        '/*\n' +
+        ' * Modernizr tests which native CSS3 and HTML5 features are available in the\n' +
+        ' * current UA and makes the results available to you in two ways: as properties on\n' +
+        ' * a global `Modernizr` object, and as classes on the `<html>` element. This\n' +
+        ' * information allows you to progressively enhance your pages with a granular level\n' +
+        ' * of control over the experience.\n' +
+        ' *\n' +
+        ' * Modernizr has an optional (*not included*) conditional resource loader called\n' +
+        ' * `Modernizr.load()`, based on [Yepnope.js](http://yepnopejs.com). You can get a\n' +
+        ' * build that includes `Modernizr.load()`, as well as choosing which feature tests\n' +
+        ' * to include on the [Download page](http://www.modernizr.com/download/).\n' +
+        ' */'
+    },
+    meta: {
+      
     },
     qunit: {
       files: ['test/index.html']
@@ -64,7 +47,7 @@ module.exports = function( grunt ) {
     uglify : {
       options: {
         stripbanners: true,
-        banner: '<%= meta.microbanner %>',
+        banner: '<%= banner.compact %>',
         mangle: {
           except: ['Modernizr']
         }
@@ -143,7 +126,7 @@ module.exports = function( grunt ) {
           }],
           fileExclusionRegExp: /^(.git|node_modules|modulizr|media|test)$/,
           wrap: {
-            start: license + "\n;(function(window, document, undefined){",
+            start: '<%= banner.full %>' + "\n;(function(window, document, undefined){",
             end: "})(this, document);"
           },
           onBuildWrite: function (id, path, contents) {
@@ -192,6 +175,12 @@ module.exports = function( grunt ) {
   });
 
   grunt.registerMultiTask('generateinit', "Generate Init file", function() {
+    var requirejs = require('requirejs');
+    requirejs.config({
+      appDir : __dirname + '/src/',
+      baseUrl : __dirname + '/src/'
+    });
+    var generateInit = requirejs('generate');
     grunt.file.write('tmp/modernizr-init.js', generateInit(modConfig));
   });
   // Testing tasks
