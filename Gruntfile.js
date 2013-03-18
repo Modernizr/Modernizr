@@ -111,6 +111,14 @@ module.exports = function( grunt ) {
         files: {
           src: ['test/js/*.js']
         }
+      },
+      lib: {
+        options: {
+          node: true
+        },
+        files: {
+          src: ['lib/*.js']
+        }
       }
     },
     clean: {
