@@ -1,11 +1,9 @@
 /*!
 {
-  "name": "CSS Mask",
-  "caniuse": "css-masks",
+  "name": "CSS Mask Repeat",
   "property": "lastchild",
   "tags": ["css"],
   "notes": [
-    "This is for the -webkit-mask feature, not for the similar svg mask in Firefox.",
     {
       "name": "Webkit blog on CSS Masks",
       "href": "http://www.webkit.org/blog/181/css-masks/"
@@ -26,5 +24,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('cssmask', testAllProps('mask'));
+  Modernizr.addTest('cssmaskrepeat', testAllProps('maskRepeat'));
 });
