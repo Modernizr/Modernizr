@@ -24,11 +24,14 @@
     "grunt-contrib-requirejs": "~0.4.0"
   },
   "scripts": {
-    "test": "grunt qunit"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/Modernizr/Modernizr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Modernizr/Modernizr/issues"
   },
   "keywords": [
     "html5",
