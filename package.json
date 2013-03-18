@@ -39,7 +39,18 @@
     "browser",
     "feature detection"
   ],
-  "author": "Faruk Ates, Paul Irish, Alex Sexton, Ryan Seddon, Alexander Farkas",
-  "contributors": "Ben Alman",
+  "author": {
+    "name": "Modernizr",
+    "url": "http://modernizr.com/"
+  },
+  "contributors": [
+    { "name": "Faruk Ates" },
+    { "name": "Paul Irish" }, 
+    { "name": "Alex Sexton" }, 
+    { "name": "Ryan Seddon" }, 
+    { "name": "Alexander Farkas" }, 
+    { "name": "Ben Alman" }, 
+    { "name": "Stu Cox" }
+  ],
   "license": "MIT"
 }

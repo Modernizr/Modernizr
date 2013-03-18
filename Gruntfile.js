@@ -12,7 +12,7 @@ module.exports = function( grunt ) {
       full: '/*!\n' +
         ' * <%= pkg.name %> v<%= pkg.version %>\n' +
         ' * modernizr.com\n *\n' +
-        ' * Copyright (c) <%= pkg.author %>\n' +
+        ' * Copyright (c) <%= _.pluck(pkg.contributors, "name").join(", ") %>\n' +
         ' * <%= pkg.license %> License\n */' +
         ' \n' +
         '/*\n' +
@@ -26,10 +26,6 @@ module.exports = function( grunt ) {
         ' * `Modernizr.load()`, based on [Yepnope.js](http://yepnopejs.com). You can get a\n' +
         ' * build that includes `Modernizr.load()`, as well as choosing which feature tests\n' +
         ' * to include on the [Download page](http://www.modernizr.com/download/).\n' +
-        ' *\n' +
-        ' *\n' +
-        ' * Authors        <%= pkg.author %>\n' +
-        ' * Contributors   <%= pkg.contributors %>\n' +
         ' */'
     },
     meta: {
