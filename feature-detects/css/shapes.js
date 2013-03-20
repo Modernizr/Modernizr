@@ -2,6 +2,7 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
     // http://www.w3.org/TR/css3-exclusions
     // http://www.w3.org/TR/css3-exclusions/#shapes
     // Examples: http://html.adobe.com/webstandards/cssexclusions
+    // Separate test for CSS shapes as WebKit has just implemented this alone
     Modernizr.addTest('shapes', function () {
         var prefixedProperty = Modernizr.prefixed('shapeInside');
 
