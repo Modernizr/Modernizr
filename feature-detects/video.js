@@ -14,6 +14,7 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   //   It was also live in Safari 4.0.0 - 4.0.4, but fixed in 4.0.5
 
   Modernizr.addTest('video', function() {
+    /* jshint -W053 */
     var elem = createElement('video');
     var bool = false;
 

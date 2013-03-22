@@ -7,9 +7,9 @@ define(function() {
    * @preserve HTML5 Shiv v3.6.2pre | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
    */
   ;(function(window, document) {
-    /*jshint evil:true */
+  /*jshint evil:true */
     /** version */
-    var version = '3.6.2pre';
+    var version = '3.6.2';
 
     /** Preset options */
     var options = window.html5 || {};
@@ -53,6 +53,7 @@ define(function() {
           );
         }());
       } catch(e) {
+        // assign a false positive if detection fails => unable to shiv
         supportsHtml5Styles = true;
         supportsUnknownElements = true;
       }
@@ -70,7 +71,7 @@ define(function() {
      */
     function addStyleSheet(ownerDocument, cssText) {
       var p = ownerDocument.createElement('p'),
-      parent = ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
+          parent = ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
 
       p.innerHTML = 'x<style>' + cssText + '</style>';
       return parent.insertBefore(p.lastChild, parent.firstChild);
@@ -155,9 +156,9 @@ define(function() {
       }
       data = data || getExpandoData(ownerDocument);
       var clone = data.frag.cloneNode(),
-      i = 0,
-      elems = getElements(),
-      l = elems.length;
+          i = 0,
+          elems = getElements(),
+          l = elems.length;
       for(;i<l;i++){
         clone.createElement(elems[i]);
       }
@@ -188,16 +189,16 @@ define(function() {
       };
 
       ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
-                                                      'var n=f.cloneNode(),c=n.createElement;' +
-                                                      'h.shivMethods&&(' +
-                                                      // unroll the `createElement` calls
-                                                      getElements().join().replace(/\w+/g, function(nodeName) {
-        data.createElem(nodeName);
-        data.frag.createElement(nodeName);
-        return 'c("' + nodeName + '")';
-      }) +
+        'var n=f.cloneNode(),c=n.createElement;' +
+        'h.shivMethods&&(' +
+          // unroll the `createElement` calls
+          getElements().join().replace(/\w+/g, function(nodeName) {
+            data.createElem(nodeName);
+            data.frag.createElement(nodeName);
+            return 'c("' + nodeName + '")';
+          }) +
         ');return n}'
-                                                     )(html5, data.frag);
+      )(html5, data.frag);
     }
 
     /*--------------------------------------------------------------------------*/
@@ -216,11 +217,11 @@ define(function() {
 
       if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
         data.hasCSS = !!addStyleSheet(ownerDocument,
-                                      // corrects block display not defined in IE6/7/8/9
-                                      'article,aside,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
-                                        // adds styling not present in IE6/7/8/9
-                                        'mark{background:#FF0;color:#000}'
-                                     );
+          // corrects block display not defined in IE6/7/8/9
+          'article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
+          // adds styling not present in IE6/7/8/9
+          'mark{background:#FF0;color:#000}'
+        );
       }
       if (!supportsUnknownElements) {
         shivMethods(ownerDocument, data);
@@ -246,7 +247,7 @@ define(function() {
        * @memberOf html5
        * @type Array|String
        */
-      'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video',
+      'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup main mark meter nav output progress section summary time video',
 
       /**
        * current version of html5shiv
