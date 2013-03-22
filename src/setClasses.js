@@ -3,9 +3,9 @@ define(['Modernizr', 'docElement', 'classes'], function( Modernizr, docElement, 
   // if you'd like to change the classe on
   // something other than the html element.
   function setClasses( elem ) {
-    var theElem = elem || docElement,
-        features = classes.concat('js'),
-        featurePattern = new RegExp('(^|\\s)no-(' + features.join('|') + ')(\\s|$)', 'g')
+    var theElem = elem || docElement;
+    var features = classes.concat('js');
+    var featurePattern = new RegExp('(^|\\s)no-(' + features.join('|') + ')(\\s|$)', 'g');
 
     theElem.className =
       // Remove relevant 'no-<feature>' classes
