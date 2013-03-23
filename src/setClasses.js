@@ -1,7 +1,6 @@
 define(['Modernizr', 'docElement'], function( Modernizr, docElement ) {
-  // Pass in an element to this function
-  // if you'd like to change the classe on
-  // something other than the html element.
+  // Pass in an and array of class names, e.g.:
+  //  ['no-webp', 'borderradius', ...]
   function setClasses( classes ) {
     var className = docElement.className;
     var removeClasses = [];
