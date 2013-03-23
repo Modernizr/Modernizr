@@ -17,7 +17,7 @@ define(['underscore'], function( _ ) {
 
     // Needed named module requires
     if (setClasses) {
-      output += ', "setClasses"';
+      output += ', "setClasses", "classes"';
     }
 
     // Load in the rest of the options (they dont return values, so they aren't declared
@@ -34,7 +34,7 @@ define(['underscore'], function( _ ) {
 
     // Needed named module declarations
     if (setClasses) {
-      output += ', setClasses';
+      output += ', setClasses, classes';
     }
 
     output += ') {\n' +
@@ -45,7 +45,7 @@ define(['underscore'], function( _ ) {
     // Actually run the setClasses function
     if (setClasses) {
       output += '  // Remove the "no-js" class if it exists\n' +
-      '  setClasses();\n' +
+      '  setClasses(classes);\n' +
       '\n';
     }
 
