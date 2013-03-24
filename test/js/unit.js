@@ -205,7 +205,8 @@ test('Modernizr properties are looking good',function(){
       nobool = TEST.API.concat(TEST.inputs)
                        .concat(TEST.audvid)
                        .concat(TEST.privates)
-                       .concat(['textarea', 'testtruthy', 'testfalsy']); // due to forms-placeholder.js test
+                       .concat(['textarea', 'testtruthy', 'testfalsy']) // due to forms-placeholder.js test
+                       .concat(['datauri']); // has `.over32kb` subproperty
 
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){
@@ -232,10 +233,10 @@ test('Modernizr.audio and Modernizr.video',function(){
     var prop = TEST.audvid[i];
 
     if (Modernizr[prop].toString() == 'true'){
-      
+
       ok(Modernizr[prop], 'Modernizr.'+prop+' is truthy.');
       /* jshint -W041 */
-      equal(Modernizr[prop] == true,true, 'Modernizr.'+prop+' is == true'); 
+      equal(Modernizr[prop] == true,true, 'Modernizr.'+prop+' is == true');
       equal(typeof Modernizr[prop] === 'object', true, 'Moderizr.'+prop+' is truly an object');
       equal(Modernizr[prop] !== true, true, 'Modernizr.'+prop+' is !== true');
 
@@ -531,7 +532,7 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
                     { 'prop': 'querySelectorAll',       'obj': document },
                     { 'prop': 'matchesSelector',        'obj': document.createElement('div') }];
   var prop;
-  
+
   for (i = -1, len = propArr.length; ++i < len; ){
     prop = propArr[i];
     equal(Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
