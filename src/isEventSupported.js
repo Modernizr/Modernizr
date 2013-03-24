@@ -10,7 +10,7 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
 
     // Detect whether event support can be detected via `in`. Test on a DOM element
     // using the "blur" event b/c it should always exist. bit.ly/event-detection
-    needsFallback = !('onblur' in document.documentElement);
+    var needsFallback = !('onblur' in document.documentElement);
 
     /**
      * @param  {string|*}           eventName  is the name of an event to test for (e.g. "resize")

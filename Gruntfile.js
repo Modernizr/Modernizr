@@ -29,7 +29,7 @@ module.exports = function( grunt ) {
         ' */'
     },
     meta: {
-      
+
     },
     qunit: {
       files: ['test/index.html']
