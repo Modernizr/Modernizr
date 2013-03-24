@@ -92,6 +92,7 @@
     "test/elem/track",
     "test/emoji",
     "test/es5/strictmode",
+    "test/es6/contains",
     "test/event/deviceorientation-motion",
     "test/exif-orientation",
     "test/file/api",
