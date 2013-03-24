@@ -8,12 +8,6 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
   //   Modernizr.hasEvent("textInput") // in Webkit. github.com/Modernizr/Modernizr/issues/333
   var isEventSupported = (function (undefined) {
 
-    var TAGNAMES = {
-      'select': 'input', 'change': 'input',
-      'submit': 'form', 'reset': 'form',
-      'error': 'img', 'load': 'img', 'abort': 'img'
-    },
-
     // Detect whether event support can be detected via `in`. Test on a DOM element
     // using the "blur" event b/c it should always exist. bit.ly/event-detection
     needsFallback = !('onblur' in document.documentElement);
@@ -28,7 +22,7 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
       var isSupported;
       if ( !eventName ) { return false; }
       if ( !element || typeof element === 'string' ) {
-        element = createElement(element || TAGNAMES[eventName] || 'div');
+        element = createElement(element || 'div');
       }
 
       // Testing via the `in` operator is sufficient for modern browsers and IE.
