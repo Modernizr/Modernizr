@@ -63,6 +63,7 @@
     "test/css/resize",
     "test/css/rgba",
     "test/css/scrollbars",
+    "test/css/shapes",
     "test/css/subpixelfont",
     "test/css/supports",
     "test/css/textshadow",
