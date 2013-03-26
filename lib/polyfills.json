@@ -1,0 +1,92 @@
+{
+  "css3pie": {
+    "name": "CSS3 PIE",
+    "authors": ["Jason Johnston"],
+    "href": "http://css3pie.com/",
+    "licenses": ["Apache2", "GPL2"],
+    "notes": ["CSS3 decoration rendering for IE 6-9. Supports: border-radius, box-shadow, multiple backgrounds, linear gradients, border-image"]
+  },
+  "xaudiojs": {
+    "name": "XAudioJS",
+    "authors": ["Grant Galitz"],
+    "href": "https://github.com/grantgalitz/XAudioJS",
+    "licenses": [],
+    "notes": [
+      "Audio sample stream output thin-abstraction library that supports mono and stereo audio, as well as resampling the audio stream.",
+      "Supports the Mozilla Audio Data API, Web Audio API, Adobe Flash 10, real-time WAV PCM Data URI generation"
+    ]
+  },
+  "dynamicaudiojs": {
+    "name": "dynamicaudio.js",
+    "authors": ["Ben Firshman"],
+    "href": "http://github.com/bfirsh/dynamicaudio.js",
+    "licenses": ["BSD"],
+    "notes": []
+  },
+  "audiolibjs": {
+    "name": "audiolib.js",
+    "authors": ["Jussi Kalliokoski"],
+    "href": "https://github.com/jussi-kalliokoski/audiolib.js",
+    "licenses": ["MIT"],
+    "notes": ["specs: incubator group proposed spec, Mozilla Audio Data API (temporary)"]
+  },
+  "transformie": {
+    "name": "transformie",
+    "authors": ["Paul Bakaus"],
+    "href": "https://github.com/pbakaus/transformie",
+    "licenses": ["GPL2", "MIT"],
+    "notes": []
+  },
+  "csssandpaper": {
+    "name": "CSS Sandpaper",
+    "authors": ["Zoltan Hawryluk"],
+    "href": "http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/",
+    "licenses": ["MIT"],
+    "notes": []
+  },
+  "borderboxmodel": {
+    "name": "borderBoxModel",
+    "authors": ["Alberto Gasparin"],
+    "href": "https://github.com/albertogasparin/borderBoxModel",
+    "licenses": ["MIT"],
+    "notes": ["box-sizing: border-box; javascript polyfill for IE6+"]
+  },
+  "boxsizingpolyfill": {
+    "name": "box-sizing-polyfill",
+    "authors": ["Christian \"Schepp\" Schaefer"],
+    "href": "https://github.com/Schepp/box-sizing-polyfill",
+    "licenses": ["LGPL3"],
+    "notes": ["box-sizing: border-box; for IE6 and IE7 via Microsoft's proprietary CSS behavior / .htc-script"]
+  },
+  "borderbox": {
+    "name": "Borderbox for Compass",
+    "authors": ["Richard Herrera"],
+    "href": "https://github.com/doctyper/compass-borderbox",
+    "licenses": [],
+    "notes": ["box-sizing: border-box; polyfill for SASS/Compass. Outputs equivalent CSS for IE6 & 7"]
+  },
+  "css3multicolumnjs": {
+    "name": "css3-multi-column.js",
+    "authors": ["Cdric Savarese"],
+    "href": "http://www.csscripting.com/css-multi-column/",
+    "licenses": ["CC-GNU LGPL"],
+    "notes": [
+      "Supported Properties: column-count, column-width, column-gap, column-rule.",
+      "Unsupported Properties: column-rule-width (use column-rule instead), column-rule-style (use column-rule instead), column-rule-color (use column-rule instead), column-span, column-width-policy, column-space-distribution"
+    ]
+  },
+  "polyfilter": {
+    "name": "Polyfilter",
+    "authors": ["Christian \"Schepp\" Schaefer"],
+    "href": "https://github.com/Schepp/CSS-Filters-Polyfill",
+    "licenses": ["MIT"],
+    "notes": ["CSS filter effects for Chrome 20+, Safari 6+, Firefox 4+, IE 6 - 9 and some mobile browsers."]
+  },
+  "flexie": {
+    "name": "Flexie",
+    "authors": ["Richard Herrera"],
+    "href": "http://github.com/doctyper/flexie",
+    "licenses": ["MIT"],
+    "notes": ["Flexible box model - old spec from 2009. (flexbox) Supports: box-orient, box-align, box-direction, box-pack, box-flex, box-ordinal-group"]
+  }
+}

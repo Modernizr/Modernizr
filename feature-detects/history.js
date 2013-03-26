@@ -1,9 +1,9 @@
-
-// Test for the history API
-// http://dev.w3.org/html5/spec/history.html#the-history-interface
-// by Hay Kranen < http://github.com/hay > with suggestions by aFarkas
-
-Modernizr.addTest('history', function() {
+define(['Modernizr'], function( Modernizr ) {
+  // Test for the history API
+  // http://dev.w3.org/html5/spec/history.html#the-history-interface
+  // by Hay Kranen < http://github.com/hay > with suggestions by aFarkas
+  // http://dev.w3.org/html5/spec/history.html#the-history-interface
+  Modernizr.addTest('history', function() {
     // Issue #733
     // The stock browser on Android 2.2 & 2.3 returns positive on history support
     // Unfortunately support is really buggy and there is no clean way to detect
@@ -14,10 +14,11 @@ Modernizr.addTest('history', function() {
     // itself as 'Mobile Safari' as well
     if (ua.indexOf('Android 2') !== -1 &&
         ua.indexOf('Mobile Safari') !== -1 &&
-        ua.indexOf('Chrome') === -1) {
-        return false;
-    } else {
-        // Return the regular check
-        return (window.history && 'pushState' in history);
+          ua.indexOf('Chrome') === -1) {
+      return false;
     }
+
+    // Return the regular check
+    return (window.history && 'pushState' in history);
+  });
 });

@@ -1,4 +1,4 @@
-
+/*globals uaparse, JSONSelect, ok, equal, module, test */
 
 var myscript = document.createElement('script'),
     ref = document.getElementsByTagName('script')[0];
@@ -38,7 +38,7 @@ var map = {
   applicationcache : 'offline-apps',
   websqldatabase : 'sql-storage',
   svg : 'svg',
-  touch : 'touch',
+  touchevents : 'touch',
   csstransforms : 'transforms2d',
   csstransforms3d : 'transforms3d',
   video: 'video',
@@ -95,9 +95,7 @@ window.caniusecb = function(scriptdata) {
 
 
     // change the *documented* false positives
-    if ((o.feature == 'textshadow' && o.browser == 'firefox' && o.version == 3)
-        && ciubool == false
-    ) {
+    if (!ciubool && (o.feature == 'textshadow' && o.browser == 'firefox' && o.version == 3)) {
       ciubool = o.fp = true;
     }
 

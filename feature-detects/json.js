@@ -1,7 +1,9 @@
-// native JSON support.
-// developer.mozilla.org/en/JSON
+define(['Modernizr'], function( Modernizr ) {
+  // native JSON support.
+  // developer.mozilla.org/en/JSON
 
-// this will also succeed if you've loaded the JSON2.js polyfill ahead of time
-//   ... but that should be obvious. :)
+  // this will also succeed if you've loaded the JSON2.js polyfill ahead of time
+  //   ... but that should be obvious. :)
 
-Modernizr.addTest('json', !!window.JSON && !!JSON.parse);
+  Modernizr.addTest('json', !!window.JSON && !!JSON.parse);
+});

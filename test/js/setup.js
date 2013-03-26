@@ -1,4 +1,3 @@
-
 // Avoid `console` errors in browsers that lack a console
 if (!(window.console && console.log)) {
     (function() {
@@ -16,13 +15,13 @@ if (!(window.console && console.log)) {
 window.TEST = {
   // note some unique members of the Modernizr object
   inputs    : ['input','inputtypes', 'textarea'],
-  audvid    : ['video','audio'],
+  audvid    : ['video','audio', 'webglextensions'],
   API       : ['addTest', 'mq', 'hasEvent', 'testProp', 'testAllProps', 'testStyles', '_prefixes', '_domPrefixes', '_cssomPrefixes', 'prefixed'],
   extraclass: ['js'],
   privates  : ['_enableHTML5','_version','_fontfaceready'],
   deprecated : [
                 { oldish : 'crosswindowmessaging', newish : 'postmessage'},
-                { oldish : 'historymanagement', newish : 'history'},
+                { oldish : 'historymanagement', newish : 'history'}
               ],
 
   // utility methods
