@@ -1,7 +1,16 @@
+/*!
+{
+  "name": "CSS :checked pseudo-selector",
+  "caniuse": "css-sel3",
+  "property": "checked",
+  "tags": ["css"],
+  "notes": [{
+    "name": "Related Github Issue",
+    "href": "https://github.com/Modernizr/Modernizr/pull/879"
+  }]
+}
+!*/
 define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, createElement, testStyles ) {
-  /**
-   * checked pseudo selector
-   */
   Modernizr.addTest('checked', function(){
    return Modernizr.testStyles('#modernizr input {width:100px} #modernizr :checked {width:200px;display:block}', function(elem, rule){
       var cb = document.createElement('input');
