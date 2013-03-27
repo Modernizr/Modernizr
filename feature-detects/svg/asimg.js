@@ -25,7 +25,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
       addTest('svgasimg', img.width == 1 && img.height == 1);
     };
 
-    // Simplest detectable SVG I know of (base64 would take up more bytes)
+    // Simplest detectable SVG I know of (no need to base64 encode - it'd make it bigger)
     img.src = 'data:image/svg+xml,<?xml version="1.0"?><svg width="1" height="1" xmlns="http://www.w3.org/2000/svg"></svg>';
   });
 });
