@@ -1,7 +1,20 @@
+/*!
+{
+  "name": "SVG as an <img> tag source",
+  "property": "svgasimg",
+  "caniuse" : "svg-img",
+  "tags": ["svg"],
+  "authors": ["Stu Cox"],
+  "async" : true,
+  "notes": [{
+    "name": "HTML5 Spec",
+    "href": "http://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
+  }]
+}
+!*/
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  // SVG in an `<img>` tag
-  // Assumes data URI support.
-  // This test is asynchronous. Watch out.
+  // Assumes data URI support, but according to caniuse every browser which
+  // supports SVG in an <img> also supports data URIs
   Modernizr.addAsyncTest(function () {
     var img = new Image();
 
@@ -12,6 +25,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
       addTest('svgasimg', img.width == 1 && img.height == 1);
     };
 
-    img.src = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+';
+    // Simplest detectable SVG I know of (base64 would take up more bytes)
+    img.src = 'data:image/svg+xml,<?xml version="1.0"?><svg width="1" height="1" xmlns="http://www.w3.org/2000/svg"></svg>';
   });
 });
