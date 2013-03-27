@@ -36,6 +36,7 @@
     "test/css/boxshadow",
     "test/css/boxsizing",
     "test/css/calc",
+    "test/css/checked",
     "test/css/columns",
     "test/css/cubicbezierrange",
     "test/css/displayrunin",
