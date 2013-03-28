@@ -3,7 +3,11 @@
   "name": "CSS general sibling selector",
   "caniuse": "css-sel3",
   "property": "siblinggeneral",
-  "tags": ["css"]
+  "tags": ["css"],
+  "notes": [{
+    "name": "Related Github Issue",
+    "href": "https://github.com/Modernizr/Modernizr/pull/889"
+  }]
 }
 !*/
 define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, createElement, testStyles ) {
