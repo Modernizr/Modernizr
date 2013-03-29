@@ -499,6 +499,6 @@ define(function() {
     // shiv for print
     shivPrint(document);
 
-  }(this, document));
+  }(window, document));
   return html5;
 });
