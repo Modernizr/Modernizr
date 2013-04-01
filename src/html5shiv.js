@@ -301,7 +301,7 @@ define(function() {
     // shiv the document
     shivDocument(document);
 
-  }(this, document));
+  }(window, document));
 
   return html5;
 });
