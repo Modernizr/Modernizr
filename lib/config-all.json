@@ -116,6 +116,7 @@
     "test/iframe/seamless",
     "test/iframe/srcdoc",
     "test/img/apng",
+    "test/img/jpegxr",
     "test/img/webp-lossless",
     "test/img/webp",
     "test/indexedDB",
