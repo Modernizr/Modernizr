@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'docElement', 'createElement', 'body'], function( ModernizrProto, docElement, createElement, body ) {
+define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function( ModernizrProto, docElement, createElement, getBody ) {
   // Inject element with style element and some CSS rules
   function injectElementWithStyles( rule, callback, nodes, testnames ) {
     var mod = 'modernizr';
@@ -7,6 +7,7 @@ define(['ModernizrProto', 'docElement', 'createElement', 'body'], function( Mode
     var node;
     var docOverflow;
     var div = createElement('div');
+    var body = getBody();
 
     if ( parseInt(nodes, 10) ) {
       // In order not to give false positives we create a node for each test

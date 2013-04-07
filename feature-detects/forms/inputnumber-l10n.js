@@ -1,4 +1,4 @@
-define(['Modernizr', 'createElement', 'docElement', 'body'], function( Modernizr, createElement, docElement ) {
+define(['Modernizr', 'createElement', 'docElement', 'getBody'], function( Modernizr, createElement, docElement, getBody ) {
   // input[type="number"] localized input/output
   // // Detects whether input type="number" is capable of receiving and
   // // displaying localized numbers, e.g. with comma separator
@@ -9,6 +9,7 @@ define(['Modernizr', 'createElement', 'docElement', 'body'], function( Modernizr
   Modernizr.addTest('localizednumber', function() {
     var el = createElement('div');
     var diff;
+    var body = getBody();
 
     var root = (function() {
       return docElement.insertBefore(body, docElement.firstElementChild || docElement.firstChild);
