@@ -1,16 +1,12 @@
 /*!
 {
-  "name": "CSS Generated Content Transitions/Animations",
-  "property": "csspseudoanimations",
-  "tags": ["css"],
-  "notes": [{
-    "name": "Demo",
-    "href": "http://codepen.io/Rowno/pen/rkagG"
-  }]
+  "name": "CSS Generated Content Transitions",
+  "property": "csspseudotransitions",
+  "tags": ["css"]
 }
 !*/
 define(['Modernizr', 'testStyles', 'test/css/transitions'], function (Modernizr) {
-  Modernizr.addTest('csspseudoanimations', function () {
+  Modernizr.addTest('csspseudotransitions', function () {
     var result = false;
 
     if (!Modernizr.csstransitions || !window.getComputedStyle) {
