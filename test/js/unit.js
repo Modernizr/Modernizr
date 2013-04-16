@@ -429,7 +429,16 @@ test('Modernizr.hasEvent()',function(){
 });
 
 
+test('Modernizr.selectorSupported()',function(){
 
+  ok(typeof Modernizr.selectorSupported == 'function','Modernizr.selectorSupported() is a function');
+
+
+  equal(Modernizr.selectorSupported(':hover'), true,'hover is supported');
+
+  equal(Modernizr.selectorSupported(':thiswillfail'), false,'random event is definitely not supported');
+
+});
 
 
 test('Modernizr.testStyles()',function(){
