@@ -473,6 +473,7 @@ test('Modernizr.testProp()',function(){
   equal(true, Modernizr.testProp('display'), 'Everyone supports display');
   equal(true, Modernizr.testProp('display', 'block'), 'Everyone supports display:block');
   equal(false, Modernizr.testProp('display', 'penguin'), 'Nobody supports display:penguin');
+  equal(true, Modernizr.testProp('display', 'penguin', false), 'Without native detection it should false-positive on display:penguin');
 
 });
 
@@ -495,6 +496,7 @@ test('Modernizr.testAllProps()',function(){
   equal(true, Modernizr.testAllProps('display'), 'Everyone supports display');
   equal(true, Modernizr.testAllProps('display', 'block'), 'Everyone supports display:block');
   equal(false, Modernizr.testAllProps('display', 'penguin'), 'Nobody supports display:penguin');
+  equal(true, Modernizr.testAllProps('display', 'penguin', false), 'Without native detection it should false-positive on display:penguin');
 
 });
 

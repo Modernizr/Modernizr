@@ -4,8 +4,8 @@ define(['ModernizrProto', 'testProps', 'is'], function( ModernizrProto, testProp
   // Modernizr.testProp('pointerEvents')
   // Also accepts optional 2nd arg, of a value to use for native feature detection, e.g.:
   // Modernizr.testProp('pointerEvents', 'none')
-  var testProp = ModernizrProto.testProp = function( prop, value ) {
-    return testProps([prop], undefined, is(value, 'undefined') ? undefined : [value]);
+  var testProp = ModernizrProto.testProp = function( prop, value, useValue ) {
+    return testProps([prop], undefined, value, useValue);
   };
   return testProp;
 });
