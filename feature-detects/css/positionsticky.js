@@ -1,3 +1,10 @@
+/*!
+{
+  "name": "CSS position: sticky",
+  "property": "csspositionsticky",
+  "tags": ["css"]
+}
+!*/
 define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
   // Sticky positioning - constrains an element to be positioned inside the
   // intersection of its container box, and the viewport.

@@ -1,4 +1,4 @@
-define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
+define(['Modernizr', 'createElement', 'docElement', 'getBody'], function( Modernizr, createElement, docElement, getBody ) {
   // input[type="number"] localized input/output
   // // Detects whether input type="number" is capable of receiving and
   // // displaying localized numbers, e.g. with comma separator
@@ -6,13 +6,13 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
   // // Based on http://trac.webkit.org/browser/trunk/LayoutTests/fast/forms/script-tests/input-number-keyoperation.js?rev=80096#L9
   // // By Peter Janes
 
-  Modernizr.addTest('localizedNumber', function() {
+  Modernizr.addTest('localizednumber', function() {
     var el = createElement('div');
-    var fake;
+    var diff;
+    var body = getBody();
 
-    var root = document.body || (function() {
-      fake = true;
-      return docElement.insertBefore(createElement('body'), docElement.firstElementChild || docElement.firstChild);
+    var root = (function() {
+      return docElement.insertBefore(body, docElement.firstElementChild || docElement.firstChild);
     }());
     el.innerHTML = '<input type="number" value="1.0" step="0.1"/>';
     var input = el.childNodes[0];
@@ -22,9 +22,9 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
       document.execCommand('InsertText', false, '1,1');
     } catch(e) { // prevent warnings in IE
     }
-    var diff = input.type === 'number' && input.valueAsNumber === 1.1 && input.checkValidity();
+    diff = input.type === 'number' && input.valueAsNumber === 1.1 && input.checkValidity();
     root.removeChild(el);
-    fake && root.parentNode.removeChild(root);
+    body.fake && root.parentNode.removeChild(root);
     return diff;
   });
 

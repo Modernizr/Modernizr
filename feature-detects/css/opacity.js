@@ -1,3 +1,12 @@
+/*!
+{
+  "name": "CSS Opacity",
+  "caniuse": "css-opacity",
+  "property": "opacity",
+  "tags": ["css"],
+  "notes": ["Opacity must be be in the range of [0.0,1.0], according to the spec."]
+}
+!*/
 define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
   // Browsers that actually have CSS Opacity implemented have done so
   // according to spec, which means their return values are within the

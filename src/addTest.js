@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'Modernizr', 'docElement', 'hasOwnProp'], function( ModernizrProto, Modernizr, docElement, hasOwnProp ) {
+define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( ModernizrProto, Modernizr, hasOwnProp, setClasses ) {
   /**
    * addTest allows the user to define their own feature tests
    * the result will be added onto the Modernizr object,
@@ -29,11 +29,10 @@ define(['ModernizrProto', 'Modernizr', 'docElement', 'hasOwnProp'], function( Mo
 
       test = typeof test == 'function' ? test() : test;
 
-      if (Modernizr._config.enableClasses) {
-        docElement.className += ' ' + (Modernizr._config.classPrefix || '') + (test ? '' : 'no-') + feature;
-      }
       Modernizr[feature] = test;
 
+      // Set a single class (either `feature` or `no-feature`)
+      setClasses([(test ? '' : 'no-') + feature]);
     }
 
     return Modernizr; // allow chaining.

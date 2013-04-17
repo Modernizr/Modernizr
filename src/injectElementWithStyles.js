@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'docElement', 'createElement'], function( ModernizrProto, docElement, createElement ) {
+define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function( ModernizrProto, docElement, createElement, getBody ) {
   // Inject element with style element and some CSS rules
   function injectElementWithStyles( rule, callback, nodes, testnames ) {
     var mod = 'modernizr';
@@ -7,10 +7,7 @@ define(['ModernizrProto', 'docElement', 'createElement'], function( ModernizrPro
     var node;
     var docOverflow;
     var div = createElement('div');
-    // After page load injecting a fake body doesn't work so check if body exists
-    var body = document.body;
-    // IE6 and 7 won't return offsetWidth or offsetHeight unless it's in the body element, so we fake it.
-    var fakeBody = body || createElement('body');
+    var body = getBody();
 
     if ( parseInt(nodes, 10) ) {
       // In order not to give false positives we create a node for each test
@@ -31,22 +28,22 @@ define(['ModernizrProto', 'docElement', 'createElement'], function( ModernizrPro
     div.id = mod;
     // IE6 will false positive on some tests due to the style element inside the test div somehow interfering offsetHeight, so insert it into body or fakebody.
     // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
-    (body ? div : fakeBody).innerHTML += style;
-    fakeBody.appendChild(div);
-    if ( !body ) {
+    (!body.fake ? div : body).innerHTML += style;
+    body.appendChild(div);
+    if ( body.fake ) {
       //avoid crashing IE8, if background image is used
-      fakeBody.style.background = '';
+      body.style.background = '';
       //Safari 5.13/5.1.4 OSX stops loading if ::-webkit-scrollbar is used and scrollbars are visible
-      fakeBody.style.overflow = 'hidden';
+      body.style.overflow = 'hidden';
       docOverflow = docElement.style.overflow;
       docElement.style.overflow = 'hidden';
-      docElement.appendChild(fakeBody);
+      docElement.appendChild(body);
     }
 
     ret = callback(div, rule);
     // If this is done after page load we don't want to remove the body so check if body exists
-    if ( !body ) {
-      fakeBody.parentNode.removeChild(fakeBody);
+    if ( body.fake ) {
+      body.parentNode.removeChild(body);
       docElement.style.overflow = docOverflow;
     } else {
       div.parentNode.removeChild(div);

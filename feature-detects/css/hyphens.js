@@ -1,21 +1,38 @@
+/*!
+{
+  "name": "CSS Hyphens",
+  "caniuse": "css-hyphens",
+  "property": ["csshyphens", "softhyphens", "softhyphensfind"],
+  "tags": ["css"],
+  "authors": ["David Newton"],
+  "warnings": [
+    "These tests currently require document.body to be present",
+    "If loading Hyphenator.js via Modernizr.load, be cautious of issue 158: http://code.google.com/p/hyphenator/issues/detail?id=158"
+    ],
+  "notes": [
+    "csshyphens - tests hyphens:auto actually adds hyphens to text",
+    "softhyphens - tests that &shy; does its job",
+    "softhyphensfind - tests that in-browser Find functionality still works correctly with &shy;",
+    {
+      "name": "The Current State of Hyphenation on the Web.",
+      "href": "http://davidnewton.ca/the-current-state-of-hyphenation-on-the-web"
+    },
+    {
+      "name": "Hyphenation Test Page",
+      "href": "http://davidnewton.ca/demos/hyphenation/test.html"
+    },
+    {
+      "name": "Hyphenation is Language Specific",
+      "href": " http://code.google.com/p/hyphenator/source/diff?spec=svn975&r=975&format=side&path=/trunk/Hyphenator.js#sc_svn975_313"
+    },
+    {
+      "name": "Related Modernizr Issue",
+      "href": "https://github.com/Modernizr/Modernizr/issues/312"
+    }
+  ]
+}
+!*/
 define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], function( Modernizr, prefixes, createElement, testAllProps, addTest ) {
-    /* see http://davidnewton.ca/the-current-state-of-hyphenation-on-the-web
-    http://davidnewton.ca/demos/hyphenation/test.html
-
-    There are three tests:
-    1. csshyphens      - tests hyphens:auto actually adds hyphens to text
-    2. softhyphens     - tests that &shy; does its job
-    3. softhyphensfind - tests that in-browser Find functionality still works correctly with &shy;
-
-    These tests currently require document.body to be present
-
-    Hyphenation is language specific, sometimes.
-    See for more details: http://code.google.com/p/hyphenator/source/diff?spec=svn975&r=975&format=side&path=/trunk/Hyphenator.js#sc_svn975_313
-
-    If loading Hyphenator.js via Modernizr.load, be cautious of issue 158: http://code.google.com/p/hyphenator/issues/detail?id=158
-
-    More details at https://github.com/Modernizr/Modernizr/issues/312
-    */
 
   Modernizr.addAsyncTest(function() {
     var waitTime = 300;

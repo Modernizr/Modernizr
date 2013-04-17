@@ -1,3 +1,4 @@
+/*global module, ok, equal, test, expect, raises, animationStyle */
 // PhantomJS timesout so leave autostart on
 if(navigator.userAgent.indexOf("PhantomJS") === -1) {
   QUnit.config.autostart = false;
@@ -14,7 +15,7 @@ module('Basics', {
 });
 
 test("globals set up", function() {
-	ok(window.Modernizr, 'global modernizr object created');
+  ok(window.Modernizr, 'global modernizr object created');
 });
 
 test("bind is implemented", function() {
@@ -39,8 +40,8 @@ test("bind is implemented", function() {
       result = this + " -> x:" + x + ", y:" + y;
   }
 
-  G = F.bind("'a'", "'b'");
-  H = G.bind("'Cannot rebind this!'", "'c'");
+  var G = F.bind("'a'", "'b'");
+  var H = G.bind("'Cannot rebind this!'", "'c'");
 
   G(1,2);
   equal(result, "\'a\' -> x:\'b\', y:1");
@@ -78,31 +79,31 @@ test("bind is implemented", function() {
 
 
 test("document.documentElement is valid and correct",1, function() {
-	equal(document.documentElement,document.getElementsByTagName('html')[0]);
+  equal(document.documentElement,document.getElementsByTagName('html')[0]);
 });
 
 
 test("no-js class is gone.", function() {
 
-	ok(!/(?:^|\s)no-js(?:^|\s)/.test(document.documentElement.className),
-	   'no-js class is gone');
+  ok(!/(?:^|\s)no-js(?:^|\s)/.test(document.documentElement.className),
+     'no-js class is gone');
 
-	ok(/(?:^|\s)js(?:^|\s)/.test(document.documentElement.className),
-	   'html.js class is present');
+  ok(/(?:^|\s)js(?:^|\s)/.test(document.documentElement.className),
+     'html.js class is present');
 
-	ok(/(?:^|\s)\+no-js(?:\s|$)/.test(document.documentElement.className),
-	   'html.+no-js class is still present');
+  ok(/(?:^|\s)\+no-js(?:\s|$)/.test(document.documentElement.className),
+     'html.+no-js class is still present');
 
-	ok(/(?:^|\s)no-js-(?:\s|$)/.test(document.documentElement.className),
-	   'html.no-js- class is still present');
+  ok(/(?:^|\s)no-js-(?:\s|$)/.test(document.documentElement.className),
+     'html.no-js- class is still present');
 
-	ok(/(?:^|\s)i-has-no-js(?:\s|$)/.test(document.documentElement.className),
-	   'html.i-has-no-js class is still present');
+  ok(/(?:^|\s)i-has-no-js(?:\s|$)/.test(document.documentElement.className),
+     'html.i-has-no-js class is still present');
 
-	if (document.querySelector){
-	  ok(document.querySelector('html.js') == document.documentElement,
-	     "document.querySelector('html.js') matches.");
-	}
+  if (document.querySelector){
+    ok(document.querySelector('html.js') == document.documentElement,
+       "document.querySelector('html.js') matches.");
+  }
 });
 
 test('html shim worked', function(){
@@ -115,7 +116,7 @@ test('html shim worked', function(){
   ok( elem.childNodes.length === 1 , 'unknown elements dont collapse');
 
   elem.style.color = 'red';
-  ok( /red|#ff0000/i.test(elem.style.color), 'unknown elements are styleable')
+  ok( /red|#ff0000/i.test(elem.style.color), 'unknown elements are styleable');
 
 });
 
@@ -132,10 +133,13 @@ test('html classes are looking good',function(){
 
 
   var modprops = Object.keys(Modernizr),
-      newprops = modprops;
+      newprops = modprops,
+      i,
+      len,
+      aclass;
 
   // decrement for the properties that are private
-  for (var i = -1, len = TEST.privates.length; ++i < len; ){
+  for (i = -1, len = TEST.privates.length; ++i < len; ){
     var item = TEST.privates[i];
     equal(-1, TEST.inArray(item, classes), 'private Modernizr object '+ item +'should not have matching classes');
     equal(-1, TEST.inArray('no-' + item, classes), 'private Modernizr object no-'+item+' should not have matching classes');
@@ -161,7 +165,7 @@ test('html classes are looking good',function(){
 
   }
 
-  for (var i = 0, len = classes.length, aclass; i <len; i++){
+  for (i = 0, len = classes.length, aclass; i <len; i++){
     aclass = classes[i];
 
     // Skip js related classes.
@@ -171,16 +175,16 @@ test('html classes are looking good',function(){
       aclass = aclass.replace('no-','');
 
       equal(Modernizr[aclass], false,
-            aclass + ' is correctly false in the classes and object')
+            aclass + ' is correctly false in the classes and object');
 
     } else {
       equal(Modernizr[aclass], true,
-             aclass + ' is correctly true in the classes and object')
+             aclass + ' is correctly true in the classes and object');
     }
   }
 
 
-  for (var i = 0, len = classes.length, aclass; i <len; i++){
+  for (i = 0, len = classes.length, aclass; i <len; i++){
     equal(classes[i],classes[i].toLowerCase(),'all classes are lowerCase.');
   }
 
@@ -192,7 +196,7 @@ test('html classes are looking good',function(){
   equal(/[^\s]no-/.test(docElClass), false, 'whitespace between all classes.');
 
 
-})
+});
 
 
 test('Modernizr properties are looking good',function(){
@@ -201,7 +205,8 @@ test('Modernizr properties are looking good',function(){
       nobool = TEST.API.concat(TEST.inputs)
                        .concat(TEST.audvid)
                        .concat(TEST.privates)
-                       .concat(['textarea', 'testtruthy', 'testfalsy']); // due to forms-placeholder.js test
+                       .concat(['textarea', 'testtruthy', 'testfalsy']) // due to forms-placeholder.js test
+                       .concat(['datauri']); // has `.over32kb` subproperty
 
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){
@@ -218,7 +223,7 @@ test('Modernizr properties are looking good',function(){
       ok(Modernizr.hasOwnProperty(prop.replace(/-/g, '')), 'Modernizr.'+prop+' has an undashed alias.');
     }
   }
-})
+});
 
 
 
@@ -229,14 +234,15 @@ test('Modernizr.audio and Modernizr.video',function(){
 
     if (Modernizr[prop].toString() == 'true'){
 
-      ok(Modernizr[prop],                             'Modernizr.'+prop+' is truthy.');
-      equal(Modernizr[prop] == true,true,            'Modernizr.'+prop+' is == true')
-      equal(typeof Modernizr[prop] === 'object',true,'Moderizr.'+prop+' is truly an object');
-      equal(Modernizr[prop] !== true,true,           'Modernizr.'+prop+' is !== true')
+      ok(Modernizr[prop], 'Modernizr.'+prop+' is truthy.');
+      /* jshint -W041 */
+      equal(Modernizr[prop] == true,true, 'Modernizr.'+prop+' is == true');
+      equal(typeof Modernizr[prop] === 'object', true, 'Moderizr.'+prop+' is truly an object');
+      equal(Modernizr[prop] !== true, true, 'Modernizr.'+prop+' is !== true');
 
     } else {
 
-      equal(Modernizr[prop] != true,true,            'Modernizr.'+prop+' is != true')
+      equal(Modernizr[prop] != true, true, 'Modernizr.'+prop+' is != true');
     }
   }
 
@@ -249,7 +255,7 @@ test('Modernizr results match expected values',function(){
   // i'm bringing over a few tests from inside Modernizr.js
   equal(!!document.createElement('canvas').getContext,Modernizr.canvas,'canvas test consistent');
 
-  equal(!!window.Worker,Modernizr.webworkers,'web workers test consistent')
+  equal(!!window.Worker,Modernizr.webworkers,'web workers test consistent');
 
 });
 
@@ -333,8 +339,8 @@ test('Modernizr.addTest()',22,function(){
 
 
 
-  Modernizr.addTest({'testobjfnfalse': function(){ return false },
-                     'testobjfntrue' : function(){ return true }   });
+  Modernizr.addTest({'testobjfnfalse': function(){ return false; },
+                     'testobjfntrue' : function(){ return true; } });
 
 
   ok(~docEl.className.indexOf(' no-testobjfnfalse'), 'Modernizr.addTest({feature: bool}): negative class added');
@@ -366,30 +372,30 @@ test('Modernizr.mq: media query testing',function(){
   // from jquery mobile
 
   $.mobile.media = (function() {
-  	// TODO: use window.matchMedia once at least one UA implements it
-  	var cache = {},
-  		testDiv = $( "<div id='jquery-mediatest'>" ),
-  		fakeBody = $( "<body>" ).append( testDiv );
+    // TODO: use window.matchMedia once at least one UA implements it
+    var cache = {},
+      testDiv = $( "<div id='jquery-mediatest'>" ),
+      fakeBody = $( "<body>" ).append( testDiv );
 
-  	return function( query ) {
-  		if ( !( query in cache ) ) {
-  			var styleBlock = document.createElement('style'),
-          		cssrule = "@media " + query + " { #jquery-mediatest { position:absolute; } }";
-  	        //must set type for IE!
-  	        styleBlock.type = "text/css";
-  	        if (styleBlock.styleSheet){
-  	          styleBlock.styleSheet.cssText = cssrule;
-  	        }
-  	        else {
-  	          styleBlock.appendChild(document.createTextNode(cssrule));
-  	        }
+    return function( query ) {
+      if ( !( query in cache ) ) {
+        var styleBlock = document.createElement('style'),
+              cssrule = "@media " + query + " { #jquery-mediatest { position:absolute; } }";
+            //must set type for IE!
+            styleBlock.type = "text/css";
+            if (styleBlock.styleSheet){
+              styleBlock.styleSheet.cssText = cssrule;
+            }
+            else {
+              styleBlock.appendChild(document.createTextNode(cssrule));
+            }
 
-  			$html.prepend( fakeBody ).prepend( styleBlock );
-  			cache[ query ] = testDiv.css( "position" ) === "absolute";
-  			fakeBody.add( styleBlock ).remove();
-  		}
-  		return cache[ query ];
-  	};
+        $html.prepend( fakeBody ).prepend( styleBlock );
+        cache[ query ] = testDiv.css( "position" ) === "absolute";
+        fakeBody.add( styleBlock ).remove();
+      }
+      return cache[ query ];
+    };
   })();
 
 
@@ -433,7 +439,7 @@ test('Modernizr.testStyles()',function(){
   var style = '#modernizr{ width: 9px; height: 4px; font-size: 0; color: papayawhip; }';
 
   Modernizr.testStyles(style, function(elem, rule){
-      equal(style, rule, 'rule passsed back matches what i gave it.')
+      equal(style, rule, 'rule passsed back matches what i gave it.');
       equal(elem.offsetWidth, 9, 'width was set through the style');
       equal(elem.offsetHeight, 4, 'height was set through the style');
       equal(elem.id, 'modernizr', 'element is indeed the modernizr element');
@@ -482,7 +488,7 @@ test('Modernizr.testAllProps()',function(){
 
   equal(Modernizr.csstransitions, Modernizr.testAllProps('transition'), 'Modernizr result matches API result: csstransitions');
 
-  equal(Modernizr.csscolumns, Modernizr.testAllProps('columnCount'), 'Modernizr result matches API result: csscolumns')
+  equal(Modernizr.csscolumns, Modernizr.testAllProps('columnCount'), 'Modernizr result matches API result: csscolumns');
 
   // Native detection tests
 
@@ -499,18 +505,21 @@ test('Modernizr.testAllProps()',function(){
 
 test('Modernizr.prefixed() - css and DOM resolving', function(){
   // https://gist.github.com/523692
-
+  var i,
+    len;
   function gimmePrefix(prop, obj){
     var prefixes = ['Moz','Khtml','Webkit','O','ms'],
         domPrefixes = ['moz','khtml','webkit','o','ms'],
         elem     = document.createElement('div'),
-        upper    = prop.charAt(0).toUpperCase() + prop.slice(1);
+        upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
+        i,
+        len;
 
     if(!obj) {
       if (prop in elem.style)
         return prop;
 
-      for (var len = prefixes.length; len--; ){
+      for (len = prefixes.length; len--; ){
         if ((prefixes[len] + upper)  in elem.style)
           return (prefixes[len] + upper);
       }
@@ -518,7 +527,7 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
       if (prop in obj)
         return prop;
 
-      for (var len = domPrefixes.length; len--; ){
+      for (len = domPrefixes.length; len--; ){
         if ((domPrefixes[len] + upper)  in obj)
           return (domPrefixes[len] + upper);
       }
@@ -534,14 +543,15 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
   var domPropArr = [{ 'prop': 'requestAnimationFrame',  'obj': window },
                     { 'prop': 'querySelectorAll',       'obj': document },
                     { 'prop': 'matchesSelector',        'obj': document.createElement('div') }];
+  var prop;
 
-  for (var i = -1, len = propArr.length; ++i < len; ){
-    var prop = propArr[i];
+  for (i = -1, len = propArr.length; ++i < len; ){
+    prop = propArr[i];
     equal(Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
   }
 
-  for (var i = -1, len = domPropArr.length; ++i < len; ){
-    var prop = domPropArr[i];
+  for (i = -1, len = domPropArr.length; ++i < len; ){
+    prop = domPropArr[i];
     ok(!!~Modernizr.prefixed(prop.prop, prop.obj, false).toString().indexOf(gimmePrefix(prop.prop, prop.obj)), 'results for ' + prop.prop + ' match the homebaked prefix finder');
   }
 
@@ -572,13 +582,13 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'function',
       typeof Modernizr.prefixed('requestAnimationFrame', window),
-      "Modernizr.prefixed('requestAnimationFrame', window) returns a function")
+      "Modernizr.prefixed('requestAnimationFrame', window) returns a function");
 
     // unless we false it to a string
     equal(
       rAFName,
       Modernizr.prefixed('requestAnimationFrame', window, false),
-      "Modernizr.prefixed('requestAnimationFrame', window, false) returns a string (the prop name)")
+      "Modernizr.prefixed('requestAnimationFrame', window, false) returns a string (the prop name)");
 
   }
 
@@ -596,7 +606,7 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       true,
       fn('body'),
-      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) is scoped to the body")
+      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) is scoped to the body");
 
   }
 

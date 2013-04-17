@@ -209,7 +209,9 @@ var docElement            = doc.documentElement,
 
         if ( first ) {
           if ( elem != "img" ) {
-            sTimeout(function(){ insBeforeObj.removeChild( preloadElem ) }, 50);
+            sTimeout( function () {
+                insBeforeObj.removeChild( preloadElem ); 
+              }, 50);
           }
 
           for ( var i in scriptCache[ url ] ) {
@@ -413,13 +415,13 @@ var docElement            = doc.documentElement,
             callback   = testObject['callback'] || noop,
             cbRef      = callback,
             complete   = testObject['complete'] || noop,
-            needGroupSize,
-            callbackKey;
+            needGroupSize;
 
         // Reusable function for dealing with the different input types
         // NOTE:: relies on closures to keep 'chain' up to date, a bit confusing, but
         // much smaller than the functional equivalent in this case.
         function handleGroup ( needGroup, moreToCome ) {
+          /* jshint -W083 */
           if ( '' !== needGroup && ! needGroup ) {
             // Call the complete callback when there's nothing to load.
             ! moreToCome && complete();
@@ -444,7 +446,7 @@ var docElement            = doc.documentElement,
           else if ( isObject( needGroup ) ) {
             // I hate this, but idk another way for objects.
             needGroupSize = (function(){
-              var count = 0, i
+              var count = 0, i;
               for (i in needGroup ) {
                 if ( needGroup.hasOwnProperty( i ) ) {
                   count++;
@@ -453,7 +455,7 @@ var docElement            = doc.documentElement,
               return count;
             })();
 
-            for ( callbackKey in needGroup ) {
+            for ( var callbackKey in needGroup ) {
               // Safari 2 does not have hasOwnProperty, but not worth the bytes for a shim
               // patch if needed. Kangax has a nice shim for it. Or just remove the check
               // and promise not to extend the object prototype.
