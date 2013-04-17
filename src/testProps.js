@@ -17,19 +17,19 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
   // developing in WebKit or IE first don't end up with
   // browser-specific content by accident.
 
-  function testProps( props, prefixed, values, useValue ) {
+  function testProps( props, prefixed, value, useValue ) {
     useValue = is(useValue, 'undefined') ? true : useValue;
 
     // Try native detect first
-    if (!is(values, 'undefined')) {
-      var result = nativeTestProps(props, values);
+    if (!is(value, 'undefined')) {
+      var result = nativeTestProps(props, value);
       if(!is(result, 'undefined')) {
         return result;
       }
     }
 
     // Otherwise do it properly
-    var afterInit, i, j, prop, value, before;
+    var afterInit, i, j, prop, before;
 
     // If we don't have a style element, that means
     // we're running async or after the core tests,
@@ -54,17 +54,13 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
       before = mStyle.style[prop];
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
 
-        // If values to test have been passed in, do a set-and-check test
-        if (useValue && !is(values, 'undefined')) {
-          j = values.length;
-          while (j--) {
-            value = values[j];
-            mStyle.style[prop] = value;
+        // If value to test has been passed in, do a set-and-check test
+        if (useValue && !is(value, 'undefined')) {
+          mStyle.style[prop] = value;
 
-            if (mStyle.style[prop] != before) {
-              cleanElems();
-              return prefixed == 'pfx' ? prop : true;
-            }
+          if (mStyle.style[prop] != before) {
+            cleanElems();
+            return prefixed == 'pfx' ? prop : true;
           }
         }
         else {
