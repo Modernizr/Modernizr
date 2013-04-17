@@ -50,6 +50,9 @@ module.exports = function( grunt ) {
         banner: '<%= banner.compact %>',
         mangle: {
           except: ['Modernizr']
+        },
+        beautify: {
+          ascii_only: true
         }
       },
       dist: {
