@@ -5,14 +5,14 @@ define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'te
      *     the element including the non-vendor prefixed one, for forward-
      *     compatibility.
      */
-    function testPropsAll( prop, prefixed, elem, value, useValue ) {
+    function testPropsAll( prop, prefixed, elem, value, skipValueTest ) {
 
         var ucProp = prop.charAt(0).toUpperCase() + prop.slice(1),
             props = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
         // did they call .prefixed('boxSizing') or are we just testing a prop?
         if(is(prefixed, "string") || is(prefixed, "undefined")) {
-            return testProps(props, prefixed, value, useValue);
+            return testProps(props, prefixed, value, skipValueTest);
 
             // otherwise, they called .prefixed('requestAnimationFrame', window[, elem])
         } else {

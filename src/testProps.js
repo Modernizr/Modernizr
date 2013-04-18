@@ -17,8 +17,8 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
   // developing in WebKit or IE first don't end up with
   // browser-specific content by accident.
 
-  function testProps( props, prefixed, value, useValue ) {
-    useValue = is(useValue, 'undefined') ? true : useValue;
+  function testProps( props, prefixed, value, skipValueTest ) {
+    skipValueTest = is(skipValueTest, 'undefined') ? false : skipValueTest;
 
     // Try native detect first
     if (!is(value, 'undefined')) {
@@ -55,7 +55,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
 
         // If value to test has been passed in, do a set-and-check test
-        if (useValue && !is(value, 'undefined')) {
+        if (!skipValueTest && !is(value, 'undefined')) {
           mStyle.style[prop] = value;
 
           if (mStyle.style[prop] != before) {

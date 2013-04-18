@@ -9,11 +9,12 @@ define(['ModernizrProto', 'testPropsAll'], function( ModernizrProto, testPropsAl
    *
    * @param prop - String naming the property to test
    * @param value - [optional] String of the value to test
-   * @param useValue - [optional] Whether to test that the value is valid when
-   *                   using non-native detection (default: true)
+   * @param skipValueTest - [optional] Whether to skip testing that the value
+   *                        is supported when using non-native detection
+   *                        (default: false)
    */
-    function testAllProps (prop, value, useValue) {
-        return testPropsAll(prop, undefined, undefined, value, useValue);
+    function testAllProps (prop, value, skipValueTest) {
+        return testPropsAll(prop, undefined, undefined, value, skipValueTest);
     }
     ModernizrProto.testAllProps = testAllProps;
     return testAllProps;
