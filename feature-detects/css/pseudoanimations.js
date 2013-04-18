@@ -5,11 +5,11 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testStyles', 'test/css/animations'], function (Modernizr) {
+define(['Modernizr', 'testStyles', 'getStyle', 'test/css/animations'], function (Modernizr, testStyles, getStyle) {
   Modernizr.addTest('csspseudoanimations', function () {
     var result = false;
 
-    if (!Modernizr.cssanimations || !window.getComputedStyle) {
+    if (!Modernizr.cssanimations) {
       return result;
     }
 
@@ -20,8 +20,8 @@ define(['Modernizr', 'testStyles', 'test/css/animations'], function (Modernizr) 
       '}'
     ].join('');
 
-    Modernizr.testStyles(styles, function (elem) {
-      result = window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '10px';
+    testStyles(styles, function (elem) {
+      result = getStyle(elem, ':before').getPropertyValue('font-size') === '10px';
     });
 
     return result;

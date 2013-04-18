@@ -9,14 +9,10 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
+define(['Modernizr', 'testStyles', 'getStyle'], function( Modernizr, testStyles, getStyle ) {
 
   testStyles('#modernizr{background-size:cover}', function( elem ) {
-    var style = window.getComputedStyle ?
-      window.getComputedStyle(elem, null)
-      : elem.currentStyle;
-
-    Modernizr.addTest('bgsizecover', style.backgroundSize == 'cover' );
+    Modernizr.addTest('bgsizecover', getStyle(elem).getPropertyValue('backgroundSize') == 'cover' );
   });
 
 });

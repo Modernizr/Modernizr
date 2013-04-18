@@ -1,4 +1,4 @@
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
+define(['Modernizr', 'testStyles', 'getStyle'], function( Modernizr, testStyles, getStyle ) {
   /*
    * Test for SubPixel Font Rendering
    * (to infer if GDI or DirectWrite is used on Windows)
@@ -10,8 +10,6 @@ define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   function( elem ) {
     var subpixel = elem.firstChild;
     subpixel.innerHTML = 'This is a text written in Arial';
-    Modernizr.addTest('subpixelfont', window.getComputedStyle ?
-      window.getComputedStyle(subpixel, null).getPropertyValue("width") !== '44px'
-    : false);
+    Modernizr.addTest('subpixelfont', getStyle(subpixel).getPropertyValue('width') !== '44px');
   }, 1, ['subpixel']);
 });

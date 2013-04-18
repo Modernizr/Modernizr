@@ -1,4 +1,4 @@
-define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
+define(['Modernizr', 'createElement', 'docElement', 'getStyle'], function( Modernizr, createElement, docElement, getStyle ) {
   // Browser support test for the HTML5 <ruby>, <rt> and <rp> elements
   // http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-ruby-element
   //
@@ -17,10 +17,10 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
     docElement.appendChild(ruby);
 
     // browsers that support <ruby> hide the <rp> via "display:none"
-    if ( getStyle(rp, displayStyleProperty) == 'none' ||                                                       // for non-IE browsers
+    if ( getStyle(rp).getPropertyValue(displayStyleProperty) == 'none' ||                                                       // for non-IE browsers
         // but in IE browsers <rp> has "display:inline" so, the test needs other conditions:
-        getStyle(ruby, displayStyleProperty) == 'ruby' && getStyle(rt, displayStyleProperty) == 'ruby-text' || // for IE8 & IE9
-          getStyle(rp, fontSizeStyleProperty) == '6pt' && getStyle(rt, fontSizeStyleProperty) == '6pt' ) {       // for IE6 & IE7
+        getStyle(ruby).getPropertyValue(displayStyleProperty) == 'ruby' && getStyle(rt).getPropertyValue(displayStyleProperty) == 'ruby-text' || // for IE8 & IE9
+          getStyle(rp).getPropertyValue(fontSizeStyleProperty) == '6pt' && getStyle(rt).getPropertyValue(fontSizeStyleProperty) == '6pt' ) {       // for IE6 & IE7
 
       cleanUp();
       return true;
@@ -28,18 +28,6 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
     } else {
       cleanUp();
       return false;
-    }
-
-    function getStyle( element, styleProperty ) {
-      var result;
-
-      if ( window.getComputedStyle ) {     // for non-IE browsers
-        result = document.defaultView.getComputedStyle(element,null).getPropertyValue(styleProperty);
-      } else if ( element.currentStyle ) { // for IE
-        result = element.currentStyle[styleProperty];
-      }
-
-      return result;
     }
 
     function cleanUp() {

@@ -16,12 +16,10 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
+define(['Modernizr', 'testStyles', 'getStyle'], function( Modernizr, testStyles, getStyle ) {
 
   function getBgRepeatValue( elem ) {
-    return (window.getComputedStyle ?
-            getComputedStyle(elem, null).getPropertyValue('background') :
-            elem.currentStyle['background']);
+    return getStyle(elem).getPropertyValue('background');
   }
 
   testStyles(' #modernizr { background-repeat: round; } ', function( elem, rule ) {
