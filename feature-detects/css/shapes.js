@@ -1,4 +1,4 @@
-define(['Modernizr', 'createElement', 'docElement', 'prefixed', 'testStyles'], function( Modernizr, createElement, docElement, prefixed, testStyles ) {
+define(['Modernizr', 'createElement', 'docElement', 'prefixed', 'testStyles', 'getStyle'], function( Modernizr, createElement, docElement, prefixed, testStyles, getStyle ) {
     // http://www.w3.org/TR/css3-exclusions
     // http://www.w3.org/TR/css3-exclusions/#shapes
     // Examples: http://html.adobe.com/webstandards/cssexclusions
@@ -13,8 +13,7 @@ define(['Modernizr', 'createElement', 'docElement', 'prefixed', 'testStyles'], f
 
         return testStyles('#modernizr { ' + shapeInsideProperty + ':rectangle(0,0,0,0) }', function (elem) {
             // Check against computed value
-            var styleObj = window.getComputedStyle ? getComputedStyle(elem, null) : elem.currentStyle;
-            return styleObj[prefixed('shapeInside', docElement.style, false)] == 'rectangle(0px, 0px, 0px, 0px)';
+            return getStyle(elem)[prefixed('shapeInside', docElement.style, false)] == 'rectangle(0px, 0px, 0px, 0px)';
         });
     });
 });

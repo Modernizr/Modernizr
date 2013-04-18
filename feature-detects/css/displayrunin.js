@@ -13,11 +13,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
+define(['Modernizr', 'testStyles', 'getStyle'], function( Modernizr, testStyles, getStyle ) {
   testStyles(' #modernizr { display: run-in; } ', function( elem, rule ) {
-    var ret = (window.getComputedStyle ?
-               getComputedStyle(elem, null).getPropertyValue('display') :
-               elem.currentStyle['display']);
+    var ret = getStyle(elem)['display'];
 
     Modernizr.addTest('displayrunin', ret == 'run-in', { aliases: ['display-runin'] });
   });

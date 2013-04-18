@@ -1,4 +1,4 @@
-define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile'], function( Modernizr, inputElem, docElement, inputtypes, inputs, smile ) {
+define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile', 'getStyle'], function( Modernizr, inputElem, docElement, inputtypes, inputs, smile, getStyle ) {
   // Run through HTML5's new input types to see if the UA understands any.
   //   This is put behind the tests runloop because it doesn't return a
   //   true/false like all the other tests; instead, it returns an object
@@ -30,8 +30,7 @@ define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile']
           defaultView = document.defaultView;
 
           // Safari 2-4 allows the smiley as a value, despite making a slider
-          bool =  defaultView.getComputedStyle &&
-            defaultView.getComputedStyle(inputElem, null).WebkitAppearance !== 'textfield' &&
+          bool = getStyle(inputElem).WebkitAppearance !== 'textfield' &&
             // Mobile android web browser has false positive, so must
             // check the height to see if the widget is actually there.
             (inputElem.offsetHeight !== 0);

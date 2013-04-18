@@ -1,4 +1,4 @@
-define(['injectElementWithStyles'], function( injectElementWithStyles ) {
+define(['injectElementWithStyles', 'getStyle'], function( injectElementWithStyles, getStyle ) {
   // adapted from matchMedia polyfill
   // by Scott Jehl and Paul Irish
   // gist.github.com/786768
@@ -10,9 +10,7 @@ define(['injectElementWithStyles'], function( injectElementWithStyles ) {
     }
 
     injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function( node ) {
-      bool = (window.getComputedStyle ?
-              getComputedStyle(node, null) :
-              node.currentStyle)['position'] == 'absolute';
+      bool = getStyle(node)['position'] == 'absolute';
     });
 
     return bool;

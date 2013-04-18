@@ -23,10 +23,9 @@
   ]
 }
 !*/
-define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
+define(['Modernizr', 'createElement', 'docElement', 'getStyle'], function( Modernizr, createElement, docElement, getStyle ) {
   Modernizr.addTest('csspointerevents', function() {
     var element = createElement('x');
-    var getComputedStyle = window.getComputedStyle;
     var supports;
     if(!('pointerEvents' in element.style)){
       return false;
@@ -34,8 +33,7 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
     element.style.pointerEvents = 'auto';
     element.style.pointerEvents = 'x';
     docElement.appendChild(element);
-    supports = getComputedStyle &&
-      getComputedStyle(element, '').pointerEvents === 'auto';
+    supports = getStyle(element, '').pointerEvents === 'auto';
     docElement.removeChild(element);
     return !!supports;
   });
