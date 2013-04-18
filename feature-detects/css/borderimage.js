@@ -8,5 +8,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-    Modernizr.addTest('borderimage', testAllProps('borderImage', 'url()'));
+    Modernizr.addTest('borderimage', testAllProps('borderImage', 'url()', false));
 });

@@ -12,5 +12,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('borderradius', testAllProps('borderRadius', '0px'));
+  Modernizr.addTest('borderradius', testAllProps('borderRadius', '0px', false));
 });

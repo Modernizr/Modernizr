@@ -26,5 +26,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('cssmask', testAllProps('maskRepeat', 'repeat-x'));
+  Modernizr.addTest('cssmask', testAllProps('maskRepeat', 'repeat-x', false));
 });

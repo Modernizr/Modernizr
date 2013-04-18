@@ -3,5 +3,5 @@ define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   // by ryan seddon
   //https://github.com/Modernizr/Modernizr/issues/250
 
-  Modernizr.addTest('userselect', testAllProps('userSelect', 'none'));
+  Modernizr.addTest('userselect', testAllProps('userSelect', 'none', false));
 });
