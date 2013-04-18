@@ -7,5 +7,5 @@ define(['Modernizr'], function( Modernizr ) {
   // related:
   // james.padolsey.com/javascript/detect-ie-in-js-using-conditional-comments/
 
-  Modernizr.addTest('ie8compat', (!window.addEventListener && document.documentMode && document.documentMode === 7));
+  Modernizr.addTest('ie8compat', (!window.addEventListener && !!document.documentMode && document.documentMode === 7));
 });
