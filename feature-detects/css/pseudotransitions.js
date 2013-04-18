@@ -19,7 +19,7 @@ define(['Modernizr', 'testStyles', 'getStyle', 'test/css/transitions'], function
 
     testStyles(styles, function (elem) {
       // Force rendering of the element's styles so that the transition will trigger
-      getStyle(elem, ':before')['font-size'];
+      getStyle(elem, ':before').getPropertyValue('font-size');
       elem.className += 'trigger';
       result = getStyle(elem, ':before')['font-size'] === '5px';
     });

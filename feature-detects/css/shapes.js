@@ -13,7 +13,7 @@ define(['Modernizr', 'createElement', 'docElement', 'prefixed', 'testStyles', 'g
 
         return testStyles('#modernizr { ' + shapeInsideProperty + ':rectangle(0,0,0,0) }', function (elem) {
             // Check against computed value
-            return getStyle(elem)[prefixed('shapeInside', docElement.style, false)] == 'rectangle(0px, 0px, 0px, 0px)';
+            return getStyle(elem).getPropertyValue(prefixed('shapeInside', docElement.style, false)) == 'rectangle(0px, 0px, 0px, 0px)';
         });
     });
 });

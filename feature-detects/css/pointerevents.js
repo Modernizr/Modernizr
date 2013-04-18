@@ -33,7 +33,7 @@ define(['Modernizr', 'createElement', 'docElement', 'getStyle'], function( Moder
     element.style.pointerEvents = 'auto';
     element.style.pointerEvents = 'x';
     docElement.appendChild(element);
-    supports = getStyle(element, '').pointerEvents === 'auto';
+    supports = getStyle(element, '').getPropertyValue('pointerEvents') === 'auto';
     docElement.removeChild(element);
     return !!supports;
   });

@@ -15,7 +15,7 @@
 !*/
 define(['Modernizr', 'testStyles', 'getStyle'], function( Modernizr, testStyles, getStyle ) {
   testStyles(' #modernizr { display: run-in; } ', function( elem, rule ) {
-    var ret = getStyle(elem)['display'];
+    var ret = getStyle(elem).getPropertyValue('display');
 
     Modernizr.addTest('displayrunin', ret == 'run-in', { aliases: ['display-runin'] });
   });

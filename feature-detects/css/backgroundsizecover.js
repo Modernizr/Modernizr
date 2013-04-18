@@ -12,7 +12,7 @@
 define(['Modernizr', 'testStyles', 'getStyle'], function( Modernizr, testStyles, getStyle ) {
 
   testStyles('#modernizr{background-size:cover}', function( elem ) {
-    Modernizr.addTest('bgsizecover', getStyle(elem).backgroundSize == 'cover' );
+    Modernizr.addTest('bgsizecover', getStyle(elem).getPropertyValue('backgroundSize') == 'cover' );
   });
 
 });

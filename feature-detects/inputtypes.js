@@ -30,7 +30,7 @@ define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile',
           defaultView = document.defaultView;
 
           // Safari 2-4 allows the smiley as a value, despite making a slider
-          bool = getStyle(inputElem).WebkitAppearance !== 'textfield' &&
+          bool = getStyle(inputElem).getPropertyValue('WebkitAppearance') !== 'textfield' &&
             // Mobile android web browser has false positive, so must
             // check the height to see if the widget is actually there.
             (inputElem.offsetHeight !== 0);
