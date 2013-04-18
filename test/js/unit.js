@@ -474,8 +474,8 @@ test('Modernizr.testProp()',function(){
   equal(true, Modernizr.testProp('display', 'block'), 'Everyone supports display:block');
   equal(false, Modernizr.testProp('display', 'penguin'), 'Nobody supports display:penguin');
 
-  // This test will fail if PhantomJS implements `window.CSS.supports()`
-  equal(true, Modernizr.testProp('display', 'penguin', false), 'useValue=false shouldn\'t value test without native detection');
+  // Assumes PhantomJS doesn't implement `window.CSS.supports()`; will fail if it does
+  equal(true, Modernizr.testProp('display', 'penguin', true), 'skipTestValue shouldn\'t value test without native detection');
 
 });
 
@@ -499,8 +499,8 @@ test('Modernizr.testAllProps()',function(){
   equal(true, Modernizr.testAllProps('display', 'block'), 'Everyone supports display:block');
   equal(false, Modernizr.testAllProps('display', 'penguin'), 'Nobody supports display:penguin');
 
-  // This test will fail if PhantomJS implements `window.CSS.supports()`
-  equal(true, Modernizr.testAllProps('display', 'penguin', false), 'useValue=false shouldn\'t value test without native detection');
+  // Assumes PhantomJS doesn't implement `window.CSS.supports()`; will fail if it does
+  equal(true, Modernizr.testAllProps('display', 'penguin', true), 'skipTestValue shouldn\'t value test without native detection');
 
 });
 
