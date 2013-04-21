@@ -17,13 +17,14 @@
     "Indicates if the browser supports the Touch Events spec, which does not necessarily reflect a touchscreen device"
   ],
   "knownBugs": [
-    "False-positive on some configurations of Nokia N900"
+    "False-positive on some configurations of Nokia N900",
+    "False-positive on some BlackBerry 6.0 builds – https://github.com/Modernizr/Modernizr/issues/372#issuecomment-3112695"
   ]
 }
 !*/
 /* DOC
 
-The `Modernizr.touch` test only indicates if the browser supports touch events, which does not necessarily reflect a touchscreen device, as evidenced by tablets running Windows 7 or, alas, the Palm Pre / WebOS (touch) phones.
+The `Modernizr.touchevents` test only indicates if the browser supports touch events, which does not necessarily reflect a touchscreen device, as evidenced by tablets running Windows 7 or, alas, the Palm Pre / WebOS (touch) phones.
 
 We also test for Firefox 4 Multitouch Support.
 
