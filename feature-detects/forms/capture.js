@@ -1,13 +1,13 @@
 /*!
 {
-"name": "input[capture] Attribute",
-"property": "capture",
-"caniuse" : "capture",
-"tags": ["video", "image", "sound", "media", "attribute"],
-"notes": [{
-"name": "W3C draft: HTML Media Capture",
-"href": "http://www.w3.org/TR/html-media-capture/"
-}]
+  "name": "input[capture] Attribute",
+  "property": "capture",
+  "caniuse" : "capture",
+  "tags": ["video", "image", "sound", "media", "attribute"],
+  "notes": [{
+    "name": "W3C draft: HTML Media Capture",
+    "href": "http://www.w3.org/TR/html-media-capture/"
+  }]
 }
 !*/
 /* DOC
