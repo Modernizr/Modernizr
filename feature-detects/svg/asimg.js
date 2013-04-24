@@ -9,10 +9,7 @@
   "notes": [{
     "name": "HTML5 Spec",
     "href": "http://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
-  }],
-  "knownIssues": [
-    "Negative result in IE9 because of the scaling bug: http://www.seowarp.com/blog/2011/06/svg-scaling-problems-in-ie9-and-other-browsers/"
-  ]
+  }]
 }
 !*/
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
@@ -28,7 +25,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
       addTest('svgasimg', img.width == 1 && img.height == 1);
     };
 
-    // Simplest detectable SVG I know of (no need to base64 encode - it'd make it bigger)
-    img.src = 'data:image/svg+xml,<?xml version="1.0"?><svg width="1" height="1" xmlns="http://www.w3.org/2000/svg"></svg>';
+    // 1px x 1px SVG; must be base64 or URI encoded for IE9... base64 is shorter
+    img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==';
   });
 });
