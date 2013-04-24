@@ -6,7 +6,7 @@ define(['injectElementWithStyles'], function( injectElementWithStyles ) {
     var matchMedia = window.matchMedia || window.msMatchMedia;
     var bool;
     if ( matchMedia ) {
-      return matchMedia(mq).matches;
+      return matchMedia(mq) && matchMedia(mq).matches || false;
     }
 
     injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function( node ) {
