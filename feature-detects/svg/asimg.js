@@ -9,7 +9,10 @@
   "notes": [{
     "name": "HTML5 Spec",
     "href": "http://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
-  }]
+  }],
+  "knownIssues": [
+    "Negative result in IE9 because of the scaling bug: http://www.seowarp.com/blog/2011/06/svg-scaling-problems-in-ie9-and-other-browsers/"
+  ]
 }
 !*/
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
