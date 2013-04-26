@@ -143,6 +143,7 @@
     "test/storage/sessionstorage",
     "test/storage/websqldatabase",
     "test/style/scoped",
+    "test/svg/asimg",
     "test/svg/clippaths",
     "test/svg/filters",
     "test/svg/inline",
