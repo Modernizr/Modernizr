@@ -12,6 +12,20 @@ define(['Modernizr', 'addTest', 'getBody', 'createElement'], function( Modernizr
     var ogg = document.createElement('source');
     var elemStyle = elem.style;
 
+    function testAutoplay() {
+      clearTimeout(timeout);
+      Modernizr.addTest('videoautoplay', elem.currentTime !== 0);
+      body.removeChild(elem);
+    }
+
+    // cleanup the video element if autoplay exists, but
+    // isn't supported - mobile browsers mostly
+    timeout = setTimeout(testAutoplay, 300);
+
+    if (!('autoplay' in elem)) {
+      testAutoplay();
+    }
+
     elemStyle.height = 0;
     elemStyle.width = 0;
 
@@ -25,22 +39,7 @@ define(['Modernizr', 'addTest', 'getBody', 'createElement'], function( Modernizr
     elem.appendChild(ogg);
     elem.setAttribute('autoplay','');
 
-
-    function testAutoplay() {
-      clearTimeout(timeout);
-      Modernizr.addTest('autoplay_video', elem.currentTime !== 0);
-      body.removeChild(elem);
-    }
-
     body.appendChild(elem);
-
-    // cleanup the video element if autoplay exists, but
-    // isn't supported - mobile browsers mostly
-    timeout = setTimeout(testAutoplay, 300);
-
-    if (!('autoplay' in elem)) {
-      testAutoplay();
-    }
 
     elem.addEventListener('playing', testAutoplay);
   });
