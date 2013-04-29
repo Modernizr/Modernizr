@@ -34,8 +34,14 @@ define(['Modernizr', 'addTest', 'getBody', 'createElement'], function( Modernizr
 
     body.appendChild(elem);
 
-    // cleanup the video element if autoplay isn't supported
+    // cleanup the video element if autoplay exists, but
+    // isn't supported - mobile browsers mostly
     timeout = setTimeout(testAutoplay, 300);
+
+    if (!('autoplay' in elem)) {
+      testAutoplay();
+    }
+
     elem.addEventListener('playing', testAutoplay);
   });
 });
