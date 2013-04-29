@@ -1,10 +1,11 @@
-define(['Modernizr', 'addTest', 'createElement'], function( Modernizr, addTest, createElement ) {
+define(['Modernizr', 'addTest', 'getBody', 'createElement'], function( Modernizr, addTest, getBody, createElement ) {
   // This test evaluates support of the autoplay attribute of the video element.
 
   // This test is asynchronous. Watch out.
 
   Modernizr.addAsyncTest(function() {
     var timeout;
+    var body = getBody();
     var waitTime = 300;
     var elem = document.createElement('video');
     var mp4 = document.createElement('source');
@@ -24,25 +25,17 @@ define(['Modernizr', 'addTest', 'createElement'], function( Modernizr, addTest, 
     elem.appendChild(ogg);
     elem.setAttribute('autoplay','');
 
-    // Wait for the body to exist
-    setTimeout(runAutoplayVideoTest, waitTime);
-    function runAutoplayVideoTest() {
-      if (!document.body && !document.getElementsByTagName('body')[0]) {
-        setTimeout(runAutoplayVideoTest, waitTime);
-        return;
-      }
 
-      function testAutoplay() {
-        clearTimeout(timeout);
-        Modernizr.addTest('autoplay_video', elem.currentTime !== 0);
-        document.body.removeChild(elem);
-      }
-
-      document.body.appendChild(elem);
-
-      // cleanup the video element if autoplay isn't supported
-      timeout = setTimeout(testAutoplay, 3000);
-      elem.addEventListener('playing', testAutoplay);
+    function testAutoplay() {
+      clearTimeout(timeout);
+      Modernizr.addTest('autoplay_video', elem.currentTime !== 0);
+      body.removeChild(elem);
     }
+
+    body.appendChild(elem);
+
+    // cleanup the video element if autoplay isn't supported
+    timeout = setTimeout(testAutoplay, 300);
+    elem.addEventListener('playing', testAutoplay);
   });
 });
