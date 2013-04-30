@@ -219,5 +219,5 @@ module.exports = function( grunt ) {
 
   // Build
   grunt.registerTask('build', ['clean', 'generateinit', 'requirejs', 'copy', 'clean:postbuild', 'stripdefine', 'uglify', 'jshint']);
-  grunt.registerTask('default', 'build');
+  grunt.registerTask('default', ['build', 'qunit']);
 };
