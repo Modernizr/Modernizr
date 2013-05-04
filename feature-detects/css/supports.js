@@ -12,7 +12,7 @@
   },{
     "name": "W3 Info",
     "href": "http://dev.w3.org/csswg/css3-conditional/#the-csssupportsrule-interface"
-  },]
+  }]
 }
 !*/
 define(['Modernizr'], function( Modernizr ) {
