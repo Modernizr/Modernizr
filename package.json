@@ -24,11 +24,14 @@
     "grunt-contrib-requirejs": "~0.4.0"
   },
   "scripts": {
-    "test": "grunt qunit"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/Modernizr/Modernizr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Modernizr/Modernizr/issues"
   },
   "keywords": [
     "html5",
@@ -36,6 +39,18 @@
     "browser",
     "feature detection"
   ],
-  "author": "Faruk Ates, Paul Irish, Alex Sexton, Ryan Seddon, Alexander Farkas",
+  "author": {
+    "name": "Modernizr",
+    "url": "http://modernizr.com/"
+  },
+  "contributors": [
+    { "name": "Faruk Ates" },
+    { "name": "Paul Irish" }, 
+    { "name": "Alex Sexton" }, 
+    { "name": "Ryan Seddon" }, 
+    { "name": "Alexander Farkas" }, 
+    { "name": "Ben Alman" }, 
+    { "name": "Stu Cox" }
+  ],
   "license": "MIT"
 }

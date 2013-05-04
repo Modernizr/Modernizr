@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'Modernizr', 'docElement', 'hasOwnProp'], function( ModernizrProto, Modernizr, docElement, hasOwnProp ) {
+define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( ModernizrProto, Modernizr, hasOwnProp, setClasses ) {
   // As far as I can think of, we shouldn't need or
   // allow 'on' for non-async tests, and you can't do
   // async tests without this 'addTest' module.
@@ -77,11 +77,13 @@ define(['ModernizrProto', 'Modernizr', 'docElement', 'hasOwnProp'], function( Mo
 
       test = typeof test == 'function' ? test() : test;
 
-      if (Modernizr._config.enableClasses) {
-        docElement.className += ' ' + (Modernizr._config.classPrefix || '') + (test ? '' : 'no-') + feature;
-      }
+      // Set the value (this is the magic, right here).
       Modernizr[feature] = test;
 
+      // Set a single class (either `feature` or `no-feature`)
+      setClasses([(test ? '' : 'no-') + feature]);
+
+      // Trigger the event
       Modernizr._trigger(feature, test);
     }
 

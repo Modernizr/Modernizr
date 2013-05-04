@@ -12,7 +12,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'prefixed', 'docElement'], function( Modernizr, prefixed, docElement ) {
+define(['Modernizr', 'prefixed', 'docElement', 'createElement'], function( Modernizr, prefixed, docElement, createElement ) {
     // Separate test for `wrap-flow` property as IE10 has just implemented this alone
     Modernizr.addTest('wrapflow', function () {
         var prefixedProperty = prefixed('wrapFlow');
