@@ -1,7 +1,7 @@
 /*!
 {
-  "name": "ES5 Sham",
-  "property": "es5sham",
+  "name": "ES5 Object",
+  "property": "es5object",
   "notes": [{
     "name": "ES5 Shim documentation",
     "href": "https://github.com/kriskowal/es5-shim"
@@ -17,14 +17,15 @@
 !*/
 /* DOC
 
-Check if browser needs ES5 Sham (true) or if it already implements ES5 (false).
+Check if browser implements ECMAScript 5 Object per specification.
 
 */
-define(['Modernizr'], function(Modernizr) {
-  // es5sham
+define(['Modernizr'], function (Modernizr) {
+  // es5object
   // test by @jokeyrhyme
-  Modernizr.addTest('es5sham', function() {
-    return !(Object.create &&
+  Modernizr.addTest('es5object', function () {
+    return Object.keys &&
+      Object.create &&
       Object.getPrototypeOf &&
       Object.getOwnPropertyNames &&
       Object.isSealed &&
@@ -35,6 +36,6 @@ define(['Modernizr'], function(Modernizr) {
       Object.defineProperties &&
       Object.seal &&
       Object.freeze &&
-      Object.preventExtensions);
+      Object.preventExtensions;
   });
 });
