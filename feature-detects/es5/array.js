@@ -3,16 +3,17 @@
   "name": "ES5 Array",
   "property": "es5array",
   "notes": [{
-    "name": "ES5 Shim documentation",
-    "href": "https://github.com/kriskowal/es5-shim"
-  }, {
     "name": "ECMAScript 5.1 Language Specification",
     "href": "http://www.ecma-international.org/ecma-262/5.1/"
   }],
- "async": false,
- "authors": ["Ron Waldon (@jokeyrhyme)"],
- "knownBugs": [],
- "tags": []
+  "polyfills": [{
+    "name": "ES5 Shim",
+    "href": "https://github.com/kriskowal/es5-shim"
+  }],
+  "async": false,
+  "authors": ["Ron Waldon (@jokeyrhyme)"],
+  "knownBugs": [],
+  "tags": []
 }
 !*/
 /* DOC

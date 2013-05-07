@@ -3,16 +3,20 @@
   "name": "ES5 Object",
   "property": "es5object",
   "notes": [{
-    "name": "ES5 Shim documentation",
-    "href": "https://github.com/kriskowal/es5-shim"
-  }, {
     "name": "ECMAScript 5.1 Language Specification",
     "href": "http://www.ecma-international.org/ecma-262/5.1/"
   }],
- "async": false,
- "authors": ["Ron Waldon (@jokeyrhyme)"],
- "knownBugs": [],
- "tags": []
+  "polyfills": [{
+    "name": "ES5 Shim: only provides Object.keys()",
+    "href": "https://github.com/kriskowal/es5-shim"
+  }, {
+    "name": "ES5 Sham: adds the rest of Object, read carefully before using",
+    "href": "https://github.com/kriskowal/es5-shim"
+  }],
+  "async": false,
+  "authors": ["Ron Waldon (@jokeyrhyme)"],
+  "knownBugs": [],
+  "tags": []
 }
 !*/
 /* DOC
