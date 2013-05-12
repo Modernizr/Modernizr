@@ -23,20 +23,10 @@
   ]
 }
 !*/
-define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
+define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('csspointerevents', function() {
     var element = createElement('x');
-    var getComputedStyle = window.getComputedStyle;
-    var supports;
-    if(!('pointerEvents' in element.style)){
-      return false;
-    }
-    element.style.pointerEvents = 'auto';
-    element.style.pointerEvents = 'x';
-    docElement.appendChild(element);
-    supports = getComputedStyle &&
-      getComputedStyle(element, '').pointerEvents === 'auto';
-    docElement.removeChild(element);
-    return !!supports;
+    element.style.cssText = 'pointer-events:auto';
+    return element.style.pointerEvents === 'auto';
   });
 });
