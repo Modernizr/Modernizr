@@ -12,6 +12,9 @@ define(['Modernizr', 'addTest', 'getBody', 'createElement'], function( Modernizr
     var ogg = document.createElement('source');
     var elemStyle = elem.style;
 
+    //skip the tst if the autoplay attribute isn't supported
+    if (!('autoplay' in elem)) return false;
+
     function testAutoplay() {
       clearTimeout(timeout);
       Modernizr.addTest('videoautoplay', elem.currentTime !== 0);
@@ -21,10 +24,6 @@ define(['Modernizr', 'addTest', 'getBody', 'createElement'], function( Modernizr
     // cleanup the video element if autoplay exists, but
     // isn't supported - mobile browsers mostly
     timeout = setTimeout(testAutoplay, 300);
-
-    if (!('autoplay' in elem)) {
-      testAutoplay();
-    }
 
     elemStyle.height = 0;
     elemStyle.width = 0;
