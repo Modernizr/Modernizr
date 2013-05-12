@@ -1,4 +1,4 @@
-define(['Modernizr', 'addTest', 'docElement', 'createElement'], function( Modernizr, addTest, docElement, createElement ) {
+define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], function( Modernizr, addTest, docElement, createElement ) {
   // This test evaluates support of the autoplay attribute of the video element.
 
   // This test is asynchronous. Watch out.
@@ -10,12 +10,12 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement'], function( Modern
     var elemStyle = elem.style;
     var testAutoplay = function() {
       clearTimeout(timeout);
-      Modernizr.addTest('videoautoplay', elem.currentTime !== 0);
-      docElement.removeChild(elem);
+      addTest('videoautoplay', elem.currentTime !== 0);
+      elem.parentNode.removeChild(elem);
     };
 
     //skip the test if video itself, or the autoplay
-    //element on itisn't supported
+    //element on it isn't supported
     if (!Modernizr.video || !('autoplay' in elem)) return false;
 
     elemStyle.height = 0;
