@@ -56,7 +56,10 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
 
         // If value to test has been passed in, do a set-and-check test
         if (!skipValueTest && !is(value, 'undefined')) {
-          mStyle.style[prop] = value;
+          // Needs a try catch block because of IE
+          try {
+            mStyle.style[prop] = value;
+          } catch (e) {}
 
           if (mStyle.style[prop] != before) {
             cleanElems();
