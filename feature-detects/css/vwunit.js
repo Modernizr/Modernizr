@@ -1,6 +1,18 @@
+/*!
+{
+  "name": "CSS vw unit",
+  "property": "cssvwunit",
+  "tags": ["css"],
+  "notes": [{
+    "name": "Related Modernizr Issue",
+    "href": "https://github.com/Modernizr/Modernizr/issues/572"
+  },{
+    "name": "JSFiddle Example",
+    "href": "http://jsfiddle.net/FWeinb/etnYC/"
+  }]
+}
+!*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
-  // https://github.com/Modernizr/Modernizr/issues/572
-  // http://jsfiddle.net/FWeinb/etnYC/
   testStyles('#modernizr { width: 50vw; }', function( elem, rule ) {
     var width = parseInt(window.innerWidth/2,10);
     var compStyle = parseInt((window.getComputedStyle ?
