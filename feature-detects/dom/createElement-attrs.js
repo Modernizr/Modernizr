@@ -1,7 +1,16 @@
+/*!
+{
+  "name": "createElement with Attributes",
+  "property": ["createelementattrs", "createelement-attrs"],
+  "tags": ["dom"],
+  "authors": ["James A. Rosen"],
+  "notes": [{
+    "name": "Related Github Issue",
+    "href": "https://github.com/Modernizr/Modernizr/issues/258"
+  }]
+}
+!*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
-  // by james a rosen.
-  // https://github.com/Modernizr/Modernizr/issues/258
-
   Modernizr.addTest('createelementattrs', function() {
     try {
       return createElement('<input name="test" />').getAttribute('name') == 'test';
