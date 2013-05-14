@@ -1,19 +1,15 @@
 define(['injectElementWithStyles', 'domToHyphenated'], function ( injectElementWithStyles, domToHyphenated ) {
     // Function to allow us to use native feature detection functionality if available.
-    // Accepts a list of property names and a list of values
+    // Accepts a list of property names and a single value
     // Returns `undefined` if native detection not available
-    function nativeTestProps ( props, values ) {
-        var i = props.length,
-            j;
+    function nativeTestProps ( props, value ) {
+        var i = props.length;
         // Start with the JS API: http://www.w3.org/TR/css3-conditional/#the-css-interface
         if ('CSS' in window && 'supports' in window.CSS) {
-            // Try every prefixed variant, of both property and value
+            // Try every prefixed variant of the property
             while (i--) {
-                j = values.length;
-                while (j--) {
-                    if (window.CSS.supports(domToHyphenated(props[i]), values[j])) {
-                        return true;
-                    }
+                if (window.CSS.supports(domToHyphenated(props[i]), value)) {
+                    return true;
                 }
             }
             return false;
@@ -23,10 +19,7 @@ define(['injectElementWithStyles', 'domToHyphenated'], function ( injectElementW
             // Build a condition string for every prefixed variant
             var conditionText = [];
             while (i--) {
-                j = values.length;
-                while (j--) {
-                    conditionText.push('(' + domToHyphenated(props[i]) + ':' + values[j] + ')');
-                }
+                conditionText.push('(' + domToHyphenated(props[i]) + ':' + value + ')');
             }
             conditionText = conditionText.join(' or ');
             return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function( node ) {
