@@ -7,10 +7,8 @@
     "href": "http://www.ecma-international.org/ecma-262/5.1/"
   }],
   "polyfills": ["es5shim", "es5sham"],
-  "async": false,
   "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "knownBugs": [],
-  "tags": []
+  "tags": ["es5"]
 }
 !*/
 /* DOC
@@ -19,8 +17,6 @@ Check if browser implements ECMAScript 5 Object per specification.
 
 */
 define(['Modernizr'], function (Modernizr) {
-  // es5object
-  // test by @jokeyrhyme
   Modernizr.addTest('es5object', function () {
     return Object.keys &&
       Object.create &&
