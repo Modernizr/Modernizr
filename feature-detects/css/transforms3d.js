@@ -2,6 +2,7 @@
 {
   "name": "CSS Transforms 3D",
   "property": "csstransforms3d",
+  "caniuse": "transforms3d",
   "tags": ["css"]
 }
 !*/

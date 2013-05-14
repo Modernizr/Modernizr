@@ -2,6 +2,7 @@
 {
   "name": "CSS Transitions",
   "property": "csstransitions",
+  "caniuse": "css-transitions",
   "tags": ["css"]
 }
 !*/

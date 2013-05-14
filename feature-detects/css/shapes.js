@@ -1,7 +1,18 @@
+/*!
+{
+  "name": "CSS Shapes",
+  "property": "shapes",
+  "tags": ["css"],
+  "notes": [{
+    "name": "Exclusions Spec",
+    "href": "http://www.w3.org/TR/css3-exclusions#shapes"
+  },{
+    "name": "Example from Adobe",
+    "href": "http://html.adobe.com/webstandards/cssexclusions"
+  }]
+}
+!*/
 define(['Modernizr', 'createElement', 'docElement', 'prefixed', 'testStyles'], function( Modernizr, createElement, docElement, prefixed, testStyles ) {
-    // http://www.w3.org/TR/css3-exclusions
-    // http://www.w3.org/TR/css3-exclusions/#shapes
-    // Examples: http://html.adobe.com/webstandards/cssexclusions
     // Separate test for CSS shapes as WebKit has just implemented this alone
     Modernizr.addTest('shapes', function () {
         var prefixedProperty = prefixed('shapeInside');

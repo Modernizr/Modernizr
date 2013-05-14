@@ -2,6 +2,7 @@
 {
   "name": "CSS UI Resize",
   "property": "cssresize",
+  "caniuse": "css-resize",
   "tags": ["css"],
   "notes": [{
     "name": "W3C Specification",

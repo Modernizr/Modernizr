@@ -2,6 +2,7 @@
 {
   "name": "CSS vmax unit",
   "property": "cssvmaxunit",
+  "caniuse": "viewport-units",
   "tags": ["css"],
   "notes": [{
     "name": "Related Modernizr Issue",

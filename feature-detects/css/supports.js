@@ -2,6 +2,7 @@
 {
   "name": "CSS Supports",
   "property": "supports",
+  "caniuse": "css-featurequeries",
   "tags": ["css"],
   "notes": [{
     "name": "W3 Spec",

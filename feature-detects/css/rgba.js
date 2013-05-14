@@ -1,6 +1,7 @@
 /*!
 {
   "name": "CSS rgba",
+  "caniuse": "css3-colors",
   "property": "rgba",
   "tags": ["css"],
   "notes": [{

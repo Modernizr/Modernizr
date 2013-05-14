@@ -2,6 +2,7 @@
 {
   "name": "CSS user-select",
   "property": "userselect",
+  "caniuse": "user-select-none",
   "authors": ["ryan seddon"],
   "tags": ["css"],
   "notes": [{

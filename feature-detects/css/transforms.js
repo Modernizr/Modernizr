@@ -2,6 +2,7 @@
 {
   "name": "CSS Transforms",
   "property": "csstransforms",
+  "caniuse": "transforms2d",
   "tags": ["css"]
 }
 !*/

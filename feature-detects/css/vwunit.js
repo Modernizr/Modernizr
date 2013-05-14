@@ -2,6 +2,7 @@
 {
   "name": "CSS vw unit",
   "property": "cssvwunit",
+  "caniuse": "viewport-units",
   "tags": ["css"],
   "notes": [{
     "name": "Related Modernizr Issue",
