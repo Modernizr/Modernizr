@@ -1,16 +1,25 @@
+/*!
+{
+  "name": "ruby, rp, rt Elements",
+  "caniuse": "ruby",
+  "property": "ruby",
+  "tags": ["elem"],
+  "authors": ["@alrra"],
+  "notes": [{
+    "name": "WhatWG Spec",
+    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-ruby-element"
+  }]
+}
+!*/
 define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
-  // Browser support test for the HTML5 <ruby>, <rt> and <rp> elements
-  // http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-ruby-element
-  //
-  // by @alrra
-
   Modernizr.addTest('ruby', function () {
 
     var ruby = createElement('ruby');
     var rt = createElement('rt');
     var rp = createElement('rp');
     var displayStyleProperty = 'display';
-    var fontSizeStyleProperty = 'fontSize'; // 'fontSize' - because it`s only used for IE6 and IE7
+    // 'fontSize' - because it`s only used for IE6 and IE7
+    var fontSizeStyleProperty = 'fontSize';
 
     ruby.appendChild(rp);
     ruby.appendChild(rt);
