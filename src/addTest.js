@@ -35,6 +35,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
     var cb;
     var i;
 
+    /* jshint -W083 */
     for (i = 0; i < cbs.length; i++) {
       cb = cbs[i];
       // Force async
