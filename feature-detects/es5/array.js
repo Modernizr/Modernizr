@@ -6,10 +6,7 @@
     "name": "ECMAScript 5.1 Language Specification",
     "href": "http://www.ecma-international.org/ecma-262/5.1/"
   }],
-  "polyfills": [{
-    "name": "ES5 Shim",
-    "href": "https://github.com/kriskowal/es5-shim"
-  }],
+  "polyfills": ["es5shim"],
   "async": false,
   "authors": ["Ron Waldon (@jokeyrhyme)"],
   "knownBugs": [],

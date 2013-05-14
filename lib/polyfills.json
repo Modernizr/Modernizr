@@ -88,5 +88,14 @@
     "href": "http://github.com/doctyper/flexie",
     "licenses": ["MIT"],
     "notes": ["Flexible box model - old spec from 2009. (flexbox) Supports: box-orient, box-align, box-direction, box-pack, box-flex, box-ordinal-group"]
+  },
+  "es5shim": {
+    "name": "ES5 Shim",
+    "href": "https://github.com/kriskowal/es5-shim"
+  },
+  "es5sham": {
+    "name": "ES5 Sham",
+    "href": "https://github.com/kriskowal/es5-shim",
+    "notes": ["Adds the rest of Object, read carefully before using"]
   }
 }
