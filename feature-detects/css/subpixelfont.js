@@ -1,9 +1,24 @@
+/*!
+{
+  "name": "CSS Subpixel Fonts",
+  "property": "subpixelfont",
+  "tags": ["css"],
+  "authors": [
+    "@derSchepp",
+    "@gerritvanaaken",
+    "@rodneyrehm",
+    "@yatil",
+    "@ryanseddon"
+  ],
+  "notes": [{
+    "name": "Origin Test",
+    "href": "https://github.com/gerritvanaaken/subpixeldetect"
+  }]
+}
+!*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   /*
-   * Test for SubPixel Font Rendering
    * (to infer if GDI or DirectWrite is used on Windows)
-   * Authors: @derSchepp, @gerritvanaaken, @rodneyrehm, @yatil, @ryanseddon
-   * Web: https://github.com/gerritvanaaken/subpixeldetect
    */
   testStyles(
     '#modernizr{position: absolute; top: -10em; visibility:hidden; font: normal 10px arial;}#subpixel{float: left; font-size: 33.3333%;}',

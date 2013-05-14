@@ -1,6 +1,18 @@
+/*!
+{
+  "name": "CSS vmin unit",
+  "property": "cssvminunit",
+  "tags": ["css"],
+  "notes": [{
+    "name": "Related Modernizr Issue",
+    "href": "https://github.com/Modernizr/Modernizr/issues/572"
+  },{
+    "name": "JSFiddle Example",
+    "href": "http://jsfiddle.net/glsee/JRmdq/8/"
+  }]
+}
+!*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
-  // https://github.com/Modernizr/Modernizr/issues/572
-  // http://jsfiddle.net/glsee/JRmdq/8/
   testStyles('#modernizr { width: 50vmin; }', function( elem, rule ) {
     var one_vw = window.innerWidth/100;
     var one_vh = window.innerHeight/100;
