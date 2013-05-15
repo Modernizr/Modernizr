@@ -218,7 +218,7 @@ define(function() {
       if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
         data.hasCSS = !!addStyleSheet(ownerDocument,
           // corrects block display not defined in IE6/7/8/9
-          'article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
+          'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
           // adds styling not present in IE6/7/8/9
           'mark{background:#FF0;color:#000}'
         );
@@ -247,7 +247,7 @@ define(function() {
        * @memberOf html5
        * @type Array|String
        */
-      'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup main mark meter nav output progress section summary time video',
+      'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary time video',
 
       /**
        * current version of html5shiv
