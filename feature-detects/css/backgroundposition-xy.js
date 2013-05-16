@@ -15,6 +15,6 @@
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('bgpositionxy', function () {
-    return testAllProps('backgroundPositionX', '3px', false) && testAllProps('backgroundPositionY', '5px', false);
+    return testAllProps('backgroundPositionX', '3px', true) && testAllProps('backgroundPositionY', '5px', true);
   });
 });

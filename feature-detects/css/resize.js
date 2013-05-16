@@ -3,5 +3,5 @@ define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   // http://www.w3.org/TR/css3-ui/#resize
   // https://developer.mozilla.org/en/CSS/resize
 
-  Modernizr.addTest('cssresize', testAllProps('resize', 'both', false));
+  Modernizr.addTest('cssresize', testAllProps('resize', 'both', true));
 });

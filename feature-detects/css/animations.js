@@ -13,5 +13,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('cssanimations', testAllProps('animationName', 'a', false));
+  Modernizr.addTest('cssanimations', testAllProps('animationName', 'a', true));
 });

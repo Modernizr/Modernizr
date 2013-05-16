@@ -8,5 +8,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('csscolumns', testAllProps('columnCount', '1', false));
+  Modernizr.addTest('csscolumns', testAllProps('columnCount', '1', true));
 });
