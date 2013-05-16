@@ -11,5 +11,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('flexbox', testAllProps('flexWrap', 'wrap', false));
+  Modernizr.addTest('flexbox', testAllProps('flexWrap', 'wrap', true));
 });

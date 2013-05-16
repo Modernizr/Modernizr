@@ -7,5 +7,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('cssreflections', testAllProps('boxReflect', 'above', false));
+  Modernizr.addTest('cssreflections', testAllProps('boxReflect', 'above', true));
 });

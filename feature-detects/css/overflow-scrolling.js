@@ -11,5 +11,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('overflowscrolling', testAllProps('overflowScrolling', 'touch', false));
+  Modernizr.addTest('overflowscrolling', testAllProps('overflowScrolling', 'touch', true));
 });
