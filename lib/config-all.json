@@ -44,6 +44,7 @@
     "test/css/filters",
     "test/css/flexbox",
     "test/css/flexboxlegacy",
+    "test/css/flexboxtweener",
     "test/css/fontface",
     "test/css/generatedcontent",
     "test/css/gradients",
