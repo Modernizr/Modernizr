@@ -17,4 +17,4 @@ checkout flows (payments specific for now).
 */
 define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('requestautocomplete', !!Modernizr.prefixed('requestAutocomplete', createElement('form')));
-}
+});
