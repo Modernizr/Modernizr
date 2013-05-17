@@ -1,2 +1,8 @@
+node_modules
 modernizr.min.js
+metadata.json
+build
+dist
+tmp
 .DS_Store
+.project
