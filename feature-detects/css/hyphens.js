@@ -7,7 +7,8 @@
   "authors": ["David Newton"],
   "warnings": [
     "These tests currently require document.body to be present",
-    "If loading Hyphenator.js via Modernizr.load, be cautious of issue 158: http://code.google.com/p/hyphenator/issues/detail?id=158"
+    "If loading Hyphenator.js via Modernizr.load, be cautious of issue 158: http://code.google.com/p/hyphenator/issues/detail?id=158",
+    "This is very large – only include it if you absolutely need it"
     ],
   "notes": [
     "csshyphens - tests hyphens:auto actually adds hyphens to text",
