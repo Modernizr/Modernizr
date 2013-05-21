@@ -156,7 +156,7 @@
     "test/userdata",
     "test/vibration",
     "test/video",
-    "test/videoautoplay",
+    "test/video/autoplay",
     "test/web-intents",
     "test/webgl/extensions",
     "test/webgl",

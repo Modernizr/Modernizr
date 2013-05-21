@@ -1,7 +1,18 @@
 define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], function( Modernizr, addTest, docElement, createElement ) {
-  // This test evaluates support of the autoplay attribute of the video element.
-
-  // This test is asynchronous. Watch out.
+  /*!
+  {
+    "name": "Video Autoplay",
+    "property": "videoautoplay",
+    "tags": ["video"],
+    "warnings": ["This test is very large – only include it if you absolutely need it", "This test is asynchronous. Watch out."],
+    "notes": [{
+      "name" : "Article: 'Dispelling the Android CSS animation myths'",
+      "href": "http://goo.gl/CHVJm"
+    }]
+  }
+  !*//* DOC
+   Checks for support of the autoplay attribute of the video element.
+  */
 
   Modernizr.addAsyncTest(function() {
     var timeout;
