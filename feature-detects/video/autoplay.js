@@ -4,7 +4,8 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
     "name": "Video Autoplay",
     "property": "videoautoplay",
     "tags": ["video"],
-    "warnings": ["This test is very large – only include it if you absolutely need it", "This test is asynchronous. Watch out."],
+    "async" : false,
+    "warnings": ["This test is very large – only include it if you absolutely need it"],
     "notes": [{
       "name" : "Article: 'Dispelling the Android CSS animation myths'",
       "href": "http://goo.gl/CHVJm"
