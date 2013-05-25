@@ -42,7 +42,5 @@ define(['Modernizr', 'prefixes', 'testStyles'], function( Modernizr, prefixes, t
       });
     }
     return bool;
-  }, {
-    aliases : ['touch']
   });
 });
