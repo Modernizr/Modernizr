@@ -11,9 +11,7 @@
     "optimist": "~0.3.5",
     "requirejs": "~2.1.4",
     "underscore": "~1.4.4",
-    "marked": "~0.2.8"
-  },
-  "devDependencies": {
+    "marked": "~0.2.8",
     "grunt": "~0.4.0",
     "grunt-contrib-jshint": "~0.3.0",
     "grunt-contrib-uglify": "~0.2.0",
@@ -45,11 +43,11 @@
   },
   "contributors": [
     { "name": "Faruk Ates" },
-    { "name": "Paul Irish" }, 
-    { "name": "Alex Sexton" }, 
-    { "name": "Ryan Seddon" }, 
-    { "name": "Alexander Farkas" }, 
-    { "name": "Ben Alman" }, 
+    { "name": "Paul Irish" },
+    { "name": "Alex Sexton" },
+    { "name": "Ryan Seddon" },
+    { "name": "Alexander Farkas" },
+    { "name": "Ben Alman" },
     { "name": "Stu Cox" }
   ],
   "license": "MIT"
