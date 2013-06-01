@@ -33,6 +33,7 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
         bool      = new Boolean(bool);
         bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,'');
         bool.mp3  = elem.canPlayType('audio/mpeg;')               .replace(/^no$/,'');
+        bool.opus  = elem.canPlayType('audio/ogg; codecs="opus"') .replace(/^no$/,'');
 
         // Mimetypes accepted:
         //   developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
