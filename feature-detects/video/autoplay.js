@@ -1,19 +1,22 @@
+/*!
+{
+  "name": "Video Autoplay",
+  "property": "videoautoplay",
+  "tags": ["video"],
+  "async" : false,
+  "warnings": ["This test is very large – only include it if you absolutely need it"],
+  "notes": [{
+    "name" : "Article: 'Dispelling the Android CSS animation myths'",
+    "href": "http://goo.gl/CHVJm"
+  }]
+}
+!*/
+/* DOC
+
+Checks for support of the autoplay attribute of the video element.
+
+*/
 define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], function( Modernizr, addTest, docElement, createElement ) {
-  /*!
-  {
-    "name": "Video Autoplay",
-    "property": "videoautoplay",
-    "tags": ["video"],
-    "async" : false,
-    "warnings": ["This test is very large – only include it if you absolutely need it"],
-    "notes": [{
-      "name" : "Article: 'Dispelling the Android CSS animation myths'",
-      "href": "http://goo.gl/CHVJm"
-    }]
-  }
-  !*//* DOC
-   Checks for support of the autoplay attribute of the video element.
-  */
 
   Modernizr.addAsyncTest(function() {
     var timeout;
