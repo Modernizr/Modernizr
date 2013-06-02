@@ -9,7 +9,7 @@
     "href": "http://www.w3.org/TR/workers/"
   }],
   "knownBugs": ["This test may output garbage to console."],
-  "author": "Jussi Kalliokoski",
+  "authors": ["Jussi Kalliokoski"],
   "async": true
 }
 !*/
