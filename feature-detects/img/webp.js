@@ -1,9 +1,22 @@
+/*!
+{
+  "name": "Webp",
+  "async": true,
+  "property": "webp",
+  "tags": ["image"],
+  "authors": ["Rich Bradshaw", "Ryan Seddon", "Paul Irish"],
+  "notes": [{
+    "name": "Webp Info",
+    "href": "http://code.google.com/speed/webp/"
+  }]
+}
+!*/
+/* DOC
+
+Tests for webp support.
+
+*/
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  // code.google.com/speed/webp/
-  // by rich bradshaw, ryan seddon, and paul irish
-
-  // This test is asynchronous. Watch out.
-
   Modernizr.addAsyncTest(function(){
     var image = new Image();
 
