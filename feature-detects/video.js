@@ -7,25 +7,14 @@
   "knownBugs": [
     "Without QuickTime, `Modernizr.video.h264` will be `undefined`; http://github.com/Modernizr/Modernizr/issues/546"
   ],
-  "polyfills": [{
-    "name": "html5media",
-    "href": "https://github.com/etianen/html5media"
-  },{
-    "name": "mediaelement.js",
-    "href": "http://mediaelementjs.com/"
-  },{
-    "name": "SublimeVideo",
-    "href": "http://sublimevideo.net/"
-  },{
-    "name": "video.js",
-    "href": "http://videojs.com/"
-  },{
-    "name": "LeanBack Player",
-    "href": "http://www.leanbackplayer.com/"
-  },{
-    "name": "Video For Everybody",
-    "href": "http://web.archive.org/web/20101205155004/http://camendesign.com/code/video_for_everybody"
-  }]
+  "polyfills": [
+    "html5media",
+    "mediaelementjs",
+    "sublimevideo",
+    "videojs",
+    "leanbackplayer",
+    "videoforeverybody"
+  ]
 }
 !*/
 /* DOC

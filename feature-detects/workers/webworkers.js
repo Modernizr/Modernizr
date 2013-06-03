@@ -14,13 +14,7 @@
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en-US/docs/Web/Guide/Performance/Using_web_workers"
   }],
-  "polyfills": [{
-    "name": "fakeworker.js",
-    "href": "https://code.google.com/p/fakeworker-js/"
-  },{
-    "name": "web worker api shim",
-    "href": "http://html5-shims.googlecode.com/svn/trunk/demo/workers.html"
-  }]
+  "polyfills": ["fakeworker", "html5shims"]
 }
 !*/
 /* DOC

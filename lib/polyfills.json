@@ -97,5 +97,140 @@
     "name": "ES5 Sham",
     "href": "https://github.com/kriskowal/es5-shim",
     "notes": ["Adds the rest of Object, read carefully before using"]
+  },
+  "typedarrays": {
+    "name": "Typed Arrays polyfill",
+    "authors": ["Joshua Bell"],
+    "href": "https://github.com/inexorabletash/polyfill",
+    "licenses": ["public domain"]
+  },
+  "html5media": {
+    "name": "html5media",
+    "authors": ["Dave Hall"],
+    "href": "https://github.com/etianen/html5media",
+    "licenses": ["GPL3"]
+  },
+  "mediaelementjs": {
+    "name": "MediaElement.js",
+    "authors": ["John Dyer"],
+    "href": "http://mediaelementjs.com/",
+    "licenses": ["MIT"]
+  },
+  "sublimevideo": {
+    "name": "SublimeVideo",
+    "authors": "Jilion",
+    "href": "http://sublimevideo.net/",
+    "licenses": ["proprietary"]
+  },
+  "videojs": {
+    "name": "video.js",
+    "authors": ["Steve Heffernan"],
+    "href": "http://videojs.com/",
+    "licenses": ["Apache2"]
+  },
+  "leanbackplayer": {
+    "name": "LeanBack Player",
+    "authors": ["Kapelan Medien GmbH"],
+    "href": "http://www.leanbackplayer.com/",
+    "licenses": ["GPL3"]
+  },
+  "videoforeverybody": {
+    "name": "Video For Everybody",
+    "authors": ["Kroc Camen"],
+    "href": "http://camendesign.com/code/video_for_everybody",
+    "licenses": ["public domain"]
+  },
+  "webintents": {
+    "name": "Web Intents JavaScript Shim",
+    "authors": ["Paul Kinlan"],
+    "href": "http://webintents.org/#javascriptshim",
+    "licenses": ["Apache2"]
+  },
+  "jebgl": {
+    "name": "jebgl",
+    "authors": ["Martin Qvist"],
+    "href": "http://code.google.com/p/jebgl/",
+    "licenses": ["MIT"]
+  },
+  "webglcompat": {
+    "name": "webgl-compat",
+    "authors": ["Colin MacKenzie"],
+    "href": "https://github.com/sinisterchipmunk/webgl-compat"
+  },
+  "cwebgl": {
+    "name": "cwebgl",
+    "authors": ["Cimaron Shanahan"],
+    "href": "http://code.google.com/p/cwebgl/",
+    "licenses": ["MIT"]
+  },
+  "iewebgl": {
+    "name": "IEWebGL",
+    "href": "http://iewebgl.com/",
+    "licenses": ["MIT"]
+  },
+  "sockjs": {
+    "name": "SockJS",
+    "authors": [""],
+    "href": "https://github.com/sockjs/sockjs-client",
+    "licenses": [""]
+  },
+  "socketio": {
+    "name": "socket.io",
+    "authors": [""],
+    "href": "http://socket.io/",
+    "licenses": [""]
+  },
+  "kaazing-websocket-gateway": {
+    "name": "Kaazing WebSocket Gateway",
+    "href": "http://kaazing.com/products/kaazing-websocket-gateway.html",
+    "licenses": ["proprietary"]
+  },
+  "websocketjs": {
+    "name": "web-socket-js",
+    "authors": ["Hiroshi Ichikawa"],
+    "href": "http://github.com/gimite/web-socket-js/",
+    "licenses": ["BSD"]
+  },
+  "atmosphere": {
+    "name": "atmosphere jQuery plugin",
+    "authors": ["Jeanfrancois Arcand"],
+    "href": "http://jfarcand.wordpress.com/2010/06/15/using-atmospheres-jquery-plug-in-to-build-applicationsupporting-both-websocket-and-comet/",
+    "licenses": ["Apache2"]
+  },
+  "graceful-websocket": {
+    "name": "Graceful WebSocket jQuery plugin",
+    "authors": ["David Lindkvist"],
+    "href": "https://github.com/ffdead/jquery-graceful-websocket",
+    "licenses": ["MIT"]
+  },
+  "portal": {
+    "name": "Portal",
+    "authors": ["Donghwan Kim"],
+    "href": "https://github.com/flowersinthesand/portal",
+    "licenses": ["Apache2"]
+  },
+  "datachannel": {
+    "name": "DataChannel",
+    "authors": ["Jesús Leganés Combarro"],
+    "href": "https://github.com/piranna/DataChannel-polyfill",
+    "licenses": ["GPL3"]
+  },
+  "getusermedia": {
+    "name": "getUserMedia.js",
+    "authors": ["Addy Osmani"],
+    "href": "https://github.com/addyosmani/getUserMedia.js",
+    "licenses": ["MIT"]
+  },
+  "fakeworker": {
+    "name": "fakeworker.js",
+    "authors": ["Shumpei Shiraishi"],
+    "href": "https://code.google.com/p/fakeworker-js/",
+    "licenses": ["Apache2"]
+  },
+  "html5shims": {
+    "name": "web worker api shim",
+    "authors": ["Jonathan 'J5' Cook"],
+    "href": "https://code.google.com/p/html5-shims/",
+    "licenses": ["Apache2"]
   }
 }

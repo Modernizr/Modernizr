@@ -4,13 +4,10 @@
   "property": "webintents",
   "authors": ["Eric Bidelman"],
   "notes": [{
-    "Web Intents project site",
-    "http://webintents.org/"
+    "name": "Web Intents project site",
+    "href": "http://webintents.org/"
   }],
-  "polyfills": [{
-    "name": "Web Intents JavaScript shim",
-    "href": "http://webintents.org/#javascriptshim"
-  }]
+  "polyfills": ["webintents"]
 }
 !*/
 /* DOC

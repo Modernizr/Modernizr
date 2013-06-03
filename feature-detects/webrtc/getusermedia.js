@@ -9,10 +9,7 @@
     "name": "W3C Media Capture and Streams spec",
     "href": "http://www.w3.org/TR/mediacapture-streams/"
   }],
-  "polyfills": [
-    "name": "getUserMedia.js",
-    "href": "https://github.com/addyosmani/getUserMedia.js"
-  ]
+  "polyfills": ["getusermedia"]
 }
 !*/
 define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
