@@ -98,8 +98,73 @@
     "href": "https://github.com/kriskowal/es5-shim",
     "notes": ["Adds the rest of Object, read carefully before using"]
   },
+  "scoped-styles": {
+    "name": "Scoped Styles",
+    "authors": ["Simon Madine"],
+    "notes": ["jQuery Plugin to enable the scoped attribute on style blocks so they only affect their parent element's children."],
+    "href": "http://github.com/thingsinjars/jQuery-Scoped-CSS-plugin"
+  },
+  "svgweb": {
+    "name": "SVG Web",
+    "authors": ["Rick Masters", "Brad Neuberg", "James Hight"],
+    "href": "https://code.google.com/p/svgweb/",
+    "licenses": ["Apache2"]
+  },
+  "raphael": {
+    "name": "Raphaël",
+    "authors": ["Dmitry Baranovsky"],
+    "href": "http://raphaeljs.com/",
+    "notes": ["Abstracted API. adds features. fallback for IE via VML"],
+    "licenses": ["MIT"]
+  },
+  "amplesdk": {
+    "name": "Ample SDK",
+    "authors": ["Sergey Ilinsky"],
+    "href": "http://www.amplesdk.com/examples/svg/",
+    "licenses": ["MIT", "GPL2"]
+  },
+  "canvg": {
+    "name": "canvg",
+    "authors": ["Gabe Lerner"],
+    "href": "http://code.google.com/p/canvg/",
+    "notes": ["Writes SVG to canvas. Good for Android"],
+    "licenses": ["MIT"]
+  },
+  "svg-boilerplate": {
+    "name": "SVG Boilerplate",
+    "authors": ["Robin Berjon"],
+    "href": "https://github.com/darobin/svgboilerplate",
+    "notes": ["Alpha and still buggy, but handle multiple concurrent SVG shims together"],
+    "licenses": ["public domain"]
+  },
+  "sie": {
+    "name": "SIE SVG library",
+    "authors": ["Hiroki Dehara"],
+    "href": "http://sie.sourceforge.jp/",
+    "notes": ["Fallback to VML for oldIE"],
+    "licenses": ["Mozilla1.1", "GPL2", "LGPL2.1"]
+  },
+  "dojogfx": {
+    "name": "Dojo GFX",
+    "authors": ["Eugene Lazutkin", "Kun Xi", "Chris Mitchell"],
+    "href": "http://docs.dojocampus.org/dojox/gfx/",
+    "notes": ["Fallback via VML, Canvas, Silverlight and Flash"],
+    "licenses": ["BSD", "AFL"]
+  },
+  "fabricjs": {
+    "name": "fabric.js",
+    "authors": ["Juriy Zaytsev (@kangax)"],
+    "href": "https://github.com/kangax/fabric.js",
+    "notes": "Can render SVG via canvas",
+    "licenses": ["MIT"]
+  },
+  "inline-svg-polyfill": {
+    "name": "inline SVG polyfill",
+    "authors": ["Marc Stalfoort (@mstalfoort)"],
+    "href": "http://mstalfoort.posterous.com/inline-svg"
+  },
   "typedarrays": {
-    "name": "Typed Arrays polyfill",
+    "name": "Raphaël",
     "authors": ["Joshua Bell"],
     "href": "https://github.com/inexorabletash/polyfill",
     "licenses": ["public domain"]

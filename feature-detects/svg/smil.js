@@ -1,3 +1,11 @@
+/*!
+{
+  "name": "SVG SMIL animation",
+  "property": "smil",
+  "caniuse": "svg-smil",
+  "tags": ["svg"]
+}
+!*/
 define(['Modernizr', 'toStringFn'], function( Modernizr, toStringFn ) {
   // SVG SMIL animation
   Modernizr.addTest('smil', function() {
