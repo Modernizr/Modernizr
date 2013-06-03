@@ -24,6 +24,7 @@
   "scripts": {
     "test": "grunt test"
   },
+  "main": "./lib/cli",
   "repository": {
     "type": "git",
     "url": "git://github.com/Modernizr/Modernizr.git"
