@@ -77,6 +77,31 @@ serve the root dir, `<url>/test/modular.html`
 * It should be just a big list of things you can build with no frills.
 
 
+### API Reference
+
+Modernizr can be used programmatically via npm:
+
+```node
+var modernizr = require("modernizr");
+```
+
+#### Building
+
+A `build` method is exposed for generating custom Modernizr builds. Example:
+
+```node
+var modernizr = require("modernizr");
+
+var result = modernizr.build({}, function (result) {
+  console.log(result.code); // full source
+  console.log(result.min); // minfied output
+});
+```
+
+The first parameter takes a JSON object of options and feature-detects to include. See [`lib/config-all.json`](lib/config-all.json) for all available options.
+
+The second parameter is a function invoked on task completion.
+
 ## License
 
 MIT license
