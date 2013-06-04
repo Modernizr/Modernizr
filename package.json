@@ -19,6 +19,7 @@
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-copy": "~0.4.0",
     "grunt-contrib-qunit": "~0.2.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-requirejs": "~0.4.0"
   },
   "scripts": {
