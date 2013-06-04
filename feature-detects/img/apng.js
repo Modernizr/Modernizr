@@ -1,7 +1,21 @@
-define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function( Modernizr, createElement, addTest ) {
-  // Animated PNG
-  // http://en.wikipedia.org/wiki/APNG
+/*!
+{
+  "name": "Animated PNG",
+  "async": true,
+  "property": "apng",
+  "tags": ["image"],
+  "notes": [{
+    "name": "Wikipedia Article",
+    "href": "http://en.wikipedia.org/wiki/APNG"
+  }]
+}
+!*/
+/* DOC
 
+Test for animated png support.
+
+*/
+define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function( Modernizr, createElement, addTest ) {
   Modernizr.addAsyncTest(function () {
     if (!Modernizr.canvas) {
       return false;
@@ -15,7 +29,8 @@ define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function( Moder
       addTest('apng', function () {
         if (typeof canvas.getContext == 'undefined') {
           return false;
-        } else {
+        }
+        else {
           ctx.drawImage(image, 0, 0);
           return ctx.getImageData(0, 0, 1, 1).data[3] === 0;
         }

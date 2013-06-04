@@ -1,11 +1,21 @@
-define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function( Modernizr, createElement, docElement, testStyles ) {
-  // This implementation only tests support for interactive form validation.
-  // To check validation for a specific type or a specific other constraint,
-  // the test can be combined:
-  //    - Modernizr.inputtypes.numer && Modernizr.formvalidation (browser supports rangeOverflow, typeMismatch etc. for type=number)
-  //    - Modernizr.input.required && Modernizr.formvalidation (browser supports valueMissing)
-  //
+/*!
+{
+  "name": "Form Validation",
+  "property": "formvalidation",
+  "tags": ["forms", "validation", "attribute"]
+}
+!*/
+/* DOC
 
+This implementation only tests support for interactive form validation.
+To check validation for a specific type or a specific other constraint,
+the test can be combined:
+
+- `Modernizr.inputtypes.number && Modernizr.formvalidation` (browser supports rangeOverflow, typeMismatch etc. for type=number)
+- `Modernizr.input.required && Modernizr.formvalidation` (browser supports valueMissing)
+
+*/
+define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function( Modernizr, createElement, docElement, testStyles ) {
     Modernizr.addTest('formvalidation', function() {
       var form = createElement('form');
       if ( !('checkValidity' in form) || !('addEventListener' in form) ) {
