@@ -98,6 +98,29 @@
     "href": "https://github.com/kriskowal/es5-shim",
     "notes": ["Adds the rest of Object, read carefully before using"]
   },
+  "visibilityjs": {
+    "name": "Visibility.js",
+    "authors": ["Andrey Sitnik"],
+    "href": "https://github.com/ai/visibility.js",
+    "licenses": ["GPL3"]
+  },
+  "visiblyjs": {
+    "name": "visibly.js",
+    "authors": ["Addy Osmani"],
+    "href": "https://github.com/addyosmani/visibly.js"
+  },
+  "jquery-visibility": {
+    "name": "Page Visibility shim for jQuery",
+    "authors": ["Mathias Bynens"],
+    "href": "https://github.com/mathiasbynens/jquery-visibility",
+    "licenses": ["MIT", "GPL"]
+  },
+  "notificationjs": {
+    "name": "notification.js",
+    "authors": ["Andrew Dodson"],
+    "href": "http://adodson.com/notification.js/",
+    "licenses": ["MIT"]
+  },
   "perfnow": {
     "name": "perf.now() polyfill",
     "authors": ["Paul Irish"],
