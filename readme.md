@@ -81,7 +81,7 @@ serve the root dir, `<url>/test/modular.html`
 
 Modernizr can be used programmatically via npm:
 
-```node
+```javascript
 var modernizr = require("modernizr");
 ```
 
@@ -89,7 +89,7 @@ var modernizr = require("modernizr");
 
 A `build` method is exposed for generating custom Modernizr builds. Example:
 
-```node
+```javascript
 var modernizr = require("modernizr");
 
 var result = modernizr.build({}, function (result) {
