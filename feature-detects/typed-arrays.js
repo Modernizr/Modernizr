@@ -12,7 +12,7 @@
     "name": "Kronos spec",
     "href": "http://www.khronos.org/registry/typedarray/specs/latest/"
   }],
-  "polyfills": ["typedarrays"]
+  "polyfills": ["joshuabell-polyfill"]
 }
 !*/
 /* DOC

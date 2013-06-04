@@ -98,6 +98,72 @@
     "href": "https://github.com/kriskowal/es5-shim",
     "notes": ["Adds the rest of Object, read carefully before using"]
   },
+  "perfnow": {
+    "name": "perf.now() polyfill",
+    "authors": ["Paul Irish"],
+    "href": "https://gist.github.com/paulirish/5438650"
+  },
+  "handjs": {
+    "name": "Hand.js",
+    "authors": ["DeltaKosh"],
+    "href": "http://handjs.codeplex.com/",
+    "notes": ["Implements the Pointer Events API"],
+    "licenses": ["Apache2"]
+  },
+  "easyxdm": {
+    "name": "easyXDM",
+    "authors": ["Sean Kinsey"],
+    "href": "http://easyxdm.net/wp/",
+    "notes": ["Implements XDM and RPC in most browsers since IE6. Also ships with an endpoint for exposing ajax across the domain boundary."],
+    "licenses": ["MIT"]
+  },
+  "postmessage-jquery": {
+    "name": "postMessage jquery plugin",
+    "authors": ["Ben Alman"],
+    "href": "http://benalman.com/projects/jquery-postmessage-plugin/",
+    "licenses": ["MIT", "GPL2"]
+  },
+  "raf": {
+    "name": "requestAnimationFrame polyfill",
+    "authors": ["Erik Möller"],
+    "href": "http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating"
+  },
+  "cupcake": {
+    "name": "CupCake.js",
+    "authors": ["Rivindu Perera"],
+    "href": "http://www.rivindu.com/p/cupcakejs.html",
+    "licenses": ["MIT"]
+  },
+  "storagepolyfill": {
+    "name": "Storage Polyfill",
+    "authors": ["Remy Sharp"],
+    "href": "http://gist.github.com/350433",
+    "notes": [],
+    "licenses": ["MIT"]
+  },
+  "sessionstorage": {
+    "name": "sessionstorage",
+    "authors": ["Andrea Giammarchi"],
+    "href": "http://gist.github.com/350433",
+    "licenses": ["MIT"]
+  },
+  "amplifyjs": {
+    "name": "Amplify.js",
+    "authors": ["appendTo"],
+    "href": "http://amplifyjs.com/",
+    "licenses": ["MIT", "GPL2"]
+  },
+  "yui-cacheoffline": {
+    "name": "YUI3 CacheOffline",
+    "authors": ["YUI Team"],
+    "href": "http://yuilibrary.com/yui/docs/cache/#offline",
+    "licenses": ["BSD"]
+  },
+  "textstorage": {
+    "name": "Cross-browser TextStorage",
+    "authors": ["sofish"],
+    "href": "https://gist.github.com/sofish/1221115"
+  },
   "scoped-styles": {
     "name": "Scoped Styles",
     "authors": ["Simon Madine"],
@@ -163,11 +229,11 @@
     "authors": ["Marc Stalfoort (@mstalfoort)"],
     "href": "http://mstalfoort.posterous.com/inline-svg"
   },
-  "typedarrays": {
-    "name": "Raphaël",
+  "joshuabell-polyfill": {
+    "name": "polyfill",
     "authors": ["Joshua Bell"],
     "href": "https://github.com/inexorabletash/polyfill",
-    "licenses": ["public domain"]
+    "licenses": ["various"]
   },
   "html5media": {
     "name": "html5media",
