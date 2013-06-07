@@ -34,6 +34,9 @@ module.exports = function( grunt ) {
     qunit: {
       files: ['test/index.html']
     },
+    nodeunit: {
+      files: ['test/api/*.js']
+    },
     stripdefine: {
       build: [
         'dist/modernizr-build.js'
@@ -183,6 +186,7 @@ module.exports = function( grunt ) {
   // Load required contrib packages
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -212,7 +216,7 @@ module.exports = function( grunt ) {
     grunt.file.write('tmp/modernizr-init.js', generateInit(modConfig));
   });
   // Testing tasks
-  grunt.registerTask('test', ['jshint', 'qunit']);
+  grunt.registerTask('test', ['build', 'jshint', 'qunit', 'nodeunit']);
 
   // Travis CI task.
   grunt.registerTask('travis', 'test');

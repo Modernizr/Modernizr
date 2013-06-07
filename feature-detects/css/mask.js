@@ -2,7 +2,7 @@
 {
   "name": "CSS Mask",
   "caniuse": "css-masks",
-  "property": "lastchild",
+  "property": "cssmask",
   "tags": ["css"],
   "notes": [
     "This is for the -webkit-mask feature, not for the similar svg mask in Firefox.",
