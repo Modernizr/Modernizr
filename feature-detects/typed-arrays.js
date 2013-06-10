@@ -17,7 +17,7 @@
 !*/
 /* DOC
 
-Detects support for native binary data manipulation via Typed Arrays.
+Detects support for native binary data manipulation via Typed Arrays in JavaScript.
 
 Does not check for DataView support; use `Modernizr.dataview` for that.
 

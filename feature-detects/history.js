@@ -1,8 +1,26 @@
+/*!
+{
+  "name": "History API",
+  "property": "history",
+  "caniuse": "history",
+  "tags": ["history"],
+  "authors": ["Hay Kranen", "Alexander Farkas"],
+  "notes": [{
+    "name": "W3C Spec",
+    "href": "http://www.w3.org/TR/html51/browsers.html#the-history-interface"
+  }, {
+    "name": "MDN documentation",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/window.history"
+  }],
+  "polyfills": ["historyjs", "html5historyapi"]
+}
+!*/
+/* DOC
+
+Detects support for the History API for manipulating the browser session history.
+
+*/
 define(['Modernizr'], function( Modernizr ) {
-  // Test for the history API
-  // http://dev.w3.org/html5/spec/history.html#the-history-interface
-  // by Hay Kranen < http://github.com/hay > with suggestions by aFarkas
-  // http://dev.w3.org/html5/spec/history.html#the-history-interface
   Modernizr.addTest('history', function() {
     // Issue #733
     // The stock browser on Android 2.2 & 2.3 returns positive on history support

@@ -98,6 +98,269 @@
     "href": "https://github.com/kriskowal/es5-shim",
     "notes": ["Adds the rest of Object, read carefully before using"]
   },
+  "html5gears": {
+    "name": "html5-gears",
+    "authors": ["Brad Neuberg"],
+    "href": "https://code.google.com/p/html5-gears/",
+    "licenses": ["Apache2"]
+  },
+  "blobjs": {
+    "name": "Blob.js",
+    "authors": ["Eli Grey"],
+    "href": "https://github.com/eligrey/Blob.js",
+    "licenses": ["MIT"]
+  },
+  "flashcanvas": {
+    "name": "FlashCanvas",
+    "authors": ["Shinya Muramatsu"],
+    "href": "http://flashcanvas.net/"
+  },
+  "excanvas": {
+    "name": "Explorer Canvas",
+    "authors": ["Erik Arvidsson"],
+    "href": "https://code.google.com/p/explorercanvas/",
+    "licenses": ["Apache2"]
+  },
+  "slcanvas": {
+    "name": "Silverlight HTML 5 Canvas",
+    "href": "http://slcanvas.codeplex.com/"
+  },
+  "fxcanvas": {
+    "name": "fxCanvas",
+    "authors": ["Evgeny Burzak"],
+    "href": "http://burzak.com/proj/fxcanvas/",
+    "licenses": ["MIT"]
+  },
+  "canvastext": {
+    "name": "canvas-text",
+    "authors": ["Fabien Ménager"],
+    "href": "https://code.google.com/p/canvas-text/",
+    "licenses": ["MIT"]
+  },
+  "jquery-contextmenu": {
+    "name": "jQuery-contextMenu",
+    "authors": ["Rodney Rehm"],
+    "href": "https://github.com/medialize/jQuery-contextMenu",
+    "licenses": ["MIT", "GPL3"]
+  },
+  "pmxdr": {
+    "name": "pmxdr",
+    "authors": ["Eli Grey"],
+    "href": "https://github.com/eligrey/pmxdr",
+    "notes": ["Implements a CORS-compliant cross-domain XMLHttpRequest with postMessage. Note that sites being requested must have a pmxdr host."],
+    "licenses": ["MIT"]
+  },
+  "ppx": {
+    "name": "postmessage-proxied-xhr",
+    "authors": ["Atul Varma"],
+    "href": "https://github.com/toolness/postmessage-proxied-xhr"
+  },
+  "flxhr": {
+    "name": "flXHR",
+    "authors": ["Kyle Simpson"],
+    "href": "https://github.com/flensed/flXHR",
+    "licenses": ["MIT"]
+  },
+  "dropfile": {
+    "name": "dropfile",
+    "authors": ["Andrew Dodson"],
+    "href": "https://github.com/MrSwitch/dropfile",
+    "licenses": ["MIT"]
+  },
+  "moxie": {
+    "name": "mOxie",
+    "authors": ["Moxiecode"],
+    "href": "https://github.com/moxiecode/moxie",
+    "licenses": ["GPL2"]
+  },
+  "fileapi": {
+    "name": "FileAPI",
+    "authors": ["Konstantin Lebedev", "Demidov Vladimir"],
+    "href": "https://github.com/mailru/FileAPI",
+    "licenses": ["MIT"]
+  },
+  "jdataview": {
+    "name": "jDataView",
+    "authors": ["Christopher Chedeau"],
+    "href": "https://github.com/vjeux/jDataView/"
+  },
+  "screenfulljs": {
+    "name": "screenfull.js",
+    "authors": ["Sindre Sorhus"],
+    "href": "https://github.com/sindresorhus/screenfull.js",
+    "licenses": ["MIT"]
+  },
+  "geolocationshim": {
+    "name": "Geolocation Shim",
+    "authors": ["Paul Irish"],
+    "href": "https://gist.github.com/paulirish/366184",
+    "notes": ["Uses Google ClientLocation API as a fallback"]
+  },
+  "geo-location-javascript": {
+    "name": "geo-location-javascript",
+    "authors": ["whoisstan"],
+    "href": "https://code.google.com/p/geo-location-javascript/",
+    "notes": ["Mobile-centric: uses non-standard Blackberry and WebOS tricks"],
+    "licenses": ["MIT"]
+  },
+  "geolocation-api-polyfill": {
+    "name": "Geolocation-API-Polyfill",
+    "authors": ["Manuel Bieh"],
+    "href": "https://github.com/manuelbieh/Geolocation-API-Polyfill",
+    "licenses": ["LGPL"]
+  },
+  "jquery-hashchange": {
+    "name": "jQuery hashchange event",
+    "authors": ["Ben Alman"],
+    "href": "http://benalman.com/projects/jquery-hashchange-plugin/",
+    "licenses": ["MIT", "GPL2"]
+  },
+  "moo-historymanager": {
+    "name": "HistoryManager Mootools Plugin",
+    "authors": ["Arieh Glazer"],
+    "href": "http://mootools.net/forge/p/historymanager/",
+    "licenses": ["MIT"]
+  },
+  "jquery-ajaxy": {
+    "name": "jQuery Ajaxy",
+    "authors": ["Benjamin Lupton"],
+    "href": "https://github.com/balupton/jquery-ajaxy",
+    "licenses": ["MIT"]
+  },
+  "hasher": {
+    "name": "Hasher",
+    "authors": ["Miller Medeiros"],
+    "href": "https://github.com/millermedeiros/hasher/",
+    "licenses": ["MIT"]
+  },
+  "shistory": {
+    "name": "sHistory",
+    "authors": ["Andrew Udvare"],
+    "href": "https://github.com/tatsh/sHistory",
+    "licenses": ["MIT"]
+  },
+  "historyjs": {
+    "name": "History.js",
+    "authors": ["Benjamin Lupton"],
+    "href": "https://github.com/browserstate/history.js",
+    "licenses": ["BSD"]
+  },
+  "html5historyapi": {
+    "name": "HTML5 History API",
+    "authors": ["Dmitrii Pakhtinov"],
+    "href": "https://github.com/devote/HTML5-History-API",
+    "licenses": ["GPL3", "MIT"]
+  },
+  "indexeddb": {
+    "name": "IndexedDB",
+    "authors": ["Parashuram"],
+    "href": "http://nparashuram.com/IndexedDBShim/",
+    "licenses": ["GPL2", "BSD"]
+  },
+  "jquerytools": {
+    "name": "jQuery Tools",
+    "href": "http://jquerytools.org",
+    "licenses": ["public domain"]
+  },
+  "webshims": {
+    "name": "Webshims",
+    "authors": ["Alexander Farkas"],
+    "href": "http://afarkas.github.io/webshim/demos/",
+    "licenses": ["MIT"]
+  },
+  "h5f": {
+    "name": "H5F",
+    "authors": ["Ryan Seddon"],
+    "href": "https://github.com/ryanseddon/H5F",
+    "licenses": ["MIT"]
+  },
+  "webforms2": {
+    "name": "Web Forms 2.0",
+    "authors": ["Weston Ruter"],
+    "href": "https://github.com/westonruter/webforms2",
+    "licenses": ["MIT", "GPL2"]
+  },
+  "nwxforms": {
+    "name": "NWX Forms",
+    "authors": ["Diego Perini"],
+    "href": "https://github.com/dperini/nwxforms",
+    "licenses": ["MIT"]
+  },
+  "html5formsjs": {
+    "name": "HTML5Forms.js",
+    "authors": ["Zoltan Dulac"],
+    "href": "https://github.com/zoltan-dulac/html5Forms.js"
+  },
+  "fdslider": {
+    "name": "fd-slider",
+    "authors": ["Brian McAllister"],
+    "href": "https://github.com/freqdec/fd-slider",
+    "licenses": ["MIT"]
+  },
+  "html5slider": {
+    "name": "html5slider",
+    "authors": ["Frank Yan"],
+    "href": "https://github.com/fryn/html5slider",
+    "licenses": ["MIT"]
+  },
+  "number-polyfill": {
+    "name": "Number polyfill",
+    "authors": ["jonstipe"],
+    "href": "https://github.com/jonstipe/number-polyfill",
+    "licenses": ["MIT"]
+  },
+  "galleryhtml5forms": {
+    "name": "YUI Gallery HTML5 Forms",
+    "authors": ["Matt Snider"],
+    "href": "http://yuilibrary.com/gallery/show/html5-forms",
+    "licenses": ["BSD"]
+  },
+  "jscolor": {
+    "name": "JSColor",
+    "authors": ["Johannes Jörg Schmidt"],
+    "href": "https://github.com/jo/JSColor",
+    "licenses": ["LGPL"]
+  },
+  "html5formshim": {
+    "name": "HTML5 Form Shim",
+    "authors": ["Dmitry Sheiko"],
+    "href": "https://github.com/dsheiko/HTML5-Form-Shim",
+    "licenses": ["MIT"]
+  },
+  "jqueryformshim": {
+    "name": "jQuery form shim",
+    "authors": ["Andrew Dodson"],
+    "href": "http://adodson.com/jquery.form.js/"
+  },
+  "selectedoptionsjs": {
+    "name": "selectedOptions.js",
+    "authors": ["Brett Zamir"],
+    "href": "https://gist.github.com/brettz9/4212217",
+    "licenses": ["MIT", "GPL", "public domain"]
+  },
+  "formvalidationjs": {
+    "name": "formvalidation.js",
+    "authors": ["Maksim Chemerisuk"],
+    "href": "https://github.com/chemerisuk/formvalidation.js",
+    "licenses": ["MIT"]
+  },
+  "json2": {
+    "name": "JSON2",
+    "authors": ["Douglas Crockford"],
+    "href": "https://github.com/douglascrockford/JSON-js",
+    "licenses": ["public domain"]
+  },
+  "impressivewebs": {
+    "name": "HTML5 Reverse Ordered Lists",
+    "authors": ["Louis Lazaris", "Remy Sharp"],
+    "href": "https://github.com/impressivewebs/HTML5-Reverse-Ordered-Lists"
+  },
+  "mathjax": {
+    "name": "MathJax",
+    "authors": ["Davide P. Cervone"],
+    "href": "http://www.mathjax.org/",
+    "licenses": ["Apache2"]
+  },
   "visibilityjs": {
     "name": "Visibility.js",
     "authors": ["Andrey Sitnik"],
