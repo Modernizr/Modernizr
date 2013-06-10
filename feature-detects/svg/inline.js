@@ -1,6 +1,22 @@
+/*!
+{
+  "name": "Inline SVG",
+  "property": "inlinesvg",
+  "caniuse": "svg-html5",
+  "tags": ["svg"],
+  "notes": [{
+    "name": "Test page",
+    "href": "http://paulirish.com/demo/inline-svg"
+  }],
+  "polyfills": ["inline-svg-polyfill"]
+}
+!*/
+/* DOC
+
+Detects support for inline SVG in HTML (not within XHTML).
+
+*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
-  // specifically for SVG inline in HTML, not within XHTML
-  // test page: paulirish.com/demo/inline-svg
   Modernizr.addTest('inlinesvg', function() {
     var div = createElement('div');
     div.innerHTML = '<svg/>';

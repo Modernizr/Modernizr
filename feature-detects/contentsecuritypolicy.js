@@ -1,12 +1,23 @@
-define(['Modernizr'], function( Modernizr ) {
-  // Test for (experimental) Content Security Policy 1.1 support.
-  //
-  // This feature is still quite experimental, but is available now in Chrome 22.
-  // If the `SecurityPolicy` property is available, you can be sure the browser
-  // supports CSP. If it's not available, the browser still might support an
-  // earlier version of the CSP spec.
-  //
-  // Editor's Draft: https://dvcs.w3.org/hg/content-security-policy/raw-file/tip/csp-specification.dev.html
+/*!
+{
+  "name": "Content Security Policy",
+  "property": "contentsecuritypolicy",
+  "caniuse": "contentsecuritypolicy",
+  "tags": ["security"],
+  "notes": [{
+    "name": "W3C spec",
+    "href": "http://www.w3.org/TR/CSP/"
+  },{
+    "name": "MDN documentation",
+    "href": "https://developer.mozilla.org/en-US/docs/Security/CSP"
+  }]
+}
+!*/
+/* DOC
 
+Detects support for the Content Security Policy protocol for mitigating and reporting security attacks.
+
+*/
+define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('contentsecuritypolicy', 'SecurityPolicy' in document);
 });

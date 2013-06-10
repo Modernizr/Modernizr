@@ -1,6 +1,15 @@
+/*!
+{
+  "name": "Emoji",
+  "property": "emoji"
+}
+!*/
+/* DOC
+
+Detects support for emoji character sets.
+
+*/
 define(['Modernizr', 'createElement', 'test/canvastext'], function( Modernizr, createElement ) {
-  // Requires a Modernizr build with `canvastext` included
-  // http://www.modernizr.com/download/#-canvas-canvastext
   Modernizr.addTest('emoji', function() {
     if (!Modernizr.canvastext) return false;
     var node = createElement('canvas'),

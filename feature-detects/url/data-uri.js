@@ -1,9 +1,29 @@
+/*!
+{
+  "name": "Data URI",
+  "property": "datauri",
+  "caniuse": "datauri",
+  "tags": ["url"],
+  "async": true,
+  "notes": [{
+    "name": "Wikipedia article",
+    "href": "http://en.wikipedia.org/wiki/Data_URI_scheme"
+  }],
+  "warnings": ["Support in Internet Explorer 8 is limited to images and linked resources like CSS files, not HTML files"]
+}
+!*/
+/* DOC
+
+Detects support for data URIs. Provides a subproperty to report support for data URIs over 32kb in size:
+
+```javascript
+Modernizr.datauri           // true
+Modernizr.datauri.over32kb  // false in IE8
+```
+
+*/
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  // data uri test.
   // https://github.com/Modernizr/Modernizr/issues/14
-
-  // This test is asynchronous. Watch out.
-
   Modernizr.addAsyncTest(function() {
 
     // IE7 throw a mixed content warning on HTTPS for this test, so we'll

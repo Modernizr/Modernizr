@@ -1,11 +1,35 @@
+/*!
+{
+  "name": "HTML5 Video",
+  "property": "video",
+  "caniuse": "video",
+  "tags": ["html5"],
+  "knownBugs": [
+    "Without QuickTime, `Modernizr.video.h264` will be `undefined`; http://github.com/Modernizr/Modernizr/issues/546"
+  ],
+  "polyfills": [
+    "html5media",
+    "mediaelementjs",
+    "sublimevideo",
+    "videojs",
+    "leanbackplayer",
+    "videoforeverybody"
+  ]
+}
+!*/
+/* DOC
+
+Detects support for the video element, as well as testing what types of content it supports.
+
+Subproperties are provided to describe support for `ogg`, `h264` and `webm` formats, e.g.:
+
+```javascript
+Modernizr.video         // true
+Modernizr.video.ogg     // 'probably'
+```
+
+*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
-  // This test evaluates support of the video element, as well as
-  // testing what types of content it supports.
-  //
-  // We're using the Boolean constructor here, so that we can extend the value
-  // e.g.  Modernizr.video     // true
-  //       Modernizr.video.ogg // 'probably'
-  //
   // Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
   //                     thx to NielsLeenheer and zcorpan
 

@@ -1,8 +1,24 @@
-define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  // by jussi-kalliokoski
-  // This test is asynchronous. Watch out.
-  // The test will potentially add garbage to console.
+/*!
+{
+  "name": "Workers from Data URIs",
+  "property": "dataworkers",
+  "caniuse" : "dataworkers",
+  "tags": ["performance", "workers"],
+  "notes": [{
+    "name": "W3C Reference",
+    "href": "http://www.w3.org/TR/workers/"
+  }],
+  "knownBugs": ["This test may output garbage to console."],
+  "authors": ["Jussi Kalliokoski"],
+  "async": true
+}
+!*/
+/* DOC
 
+Detects support for creating Web Workers from Data URIs.
+
+*/
+define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   Modernizr.addAsyncTest(function() {
     try {
       var data    = 'Modernizr',

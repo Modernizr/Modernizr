@@ -1,8 +1,24 @@
-define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  // by jussi-kalliokoski
-  // This test is asynchronous. Watch out.
-  // The test will potentially add garbage to console.
+/*!
+{
+  "name": "Workers from Blob URIs",
+  "property": "blobworkers",
+  "caniuse" : "blobworkers",
+  "tags": ["performance", "workers"],
+  "notes": [{
+    "name": "W3C Reference",
+    "href": "http://www.w3.org/TR/workers/"
+  }],
+  "knownBugs": ["This test may output garbage to console."],
+  "authors": ["Jussi Kalliokoski"],
+  "async": true
+}
+!*/
+/* DOC
 
+Detects support for creating Web Workers from Blob URIs.
+
+*/
+define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   Modernizr.addAsyncTest(function() {
     try {
       // we're avoiding using Modernizr._domPrefixes as the prefix capitalization on

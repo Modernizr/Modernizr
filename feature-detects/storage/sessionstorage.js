@@ -1,3 +1,11 @@
+/*!
+{
+  "name": "Session Storage",
+  "property": "sessionstorage",
+  "tags": ["storage"],
+  "polyfills": ["joshuabell-polyfill", "cupcake", "sessionstorage"]
+}
+!*/
 define(['Modernizr'], function( Modernizr ) {
   // Because we are forced to try/catch this, we'll go aggressive.
 

@@ -1,3 +1,18 @@
+/*!
+{
+  "name": "Unicode characters",
+  "property": "unicode",
+  "tags": ["encoding"],
+  "warnings": [
+    "positive Unicode support doesn't mean you can use it inside <title>, this seams more related to OS & Language packs"
+  ]
+}
+!*/
+/* DOC
+
+Detects if unicode characters are supported in the current document.
+
+*/
 define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, createElement, testStyles ) {
   /**
    * Unicode special character support
@@ -5,8 +20,6 @@ define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, create
    * Detection is made by testing missing glyph box rendering against star character
    * If widths are the same, this "probably" means the browser didn't support the star character and rendered a glyph box instead
    * Just need to ensure the font characters have different widths
-   *
-   * Warning : positive Unicode support doesn't mean you can use it inside <title>, this seams more related to OS & Language packs
    */
   Modernizr.addTest('unicode', function() {
     var bool;

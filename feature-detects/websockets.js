@@ -6,7 +6,17 @@
   "caniuse": "websockets",
   "warnings": "This test will reject any old version of WebSockets even if it is not prefixed such as in Safari 5.1",
   "notes": "More info about the CLOSING state can be found at the spec: http://www.w3.org/TR/websockets/#the-websocket-interface",
-  "tags": ["html5"]
+  "tags": ["html5"],
+  "polyfills": [
+    "sockjs",
+    "socketio",
+    "kaazing-websocket-gateway",
+    "websocketjs",
+    "atmosphere",
+    "graceful-websocket",
+    "portal",
+    "datachannel"
+  ]
 }
 !*/
 define(['Modernizr'], function( Modernizr ) {
