@@ -3,6 +3,8 @@
 module.exports = function( grunt ) {
   'use strict';
 
+  var fs = require('fs');
+  var path = require('path');
   var modConfig = grunt.file.readJSON('lib/config-all.json');
 
   grunt.initConfig({
@@ -183,8 +185,18 @@ module.exports = function( grunt ) {
       }
     }
   });
+
   // Load required contrib packages
-  require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
+  require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
+
+  // devDependencies may or may not be installed
+  require('matchdep').filterDev('grunt-*').forEach(function (contrib) {
+    module.paths.forEach(function (dir) {
+      if (fs.existsSync(path.join(dir, contrib))) {
+        grunt.loadNpmTasks(contrib);
+      }
+    });
+  });
 
   // Strip define fn
   grunt.registerMultiTask('stripdefine', "Strip define call from dist file", function() {
