@@ -9,7 +9,7 @@
     "href": "http://www.w3.org/TR/2013/WD-touch-events-20130124/"
   }],
   "warnings": [
-    "Indicates if the browser supports the Touch Events spec, and *does not* necessarily reflect a touchscreen device"
+    "Indicates if the browser supports the Touch Events spec, and does not necessarily reflect a touchscreen device"
   ],
   "knownBugs": [
     "False-positive on some configurations of Nokia N900",
