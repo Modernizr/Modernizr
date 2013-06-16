@@ -139,6 +139,7 @@
     "test/requestanimationframe",
     "test/script/async",
     "test/script/defer",
+    "test/standalone",
     "test/storage/localstorage",
     "test/storage/sessionstorage",
     "test/storage/websqldatabase",
