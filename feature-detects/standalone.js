@@ -3,7 +3,7 @@
   "name": "navigator.standalone",
   "property": "standalone",
   "notes": [{
-    "name": "Apple Documentation"
+    "name": "Apple Documentation",
     "href": "http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html"
   }]
 }
