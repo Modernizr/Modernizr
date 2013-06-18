@@ -4,6 +4,7 @@
   "caniuse": "css-gradients",
   "property": "cssgradients",
   "tags": ["css"],
+  "knownBugs": ["False-positives on webOS (https://github.com/Modernizr/Modernizr/issues/202)"],
   "notes": [{
     "name": "Webkit Gradient Syntax",
     "href": "http://webkit.org/blog/175/introducing-css-gradients/"
