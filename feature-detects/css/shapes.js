@@ -10,7 +10,7 @@
     "name": "Examples from Adobe",
     "href": "http://html.adobe.com/webplatform/layout/shapes"
   }, {
-    "name": "Samples showcasing uses of Exclusions and Shapes",
+    "name": "Samples showcasing uses of Shapes",
     "href": "http://codepen.io/collection/qFesk"
   }]
 }
