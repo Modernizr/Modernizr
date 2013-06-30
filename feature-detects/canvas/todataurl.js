@@ -3,7 +3,6 @@
   "name": "canvas.toDataURL type support",
   "property": ["todataurljpeg", "todataurlpng", "todataurlwebp"],
   "tags": ["canvas"],
-  "async" : false,
   "notes": [{
     "name": "HTML5 Spec",
     "href": "http://www.w3.org/TR/html5/the-canvas-element.html#dom-canvas-todataurl"

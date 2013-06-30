@@ -232,7 +232,7 @@ test('Modernizr.audio and Modernizr.video',function(){
   for (var i = -1, len = TEST.audvid.length; ++i < len;){
     var prop = TEST.audvid[i];
 
-    if (Modernizr[prop].toString() == 'true'){
+    if (Modernizr[prop] && Modernizr[prop].toString() == 'true'){
 
       ok(Modernizr[prop], 'Modernizr.'+prop+' is truthy.');
       /* jshint -W041 */
