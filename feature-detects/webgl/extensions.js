@@ -19,8 +19,6 @@
 
 Detects support for OpenGL extensions in WebGL. It's `true` if the [WebGL extensions API](https://developer.mozilla.org/en-US/docs/Web/WebGL/Using_Extensions) is supported, then exposes the supported extensions as subproperties, e.g.:
 
-Currently, this is an async test, but it
-
 ```javascript
 if (Modernizr.webglextensions) {
   // WebGL extensions API supported
