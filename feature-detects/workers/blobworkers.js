@@ -19,7 +19,7 @@ Detects support for creating Web Workers from Blob URIs.
 
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  Modernizr.addAsyncTest(function() {
+  Modernizr.addAsyncTest('blobworkers', function() {
     try {
       // we're avoiding using Modernizr._domPrefixes as the prefix capitalization on
       // these guys are notoriously peculiar.

@@ -5,6 +5,7 @@
   "property": ["csshyphens", "softhyphens", "softhyphensfind"],
   "tags": ["css"],
   "authors": ["David Newton"],
+  "async", true,
   "warnings": [
     "These tests currently require document.body to be present",
     "If loading Hyphenator.js via Modernizr.load, be cautious of issue 158: http://code.google.com/p/hyphenator/issues/detail?id=158",
@@ -34,8 +35,11 @@
 }
 !*/
 define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], function( Modernizr, prefixes, createElement, testAllProps, addTest ) {
-
-  Modernizr.addAsyncTest(function() {
+  // This test is weird and tests three separate things, none of which are named 'hyphens'
+  // - As a supported hack, since they have shared helper functions, we've added two of the
+  // tests as 'aliases' even though they aren't aliases. Those are sent in as options in the
+  // third argument to addAsyncTest.
+  Modernizr.addAsyncTest('csshyphens', function() {
     var waitTime = 300;
     setTimeout(runHyphenTest, waitTime);
     // Wait 1000ms so we can hope for document.body
@@ -191,7 +195,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
         }
       }
 
-      addTest("csshyphens", function() {
+      addTest('csshyphens', function() {
 
         if (!testAllProps('hyphens')) return false;
 
@@ -205,7 +209,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
         }
       });
 
-      addTest("softhyphens", function() {
+      addTest('softhyphens', function() {
         try {
           // use numeric entity instead of &shy; in case it's XHTML
           return test_hyphens('&#173;', true) && test_hyphens('&#8203;', false);
@@ -214,7 +218,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
         }
       });
 
-      addTest("softhyphensfind", function() {
+      addTest('softhyphensfind', function() {
         try {
           return test_hyphens_find('&#173;') && test_hyphens_find('&#8203;');
         } catch(e) {
@@ -223,5 +227,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
       });
 
     }
+  }, {
+    aliases: ['softhyphens','softhyphensfind']
   });
 });

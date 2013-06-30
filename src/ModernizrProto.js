@@ -31,8 +31,10 @@ define(['tests'], function ( tests ) {
       tests.push({name : name, fn : fn, options : options });
     },
 
-    addAsyncTest: function (fn) {
-      tests.push({name : null, fn : fn});
+    addAsyncTest: function (name, fn, options) {
+      options = options || {};
+      options.async = true;
+      tests.push({name : name, fn : fn, options: options});
     }
   };
 

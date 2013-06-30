@@ -4,7 +4,11 @@
   "property": "webglextensions",
   "tags": ["webgl", "graphics"],
   "authors": ["Ilmari Heikkinen"],
-  "knownBugs": [],
+  "knownBugs": [
+    "This async test does not fire a callback",
+    "This test does not add classes to the html element"
+  ],
+  "async": true,
   "notes": [{
     "name": "Kronos extensions registry",
     "href": "http://www.khronos.org/registry/webgl/extensions/"
@@ -14,6 +18,8 @@
 /* DOC
 
 Detects support for OpenGL extensions in WebGL. It's `true` if the [WebGL extensions API](https://developer.mozilla.org/en-US/docs/Web/WebGL/Using_Extensions) is supported, then exposes the supported extensions as subproperties, e.g.:
+
+Currently, this is an async test, but it
 
 ```javascript
 if (Modernizr.webglextensions) {
@@ -30,7 +36,7 @@ define(['Modernizr', 'createElement', 'test/webgl'], function( Modernizr, create
   // code.google.com/p/graphics-detect/source/browse/js/detect.js
 
   // Not Async but handles it's own self
-  Modernizr.addAsyncTest(function() {
+  Modernizr.addAsyncTest('webglextensions', function() {
 
     // Not a good candidate for css classes, so we avoid addTest stuff
     Modernizr.webglextensions = new Boolean(false);

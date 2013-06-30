@@ -17,7 +17,7 @@ Tests for webp support.
 
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  Modernizr.addAsyncTest(function(){
+  Modernizr.addAsyncTest('webp', function(){
     var image = new Image();
 
     image.onerror = function() {

@@ -3,6 +3,7 @@
   "name": "MathML",
   "property": "mathml",
   "caniuse": "mathml",
+  "async": true,
   "authors": ["Addy Osmani", "Davide P. Cervone", "David Carlisle"],
   "notes": [{
     "name": "W3C spec",
@@ -31,7 +32,7 @@ define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createEle
         setTimeout(runMathMLTest, waitTime);
         return;
       }
-      addTest(function () {
+      addTest('mathml', function () {
         var hasMathML = false;
         if ( document.createElementNS ) {
           var ns = "http://www.w3.org/1998/Math/MathML";

@@ -56,7 +56,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
    * @param feature - String naming the feature
    * @param test - Function returning true if feature is supported, false if not
    */
-  function addTest( feature, test ) {
+  function addTest( feature, test, options ) {
     if ( typeof feature == 'object' ) {
       for ( var key in feature ) {
         if ( hasOwnProp( feature, key ) ) {
@@ -80,9 +80,22 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
 
       // Set the value (this is the magic, right here).
       Modernizr[feature] = test;
+      var prefix = test ? '' : 'no-';
+      var classes = [];
 
       // Set a single class (either `feature` or `no-feature`)
-      setClasses([(test ? '' : 'no-') + feature]);
+      classes.push(prefix + feature);
+
+      // Add in aliased names
+      if (options && options.aliases) {
+        for(var i = 0; i < options.aliases.length; i++) {
+          Modernizr[options.aliases[i]] = test;
+          classes.push(prefix + options.aliases[i]);
+        }
+      }
+
+      // Set all added classes at once
+      setClasses(classes);
 
       // Trigger the event
       Modernizr._trigger(feature, test);

@@ -20,7 +20,7 @@ Tests for lossless webp support.
 
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  Modernizr.addAsyncTest(function(){
+  Modernizr.addAsyncTest('webplossless', function(){
     var image = new Image();
 
     image.onerror = function() {
@@ -32,5 +32,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
     };
 
     image.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
+  },{
+    aliases: ['webp-lossless']
   });
 });
