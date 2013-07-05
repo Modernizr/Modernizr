@@ -11,5 +11,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('flexboxlegacy', testAllProps('boxDirection'));
+  Modernizr.addTest('flexboxlegacy', testAllProps('boxDirection', 'reverse', true));
 });
