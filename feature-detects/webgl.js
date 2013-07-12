@@ -9,5 +9,5 @@
 !*/
 define(['Modernizr'], function( Modernizr ) {
   // webk.it/70117 is tracking a legit WebGL feature detect proposal
-  Modernizr.addTest('webgl', !!window.WebGLRenderingContext);
+  Modernizr.addTest('webgl', 'WebGLRenderingContext' in window);
 });

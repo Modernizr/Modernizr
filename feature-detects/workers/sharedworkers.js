@@ -16,5 +16,5 @@ Detects support for the `SharedWorker` API from the Web Workers spec.
 
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('sharedworkers', !!window.SharedWorker);
+  Modernizr.addTest('sharedworkers', 'SharedWorker' in window);
 });
