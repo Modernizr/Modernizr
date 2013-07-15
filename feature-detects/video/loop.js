@@ -7,4 +7,4 @@
 !*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
     Modernizr.addTest('videoloop', 'loop' in createElement('video'));
-}); 
+});

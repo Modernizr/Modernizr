@@ -91,6 +91,7 @@ module.exports = function( grunt ) {
         noarg: true,
         smarttabs: true,
         sub: true,
+        trailing: true,
         undef: true,
         globals: {
           Modernizr: true,
@@ -105,7 +106,7 @@ module.exports = function( grunt ) {
       files: [
         'Gruntfile.js',
         'src/*.js',
-        'feature-detects/*.js'
+        'feature-detects/**/*.js'
       ],
       tests: {
         options: {
