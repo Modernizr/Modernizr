@@ -88,6 +88,7 @@
     "test/dom/dataset",
     "test/dom/microdata",
     "test/draganddrop",
+    "test/draganddropfiles",
     "test/elem/datalist",
     "test/elem/details",
     "test/elem/output",
