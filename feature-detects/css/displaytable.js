@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Display table",
-  "property": "display-table",
+  "property": "displaytable",
   "caniuse": "css-table",
   "authors": ["scottjehl"],
   "tags": ["css"],
