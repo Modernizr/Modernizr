@@ -209,7 +209,7 @@ module.exports = function( grunt ) {
       if ( modConfig && modConfig.classPrefix ) {
         mod = mod.replace("classPrefix : '',", "classPrefix : '" + modConfig.classPrefix.replace(/"/g, '\\"') + "',");
       }
-      grunt.file.write( 'dist/modernizr-build.js', mod );
+      grunt.file.write(filepath, mod);
     });
   });
 

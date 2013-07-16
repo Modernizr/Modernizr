@@ -38,7 +38,7 @@ define(['underscore'], function( _ ) {
     }
 
     output += ') {\n' +
-    '    // Run each test\n' +
+    '  // Run each test\n' +
     '  testRunner();\n' +
     '\n';
 
