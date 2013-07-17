@@ -19,8 +19,8 @@
 Detects support for the Notifications API
 
 */
-define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('notification', function () {
+define(['Modernizr'], function(Modernizr) {
+  Modernizr.addTest('notification', function() {
       var isSupported = false;
       try {
         isSupported = !!(
@@ -29,8 +29,7 @@ define(['Modernizr'], function( Modernizr ) {
         || /* Firefox Mobile */navigator.mozNotification
         || /* IE9+ */(window.external && window.external.msIsSiteMode() !== undefined)
         );
-      } catch (e) {}
-      
+      } catch(e) {}
       return isSupported;
-    }
+  })
 });
