@@ -23,12 +23,10 @@ define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('notification', function() {
       var isSupported = false;
       try {
-        isSupported = !!(
-           /* Safari, Chrome */window.Notification
-        || /* Chrome & ff-html5notifications plugin */window.webkitNotifications
-        || /* Firefox Mobile */navigator.mozNotification
-        || /* IE9+ */(window.external && window.external.msIsSiteMode() !== undefined)
-        );
+        isSupported = !!(/* Safari, Chrome */window.Notification ||
+        /* Chrome & ff-html5notifications plugin */window.webkitNotifications ||
+        /* Firefox Mobile */navigator.mozNotification ||
+        /* IE9+ */(window.external && window.external.msIsSiteMode() !== undefined));
       } catch(e) {}
       return isSupported;
   })
