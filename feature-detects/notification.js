@@ -1,8 +1,8 @@
 /*!
 {
-  "name": "Notifications",
+  "name": "Notification",
   "property": "notification",
-  "caniuse": "notifications",
+  "caniuse": "notification",
   "authors": ["Theodoor van Donge", "Hendrik Beskow"],
   "notes": [{
     "name": "HTML5 Rocks tutorial",
