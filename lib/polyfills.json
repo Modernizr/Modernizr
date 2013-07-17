@@ -1,4 +1,11 @@
 {
+  "desktop-notify": {
+    "name": "HTML5 Desktop Notifications",
+    "authors": ["Tsvetan Tsvetkov"],
+    "href": "https://github.com/ttsvetko/HTML5-Desktop-Notifications",
+    "licenses": ["Apache2"],
+    "notes": ["A small library that unifies the HTML5 Notifications APIs accross different browsers including IE9 & IE10."]
+  },
   "css3pie": {
     "name": "CSS3 PIE",
     "authors": ["Jason Johnston"],
