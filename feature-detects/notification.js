@@ -29,5 +29,5 @@ define(['Modernizr'], function(Modernizr) {
         /* IE9+ */(window.external && window.external.msIsSiteMode() !== undefined));
       } catch(e) {}
       return isSupported;
-  })
+  });
 });
