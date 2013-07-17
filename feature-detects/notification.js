@@ -2,7 +2,7 @@
 {
   "name": "Notification",
   "property": "notification",
-  "caniuse": "notification",
+  "caniuse": "notifications",
   "authors": ["Theodoor van Donge", "Hendrik Beskow"],
   "notes": [{
     "name": "HTML5 Rocks tutorial",
