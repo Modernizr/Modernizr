@@ -20,11 +20,5 @@ Detects support for the Notifications API
 
 */
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('notification', function() {
-      var isSupported = false;
-      try {
-        isSupported = !!(/* Safari, Firefox */window.Notification && window.Notification.permission && window.Notification.requestPermission);
-      } catch(e) {}
-      return isSupported;
-  });
+  Modernizr.addTest('notification', 'Notification' in window && 'permission' in window.Notification && 'requestPermission' in window.Notification);
 });
