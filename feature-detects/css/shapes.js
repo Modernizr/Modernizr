@@ -22,10 +22,10 @@ define(['Modernizr', 'createElement', 'docElement', 'prefixed', 'testStyles'], f
 
         var shapeInsideProperty = prefixedProperty.replace(/([A-Z])/g, function (str, m1) { return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
 
-        return testStyles('#modernizr { ' + shapeInsideProperty + ':rectangle(0,0,0,0) }', function (elem) {
+        return testStyles('#modernizr { ' + shapeInsideProperty + ':rectangle(0,0,0,0,0,0) }', function (elem) {
             // Check against computed value
             var styleObj = window.getComputedStyle ? getComputedStyle(elem, null) : elem.currentStyle;
-            return styleObj[prefixed('shapeInside', docElement.style, false)] == 'rectangle(0px, 0px, 0px, 0px)';
+            return styleObj[prefixed('shapeInside', docElement.style, false)] == 'rectangle(0px, 0px, 0px, 0px, 0px, 0px)';
         });
     });
 });
