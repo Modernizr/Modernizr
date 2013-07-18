@@ -74,6 +74,7 @@
     "test/css/supports",
     "test/css/textshadow",
     "test/css/transforms",
+    "test/css/transformstylepreserve3d",
     "test/css/transforms3d",
     "test/css/transitions",
     "test/css/userselect",
