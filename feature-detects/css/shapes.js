@@ -4,11 +4,14 @@
   "property": "shapes",
   "tags": ["css"],
   "notes": [{
-    "name": "Exclusions Spec",
-    "href": "http://www.w3.org/TR/css3-exclusions#shapes"
+    "name": "CSS Shapes W3C specification",
+    "href": "http://www.w3.org/TR/css-shapes"
   },{
-    "name": "Example from Adobe",
-    "href": "http://html.adobe.com/webstandards/cssexclusions"
+    "name": "Examples from Adobe",
+    "href": "http://html.adobe.com/webplatform/layout/shapes"
+  }, {
+    "name": "Samples showcasing uses of Shapes",
+    "href": "http://codepen.io/collection/qFesk"
   }]
 }
 !*/
