@@ -12,6 +12,7 @@
 /* DOC
 
 Tests for server sent events aka eventsource.
+
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('eventsource', !!window.EventSource);
