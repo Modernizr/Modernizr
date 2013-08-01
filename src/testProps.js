@@ -1,4 +1,4 @@
-define(['contains', 'mStyle', 'createElement'], function( contains, mStyle, createElement ) {
+define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], function( contains, mStyle, createElement, nativeTestProps, is ) {
   // testProps is a generic CSS / DOM property test.
 
   // In testing support for a given CSS property, it's legit to test:
@@ -17,8 +17,19 @@ define(['contains', 'mStyle', 'createElement'], function( contains, mStyle, crea
   // developing in WebKit or IE first don't end up with
   // browser-specific content by accident.
 
-  function testProps( props, prefixed ) {
-    var afterInit;
+  function testProps( props, prefixed, value, skipValueTest ) {
+    skipValueTest = is(skipValueTest, 'undefined') ? false : skipValueTest;
+
+    // Try native detect first
+    if (!is(value, 'undefined')) {
+      var result = nativeTestProps(props, value);
+      if(!is(result, 'undefined')) {
+        return result;
+      }
+    }
+
+    // Otherwise do it properly
+    var afterInit, i, j, prop, before;
 
     // If we don't have a style element, that means
     // we're running async or after the core tests,
@@ -38,11 +49,38 @@ define(['contains', 'mStyle', 'createElement'], function( contains, mStyle, crea
       }
     }
 
-    for ( var i in props ) {
-      var prop = props[i];
+    for ( i in props ) {
+      prop = props[i];
+      before = mStyle.style[prop];
+
       if ( !contains(prop, "-") && mStyle.style[prop] !== undefined ) {
-        cleanElems();
-        return prefixed == 'pfx' ? prop : true;
+
+        // If value to test has been passed in, do a set-and-check test.
+        // 0 (integer) is a valid property value, so check that `value` isn't
+        // undefined, rather than just checking it's truthy.
+        if (!skipValueTest && !is(value, 'undefined')) {
+
+          // Needs a try catch block because of old IE. This is slow, but will
+          // be avoided in most cases because `skipValueTest` will be used.
+          try {
+            mStyle.style[prop] = value;
+          } catch (e) {}
+
+          // If the property value has changed, we assume the value used is
+          // supported. If `value` is empty string, it'll fail here (because
+          // it hasn't changed), which matches how browsers have implemented
+          // CSS.supports()
+          if (mStyle.style[prop] != before) {
+            cleanElems();
+            return prefixed == 'pfx' ? prop : true;
+          }
+        }
+        // Otherwise just return true, or the property name if this is a
+        // `prefixed()` call
+        else {
+          cleanElems();
+          return prefixed == 'pfx' ? prop : true;
+        }
       }
     }
     cleanElems();

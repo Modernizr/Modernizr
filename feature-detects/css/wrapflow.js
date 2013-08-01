@@ -3,17 +3,20 @@
   "name": "CSS wrap-flow",
   "property": "wrapflow",
   "tags": ["css"],
-  "notes": [{
-    "name": "W3C Exclusions Spec",
-    "href": "http://www.w3.org/TR/css3-exclusions"
-  },{
-    "name": "Example by Adobe",
-    "href": "http://html.adobe.com/webstandards/cssexclusions"
-  }]
+  "notes": [
+    "This is a separate test from the rest of CSS Exclusions as as IE10 has just implemented this alone.",
+    {
+      "name": "W3C Exclusions spec",
+      "href": "http://www.w3.org/TR/css3-exclusions"
+    },
+    {
+      "name": "Example by Adobe",
+      "href": "http://html.adobe.com/webstandards/cssexclusions"
+    }
+  ]
 }
 !*/
 define(['Modernizr', 'prefixed', 'docElement', 'createElement'], function( Modernizr, prefixed, docElement, createElement ) {
-    // Separate test for `wrap-flow` property as IE10 has just implemented this alone
     Modernizr.addTest('wrapflow', function () {
         var prefixedProperty = prefixed('wrapFlow');
         if (!prefixedProperty)
