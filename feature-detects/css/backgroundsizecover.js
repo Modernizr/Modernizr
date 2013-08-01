@@ -9,14 +9,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
-
-  testStyles('#modernizr{background-size:cover}', function( elem ) {
-    var style = window.getComputedStyle ?
-      window.getComputedStyle(elem, null)
-      : elem.currentStyle;
-
-    Modernizr.addTest('bgsizecover', style.backgroundSize == 'cover' );
-  });
-
+define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+  // Must test value, as this specifically tests the `cover` value
+  Modernizr.addTest('bgsizecover', testAllProps('backgroundSize', 'cover'));
 });
