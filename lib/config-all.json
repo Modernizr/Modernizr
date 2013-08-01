@@ -26,6 +26,7 @@
     "test/cookies",
     "test/cors",
     "test/css/animations",
+    "test/css/backgroundcliptext",
     "test/css/backgroundposition-shorthand",
     "test/css/backgroundposition-xy",
     "test/css/backgroundrepeat",
