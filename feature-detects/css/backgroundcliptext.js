@@ -20,17 +20,8 @@
   ]
 }
 !*/
-define(['Modernizr', 'createElement', 'cssomPrefixes'], function( Modernizr, createElement, cssomPrefixes ) {
+define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('backgroundcliptext', function() {
-    var element = createElement('x');
-    var ucProp = 'BackgroundClip';
-    var props = ('backgroundClip ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
-    element.style.cssText = Modernizr._prefixes.join('background-clip:text;');
-    for ( var i in props ) {
-      if ( element.style[props[i]] === 'text' ) {
-        return true;
-      }
-    }
-    return false;
+    return testAllProps('backgroundClip', 'text');
   });
 });
