@@ -13,12 +13,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
-  testStyles(' #modernizr { display: run-in; } ', function( elem, rule ) {
-    var ret = (window.getComputedStyle ?
-               getComputedStyle(elem, null).getPropertyValue('display') :
-               elem.currentStyle['display']);
-
-    Modernizr.addTest('displayrunin', ret == 'run-in', { aliases: ['display-runin'] });
-  });
+define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+  Modernizr.addTest('displayrunin', testAllProps('display', 'run-in'),
+    { aliases: ['display-runin'] });
 });

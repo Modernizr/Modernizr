@@ -16,20 +16,8 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
-
-  function getBgRepeatValue( elem ) {
-    return (window.getComputedStyle ?
-            getComputedStyle(elem, null).getPropertyValue('background') :
-            elem.currentStyle['background']);
-  }
-
-  testStyles(' #modernizr { background-repeat: round; } ', function( elem, rule ) {
-    Modernizr.addTest('bgrepeatround', getBgRepeatValue(elem) == 'round');
-  });
-
-  testStyles(' #modernizr { background-repeat: space; } ', function( elem, rule ) {
-    Modernizr.addTest('bgrepeatspace', getBgRepeatValue(elem) == 'space');
-  });
-
+define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+  // Must value-test these
+  Modernizr.addTest('bgrepeatround', testAllProps('backgroundRepeat', 'round'));
+  Modernizr.addTest('bgrepeatspace', testAllProps('backgroundRepeat', 'space'));
 });
