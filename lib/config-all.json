@@ -88,6 +88,7 @@
     "test/dom/createElement-attrs",
     "test/dom/dataset",
     "test/dom/microdata",
+    "test/dom/mutationObserver",
     "test/draganddrop",
     "test/elem/datalist",
     "test/elem/details",
