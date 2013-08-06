@@ -19,5 +19,5 @@ The API has been [heavily criticized](http://alistapart.com/article/application-
 
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('applicationcache', !!window.applicationCache);
+  Modernizr.addTest('applicationcache', 'applicationCache' in window);
 });

@@ -12,5 +12,5 @@
 }
 !*/
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('audiodata', !!window.Audio);
+  Modernizr.addTest('audiodata', 'Audio' in window);
 });
