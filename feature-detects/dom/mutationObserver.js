@@ -1,13 +1,13 @@
 /*!
 {
   "name": "DOM4 MutationObserver",
-  "property": "mutationObserver",
+  "property": "mutationobserver",
   "caniuse": "mutationobserver",
   "tags": ["dom"],
   "authors": ["Karel Sedláček"]
 }
 !*/
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('mutationObserver',
+  Modernizr.addTest('mutationobserver',
     !!window.MutationObserver || !!window.WebKitMutationObserver);
 });
