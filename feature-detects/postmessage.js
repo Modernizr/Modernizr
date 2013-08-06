@@ -16,5 +16,5 @@ Detects support for the `window.postMessage` protocol for cross-document messagi
 
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('postmessage', !!window.postMessage);
+  Modernizr.addTest('postmessage', 'postMessage' in window);
 });

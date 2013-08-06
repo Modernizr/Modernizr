@@ -17,5 +17,5 @@ Detects support for Cross-Origin Resource Sharing: method of performing XMLHttpR
 
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('cors', !!(window.XMLHttpRequest && 'withCredentials' in new XMLHttpRequest()));
+  Modernizr.addTest('cors', 'XMLHttpRequest' in window && 'withCredentials' in new XMLHttpRequest());
 });
