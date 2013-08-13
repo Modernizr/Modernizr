@@ -35,14 +35,14 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
     var cb;
     var i;
 
-    /* jshint -W083 */
-    for (i = 0; i < cbs.length; i++) {
-      cb = cbs[i];
-      // Force async
-      setTimeout(function() {
+    // Force async
+    setTimeout(function() {
+      var i, cb;
+      for (i = 0; i < cbs.length; i++) {
+        cb = cbs[i];
         cb(res);
-      },0);
-    }
+      }
+    },0);
 
     // Don't trigger these again
     delete this._l[test];
