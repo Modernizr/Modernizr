@@ -32,8 +32,6 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
     }
 
     var cbs = this._l[test];
-    var cb;
-    var i;
 
     // Force async
     setTimeout(function() {
