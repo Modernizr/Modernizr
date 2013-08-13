@@ -11,7 +11,7 @@
     "name": "W3C spec",
     "href": "www.w3.org/TR/notifications/"
   }],
-  "polyfills": ["desktop-notify"]
+  "polyfills": ["desktop-notify", "html5-notifications"]
 }
 !*/
 /* DOC
