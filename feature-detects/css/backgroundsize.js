@@ -11,5 +11,5 @@
 }
 !*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
-  Modernizr.addTest('backgroundsize', testAllProps('backgroundSize'));
+  Modernizr.addTest('backgroundsize', testAllProps('backgroundSize', '100%', true));
 });

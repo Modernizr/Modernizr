@@ -23,5 +23,5 @@ Detects support for the basic `Worker` API from the Web Workers spec. Web Worker
 
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('webworkers', !!window.Worker);
+  Modernizr.addTest('webworkers', 'Worker' in window);
 });

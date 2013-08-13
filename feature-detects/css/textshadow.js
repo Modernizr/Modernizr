@@ -7,6 +7,6 @@
   "knownBugs": ["FF3.0 will false positive on this test"]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
-  Modernizr.addTest('textshadow', createElement('div').style.textShadow === '');
+define(['Modernizr', 'testProp'], function( Modernizr, testProp ) {
+  Modernizr.addTest('textshadow', testProp('textShadow', '1px 1px'));
 });

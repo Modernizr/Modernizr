@@ -11,7 +11,7 @@
 !*/
 define(['Modernizr', 'testAllProps', 'testStyles', 'docElement'], function( Modernizr, testAllProps, testStyles, docElement ) {
   Modernizr.addTest('csstransforms3d', function() {
-    var ret = !!testAllProps('perspective');
+    var ret = !!testAllProps('perspective', '1px', true);
 
     // Webkit's 3D transforms are passed off to the browser's own graphics renderer.
     //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in

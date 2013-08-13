@@ -528,6 +528,12 @@
     "href": "https://github.com/inexorabletash/polyfill",
     "licenses": ["various"]
   },
+  "text-overflow": {
+    "name": "jQuery text-overflow",
+    "authors": ["Devon Govett"],
+    "href": "http://ajaxian.com/archives/text-overflow-for-firefox-via-jquery",
+    "licenses": ["MIT"]
+  },
   "html5media": {
     "name": "html5media",
     "authors": ["Dave Hall"],

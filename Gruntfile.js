@@ -205,11 +205,11 @@ module.exports = function( grunt ) {
       // Remove `define("modernizr-init" ...)` and `define("modernizr-build" ...)`
       var mod = grunt.file.read(filepath).replace(/define\("modernizr-(init|build)", function\(\)\{\}\);/g, '');
 
-      // Hack the prefix into place. Anything is way to big for something so small.
+      // Hack the prefix into place. Anything is way too big for something so small.
       if ( modConfig && modConfig.classPrefix ) {
         mod = mod.replace("classPrefix : '',", "classPrefix : '" + modConfig.classPrefix.replace(/"/g, '\\"') + "',");
       }
-      grunt.file.write( 'dist/modernizr-build.js', mod );
+      grunt.file.write(filepath, mod);
     });
   });
 
