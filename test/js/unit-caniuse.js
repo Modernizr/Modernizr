@@ -89,7 +89,7 @@ var map = {
   sharedworkers: 'sharedworkers',
   siblinggeneral: 'css-sel3',
   smil: 'svg-smil',
-  strictmode: 'sctrict-mode',
+  strictmode: 'use-strict',
   stylescoped: 'style-scoped',
   supports: 'css-featurequeries',
   svg: 'svg',
