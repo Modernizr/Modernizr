@@ -12,7 +12,7 @@
 !*/
 /* DOC
 
-Detects support for the Printing.
+Detects support for the Print API.
 
 */
 define(['Modernizr'], function( Modernizr ) {
