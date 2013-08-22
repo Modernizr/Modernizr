@@ -43,6 +43,7 @@
     "test/css/displaytable",
     "test/css/ellipsis",
     "test/css/filters",
+    "test/css/fixed",
     "test/css/flexbox",
     "test/css/flexboxlegacy",
     "test/css/flexboxtweener",
