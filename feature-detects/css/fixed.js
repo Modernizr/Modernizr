@@ -16,9 +16,9 @@
  }]
 }
 !*/
-define(['Modernizr', 'injectElementWithStyles', 'getBody'], function( Modernizr, injectElementWithStyles, getBody ) {
-  // migrated from kangax's solution
-  // swaydeng fixed 2px extra offset bug in IE<=7
+define(['Modernizr', 'injectElementWithStyles', 'getBody', 'docElement'], function( Modernizr, injectElementWithStyles, getBody, docElement ) {
+  // migrated from kangax's solution.
+  // swaydeng fixed 2px extra offset bug in IE<=7 based on kangax's solution.
   // http://kangax.github.io/cft/#IS_POSITION_FIXED_SUPPORTED
   Modernizr.addTest('cssfixed', function() {
       var isSupported = false;
@@ -33,9 +33,12 @@ define(['Modernizr', 'injectElementWithStyles', 'getBody'], function( Modernizr,
           var bodyHeight = body.style.height;
           var bodyScrollTop = body.scrollTop;
           // In IE<=7, the window's upper-left is at 2,2 (pixels) with respect to the true client.
+          // surprisely, in IE8, the window's upper-left is at -2, -2 (pixels), but other elements
+          // tested is just right, so we need adjust this.
           // https://groups.google.com/forum/?fromgroups#!topic/comp.lang.javascript/zWJaFM5gMIQ
           // https://bugzilla.mozilla.org/show_bug.cgi?id=174397
-          var extraTop  = body.getBoundingClientRect().top;
+          var extraTop  = docElement.getBoundingClientRect().top;
+          extraTop = extraTop > 0 ? extraTop : 0;
 
           body.style.height = '3000px';
           body.scrollTop = 1;
