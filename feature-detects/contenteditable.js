@@ -3,7 +3,6 @@
   "name": "Content Editable",
   "property": "contenteditable",
   "caniuse": "contenteditable",
-  "knownBugs": ["This is known to false positive in some mobile browsers. Here is a whitelist of verified working browsers: http://bit.ly/15RIQ9A"],
   "notes": [{
     "name": "WHATWG spec",
     "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/editing.html#contenteditable"
@@ -15,6 +14,17 @@
 Detects support for the `contenteditable` attribute of elements, allowing their DOM text contents to be edited directly by the user.
 
 */
-define(['Modernizr', 'docElement'], function( Modernizr, docElement ) {
-  Modernizr.addTest('contenteditable', 'contentEditable' in docElement);
+define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
+  Modernizr.addTest('contenteditable', function() {
+    // early bail out
+    if (!('contentEditable' in docElement)) return;
+
+    // some mobile browsers (android < 3.0, iOS < 5) claim to support
+    // contentEditable, but but don't really. This test checks to see
+    // confirms wether or not it actually supports it.
+
+    var div = createElement('div');
+    div.contentEditable = true;
+    return div.contentEditable === "true";
+  });
 });
