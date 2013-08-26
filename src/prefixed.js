@@ -10,11 +10,9 @@ define(['ModernizrProto', 'testPropsAll'], function( ModernizrProto, testPropsAl
   // If you're trying to ascertain which transition end event to bind to, you might do something like...
   //
   //     var transEndEventNames = {
-  //       'WebkitTransition' : 'webkitTransitionEnd',
-  //       'MozTransition'    : 'transitionend',
-  //       'OTransition'      : 'oTransitionEnd',
-  //       'msTransition'     : 'MSTransitionEnd',
-  //       'transition'       : 'transitionend'
+  //         'WebkitTransition' : 'webkitTransitionEnd',// Saf 6, Android Browser
+  //         'MozTransition'    : 'transitionend',      // only for FF < 15
+  //         'transition'       : 'transitionend'       // IE10, Opera, Chrome, FF 15+, Saf 7+
   //     },
   //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
 
