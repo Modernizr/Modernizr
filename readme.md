@@ -58,7 +58,7 @@ grunt qunit
 ```shell
 grunt build
 serve .
-visit <url>/tests
+visit <url>/test
 ```
 
 ### To see simple build in browser:
