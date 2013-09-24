@@ -39,7 +39,7 @@ define(['Modernizr', 'prefixes', 'testStyles'], function( Modernizr, prefixes, t
   // Chrome (desktop) used to lie about its support on this, but that has since been rectified: http://crbug.com/36415
   Modernizr.addTest('touchevents', function() {
     var bool;
-    if(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+    if(('ontouchstart' in window) || (window.DocumentTouch && document instanceof DocumentTouch) ||  window.navigator.msMaxTouchPoints) {
       bool = true;
     } else {
       var query = ['@media (',prefixes.join('touch-enabled),('),'heartz',')','{#modernizr{top:9px;position:absolute}}'].join('');
