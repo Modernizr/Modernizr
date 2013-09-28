@@ -3,7 +3,11 @@
   "name": "SVG SMIL animation",
   "property": "smil",
   "caniuse": "svg-smil",
-  "tags": ["svg"]
+  "tags": ["svg"],
+  "notes": [{
+	"name": "W3C Synchronised Multimedia spec",
+	"href": "http://www.w3.org/AudioVideo/"
+  }]
 }
 !*/
 define(['Modernizr', 'toStringFn'], function( Modernizr, toStringFn ) {
