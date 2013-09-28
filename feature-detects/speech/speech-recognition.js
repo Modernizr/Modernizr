@@ -5,8 +5,8 @@
   "name": "Speech Recognition API",
   "notes": [
     {
-      "name": "W3C Web Speech API Specification",
-      "href": "http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html"
+      "name": "W3C Web Speech API Specification - The SpeechRecognition Interface",
+      "href": "https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechreco-section"
     },
     {
       "name": "Introduction to the Web Speech API",
