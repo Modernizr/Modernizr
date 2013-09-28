@@ -4,10 +4,10 @@
   "property": "stylescoped",
   "caniuse": "style-scoped",
   "tags": ["dom"],
-  "authors": ["@alrra"],
+  "authors": ["Cătălin Mariș"],
   "notes": [{
-    "name": "W3C spec",
-    "href": "http://www.w3.org/TR/html5/the-style-element.html#attr-style-scoped"
+    "name": "WHATWG Specification",
+    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#attr-style-scoped"
   }],
   "polyfills": ["scoped-styles"]
 }

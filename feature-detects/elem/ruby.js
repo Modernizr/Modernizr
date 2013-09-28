@@ -4,9 +4,9 @@
   "caniuse": "ruby",
   "property": "ruby",
   "tags": ["elem"],
-  "authors": ["@alrra"],
+  "authors": ["Cătălin Mariș"],
   "notes": [{
-    "name": "WhatWG Spec",
+    "name": "WHATWG Specification",
     "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-ruby-element"
   }]
 }
@@ -26,10 +26,10 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
     docElement.appendChild(ruby);
 
     // browsers that support <ruby> hide the <rp> via "display:none"
-    if ( getStyle(rp, displayStyleProperty) == 'none' ||                                                       // for non-IE browsers
-        // but in IE browsers <rp> has "display:inline" so, the test needs other conditions:
-        getStyle(ruby, displayStyleProperty) == 'ruby' && getStyle(rt, displayStyleProperty) == 'ruby-text' || // for IE8 & IE9
-          getStyle(rp, fontSizeStyleProperty) == '6pt' && getStyle(rt, fontSizeStyleProperty) == '6pt' ) {       // for IE6 & IE7
+    if ( getStyle(rp, displayStyleProperty) == 'none' ||                                                        // for non-IE browsers
+         // but in IE browsers <rp> has "display:inline" so, the test needs other conditions:
+         getStyle(ruby, displayStyleProperty) == 'ruby' && getStyle(rt, displayStyleProperty) == 'ruby-text' || // for IE8+
+         getStyle(rp, fontSizeStyleProperty) == '6pt' && getStyle(rt, fontSizeStyleProperty) == '6pt' ) {       // for IE6 & IE7
 
       cleanUp();
       return true;

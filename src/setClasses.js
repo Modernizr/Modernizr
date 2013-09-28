@@ -5,10 +5,13 @@ define(['Modernizr', 'docElement'], function( Modernizr, docElement ) {
     var className = docElement.className;
     var removeClasses = [];
     var regex;
+    var classPrefix = Modernizr._config.classPrefix || '';
 
     // Change `no-js` to `js` (we do this regardles of the `enableClasses`
     // option)
-    className = className.replace(/(^|\s)no-js(\s|$)/, '$1js$2');
+    // Handle classPrefix on this too
+    var reJS = new RegExp('(^|\\s)'+classPrefix+'no-js(\\s|$)');
+    className = className.replace(reJS, '$1'+classPrefix+'js$2');
 
     if(Modernizr._config.enableClasses) {
       // Need to remove any existing `no-*` classes for features we've detected
@@ -23,7 +26,7 @@ define(['Modernizr', 'docElement'], function( Modernizr, docElement ) {
       className = className.replace(regex, '$1$2');
 
       // Then add the new...
-      className += ' ' + classes.join(' ' + (Modernizr._config.classPrefix || ''));
+      className += ' ' + classes.join(' ' + classPrefix);
 
       // Apply
       docElement.className = className;
