@@ -148,6 +148,7 @@
     "test/script/async",
     "test/script/defer",
     "test/speech/speech-recognition",
+    "test/speech/speech-synthesis",
     "test/storage/localstorage",
     "test/storage/sessionstorage",
     "test/storage/websqldatabase",
