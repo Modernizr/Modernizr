@@ -26,7 +26,7 @@ define(['Modernizr', 'docElement'], function( Modernizr, docElement ) {
       className = className.replace(regex, '$1$2');
 
       // Then add the new...
-      className += ' ' + classes.join(' ' + classPrefix);
+      className += ' ' + classPrefix + classes.join(' ' + classPrefix);
 
       // Apply
       docElement.className = className;
