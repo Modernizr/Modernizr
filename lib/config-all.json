@@ -101,6 +101,7 @@
     "test/es5/strictmode",
     "test/es6/contains",
     "test/event/deviceorientation-motion",
+    "test/event/oninput",
     "test/exif-orientation",
     "test/file/api",
     "test/file/filesystem",
