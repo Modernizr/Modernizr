@@ -162,6 +162,7 @@
     "test/touchevents",
     "test/typed-arrays",
     "test/unicode",
+    "test/unicode-range",
     "test/url/data-uri",
     "test/userdata",
     "test/vibration",
