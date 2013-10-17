@@ -21,7 +21,10 @@ define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function( Mod
       if ( !('checkValidity' in form) || !('addEventListener' in form) ) {
         return false;
       }
-      var invaildFired = false;
+      if ('reportValidity' in form) {
+        return true;
+      }
+      var invalidFired = false;
       var input;
 
       Modernizr.formvalidationapi =  true;
@@ -47,7 +50,7 @@ define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function( Mod
 
         // Record whether "invalid" event is fired
         input.addEventListener('invalid', function(e) {
-          invaildFired = true;
+          invalidFired = true;
           e.preventDefault();
           e.stopPropagation();
         }, false);
@@ -59,6 +62,6 @@ define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function( Mod
         form.getElementsByTagName('button')[0].click();
       });
 
-      return invaildFired;
+      return invalidFired;
     });
 });
