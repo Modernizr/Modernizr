@@ -16,7 +16,7 @@
 !*/
 /* DOC
 
-Tests for lossless webp support.
+Tests for non-alpha lossless webp support.
 
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
@@ -31,6 +31,6 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
       addTest('webplossless', image.width == 1, { aliases: ['webp-lossless'] });
     };
 
-    image.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
+    image.src = 'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=';
   });
 });
