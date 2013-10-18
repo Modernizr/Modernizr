@@ -13,7 +13,7 @@
 !*/
 /* DOC
 
-Tests for webp support.
+Tests for lossy, non-alpha webp support.
 
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
@@ -28,6 +28,6 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
       addTest('webp', image.width == 1);
     };
 
-    image.src = 'data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAAAUAgCdASoBAAEAL/3+/3+CAB/AAAFzrNsAAP5QAAAAAA==';
+    image.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
   });
 });
