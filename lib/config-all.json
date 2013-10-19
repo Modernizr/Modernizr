@@ -19,6 +19,7 @@
     "test/canvas/todataurl",
     "test/canvas",
     "test/canvastext",
+    "test/crypto/getrandomvalues",
     "test/contenteditable",
     "test/contentsecuritypolicy",
     "test/contextmenu",
