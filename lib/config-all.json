@@ -104,6 +104,7 @@
     "test/exif-orientation",
     "test/file/api",
     "test/file/filesystem",
+    "test/fontsmoothing",
     "test/forms/fileinput",
     "test/forms/formattribute",
     "test/forms/inputnumber-l10n",
