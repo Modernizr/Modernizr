@@ -669,5 +669,11 @@
     "authors": ["Jonathan 'J5' Cook"],
     "href": "https://code.google.com/p/html5-shims/",
     "licenses": ["Apache2"]
+  },
+  "polycrypt": {
+    "name": "PolyCrypt",
+    "authors": ["BBN Technologies"],
+    "href": "http://polycrypt.net/",
+    "licenses": ["BSD"]
   }
 }
