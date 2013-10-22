@@ -686,6 +686,11 @@
     "name": "JavaScript Flash VM",
     "authors": ["Mozilla Foundation"],
     "href": "https://github.com/mozilla/shumway",
-    "licenses": ["Apache2"]
+    "licenses": ["Apache2"],
+  "maxlength": {
+    "name": "maxlength plugin",
+    "authors": ["Remy Sharp"],
+    "href": "http://remysharp.com/2008/06/30/maxlength-plugin/",
+    "licenses": ["CC SA"]
   }
 }

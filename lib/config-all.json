@@ -183,6 +183,7 @@
     "test/svg/inline",
     "test/svg/smil",
     "test/svg",
+    "test/textarea/maxlength",
     "test/touchevents",
     "test/typed-arrays",
     "test/unicode",
