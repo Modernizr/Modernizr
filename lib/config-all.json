@@ -146,6 +146,7 @@
     "test/img/webp",
     "test/indexedDB",
     "test/input",
+    "test/input/formaction",
     "test/inputsearchevent",
     "test/inputtypes",
     "test/intl",
