@@ -16,7 +16,7 @@ define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('svgfilters', function() {
     var result = false;
     try {
-      result = typeof SVGFEColorMatrixElement !== undefined &&
+      result = 'SVGFEColorMatrixElement' in window &&
         SVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_SATURATE == 2;
     }
     catch(e) {}
