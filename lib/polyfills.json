@@ -675,5 +675,11 @@
     "authors": ["BBN Technologies"],
     "href": "http://polycrypt.net/",
     "licenses": ["BSD"]
+  },
+  "shumway": {
+    "name": "JavaScript Flash VM",
+    "authors": ["Mozilla Foundation"],
+    "href": "https://github.com/mozilla/shumway",
+    "licenses": ["Apache2"]
   }
 }
