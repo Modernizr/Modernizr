@@ -1,6 +1,5 @@
 /*!
 {
-  "async": false,
   "authors": ["Cătălin Mariș"],
   "name": "Speech Recognition API",
   "notes": [
