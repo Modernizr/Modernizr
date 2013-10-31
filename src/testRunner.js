@@ -6,6 +6,11 @@ define(['tests', 'Modernizr', 'classes', 'is'], function( tests, Modernizr, clas
     var aliasIdx;
     var result;
     var nameIdx;
+    var featureName;
+    var featureNameSplit;
+    var modernizrProp;
+    var mPropCount;
+
     for ( var featureIdx in tests ) {
       featureNames = [];
       feature = tests[featureIdx];
@@ -30,10 +35,26 @@ define(['tests', 'Modernizr', 'classes', 'is'], function( tests, Modernizr, clas
       // Run the test, or use the raw value if it's not a function
       result = is(feature.fn, 'function') ? feature.fn() : feature.fn;
 
+
       // Set each of the names on the Modernizr object
       for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
-        Modernizr[featureNames[nameIdx]] = result;
-        classes.push((Modernizr[featureNames[nameIdx]] ? '' : 'no-') + featureNames[nameIdx]);
+        featureName = featureNames[nameIdx];
+        // Support dot properties as sub tests. We don't do checking to make sure
+        // that the implied parent tests have been added. You must call them in
+        // order (either in the test, or make the parent test a dependency).
+        //
+        // Cap it to TWO to make the logic simple and because who needs that kind of subtesting
+        // hashtag famous last words
+        featureNameSplit = featureName.split('.');
+
+        if (featureNameSplit.length === 1) {
+          Modernizr[featureNameSplit[0]] = result;
+        }
+        else if (featureNameSplit.length === 2) {
+          Modernizr[featureNameSplit[0]][featureNameSplit[1]] = result;
+        }
+
+        classes.push((result ? '' : 'no-') + featureNameSplit.join('-'));
       }
     }
   }
