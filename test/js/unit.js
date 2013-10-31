@@ -136,7 +136,16 @@ test('html classes are looking good',function(){
       newprops = modprops,
       i,
       len,
-      aclass;
+      aclass,
+      getObject = function(aclass) {
+        var classSplit = aclass.split('-');
+        if(typeof Modernizr[aclass] != 'undefined') {
+          return Modernizr[aclass];
+        }
+        else if (classSplit.length == 2) {
+          return Modernizr[classSplit[0]][classSplit[1]];
+        }
+      };
 
   // decrement for the properties that are private
   for (i = -1, len = TEST.privates.length; ++i < len; ){
@@ -174,11 +183,12 @@ test('html classes are looking good',function(){
     if (aclass.indexOf('no-') === 0){
       aclass = aclass.replace('no-','');
 
-      equal(Modernizr[aclass], false,
+      equal(getObject(aclass), false,
             aclass + ' is correctly false in the classes and object');
 
     } else {
-      equal(Modernizr[aclass], true,
+
+      equal(getObject(aclass), true,
              aclass + ' is correctly true in the classes and object');
     }
   }
@@ -205,6 +215,7 @@ test('Modernizr properties are looking good',function(){
       nobool = TEST.API.concat(TEST.inputs)
                        .concat(TEST.audvid)
                        .concat(TEST.privates)
+                       .concat(TEST.columns)
                        .concat(['textarea', 'testtruthy', 'testfalsy']) // due to forms-placeholder.js test
                        .concat(['datauri']); // has `.over32kb` subproperty
 
