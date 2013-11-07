@@ -16,6 +16,7 @@ window.TEST = {
   // note some unique members of the Modernizr object
   inputs    : ['input','inputtypes', 'textarea'],
   audvid    : ['video','audio', 'webglextensions'],
+  columns   : ['csscolumns'],
   API       : ['addTest', 'mq', 'hasEvent', 'testProp', 'testAllProps', 'testStyles', '_prefixes', '_domPrefixes', '_cssomPrefixes', 'prefixed'],
   extraclass: ['js'],
   privates  : ['_enableHTML5','_version','_fontfaceready'],
