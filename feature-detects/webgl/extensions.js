@@ -3,6 +3,7 @@
   "name": "WebGL Extensions",
   "property": "webglextensions",
   "tags": ["webgl", "graphics"],
+  "async" : true,
   "authors": ["Ilmari Heikkinen"],
   "knownBugs": [],
   "notes": [{
