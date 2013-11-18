@@ -55,6 +55,14 @@ define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile']
     var inputElemType;
     var defaultView;
     var len = props.length;
+    var dateDetection = {
+      datetime: '1990-12-31T23:59:60Z',
+      date: '1996-12-19',
+      month:'1996-12',
+      week:'1996-W16',
+      time:'23:20:50.52',
+      'datetime-local':'1985-04-12T23:20:50.52'
+    };
 
     for ( var i = 0; i < len; i++ ) {
 
@@ -94,6 +102,9 @@ define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile']
           // Real url and email support comes with prebaked validation.
           bool = inputElem.checkValidity && inputElem.checkValidity() === false;
 
+        } else if (/^(datetime|date|month|week|time|datetime-local)$/.test(inputElemType)) {
+          inputElem.value = dateDetection[inputElemType];
+          bool = (inputElem.valueAsDate instanceof Date);
         } else {
           // If the upgraded input compontent rejects the :) text, we got a winner
           bool = inputElem.value != smile;
