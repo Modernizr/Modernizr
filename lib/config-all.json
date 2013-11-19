@@ -110,6 +110,7 @@
     "test/forms/fileinput",
     "test/forms/formattribute",
     "test/forms/inputnumber-l10n",
+    "test/forms/keygen",
     "test/forms/placeholder",
     "test/forms/speechinput",
     "test/forms/validation",
