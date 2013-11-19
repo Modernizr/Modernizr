@@ -168,7 +168,6 @@
     "test/unicode",
     "test/url/data-uri",
     "test/userdata",
-    "test/UserMedia",
     "test/vibration",
     "test/video",
     "test/video/autoplay",
