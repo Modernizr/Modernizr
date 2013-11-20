@@ -140,6 +140,7 @@
     "test/iframe/srcdoc",
     "test/img/apng",
     "test/img/jpegxr",
+    "test/img/srcset",
     "test/img/webp-lossless",
     "test/img/webp",
     "test/indexedDB",
