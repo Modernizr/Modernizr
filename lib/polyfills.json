@@ -675,5 +675,11 @@
     "authors": ["BBN Technologies"],
     "href": "http://polycrypt.net/",
     "licenses": ["BSD"]
+  },
+  "webanimationsjs": {
+    "name": "web-animations-js",
+    "authors": ["web-animations"],
+    "href": "https://github.com/web-animations/web-animations-js",
+    "licenses": ["Apache2"]
   }
 }
