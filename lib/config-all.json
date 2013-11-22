@@ -150,6 +150,7 @@
     "test/requestanimationframe",
     "test/script/async",
     "test/script/defer",
+    "test/serviceworker",
     "test/speech/speech-recognition",
     "test/speech/speech-synthesis",
     "test/storage/localstorage",
