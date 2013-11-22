@@ -127,6 +127,7 @@
     "test/img/webp",
     "test/indexedDB",
     "test/input",
+    "test/input/inputaccept",
     "test/inputtypes",
     "test/json",
     "test/lists-reversed",
