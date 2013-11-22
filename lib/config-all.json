@@ -171,6 +171,7 @@
     "test/vibration",
     "test/video",
     "test/video/autoplay",
+    "test/webanimations",
     "test/web-intents",
     "test/webgl/extensions",
     "test/webgl",
