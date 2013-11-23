@@ -108,6 +108,7 @@
     "test/file/api",
     "test/file/filesystem",
     "test/forms/fileinput",
+    "test/forms/fileinputdirectory",
     "test/forms/formattribute",
     "test/forms/inputnumber-l10n",
     "test/forms/placeholder",
