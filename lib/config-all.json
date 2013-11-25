@@ -73,6 +73,7 @@
     "test/css/siblinggeneral",
     "test/css/subpixelfont",
     "test/css/supports",
+    "test/css/target",
     "test/css/textshadow",
     "test/css/transforms",
     "test/css/transformstylepreserve3d",
