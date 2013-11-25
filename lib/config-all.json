@@ -13,6 +13,7 @@
     "test/applicationcache",
     "test/audio/webaudio",
     "test/audio",
+    "test/audio/preload",
     "test/battery/lowbattery",
     "test/battery",
     "test/blob",
