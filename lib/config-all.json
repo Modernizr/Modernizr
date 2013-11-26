@@ -131,6 +131,7 @@
     "test/indexedDB",
     "test/input",
     "test/inputtypes",
+    "test/inputsearchevent",
     "test/json",
     "test/lists-reversed",
     "test/mathml",
