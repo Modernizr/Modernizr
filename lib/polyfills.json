@@ -681,5 +681,11 @@
     "authors": ["web-animations"],
     "href": "https://github.com/web-animations/web-animations-js",
     "licenses": ["Apache2"]
+  },
+  "shumway": {
+    "name": "JavaScript Flash VM",
+    "authors": ["Mozilla Foundation"],
+    "href": "https://github.com/mozilla/shumway",
+    "licenses": ["Apache2"]
   }
 }
