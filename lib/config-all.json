@@ -111,6 +111,7 @@
     "test/file/filesystem",
     "test/flash",
     "test/forms/fileinput",
+    "test/forms/fileinputdirectory",
     "test/forms/formattribute",
     "test/forms/inputnumber-l10n",
     "test/forms/placeholder",
