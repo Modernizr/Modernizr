@@ -129,6 +129,7 @@
     "test/img/apng",
     "test/img/webp-lossless",
     "test/img/webp",
+    "test/microdata/microdataattr",
     "test/indexedDB",
     "test/input",
     "test/inputtypes",
