@@ -1,0 +1,56 @@
+[
+	{
+        "browserName": "firefox",
+        "platform": "WIN7"
+    },{
+        "browserName": "chrome",
+        "platform": "linux"
+    }, {
+        "browserName": "internet explorer",
+        "platform": "WIN8",
+        "version": "10"
+    }, {
+        "browserName": "internet explorer",
+        "platform": "VISTA",
+        "version": "9"
+    }, {
+        "browserName": "internet explorer",
+        "platform": "XP",
+        "version": "8"
+    }, {
+        "browserName": "internet explorer",
+        "platform": "XP",
+        "version": "7"
+    }, {
+        "browserName": "internet explorer",
+        "platform": "XP",
+        "version": "6"
+    }, {
+        "browserName": "opera",
+        "platform": "WIN7",
+        "version": "12"
+    }, {
+	    "browserName": "safari",
+	    "platform": "OS X 10.6",
+	    "version": "5"
+	}, {
+	    "browserName": "safari",
+	    "platform": "OS X 10.8",
+	    "version": "6"
+	}, {
+	    "browserName": "iphone",
+	    "platform": "OS X 10.8",
+	    "version": "5.1"
+	}, {
+		"browserName": "iphone",
+	    "platform": "OS X 10.8",
+	    "version": "6.0"
+	}, {
+	    "browserName": "iphone",
+	    "platform": "OS X 10.8"
+	}, {
+	    "browserName": "android",
+	    "platform": "Linux",
+	    "version": "4.0"
+	}
+]
