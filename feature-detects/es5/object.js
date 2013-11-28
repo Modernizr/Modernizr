@@ -18,7 +18,7 @@ Check if browser implements ECMAScript 5 Object per specification.
 */
 define(['Modernizr'], function (Modernizr) {
   Modernizr.addTest('es5object', function () {
-    return Object.keys &&
+    return !!(Object.keys &&
       Object.create &&
       Object.getPrototypeOf &&
       Object.getOwnPropertyNames &&
@@ -30,6 +30,6 @@ define(['Modernizr'], function (Modernizr) {
       Object.defineProperties &&
       Object.seal &&
       Object.freeze &&
-      Object.preventExtensions;
+      Object.preventExtensions);
   });
 });
