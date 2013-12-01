@@ -17,8 +17,9 @@ define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('cookies', function () {
     // navigator.cookieEnabled is in IE9 but always true. Don't rely on it.
 
-    // try..catch because some envs expose `document.cookie` but just error
-    // if you try to use it
+    // try..catch because some in situations `document.cookie` is exposed but throws a
+    // SecurityError if you try to access it; e.g. documents created from data URIs
+    // or in sandboxed iframes (depending on flags/context)
     try {
       // Create cookie
       document.cookie = "cookietest=1";
