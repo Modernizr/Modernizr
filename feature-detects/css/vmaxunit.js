@@ -13,10 +13,10 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
+define(['Modernizr', 'docElement', 'testStyles'], function( Modernizr, docElement, testStyles ) {
   testStyles('#modernizr { width: 50vmax; }', function( elem, rule ) {
-    var one_vw = window.innerWidth/100;
-    var one_vh = window.innerHeight/100;
+    var one_vw = docElement.clientWidth/100;
+    var one_vh = docElement.clientHeight/100;
     var compWidth = parseInt((window.getComputedStyle ?
                           getComputedStyle(elem, null) :
                           elem.currentStyle)['width'],10);
