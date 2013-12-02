@@ -74,6 +74,7 @@
     "test/css/rgba",
     "test/css/scrollbars",
     "test/css/shapes",
+    "test/css/shaders",
     "test/css/siblinggeneral",
     "test/css/subpixelfont",
     "test/css/supports",
