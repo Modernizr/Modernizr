@@ -6,3 +6,4 @@ dist
 tmp
 .DS_Store
 .project
+*.log
