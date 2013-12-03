@@ -52,6 +52,9 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
         bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"') .replace(/^no$/,'');
 
         bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,'');
+
+        bool.vp9 = elem.canPlayType("video/webm; codecs=vp9").replace(/^no$/,'');
+
       }
     } catch(e){}
 

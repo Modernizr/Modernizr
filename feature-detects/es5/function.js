@@ -18,6 +18,6 @@ Check if browser implements ECMAScript 5 Function per specification.
 */
 define(['Modernizr'], function (Modernizr) {
   Modernizr.addTest('es5function', function () {
-    return Function.prototype && Function.prototype.bind;
+    return !!(Function.prototype && Function.prototype.bind);
   });
 });

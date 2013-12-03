@@ -13,9 +13,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
+define(['Modernizr', 'docElement', 'testStyles'], function( Modernizr, docElement, testStyles ) {
   testStyles('#modernizr { width: 50vw; }', function( elem, rule ) {
-    var width = parseInt(window.innerWidth/2,10);
+    var width = parseInt(docElement.innerWidth/2,10);
     var compStyle = parseInt((window.getComputedStyle ?
                               getComputedStyle(elem, null) :
                               elem.currentStyle)['width'],10);

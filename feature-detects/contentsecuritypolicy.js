@@ -19,5 +19,5 @@ Detects support for the Content Security Policy protocol for mitigating and repo
 
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('contentsecuritypolicy', 'SecurityPolicy' in document);
+  Modernizr.addTest('contentsecuritypolicy', ('securityPolicy' in document || 'SecurityPolicy' in document));
 });
