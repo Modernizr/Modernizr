@@ -214,6 +214,7 @@ test('Modernizr properties are looking good',function(){
   var count  = 0,
       nobool = TEST.API.concat(TEST.inputs)
                        .concat(TEST.audvid)
+                       .concat(TEST.flash)
                        .concat(TEST.privates)
                        .concat(TEST.columns)
                        .concat(['textarea', 'testtruthy', 'testfalsy']) // due to forms-placeholder.js test
