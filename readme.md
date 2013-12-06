@@ -92,7 +92,7 @@ A `build` method is exposed for generating custom Modernizr builds. Example:
 ```javascript
 var modernizr = require("modernizr");
 
-var result = modernizr.build({}, function (result) {
+modernizr.build({}, function (result) {
   console.log(result.code); // full source
   console.log(result.min); // minfied output
 });
