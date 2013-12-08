@@ -147,6 +147,7 @@
     "test/input",
     "test/inputsearchevent",
     "test/inputtypes",
+    "test/intl",
     "test/json",
     "test/lists-reversed",
     "test/mathml",
