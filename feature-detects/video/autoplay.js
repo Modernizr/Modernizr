@@ -4,11 +4,7 @@
   "property": "videoautoplay",
   "tags": ["video"],
   "async" : true,
-  "warnings": ["This test is very large – only include it if you absolutely need it"],
-  "notes": [{
-    "name" : "Article: 'Dispelling the Android CSS animation myths'",
-    "href": "http://goo.gl/CHVJm"
-  }]
+  "warnings": ["This test is very large – only include it if you absolutely need it"]
 }
 !*/
 /* DOC
@@ -23,10 +19,10 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
     var waitTime = 300;
     var elem = createElement('video');
     var elemStyle = elem.style;
-    var testAutoplay = function() {
+    var testAutoplay = function(called) {
       clearTimeout(timeout);
-      elem.removeEventListener('playing');
-      addTest('videoautoplay', elem.currentTime !== 0);
+      elem.removeEventListener('playing', testAutoplay);
+      addTest('videoautoplay', called || elem.currentTime !== 0);
       elem.parentNode.removeChild(elem);
     };
 
@@ -59,8 +55,13 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
     }
 
     elem.setAttribute('autoplay','');
+    elem.style = 'display:none';
     docElement.appendChild(elem);
-    elem.addEventListener('playing', testAutoplay);
-    timeout = setTimeout(testAutoplay, waitTime);
+    // wait for the next tick to add the listener, otherwise the element may
+    // not have time to play in high load situations (e.g. the test suite)
+    setTimeout(function() {
+      elem.addEventListener('playing', function(){testAutoplay(true);});
+      timeout = setTimeout(testAutoplay, waitTime);
+    }, 0);
   });
 });
