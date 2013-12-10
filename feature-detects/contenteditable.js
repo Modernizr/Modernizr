@@ -25,6 +25,6 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
 
     var div = createElement('div');
     div.contentEditable = true;
-    return div.contentEditable === "true";
+    return div.contentEditable === 'true';
   });
 });

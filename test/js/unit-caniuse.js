@@ -125,7 +125,7 @@ window.caniusecb = function(scriptdata) {
       currBrowser  = Object.keys(scriptdata.agents)[browserKey];
 
   // So Phantom doesn't kill the caniuse.com matching exit out as it's useless anyway within PhantomJS
-  if(navigator.userAgent.indexOf("PhantomJS") != -1) {
+  if(navigator.userAgent.indexOf('PhantomJS') != -1) {
     return;
   }
 
@@ -175,7 +175,7 @@ window.caniusecb = function(scriptdata) {
   });
 
 
-  test("we match caniuse data", function() {
+  test('we match caniuse data', function() {
 
     for (var feature in Modernizr){
 
@@ -196,8 +196,8 @@ window.caniusecb = function(scriptdata) {
 
           majorminor = (ua.major + '.' + minorver)
                           // opera gets grouped in some cases by caniuse
-                          .replace(/(9\.(6|5))/ , ua.family == 'opera' ? '9.5-9.6'   : "$1")
-                          .replace(/(10\.(0|1))/, ua.family == 'opera' ? '10.0-10.1' : "$1"),
+                          .replace(/(9\.(6|5))/ , ua.family == 'opera' ? '9.5-9.6'   : '$1')
+                          .replace(/(10\.(0|1))/, ua.family == 'opera' ? '10.0-10.1' : '$1'),
 
           mmResult   = browserResults[majorminor],
           mResult    = browserResults[ua.major];

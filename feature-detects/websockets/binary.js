@@ -14,8 +14,8 @@ define(['Modernizr'], function( Modernizr ) {
       var protocol = 'https:'==location.protocol?'wss':'ws',
           protoBin;
 
-      if("WebSocket" in window) {
-          if( protoBin = "binaryType" in WebSocket.prototype ) {
+      if('WebSocket' in window) {
+          if( protoBin = 'binaryType' in WebSocket.prototype ) {
             return protoBin;
           }
           try {

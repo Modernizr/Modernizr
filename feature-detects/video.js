@@ -53,7 +53,7 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
 
         bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,'');
 
-        bool.vp9 = elem.canPlayType("video/webm; codecs=vp9").replace(/^no$/,'');
+        bool.vp9 = elem.canPlayType('video/webm; codecs="vp8"').replace(/^no$/,'');
 
       }
     } catch(e){}

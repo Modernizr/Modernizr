@@ -38,7 +38,7 @@ window.TEST = {
       return -1;
   },
   trim : function(str){
-    return str.replace(/^\s*/, "").replace(/\s*$/, "");
+    return str.replace(/^\s*/, '').replace(/\s*$/, '');
   }
 };
 

@@ -192,7 +192,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
         }
       }
 
-      addTest("csshyphens", function() {
+      addTest('csshyphens', function() {
 
         if (!testAllProps('hyphens', 'auto', true)) return false;
 
@@ -206,7 +206,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
         }
       });
 
-      addTest("softhyphens", function() {
+      addTest('softhyphens', function() {
         try {
           // use numeric entity instead of &shy; in case it's XHTML
           return test_hyphens('&#173;', true) && test_hyphens('&#8203;', false);
@@ -215,7 +215,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
         }
       });
 
-      addTest("softhyphensfind", function() {
+      addTest('softhyphensfind', function() {
         try {
           return test_hyphens_find('&#173;') && test_hyphens_find('&#8203;');
         } catch(e) {

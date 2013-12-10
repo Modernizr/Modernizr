@@ -90,6 +90,7 @@ module.exports = function( grunt ) {
         laxcomma: true,
         newcap: false,
         noarg: true,
+        quotmark: 'single',
         smarttabs: true,
         sub: true,
         trailing: true,
@@ -150,21 +151,21 @@ module.exports = function( grunt ) {
           dir: 'build',
           appDir: '.',
           baseUrl: 'src',
-          optimize: "none",
-          optimizeCss: "none",
+          optimize: 'none',
+          optimizeCss: 'none',
           paths: {
-            "test" : "../feature-detects",
-            "modernizr-init" : "../tmp/modernizr-init"
+            'test' : '../feature-detects',
+            'modernizr-init' : '../tmp/modernizr-init'
           },
           modules : [{
-            "name" : "modernizr-build",
-            "include" : ["modernizr-init"],
-            "create" : true
+            'name' : 'modernizr-build',
+            'include' : ['modernizr-init'],
+            'create' : true
           }],
           fileExclusionRegExp: /^(.git|node_modules|modulizr|media|test)$/,
           wrap: {
-            start: '<%= banner.full %>' + "\n;(function(window, document, undefined){",
-            end: "})(this, document);"
+            start: '<%= banner.full %>' + '\n;(function(window, document, undefined){',
+            end: '})(this, document);'
           },
           onBuildWrite: function (id, path, contents) {
             if ((/define\(.*?\{/).test(contents)) {
@@ -224,20 +225,20 @@ module.exports = function( grunt ) {
   });
 
   // Strip define fn
-  grunt.registerMultiTask('stripdefine', "Strip define call from dist file", function() {
+  grunt.registerMultiTask('stripdefine', 'Strip define call from dist file', function() {
     this.filesSrc.forEach(function(filepath) {
-      // Remove `define("modernizr-init" ...)` and `define("modernizr-build" ...)`
+      // Remove `define('modernizr-init' ...)` and `define('modernizr-build' ...)`
       var mod = grunt.file.read(filepath).replace(/define\("modernizr-(init|build)", function\(\)\{\}\);/g, '');
 
       // Hack the prefix into place. Anything is way too big for something so small.
       if ( modConfig && modConfig.classPrefix ) {
-        mod = mod.replace("classPrefix : '',", "classPrefix : '" + modConfig.classPrefix.replace(/"/g, '\\"') + "',");
+        mod = mod.replace('classPrefix : \'\',', 'classPrefix : \'' + modConfig.classPrefix.replace(/"/g, '\\"') + '\',');
       }
       grunt.file.write(filepath, mod);
     });
   });
 
-  grunt.registerMultiTask('generateinit', "Generate Init file", function() {
+  grunt.registerMultiTask('generateinit', 'Generate Init file', function() {
     var requirejs = require('requirejs');
     requirejs.config({
       appDir : __dirname + '/src/',
@@ -250,7 +251,7 @@ module.exports = function( grunt ) {
   grunt.registerTask('test', ['build', 'jshint', 'qunit', 'nodeunit']);
 
   // Sauce labs CI task
-  grunt.registerTask("sauce", ["connect", "saucelabs-qunit"]);
+  grunt.registerTask('sauce', ['connect', 'saucelabs-qunit']);
 
   // Travis CI task.
   grunt.registerTask('travis', ['test']);
