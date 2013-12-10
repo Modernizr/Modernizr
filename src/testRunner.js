@@ -8,8 +8,6 @@ define(['tests', 'Modernizr', 'classes', 'is'], function( tests, Modernizr, clas
     var nameIdx;
     var featureName;
     var featureNameSplit;
-    var modernizrProp;
-    var mPropCount;
 
     for ( var featureIdx in tests ) {
       featureNames = [];

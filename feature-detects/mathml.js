@@ -23,7 +23,7 @@ define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   Modernizr.addTest('mathml', function() {
     var ret;
 
-    Modernizr.testStyles("#modernizr{position:absolute}", function(node){
+    testStyles("#modernizr{position:absolute}", function(node){
       node.innerHTML = "<math><mfrac><mi>xx</mi><mi>yy</mi></mfrac></math>";
 
       ret = node.offsetHeight > node.offsetWidth;

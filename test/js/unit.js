@@ -162,7 +162,7 @@ test('html classes are looking good',function(){
   // TODO decrement for the extraclasses
 
   // decrement for deprecated ones.
-  $.each( TEST.deprecated, function(key, val){
+  $.each( TEST.deprecated, function(){
     newprops.splice(  TEST.inArray(item, newprops), 1);
   });
 
@@ -211,8 +211,7 @@ test('html classes are looking good',function(){
 
 test('Modernizr properties are looking good',function(){
 
-  var count  = 0,
-      nobool = TEST.API.concat(TEST.inputs)
+  var nobool = TEST.API.concat(TEST.inputs)
                        .concat(TEST.audvid)
                        .concat(TEST.privates)
                        .concat(TEST.columns)
@@ -533,7 +532,6 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
         domPrefixes = ['moz','khtml','webkit','o','ms'],
         elem     = document.createElement('div'),
         upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
-        i,
         len;
 
     if(!obj) {
