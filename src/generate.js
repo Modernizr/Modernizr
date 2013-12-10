@@ -5,7 +5,7 @@ define(['underscore'], function( _ ) {
       config = {};
     }
     config.options = config.options || [];
-    config["feature-detects"] = config["feature-detects"] || [];
+    config['feature-detects'] = config['feature-detects'] || [];
 
     // Some special cases
     var setClasses = _(config.options).contains('setClasses');
@@ -26,7 +26,7 @@ define(['underscore'], function( _ ) {
     });
 
     // Load in all the detects
-    _(config["feature-detects"]).forEach(function (detect) {
+    _(config['feature-detects']).forEach(function (detect) {
       output += ', "' + detect + '"';
     });
 

@@ -19,8 +19,8 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
 
     /* Get the 'flowFrom' property name available in the browser. Either default or vendor prefixed.
        If the property name can't be found we'll get Boolean 'false' and fail quickly */
-    var flowFromProperty = Modernizr.prefixed("flowFrom");
-    var flowIntoProperty = Modernizr.prefixed("flowInto");
+    var flowFromProperty = Modernizr.prefixed('flowFrom');
+    var flowIntoProperty = Modernizr.prefixed('flowInto');
 
     if (!flowFromProperty || !flowIntoProperty){
       return false;

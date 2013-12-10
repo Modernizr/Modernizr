@@ -31,10 +31,10 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest'], function( Modern
     // ActiveX controls, it throws an error.
     try {
       // Pan is an API that exists for flash objects.
-      activex = "Pan" in new window.ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+      activex = 'Pan' in new window.ActiveXObject('ShockwaveFlash.ShockwaveFlash');
     } catch(e) {}
 
-    easy_detect = !( ( "plugins" in navigator && "Shockwave Flash" in navigator.plugins ) || activex );
+    easy_detect = !( ( 'plugins' in navigator && 'Shockwave Flash' in navigator.plugins ) || activex );
 
     if (easy_detect) {
       runTest(false);
@@ -51,7 +51,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest'], function( Modern
 
       // Pan doesn't exist in the embed if its IE (its on the ActiveXObjeect)
       // so this check is for all other browsers.
-      if (!("Pan" in embed) && !activex) {
+      if (!('Pan' in embed) && !activex) {
         runTest('blocked', embed);
         return;
       }

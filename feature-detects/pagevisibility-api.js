@@ -23,5 +23,5 @@ Detects support for the Page Visibility API, which can be used to disable unnece
 
 */
 define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
-  Modernizr.addTest('pagevisibility', !!prefixed("hidden", document, false));
+  Modernizr.addTest('pagevisibility', !!prefixed('hidden', document, false));
 });

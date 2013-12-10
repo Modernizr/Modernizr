@@ -51,7 +51,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
       }
     };
 
-    datauri.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+    datauri.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
     // Once we have datauri, let's check to see if we can use data URIs over
     // 32kb (IE8 can't). https://github.com/Modernizr/Modernizr/issues/321
@@ -70,11 +70,11 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
           Modernizr.datauri.over32kb = (datauriBig.width == 1 && datauriBig.height == 1);
       };
 
-      var base64str = "R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+      var base64str = 'R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
       while (base64str.length < 33000) {
-        base64str = "\r\n" + base64str;
+        base64str = '\r\n' + base64str;
       }
-      datauriBig.src= "data:image/gif;base64," + base64str;
+      datauriBig.src= 'data:image/gif;base64,' + base64str;
     }
 
   });

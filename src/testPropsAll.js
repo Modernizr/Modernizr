@@ -11,7 +11,7 @@ define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'te
             props = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
         // did they call .prefixed('boxSizing') or are we just testing a prop?
-        if(is(prefixed, "string") || is(prefixed, "undefined")) {
+        if(is(prefixed, 'string') || is(prefixed, 'undefined')) {
             return testProps(props, prefixed, value, skipValueTest);
 
             // otherwise, they called .prefixed('requestAnimationFrame', window[, elem])

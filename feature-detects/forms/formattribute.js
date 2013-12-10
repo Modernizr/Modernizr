@@ -25,11 +25,11 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
 
     //IE6/7 confuses the form idl attribute and the form content attribute, so we use document.createAttribute
     try {
-      input.setAttribute("form", id);
+      input.setAttribute('form', id);
     }
     catch( e ) {
       if( document.createAttribute ) {
-        attr = document.createAttribute("form");
+        attr = document.createAttribute('form');
         attr.nodeValue = id;
         input.setAttributeNode(attr);
       }

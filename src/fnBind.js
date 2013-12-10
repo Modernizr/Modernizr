@@ -7,7 +7,7 @@ define(['slice'], function( slice ) {
 
       var target = this;
 
-      if (typeof target != "function") {
+      if (typeof target != 'function') {
         throw new TypeError();
       }
 

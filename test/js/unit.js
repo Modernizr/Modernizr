@@ -1,6 +1,6 @@
 /*global module, ok, equal, test, expect, raises, animationStyle */
 // PhantomJS timesout so leave autostart on
-if(navigator.userAgent.indexOf("PhantomJS") === -1) {
+if(navigator.userAgent.indexOf('PhantomJS') === -1) {
   QUnit.config.autostart = false;
 }
 
@@ -14,11 +14,11 @@ module('Basics', {
     }
 });
 
-test("globals set up", function() {
+test('globals set up', function() {
   ok(window.Modernizr, 'global modernizr object created');
 });
 
-test("bind is implemented", function() {
+test('bind is implemented', function() {
 
   ok(Function.prototype.bind, 'bind is a member of Function.prototype');
 
@@ -27,7 +27,7 @@ test("bind is implemented", function() {
   };
   a = a.bind({modernizr: 'just awsome'});
 
-  equal("just awsome", a(), 'bind works as expected');
+  equal('just awsome', a(), 'bind works as expected');
 
 
   // thank you webkit layoutTests
@@ -37,30 +37,30 @@ test("bind is implemented", function() {
 
   function F(x, y)
   {
-      result = this + " -> x:" + x + ", y:" + y;
+      result = this + ' -> x:' + x + ', y:' + y;
   }
 
-  var G = F.bind("'a'", "'b'");
-  var H = G.bind("'Cannot rebind this!'", "'c'");
+  var G = F.bind('"a"', '"b"');
+  var H = G.bind('"Cannot rebind this!"', '"c"');
 
   G(1,2);
-  equal(result, "\'a\' -> x:\'b\', y:1");
+  equal(result, '"a" -> x:"b", y:1');
   H(1,2);
-  equal(result, "\'a\' -> x:\'b\', y:\'c\'");
+  equal(result, '"a" -> x:"b", y:"c"');
 
   var f = new F(1,2);
-  equal(result, "[object Object] -> x:1, y:2");
+  equal(result, '[object Object] -> x:1, y:2');
   var g = new G(1,2);
-  equal(result, "[object Object] -> x:\'b\', y:1");
+  equal(result, '[object Object] -> x:"b", y:1');
   var h = new H(1,2);
-  equal(result, "[object Object] -> x:\'b\', y:\'c\'");
+  equal(result, '[object Object] -> x:"b", y:"c"');
 
-  ok(f instanceof F, "f instanceof F");
-  ok(g instanceof F, "g instanceof F");
-  ok(h instanceof F, "h instanceof F");
+  ok(f instanceof F, 'f instanceof F');
+  ok(g instanceof F, 'g instanceof F');
+  ok(h instanceof F, 'h instanceof F');
 
   // Bound functions don't have a 'prototype' property.
-  ok("prototype" in F, '"prototype" in F');
+  ok('prototype' in F, '"prototype" in F');
 
   // The object passed to bind as 'this' must be callable.
   raises(function(){
@@ -68,8 +68,8 @@ test("bind is implemented", function() {
   });
 
   // Objects that allow call but not construct can be bound, but should throw if used with new.
-  var abcAt = String.prototype.charAt.bind("abc");
-  equal(abcAt(1), "b", 'Objects that allow call but not construct can be bound...');
+  var abcAt = String.prototype.charAt.bind('abc');
+  equal(abcAt(1), 'b', 'Objects that allow call but not construct can be bound...');
 
   equal(1, Function.bind.length, 'it exists');
 
@@ -78,12 +78,12 @@ test("bind is implemented", function() {
 
 
 
-test("document.documentElement is valid and correct",1, function() {
+test('document.documentElement is valid and correct',1, function() {
   equal(document.documentElement,document.getElementsByTagName('html')[0]);
 });
 
 
-test("no-js class is gone.", function() {
+test('no-js class is gone.', function() {
 
   ok(!/(?:^|\s)no-js(?:^|\s)/.test(document.documentElement.className),
      'no-js class is gone');
@@ -102,7 +102,7 @@ test("no-js class is gone.", function() {
 
   if (document.querySelector){
     ok(document.querySelector('html.js') == document.documentElement,
-       "document.querySelector('html.js') matches.");
+       'document.querySelector("html.js") matches.');
   }
 });
 
@@ -110,8 +110,8 @@ test('html shim worked', function(){
   expect(2);
 
   // the exact test we use in the script
-  var elem = document.getElementsByTagName("section")[0];
-  elem.id = "html5section";
+  var elem = document.getElementsByTagName('section')[0];
+  elem.id = 'html5section';
 
   ok( elem.childNodes.length === 1 , 'unknown elements dont collapse');
 
@@ -384,15 +384,15 @@ test('Modernizr.mq: media query testing',function(){
   $.mobile.media = (function() {
     // TODO: use window.matchMedia once at least one UA implements it
     var cache = {},
-      testDiv = $( "<div id='jquery-mediatest'>" ),
-      fakeBody = $( "<body>" ).append( testDiv );
+      testDiv = $( '<div id="jquery-mediatest">' ),
+      fakeBody = $( '<body>' ).append( testDiv );
 
     return function( query ) {
       if ( !( query in cache ) ) {
         var styleBlock = document.createElement('style'),
-              cssrule = "@media " + query + " { #jquery-mediatest { position:absolute; } }";
+              cssrule = '@media ' + query + ' { #jquery-mediatest { position:absolute; } }';
             //must set type for IE!
-            styleBlock.type = "text/css";
+            styleBlock.type = 'text/css';
             if (styleBlock.styleSheet){
               styleBlock.styleSheet.cssText = cssrule;
             }
@@ -401,7 +401,7 @@ test('Modernizr.mq: media query testing',function(){
             }
 
         $html.prepend( fakeBody ).prepend( styleBlock );
-        cache[ query ] = testDiv.css( "position" ) === "absolute";
+        cache[ query ] = testDiv.css( 'position' ) === 'absolute';
         fakeBody.add( styleBlock ).remove();
       }
       return cache[ query ];
@@ -601,13 +601,13 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'function',
       typeof Modernizr.prefixed('requestAnimationFrame', window),
-      "Modernizr.prefixed('requestAnimationFrame', window) returns a function");
+      'Modernizr.prefixed("requestAnimationFrame", window) returns a function');
 
     // unless we false it to a string
     equal(
       rAFName,
       Modernizr.prefixed('requestAnimationFrame', window, false),
-      "Modernizr.prefixed('requestAnimationFrame', window, false) returns a string (the prop name)");
+      'Modernizr.prefixed("requestAnimationFrame", window, false) returns a string (the prop name)');
 
   }
 
@@ -619,13 +619,13 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'function',
       typeof fn,
-      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) returns a function");
+      'Modernizr.prefixed("matchesSelector", HTMLElement.prototype, document.body) returns a function');
 
       // fn scoping
     equal(
       true,
       fn('body'),
-      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) is scoped to the body");
+      'Modernizr.prefixed("matchesSelector", HTMLElement.prototype, document.body) is scoped to the body');
 
   }
 
@@ -636,7 +636,7 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'object',
       typeof Modernizr.prefixed('Notifications', window),
-      "Modernizr.prefixed('Notifications') returns an object");
+      'Modernizr.prefixed("Notifications") returns an object');
 
   }
 
@@ -647,7 +647,7 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'boolean',
       typeof Modernizr.prefixed('isFullScreen', document),
-      "Modernizr.prefixed('isFullScreen') returns a boolean");
+      'Modernizr.prefixed("isFullScreen") returns a boolean');
   }
 
 
@@ -659,7 +659,7 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'boolean',
       typeof Modernizr.prefixed('fullScreen', document),
-      "Modernizr.prefixed('fullScreen') returns a boolean");
+      'Modernizr.prefixed("fullScreen") returns a boolean');
   }
 
 
@@ -670,30 +670,30 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'string',
       typeof Modernizr.prefixed('animation', document.body.style),
-      "Modernizr.prefixed('animation', document.body.style) returns value of that, as a string");
+      'Modernizr.prefixed("animation", document.body.style) returns value of that, as a string');
 
     equal(
       animationStyle.toLowerCase(),
       Modernizr.prefixed('animation', document.body.style, false).toLowerCase(),
-      "Modernizr.prefixed('animation', document.body.style, false) returns the (case-normalized) name of the property: webkitanimation");
+      'Modernizr.prefixed("animation", document.body.style, false) returns the (case-normalized) name of the property: webkitanimation');
 
   }
 
   equal(
     false,
     Modernizr.prefixed('doSomethingAmazing$#$', window),
-    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj) returns false");
+    'Modernizr.prefixed("doSomethingAmazing$#$", window) : Gobbledygook with prefixed(str,obj) returns false');
 
   equal(
     false,
     Modernizr.prefixed('doSomethingAmazing$#$', window, document.body),
-    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj, scope) returns false");
+    'Modernizr.prefixed("doSomethingAmazing$#$", window) : Gobbledygook with prefixed(str,obj, scope) returns false');
 
 
   equal(
     false,
     Modernizr.prefixed('doSomethingAmazing$#$', window, false),
-    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj, false) returns false");
+    'Modernizr.prefixed("doSomethingAmazing$#$", window) : Gobbledygook with prefixed(str,obj, false) returns false');
 
 
 });

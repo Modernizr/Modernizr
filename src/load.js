@@ -210,7 +210,7 @@ var docElement            = doc.documentElement,
         if ( first ) {
           if ( elem != "img" ) {
             sTimeout( function () {
-                insBeforeObj.removeChild( preloadElem );
+                insBeforeObj.removeChild( preloadElem ); 
               }, 50);
           }
 
@@ -495,7 +495,7 @@ var docElement            = doc.documentElement,
         // the always stuff always loads second.
         always && handleGroup( always );
 
-  // If complete callback is used without loading anything
+	// If complete callback is used without loading anything
         !always && !!testObject['complete'] && handleGroup('');
 
     }
