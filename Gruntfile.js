@@ -94,6 +94,7 @@ module.exports = function( grunt ) {
         sub: true,
         trailing: true,
         undef: true,
+        unused: true,
         globals: {
           Modernizr: true,
           DocumentTouch: true,
@@ -102,7 +103,8 @@ module.exports = function( grunt ) {
           Blob: true,
           define: true,
           require: true
-        }
+        },
+        ignores: ['src/load.js', 'src/require.js']
       },
       files: [
         'Gruntfile.js',

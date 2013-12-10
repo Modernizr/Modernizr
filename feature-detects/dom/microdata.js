@@ -9,6 +9,6 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('microdata', 'getItems' in document);
 });

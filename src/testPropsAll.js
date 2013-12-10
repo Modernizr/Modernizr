@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'testDOMProps', 'prefixes'], function( ModernizrProto, cssomPrefixes, is, testProps, domPrefixes, testDOMProps, prefixes ) {
+define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'testDOMProps'], function( ModernizrProto, cssomPrefixes, is, testProps, domPrefixes, testDOMProps ) {
     /**
      * testPropsAll tests a list of DOM properties we want to check against.
      *     We specify literally ALL possible (known and/or likely) properties on

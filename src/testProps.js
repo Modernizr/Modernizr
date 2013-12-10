@@ -29,7 +29,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
     }
 
     // Otherwise do it properly
-    var afterInit, i, j, prop, before;
+    var afterInit, i, prop, before;
 
     // If we don't have a style element, that means
     // we're running async or after the core tests,

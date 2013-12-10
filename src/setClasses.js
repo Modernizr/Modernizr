@@ -3,7 +3,6 @@ define(['Modernizr', 'docElement'], function( Modernizr, docElement ) {
   //  ['no-webp', 'borderradius', ...]
   function setClasses( classes ) {
     var className = docElement.className;
-    var regex;
     var classPrefix = Modernizr._config.classPrefix || '';
 
     // Change `no-js` to `js` (we do this regardles of the `enableClasses`

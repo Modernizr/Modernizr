@@ -21,7 +21,7 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
   Modernizr.addAsyncTest(function() {
     var timeout;
     var waitTime = 300;
-    var elem = document.createElement('video');
+    var elem = createElement('video');
     var elemStyle = elem.style;
     var testAutoplay = function() {
       clearTimeout(timeout);
@@ -61,6 +61,6 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
     elem.setAttribute('autoplay','');
     docElement.appendChild(elem);
     elem.addEventListener('playing', testAutoplay);
-    timeout = setTimeout(testAutoplay, 300);
+    timeout = setTimeout(testAutoplay, waitTime);
   });
 });
