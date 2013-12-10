@@ -210,7 +210,7 @@ module.exports = function( grunt ) {
   });
 
   // Load required contrib packages
-  require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
+  require('matchdep').filterAll(['grunt-*', '!grunt-cli']).forEach(grunt.loadNpmTasks);
 
   // devDependencies may or may not be installed
   require('matchdep').filterDev('grunt-*').forEach(function (contrib) {
