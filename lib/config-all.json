@@ -121,6 +121,7 @@
     "test/iframe/srcdoc",
     "test/img/apng",
     "test/img/webp-lossless",
+    "test/img/webp-alpha",
     "test/img/webp",
     "test/indexedDB",
     "test/input",
