@@ -257,6 +257,6 @@ module.exports = function( grunt ) {
   grunt.registerTask('travis', ['test']);
 
   // Build
-  grunt.registerTask('build', ['clean', 'generateinit', 'requirejs', 'copy', 'clean:postbuild', 'stripdefine', 'uglify', 'jshint']);
-  grunt.registerTask('default', ['build', 'qunit']);
+  grunt.registerTask('build', ['clean', 'generateinit', 'requirejs', 'copy', 'clean:postbuild', 'stripdefine', 'uglify']);
+  grunt.registerTask('default', ['build', 'jshint', 'qunit']);
 };
