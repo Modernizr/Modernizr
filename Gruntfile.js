@@ -213,7 +213,7 @@ module.exports = function( grunt ) {
   });
 
   // Load required contrib packages
-  require('matchdep').filterAll(['grunt-*', '!grunt-cli']).forEach(grunt.loadNpmTasks);
+  require('matchdep').filter(['grunt-*', '!grunt-cli']).forEach(grunt.loadNpmTasks);
 
   // devDependencies may or may not be installed
   require('matchdep').filterDev('grunt-*').forEach(function (contrib) {
@@ -258,5 +258,5 @@ module.exports = function( grunt ) {
 
   // Build
   grunt.registerTask('build', ['clean', 'generateinit', 'requirejs', 'copy', 'clean:postbuild', 'stripdefine', 'uglify']);
-  grunt.registerTask('default', ['build', 'jshint', 'qunit']);
+  grunt.registerTask('default', ['build', 'jshint']);
 };
