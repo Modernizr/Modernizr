@@ -32,8 +32,10 @@ var docElement            = doc.documentElement,
     // Thanks to @jdalton for showing us this opera detection (by way of @kangax) (and probably @miketaylr too, or whatever...)
     isOpera               = window.opera && toString.call( window.opera ) == "[object Opera]",
     isIE                  = !! doc.attachEvent && !isOpera,
-    strJsElem             = isGecko ? "object" : isIE  ? "script" : "img",
-    strCssElem            = isIE ? "script" : strJsElem,
+    // isOlderWebkit fix for #95 (support older Android and iOS) - https://github.com/SlexAxton/yepnope.js/issues/95
+    isOlderWebkit      = ( 'webkitAppearance' in docElement.style ) && !( 'async' in doc.createElement('script') ),
+    strJsElem             = isGecko ? "object" : (isIE || isOlderWebkit)  ? "script" : "img",
+    strCssElem            = isIE ? "script" : (isOlderWebkit) ? "img" : strJsElem,
     isArray               = Array.isArray || function ( obj ) {
       return toString.call( obj ) == "[object Array]";
     },
