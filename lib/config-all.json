@@ -143,6 +143,7 @@
     "test/img/srcset",
     "test/img/webp-lossless",
     "test/img/webp-alpha",
+    "test/img/webp-animation",
     "test/img/webp",
     "test/indexedDB",
     "test/input",
