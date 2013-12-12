@@ -125,6 +125,7 @@
     "test/forms/fileinputdirectory",
     "test/forms/formattribute",
     "test/forms/inputnumber-l10n",
+    "test/forms/novalidate",
     "test/forms/placeholder",
     "test/forms/requestautocomplete",
     "test/forms/speechinput",
