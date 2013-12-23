@@ -23,7 +23,11 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
       clearTimeout(timeout);
       elem.removeEventListener('playing', testAutoplay);
       addTest('videoautoplay', called || elem.currentTime !== 0);
-      elem.parentNode.removeChild(elem);
+      // Safar 5 & 6 can sometimes get in a weird state where
+      // this will run twice and on the second run elem is already removed.
+      if (elem && elem.parentNode) {
+        elem.parentNode.removeChild(elem);
+      }
     };
 
     //skip the test if video itself, or the autoplay
