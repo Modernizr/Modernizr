@@ -693,5 +693,11 @@
     "authors": ["Remy Sharp"],
     "href": "http://remysharp.com/2008/06/30/maxlength-plugin/",
     "licenses": ["CC SA"]
+  },
+  "es6promises": {
+    "name": "ES6-Promises",
+    "authors": ["Jake Archibald"],
+    "href": "https://github.com/jakearchibald/ES6-Promises",
+    "licenses": ["MIT"]
   }
 }
