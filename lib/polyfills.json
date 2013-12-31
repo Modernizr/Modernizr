@@ -58,6 +58,13 @@
     "licenses": ["MIT"],
     "notes": []
   },
+  "css-escape": {
+    "name": "CSS.escape()",
+    "authors": ["Mathias Bynens"],
+    "href": "http://mths.be/cssescape",
+    "licenses": ["MIT"],
+    "notes": []
+  },
   "borderboxmodel": {
     "name": "borderBoxModel",
     "authors": ["Alberto Gasparin"],

@@ -45,6 +45,7 @@
     "test/css/displayrunin",
     "test/css/displaytable",
     "test/css/ellipsis",
+    "test/css/escape",
     "test/css/filters",
     "test/css/flexbox",
     "test/css/flexboxlegacy",
