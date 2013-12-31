@@ -3,10 +3,11 @@
 module.exports = function( grunt ) {
   'use strict';
 
-  var fs = require('fs');
-  var path = require('path');
   var modConfig = grunt.file.readJSON('lib/config-all.json');
   var browsers = grunt.file.readJSON('lib/sauce-browsers.json');
+
+  // Load grunt dependencies
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -32,7 +33,6 @@ module.exports = function( grunt ) {
         ' */'
     },
     meta: {
-
     },
     qunit: {
       files: ['test/index.html']
@@ -41,16 +41,14 @@ module.exports = function( grunt ) {
       files: ['test/api/*.js']
     },
     stripdefine: {
-      build: [
-        'dist/modernizr-build.js'
-      ]
+      build: ['dist/modernizr-build.js']
     },
-    generateinit : {
+    generateinit: {
       build: {
         src: ['tmp/modernizr-init.js']
       }
     },
-    uglify : {
+    uglify: {
       options: {
         stripbanners: true,
         banner: '<%= banner.compact %>',
@@ -62,9 +60,7 @@ module.exports = function( grunt ) {
         }
       },
       dist: {
-        src: [
-          'dist/modernizr-build.js'
-        ],
+        src: ['dist/modernizr-build.js'],
         dest: 'dist/modernizr-build.min.js'
       }
     },
@@ -73,7 +69,10 @@ module.exports = function( grunt ) {
       tasks: 'jshint',
       tests: {
         files: '<%= jshint.tests.files.src %>',
-        tasks: ['jshint:tests', 'qunit']
+        tasks: [
+          'jshint:tests',
+          'qunit'
+        ]
       }
     },
     jshint: {
@@ -100,12 +99,15 @@ module.exports = function( grunt ) {
           Modernizr: true,
           DocumentTouch: true,
           TEST: true,
-          SVGFEColorMatrixElement : true,
+          SVGFEColorMatrixElement: true,
           Blob: true,
           define: true,
           require: true
         },
-        ignores: ['src/load.js', 'src/require.js']
+        ignores: [
+          'src/load.js',
+          'src/require.js'
+        ]
       },
       files: [
         'Gruntfile.js',
@@ -135,8 +137,11 @@ module.exports = function( grunt ) {
       }
     },
     clean: {
-      build: ['build', 'dist', 'tmp'],
-      postbuild: ['build', 'tmp']
+      dist: ['dist'],
+      postbuild: [
+        'build',
+        'tmp'
+      ]
     },
     copy: {
       build: {
@@ -154,13 +159,13 @@ module.exports = function( grunt ) {
           optimize: 'none',
           optimizeCss: 'none',
           paths: {
-            'test' : '../feature-detects',
-            'modernizr-init' : '../tmp/modernizr-init'
+            'test': '../feature-detects',
+            'modernizr-init': '../tmp/modernizr-init'
           },
-          modules : [{
-            'name' : 'modernizr-build',
-            'include' : ['modernizr-init'],
-            'create' : true
+          modules: [{
+            'name': 'modernizr-build',
+            'include': ['modernizr-init'],
+            'create': true
           }],
           fileExclusionRegExp: /^(.git|node_modules|modulizr|media|test)$/,
           wrap: {
@@ -206,22 +211,13 @@ module.exports = function( grunt ) {
           concurrency: 2,
           browsers: browsers,
           testname: 'qunit tests',
-          tags: ['master', '<%= pkg.version %>']
+          tags: [
+            'master',
+            '<%= pkg.version %>'
+          ]
         }
       }
     }
-  });
-
-  // Load required contrib packages
-  require('matchdep').filter(['grunt-*', '!grunt-cli']).forEach(grunt.loadNpmTasks);
-
-  // devDependencies may or may not be installed
-  require('matchdep').filterDev('grunt-*').forEach(function (contrib) {
-    module.paths.forEach(function (dir) {
-      if (fs.existsSync(path.join(dir, contrib))) {
-        grunt.loadNpmTasks(contrib);
-      }
-    });
   });
 
   // Strip define fn
@@ -241,22 +237,35 @@ module.exports = function( grunt ) {
   grunt.registerMultiTask('generateinit', 'Generate Init file', function() {
     var requirejs = require('requirejs');
     requirejs.config({
-      appDir : __dirname + '/src/',
-      baseUrl : __dirname + '/src/'
+      appDir: __dirname + '/src/',
+      baseUrl: __dirname + '/src/'
     });
     var generateInit = requirejs('generate');
     grunt.file.write('tmp/modernizr-init.js', generateInit(modConfig));
   });
+
   // Testing tasks
-  grunt.registerTask('test', ['build', 'jshint', 'qunit', 'nodeunit']);
+  grunt.registerTask('test', ['jshint', 'build', 'qunit', 'nodeunit']);
 
   // Sauce labs CI task
-  grunt.registerTask('sauce', ['connect', 'saucelabs-qunit']);
+  grunt.registerTask('sauce', ['connect','saucelabs-qunit']);
 
   // Travis CI task.
   grunt.registerTask('travis', ['test']);
 
   // Build
-  grunt.registerTask('build', ['clean', 'generateinit', 'requirejs', 'copy', 'clean:postbuild', 'stripdefine', 'uglify']);
-  grunt.registerTask('default', ['build', 'jshint']);
+  grunt.registerTask('build', [
+    'clean',
+    'generateinit',
+    'requirejs',
+    'copy',
+    'clean:postbuild',
+    'stripdefine',
+    'uglify'
+  ]);
+
+  grunt.registerTask('default', [
+    'jshint',
+    'build'
+  ]);
 };
