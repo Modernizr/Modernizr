@@ -254,7 +254,7 @@ module.exports = function( grunt ) {
   grunt.registerTask('sauce', ['connect', 'saucelabs-qunit']);
 
   // Travis CI task.
-  grunt.registerTask('travis', ['test']);
+  grunt.registerTask('travis', ['jshint', 'sauce']);
 
   // Build
   grunt.registerTask('build', ['clean', 'generateinit', 'requirejs', 'copy', 'clean:postbuild', 'stripdefine', 'uglify']);

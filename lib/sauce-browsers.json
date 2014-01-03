@@ -1,8 +1,5 @@
 [
 	{
-        "browserName": "firefox",
-        "platform": "WIN7"
-    },{
         "browserName": "chrome",
         "platform": "linux"
     }, {
@@ -21,10 +18,6 @@
         "browserName": "internet explorer",
         "platform": "XP",
         "version": "7"
-    }, {
-        "browserName": "internet explorer",
-        "platform": "XP",
-        "version": "6"
     }, {
         "browserName": "opera",
         "platform": "WIN7",
