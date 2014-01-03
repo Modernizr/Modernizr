@@ -115,6 +115,7 @@
     "test/es5/strictmode",
     "test/es5/string",
     "test/es6/contains",
+    "test/es6/promises",
     "test/event/deviceorientation-motion",
     "test/event/oninput",
     "test/exif-orientation",
