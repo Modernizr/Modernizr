@@ -19,7 +19,6 @@ Tests for XHR2.
 define(['Modernizr'], function( Modernizr ) {
   // all three of these details report consistently across all target browsers:
   //   !!(window.ProgressEvent);
-  //   !!(window.FormData);
-  //   window.XMLHttpRequest && "withCredentials" in new XMLHttpRequest;
-  Modernizr.addTest('xhr2', 'FormData' in window);
+  //   'XMLHttpRequest' in window && 'withCredentials' in new XMLHttpRequest
+  Modernizr.addTest('xhr2', 'XMLHttpRequest' in window && 'withCredentials' in new XMLHttpRequest());
 });
