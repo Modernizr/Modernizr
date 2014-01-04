@@ -33,10 +33,14 @@ We guarantee that we'll only invoke your function once (per time that you call `
 a method for exposing the `trigger` functionality. Instead, if you'd like to have control over async tests, use the
 `src/addTest` feature, and any test that you set will automatically expose and trigger the `on` functionality.
 
+## Getting Started
+
+- Clone or download the repository
+- Install project dependencies with `npm install`
+
 ## Test suite
 
 Run the [test suite](http://modernizr.github.com/Modernizr/test/)
-
 
 ## Building Modernizr v3
 
@@ -50,7 +54,7 @@ grunt build
 ### To run tests (in phantom):
 
 ```js
-grunt qunit
+grunt test
 ```
 
 ### To run tests (in browser):
@@ -65,9 +69,7 @@ visit <url>/test
 
 serve the root dir, `<url>/test/modular.html`
 
-
 ### To see the build tool:
-
 
 * checkout the modernizr.com code
 * install all your gems and bundles and jekyll and shit
@@ -75,7 +77,6 @@ serve the root dir, `<url>/test/modular.html`
 * `serve ./_sites`
 * visit <url>/download
 * It should be just a big list of things you can build with no frills.
-
 
 ### API Reference
 
