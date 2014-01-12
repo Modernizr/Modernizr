@@ -210,12 +210,12 @@ window.caniusecb = function(scriptdata) {
         mmResult = mmResult.replace(' x','');
 
         // match it against our data.
-        testify({ feature     : feature
-                , ciufeature  : ciufeatname
-                , result      : Modernizr[feature]
-                , ciuresult   : mmResult
-                , browser     : currBrowser
-                , version     : majorminor
+        testify({ feature    : feature,
+                  ciufeature : ciufeatname,
+                  result     : Modernizr[feature],
+                  ciuresult  : mmResult,
+                  browser    : currBrowser,
+                  version    : majorminor
         });
 
         continue; // don't check the major version
@@ -230,12 +230,12 @@ window.caniusecb = function(scriptdata) {
         // data ends w/ ` x` if its still prefixed in the imp
         mResult = mResult.replace(' x','');
 
-        testify({ feature     : feature
-                , ciufeature  : ciufeatname
-                , result      : Modernizr[feature]
-                , ciuresult   : mResult
-                , browser     : currBrowser
-                , version     : ua.major
+        testify({ feature    : feature,
+                  ciufeature : ciufeatname,
+                  result     : Modernizr[feature],
+                  ciuresult  : mResult,
+                  browser    : currBrowser,
+                  version    : ua.major
         });
 
 

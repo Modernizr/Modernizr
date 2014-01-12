@@ -1,5 +1,3 @@
-/*jshint node: true */
-
 // TODO: Gruntfile is temporarily broken, must run as node package.
 // TODO: Re-impliment Grunt for testing, fix tests
 
@@ -13,41 +11,17 @@ module.exports = function( grunt ) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    meta: {
-    },
-    qunit: {
-      files: ['test/index.html']
-    },
-    nodeunit: {
-      files: ['test/api/*.js']
-    },
-    watch: {
-      files: '<%= jshint.files %>',
-      tasks: 'jshint',
-      tests: {
-        files: '<%= jshint.tests.files.src %>',
-        tasks: [
-          'jshint:tests',
-          'qunit'
-        ]
-      }
-    },
     jshint: {
       options: {
         boss: true,
         browser: true,
-        curly: false,
         devel: true,
         eqeqeq: false,
         eqnull: true,
         expr: true,
-        evil: true,
         immed: false,
-        laxcomma: true,
-        newcap: false,
         noarg: true,
         quotmark: 'single',
-        smarttabs: true,
         sub: true,
         trailing: true,
         undef: true,
@@ -62,15 +36,30 @@ module.exports = function( grunt ) {
           require: true
         },
         ignores: [
+          // Vendor files
           'src/load.js'
         ]
       },
-      files: [
-        'Gruntfile.js',
-        'src/*.js',
-        'feature-detects/**/*.js'
-      ],
-      tests: {
+      source: {
+        files: {
+          src: [
+            'src/*.js',
+            'feature-detects/**/*.js'
+          ]
+        }
+      },
+      builder: {
+        options: {
+          node: true
+        },
+        files: {
+          src: [
+            'lib/*.js',
+            'Gruntfile.js'
+          ]
+        }
+      },
+      testsource: {
         options: {
           jquery: true,
           globals: {
@@ -83,21 +72,17 @@ module.exports = function( grunt ) {
           src: ['test/js/*.js']
         }
       },
-      lib: {
+      testbuilder: {
         options: {
           node: true
         },
         files: {
-          src: ['lib/*.js']
+          src: ['test/api/*.js']
         }
       }
     },
     clean: {
-      dist: ['dist'],
-      postbuild: [
-        'build',
-        'tmp'
-      ]
+      dist: ['dist']
     },
     connect: {
       server: {
@@ -106,6 +91,12 @@ module.exports = function( grunt ) {
           port: 9999
         }
       }
+    },
+    qunit: {
+      files: ['test/index.html']
+    },
+    nodeunit: {
+      files: ['test/api/*.js']
     },
     'saucelabs-qunit': {
       all: {
@@ -135,13 +126,8 @@ module.exports = function( grunt ) {
   grunt.registerTask('travis', ['test']);
 
   // Build
-  grunt.registerTask('build', [
-    'clean:dist',
-    'clean:postbuild'
-  ]);
+  grunt.registerTask('build', ['clean:dist']);
 
-  grunt.registerTask('default', [
-    'jshint',
-    'build'
-  ]);
+  // Default
+  grunt.registerTask('default', ['jshint', 'build']);
 };
