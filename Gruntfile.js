@@ -105,8 +105,7 @@ module.exports = function( grunt ) {
           require: true
         },
         ignores: [
-          'src/load.js',
-          'src/require.js'
+          'src/load.js'
         ]
       },
       files: [
