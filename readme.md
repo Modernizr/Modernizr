@@ -44,12 +44,27 @@ A Modernizr configuration object. See [`lib/config-all.json`](lib/config-all.jso
 var modernizr = require('modernizr');
 var config = require('my-config.json');
 
-var modernizrBuild;
 modernizr.build(config, {
   min: true,
   verbose: false,
   callback: function (output) {
     fs.writeFileSync('./modernizr-build', output);
+  },
+});
+```
+
+#### modernizr.metadata(callback)
+
+Generates JSON metadata for the Modernizr project, available in a callback.
+
+#### Example
+
+```js
+'use strict';
+var modernizr = require('modernizr');
+
+modernizr.metadata(function (output) {
+    fs.writeFileSync('./modernizr-metadata.json', output);
   },
 });
 ```
@@ -63,22 +78,27 @@ You can also use the package manually from the command line.
 
 `--config, -c`: Path to a JSON file containing Modernizr configuration. See lib/config-all.json for an example. If you don't provide a configuration file Modernizr will output a development build with all feature detects.
 
-`--dest, -d`: Path to write the build file to. Defaults to `./modernizr.js`.
+`--metadata, -m`: Output Modernizr project metadata as a JSON file.
 
-`--min, -m`: Minify the output file.
+`--dest, -d`: Path to write the build or metadata file to. Defaults to ./modernizr.js for a Modernizr build, or ./metadata.json when used with `--metadata`.
 
-`--verbose, -v`: Show verbose output.
+`--uglify, -u`: Minify/uglify the output file.
+
+`--quiet, -q`: Don't show confirmation output.
 
 `--help, -h`: Show help.
 
 #### Example
 
 ```bash
-# Write a development build to ./modernizr.js
+# Generate a development build to ./modernizr.js
 $ modernizr
 
-# Write a custom minified build to a specified location
-$ modernizr --config ./my-config.json --dest ./build/modernizr-build.js --min
+# Generate a custom minified build at a specified location
+$ modernizr --config ./my-config.json --dest ./build/modernizr-build.js --uglify --verbose
+
+# Generate Modernizr project metadata at a specified location
+$ modernizr --metadata --dest ./Modernizr-metadata.json
 ```
 
 ## Use with Grunt
