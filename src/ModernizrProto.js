@@ -7,7 +7,8 @@ define(['tests'], function ( tests ) {
     // can go in here as configuration.
     _config: {
       classPrefix : '',
-      enableClasses : true
+      enableClasses : true,
+      usePrefixes : true
     },
 
     // Queue of tests
