@@ -20,7 +20,7 @@ supported. Synchronous tests should be handled synchronously for improved speed 
 1. Install the package locally: `npm install --save modernizr`
 2. Require and use in your node project.
 
-#### modernizr.build(config, options)
+#### modernizr.build(config[, options], callback)
 
 The `build()` method creates a custom build of Modernizer and exposes it as a string in a callback.
 
@@ -34,8 +34,10 @@ A Modernizr configuration object. See [`lib/config-all.json`](lib/config-all.jso
     Minify the output code. Defaults to false.
 - **verbose** `Boolean`  
     Output success messages. Defaults to false.
-- **callback** `Function`  
-    Function that contains your custom Modernizr build as the first argument. You can write to the file system in the callback.
+    
+**callback** `Function`, required
+
+Function to run when the Modernizr build is completed. An `output` argument containing the custom build is available for writing to the filesystem.
     
 #### Example
 
@@ -56,6 +58,10 @@ modernizr.build(config, {
 #### modernizr.metadata(callback)
 
 Generates JSON metadata for the Modernizr project, available in a callback.
+
+**callback** `Function`, required
+
+Function to run when JSON generation is complete. An `output` argument containing the JSON as a string is available for writing to the filesystem.
 
 #### Example
 
