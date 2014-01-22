@@ -706,5 +706,11 @@
     "authors": ["Jake Archibald"],
     "href": "https://github.com/jakearchibald/ES6-Promises",
     "licenses": ["MIT"]
+  },
+  "css-selector-engine": {
+    "name": "CSS Selector Engine",
+    "authors": ["Егор Халимоненко"],
+    "href": "https://github.com/termi/CSS_selector_engine",
+    "licenses": ["MIT"]
   }
 }
