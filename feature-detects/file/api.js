@@ -7,8 +7,7 @@
     "name": "W3C Working Draft",
     "href": "http://www.w3.org/TR/FileAPI/"
   }],
-  "tags": ["file"],
-  "knownBugs": ["Will fail in Safari 5 due to its lack of support for the standards defined FileReader object"]
+  "tags": ["file"]
 }
 !*/
 /* DOC
@@ -21,5 +20,5 @@ to be the File object's prototype.)
 
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('filereader', !!(window.File && window.FileList && window.FileReader));
+  Modernizr.addTest('filereader', !!('File' in window && 'FileList' in window && 'FileReader' in  window));
 });
