@@ -1,11 +1,14 @@
 language: node_js
-node_js: 
-- 0.10
-before_script: 
+node_js:
+  - 0.8
+before_script:
   - npm install grunt-cli -g
   - grunt build
-script: grunt travis --verbose
-env: 
-  global: 
-  - secure: noRIQS5Wv/9SFs4bK+0NZNQ7nnL+WfP6PhkPQR5QxNmXR1S4wjdiHy4/yv4aO/j1URgFw1YiFf+80k7YIn/9vIT+lMzE0wiw5FXTQM9PIB2mPHC2wzc0Y1Xj5kfuFXZemWTt73y1IkT53PjxezslVSduPKTxjXJuPmUk2FG3yaw=
-  - secure: QUDo7NDflY7K3xrBfcjVmhz6IBKoMOiosABbOEdQo1PiqAa8JBbjd+h02p6k+ZNQNymB1EcBhe20O1dMJYOg2E9BB8vtCsJtXTw1TEKlEwUVPUMkAtP6gpOk8XfmP9o6Ej2uM89+r6vLTDJIH1FPSwYbyxvWzIEi52gjFZUN6Mw=
+  - npm install browserstack-runner
+script:
+  - grunt travis --verbose
+  - node ./node_modules/.bin/browserstack-runner
+env:
+  global:
+    - BROWSERSTACK_USERNAME=modernizr
+    - secure: "XO0FAAAdEsZmTeCCxWWKxGAd2BgxQg8NTpjIg3B+sgIWcz9PTvnJHxExFiEI1B1NT0f3AMjvWq3DU2RTHBUHcG1vKEQ6mwfH1lrKnUbL1PdOGjYYma0E0JNLbpDyW6y38letUnTI5WCA+fjYF5joIFEuFUf9P9lrAHYaaC8v740="
