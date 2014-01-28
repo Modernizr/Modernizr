@@ -4,4 +4,11 @@ node_js:
 before_script:
   - npm install grunt-cli -g
   - grunt build
-script: grunt travis --verbose
+  - npm install browserstack-runner
+script:
+  - grunt travis --verbose
+  - node ./node_modules/.bin/browserstack-runner
+env:
+  global:
+    - BROWSERSTACK_USERNAME=modernizr
+    - secure: "XO0FAAAdEsZmTeCCxWWKxGAd2BgxQg8NTpjIg3B+sgIWcz9PTvnJHxExFiEI1B1NT0f3AMjvWq3DU2RTHBUHcG1vKEQ6mwfH1lrKnUbL1PdOGjYYma0E0JNLbpDyW6y38letUnTI5WCA+fjYF5joIFEuFUf9P9lrAHYaaC8v740="
