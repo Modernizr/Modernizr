@@ -4,14 +4,14 @@
   "property": "svgasimg",
   "caniuse" : "svg-img",
   "tags": ["svg"],
-  "authors": ["Chris Coyier"]
+  "authors": ["Chris Coyier"],
   "notes": [{
     "name": "HTML5 Spec",
     "href": "http://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
   }]
 }
 !*/
-define(['Modernizr'], function( Modernizr, addTest ) {
+define(['Modernizr', 'addTest'], function( Modernizr ) {
 
   // Orignal Async test by Stu Cox
   // https://gist.github.com/chriscoyier/8774501
