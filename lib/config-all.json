@@ -89,6 +89,7 @@
     "test/css/vmaxunit",
     "test/css/vminunit",
     "test/css/vwunit",
+    "test/css/will-change",
     "test/css/wrapflow",
     "test/custom-protocol-handler",
     "test/dart",
