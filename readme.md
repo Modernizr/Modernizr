@@ -13,7 +13,7 @@ Modernizr has an optional (*not included*) conditional resource loader called `M
 
 Often times people want to know when an asynchronous test is done so they can allow their application to react to it.
 In the past, you've had to rely on watching properties or `<html>` classes. Only events on **asynchronous** tests are
-supported. Synchronous tests should be handled synchronously for speed and consistency reasons.
+supported. Synchronous tests should be handled synchronously for improved speed and to maintain consistency.
 
 The new api looks like this:
 
