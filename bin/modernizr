@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-grunt build > /dev/null
-cat ./dist/modernizr-build.js

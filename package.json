@@ -7,31 +7,28 @@
   },
   "dependencies": {
     "file": "0.2.1",
-    "mkdirp": "~0.3.4",
-    "optimist": "~0.3.5",
-    "requirejs": "~2.1.4",
-    "underscore": "~1.4.4",
     "marked": "~0.2.8",
-    "grunt": "~0.4.0",
-    "grunt-contrib-jshint": "~0.5",
-    "grunt-contrib-uglify": "~0.2.0",
-    "grunt-contrib-watch": "~0.3.1",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-copy": "~0.4.0",
-    "grunt-contrib-requirejs": "~0.4.0",
-    "grunt-cli": "~0.1.11",
-    "load-grunt-tasks": "~0.2.1"
+    "mkdirp": "~0.3.4",
+    "nopt": "2.1.2",
+    "requirejs": "~2.1.4",
+    "uglify-js": "~2.4.8",
+    "underscore": "~1.4.4"
   },
   "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-connect": "~0.5.0",
-    "grunt-saucelabs": "~4.0.4",
+    "grunt-contrib-jshint": "~0.5",
+    "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-qunit": "~0.2.0",
-    "grunt-contrib-nodeunit": "~0.2.0"
+    "grunt-saucelabs": "~4.0.4",
+    "load-grunt-tasks": "~0.2.1"
   },
+  "main": "./lib/modernizr.js",
+  "bin": "./lib/cli.js",
   "scripts": {
     "test": "./node_modules/.bin/grunt test"
   },
-  "main": "./lib/cli",
   "repository": {
     "type": "git",
     "url": "git://github.com/Modernizr/Modernizr.git"
