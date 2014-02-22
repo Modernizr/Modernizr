@@ -19,7 +19,7 @@ define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function( Moderni
     /* jshint -W053 */
     var supportsBlob = false;
     var dbname = 'detect-blob-support';
-    var indexeddb = prefixed('indexeddb', window);
+    var indexeddb = prefixed('indexedDB', window);
     var request;
     var db;
 
