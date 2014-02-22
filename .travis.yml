@@ -4,7 +4,7 @@ node_js:
 before_script: 
   - npm install grunt-cli -g
   - grunt build
-script: grunt travis --verbose
+script: grunt travis
 env: 
   global: 
   - secure: noRIQS5Wv/9SFs4bK+0NZNQ7nnL+WfP6PhkPQR5QxNmXR1S4wjdiHy4/yv4aO/j1URgFw1YiFf+80k7YIn/9vIT+lMzE0wiw5FXTQM9PIB2mPHC2wzc0Y1Xj5kfuFXZemWTt73y1IkT53PjxezslVSduPKTxjXJuPmUk2FG3yaw=

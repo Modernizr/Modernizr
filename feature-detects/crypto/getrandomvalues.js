@@ -20,5 +20,5 @@ Detects support for the window.crypto.getRandomValues for generate cryptographic
 
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('getrandomvalues', 'crypto' in window && 'getRandomValues' in window.crypto);
+  Modernizr.addTest('getrandomvalues', !!(window.crypto && 'crypto' in window && 'getRandomValues' in window.crypto));
 });

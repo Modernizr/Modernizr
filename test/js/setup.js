@@ -1,5 +1,5 @@
 // Avoid `console` errors in browsers that lack a console
-if (!(window.console && console.log)) {
+if (!(window.console && console.log && console.dir)) {
     (function() {
         var noop = function() {};
         var methods = ['assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error', 'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'markTimeline', 'profile', 'profileEnd', 'markTimeline', 'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'];
@@ -16,6 +16,7 @@ window.TEST = {
   // note some unique members of the Modernizr object
   inputs    : ['input','inputtypes', 'textarea'],
   audvid    : ['video','audio', 'webglextensions'],
+  flash     : ['flash'],
   columns   : ['csscolumns'],
   API       : ['addTest', 'mq', 'hasEvent', 'testProp', 'testAllProps', 'testStyles', '_prefixes', '_domPrefixes', '_cssomPrefixes', 'prefixed'],
   extraclass: ['js'],

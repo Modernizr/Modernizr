@@ -204,10 +204,10 @@ module.exports = function( grunt ) {
     'saucelabs-qunit': {
       all: {
         options: {
-          urls: ['http://127.0.0.1:9999/test/basic.html'],
+          urls: ['http://localhost:9999/test/basic.html'],
           tunnelTimeout: 5,
           build: process.env.TRAVIS_JOB_ID,
-          concurrency: 2,
+          concurrency: 3,
           browsers: browsers,
           testname: 'qunit tests',
           tags: [
@@ -250,7 +250,7 @@ module.exports = function( grunt ) {
   grunt.registerTask('sauce', ['connect','saucelabs-qunit']);
 
   // Travis CI task.
-  grunt.registerTask('travis', ['test']);
+  grunt.registerTask('travis', ['jshint', 'sauce']);
 
   // Build
   grunt.registerTask('build', [
