@@ -60,14 +60,14 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
       var datauriBig = new Image();
 
       datauriBig.onerror = function() {
-          addTest('datauri', true);
-          Modernizr.datauri = new Boolean(true);
-          Modernizr.datauri.over32kb = false;
+        addTest('datauri', true);
+        Modernizr.datauri = new Boolean(true);
+        Modernizr.datauri.over32kb = false;
       };
       datauriBig.onload = function() {
-          addTest('datauri', true);
-          Modernizr.datauri = new Boolean(true);
-          Modernizr.datauri.over32kb = (datauriBig.width == 1 && datauriBig.height == 1);
+        addTest('datauri', true);
+        Modernizr.datauri = new Boolean(true);
+        Modernizr.datauri.over32kb = (datauriBig.width == 1 && datauriBig.height == 1);
       };
 
       var base64str = 'R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';

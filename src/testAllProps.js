@@ -14,9 +14,9 @@ define(['ModernizrProto', 'testPropsAll'], function( ModernizrProto, testPropsAl
    *                        is supported when using non-native detection
    *                        (default: false)
    */
-    function testAllProps (prop, value, skipValueTest) {
-        return testPropsAll(prop, undefined, undefined, value, skipValueTest);
-    }
-    ModernizrProto.testAllProps = testAllProps;
-    return testAllProps;
+  function testAllProps (prop, value, skipValueTest) {
+    return testPropsAll(prop, undefined, undefined, value, skipValueTest);
+  }
+  ModernizrProto.testAllProps = testAllProps;
+  return testAllProps;
 });

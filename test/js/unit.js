@@ -8,10 +8,10 @@ if(navigator.userAgent.indexOf('PhantomJS') === -1) {
 var classes = TEST.trim(document.documentElement.className).split(/\s+/);
 
 module('Basics', {
-    setup:function() {
-    },
-    teardown:function() {
-    }
+  setup:function() {
+  },
+  teardown:function() {
+  }
 });
 
 test('globals set up', function() {
@@ -23,7 +23,7 @@ test('bind is implemented', function() {
   ok(Function.prototype.bind, 'bind is a member of Function.prototype');
 
   var a = function(){
-      return this.modernizr;
+    return this.modernizr;
   };
   a = a.bind({modernizr: 'just awsome'});
 
@@ -35,9 +35,8 @@ test('bind is implemented', function() {
 
   var result;
 
-  function F(x, y)
-  {
-      result = this + ' -> x:' + x + ', y:' + y;
+  function F(x, y) {
+    result = this + ' -> x:' + x + ', y:' + y;
   }
 
   var G = F.bind('"a"', '"b"');
@@ -122,10 +121,10 @@ test('html shim worked', function(){
 
 
 module('Modernizr classes and bools', {
-    setup:function() {
-    },
-    teardown:function() {
-    }
+  setup:function() {
+  },
+  teardown:function() {
+  }
 });
 
 
@@ -272,10 +271,10 @@ test('Modernizr results match expected values',function(){
 
 
 module('Modernizr\'s API methods', {
-    setup:function() {
-    },
-    teardown:function() {
-    }
+  setup:function() {
+  },
+  teardown:function() {
+  }
 });
 
 test('Modernizr.addTest()',22,function(){
@@ -314,8 +313,8 @@ test('Modernizr.addTest()',22,function(){
 
 
   Modernizr.addTest('testcamelCase',function(){
-     return true;
-   });
+    return true;
+  });
 
   ok(docEl.className.indexOf(' testcamelCase') === -1,
      'camelCase test name toLowerCase()\'d');
@@ -390,15 +389,15 @@ test('Modernizr.mq: media query testing',function(){
     return function( query ) {
       if ( !( query in cache ) ) {
         var styleBlock = document.createElement('style'),
-              cssrule = '@media ' + query + ' { #jquery-mediatest { position:absolute; } }';
-            //must set type for IE!
-            styleBlock.type = 'text/css';
-            if (styleBlock.styleSheet){
-              styleBlock.styleSheet.cssText = cssrule;
-            }
-            else {
-              styleBlock.appendChild(document.createTextNode(cssrule));
-            }
+        cssrule = '@media ' + query + ' { #jquery-mediatest { position:absolute; } }';
+        //must set type for IE!
+        styleBlock.type = 'text/css';
+        if (styleBlock.styleSheet){
+          styleBlock.styleSheet.cssText = cssrule;
+        }
+        else {
+          styleBlock.appendChild(document.createTextNode(cssrule));
+        }
 
         $html.prepend( fakeBody ).prepend( styleBlock );
         cache[ query ] = testDiv.css( 'position' ) === 'absolute';
@@ -448,11 +447,11 @@ test('Modernizr.testStyles()',function(){
 
   var style = '#modernizr{ width: 9px; height: 4px; font-size: 0; color: papayawhip; }';
 
-  Modernizr.testStyles(style, function(elem, rule){
-      equal(style, rule, 'rule passsed back matches what i gave it.');
-      equal(elem.offsetWidth, 9, 'width was set through the style');
-      equal(elem.offsetHeight, 4, 'height was set through the style');
-      equal(elem.id, 'modernizr', 'element is indeed the modernizr element');
+  Modernizr.testStyles(style, function(elem, rule) {
+    equal(style, rule, 'rule passsed back matches what i gave it.');
+    equal(elem.offsetWidth, 9, 'width was set through the style');
+    equal(elem.offsetHeight, 4, 'height was set through the style');
+    equal(elem.id, 'modernizr', 'element is indeed the modernizr element');
   });
 
 });

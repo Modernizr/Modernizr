@@ -21,9 +21,9 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest'], function( Modern
         bool.blocked = (result === 'blocked');
       }
       addTest('flash', function() { return bool; });
-        if (embed) {
-          docElement.removeChild(embed);
-        }
+      if (embed) {
+        docElement.removeChild(embed);
+      }
     };
     var easy_detect;
     var activex;

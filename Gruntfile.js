@@ -95,6 +95,7 @@ module.exports = function( grunt ) {
         trailing: true,
         undef: true,
         unused: true,
+        indent: 2,
         globals: {
           Modernizr: true,
           DocumentTouch: true,
@@ -105,7 +106,9 @@ module.exports = function( grunt ) {
           require: true
         },
         ignores: [
-          'src/load.js'
+          'src/load.js',
+          'src/html5printshiv.js',
+          'src/html5shiv.js'
         ]
       },
       files: [

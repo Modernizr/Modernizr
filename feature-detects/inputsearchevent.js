@@ -19,5 +19,5 @@
 
  */
 define(['Modernizr', 'hasEvent'], function( Modernizr, hasEvent ) {
-    Modernizr.addTest('inputsearchevent',  hasEvent('search'));
+  Modernizr.addTest('inputsearchevent',  hasEvent('search'));
 });

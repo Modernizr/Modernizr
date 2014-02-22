@@ -6,5 +6,5 @@
 }
 !*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
-    Modernizr.addTest('audioloop', 'loop' in createElement('audio'));
+  Modernizr.addTest('audioloop', 'loop' in createElement('audio'));
 });
