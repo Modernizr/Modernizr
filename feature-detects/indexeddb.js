@@ -4,7 +4,10 @@
   "property": "indexeddb",
   "caniuse": "indexeddb",
   "tags": ["storage"],
-  "polyfills": ["indexeddb"]
+  "polyfills": ["indexeddb"],
+  "knownBugs": [
+    "Some android devices don't support all indexedDB features, e.g. deleteDatabase"
+  ]
 }
 !*/
 /* DOC

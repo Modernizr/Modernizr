@@ -25,6 +25,10 @@ define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function( Moderni
 
     if (!Modernizr.indexeddb) return false;
 
+    // Some android devices don't support deleteDatabase
+    // https://github.com/Modernizr/Modernizr/issues/979
+    if (!'deleteDatabase' in indexeddb) return false;
+
     indexeddb.deleteDatabase(dbname).onsuccess = function () {
       request = indexeddb.open(dbname, 1);
       request.onupgradeneeded = function() {
