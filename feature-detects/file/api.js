@@ -21,5 +21,5 @@ to be the File object's prototype.)
 
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('filereader', !!(window.File && window.FileList && window.FileReader));
+  Modernizr.addTest('filereader', !!('File' in window && 'FileList' in window && 'FileReader' in window));
 });
