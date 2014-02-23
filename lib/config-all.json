@@ -138,6 +138,7 @@
     "test/gamepad",
     "test/geolocation",
     "test/hashchange",
+    "test/hiddenscroll",
     "test/history",
     "test/ie8compat",
     "test/iframe/sandbox",
