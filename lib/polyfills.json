@@ -712,5 +712,11 @@
     "authors": ["Егор Халимоненко"],
     "href": "https://github.com/termi/CSS_selector_engine",
     "licenses": ["MIT"]
+  },
+  "polymer-htmlimports": {
+    "authors": ["Google Inc."],
+    "href": "https://github.com/polymer/HTMLImports",
+    "licenses": ["BSD"],
+    "name": "Polymer HTMLImports polyfill"
   }
 }
