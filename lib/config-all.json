@@ -140,6 +140,7 @@
     "test/hashchange",
     "test/hiddenscroll",
     "test/history",
+    "test/htmlimports",
     "test/ie8compat",
     "test/iframe/sandbox",
     "test/iframe/seamless",
