@@ -31,7 +31,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest'], function( Modern
     // ActiveX controls, it throws an error.
     try {
       // Pan is an API that exists for flash objects.
-      activex = 'Pan' in new window.ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+      activex = 'ActiveXObject' in window && 'Pan' in new window.ActiveXObject('ShockwaveFlash.ShockwaveFlash');
     } catch(e) {}
 
     easy_detect = !( ( 'plugins' in navigator && 'Shockwave Flash' in navigator.plugins ) || activex );
