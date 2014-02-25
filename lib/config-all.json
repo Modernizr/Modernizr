@@ -118,6 +118,7 @@
     "test/es6/promises",
     "test/event/deviceorientation-motion",
     "test/event/oninput",
+    "test/eventlistener",
     "test/exif-orientation",
     "test/file/api",
     "test/file/filesystem",
