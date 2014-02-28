@@ -17,13 +17,13 @@ define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function( Moderni
 
   Modernizr.addAsyncTest(function() {
     /* jshint -W053 */
-    var supportsBlob = false;
-    var dbname = 'detect-blob-support';
     var indexeddb = prefixed('indexedDB', window);
+    var dbname = 'detect-blob-support';
+    var supportsBlob = false;
     var request;
     var db;
 
-    if (!Modernizr.indexeddb) return false;
+    if (!(Modernizr.indexeddb && Modernizr.indexeddb.deleteDatabase)) return false;
 
     indexeddb.deleteDatabase(dbname).onsuccess = function () {
       request = indexeddb.open(dbname, 1);
