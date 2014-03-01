@@ -7,7 +7,12 @@
   "polyfills": ["jebgl", "webglcompat", "cwebgl", "iewebgl"]
 }
 !*/
-define(['Modernizr'], function( Modernizr ) {
-  // webk.it/70117 is tracking a legit WebGL feature detect proposal
-  Modernizr.addTest('webgl', 'WebGLRenderingContext' in window);
+define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+  Modernizr.addTest('webgl', function() {
+    var canvas = createElement('canvas');
+    if ('supportsContext' in canvas) {
+      return canvas.supportsContext('webgl') || canvas.supportsContext('experimental-webgl');
+    }
+    return !!window.WebGLRenderingContext;
+  });
 });
