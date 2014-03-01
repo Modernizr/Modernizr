@@ -26,10 +26,6 @@ module.exports = function( grunt ) {
         ' * information allows you to progressively enhance your pages with a granular level\n' +
         ' * of control over the experience.\n' +
         ' *\n' +
-        ' * Modernizr has an optional (*not included*) conditional resource loader called\n' +
-        ' * `Modernizr.load()`, based on [Yepnope.js](http://yepnopejs.com). You can get a\n' +
-        ' * build that includes `Modernizr.load()`, as well as choosing which feature tests\n' +
-        ' * to include on the [Download page](http://www.modernizr.com/download/).\n' +
         ' */'
     },
     meta: {
@@ -106,7 +102,6 @@ module.exports = function( grunt ) {
           require: true
         },
         ignores: [
-          'src/load.js',
           'src/html5printshiv.js',
           'src/html5shiv.js'
         ]
