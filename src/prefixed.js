@@ -1,11 +1,9 @@
-define(['ModernizrProto', 'testPropsAll'], function( ModernizrProto, testPropsAll ) {
+define(['ModernizrProto', 'testPropsAll', 'cssToDOM'], function( ModernizrProto, testPropsAll, cssToDOM ) {
   // Modernizr.prefixed() returns the prefixed or nonprefixed property name variant of your input
   // Modernizr.prefixed('boxSizing') // 'MozBoxSizing'
 
-  // Properties must be passed as dom-style camelcase, rather than `box-sizing` hypentated style.
-  // Return values will also be the camelCase variant, if you need to translate that to hypenated style use:
-  //
-  //     str.replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
+  // Properties can be passed as DOM-style camelCase or CSS-style kebab-case.
+  // Return values will always be in camelCase; if you want kebab-case, use Modernizr.prefixedCSS().
 
   // If you're trying to ascertain which transition end event to bind to, you might do something like...
   //
@@ -17,6 +15,10 @@ define(['ModernizrProto', 'testPropsAll'], function( ModernizrProto, testPropsAl
   //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
 
   var prefixed = ModernizrProto.prefixed = function( prop, obj, elem ) {
+    // Convert kebab-case to camelCase
+    if (prop.indexOf('-') != -1) {
+      prop = cssToDOM(prop);
+    }
     if (!obj) {
       return testPropsAll(prop, 'pfx');
     } else {

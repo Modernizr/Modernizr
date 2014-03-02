@@ -6,7 +6,8 @@
     "html5printshiv",
     "load",
     "testProp",
-    "fnBind"
+    "fnBind",
+    "prefixedCSS"
   ],
   "feature-detects": [
     "test/a/download",

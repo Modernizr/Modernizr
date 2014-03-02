@@ -1,4 +1,4 @@
-define(['injectElementWithStyles', 'domToHyphenated'], function ( injectElementWithStyles, domToHyphenated ) {
+define(['injectElementWithStyles', 'domToCSS'], function ( injectElementWithStyles, domToCSS ) {
   // Function to allow us to use native feature detection functionality if available.
   // Accepts a list of property names and a single value
   // Returns `undefined` if native detection not available
@@ -8,7 +8,7 @@ define(['injectElementWithStyles', 'domToHyphenated'], function ( injectElementW
     if ('CSS' in window && 'supports' in window.CSS) {
       // Try every prefixed variant of the property
       while (i--) {
-        if (window.CSS.supports(domToHyphenated(props[i]), value)) {
+        if (window.CSS.supports(domToCSS(props[i]), value)) {
           return true;
         }
       }
@@ -19,7 +19,7 @@ define(['injectElementWithStyles', 'domToHyphenated'], function ( injectElementW
       // Build a condition string for every prefixed variant
       var conditionText = [];
       while (i--) {
-        conditionText.push('(' + domToHyphenated(props[i]) + ':' + value + ')');
+        conditionText.push('(' + domToCSS(props[i]) + ':' + value + ')');
       }
       conditionText = conditionText.join(' or ');
       return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function( node ) {

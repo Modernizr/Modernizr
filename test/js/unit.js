@@ -518,42 +518,49 @@ test('Modernizr.testAllProps()',function(){
 });
 
 
+// Generic control function used for prefixed() and prefixedCSS() tests
+// https://gist.github.com/523692
+function gimmePrefix(prop, obj){
+  var prefixes = ['Moz','Khtml','Webkit','O','ms'],
+      domPrefixes = ['moz','khtml','webkit','o','ms'],
+      elem     = document.createElement('div'),
+      upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
+      len;
 
+  if(!obj) {
+    if (prop in elem.style)
+      return prop;
 
+    for (len = prefixes.length; len--; ){
+      if ((prefixes[len] + upper)  in elem.style)
+        return (prefixes[len] + upper);
+    }
+  } else {
+    if (prop in obj)
+      return prop;
+
+    for (len = domPrefixes.length; len--; ){
+      if ((domPrefixes[len] + upper)  in obj)
+        return (domPrefixes[len] + upper);
+    }
+  }
+
+  return false;
+}
+
+// Feel bad using a copy-paste of this function to essentially test itself, but
+// it should still help catch any future code changes which might break
+// prefixedCSS
+function domToCSS (name) {
+  return name.replace(/([A-Z])/g, function(str, m1) {
+    return '-' + m1.toLowerCase();
+  }).replace(/^ms-/, '-ms-');
+}
 
 
 test('Modernizr.prefixed() - css and DOM resolving', function(){
-  // https://gist.github.com/523692
   var i,
     len;
-  function gimmePrefix(prop, obj){
-    var prefixes = ['Moz','Khtml','Webkit','O','ms'],
-        domPrefixes = ['moz','khtml','webkit','o','ms'],
-        elem     = document.createElement('div'),
-        upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
-        len;
-
-    if(!obj) {
-      if (prop in elem.style)
-        return prop;
-
-      for (len = prefixes.length; len--; ){
-        if ((prefixes[len] + upper)  in elem.style)
-          return (prefixes[len] + upper);
-      }
-    } else {
-      if (prop in obj)
-        return prop;
-
-      for (len = domPrefixes.length; len--; ){
-        if ((domPrefixes[len] + upper)  in obj)
-          return (domPrefixes[len] + upper);
-      }
-    }
-
-
-    return false;
-  }
 
   var propArr = ['transition', 'backgroundSize', 'boxSizing', 'borderImage',
                  'borderRadius', 'boxShadow', 'columnCount'];
@@ -568,13 +575,16 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
     equal(Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
   }
 
+  // Hyphenated versions of property names should return the same as camelCase
+  for (i = -1, len = propArr.length; ++i < len; ){
+    prop = domToCSS(propArr[i]);
+    equal(Modernizr.prefixed(prop), gimmePrefix(propArr[i]), 'results for ' + prop + ' match the homebaked prefix finder');
+  }
+
   for (i = -1, len = domPropArr.length; ++i < len; ){
     prop = domPropArr[i];
     ok(!!~Modernizr.prefixed(prop.prop, prop.obj, false).toString().indexOf(gimmePrefix(prop.prop, prop.obj)), 'results for ' + prop.prop + ' match the homebaked prefix finder');
   }
-
-
-
 
 });
 
@@ -698,6 +708,28 @@ test('Modernizr.prefixed autobind', function(){
 });
 
 
+test('Modernizr.prefixedCSS', function () {
+  // Using different properties from Modernizr.prefixed, for the sake of
+  // variety
+  function testProp ( prop ) {
+    var prefixed = gimmePrefix(prop);
+    if (prefixed) {
+      equal(Modernizr.prefixedCSS(prop), domToCSS(prefixed), 'results for ' + prop + ' match the homebaked prefix finder');
+    }
+    else {
+      equal(Modernizr.prefixedCSS(prop), false, 'results for ' + prop + ' match the homebaked prefix finder');
+    }
+  }
+  testProp('animationProperty');
+  testProp('fontFeatureSettings');
+  testProp('flexWrap');
+  testProp('boxSizing');
+  testProp('textShadow');
+  testProp('resize');
 
-
-
+  testProp('animation-property');
+  testProp('font-feature-settings');
+  testProp('flex-wrap');
+  testProp('box-sizing');
+  testProp('text-shadow');
+});
