@@ -61,6 +61,8 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
     docElement.removeChild(container);
     content = region = container = undefined;
 
-    return (delta == 42);
+    /* Since getBoundingClientRect() behaves oddly when the page is zoomed out in Chrome,
+       we're OK with a couple of pixels difference. For now... */
+    return (delta >= 41) && (delta <= 43);
   });
 });
