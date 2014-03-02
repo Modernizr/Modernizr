@@ -23,8 +23,12 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
     try {
       // we're avoiding using Modernizr._domPrefixes as the prefix capitalization on
       // these guys are notoriously peculiar.
-      var BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder || window.OBlobBuilder || window.BlobBuilder;
-      var URL         = window.MozURL || window.webkitURL || window.MSURL || window.OURL || window.URL;
+      var BlobBuilder = window.BlobBuilder;
+      var URL         = window.URL;
+      if (Modernizr._config.usePrefix) {
+        BlobBuilder = BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder || window.OBlobBuilder;
+        URL         = URL || window.MozURL || window.webkitURL || window.MSURL || window.OURL;
+      }
       var data    = 'Modernizr',
           blob,
           bb,

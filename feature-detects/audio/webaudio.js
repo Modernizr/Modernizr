@@ -13,5 +13,11 @@
 }
 !*/
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('webaudio', 'webkitAudioContext' in window || 'AudioContext' in window);
+  Modernizr.addTest('webaudio', function() {
+    var prefixed = 'webkitAudioContext' in window;
+    var unprefixed = 'AudioContext' in window;
+
+    if (Modernizr._config.usePrefixes) return prefixed || unprefixed;
+    return unprefixed;
+  });
 });
