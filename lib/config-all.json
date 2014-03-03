@@ -100,7 +100,7 @@
     "test/dom/dataset",
     "test/dom/documentfragment",
     "test/dom/microdata",
-    "test/dom/node-contains",
+    "test/dom/nodecontains",
     "test/draganddrop",
     "test/elem/datalist",
     "test/elem/details",
