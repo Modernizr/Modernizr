@@ -212,6 +212,7 @@ test('html classes are looking good',function(){
 test('Modernizr properties are looking good',function(){
 
   var nobool = TEST.API.concat(TEST.inputs);
+                       .concat(TEST.flash)
 
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){

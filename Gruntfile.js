@@ -4,7 +4,6 @@ module.exports = function( grunt ) {
   'use strict';
 
   var modConfig = grunt.file.readJSON('lib/config-all.json');
-  var browsers = grunt.file.readJSON('lib/sauce-browsers.json');
 
   // Load grunt dependencies
   require('load-grunt-tasks')(grunt);
@@ -198,7 +197,6 @@ module.exports = function( grunt ) {
           port: 9999
         }
       }
-          browsers: browsers,
     }
   });
 
