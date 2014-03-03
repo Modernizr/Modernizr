@@ -79,12 +79,6 @@
     },
     {
       "browser": "ie",
-      "browser_version": "7.0",
-      "os": "Windows",
-      "os_version": "XP"
-    },
-    {
-      "browser": "ie",
       "browser_version": "8.0",
       "os": "Windows",
       "os_version": "7"
