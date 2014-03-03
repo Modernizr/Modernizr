@@ -213,6 +213,7 @@ test('Modernizr properties are looking good',function(){
   var nobool = TEST.API.concat(TEST.inputs)
                        .concat(TEST.audvid)
                        .concat(TEST.privates)
+                       .concat(TEST.flash)
                        .concat(TEST.columns)
                        .concat(['textarea', 'testtruthy', 'testfalsy']) // due to forms-placeholder.js test
                        .concat(['datauri']); // has `.over32kb` subproperty
