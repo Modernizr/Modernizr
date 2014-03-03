@@ -139,10 +139,10 @@ test('html classes are looking good',function(){
       getObject = function(aclass) {
         var classSplit = aclass.split('-');
         if(typeof Modernizr[aclass] != 'undefined') {
-          return Modernizr[aclass];
+          return !!Modernizr[aclass];
         }
         else if (classSplit.length == 2) {
-          return Modernizr[classSplit[0]][classSplit[1]];
+          return !!Modernizr[classSplit[0]][classSplit[1]];
         }
       };
 
