@@ -557,6 +557,12 @@ function domToCSS (name) {
   }).replace(/^ms-/, '-ms-');
 }
 
+function cssToDOM( name ) {
+  return name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
+    return m1 + m2.toUpperCase();
+  }).replace(/^-/, '');
+}
+
 
 test('Modernizr.prefixed() - css and DOM resolving', function(){
   var i,
@@ -712,7 +718,7 @@ test('Modernizr.prefixedCSS', function () {
   // Using different properties from Modernizr.prefixed, for the sake of
   // variety
   function testProp ( prop ) {
-    var prefixed = gimmePrefix(prop);
+    var prefixed = gimmePrefix(cssToDOM(prop));
     if (prefixed) {
       equal(Modernizr.prefixedCSS(prop), domToCSS(prefixed), 'results for ' + prop + ' match the homebaked prefix finder');
     }
