@@ -142,7 +142,8 @@ test('html classes are looking good',function(){
           return !!Modernizr[aclass];
         }
         else if (classSplit.length == 2) {
-          return !!Modernizr[classSplit[0]][classSplit[1]];
+          return !!Modernizr[classSplit[0]] &&
+              !!Modernizr[classSplit[0]][classSplit[1]];
         }
       };
 
@@ -211,20 +212,16 @@ test('html classes are looking good',function(){
 test('Modernizr properties are looking good',function(){
 
   var nobool = TEST.API.concat(TEST.inputs)
-                       .concat(TEST.audvid)
-                       .concat(TEST.privates)
-                       .concat(TEST.flash)
-                       .concat(TEST.columns)
-                       .concat(['textarea', 'testtruthy', 'testfalsy']) // due to forms-placeholder.js test
-                       .concat(['datauri']); // has `.over32kb` subproperty
 
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){
 
       if (TEST.inArray(prop,nobool) >= 0) continue;
 
-      ok(Modernizr[prop] === true || Modernizr[prop] === false,
-        'Modernizr.'+prop+' is a straight up boolean');
+      ok(Modernizr[prop] === true ||
+         Modernizr[prop] === false
+         Modernizr[prop] instanceof Boolean,
+        'Modernizr.'+prop+' is a boolean value or Boolean object');
 
       equal(prop,prop.toLowerCase(),'Modernizr.'+prop+' is all lowercase.');
 
@@ -558,6 +555,11 @@ function domToCSS (name) {
   }).replace(/^ms-/, '-ms-');
 }
 
+function cssToDOM( name ) {
+  return  name.replace(/[A-Z]/g, function(str, m1) {
+    return '-' + m1.toLowerCase();
+  }).replace(/^ms-/, '-ms-');
+}
 
 test('Modernizr.prefixed() - css and DOM resolving', function(){
   var i,
@@ -713,7 +715,7 @@ test('Modernizr.prefixedCSS', function () {
   // Using different properties from Modernizr.prefixed, for the sake of
   // variety
   function testProp ( prop ) {
-    var prefixed = gimmePrefix(prop);
+    var prefixed = gimmePrefix(cssToDOM(prop));
     if (prefixed) {
       equal(Modernizr.prefixedCSS(prop), domToCSS(prefixed), 'results for ' + prop + ' match the homebaked prefix finder');
     }
