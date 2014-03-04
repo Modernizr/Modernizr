@@ -3,7 +3,6 @@ node_js:
   - 0.8
 before_script:
   - npm install grunt-cli -g
-  - grunt build
 script:
   - grunt travis --verbose
   - node ./node_modules/.bin/browserstack-runner
