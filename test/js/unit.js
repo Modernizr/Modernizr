@@ -211,7 +211,7 @@ test('html classes are looking good',function(){
 
 test('Modernizr properties are looking good',function(){
 
-  var nobool = TEST.API.concat(TEST.inputs)
+  var nobool = TEST.API.concat(TEST.inputs);
 
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){
@@ -219,7 +219,7 @@ test('Modernizr properties are looking good',function(){
       if (TEST.inArray(prop,nobool) >= 0) continue;
 
       ok(Modernizr[prop] === true ||
-         Modernizr[prop] === false
+         Modernizr[prop] === false ||
          Modernizr[prop] instanceof Boolean,
         'Modernizr.'+prop+' is a boolean value or Boolean object');
 
@@ -556,9 +556,9 @@ function domToCSS (name) {
 }
 
 function cssToDOM( name ) {
-  return  name.replace(/[A-Z]/g, function(str, m1) {
-    return '-' + m1.toLowerCase();
-  }).replace(/^ms-/, '-ms-');
+  return  name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
+    return m1 + m2.toUpperCase();
+  }).replace(/^-/, '');
 }
 
 test('Modernizr.prefixed() - css and DOM resolving', function(){
