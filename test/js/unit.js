@@ -142,7 +142,8 @@ test('html classes are looking good',function(){
           return Modernizr[aclass];
         }
         else if (classSplit.length == 2) {
-          return Modernizr[classSplit[0]][classSplit[1]];
+          return Modernizr[classSplit[0]] &&
+              Modernizr[classSplit[0]][classSplit[1]];
         }
       };
 
