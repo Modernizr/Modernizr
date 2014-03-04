@@ -210,20 +210,17 @@ test('html classes are looking good',function(){
 
 test('Modernizr properties are looking good',function(){
 
-  var nobool = TEST.API.concat(TEST.inputs)
-                       .concat(TEST.audvid)
-                       .concat(TEST.privates)
-                       .concat(TEST.columns)
-                       .concat(['textarea', 'testtruthy', 'testfalsy']) // due to forms-placeholder.js test
-                       .concat(['datauri']); // has `.over32kb` subproperty
+  var nobool = TEST.API.concat(TEST.inputs);
 
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){
 
       if (TEST.inArray(prop,nobool) >= 0) continue;
 
-      ok(Modernizr[prop] === true || Modernizr[prop] === false,
-        'Modernizr.'+prop+' is a straight up boolean');
+      ok(Modernizr[prop] === true ||
+         Modernizr[prop] === false ||
+         Modernizr[prop] instanceof Boolean,
+        'Modernizr.'+prop+' is a boolean value or Boolean object');
 
       equal(prop,prop.toLowerCase(),'Modernizr.'+prop+' is all lowercase.');
 
