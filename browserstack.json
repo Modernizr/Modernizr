@@ -115,6 +115,34 @@
       "device": "iPhone 5S",
       "os_version": "7.0",
       "os": "ios"
+    },
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "Samsung Galaxy S II",
+        "os_version": "2.3",
+        "os": "android"
+    },
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "Samsung Galaxy Nexus",
+        "os_version": "4.0",
+        "os": "android"
+    },
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "Samsung Galaxy S III",
+        "os_version": "4.1",
+        "os": "android"
+    },
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "LG Nexus 4",
+        "os_version": "4.2",
+        "os": "android"
     }
   ]
 }
