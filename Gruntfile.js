@@ -225,7 +225,7 @@ module.exports = function( grunt ) {
   });
 
   // Testing tasks
-  grunt.registerTask('test', ['jshint', 'build', 'qunit', 'nodeunit']);
+  grunt.registerTask('test', ['jshint', 'build', 'qunit']);
 
   // Travis CI task.
   grunt.registerTask('travis', ['test']);
