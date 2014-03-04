@@ -25,6 +25,9 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
 
   Modernizr.addTest('speechinput', function() {
     var elem = createElement('input');
-    return 'speech' in elem || 'onwebkitspeechchange' in elem;
+    var prefixed =  'onwebkitspeechchange' in elem;
+    var unprefixed = 'speech' in elem;
+    if (Modernizr._config.usePrefixes) return unprefixed || prefixed;
+    return unprefixed;
   });
 });
