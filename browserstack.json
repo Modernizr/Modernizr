@@ -65,19 +65,6 @@
       "os_version": "Mavericks"
     },
     {
-      "browser": "Opera Browser",
-      "browser_version": null,
-      "device": "Samsung Galaxy S II",
-      "os_version": "480x800",
-      "os": "opera"
-    },
-    {
-      "browser": "ie",
-      "browser_version": "6.0",
-      "os": "Windows",
-      "os_version": "XP"
-    },
-    {
       "browser": "ie",
       "browser_version": "8.0",
       "os": "Windows",
