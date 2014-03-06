@@ -11,9 +11,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('dataview', (typeof DataView !== 'undefined' && 'getFloat64' in DataView.prototype));

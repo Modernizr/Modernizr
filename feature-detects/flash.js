@@ -7,9 +7,7 @@
   }
   !*/
 /* DOC
-
-   Detects support flash, as well as flash blocking plugins
-
+Detects support flash, as well as flash blocking plugins
 */
 define(['Modernizr', 'createElement', 'docElement', 'addTest'], function( Modernizr, createElement, docElement, addTest ) {
   Modernizr.addAsyncTest(function() {

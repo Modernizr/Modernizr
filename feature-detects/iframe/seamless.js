@@ -10,9 +10,7 @@
 }
 !*/
 /* DOC
-
 Test for `seamless` attribute in iframes.
-
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('seamless', 'seamless' in createElement('iframe'));

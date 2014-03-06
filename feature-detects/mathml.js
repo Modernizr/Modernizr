@@ -12,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Detects support for MathML, for mathematic equations in web pages.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   // Based on work by Davide (@dpvc) and David (@davidcarlisle)

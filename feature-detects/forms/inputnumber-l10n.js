@@ -14,10 +14,8 @@
 }
 !*/
 /* DOC
-
 Detects whether input type="number" is capable of receiving and
 displaying localized numbers, e.g. with comma separator
-
 */
 define(['Modernizr', 'createElement', 'docElement', 'getBody'], function( Modernizr, createElement, docElement, getBody ) {
   Modernizr.addTest('localizednumber', function() {

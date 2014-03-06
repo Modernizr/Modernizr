@@ -9,9 +9,7 @@
 }
 !*/
 /* DOC
-
 Detects if unicode characters are supported in the current document.
-
 */
 define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, createElement, testStyles ) {
   /**

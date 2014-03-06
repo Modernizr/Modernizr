@@ -10,9 +10,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the `contenteditable` attribute of elements, allowing their DOM text contents to be edited directly by the user.
-
 */
 define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
   Modernizr.addTest('contenteditable', function() {

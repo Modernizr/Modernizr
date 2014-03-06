@@ -18,7 +18,6 @@
 }
 !*/
 /* DOC
-
 Detects support for the video element, as well as testing what types of content it supports.
 
 Subproperties are provided to describe support for `ogg`, `h264` and `webm` formats, e.g.:
@@ -27,7 +26,6 @@ Subproperties are provided to describe support for `ogg`, `h264` and `webm` form
 Modernizr.video         // true
 Modernizr.video.ogg     // 'probably'
 ```
-
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   // Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845

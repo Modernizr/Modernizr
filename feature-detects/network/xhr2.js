@@ -13,7 +13,6 @@
 }
 !*/
 /* DOC
-
 Tests for XHR2.
 */
 define(['Modernizr'], function( Modernizr ) {

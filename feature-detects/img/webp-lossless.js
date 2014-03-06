@@ -15,9 +15,7 @@
 }
 !*/
 /* DOC
-
 Tests for non-alpha lossless webp support.
-
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   Modernizr.addAsyncTest(function(){

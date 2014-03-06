@@ -13,9 +13,7 @@
 }
 !*/
 /* DOC
-
 Detects support for querySelector.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('queryselector', 'querySelector' in document && 'querySelectorAll' in document);

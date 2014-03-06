@@ -7,11 +7,9 @@
 }
 !*/
 /* DOC
-
 When used on an `<input type="file">`, the `directory` attribute instructs
 the user agent to present a directory selection dialog instead of the usual
 file selection dialog.
-
 */
 define(['Modernizr', 'createElement', 'domPrefixes'], function( Modernizr, createElement, domPrefixes ) {
   Modernizr.addTest('fileinputdirectory', function() {

@@ -12,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Tests for `CSS.escape()` support.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   var CSS = window.CSS;

@@ -11,9 +11,7 @@
 }
 !*/
 /* DOC
-
 Determines if winding rules, which controls if a path can go clockwise or counterclockwise
-
 */
 define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
 

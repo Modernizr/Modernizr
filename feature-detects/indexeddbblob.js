@@ -5,9 +5,7 @@
 }
 !*/
 /* DOC
-
 Detects if the browser can save File/Blob objects to IndexedDB
-
 */
 define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function( Modernizr, addTest, prefixed ) {
   // Vendors had inconsistent prefixing with the experimental Indexed DB:

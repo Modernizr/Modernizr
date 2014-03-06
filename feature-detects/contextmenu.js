@@ -14,9 +14,7 @@
 }
 !*/
 /* DOC
-
 Detects support for custom context menus.
-
 */
 define(['Modernizr', 'docElement'], function( Modernizr, docElement ) {
   Modernizr.addTest(

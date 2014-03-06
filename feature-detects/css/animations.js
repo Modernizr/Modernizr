@@ -12,6 +12,9 @@
   }]
 }
 !*/
+/* DOC
+Detects wether or not elements can be animated using CSS
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('cssanimations', testAllProps('animationName', 'a', true));
 });

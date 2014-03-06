@@ -6,8 +6,8 @@
   "tags": ["css"],
   "authors": ["@calvein"]
 }
-!*//* DOC
-
+!*/
+/* DOC
 Method of allowing calculated values for length units. For example:
 
 ```css
@@ -15,7 +15,6 @@ Method of allowing calculated values for length units. For example:
   width: calc(100% - 3em);
 }
 ```
-
 */
 define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
   Modernizr.addTest('csscalc', function() {

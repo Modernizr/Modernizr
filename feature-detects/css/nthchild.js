@@ -19,9 +19,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the ':nth-child()' CSS pseudo-selector.
-
 */
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   // 5 `<div>` elements with `1px` width are created.

@@ -18,9 +18,7 @@
 }
 !*/
 /* DOC
-
 Detects support for SVG in `<embed>` or `<object>` elements.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('svg', !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);

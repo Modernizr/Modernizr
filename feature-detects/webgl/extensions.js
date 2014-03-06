@@ -13,7 +13,6 @@
 }
 !*/
 /* DOC
-
 Detects support for OpenGL extensions in WebGL. It's `true` if the [WebGL extensions API](https://developer.mozilla.org/en-US/docs/Web/WebGL/Using_Extensions) is supported, then exposes the supported extensions as subproperties, e.g.:
 
 ```javascript
@@ -24,7 +23,6 @@ if ('OES_vertex_array_object' in Modernizr.webglextensions) {
   // Vertex Array Objects extension supported
 }
 ```
-
 */
 define(['Modernizr', 'createElement', 'test/webgl'], function( Modernizr, createElement ) {
   // based on code from ilmari heikkinen

@@ -18,9 +18,7 @@
 }
 !*/
 /* DOC
-
 Append multiple elements to the DOM within a single insertion.
-
 */
 define(['Modernizr', 'docElement'], function(Modernizr, docElement) {
   Modernizr.addTest('documentfragment', function() {

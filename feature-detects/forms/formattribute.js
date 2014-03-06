@@ -6,10 +6,8 @@
 }
 !*/
 /* DOC
-
 Detects whether input form="form_id" is available on the platform
 E.g. IE 10 (and below), don't support this
-
 */
 define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
 

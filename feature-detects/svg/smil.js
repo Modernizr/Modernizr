@@ -5,8 +5,8 @@
   "caniuse": "svg-smil",
   "tags": ["svg"],
   "notes": [{
-	"name": "W3C Synchronised Multimedia spec",
-	"href": "http://www.w3.org/AudioVideo/"
+  "name": "W3C Synchronised Multimedia spec",
+  "href": "http://www.w3.org/AudioVideo/"
   }]
 }
 !*/

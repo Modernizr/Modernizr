@@ -15,9 +15,7 @@
 }
 !*/
 /* DOC
-
 Detects support for VML.
-
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('vml', function() {

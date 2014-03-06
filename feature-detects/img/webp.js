@@ -12,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Tests for lossy, non-alpha webp support.
-
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   Modernizr.addAsyncTest(function(){

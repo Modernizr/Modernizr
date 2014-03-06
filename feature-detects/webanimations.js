@@ -11,9 +11,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the Web Animation API, a way to create css animations in js
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('webanimations', 'Animation' in window);
