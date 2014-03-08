@@ -73,34 +73,7 @@ module.exports = function( grunt ) {
     },
     jshint: {
       options: {
-        boss: true,
-        browser: true,
-        curly: false,
-        devel: true,
-        eqeqeq: false,
-        eqnull: true,
-        expr: true,
-        evil: true,
-        immed: false,
-        laxcomma: true,
-        newcap: false,
-        noarg: true,
-        quotmark: 'single',
-        smarttabs: true,
-        sub: true,
-        trailing: true,
-        undef: true,
-        unused: true,
-        indent: 2,
-        globals: {
-          Modernizr: true,
-          DocumentTouch: true,
-          TEST: true,
-          SVGFEColorMatrixElement: true,
-          Blob: true,
-          define: true,
-          require: true
-        },
+        jshintrc: true,
         ignores: [
           'src/html5printshiv.js',
           'src/html5shiv.js'
