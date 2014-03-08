@@ -8,9 +8,7 @@
 }
 !*/
 /* DOC
-
 Checks for support of the autoplay attribute of the video element.
-
 */
 define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], function( Modernizr, addTest, docElement, createElement ) {
 

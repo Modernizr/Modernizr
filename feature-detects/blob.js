@@ -12,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the Blob constructor, for creating file-like objects of immutable, raw data.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('blobconstructor', function () {

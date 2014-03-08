@@ -19,9 +19,7 @@
 }
 !*/
 /* DOC
-
 Tests for transparent webp support.
-
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   Modernizr.addAsyncTest(function(){

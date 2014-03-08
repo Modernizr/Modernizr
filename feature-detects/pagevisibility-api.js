@@ -18,9 +18,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the Page Visibility API, which can be used to disable unnecessary actions and otherwise improve user experience.
-
 */
 define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
   Modernizr.addTest('pagevisibility', !!prefixed('hidden', document, false));

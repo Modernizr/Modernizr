@@ -8,9 +8,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the IndexedDB client-side storage API (final spec).
-
 */
 define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
   // Vendors had inconsistent prefixing with the experimental Indexed DB:

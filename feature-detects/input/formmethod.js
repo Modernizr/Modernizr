@@ -15,9 +15,7 @@
 }
 !*/
 /* DOC
-
 Detect support for the formmethod attribute on form inputs
-
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('inputformmethod', !!('formMethod' in createElement('input')));

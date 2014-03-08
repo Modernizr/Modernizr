@@ -15,11 +15,9 @@
 }
 !*/
 /* DOC
-
 Detects support for EXIF Orientation in JPEG images.
 
 iOS looks at the EXIF Orientation flag in JPEGs and rotates the image accordingly. Most desktop browsers just ignore this data.
-
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   // Bug trackers:

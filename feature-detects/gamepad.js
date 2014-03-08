@@ -16,9 +16,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the Gamepad API, for access to gamepads and controllers.
-
 */
 define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
   // FF has Gamepad API support only in special builds, but not in any release (even behind a flag)

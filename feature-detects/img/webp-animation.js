@@ -16,9 +16,7 @@
 }
 !*/
 /* DOC
-
 Tests for animated webp support.
-
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   Modernizr.addAsyncTest(function(){

@@ -11,7 +11,6 @@
 }
 !*/
 /* DOC
-
 Detects support for HTML5 `<input>` element attributes and exposes Boolean subproperties with the results:
 
 ```javascript
@@ -26,7 +25,6 @@ Modernizr.input.placeholder
 Modernizr.input.required
 Modernizr.input.step
 ```
-
 */
 define(['Modernizr', 'createElement', 'attrs', 'inputattrs', 'inputElem'], function( Modernizr, createElement, attrs, inputattrs, inputElem ) {
   // Run through HTML5's new input attributes to see if the UA understands any.

@@ -8,9 +8,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the `<canvas>` element for 2D drawing.
-
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   // On the S60 and BB Storm, getContext exists, but always returns undefined

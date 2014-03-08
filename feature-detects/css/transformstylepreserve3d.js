@@ -14,9 +14,7 @@
 }
 !*/
 /* DOC
-
 Detects support for `transform-style: preserve-3d`, for getting a proper 3D perspective on elements.
-
 */
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('preserve3d', testAllProps('transformStyle', 'preserve-3d'));

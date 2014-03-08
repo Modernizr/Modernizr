@@ -12,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Detects support for native drag & drop of elements.
-
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('draganddrop', function() {

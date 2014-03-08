@@ -15,9 +15,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the window.crypto.getRandomValues for generate cryptographically secure random numbers
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('getrandomvalues', 'crypto' in window && 'getRandomValues' in window.crypto);

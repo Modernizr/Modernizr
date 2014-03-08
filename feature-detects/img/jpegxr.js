@@ -12,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Test for JPEG XR support
-
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
 

@@ -13,9 +13,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the ':target' CSS pseudo-class.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   // querySelector

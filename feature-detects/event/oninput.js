@@ -17,9 +17,7 @@
 }
 !*/
 /* DOC
-
 `oninput` tests if the browser is able to detect the input event
-
 */
 define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], function( Modernizr, docElement, createElement, testStyles, hasEvent ) {
 

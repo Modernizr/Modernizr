@@ -8,9 +8,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the text APIs for `<canvas>` elements.
-
 */
 define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
   Modernizr.addTest('canvastext',  function() {

@@ -14,9 +14,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the Content Security Policy protocol for mitigating and reporting security attacks.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('contentsecuritypolicy', ('securityPolicy' in document || 'SecurityPolicy' in document));

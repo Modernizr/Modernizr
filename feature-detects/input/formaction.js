@@ -16,9 +16,7 @@
 }
 !*/
 /* DOC
-
 Detect support for the formaction attribute on form inputs
-
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('inputformaction', !!('formAction' in createElement('input')), { aliases: ['input-formaction'] });

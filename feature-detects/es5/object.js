@@ -12,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Check if browser implements ECMAScript 5 Object per specification.
-
 */
 define(['Modernizr'], function (Modernizr) {
   Modernizr.addTest('es5object', function () {

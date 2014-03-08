@@ -19,9 +19,7 @@
 }
 !*/
 /* DOC
-
 Check if browser implements ECMAScript 6 Promises per specification.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('promises', function() {

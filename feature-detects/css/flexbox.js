@@ -14,9 +14,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the Flexible Box Layout model, a.k.a. Flexbox, which allows easy manipulation of layout order and sizing within a container.
-
 */
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('flexbox', testAllProps('flexBasis', '1px', true));

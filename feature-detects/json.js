@@ -11,9 +11,7 @@
 }
 !*/
 /* DOC
-
 Detects native support for JSON handling functions.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   // this will also succeed if you've loaded the JSON2.js polyfill ahead of time

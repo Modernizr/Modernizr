@@ -12,6 +12,9 @@
   }]
 }
 !*/
+/* DOC
+Detects the older non standard webaudio API, (as opposed to the standards based AudioContext API)
+*/
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('webaudio', function() {
     var prefixed = 'webkitAudioContext' in window;

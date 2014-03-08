@@ -18,9 +18,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the `hashchange` event, fired when the current location fragment changes.
-
 */
 define(['Modernizr', 'hasEvent'], function( Modernizr, hasEvent ) {
   Modernizr.addTest('hashchange', function() {

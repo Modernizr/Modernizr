@@ -6,9 +6,7 @@
 }
 !*/
 /* DOC
-
 Tests if page is iframed.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   // github.com/Modernizr/Modernizr/issues/242

@@ -15,10 +15,8 @@
 }
 !*/
 /* DOC
-
 Detects support for the `window.registerProtocolHandler()` API to allow web
 sites to register themselves as possible handlers for particular protocols.
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('customprotocolhandler', function() {

@@ -9,7 +9,8 @@
     "href": "http://developer.mozilla.org/en/DOM/window.navigator.mozBattery"
   }]
 }
-!*//* DOC
+!*/
+/* DOC
 Enable a developer to remove CPU intensive CSS/JS when battery is low
 */
 define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
