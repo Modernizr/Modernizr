@@ -2,7 +2,6 @@
 {
   "name": "Workers from Blob URIs",
   "property": "blobworkers",
-  "caniuse" : "blobworkers",
   "tags": ["performance", "workers"],
   "notes": [{
     "name": "W3C Reference",
