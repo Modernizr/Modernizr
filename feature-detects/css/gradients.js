@@ -20,7 +20,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'prefixes', 'createElement'], function( Modernizr, prefixes, createElement ) {
+define(['Modernizr', 'setCss', 'prefixes', 'createElement'], function( Modernizr, setCss, prefixes, createElement ) {
 
   Modernizr.addTest('cssgradients', function() {
 
@@ -36,10 +36,9 @@ define(['Modernizr', 'prefixes', 'createElement'], function( Modernizr, prefixes
     }
 
     var elem = createElement('div');
-    var style = elem.style;
-    style.cssText = css;
+    setCss(elem, css);
 
     // IE6 returns undefined so cast to string
-    return ('' + style.backgroundImage).indexOf('gradient') > -1;
+    return ('' + elem.style.backgroundImage).indexOf('gradient') > -1;
   });
 });

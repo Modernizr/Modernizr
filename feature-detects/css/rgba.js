@@ -10,12 +10,11 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'setCss', 'createElement'], function( Modernizr, setCss, createElement ) {
   Modernizr.addTest('rgba', function() {
     var elem = createElement('div');
-    var style = elem.style;
-    style.cssText = 'background-color:rgba(150,255,150,.5)';
+    setCss(elem, 'background-color:rgba(150,255,150,.5)');
 
-    return ('' + style.backgroundColor).indexOf('rgba') > -1;
+    return ('' + elem.style.backgroundColor).indexOf('rgba') > -1;
   });
 });

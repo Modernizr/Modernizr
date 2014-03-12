@@ -1,16 +1,15 @@
-define(['Modernizr', 'mStyle'], function( Modernizr, mStyle ) {
+define(function() {
   /**
-   * setCss applies given styles to the Modernizr DOM node.
+   * setCss applies given styles to the DOM node.
    */
-  function setCss( str ) {
-    mStyle.style.cssText = str;
+  function setCss( node, str ) {
+    try {
+      node.style.cssText = str;
+    }
+    catch(e) {// Content Security Policy restrictions workaround
+      node.setAttribute('style', str);
+    }
   }
-
-  // Clean up used to happen, but probably isn't
-  // necessary since we delete the element
-  /*Modernizr._q.unshift(function(){
-    setCss('');
-  });*/
 
   return setCss;
 });
