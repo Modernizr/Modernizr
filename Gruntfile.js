@@ -155,6 +155,7 @@ module.exports = function( grunt ) {
           baseUrl: 'src',
           optimize: 'none',
           optimizeCss: 'none',
+          useStrict: true,
           paths: {
             'test': '../feature-detects',
             'modernizr-init': '../tmp/modernizr-init'
