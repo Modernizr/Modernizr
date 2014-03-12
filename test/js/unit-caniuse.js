@@ -96,7 +96,6 @@ var map = {
   svgasimg: 'svg-img',
   svgfilters: 'svg-filters',
   textshadow: 'css-textshadow',
-  time: 'html5semantic',
   touchevents: 'touch',
   typedarrays: 'typedarrays',
   userselect: 'user-select-none',
