@@ -2,7 +2,6 @@
 {
   "name": "Content Security Policy",
   "property": "contentsecuritypolicy",
-  "caniuse": "contentsecuritypolicy",
   "tags": ["security"],
   "notes": [{
     "name": "W3C spec",
