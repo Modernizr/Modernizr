@@ -1,12 +1,11 @@
 /*!
 {
   "name": "time Element",
-  "caniuse": "html5semantic",
   "property": "time",
   "tags": ["elem"],
   "notes": [{
     "name": "WhatWG Spec",
-    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/rendering.html#the-time-element-0"
+    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-time-element"
   }]
 }
 !*/

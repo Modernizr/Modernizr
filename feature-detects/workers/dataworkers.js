@@ -2,7 +2,6 @@
 {
   "name": "Workers from Data URIs",
   "property": "dataworkers",
-  "caniuse" : "dataworkers",
   "tags": ["performance", "workers"],
   "notes": [{
     "name": "W3C Reference",
