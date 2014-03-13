@@ -3,7 +3,9 @@
   "name": "iframe[sandbox] Attribute",
   "property": "sandbox",
   "tags": ["iframe"],
-  "notes": [{
+  "notes": [
+    "False-positive on Firefox <27",
+  {
     "name": "WhatWG Spec",
     "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-iframe-element.html#attr-iframe-sandbox"
   }]
