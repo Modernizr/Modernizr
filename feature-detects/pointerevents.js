@@ -7,8 +7,8 @@
   "notes": [
     "This property name used to refer to the CSS `pointer-events` property, which is now named `csspointerevents`.",
     {
-      "name": "W3C spec submission",
-      "href": "http://www.w3.org/Submission/pointer-events/"
+      "name": "W3C spec",
+      "href": "http://www.w3.org/TR/pointerevents/"
     }
   ],
   "warnings": ["This property name now refers to W3C DOM PointerEvents: https://github.com/Modernizr/Modernizr/issues/548#issuecomment-12812099"],
