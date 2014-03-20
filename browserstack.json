@@ -110,13 +110,6 @@
       "os": "ios"
     },
     {
-      "browser": "Mobile Safari",
-      "browser_version": null,
-      "device": "iPhone 5S",
-      "os_version": "7.0",
-      "os": "ios"
-    },
-    {
         "browser": "Android Browser",
         "browser_version": null,
         "device": "Samsung Galaxy S II",

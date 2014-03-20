@@ -62,7 +62,7 @@ test('bind is implemented', function() {
   ok('prototype' in F, '"prototype" in F');
 
   // The object passed to bind as 'this' must be callable.
-  throws(function(){
+  raises(function(){
     Function.bind.call(undefined);
   });
 
