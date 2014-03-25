@@ -10,8 +10,8 @@
 !*/
 define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createElement, addTest ) {
   Modernizr.addAsyncTest(function(){
-    var elementTop, 
-      originalHeight, 
+    var elementTop,
+      originalHeight,
       el = createElement('div'),
       PIXELS_TO_MOVE = 100,
       testName = 'csspositionfixed',
@@ -24,7 +24,7 @@ define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createEle
 
     function load() {
       if (!document || !document.body) {
-        attemptCount++
+        attemptCount++;
         if (attemptCount === maxAttempts) {
           return clearTimeout(timer);
         }
@@ -45,7 +45,7 @@ define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createEle
 
       el.innerHTML = ' ';
 
-      /* CSS classes to ensure the element is visible and it doesn't have css transforms. 
+      /* CSS classes to ensure the element is visible and it doesn't have css transforms.
       Transforms can conflict with position fixed in some instances.
       Visibilty and block are to ensure override of critical styles already in the page. */
       el.style.cssText = 'position:fixed;top:'+PIXELS_TO_MOVE+'px;visibility:visible;display:block;-webkit-transform:none;-moz-transform:none;transform:none;';
