@@ -17,29 +17,29 @@ define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createEle
       testName = 'csspositionfixed',
       body,
       timer = 0,
-      maxAttempts = 20,
+      MAX_LOAD_ATTEMPTS = 20,
       attemptCount = 0;
 
     load();
 
     function load() {
-      if (!document || !document.body) {
+      if ( !document || !document.body ) {
         attemptCount++;
-        if (attemptCount === maxAttempts) {
-          return clearTimeout(timer);
+        if ( attemptCount === MAX_LOAD_ATTEMPTS ) {
+          return clearTimeout( timer );
         }
         
-        timer = setTimeout(load, 50);
+        timer = setTimeout( load, 50 );
       
       } else {
-        clearTimeout(timer);
+        clearTimeout( timer );
         body = document.body;
         test();
       }
     }
 
     function test() {
-      if ( !( "getBoundingClientRect" in body ) ) {
+      if ( !( 'getBoundingClientRect' in body ) ) {
         addTest( testName, false );
       }
 
@@ -60,7 +60,7 @@ define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createEle
       elementTop = el.getBoundingClientRect().top;
       body.style.height = originalHeight;
 
-      body.removeChild(el);
+      body.removeChild( el );
       body.scrollTop = 0;
 
       addTest( testName, elementTop === PIXELS_TO_MOVE );
