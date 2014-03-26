@@ -50,6 +50,8 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
       input.removeEventListener('input', handler, false);
       docElement.removeChild(input);
       return supportsOnInput;
-    } catch (e) {}
+    } catch (e) {
+      return false;
+    }
   });
 });

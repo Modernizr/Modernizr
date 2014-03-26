@@ -139,11 +139,11 @@ test('html classes are looking good',function(){
       getObject = function(aclass) {
         var classSplit = aclass.split('-');
         if(typeof Modernizr[aclass] != 'undefined') {
-          return Modernizr[aclass];
+          return !!Modernizr[aclass];
         }
         else if (classSplit.length == 2) {
-          return Modernizr[classSplit[0]] &&
-              Modernizr[classSplit[0]][classSplit[1]];
+          return !!Modernizr[classSplit[0]] &&
+              !!Modernizr[classSplit[0]][classSplit[1]];
         }
       };
 
@@ -556,11 +556,10 @@ function domToCSS (name) {
 }
 
 function cssToDOM( name ) {
-  return name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
+  return  name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
     return m1 + m2.toUpperCase();
   }).replace(/^-/, '');
 }
-
 
 test('Modernizr.prefixed() - css and DOM resolving', function(){
   var i,

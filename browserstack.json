@@ -1,0 +1,141 @@
+{
+  "username": "--secure--",
+  "key": "--secure--",
+  "test_path": "test/basic.html",
+  "timeout": 600,
+  "browsers": [
+    {
+      "browser": "safari",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Snow Leopard"
+    },
+    {
+      "browser": "safari",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Lion"
+    },
+    {
+      "browser": "safari",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Mountain Lion"
+    },
+    {
+      "browser": "safari",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Mavericks"
+    },
+    {
+      "browser": "chrome",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Mountain Lion"
+    },
+    {
+      "browser": "chrome",
+      "browser_version": "latest",
+      "os": "Windows",
+      "os_version": "7"
+    },
+    {
+      "browser": "firefox",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Lion"
+    },
+    {
+      "browser": "firefox",
+      "browser_version": "latest",
+      "os": "Windows",
+      "os_version": "7"
+    },
+    {
+      "browser": "opera",
+      "browser_version": "latest",
+      "os": "Windows",
+      "os_version": "7"
+    },
+    {
+      "browser": "opera",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Mavericks"
+    },
+    {
+      "browser": "ie",
+      "browser_version": "8.0",
+      "os": "Windows",
+      "os_version": "7"
+    },
+    {
+      "browser": "ie",
+      "browser_version": "9.0",
+      "os": "Windows",
+      "os_version": "7"
+    },
+    {
+      "browser": "ie",
+      "browser_version": "10.0",
+      "os": "Windows",
+      "os_version": "8"
+    },
+    {
+      "browser": "ie",
+      "browser_version": "11.0",
+      "os": "Windows",
+      "os_version": "7"
+    },
+    {
+      "browser": "Mobile Safari",
+      "browser_version": null,
+      "device": "iPad 2 (5.0)",
+      "os_version": "5.0",
+      "os": "ios"
+    },
+    {
+      "browser": "Mobile Safari",
+      "browser_version": null,
+      "device": "iPhone 4S",
+      "os_version": "5.1",
+      "os": "ios"
+    },
+    {
+      "browser": "Mobile Safari",
+      "browser_version": null,
+      "device": "iPhone 5",
+      "os_version": "6.0",
+      "os": "ios"
+    },
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "Samsung Galaxy S II",
+        "os_version": "2.3",
+        "os": "android"
+    },
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "Samsung Galaxy Nexus",
+        "os_version": "4.0",
+        "os": "android"
+    },
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "Samsung Galaxy S III",
+        "os_version": "4.1",
+        "os": "android"
+    },
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "LG Nexus 4",
+        "os_version": "4.2",
+        "os": "android"
+    }
+  ]
+}
