@@ -4,8 +4,11 @@
   "property": "csspositionfixed",
   "tags": ["css"],
   "async": true,
-  authors: "Alex Grande",
-  notes: "Inspired from https://github.com/kangax/cft/blob/gh-pages/feature_tests.js#L159-187"
+  "authors": ["@grandecomplex"],
+  "notes": [{
+    "name": "Position fixed test reference",
+    "href": "https://github.com/kangax/cft/blob/gh-pages/feature_tests.js#L159-187"
+  }]
 }
 !*/
 define(['Modernizr', 'createElement', 'addTest'], function( Modernizr, createElement, addTest ) {
