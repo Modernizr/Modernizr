@@ -14,7 +14,8 @@
     "href": "http://goo.gl/rLKz8"
   }],
   "authors": ["Shi Chuan"],
-  "tags": ["event"]
+  "tags": ["event"],
+  "builderAliases": ["event_deviceorientation_motion"]
 }
 !*/
 /* DOC

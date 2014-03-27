@@ -5,6 +5,7 @@
   "authors": ["nsfmc"],
   "property": "cssremunit",
   "tags": ["css"],
+  "builderAliases": ["css_remunit"],
   "notes": [{
     "name": "W3C Spec",
     "href": "http://www.w3.org/TR/css3-values/#relative0"

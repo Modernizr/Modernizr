@@ -2,7 +2,8 @@
 {
   "name": "placeholder attribute",
   "property": "placeholder",
-  "tags": ["forms", "attribute"]
+  "tags": ["forms", "attribute"],
+  "builderAliases": ["forms_placeholder"]
 }
 !*/
 /* DOC

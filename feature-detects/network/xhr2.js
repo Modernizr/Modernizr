@@ -3,6 +3,7 @@
   "name": "XML HTTP Request Level 2 XHR2",
   "property": "xhr2",
   "tags": ["network"],
+  "builderAliases": ["network_xhr2"],
   "notes": [{
     "name": "W3 Spec",
     "href": "http://www.w3.org/TR/XMLHttpRequest2/"

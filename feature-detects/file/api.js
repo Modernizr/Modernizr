@@ -8,6 +8,7 @@
     "href": "http://www.w3.org/TR/FileAPI/"
   }],
   "tags": ["file"],
+  "builderAliases": ["file_api"],
   "knownBugs": ["Will fail in Safari 5 due to its lack of support for the standards defined FileReader object"]
 }
 !*/

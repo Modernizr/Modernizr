@@ -4,6 +4,7 @@
   "property": "adownload",
   "caniuse" : "download",
   "tags": ["media", "attribute"],
+  "builderAliases": ["a_download"],
   "notes": [{
     "name": "WhatWG Reference",
     "href": "http://developers.whatwg.org/links.html#downloading-resources"

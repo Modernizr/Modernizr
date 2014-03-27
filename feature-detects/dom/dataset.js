@@ -4,6 +4,7 @@
   "caniuse": "dataset",
   "property": "dataset",
   "tags": ["dom"],
+  "builderAliases": ["dom_dataset"],
   "authors": ["@phiggins42"]
 }
 !*/

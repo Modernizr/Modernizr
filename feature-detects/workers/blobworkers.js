@@ -3,6 +3,7 @@
   "name": "Workers from Blob URIs",
   "property": "blobworkers",
   "tags": ["performance", "workers"],
+  "builderAliases": ["workers_blobworkers"],
   "notes": [{
     "name": "W3C Reference",
     "href": "http://www.w3.org/TR/workers/"

@@ -2,7 +2,8 @@
 {
   "name": "Low Bandwidth Connection",
   "property": "lowbandwidth",
-  "tags": ["network"]
+  "tags": ["network"],
+  "builderAliases": ["network_connection"]
 }
 !*/
 /* DOC

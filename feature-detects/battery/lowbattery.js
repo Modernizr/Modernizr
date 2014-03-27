@@ -3,6 +3,7 @@
   "name": "Low Battery Level",
   "property": "lowbattery",
   "tags": ["hardware", "mobile"],
+  "builderAliases": ["battery_level"],
   "authors": ["Paul Sayre"],
   "notes": [{
     "name": "MDN Docs",

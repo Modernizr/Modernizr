@@ -2,7 +2,8 @@
 {
   "name": "Framed window",
   "property": "framed",
-  "tags": ["window"]
+  "tags": ["window"],
+  "builderAliases": ["window_framed"]
 }
 !*/
 /* DOC

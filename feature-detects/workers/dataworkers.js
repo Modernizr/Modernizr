@@ -3,6 +3,7 @@
   "name": "Workers from Data URIs",
   "property": "dataworkers",
   "tags": ["performance", "workers"],
+  "builderAliases": ["workers_dataworkers"],
   "notes": [{
     "name": "W3C Reference",
     "href": "http://www.w3.org/TR/workers/"

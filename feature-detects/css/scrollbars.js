@@ -2,7 +2,8 @@
 {
   "name": "CSS Stylable Scrollbars",
   "property": "cssscrollbar",
-  "tags": ["css"]
+  "tags": ["css"],
+  "builderAliases": ["css_scrollbars"]
 }
 !*/
 define(['Modernizr', 'testStyles', 'prefixes'], function( Modernizr, testStyles, prefixes ) {

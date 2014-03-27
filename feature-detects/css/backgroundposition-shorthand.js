@@ -3,6 +3,7 @@
   "name": "Background Position Shorthand",
   "property": "bgpositionshorthand",
   "tags": ["css"],
+  "builderAliases": ["css_backgroundposition_shorthand"],
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/CSS/background-position"

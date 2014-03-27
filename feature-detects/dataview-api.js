@@ -3,6 +3,7 @@
   "name": "DataView",
   "property": "dataview",
   "authors": ["Addy Osmani"],
+  "builderAliases": ["dataview_api"],
   "notes": [{
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"

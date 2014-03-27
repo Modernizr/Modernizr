@@ -3,6 +3,7 @@
   "name": "CSS Subpixel Fonts",
   "property": "subpixelfont",
   "tags": ["css"],
+  "builderAliases": ["css_subpixelfont"],
   "authors": [
     "@derSchepp",
     "@gerritvanaaken",
