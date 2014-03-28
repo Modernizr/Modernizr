@@ -64,12 +64,12 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
     } else {
 
       feature = feature.toLowerCase();
-      var featureSplit = feature.split('.');
-      var last = Modernizr[featureSplit[0]];
+      var featureNameSplit = feature.split('.');
+      var last = Modernizr[featureNameSplit[0]];
 
       // Again, we don't check for parent test existence. Get that right, though.
-      if (featureSplit.length == 2) {
-        last = last[featureSplit[1]];
+      if (featureNameSplit.length == 2) {
+        last = last[featureNameSplit[1]];
       }
 
       if ( typeof last != 'undefined' ) {
@@ -84,15 +84,21 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
       test = typeof test == 'function' ? test() : test;
 
       // Set the value (this is the magic, right here).
-      if (featureSplit.length == 1) {
-        Modernizr[featureSplit[0]] = test;
+      if (featureNameSplit.length == 1) {
+        Modernizr[featureNameSplit[0]] = test;
       }
-      else if (featureSplit.length == 2) {
-        Modernizr[featureSplit[0]][featureSplit[1]] = test;
+      else if (featureNameSplit.length == 2) {
+        // cast to a Boolean, if not one already
+        /* jshint -W053 */
+        if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+          Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+        }
+
+        Modernizr[featureNameSplit[0]][featureNameSplit[1]] = test;
       }
 
       // Set a single class (either `feature` or `no-feature`)
-      setClasses([(test ? '' : 'no-') + featureSplit.join('-')]);
+      setClasses([(test ? '' : 'no-') + featureNameSplit.join('-')]);
 
       // Trigger the event
       Modernizr._trigger(feature, test);
