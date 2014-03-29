@@ -9,7 +9,7 @@
 /* DOC
 Detects support flash, as well as flash blocking plugins
 */
-define(['Modernizr', 'createElement', 'docElement', 'addTest'], function( Modernizr, createElement, docElement, addTest ) {
+define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], function( Modernizr, createElement, docElement, addTest, getBody ) {
   Modernizr.addAsyncTest(function() {
     /* jshint -W053 */
     var runTest = function(result, embed) {
@@ -20,7 +20,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest'], function( Modern
       }
       addTest('flash', function() { return bool; });
       if (embed) {
-        docElement.removeChild(embed);
+        body.removeChild(embed);
       }
     };
     var easy_detect;
@@ -41,11 +41,13 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest'], function( Modern
       // flash seems to be installed, but it might be blocked. We have to
       // actually create an element to see what happens to it.
       var embed = createElement('embed');
+      var body = getBody();
       var inline_style;
 
       embed.type = 'application/x-shockwave-flash';
 
-      docElement.appendChild(embed);
+      // Need to do this in the body (fake or otherwise) otherwise IE8 complains
+      body.appendChild(embed);
 
       // Pan doesn't exist in the embed if its IE (its on the ActiveXObjeect)
       // so this check is for all other browsers.
@@ -61,19 +63,24 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest'], function( Modern
       setTimeout(function() {
         if (!docElement.contains(embed)) {
           runTest('blocked');
-          return;
+        }
+        else {
+          inline_style = embed.style.cssText;
+          if (inline_style !== '') {
+            // the style of the element has changed automatically. This is a
+            // really poor heuristic, but for lower end flash blocks, it the
+            // only change they can make.
+            runTest('blocked', embed);
+          }
+          else {
+            runTest(true, embed);
+          }
         }
 
-        inline_style = embed.style.cssText;
-        if (inline_style !== '') {
-          // the style of the element has changed automatically. This is a
-          // really poor heuristic, but for lower end flash blocks, it the
-          // only change they can make.
-          runTest('blocked', embed);
-          return;
+        // If we’re rockin’ a fake body, clean it up
+        if (body.fake) {
+          body.parentNode.removeChild(body);
         }
-
-        runTest(true, embed);
       }, 10);
     }
   });
