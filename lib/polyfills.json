@@ -1,4 +1,11 @@
 {
+  "html5shiv": {
+    "name": "HTML5 Shiv",
+    "authors": ["Alexander Farkas (@aFarkas)", "Jonathan Neal (@jonathantneal)", "Paul Irish (@paulirish)"],
+    "href": "https://github.com/aFarkas/html5shiv",
+    "licences": ["MIT", "GPL2"],
+    "notes": ["The HTML5 Shiv enables use of HTML5 sectioning elements in legacy Internet Explorer and provides basic HTML5 styling for Internet Explorer 6-9, Safari 4.x (and iPhone 3.x), and Firefox 3.x."]
+  },
   "html5-notifications": {
     "name": "HTML5 Notifications",
     "authors": ["Hendrik Beskow"],
