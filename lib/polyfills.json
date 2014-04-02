@@ -119,6 +119,10 @@
     "href": "https://github.com/kriskowal/es5-shim",
     "notes": ["Adds the rest of Object, read carefully before using"]
   },
+  "es6shim": {
+    "name": "ES6 Shim",
+    "href": "https://github.com/paulmillr/es6-shim"
+  },
   "html5gears": {
     "name": "html5-gears",
     "authors": ["Brad Neuberg"],
