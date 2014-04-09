@@ -31,6 +31,7 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
       return;
     }
 
+    elemStyle.position = 'absolute';
     elemStyle.height = 0;
     elemStyle.width = 0;
 
