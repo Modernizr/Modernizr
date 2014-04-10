@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Modernizr Test Suite</title>
+  <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="qunit/qunit.css">
   <style>
      body { margin-bottom: 150px;}
@@ -22,12 +23,60 @@
      .output li.yes{color:#090;}
      .output li b{color:#000;}
      .output {font:14px/1.3 Inconsolata,Consolas,monospace;
-                    -webkit-column-count: 5;
-                       -moz-column-count: 5;
-                            column-count: 5;}
+                    -webkit-column-count: 1;
+                       -moz-column-count: 1;
+                            column-count: 1;}
       .output + .output { border-top: 5px solid #ccc; }
       textarea { width: 100%; min-height: 75px;}
       #caniusetrigger { font-size: 38px; font-family: monospace; display:block; }
+      .fail ol { width: 100%; overflow-x: auto; white-space: nowrap; }
+
+      #qunit-testrunner-toolbar:after, #qunit-testrunner-toolbar:before { content: ""; display: table; line-height: 0;}
+      #qunit-testrunner-toolbar:after { clear: both;}
+      #qunit-testrunner-toolbar label { float: left;}
+      #qunit-testrunner-toolbar input { float: left; clear: left;}
+
+      .no-csscolumns .output:after, .no-csscolumns .output:before { content: ""; display: table; line-height: 0; }
+      .no-csscolumns .output:after { clear: both; }
+      .no-csscolumns .output > li {
+        width: 20%;
+        float: left;
+      }
+      .no-csscolumns #_q,
+      .no-csscolumns #_l,
+      .no-csscolumns #_cssomPrefixes,
+      .no-csscolumns #_domPrefixes,
+      .no-csscolumns #_prefixes,
+      .no-csscolumns #_version {
+        float: none;
+        width: auto;
+      }
+      @media screen and (min-width:480px) {
+        .output {
+          -webkit-column-count: 2;
+             -moz-column-count: 2;
+                  column-count: 2;}
+      }
+      @media screen and (min-width:768px) {
+        .output {
+          -webkit-column-count: 3;
+             -moz-column-count: 3;
+                  column-count: 3;}
+        #qunit-testrunner-toolbar input { clear: none;}
+      }
+      @media screen and (min-width:1020px) {
+        .output {
+          -webkit-column-count: 4;
+             -moz-column-count: 4;
+                  column-count: 4;}
+      }
+      @media screen and (min-width:1280px) {
+        .output {
+          -webkit-column-count: 5;
+             -moz-column-count: 5;
+                  column-count: 5;}
+        }
+      }
   </style>
 
   <script src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
