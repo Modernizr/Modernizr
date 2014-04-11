@@ -2,6 +2,7 @@
 <html class="+no-js no-js- no-js i-has-no-js">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title>Modernizr Test Suite</title>
   <link rel="stylesheet" href="qunit/qunit.css">
   <style>
@@ -28,6 +29,34 @@
       .output + .output { border-top: 5px solid #ccc; }
       textarea { width: 100%; min-height: 75px;}
       #caniusetrigger { font-size: 38px; font-family: monospace; display:block; }
+      pre {
+        width: 200px;
+        overflow: hidden;
+      }
+      @media screen and (max-width:1200px) {
+        .output {
+          -webkit-column-count: 4;
+             -moz-column-count: 4;
+                  column-count: 4;}
+      }
+      @media screen and (max-width:1020px) {
+        .output {
+          -webkit-column-count: 3;
+             -moz-column-count: 3;
+                  column-count: 3;}
+      }
+      @media screen and (max-width:768px) {
+        .output {
+          -webkit-column-count: 2;
+             -moz-column-count: 2;
+                  column-count: 2;}
+      }
+      @media screen and (max-width:480px) {
+        .output {
+          -webkit-column-count: 1;
+             -moz-column-count: 1;
+                  column-count: 1;}
+      }
   </style>
 
 

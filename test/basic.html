@@ -2,6 +2,7 @@
 <html class="+no-js no-js- no-js i-has-no-js">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title>Modernizr Test Suite</title>
   <link rel="stylesheet" href="qunit/qunit.css">
   <style>
@@ -28,6 +29,9 @@
       .output + .output { border-top: 5px solid #ccc; }
       textarea { width: 100%; min-height: 75px;}
       #caniusetrigger { font-size: 38px; font-family: monospace; display:block; }
+      pre {
+        overflow: hidden;
+      }
       @media screen and (max-width:1200px) {
         .output {
           -webkit-column-count: 4;
@@ -59,7 +63,7 @@
   <script src="js/lib/polyfills.js"></script>
   <script src="js/lib/detect-global.js"></script>
 
-  <script src="qunit/qunit.js"></script>
+  <!--<script src="qunit/qunit.js"></script>-->
   <script src="js/lib/jquery-1.7b2.js"></script>
 
   <script src="js/setup.js"></script>
