@@ -46,6 +46,11 @@
           -webkit-column-count: 2;
              -moz-column-count: 2;
                   column-count: 2;}
+        .fail ol { width: 100%; overflow-x: auto; white-space: nowrap; }
+        #qunit-testrunner-toolbar:after, #qunit-testrunner-toolbar:before { content: ""; display: table; line-height: 0;}
+        #qunit-testrunner-toolbar:after { clear: both;}
+        #qunit-testrunner-toolbar label { float: left;}
+        #qunit-testrunner-toolbar input { float: left; clear: left;}
       }
       @media screen and (max-width:480px) {
         .output {
