@@ -213,8 +213,8 @@
   },
   "jdataview": {
     "name": "jDataView",
-    "authors": ["Christopher Chedeau"],
-    "href": "https://github.com/vjeux/jDataView/"
+    "authors": ["Christopher Chedeau", "Ingvar Stepanyan"],
+    "href": "https://github.com/jDataView/jDataView/"
   },
   "screenfulljs": {
     "name": "screenfull.js",
