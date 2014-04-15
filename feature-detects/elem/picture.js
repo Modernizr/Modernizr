@@ -13,6 +13,6 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr ) {
+define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('picture', 'HTMLPictureElement' in window );
 });
