@@ -107,6 +107,7 @@
     "test/elem/datalist",
     "test/elem/details",
     "test/elem/output",
+    "test/elem/picture",
     "test/elem/progress-meter",
     "test/elem/ruby",
     "test/elem/template",
