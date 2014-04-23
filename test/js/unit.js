@@ -1,4 +1,4 @@
-/*global module, ok, equal, test, expect, raises, animationStyle */
+/*global module, ok, equal, test, expect, animationStyle */
 // PhantomJS timesout so leave autostart on
 if(navigator.userAgent.indexOf('PhantomJS') === -1) {
   QUnit.config.autostart = false;
@@ -17,65 +17,6 @@ module('Basics', {
 test('globals set up', function() {
   ok(window.Modernizr, 'global modernizr object created');
 });
-
-test('bind is implemented', function() {
-
-  ok(Function.prototype.bind, 'bind is a member of Function.prototype');
-
-  var a = function(){
-    return this.modernizr;
-  };
-  a = a.bind({modernizr: 'just awsome'});
-
-  equal('just awsome', a(), 'bind works as expected');
-
-
-  // thank you webkit layoutTests
-
-
-  var result;
-
-  function F(x, y) {
-    result = this + ' -> x:' + x + ', y:' + y;
-  }
-
-  var G = F.bind('"a"', '"b"');
-  var H = G.bind('"Cannot rebind this!"', '"c"');
-
-  G(1,2);
-  equal(result, '"a" -> x:"b", y:1');
-  H(1,2);
-  equal(result, '"a" -> x:"b", y:"c"');
-
-  var f = new F(1,2);
-  equal(result, '[object Object] -> x:1, y:2');
-  var g = new G(1,2);
-  equal(result, '[object Object] -> x:"b", y:1');
-  var h = new H(1,2);
-  equal(result, '[object Object] -> x:"b", y:"c"');
-
-  ok(f instanceof F, 'f instanceof F');
-  ok(g instanceof F, 'g instanceof F');
-  ok(h instanceof F, 'h instanceof F');
-
-  // Bound functions don't have a 'prototype' property.
-  ok('prototype' in F, '"prototype" in F');
-
-  // The object passed to bind as 'this' must be callable.
-  raises(function(){
-    Function.bind.call(undefined);
-  });
-
-  // Objects that allow call but not construct can be bound, but should throw if used with new.
-  var abcAt = String.prototype.charAt.bind('abc');
-  equal(abcAt(1), 'b', 'Objects that allow call but not construct can be bound...');
-
-  equal(1, Function.bind.length, 'it exists');
-
-
-});
-
-
 
 test('document.documentElement is valid and correct',1, function() {
   equal(document.documentElement,document.getElementsByTagName('html')[0]);
