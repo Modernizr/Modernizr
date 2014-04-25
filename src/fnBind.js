@@ -2,16 +2,14 @@ define(['slice'], function( slice ) {
   // Not implemented as a polyfill, as that would change the environment,
   // which isn’t something Modernizr should do
 
-  // Defer to native .bind if available
-  if ('bind' in Function.prototype) {
-    return function fnBind (fn, that) {
-      return fn.bind(that);
-    };
-  }
-
   // Adapted from ES5-shim https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js
   // es5.github.com/#x15.3.4.5
   function fnBind (fn, that) {
+
+    // Defer to native .bind if available
+    if ('bind' in Function.prototype) {
+      return fn.bind(that);
+    }
 
     var target = fn;
 
