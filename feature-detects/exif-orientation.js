@@ -3,6 +3,7 @@
   "name": "EXIF Orientation",
   "property": "exiforientation",
   "tags": ["image"],
+  "builderAliases": ["exif_orientation"],
   "async": true,
   "authors": ["Paul Sayre"],
   "notes": [{

@@ -2,7 +2,8 @@
 {
   "name": "input[form] Attribute",
   "property": "formattribute",
-  "tags": ["attribute", "forms", "input"]
+  "tags": ["attribute", "forms", "input"],
+  "builderAliases": ["forms_formattribute"]
 }
 !*/
 /* DOC

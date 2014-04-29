@@ -4,6 +4,7 @@
   "async": true,
   "property": "webp",
   "tags": ["image"],
+  "builderAliases": ["img_webp"],
   "authors": ["Rich Bradshaw", "Ryan Seddon", "Paul Irish"],
   "notes": [{
     "name": "Webp Info",

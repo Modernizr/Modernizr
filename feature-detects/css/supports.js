@@ -4,6 +4,7 @@
   "property": "supports",
   "caniuse": "css-featurequeries",
   "tags": ["css"],
+  "builderAliases": ["css_supports"],
   "notes": [{
     "name": "W3 Spec",
     "href": "http://dev.w3.org/csswg/css3-conditional/#at-supports"

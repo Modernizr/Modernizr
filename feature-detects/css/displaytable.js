@@ -5,6 +5,7 @@
   "caniuse": "css-table",
   "authors": ["scottjehl"],
   "tags": ["css"],
+  "builderAliases": ["css_displaytable"],
   "notes": [{
     "name": "All additional table display values",
     "href": "http://pastebin.com/Gk9PeVaQ"

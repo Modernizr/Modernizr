@@ -5,6 +5,7 @@
   "caniuse": "audio-api",
   "polyfills": ["xaudiojs", "dynamicaudiojs", "audiolibjs"],
   "tags": ["audio", "media"],
+  "builderAliases": ["audio_webaudio_api"],
   "authors": ["Addy Osmani"],
   "notes": [{
     "name": "W3 Specification",

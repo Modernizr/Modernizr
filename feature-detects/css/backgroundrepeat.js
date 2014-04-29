@@ -3,6 +3,7 @@
   "name": "Background Repeat",
   "property": ["bgrepeatspace", "bgrepeatround"],
   "tags": ["css"],
+  "builderAliases": ["css_backgroundrepeat"],
   "authors": ["Ryan Seddon"],
   "notes": [{
     "name": "MDN Docs",

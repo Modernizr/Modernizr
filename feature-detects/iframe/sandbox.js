@@ -3,6 +3,7 @@
   "name": "iframe[sandbox] Attribute",
   "property": "sandbox",
   "tags": ["iframe"],
+  "builderAliases": ["iframe_sandbox"],
   "notes": [
     "False-positive on Firefox < 29",
   {
