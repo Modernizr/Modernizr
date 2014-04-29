@@ -4,6 +4,7 @@
   "caniuse": "css-masks",
   "property": "cssmask",
   "tags": ["css"],
+  "builderAliases": ["css_mask"],
   "notes": [
     "This is for the -webkit-mask feature, not for the similar svg mask in Firefox.",
     {

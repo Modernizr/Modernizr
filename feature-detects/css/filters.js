@@ -4,7 +4,8 @@
   "property": "cssfilters",
   "caniuse": "css-filters",
   "polyfills": ["polyfilter"],
-  "tags": ["css"]
+  "tags": ["css"],
+  "builderAliases": ["css_filters"]
 }
 !*/
 define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {

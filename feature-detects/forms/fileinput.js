@@ -3,7 +3,8 @@
   "name": "input[file] Attribute",
   "property": "fileinput",
   "caniuse" : "forms",
-  "tags": ["file", "forms", "input"]
+  "tags": ["file", "forms", "input"],
+  "builderAliases": ["forms_fileinput"]
 }
 !*/
 /* DOC

@@ -3,6 +3,7 @@
   "name": "Blob constructor",
   "property": "blobconstructor",
   "aliases": ["blob-constructor"],
+  "builderAliases": ["blob_constructor"],
   "caniuse": "blobbuilder",
   "notes": [{
     "name": "W3C spec",

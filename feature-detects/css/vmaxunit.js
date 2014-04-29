@@ -4,6 +4,7 @@
   "property": "cssvmaxunit",
   "caniuse": "viewport-units",
   "tags": ["css"],
+  "builderAliases": ["css_vmaxunit"],
   "notes": [{
     "name": "Related Modernizr Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/572"

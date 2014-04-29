@@ -7,7 +7,8 @@
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en/API/Fullscreen"
   }],
-  "polyfills": ["screenfulljs"]
+  "polyfills": ["screenfulljs"],
+  "builderAliases": ["fullscreen_api"]
 }
 !*/
 define(['Modernizr', 'domPrefixes', 'prefixed'], function( Modernizr, domPrefixes, prefixed ) {

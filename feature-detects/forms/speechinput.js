@@ -3,6 +3,7 @@
   "name": "Speech Input API",
   "property": "speechinput",
   "tags": ["forms", "speech", "attribute"],
+  "builderAliases": ["forms_speechinput"],
   "authors": ["Cătălin Mariș"],
   "knownBugs": [
     "This detect only checks the webkit version because the Speech Input API was only implemented in Chrome and it was deprecated in favor of the Web Speech API."

@@ -3,6 +3,7 @@
   "name": "createElement with Attributes",
   "property": ["createelementattrs", "createelement-attrs"],
   "tags": ["dom"],
+  "builderAliases": ["dom_createElement_attrs"],
   "authors": ["James A. Rosen"],
   "notes": [{
     "name": "Related Github Issue",
