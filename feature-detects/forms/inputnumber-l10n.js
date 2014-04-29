@@ -10,12 +10,12 @@
   },{
     "name": "Based on This",
     "href": "http://trac.webkit.org/browser/trunk/LayoutTests/fast/forms/script-tests/input-number-keyoperation.js?rev=80096#L9"
-  }]
+  }],
+  "knownBugs": "Only ever returns true if the browser/OS is configured to use comma as a decimal separator. This is probably fine for most use cases."
 }
 !*/
 /* DOC
-Detects whether input type="number" is capable of receiving and
-displaying localized numbers, e.g. with comma separator
+Detects whether input type="number" is capable of receiving and displaying localized numbers, e.g. with comma separator.
 */
 define(['Modernizr', 'createElement', 'docElement', 'getBody', 'test/inputtypes', 'test/forms/validation'], function( Modernizr, createElement, docElement, getBody ) {
   Modernizr.addTest('localizednumber', function() {
