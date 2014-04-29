@@ -156,7 +156,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
       var matchMedia = window.matchMedia || window.msMatchMedia;
       if ( matchMedia ) {
-        return matchMedia(mq).matches;
+        return matchMedia(mq) && matchMedia(mq).matches || false;
       }
 
       var bool;
