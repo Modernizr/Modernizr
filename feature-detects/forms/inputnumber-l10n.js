@@ -17,8 +17,13 @@
 Detects whether input type="number" is capable of receiving and
 displaying localized numbers, e.g. with comma separator
 */
-define(['Modernizr', 'createElement', 'docElement', 'getBody'], function( Modernizr, createElement, docElement, getBody ) {
+define(['Modernizr', 'createElement', 'docElement', 'getBody', 'test/inputtypes', 'test/forms/validation'], function( Modernizr, createElement, docElement, getBody ) {
   Modernizr.addTest('localizednumber', function() {
+    // this extends our testing of input[type=number], so bomb out if that's missing
+    if (!Modernizr.inputtypes.number) { return false; }
+    // we rely on checkValidity later, so bomb out early if we don't have it
+    if (!Modernizr.formvalidation) { return false; }
+
     var el = createElement('div');
     var diff;
     var body = getBody();
