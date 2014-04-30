@@ -1,4 +1,4 @@
-define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], function( contains, mStyle, createElement, nativeTestProps, is ) {
+define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'cssToDOM'], function( contains, mStyle, createElement, nativeTestProps, is, cssToDOM) {
   // testProps is a generic CSS / DOM property test.
 
   // In testing support for a given CSS property, it's legit to test:
@@ -53,7 +53,11 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
       prop = props[i];
       before = mStyle.style[prop];
 
-      if ( !contains(prop, '-') && mStyle.style[prop] !== undefined ) {
+      if (contains(prop, '-')) {
+        prop = cssToDOM(prop);
+      }
+
+      if ( mStyle.style[prop] !== undefined ) {
 
         // If value to test has been passed in, do a set-and-check test.
         // 0 (integer) is a valid property value, so check that `value` isn't
