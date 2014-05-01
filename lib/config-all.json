@@ -145,7 +145,6 @@
     "test/forms/inputnumber-l10n",
     "test/forms/placeholder",
     "test/forms/requestautocomplete",
-    "test/forms/speechinput",
     "test/forms/validation",
     "test/fullscreen-api",
     "test/gamepad",
