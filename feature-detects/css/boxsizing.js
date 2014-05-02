@@ -15,6 +15,11 @@
   }]
 }
 !*/
+/* DOC
+Detects basic support for the `box-sizing` CSS property with a value of `content-box` or `border-box`.
+
+Note this does *not* represent support for the experimental `padding-box` value.
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('boxsizing', testAllProps('boxSizing', 'border-box', true) && (document.documentMode === undefined || document.documentMode > 7));
 });
