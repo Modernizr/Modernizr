@@ -79,7 +79,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], funct
 
         // If we’re rockin’ a fake body, clean it up
         if (body.fake) {
-          body.parentNode.removeChild(body);
+          body.parentNode && body.parentNode.removeChild(body);
         }
       }, 10);
     }

@@ -1,0 +1,63 @@
+{
+  "username": "--secure--",
+  "key": "--secure--",
+  "test_path": "test/basic.html",
+  "timeout": 600,
+  "browsers": [
+    "chrome_latest",
+    "chrome_previous",
+    "firefox_latest",
+    "firefox_previous",
+    "opera_latest",
+    {
+      "browser": "safari",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Snow Leopard"
+    },
+    {
+      "browser": "safari",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Lion"
+    },
+    {
+      "browser": "safari",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Mountain Lion"
+    },
+    {
+      "browser": "safari",
+      "browser_version": "latest",
+      "os": "OS X",
+      "os_version": "Mavericks"
+    },
+    "mobile_safari_5",
+    "mobile_safari_5_1",
+    "mobile_safari_6",
+    "mobile_safari_7",
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "Motorola Photon 4G",
+        "os_version": "2.3",
+        "os": "android"
+    },
+    {
+        "browser": "Android Browser",
+        "browser_version": null,
+        "device": "Samsung Galaxy Nexus",
+        "os_version": "4.0",
+        "os": "android"
+    },
+    "android_browser_4_1",
+    "android_browser_4_2",
+    "ie_6",
+    "ie_7",
+    "ie_8",
+    "ie_9",
+    "ie_10",
+    "ie_11"
+  ]
+}
