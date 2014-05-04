@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - 0.8
+  - 0.10
 before_script:
-  - npm install grunt-cli -g
+  - npm install grunt-cli browserstack-runner -g
 script:
   - grunt travis --verbose
-  - node ./node_modules/.bin/browserstack-runner
+  - browserstack-runner
 env:
   global:
     - secure: "qV/i9OKB0d83BdvVXhSkWY9evl/c7T2k8bo55fyYlzZjeetd/W+wnOLu5Ckgd3r+CAkpkl84U4qK7Ga5VTs/w2DktcAvo1aCHPC2aUiW6IJJcvcauipYQ+MVa9FBuESKH4SRuq/vIYRDTWOlch+dD+e4x5Fn07rzon6DaeRy7Ao="
