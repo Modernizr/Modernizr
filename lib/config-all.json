@@ -80,6 +80,7 @@
     "test/css/siblinggeneral",
     "test/css/subpixelfont",
     "test/css/supports",
+    "test/css/tablecell-positionrelative",
     "test/css/target",
     "test/css/textshadow",
     "test/css/transforms",
