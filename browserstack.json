@@ -9,10 +9,6 @@
     "firefox_latest",
     "firefox_previous",
     "opera_latest",
-    "ie_8",
-    "ie_9",
-    "ie_10",
-    "ie_11",
     {
       "browser": "safari",
       "browser_version": "latest",
@@ -44,6 +40,10 @@
     "android_browser_2_3",
     "android_browser_4",
     "android_browser_4_1",
-    "android_browser_4_2"
+    "android_browser_4_2",
+    "ie_8",
+    "ie_9",
+    "ie_10",
+    "ie_11"
   ]
 }
