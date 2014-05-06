@@ -8,11 +8,12 @@
   "notes": [{
     "name": "MDN Docs",
     "href": "http://developer.mozilla.org/en/DOM/window.navigator.mozBattery"
-  }]
+  }],
+  "warnings": "If the Battery API is not supported, this detect will return `false` even when the device battery is low."
 }
 !*/
 /* DOC
-Enable a developer to remove CPU intensive CSS/JS when battery is low
+Detects whether the battery is low, if the Battery API is supported, e.g. to remove CPU intensive CSS/JS.
 */
 define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
   Modernizr.addTest('lowbattery', function() {

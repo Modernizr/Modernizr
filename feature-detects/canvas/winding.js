@@ -11,7 +11,7 @@
 }
 !*/
 /* DOC
-Determines if winding rules, which controls if a path can go clockwise or counterclockwise
+Determines if a winding rule (e.g. `evenodd`) can be specified for a path, which controls how it is determined if a point falls within the path.
 */
 define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
 
