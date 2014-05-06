@@ -10,6 +10,9 @@
   }]
 }
 !*/
+/* DOC
+Detects support for the `:checked` pseudo-delector, which matches a radio button, checkbox or select option which is currently in an `on` state.
+*/
 define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, createElement, testStyles ) {
   Modernizr.addTest('checked', function(){
     return testStyles('#modernizr {position:absolute} #modernizr input {margin-left:10px} #modernizr :checked {margin-left:20px;display:block}', function( elem ){
