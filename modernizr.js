@@ -1304,7 +1304,7 @@ window.Modernizr = (function( window, document, undefined ) {
         // shiv the document
         shivDocument(document);
 
-    }(this, document));
+    }(window, document));
     /*>>shiv*/
 
     // Assign private properties to the return object with prefix
