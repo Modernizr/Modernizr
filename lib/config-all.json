@@ -22,6 +22,7 @@
     "test/canvas/todataurl",
     "test/canvas",
     "test/canvastext",
+    "test/consolegroup",
     "test/contenteditable",
     "test/contentsecuritypolicy",
     "test/contextmenu",
