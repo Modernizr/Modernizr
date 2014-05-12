@@ -235,6 +235,7 @@
     "test/workers/blobworkers",
     "test/workers/dataworkers",
     "test/workers/sharedworkers",
+    "test/workers/transferables",
     "test/workers/webworkers"
   ]
 }
