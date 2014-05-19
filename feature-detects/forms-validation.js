@@ -11,7 +11,7 @@
   Modernizr.formvalidationmessage = false;
 
   Modernizr.addTest('formvalidation', function() {
-    var form = createElement('form');
+    var form = document.createElement('form');
     if ( !('checkValidity' in form) || !('addEventListener' in form) ) {
       return false;
     }
@@ -37,7 +37,7 @@
     //older opera browsers need a name attribute
     form.innerHTML = '<input name="modTest" required><button></button>';
 
-    testStyles('#modernizr form{position:absolute;top:-99999em}', function( node ) {
+    Modernizr.testStyles('#modernizr form{position:absolute;top:-99999em}', function( node ) {
       node.appendChild(form);
 
       input = form.getElementsByTagName('input')[0];
