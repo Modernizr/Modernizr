@@ -4,7 +4,7 @@ module.exports = function( grunt ) {
 
     grunt.initConfig({
         meta: {
-          version: '2.8.1',
+          version: '2.8.2',
           banner: '/*!\n' +
             ' * Modernizr v<%= meta.version %>\n' +
             ' * www.modernizr.com\n *\n' +
