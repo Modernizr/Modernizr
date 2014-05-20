@@ -20,6 +20,9 @@
   }]
 }
 !*/
+/* DOC
+Detects support for gradients in CSS via the `gradient()` or `linear-gradient()` syntax.
+*/
 define(['Modernizr', 'prefixes', 'createElement'], function( Modernizr, prefixes, createElement ) {
 
   Modernizr.addTest('cssgradients', function() {

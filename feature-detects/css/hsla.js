@@ -7,6 +7,9 @@
   "notes": ["Same as rgba(), in fact, browsers re-map hsla() to rgba() internally, except IE9 who retains it as hsla"]
 }
 !*/
+/* DOC
+Detects support for the `hsla()` function for defining colours in CSS.
+*/
 define(['Modernizr', 'createElement', 'contains'], function( Modernizr, createElement, contains ) {
   Modernizr.addTest('hsla', function() {
     var elem = createElement('div');

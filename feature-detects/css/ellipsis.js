@@ -9,6 +9,9 @@
   "tags": ["css"]
 }
 !*/
+/* DOC
+Detects support for the `text-overflow:ellipsis` CSS property.
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('ellipsis', testAllProps('textOverflow', 'ellipsis'));
 });

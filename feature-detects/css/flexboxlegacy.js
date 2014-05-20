@@ -10,6 +10,11 @@
   }]
 }
 !*/
+/* DOC
+Detects support for the 2009 ‘legacy’ syntax for flexible box layout.
+
+See the `flexbox` detect for information on how to use multiple flexbox detects together.
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('flexboxlegacy', testAllProps('boxDirection', 'reverse', true));
 });
