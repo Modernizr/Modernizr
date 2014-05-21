@@ -1,6 +1,6 @@
 
 (function (window, factory) {
-    // always expose to }
+    // always expose Modernizr
     window.Modernizr = factory();
 
     if (typeof define === 'function' && define.amd) {
