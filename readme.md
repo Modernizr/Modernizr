@@ -45,6 +45,7 @@ Run the [test suite](http://modernizr.github.com/Modernizr/test/)
 ### To generate everything in 'config-all.json':
 
 ```js
+npm install (optional first step)
 grunt build
 //outputs to ./dist/modernizr-build.js
 ```
