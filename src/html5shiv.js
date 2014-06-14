@@ -2,14 +2,13 @@ define(function() {
   // Take the html5 variable out of the
   // html5shiv scope so we can return it.
   var html5;
-
   /**
-  * @preserve HTML5 Shiv prev3.7.1 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
+  * @preserve HTML5 Shiv 3.7.2 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
   */
   ;(function(window, document) {
   /*jshint evil:true */
     /** version */
-    var version = '3.7.0';
+    var version = '3.7.2';
 
     /** Preset options */
     var options = window.html5 || {};
@@ -87,7 +86,25 @@ define(function() {
       return typeof elements == 'string' ? elements.split(' ') : elements;
     }
 
-      /**
+    /**
+     * Extends the built-in list of html5 elements
+     * @memberOf html5
+     * @param {String|Array} newElements whitespace separated list or array of new element names to shiv
+     * @param {Document} ownerDocument The context document.
+     */
+    function addElements(newElements, ownerDocument) {
+      var elements = html5.elements;
+      if(typeof elements != 'string'){
+        elements = elements.join(' ');
+      }
+      if(typeof newElements != 'string'){
+        newElements = newElements.join(' ');
+      }
+      html5.elements = elements +' '+ newElements;
+      shivDocument(ownerDocument);
+    }
+
+     /**
      * Returns the data associated to the given document
      * @private
      * @param {Document} ownerDocument The document.
@@ -292,7 +309,10 @@ define(function() {
       createElement: createElement,
 
       //creates a shived documentFragment
-      createDocumentFragment: createDocumentFragment
+      createDocumentFragment: createDocumentFragment,
+
+      //extends list of elements
+      addElements: addElements
     };
 
     /*--------------------------------------------------------------------------*/
@@ -304,6 +324,5 @@ define(function() {
     shivDocument(document);
 
   }(this, document));
-
-  return html5;
+return html5;
 });
