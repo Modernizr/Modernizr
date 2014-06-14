@@ -205,6 +205,7 @@
     "test/svg/clippaths",
     "test/svg/filters",
     "test/svg/inline",
+    "test/svg/foreignobject",
     "test/svg/smil",
     "test/svg",
     "test/textarea/maxlength",
