@@ -1,0 +1,105 @@
+function check_for_autoplay() {
+    // originally created on http://jsfiddle.net/GrantPax/r7gZ5/ - sorry for all the fluff - I'll strip the comments if you need me to
+    // console.log("check_for_autoplay() running")
+    // If you want more documentation, scroll to the bottom.
+
+    // "waitTime" is the time (ms) to wait for the audio listener to run before returning.
+    var waitTime = 500 //This could be as low as 5ms (on a great day) and as high as 1000ms to get consistent results.
+
+    //console.time("time to check for audio autoplay");
+    //console.log("checking if Audio().autoplay is enabled...");
+    //document.getElementById("output").innerHTML = "running...";
+
+    // Audio file data URIs from comments in
+    // [this gist](https://gist.github.com/westonruter/253174)
+    // via [mudcube](https://github.com/mudcube)
+    var mp3 = 'data:audio/mpeg;base64,/+MYxAAAAANIAUAAAASEEB/jwOFM/0MM/90b/+RhST//w4NFwOjf///PZu////9lns5GFDv//l9GlUIEEIAAAgIg8Ir/JGq3/+MYxDsLIj5QMYcoAP0dv9HIjUcH//yYSg+CIbkGP//8w0bLVjUP///3Z0x5QCAv/yLjwtGKTEFNRTMuOTeqqqqqqqqqqqqq/+MYxEkNmdJkUYc4AKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq';
+    var ogg = 'data:audio/ogg;base64,T2dnUwACAAAAAAAAAADqnjMlAAAAAOyyzPIBHgF2b3JiaXMAAAAAAUAfAABAHwAAQB8AAEAfAACZAU9nZ1MAAAAAAAAAAAAA6p4zJQEAAAANJGeqCj3//////////5ADdm9yYmlzLQAAAFhpcGguT3JnIGxpYlZvcmJpcyBJIDIwMTAxMTAxIChTY2hhdWZlbnVnZ2V0KQAAAAABBXZvcmJpcw9CQ1YBAAABAAxSFCElGVNKYwiVUlIpBR1jUFtHHWPUOUYhZBBTiEkZpXtPKpVYSsgRUlgpRR1TTFNJlVKWKUUdYxRTSCFT1jFloXMUS4ZJCSVsTa50FkvomWOWMUYdY85aSp1j1jFFHWNSUkmhcxg6ZiVkFDpGxehifDA6laJCKL7H3lLpLYWKW4q91xpT6y2EGEtpwQhhc+211dxKasUYY4wxxsXiUyiC0JBVAAABAABABAFCQ1YBAAoAAMJQDEVRgNCQVQBABgCAABRFcRTHcRxHkiTLAkJDVgEAQAAAAgAAKI7hKJIjSZJkWZZlWZameZaouaov+64u667t6roOhIasBACAAAAYRqF1TCqDEEPKQ4QUY9AzoxBDDEzGHGNONKQMMogzxZAyiFssLqgQBKEhKwKAKAAAwBjEGGIMOeekZFIi55iUTkoDnaPUUcoolRRLjBmlEluJMYLOUeooZZRCjKXFjFKJscRUAABAgAMAQICFUGjIigAgCgCAMAYphZRCjCnmFHOIMeUcgwwxxiBkzinoGJNOSuWck85JiRhjzjEHlXNOSuekctBJyaQTAAAQ4AAAEGAhFBqyIgCIEwAwSJKmWZomipamiaJniqrqiaKqWp5nmp5pqqpnmqpqqqrrmqrqypbnmaZnmqrqmaaqiqbquqaquq6nqrZsuqoum65q267s+rZru77uqapsm6or66bqyrrqyrbuurbtS56nqqKquq5nqq6ruq5uq65r25pqyq6purJtuq4tu7Js664s67pmqq5suqotm64s667s2rYqy7ovuq5uq7Ks+6os+75s67ru2rrwi65r66os674qy74x27bwy7ouHJMnqqqnqq7rmarrqq5r26rr2rqmmq5suq4tm6or26os67Yry7aumaosm64r26bryrIqy77vyrJui67r66Ys67oqy8Lu6roxzLat+6Lr6roqy7qvyrKuu7ru+7JuC7umqrpuyrKvm7Ks+7auC8us27oxuq7vq7It/KosC7+u+8Iy6z5jdF1fV21ZGFbZ9n3d95Vj1nVhWW1b+V1bZ7y+bgy7bvzKrQvLstq2scy6rSyvrxvDLux8W/iVmqratum6um7Ksq/Lui60dd1XRtf1fdW2fV+VZd+3hV9pG8OwjK6r+6os68Jry8ov67qw7MIvLKttK7+r68ow27qw3L6wLL/uC8uq277v6rrStXVluX2fsSu38QsAABhwAAAIMKEMFBqyIgCIEwBAEHIOKQahYgpCCKGkEEIqFWNSMuakZM5JKaWUFEpJrWJMSuaclMwxKaGUlkopqYRSWiqlxBRKaS2l1mJKqcVQSmulpNZKSa2llGJMrcUYMSYlc05K5pyUklJrJZXWMucoZQ5K6iCklEoqraTUYuacpA46Kx2E1EoqMZWUYgupxFZKaq2kFGMrMdXUWo4hpRhLSrGVlFptMdXWWqs1YkxK5pyUzDkqJaXWSiqtZc5J6iC01DkoqaTUYiopxco5SR2ElDLIqJSUWiupxBJSia20FGMpqcXUYq4pxRZDSS2WlFosqcTWYoy1tVRTJ6XFklKMJZUYW6y5ttZqDKXEVkqLsaSUW2sx1xZjjqGkFksrsZWUWmy15dhayzW1VGNKrdYWY40x5ZRrrT2n1mJNMdXaWqy51ZZbzLXnTkprpZQWS0oxttZijTHmHEppraQUWykpxtZara3FXEMpsZXSWiypxNhirLXFVmNqrcYWW62ltVprrb3GVlsurdXcYqw9tZRrrLXmWFNtBQAADDgAAASYUAYKDVkJAEQBAADGMMYYhEYpx5yT0ijlnHNSKucghJBS5hyEEFLKnINQSkuZcxBKSSmUklJqrYVSUmqttQIAAAocAAACbNCUWByg0JCVAEAqAIDBcTRNFFXVdX1fsSxRVFXXlW3jVyxNFFVVdm1b+DVRVFXXtW3bFn5NFFVVdmXZtoWiqrqybduybgvDqKqua9uybeuorqvbuq3bui9UXVmWbVu3dR3XtnXd9nVd+Bmzbeu2buu+8CMMR9/4IeTj+3RCCAAAT3AAACqwYXWEk6KxwEJDVgIAGQAAgDFKGYUYM0gxphhjTDHGmAAAgAEHAIAAE8pAoSErAoAoAADAOeecc84555xzzjnnnHPOOeecc44xxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY0wAwE6EA8BOhIVQaMhKACAcAABACCEpKaWUUkoRU85BSSmllFKqFIOMSkoppZRSpBR1lFJKKaWUIqWgpJJSSimllElJKaWUUkoppYw6SimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaVUSimllFJKKaWUUkoppRQAYPLgAACVYOMMK0lnhaPBhYasBAByAwAAhRiDEEJpraRUUkolVc5BKCWUlEpKKZWUUqqYgxBKKqmlklJKKbXSQSihlFBKKSWUUkooJYQQSgmhlFRCK6mEUkoHoYQSQimhhFRKKSWUzkEoIYUOQkmllNRCSB10VFIpIZVSSiklpZQ6CKGUklJLLZVSWkqpdBJSKamV1FJqqbWSUgmhpFZKSSWl0lpJJbUSSkklpZRSSymFVFJJJYSSUioltZZaSqm11lJIqZWUUkqppdRSSiWlkEpKqZSSUmollZRSaiGVlEpJKaTUSimlpFRCSamlUlpKLbWUSkmptFRSSaWUlEpJKaVSSksppRJKSqmllFpJKYWSUkoplZJSSyW1VEoKJaWUUkmptJRSSymVklIBAEAHDgAAAUZUWoidZlx5BI4oZJiAAgAAQABAgAkgMEBQMApBgDACAQAAAADAAAAfAABHARAR0ZzBAUKCwgJDg8MDAAAAAAAAAAAAAACAT2dnUwAEAAAAAAAAAADqnjMlAgAAADzQPmcBAQA=';
+
+    var supportsAutoplay = false;
+
+    var audio = new Audio();
+    var testSrc;
+    var fileTypeUsed;
+
+    //console.log("Modernizr.audio.ogg:" + Modernizr.audio.ogg); //uses canPlayType()
+    //console.log("Modernizr.audio.mp3:" + Modernizr.audio.mp3); //uses canPlayType()
+
+    if (Modernizr.audio.ogg) {
+        testSrc = ogg;
+        //fileTypeUsed = ".ogg";
+    } else if (Modernizr.audio.mp3) {
+        testSrc = mp3;
+        //fileTypeUsed = ".mp3";
+    } else {
+        console.error("No ogg or mp3 support. [Modernizr.audio_autoplay (created with Modernizr.addtest)]");
+        alert("Browser must support mp3 or ogg audio files. See error console.");
+    }
+
+    audio.autoplay = true;
+    audio.volume = 0;
+
+    // this will only be triggered if autoplay works
+    audio.addEventListener('play', function () {
+        supportsAutoplay = true;
+    });
+
+    audio.src = testSrc; //see if the listener is listening
+
+    return setTimeout( //wait for listener to run
+        function () {
+            //        console.log("supportsAutoplay: " + supportsAutoplay);
+            /*       
+        //just console stuff
+        console.timeEnd("time to check for audio autoplay");  //started timing above
+        console.log("waitTime: " + waitTime + " ms");
+        console.log("fileTypeUsed: " + fileTypeUsed);
+        
+        //just output stuff
+        var readableStatus = (supportsAutoplay) ? 
+            '<span style="color: #00ff00;">&#10004;</span> supports autoplay' : 
+            '<span style="color: #ff0000;">&#x2718;</span> does not support autoplay';
+        document.getElementById("output").innerHTML = "Timing is everything. "+
+            "Depending on waitTime, system load, " + 
+            "phase of the moon, and pigeons on the roof, this test reports this browser <br><br>" + 
+            readableStatus + 
+            "<br><br>waitTime: " + waitTime + " ms" + 
+            "<br>fileTypeUsed: " + fileTypeUsed + "<br><br>" +
+            "Change the waitTime and run again to see what happens - " +
+            "or just rerun. It may pass as the environment settles. " +
+            "We have yet to see it pass below a 10 ms waitTime. " +
+            "Don't be surprised if the console gives a different result. " +
+            "It's a timing issue. Clear your console and fiddle with waitTime.<br><br>";
+        
+     */ //useful code
+            return !!supportsAutoplay
+        },
+        waitTime // set at top of function 
+    );
+
+};
+
+/*
+- Only checks <audio>
+- Uses Modernizr because that's where this is going (Modernizr.addtest)
+- I've tested on several different browsers and platforms. Less than 5ms waitTime pretty much guarantees failure regardless of browser capacity. That doesn't mean you might not need to wait 1000ms (IE).
+- Tested on:
+  Model Name:	MacBook Air
+  Model Identifier:	MacBookAir4,2
+  Processor Name:	Intel Core i7
+  Processor Speed:	1.8 GHz
+  Number of Processors:	1
+  Total Number of Cores:	2
+  L2 Cache (per Core):	256 KB
+  L3 Cache:	4 MB
+  Memory:	4 GB
+- Dependent on canPlayType() (in Modernizr) which has been questioned by some, though I wonder if timing issues weren't at the bottom of some of the inconsistencies - and there are documented issues beyond timing.
+- This could be improved by looping on waitTime to see where it breaks - there are quite a few dependencies.
+- Yes, there is overhead that can be removed. I'm leaving it in here for understanding. This is not intended as a benchmark facility.
+- Interestingly, several Android browsers have autoplay enabled. Who knew. I can hear the speaker turn on.
+*/
+
+//console.log("return value of check_for_autoplay(): " + check_for_autoplay());
+
+//console.log("autoplay addTest about to run");
+Modernizr.addTest("autoplay", check_for_autoplay());
