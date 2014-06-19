@@ -533,6 +533,11 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
 
 });
 
+test('Modernizr.prefixed atRule', function() {
+  equal(Modernizr.prefixed('@import'), '@import', 'Everyone supports import');
+  equal(Modernizr.prefixed('@penguin'), false, 'Nobody supports @penguin');
+});
+
 
 // FIXME: so a few of these are whitelisting for webkit. i'd like to improve that.
 test('Modernizr.prefixed autobind', function(){

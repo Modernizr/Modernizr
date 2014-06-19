@@ -1,13 +1,14 @@
 {
   "classPrefix": "",
   "options": [
-    "setClasses",
     "addTest",
+    "atRule",
+    "fnBind",
     "html5printshiv",
     "load",
-    "testProp",
-    "fnBind",
-    "prefixedCSS"
+    "prefixedCSS",
+    "setClasses",
+    "testProp"
   ],
   "feature-detects": [
     "test/a/download",
