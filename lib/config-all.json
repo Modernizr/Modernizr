@@ -215,6 +215,7 @@
     "test/unicode-range",
     "test/url/bloburls",
     "test/url/data-uri",
+    "test/url/parser",
     "test/userdata",
     "test/vibration",
     "test/video/autoplay",
