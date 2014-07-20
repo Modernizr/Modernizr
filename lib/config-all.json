@@ -145,6 +145,7 @@
     "es5/syntax",
     "es5/undefined",
     "es6/array",
+    "es6/collections",
     "es6/contains",
     "es6/generators",
     "es6/math",

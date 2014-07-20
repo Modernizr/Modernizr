@@ -698,6 +698,12 @@
     "href": "http://remysharp.com/2008/06/30/maxlength-plugin/",
     "licenses": ["CC SA"]
   },
+  "weakmap": {
+    "name": "ES6 WeakMap",
+    "authors": ["Google Inc."],
+    "href": "https://github.com/Polymer/WeakMap",
+    "licenses": ["BSD"]
+  },
   "eventlistener": {
     "name": "EventListener",
     "authors": ["Jonathan Neal"],
