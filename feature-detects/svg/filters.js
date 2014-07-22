@@ -4,6 +4,7 @@
   "property": "svgfilters",
   "caniuse": "svg-filters",
   "tags": ["svg"],
+  "builderAliases": ["svg_filters"],
   "authors": ["Erik Dahlstrom"],
   "notes": [{
     "name": "W3C Spec",
@@ -16,7 +17,7 @@ define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('svgfilters', function() {
     var result = false;
     try {
-      result = typeof SVGFEColorMatrixElement !== undefined &&
+      result = 'SVGFEColorMatrixElement' in window &&
         SVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_SATURATE == 2;
     }
     catch(e) {}

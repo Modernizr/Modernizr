@@ -5,3 +5,4 @@ build
 tmp
 .DS_Store
 .project
+*.log

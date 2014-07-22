@@ -15,9 +15,7 @@
 }
 !*/
 /* DOC
-
 Detects support for the Notifications API
-
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('notification', 'Notification' in window && 'permission' in window.Notification && 'requestPermission' in window.Notification);

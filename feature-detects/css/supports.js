@@ -4,6 +4,7 @@
   "property": "supports",
   "caniuse": "css-featurequeries",
   "tags": ["css"],
+  "builderAliases": ["css_supports"],
   "notes": [{
     "name": "W3 Spec",
     "href": "http://dev.w3.org/csswg/css3-conditional/#at-supports"
@@ -18,6 +19,5 @@
 !*/
 define(['Modernizr'], function( Modernizr ) {
   // Relies on the fact that a browser vendor should expose the CSSSupportsRule interface
-
-  Modernizr.addTest('supports', 'CSSSupportsRule' in window);
+  Modernizr.addTest('supports', 'CSS' in window && 'supports' in window.CSS);
 });

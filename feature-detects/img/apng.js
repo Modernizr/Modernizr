@@ -4,6 +4,7 @@
   "async": true,
   "property": "apng",
   "tags": ["image"],
+  "builderAliases": ["img_apng"],
   "notes": [{
     "name": "Wikipedia Article",
     "href": "http://en.wikipedia.org/wiki/APNG"
@@ -11,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Test for animated png support.
-
 */
 define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function( Modernizr, createElement, addTest ) {
   Modernizr.addAsyncTest(function () {
@@ -37,6 +36,6 @@ define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function( Moder
       });
     };
 
-    image.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACGFjVEwAAAABAAAAAcMq2TYAAAANSURBVAiZY2BgYPgPAAEEAQB9ssjfAAAAGmZjVEwAAAAAAAAAAQAAAAEAAAAAAAAAAAD6A+gBAbNU+2sAAAARZmRBVAAAAAEImWNgYGBgAAAABQAB6MzFdgAAAABJRU5ErkJggg==";
+    image.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACGFjVEwAAAABAAAAAcMq2TYAAAANSURBVAiZY2BgYPgPAAEEAQB9ssjfAAAAGmZjVEwAAAAAAAAAAQAAAAEAAAAAAAAAAAD6A+gBAbNU+2sAAAARZmRBVAAAAAEImWNgYGBgAAAABQAB6MzFdgAAAABJRU5ErkJggg==';
   });
 });

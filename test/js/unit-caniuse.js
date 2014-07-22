@@ -1,7 +1,7 @@
 /*globals uaparse, JSONSelect, ok, equal, module, test */
 
 var myscript = document.createElement('script'),
-    ref = document.getElementsByTagName('script')[0];
+ref = document.getElementsByTagName('script')[0];
 
 myscript.src = 'http://caniuse.com/jsonp.php?callback=caniusecb';
 
@@ -14,7 +14,6 @@ var map = {
   adownload: 'download',
   applicationcache: 'offline-apps',
   blobconstructor: 'blobbuilder',
-  blobworkers: 'blobworkers',
   borderimage: 'border-image',
   borderradius: 'border-radius',
   boxshadow: 'css-boxshadow',
@@ -24,7 +23,6 @@ var map = {
   checked: 'css-sel3',
   classlist: 'classlist',
   contenteditable: 'contenteditable',
-  contentsecuritypolicy: 'contentsecuritypolicy',
   contextmenu: 'menu',
   cors: 'cors',
   cssanimations: 'css-animation',
@@ -48,7 +46,6 @@ var map = {
   datalistelem: 'datalist',
   dataset: 'dataset',
   datauri: 'datauri',
-  dataworkers: 'dataworkers',
   details: 'details',
   deviceorientation: 'deviceorientation',
   displaytable: 'css-table',
@@ -96,8 +93,6 @@ var map = {
   svgasimg: 'svg-img',
   svgfilters: 'svg-filters',
   textshadow: 'css-textshadow',
-  time: 'html5semantic',
-  touchevents: 'touch',
   typedarrays: 'typedarrays',
   userselect: 'user-select-none',
   video: 'video',
@@ -117,15 +112,15 @@ window.caniusecb = function(scriptdata) {
 
   var testdata     = scriptdata.data,
 
-      // parse the current UA with uaparser
-      ua           = uaparse(navigator.userAgent),
+  // parse the current UA with uaparser
+  ua           = uaparse(navigator.userAgent),
 
-      // match the UA from uaparser into the browser used by caniuse
-      browserKey   = JSONSelect.match('.agents .browser', scriptdata).indexOf(ua.family),
-      currBrowser  = Object.keys(scriptdata.agents)[browserKey];
+  // match the UA from uaparser into the browser used by caniuse
+  browserKey   = JSONSelect.match('.agents .browser', scriptdata).indexOf(ua.family),
+  currBrowser  = Object.keys(scriptdata.agents)[browserKey];
 
   // So Phantom doesn't kill the caniuse.com matching exit out as it's useless anyway within PhantomJS
-  if(navigator.userAgent.indexOf("PhantomJS") != -1) {
+  if(navigator.userAgent.indexOf('PhantomJS') != -1) {
     return;
   }
 
@@ -148,9 +143,9 @@ window.caniusecb = function(scriptdata) {
     // if caniuse gave us a 'partial', lets let it pass with a note.
     if (o.ciuresult == 'a'){
       return ok(true,
-        o.browser + o.version + ': Caniuse reported partial support for ' + o.ciufeature +
-        '. So.. Modernizr\'s ' + o.result + ' is good enough...'
-      );
+                o.browser + o.version + ': Caniuse reported partial support for ' + o.ciufeature +
+                  '. So.. Modernizr\'s ' + o.result + ' is good enough...'
+               );
     }
 
 
@@ -161,21 +156,21 @@ window.caniusecb = function(scriptdata) {
 
     // where we actually do most our assertions
     equal(o.result, ciubool,
-      o.browser + o.version + ': Caniuse result for ' + o.ciufeature +
-      ' matches Modernizr\'s ' + (o.fp ? '*false positive*' : 'result') + ' for ' + o.feature
-    );
+          o.browser + o.version + ': Caniuse result for ' + o.ciufeature +
+            ' matches Modernizr\'s ' + (o.fp ? '*false positive*' : 'result') + ' for ' + o.feature
+         );
   }
 
 
   module('caniuse.com data matches', {
-      setup:function() {
-      },
-      teardown:function() {
-      }
+    setup:function() {
+    },
+    teardown:function() {
+    }
   });
 
 
-  test("we match caniuse data", function() {
+  test('we match caniuse data', function() {
 
     for (var feature in Modernizr){
 
@@ -192,15 +187,15 @@ window.caniusecb = function(scriptdata) {
 
       // let's get our versions in order..
       var minorver   = ua.minor &&                                  // caniuse doesn't use two digit minors
-                       ua.minor.toString().replace(/(\d)\d$/,'$1'), // but opera does.
+        ua.minor.toString().replace(/(\d)\d$/,'$1'), // but opera does.
 
-          majorminor = (ua.major + '.' + minorver)
-                          // opera gets grouped in some cases by caniuse
-                          .replace(/(9\.(6|5))/ , ua.family == 'opera' ? '9.5-9.6'   : "$1")
-                          .replace(/(10\.(0|1))/, ua.family == 'opera' ? '10.0-10.1' : "$1"),
+      majorminor = (ua.major + '.' + minorver)
+      // opera gets grouped in some cases by caniuse
+      .replace(/(9\.(6|5))/ , ua.family == 'opera' ? '9.5-9.6'   : '$1')
+      .replace(/(10\.(0|1))/, ua.family == 'opera' ? '10.0-10.1' : '$1'),
 
-          mmResult   = browserResults[majorminor],
-          mResult    = browserResults[ua.major];
+      mmResult   = browserResults[majorminor],
+      mResult    = browserResults[ua.major];
 
 
       // check it against the major.minor: eg. FF 3.6

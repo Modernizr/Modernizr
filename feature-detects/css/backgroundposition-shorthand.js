@@ -3,6 +3,7 @@
   "name": "Background Position Shorthand",
   "property": "bgpositionshorthand",
   "tags": ["css"],
+  "builderAliases": ["css_backgroundposition_shorthand"],
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/CSS/background-position"
@@ -15,6 +16,12 @@
   }]
 }
 !*/
+/*
+Detects if you can use the shorthand method to define multiple parts of an
+element's background-position simultaniously.
+
+eg `background-position: right 10px bottom 10px`
+*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('bgpositionshorthand', function() {
     var elem = createElement('a');

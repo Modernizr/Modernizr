@@ -1,4 +1,11 @@
 {
+  "html5shiv": {
+    "name": "HTML5 Shiv",
+    "authors": ["Alexander Farkas (@aFarkas)", "Jonathan Neal (@jonathantneal)", "Paul Irish (@paulirish)"],
+    "href": "https://github.com/aFarkas/html5shiv",
+    "licences": ["MIT", "GPL2"],
+    "notes": ["The HTML5 Shiv enables use of HTML5 sectioning elements in legacy Internet Explorer and provides basic HTML5 styling for Internet Explorer 6-9, Safari 4.x (and iPhone 3.x), and Firefox 3.x."]
+  },
   "html5-notifications": {
     "name": "HTML5 Notifications",
     "authors": ["Hendrik Beskow"],
@@ -58,6 +65,13 @@
     "licenses": ["MIT"],
     "notes": []
   },
+  "css-escape": {
+    "name": "CSS.escape()",
+    "authors": ["Mathias Bynens"],
+    "href": "http://mths.be/cssescape",
+    "licenses": ["MIT"],
+    "notes": []
+  },
   "borderboxmodel": {
     "name": "borderBoxModel",
     "authors": ["Alberto Gasparin"],
@@ -111,6 +125,10 @@
     "name": "ES5 Sham",
     "href": "https://github.com/kriskowal/es5-shim",
     "notes": ["Adds the rest of Object, read carefully before using"]
+  },
+  "es6shim": {
+    "name": "ES6 Shim",
+    "href": "https://github.com/paulmillr/es6-shim"
   },
   "html5gears": {
     "name": "html5-gears",
@@ -195,8 +213,8 @@
   },
   "jdataview": {
     "name": "jDataView",
-    "authors": ["Christopher Chedeau"],
-    "href": "https://github.com/vjeux/jDataView/"
+    "authors": ["Christopher Chedeau", "Ingvar Stepanyan"],
+    "href": "https://github.com/jDataView/jDataView/"
   },
   "screenfulljs": {
     "name": "screenfull.js",
@@ -669,5 +687,59 @@
     "authors": ["Jonathan 'J5' Cook"],
     "href": "https://code.google.com/p/html5-shims/",
     "licenses": ["Apache2"]
+  },
+  "polycrypt": {
+    "name": "PolyCrypt",
+    "authors": ["BBN Technologies"],
+    "href": "http://polycrypt.net/",
+    "licenses": ["BSD"]
+  },
+  "webanimationsjs": {
+    "name": "web-animations-js",
+    "authors": ["web-animations"],
+    "href": "https://github.com/web-animations/web-animations-js",
+    "licenses": ["Apache2"]
+  },
+  "shumway": {
+    "name": "JavaScript Flash VM",
+    "authors": ["Mozilla Foundation"],
+    "href": "https://github.com/mozilla/shumway",
+    "licenses": ["Apache2"]
+  },
+  "maxlength": {
+    "name": "maxlength plugin",
+    "authors": ["Remy Sharp"],
+    "href": "http://remysharp.com/2008/06/30/maxlength-plugin/",
+    "licenses": ["CC SA"]
+  },
+  "eventlistener": {
+    "name": "EventListener",
+    "authors": ["Jonathan Neal"],
+    "href": "https://github.com/jonathantneal/EventListener",
+    "licenses": ["MIT"]
+  },
+  "es6promises": {
+    "name": "ES6-Promises",
+    "authors": ["Jake Archibald"],
+    "href": "https://github.com/jakearchibald/ES6-Promises",
+    "licenses": ["MIT"]
+  },
+  "urlparser": {
+    "authors": ["Google Inc."],
+    "href": "https://github.com/Polymer/URL",
+    "licenses": ["BSD"],
+    "name": "Polymer URL parser polyfill"
+  },
+  "css-selector-engine": {
+    "name": "CSS Selector Engine",
+    "authors": ["Егор Халимоненко"],
+    "href": "https://github.com/termi/CSS_selector_engine",
+    "licenses": ["MIT"]
+  },
+  "polymer-htmlimports": {
+    "authors": ["Google Inc."],
+    "href": "https://github.com/polymer/HTMLImports",
+    "licenses": ["BSD"],
+    "name": "Polymer HTMLImports polyfill"
   }
 }

@@ -2,8 +2,8 @@
 {
   "name": "Workers from Data URIs",
   "property": "dataworkers",
-  "caniuse" : "dataworkers",
   "tags": ["performance", "workers"],
+  "builderAliases": ["workers_dataworkers"],
   "notes": [{
     "name": "W3C Reference",
     "href": "http://www.w3.org/TR/workers/"
@@ -14,9 +14,7 @@
 }
 !*/
 /* DOC
-
 Detects support for creating Web Workers from Data URIs.
-
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   Modernizr.addAsyncTest(function() {

@@ -7,7 +7,8 @@ define(['tests'], function ( tests ) {
     // can go in here as configuration.
     _config: {
       classPrefix : '',
-      enableClasses : true
+      enableClasses : true,
+      usePrefixes : true
     },
 
     // Queue of tests
@@ -22,8 +23,9 @@ define(['tests'], function ( tests ) {
       // synchronous tests. I would leave it out, but the code
       // to *disallow* sync tests in the real version of this
       // function is actually larger than this.
+      var self = this;
       setTimeout(function() {
-        cb(this[test]);
+        cb(self[test]);
       }, 0);
     },
 

@@ -10,11 +10,9 @@
 }
 !*/
 /* DOC
-
 Detects support for clip paths in SVG (only, not on HTML content).
 
 See [this discussion](http://github.com/Modernizr/Modernizr/issues/213) regarding applying SVG clip paths to HTML content.
-
 */
 define(['Modernizr', 'toStringFn'], function( Modernizr, toStringFn ) {
   Modernizr.addTest('svgclippaths', function() {

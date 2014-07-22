@@ -64,8 +64,15 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
     } else {
 
       feature = feature.toLowerCase();
+      var featureNameSplit = feature.split('.');
+      var last = Modernizr[featureNameSplit[0]];
 
-      if ( Modernizr[feature] !== undefined ) {
+      // Again, we don't check for parent test existence. Get that right, though.
+      if (featureNameSplit.length == 2) {
+        last = last[featureNameSplit[1]];
+      }
+
+      if ( typeof last != 'undefined' ) {
         // we're going to quit if you're trying to overwrite an existing test
         // if we were to allow it, we'd do this:
         //   var re = new RegExp("\\b(no-)?" + feature + "\\b");
@@ -77,10 +84,21 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
       test = typeof test == 'function' ? test() : test;
 
       // Set the value (this is the magic, right here).
-      Modernizr[feature] = test;
+      if (featureNameSplit.length == 1) {
+        Modernizr[featureNameSplit[0]] = test;
+      }
+      else if (featureNameSplit.length == 2) {
+        // cast to a Boolean, if not one already
+        /* jshint -W053 */
+        if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+          Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+        }
+
+        Modernizr[featureNameSplit[0]][featureNameSplit[1]] = test;
+      }
 
       // Set a single class (either `feature` or `no-feature`)
-      setClasses([(test ? '' : 'no-') + feature]);
+      setClasses([(test ? '' : 'no-') + featureNameSplit.join('-')]);
 
       // Trigger the event
       Modernizr._trigger(feature, test);

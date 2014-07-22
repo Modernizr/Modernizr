@@ -2,14 +2,13 @@ define(function() {
   // Take the html5 variable out of the
   // html5shiv scope so we can return it.
   var html5;
-
   /**
-   * @preserve HTML5 Shiv v3.6.2pre | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
-   */
+  * @preserve HTML5 Shiv 3.7.2 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
+  */
   ;(function(window, document) {
   /*jshint evil:true */
     /** version */
-    var version = '3.6.2';
+    var version = '3.7.2';
 
     /** Preset options */
     var options = window.html5 || {};
@@ -37,21 +36,21 @@ define(function() {
 
     (function() {
       try {
-        var a = document.createElement('a');
-        a.innerHTML = '<xyz></xyz>';
-        //if the hidden property is implemented we can assume, that the browser supports basic HTML5 Styles
-        supportsHtml5Styles = ('hidden' in a);
+          var a = document.createElement('a');
+          a.innerHTML = '<xyz></xyz>';
+          //if the hidden property is implemented we can assume, that the browser supports basic HTML5 Styles
+          supportsHtml5Styles = ('hidden' in a);
 
-        supportsUnknownElements = a.childNodes.length == 1 || (function() {
-          // assign a false positive if unable to shiv
-          (document.createElement)('a');
-          var frag = document.createDocumentFragment();
-          return (
-            typeof frag.cloneNode == 'undefined' ||
-            typeof frag.createDocumentFragment == 'undefined' ||
-            typeof frag.createElement == 'undefined'
-          );
-        }());
+          supportsUnknownElements = a.childNodes.length == 1 || (function() {
+            // assign a false positive if unable to shiv
+            (document.createElement)('a');
+            var frag = document.createDocumentFragment();
+            return (
+              typeof frag.cloneNode == 'undefined' ||
+              typeof frag.createDocumentFragment == 'undefined' ||
+              typeof frag.createElement == 'undefined'
+            );
+          }());
       } catch(e) {
         // assign a false positive if detection fails => unable to shiv
         supportsHtml5Styles = true;
@@ -88,6 +87,24 @@ define(function() {
     }
 
     /**
+     * Extends the built-in list of html5 elements
+     * @memberOf html5
+     * @param {String|Array} newElements whitespace separated list or array of new element names to shiv
+     * @param {Document} ownerDocument The context document.
+     */
+    function addElements(newElements, ownerDocument) {
+      var elements = html5.elements;
+      if(typeof elements != 'string'){
+        elements = elements.join(' ');
+      }
+      if(typeof newElements != 'string'){
+        newElements = newElements.join(' ');
+      }
+      html5.elements = elements +' '+ newElements;
+      shivDocument(ownerDocument);
+    }
+
+     /**
      * Returns the data associated to the given document
      * @private
      * @param {Document} ownerDocument The document.
@@ -96,10 +113,10 @@ define(function() {
     function getExpandoData(ownerDocument) {
       var data = expandoData[ownerDocument[expando]];
       if (!data) {
-        data = {};
-        expanID++;
-        ownerDocument[expando] = expanID;
-        expandoData[expanID] = data;
+          data = {};
+          expanID++;
+          ownerDocument[expando] = expanID;
+          expandoData[expanID] = data;
       }
       return data;
     }
@@ -113,22 +130,22 @@ define(function() {
      */
     function createElement(nodeName, ownerDocument, data){
       if (!ownerDocument) {
-        ownerDocument = document;
+          ownerDocument = document;
       }
       if(supportsUnknownElements){
-        return ownerDocument.createElement(nodeName);
+          return ownerDocument.createElement(nodeName);
       }
       if (!data) {
-        data = getExpandoData(ownerDocument);
+          data = getExpandoData(ownerDocument);
       }
       var node;
 
       if (data.cache[nodeName]) {
-        node = data.cache[nodeName].cloneNode();
+          node = data.cache[nodeName].cloneNode();
       } else if (saveClones.test(nodeName)) {
-        node = (data.cache[nodeName] = data.createElem(nodeName)).cloneNode();
+          node = (data.cache[nodeName] = data.createElem(nodeName)).cloneNode();
       } else {
-        node = data.createElem(nodeName);
+          node = data.createElem(nodeName);
       }
 
       // Avoid adding some elements to fragments in IE < 9 because
@@ -138,7 +155,7 @@ define(function() {
       //   a 403 response, will cause the tab/window to crash
       // * Script elements appended to fragments will execute when their `src`
       //   or `text` property is set
-      return node.canHaveChildren && !reSkip.test(nodeName) ? data.frag.appendChild(node) : node;
+      return node.canHaveChildren && !reSkip.test(nodeName) && !node.tagUrn ? data.frag.appendChild(node) : node;
     }
 
     /**
@@ -149,10 +166,10 @@ define(function() {
      */
     function createDocumentFragment(ownerDocument, data){
       if (!ownerDocument) {
-        ownerDocument = document;
+          ownerDocument = document;
       }
       if(supportsUnknownElements){
-        return ownerDocument.createDocumentFragment();
+          return ownerDocument.createDocumentFragment();
       }
       data = data || getExpandoData(ownerDocument);
       var clone = data.frag.cloneNode(),
@@ -160,7 +177,7 @@ define(function() {
           elems = getElements(),
           l = elems.length;
       for(;i<l;i++){
-        clone.createElement(elems[i]);
+          clone.createElement(elems[i]);
       }
       return clone;
     }
@@ -173,17 +190,17 @@ define(function() {
      */
     function shivMethods(ownerDocument, data) {
       if (!data.cache) {
-        data.cache = {};
-        data.createElem = ownerDocument.createElement;
-        data.createFrag = ownerDocument.createDocumentFragment;
-        data.frag = data.createFrag();
+          data.cache = {};
+          data.createElem = ownerDocument.createElement;
+          data.createFrag = ownerDocument.createDocumentFragment;
+          data.frag = data.createFrag();
       }
 
 
       ownerDocument.createElement = function(nodeName) {
         //abort shiv
         if (!html5.shivMethods) {
-          return data.createElem(nodeName);
+            return data.createElem(nodeName);
         }
         return createElement(nodeName, ownerDocument, data);
       };
@@ -192,7 +209,7 @@ define(function() {
         'var n=f.cloneNode(),c=n.createElement;' +
         'h.shivMethods&&(' +
           // unroll the `createElement` calls
-          getElements().join().replace(/\w+/g, function(nodeName) {
+          getElements().join().replace(/[\w\-:]+/g, function(nodeName) {
             data.createElem(nodeName);
             data.frag.createElement(nodeName);
             return 'c("' + nodeName + '")';
@@ -211,16 +228,18 @@ define(function() {
      */
     function shivDocument(ownerDocument) {
       if (!ownerDocument) {
-        ownerDocument = document;
+          ownerDocument = document;
       }
       var data = getExpandoData(ownerDocument);
 
       if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
         data.hasCSS = !!addStyleSheet(ownerDocument,
           // corrects block display not defined in IE6/7/8/9
-          'article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
+          'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
           // adds styling not present in IE6/7/8/9
-          'mark{background:#FF0;color:#000}'
+          'mark{background:#FF0;color:#000}' +
+          // hides non-rendered elements
+          'template{display:none}'
         );
       }
       if (!supportsUnknownElements) {
@@ -240,14 +259,14 @@ define(function() {
      * // options can be changed before the script is included
      * html5 = { 'elements': 'mark section', 'shivCSS': false, 'shivMethods': false };
      */
-    html5 = {
+    var html5 = {
 
       /**
        * An array or space separated string of node names of the elements to shiv.
        * @memberOf html5
        * @type Array|String
        */
-      'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup main mark meter nav output progress section summary time video',
+      'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video',
 
       /**
        * current version of html5shiv
@@ -290,7 +309,10 @@ define(function() {
       createElement: createElement,
 
       //creates a shived documentFragment
-      createDocumentFragment: createDocumentFragment
+      createDocumentFragment: createDocumentFragment,
+
+      //extends list of elements
+      addElements: addElements
     };
 
     /*--------------------------------------------------------------------------*/
@@ -302,6 +324,5 @@ define(function() {
     shivDocument(document);
 
   }(this, document));
-
-  return html5;
+return html5;
 });

@@ -12,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Check if browser implements ECMAScript 5 Date per specification.
-
 */
 define(['Modernizr'], function (Modernizr) {
   Modernizr.addTest('es5date', function () {
@@ -25,10 +23,10 @@ define(['Modernizr'], function (Modernizr) {
     } catch (e) {
       // no ISO date parsing yet
     }
-    return Date.now &&
+    return !!(Date.now &&
       Date.prototype &&
       Date.prototype.toISOString &&
       Date.prototype.toJSON &&
-      canParseISODate;
+      canParseISODate);
   });
 });

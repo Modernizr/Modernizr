@@ -5,6 +5,7 @@
   "caniuse": "audio-api",
   "polyfills": ["xaudiojs", "dynamicaudiojs", "audiolibjs"],
   "tags": ["audio", "media"],
+  "builderAliases": ["audio_webaudio_api"],
   "authors": ["Addy Osmani"],
   "notes": [{
     "name": "W3 Specification",
@@ -12,6 +13,15 @@
   }]
 }
 !*/
+/* DOC
+Detects the older non standard webaudio API, (as opposed to the standards based AudioContext API)
+*/
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('webaudio', 'webkitAudioContext' in window || 'AudioContext' in window);
+  Modernizr.addTest('webaudio', function() {
+    var prefixed = 'webkitAudioContext' in window;
+    var unprefixed = 'AudioContext' in window;
+
+    if (Modernizr._config.usePrefixes) return prefixed || unprefixed;
+    return unprefixed;
+  });
 });

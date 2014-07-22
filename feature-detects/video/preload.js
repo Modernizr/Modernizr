@@ -6,5 +6,5 @@
 }
 !*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
-    Modernizr.addTest('videopreload', 'preload' in createElement('video'));
+  Modernizr.addTest('videopreload', 'preload' in createElement('video'));
 });

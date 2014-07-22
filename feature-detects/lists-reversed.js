@@ -6,13 +6,12 @@
     "name": "Impressive Webs article",
     "href": "http://impressivewebs.com/reverse-ordered-lists-html5"
   }],
-  "polyfills": ["impressivewebs"]
+  "polyfills": ["impressivewebs"],
+  "builderAliases": ["lists_reversed"]
 }
 !*/
 /* DOC
-
 Detects support for the `reversed` attribute on the `<ol>` element.
-
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('olreversed', 'reversed' in createElement('ol'));

@@ -12,9 +12,7 @@
 }
 !*/
 /* DOC
-
 Detects support for inline SVG in HTML (not within XHTML).
-
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('inlinesvg', function() {

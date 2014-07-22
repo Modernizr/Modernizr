@@ -2,14 +2,13 @@
 {
   "name": "input[form] Attribute",
   "property": "formattribute",
-  "tags": ["attribute", "forms", "input"]
+  "tags": ["attribute", "forms", "input"],
+  "builderAliases": ["forms_formattribute"]
 }
 !*/
 /* DOC
-
 Detects whether input form="form_id" is available on the platform
 E.g. IE 10 (and below), don't support this
-
 */
 define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
 
@@ -25,11 +24,11 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
 
     //IE6/7 confuses the form idl attribute and the form content attribute, so we use document.createAttribute
     try {
-      input.setAttribute("form", id);
+      input.setAttribute('form', id);
     }
     catch( e ) {
       if( document.createAttribute ) {
-        attr = document.createAttribute("form");
+        attr = document.createAttribute('form');
         attr.nodeValue = id;
         input.setAttributeNode(attr);
       }

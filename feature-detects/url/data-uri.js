@@ -4,6 +4,7 @@
   "property": "datauri",
   "caniuse": "datauri",
   "tags": ["url"],
+  "builderAliases": ["url_data_uri"],
   "async": true,
   "notes": [{
     "name": "Wikipedia article",
@@ -13,14 +14,12 @@
 }
 !*/
 /* DOC
-
 Detects support for data URIs. Provides a subproperty to report support for data URIs over 32kb in size:
 
 ```javascript
 Modernizr.datauri           // true
 Modernizr.datauri.over32kb  // false in IE8
 ```
-
 */
 define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
   // https://github.com/Modernizr/Modernizr/issues/14
@@ -51,7 +50,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
       }
     };
 
-    datauri.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+    datauri.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
     // Once we have datauri, let's check to see if we can use data URIs over
     // 32kb (IE8 can't). https://github.com/Modernizr/Modernizr/issues/321
@@ -60,21 +59,21 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
       var datauriBig = new Image();
 
       datauriBig.onerror = function() {
-          addTest('datauri', true);
-          Modernizr.datauri = new Boolean(true);
-          Modernizr.datauri.over32kb = false;
+        addTest('datauri', true);
+        Modernizr.datauri = new Boolean(true);
+        Modernizr.datauri.over32kb = false;
       };
       datauriBig.onload = function() {
-          addTest('datauri', true);
-          Modernizr.datauri = new Boolean(true);
-          Modernizr.datauri.over32kb = (datauriBig.width == 1 && datauriBig.height == 1);
+        addTest('datauri', true);
+        Modernizr.datauri = new Boolean(true);
+        Modernizr.datauri.over32kb = (datauriBig.width == 1 && datauriBig.height == 1);
       };
 
-      var base64str = "R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+      var base64str = 'R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
       while (base64str.length < 33000) {
-        base64str = "\r\n" + base64str;
+        base64str = '\r\n' + base64str;
       }
-      datauriBig.src= "data:image/gif;base64," + base64str;
+      datauriBig.src= 'data:image/gif;base64,' + base64str;
     }
 
   });

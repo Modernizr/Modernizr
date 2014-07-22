@@ -14,17 +14,16 @@
     "href": "http://goo.gl/rLKz8"
   }],
   "authors": ["Shi Chuan"],
-  "tags": ["event"]
+  "tags": ["event"],
+  "builderAliases": ["event_deviceorientation_motion"]
 }
 !*/
 /* DOC
-
 Part of Device Access aspect of HTML5, same category as geolocation.
 
 `devicemotion` tests for Device Motion Event support, returns boolean value true/false.
 
 `deviceorientation` tests for Device Orientation Event support, returns boolean value true/false
-
 */
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('devicemotion', 'DeviceMotionEvent' in window);

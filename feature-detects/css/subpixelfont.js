@@ -3,6 +3,7 @@
   "name": "CSS Subpixel Fonts",
   "property": "subpixelfont",
   "tags": ["css"],
+  "builderAliases": ["css_subpixelfont"],
   "authors": [
     "@derSchepp",
     "@gerritvanaaken",
@@ -26,7 +27,7 @@ define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
     var subpixel = elem.firstChild;
     subpixel.innerHTML = 'This is a text written in Arial';
     Modernizr.addTest('subpixelfont', window.getComputedStyle ?
-      window.getComputedStyle(subpixel, null).getPropertyValue("width") !== '44px'
+      window.getComputedStyle(subpixel, null).getPropertyValue('width') !== '44px'
     : false);
   }, 1, ['subpixel']);
 });

@@ -4,6 +4,7 @@
   "property": "cssvminunit",
   "caniuse": "viewport-units",
   "tags": ["css"],
+  "builderAliases": ["css_vminunit"],
   "notes": [{
     "name": "Related Modernizr Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/572"
@@ -13,10 +14,10 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
-  testStyles('#modernizr { width: 50vmin; }', function( elem, rule ) {
-    var one_vw = window.innerWidth/100;
-    var one_vh = window.innerHeight/100;
+define(['Modernizr', 'docElement', 'testStyles'], function( Modernizr, docElement, testStyles ) {
+  testStyles('#modernizr { width: 50vmin; }', function( elem ) {
+    var one_vw = docElement.clientWidth/100;
+    var one_vh = docElement.clientHeight/100;
     var compWidth = parseInt((window.getComputedStyle ?
                           getComputedStyle(elem, null) :
                           elem.currentStyle)['width'],10);

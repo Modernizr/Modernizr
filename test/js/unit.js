@@ -1,6 +1,6 @@
-/*global module, ok, equal, test, expect, raises, animationStyle */
+/*global module, ok, equal, test, expect, animationStyle */
 // PhantomJS timesout so leave autostart on
-if(navigator.userAgent.indexOf("PhantomJS") === -1) {
+if(navigator.userAgent.indexOf('PhantomJS') === -1) {
   QUnit.config.autostart = false;
 }
 
@@ -8,82 +8,22 @@ if(navigator.userAgent.indexOf("PhantomJS") === -1) {
 var classes = TEST.trim(document.documentElement.className).split(/\s+/);
 
 module('Basics', {
-    setup:function() {
-    },
-    teardown:function() {
-    }
+  setup:function() {
+  },
+  teardown:function() {
+  }
 });
 
-test("globals set up", function() {
+test('globals set up', function() {
   ok(window.Modernizr, 'global modernizr object created');
 });
 
-test("bind is implemented", function() {
-
-  ok(Function.prototype.bind, 'bind is a member of Function.prototype');
-
-  var a = function(){
-      return this.modernizr;
-  };
-  a = a.bind({modernizr: 'just awsome'});
-
-  equal("just awsome", a(), 'bind works as expected');
-
-
-  // thank you webkit layoutTests
-
-
-  var result;
-
-  function F(x, y)
-  {
-      result = this + " -> x:" + x + ", y:" + y;
-  }
-
-  var G = F.bind("'a'", "'b'");
-  var H = G.bind("'Cannot rebind this!'", "'c'");
-
-  G(1,2);
-  equal(result, "\'a\' -> x:\'b\', y:1");
-  H(1,2);
-  equal(result, "\'a\' -> x:\'b\', y:\'c\'");
-
-  var f = new F(1,2);
-  equal(result, "[object Object] -> x:1, y:2");
-  var g = new G(1,2);
-  equal(result, "[object Object] -> x:\'b\', y:1");
-  var h = new H(1,2);
-  equal(result, "[object Object] -> x:\'b\', y:\'c\'");
-
-  ok(f instanceof F, "f instanceof F");
-  ok(g instanceof F, "g instanceof F");
-  ok(h instanceof F, "h instanceof F");
-
-  // Bound functions don't have a 'prototype' property.
-  ok("prototype" in F, '"prototype" in F');
-
-  // The object passed to bind as 'this' must be callable.
-  raises(function(){
-    Function.bind.call(undefined);
-  });
-
-  // Objects that allow call but not construct can be bound, but should throw if used with new.
-  var abcAt = String.prototype.charAt.bind("abc");
-  equal(abcAt(1), "b", 'Objects that allow call but not construct can be bound...');
-
-  equal(1, Function.bind.length, 'it exists');
-
-
-});
-
-
-
-test("document.documentElement is valid and correct",1, function() {
+test('document.documentElement is valid and correct',1, function() {
   equal(document.documentElement,document.getElementsByTagName('html')[0]);
 });
 
 
-test("no-js class is gone.", function() {
+test('no-js class is gone.', function() {
 
   ok(!/(?:^|\s)no-js(?:^|\s)/.test(document.documentElement.className),
      'no-js class is gone');
@@ -102,7 +42,7 @@ test("no-js class is gone.", function() {
 
   if (document.querySelector){
     ok(document.querySelector('html.js') == document.documentElement,
-       "document.querySelector('html.js') matches.");
+       'document.querySelector("html.js") matches.');
   }
 });
 
@@ -110,8 +50,8 @@ test('html shim worked', function(){
   expect(2);
 
   // the exact test we use in the script
-  var elem = document.getElementsByTagName("section")[0];
-  elem.id = "html5section";
+  var elem = document.getElementsByTagName('section')[0];
+  elem.id = 'html5section';
 
   ok( elem.childNodes.length === 1 , 'unknown elements dont collapse');
 
@@ -122,10 +62,10 @@ test('html shim worked', function(){
 
 
 module('Modernizr classes and bools', {
-    setup:function() {
-    },
-    teardown:function() {
-    }
+  setup:function() {
+  },
+  teardown:function() {
+  }
 });
 
 
@@ -136,7 +76,17 @@ test('html classes are looking good',function(){
       newprops = modprops,
       i,
       len,
-      aclass;
+      aclass,
+      getObject = function(aclass) {
+        var classSplit = aclass.split('-');
+        if(typeof Modernizr[aclass] != 'undefined') {
+          return Modernizr[aclass];
+        }
+        else if (classSplit.length == 2) {
+          return Modernizr[classSplit[0]] &&
+              Modernizr[classSplit[0]][classSplit[1]];
+        }
+      };
 
   // decrement for the properties that are private
   for (i = -1, len = TEST.privates.length; ++i < len; ){
@@ -153,7 +103,7 @@ test('html classes are looking good',function(){
   // TODO decrement for the extraclasses
 
   // decrement for deprecated ones.
-  $.each( TEST.deprecated, function(key, val){
+  $.each( TEST.deprecated, function(){
     newprops.splice(  TEST.inArray(item, newprops), 1);
   });
 
@@ -174,11 +124,12 @@ test('html classes are looking good',function(){
     if (aclass.indexOf('no-') === 0){
       aclass = aclass.replace('no-','');
 
-      equal(Modernizr[aclass], false,
+      equal(getObject(aclass), false,
             aclass + ' is correctly false in the classes and object');
 
     } else {
-      equal(Modernizr[aclass], true,
+
+      equal(getObject(aclass), true,
              aclass + ' is correctly true in the classes and object');
     }
   }
@@ -201,20 +152,17 @@ test('html classes are looking good',function(){
 
 test('Modernizr properties are looking good',function(){
 
-  var count  = 0,
-      nobool = TEST.API.concat(TEST.inputs)
-                       .concat(TEST.audvid)
-                       .concat(TEST.privates)
-                       .concat(['textarea', 'testtruthy', 'testfalsy']) // due to forms-placeholder.js test
-                       .concat(['datauri']); // has `.over32kb` subproperty
+  var nobool = TEST.API.concat(TEST.inputs);
 
   for (var prop in window.Modernizr){
     if (Modernizr.hasOwnProperty(prop)){
 
       if (TEST.inArray(prop,nobool) >= 0) continue;
 
-      ok(Modernizr[prop] === true || Modernizr[prop] === false,
-        'Modernizr.'+prop+' is a straight up boolean');
+      ok(Modernizr[prop] === true ||
+         Modernizr[prop] === false ||
+         Modernizr[prop] instanceof Boolean,
+        'Modernizr.'+prop+' is a boolean value or Boolean object');
 
       equal(prop,prop.toLowerCase(),'Modernizr.'+prop+' is all lowercase.');
 
@@ -262,10 +210,10 @@ test('Modernizr results match expected values',function(){
 
 
 module('Modernizr\'s API methods', {
-    setup:function() {
-    },
-    teardown:function() {
-    }
+  setup:function() {
+  },
+  teardown:function() {
+  }
 });
 
 test('Modernizr.addTest()',22,function(){
@@ -304,8 +252,8 @@ test('Modernizr.addTest()',22,function(){
 
 
   Modernizr.addTest('testcamelCase',function(){
-     return true;
-   });
+    return true;
+  });
 
   ok(docEl.className.indexOf(' testcamelCase') === -1,
      'camelCase test name toLowerCase()\'d');
@@ -374,24 +322,24 @@ test('Modernizr.mq: media query testing',function(){
   $.mobile.media = (function() {
     // TODO: use window.matchMedia once at least one UA implements it
     var cache = {},
-      testDiv = $( "<div id='jquery-mediatest'>" ),
-      fakeBody = $( "<body>" ).append( testDiv );
+      testDiv = $( '<div id="jquery-mediatest">' ),
+      fakeBody = $( '<body>' ).append( testDiv );
 
     return function( query ) {
       if ( !( query in cache ) ) {
         var styleBlock = document.createElement('style'),
-              cssrule = "@media " + query + " { #jquery-mediatest { position:absolute; } }";
-            //must set type for IE!
-            styleBlock.type = "text/css";
-            if (styleBlock.styleSheet){
-              styleBlock.styleSheet.cssText = cssrule;
-            }
-            else {
-              styleBlock.appendChild(document.createTextNode(cssrule));
-            }
+        cssrule = '@media ' + query + ' { #jquery-mediatest { position:absolute; } }';
+        //must set type for IE!
+        styleBlock.type = 'text/css';
+        if (styleBlock.styleSheet){
+          styleBlock.styleSheet.cssText = cssrule;
+        }
+        else {
+          styleBlock.appendChild(document.createTextNode(cssrule));
+        }
 
         $html.prepend( fakeBody ).prepend( styleBlock );
-        cache[ query ] = testDiv.css( "position" ) === "absolute";
+        cache[ query ] = testDiv.css( 'position' ) === 'absolute';
         fakeBody.add( styleBlock ).remove();
       }
       return cache[ query ];
@@ -438,11 +386,11 @@ test('Modernizr.testStyles()',function(){
 
   var style = '#modernizr{ width: 9px; height: 4px; font-size: 0; color: papayawhip; }';
 
-  Modernizr.testStyles(style, function(elem, rule){
-      equal(style, rule, 'rule passsed back matches what i gave it.');
-      equal(elem.offsetWidth, 9, 'width was set through the style');
-      equal(elem.offsetHeight, 4, 'height was set through the style');
-      equal(elem.id, 'modernizr', 'element is indeed the modernizr element');
+  Modernizr.testStyles(style, function(elem, rule) {
+    equal(style, rule, 'rule passsed back matches what i gave it.');
+    equal(elem.offsetWidth, 9, 'width was set through the style');
+    equal(elem.offsetHeight, 4, 'height was set through the style');
+    equal(elem.id, 'modernizr', 'element is indeed the modernizr element');
   });
 
 });
@@ -462,7 +410,7 @@ test('Modernizr.testProp()',function(){
 
   equal(false, Modernizr.testProp('happiness'), 'Nobody supports the happiness style. :(');
   equal(true, Modernizr.testProp('fontSize'), 'Everyone supports fontSize');
-  equal(false, Modernizr.testProp('font-size'), 'Nobody supports font-size');
+  equal(true, Modernizr.testProp('font-size'), 'kebab-case should work too');
 
   equal('pointerEvents' in  document.createElement('div').style,
          Modernizr.testProp('pointerEvents'),
@@ -489,7 +437,7 @@ test('Modernizr.testAllProps()',function(){
 
   equal(false, Modernizr.testAllProps('happiness'), 'Nobody supports the happiness style. :(');
   equal(true, Modernizr.testAllProps('fontSize'), 'Everyone supports fontSize');
-  equal(false, Modernizr.testAllProps('font-size'), 'Nobody supports font-size');
+  equal(true, Modernizr.testAllProps('font-size'), 'kebab-case should work too');
 
   equal(Modernizr.csstransitions, Modernizr.testAllProps('transition'), 'Modernizr result matches API result: csstransitions');
 
@@ -509,43 +457,55 @@ test('Modernizr.testAllProps()',function(){
 });
 
 
+// Generic control function used for prefixed() and prefixedCSS() tests
+// https://gist.github.com/523692
+function gimmePrefix(prop, obj){
+  var prefixes = ['Moz','Khtml','Webkit','O','ms'],
+      domPrefixes = ['moz','khtml','webkit','o','ms'],
+      elem     = document.createElement('div'),
+      upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
+      len;
 
+  if(!obj) {
+    if (prop in elem.style)
+      return prop;
 
+    for (len = prefixes.length; len--; ){
+      if ((prefixes[len] + upper)  in elem.style)
+        return (prefixes[len] + upper);
+    }
+  } else {
+    if (prop in obj)
+      return prop;
+
+    for (len = domPrefixes.length; len--; ){
+      if ((domPrefixes[len] + upper)  in obj)
+        return (domPrefixes[len] + upper);
+    }
+  }
+
+  return false;
+}
+
+// Feel bad using a copy-paste of this function to essentially test itself, but
+// it should still help catch any future code changes which might break
+// prefixedCSS
+function domToCSS (name) {
+  return name.replace(/([A-Z])/g, function(str, m1) {
+    return '-' + m1.toLowerCase();
+  }).replace(/^ms-/, '-ms-');
+}
+
+function cssToDOM( name ) {
+  return name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
+    return m1 + m2.toUpperCase();
+  }).replace(/^-/, '');
+}
 
 
 test('Modernizr.prefixed() - css and DOM resolving', function(){
-  // https://gist.github.com/523692
   var i,
     len;
-  function gimmePrefix(prop, obj){
-    var prefixes = ['Moz','Khtml','Webkit','O','ms'],
-        domPrefixes = ['moz','khtml','webkit','o','ms'],
-        elem     = document.createElement('div'),
-        upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
-        i,
-        len;
-
-    if(!obj) {
-      if (prop in elem.style)
-        return prop;
-
-      for (len = prefixes.length; len--; ){
-        if ((prefixes[len] + upper)  in elem.style)
-          return (prefixes[len] + upper);
-      }
-    } else {
-      if (prop in obj)
-        return prop;
-
-      for (len = domPrefixes.length; len--; ){
-        if ((domPrefixes[len] + upper)  in obj)
-          return (domPrefixes[len] + upper);
-      }
-    }
-
-
-    return false;
-  }
 
   var propArr = ['transition', 'backgroundSize', 'boxSizing', 'borderImage',
                  'borderRadius', 'boxShadow', 'columnCount'];
@@ -560,14 +520,22 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
     equal(Modernizr.prefixed(prop), gimmePrefix(prop), 'results for ' + prop + ' match the homebaked prefix finder');
   }
 
+  // Hyphenated versions of property names should return the same as camelCase
+  for (i = -1, len = propArr.length; ++i < len; ){
+    prop = domToCSS(propArr[i]);
+    equal(Modernizr.prefixed(prop), gimmePrefix(propArr[i]), 'results for ' + prop + ' match the homebaked prefix finder');
+  }
+
   for (i = -1, len = domPropArr.length; ++i < len; ){
     prop = domPropArr[i];
     ok(!!~Modernizr.prefixed(prop.prop, prop.obj, false).toString().indexOf(gimmePrefix(prop.prop, prop.obj)), 'results for ' + prop.prop + ' match the homebaked prefix finder');
   }
 
+});
 
-
-
+test('Modernizr.prefixed atRule', function() {
+  equal(Modernizr.prefixed('@import'), '@import', 'Everyone supports import');
+  equal(Modernizr.prefixed('@penguin'), false, 'Nobody supports @penguin');
 });
 
 
@@ -592,13 +560,13 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'function',
       typeof Modernizr.prefixed('requestAnimationFrame', window),
-      "Modernizr.prefixed('requestAnimationFrame', window) returns a function");
+      'Modernizr.prefixed("requestAnimationFrame", window) returns a function');
 
     // unless we false it to a string
     equal(
       rAFName,
       Modernizr.prefixed('requestAnimationFrame', window, false),
-      "Modernizr.prefixed('requestAnimationFrame', window, false) returns a string (the prop name)");
+      'Modernizr.prefixed("requestAnimationFrame", window, false) returns a string (the prop name)');
 
   }
 
@@ -610,13 +578,13 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'function',
       typeof fn,
-      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) returns a function");
+      'Modernizr.prefixed("matchesSelector", HTMLElement.prototype, document.body) returns a function');
 
       // fn scoping
     equal(
       true,
       fn('body'),
-      "Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body) is scoped to the body");
+      'Modernizr.prefixed("matchesSelector", HTMLElement.prototype, document.body) is scoped to the body');
 
   }
 
@@ -627,7 +595,7 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'object',
       typeof Modernizr.prefixed('Notifications', window),
-      "Modernizr.prefixed('Notifications') returns an object");
+      'Modernizr.prefixed("Notifications") returns an object');
 
   }
 
@@ -638,7 +606,7 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'boolean',
       typeof Modernizr.prefixed('isFullScreen', document),
-      "Modernizr.prefixed('isFullScreen') returns a boolean");
+      'Modernizr.prefixed("isFullScreen") returns a boolean');
   }
 
 
@@ -650,7 +618,7 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'boolean',
       typeof Modernizr.prefixed('fullScreen', document),
-      "Modernizr.prefixed('fullScreen') returns a boolean");
+      'Modernizr.prefixed("fullScreen") returns a boolean');
   }
 
 
@@ -661,35 +629,57 @@ test('Modernizr.prefixed autobind', function(){
     equal(
       'string',
       typeof Modernizr.prefixed('animation', document.body.style),
-      "Modernizr.prefixed('animation', document.body.style) returns value of that, as a string");
+      'Modernizr.prefixed("animation", document.body.style) returns value of that, as a string');
 
     equal(
       animationStyle.toLowerCase(),
       Modernizr.prefixed('animation', document.body.style, false).toLowerCase(),
-      "Modernizr.prefixed('animation', document.body.style, false) returns the (case-normalized) name of the property: webkitanimation");
+      'Modernizr.prefixed("animation", document.body.style, false) returns the (case-normalized) name of the property: webkitanimation');
 
   }
 
   equal(
     false,
     Modernizr.prefixed('doSomethingAmazing$#$', window),
-    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj) returns false");
+    'Modernizr.prefixed("doSomethingAmazing$#$", window) : Gobbledygook with prefixed(str,obj) returns false');
 
   equal(
     false,
     Modernizr.prefixed('doSomethingAmazing$#$', window, document.body),
-    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj, scope) returns false");
+    'Modernizr.prefixed("doSomethingAmazing$#$", window) : Gobbledygook with prefixed(str,obj, scope) returns false');
 
 
   equal(
     false,
     Modernizr.prefixed('doSomethingAmazing$#$', window, false),
-    "Modernizr.prefixed('doSomethingAmazing$#$', window) : Gobbledygook with prefixed(str,obj, false) returns false");
+    'Modernizr.prefixed("doSomethingAmazing$#$", window) : Gobbledygook with prefixed(str,obj, false) returns false');
 
 
 });
 
 
+test('Modernizr.prefixedCSS', function () {
+  // Using different properties from Modernizr.prefixed, for the sake of
+  // variety
+  function testProp ( prop ) {
+    var prefixed = gimmePrefix(cssToDOM(prop));
+    if (prefixed) {
+      equal(Modernizr.prefixedCSS(prop), domToCSS(prefixed), 'results for ' + prop + ' match the homebaked prefix finder');
+    }
+    else {
+      equal(Modernizr.prefixedCSS(prop), false, 'results for ' + prop + ' match the homebaked prefix finder');
+    }
+  }
+  testProp('animationProperty');
+  testProp('fontFeatureSettings');
+  testProp('flexWrap');
+  testProp('boxSizing');
+  testProp('textShadow');
+  testProp('resize');
 
-
-
+  testProp('animation-property');
+  testProp('font-feature-settings');
+  testProp('flex-wrap');
+  testProp('box-sizing');
+  testProp('text-shadow');
+});

@@ -3,6 +3,7 @@
   "name": "Background Position XY",
   "property": "bgpositionxy",
   "tags": ["css"],
+  "builderAliases": ["css_backgroundposition_xy"],
   "authors": ["Allan Lei", "Brandom Aaron"],
   "notes": [{
     "name": "Demo",
@@ -13,6 +14,9 @@
   }]
 }
 !*/
+/* DOC
+Detects the ability to control an element's background position using css
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('bgpositionxy', function () {
     return testAllProps('backgroundPositionX', '3px', true) && testAllProps('backgroundPositionY', '5px', true);

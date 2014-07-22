@@ -1,4 +1,4 @@
-define(['is', 'fnBind'], function( is ) {
+define(['is', 'fnBind'], function( is, fnBind ) {
   /**
    * testDOMProps is a generic DOM property test; if a browser supports
    *   a certain property, it won't return undefined for it.
@@ -14,11 +14,10 @@ define(['is', 'fnBind'], function( is ) {
 
         item = obj[props[i]];
 
-        // let's bind a function (and it has a bind method -- certain native objects that report that they are a
-        // function don't [such as webkitAudioContext])
-        if (is(item, 'function') && 'bind' in item){
-          // default to autobind unless override
-          return item.bind(elem || obj);
+        // let's bind a function
+        if (is(item, 'function')) {
+          // bind to obj unless overriden
+          return fnBind(item, elem || obj);
         }
 
         // return the unbound function or obj or value

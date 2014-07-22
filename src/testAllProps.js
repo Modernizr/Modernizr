@@ -8,15 +8,16 @@ define(['ModernizrProto', 'testPropsAll'], function( ModernizrProto, testPropsAl
    * parameter to skip the value check when native detection isn't available,
    * to improve performance when simply testing for support of a property.
    *
-   * @param prop - String naming the property to test
+   * @param prop - String naming the property to test (either camelCase or
+   *               kebab-case)
    * @param value - [optional] String of the value to test
    * @param skipValueTest - [optional] Whether to skip testing that the value
    *                        is supported when using non-native detection
    *                        (default: false)
    */
-    function testAllProps (prop, value, skipValueTest) {
-        return testPropsAll(prop, undefined, undefined, value, skipValueTest);
-    }
-    ModernizrProto.testAllProps = testAllProps;
-    return testAllProps;
+  function testAllProps (prop, value, skipValueTest) {
+    return testPropsAll(prop, undefined, undefined, value, skipValueTest);
+  }
+  ModernizrProto.testAllProps = testAllProps;
+  return testAllProps;
 });
