@@ -736,6 +736,12 @@
     "href": "https://github.com/termi/CSS_selector_engine",
     "licenses": ["MIT"]
   },
+  "mutationobservers": {
+    "authors": ["Google Inc."],
+    "href": "https://github.com/Polymer/MutationObservers",
+    "licenses": ["BSD"],
+    "name": "Mutation Observers polyfill"
+  },
   "polymer-htmlimports": {
     "authors": ["Google Inc."],
     "href": "https://github.com/polymer/HTMLImports",

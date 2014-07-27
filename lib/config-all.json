@@ -105,6 +105,7 @@
     "test/dom/documentfragment",
     "test/dom/microdata",
     "test/dom/hidden",
+    "test/dom/mutationObserver",
     "test/draganddrop",
     "test/elem/unknown",
     "test/elem/datalist",
