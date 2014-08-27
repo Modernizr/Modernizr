@@ -1,5 +1,13 @@
 /*jshint node: true */
 /*global module */
+
+var requirejs = require('requirejs');
+requirejs.config({
+  appDir: __dirname + '/shared/',
+  baseUrl: __dirname + '/shared/'
+});
+var banner = requirejs('banner');
+
 module.exports = function( grunt ) {
   'use strict';
 
@@ -9,24 +17,13 @@ module.exports = function( grunt ) {
   // Load grunt dependencies
   require('load-grunt-tasks')(grunt);
 
+  var pkg = grunt.file.readJSON('package.json');
+
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    pkg: pkg,
     banner: {
-      compact: '/*! <%= pkg.name %> <%= pkg.version %> (Custom Build) | <%= pkg.license %> */',
-      full: '/*!\n' +
-        ' * <%= pkg.name %> v<%= pkg.version %>\n' +
-        ' * modernizr.com\n *\n' +
-        ' * Copyright (c) <%= _.pluck(pkg.contributors, "name").join(", ") %>\n' +
-        ' * <%= pkg.license %> License\n */' +
-        ' \n' +
-        '/*\n' +
-        ' * Modernizr tests which native CSS3 and HTML5 features are available in the\n' +
-        ' * current UA and makes the results available to you in two ways: as properties on\n' +
-        ' * a global `Modernizr` object, and as classes on the `<html>` element. This\n' +
-        ' * information allows you to progressively enhance your pages with a granular level\n' +
-        ' * of control over the experience.\n' +
-        ' *\n' +
-        ' */'
+      full: banner('full', pkg),
+      compact: banner('compact', pkg)
     },
     meta: {
     },
@@ -206,11 +203,6 @@ module.exports = function( grunt ) {
   });
 
   grunt.registerMultiTask('generateinit', 'Generate Init file', function() {
-    var requirejs = require('requirejs');
-    requirejs.config({
-      appDir: __dirname + '/src/',
-      baseUrl: __dirname + '/src/'
-    });
     var generateInit = requirejs('generate');
     grunt.file.write('tmp/modernizr-init.js', generateInit(modConfig));
   });
