@@ -1,6 +1,18 @@
-
-// impressivewebs.com/reverse-ordered-lists-html5
-// polyfill: github.com/impressivewebs/HTML5-Reverse-Ordered-Lists
-
-
-Modernizr.addTest('olreversed', 'reversed' in document.createElement('ol'));
+/*!
+{
+  "name": "Reverse Ordered Lists",
+  "property": "olreversed",
+  "notes": [{
+    "name": "Impressive Webs article",
+    "href": "http://impressivewebs.com/reverse-ordered-lists-html5"
+  }],
+  "polyfills": ["impressivewebs"],
+  "builderAliases": ["lists_reversed"]
+}
+!*/
+/* DOC
+Detects support for the `reversed` attribute on the `<ol>` element.
+*/
+define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+  Modernizr.addTest('olreversed', 'reversed' in createElement('ol'));
+});

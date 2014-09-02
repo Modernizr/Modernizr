@@ -1,0 +1,337 @@
+<!doctype html>
+<html class="no-js" lang=en>
+<head>
+  <title>Modular Modernizr Demo Page</title>
+  <style>
+    textarea {
+      width: 100%;
+      height: 20em;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>Config JSON</h1>
+  <textarea id="config-json">{
+  "classPrefix" : "",
+  "options": [
+    "setClasses",
+    "addTest",
+    "html5printshiv",
+    "load",
+    "testProp",
+    "fnBind"
+  ],
+  "feature-detects": [
+    "test/a/download",
+    "test/audio/webaudio",
+    "test/battery/lowbattery",
+    "test/canvas/todataurl",
+    "test/css/animations",
+    "test/css/backgroundcliptext",
+    "test/css/backgroundposition-shorthand",
+    "test/css/backgroundposition-xy",
+    "test/css/backgroundrepeat",
+    "test/css/backgroundsize",
+    "test/css/backgroundsizecover",
+    "test/css/borderimage",
+    "test/css/borderradius",
+    "test/css/boxshadow",
+    "test/css/boxsizing",
+    "test/css/calc",
+    "test/css/columns",
+    "test/css/cubicbezierrange",
+    "test/css/displayrunin",
+    "test/css/displaytable",
+    "test/css/filters",
+    "test/css/flexbox",
+    "test/css/flexboxlegacy",
+    "test/css/fontface",
+    "test/css/generatedcontent",
+    "test/css/gradients",
+    "test/css/hsla",
+    "test/css/hyphens",
+    "test/css/lastchild",
+    "test/css/mask",
+    "test/css/mediaqueries",
+    "test/css/multiplebgs",
+    "test/css/objectfit",
+    "test/css/opacity",
+    "test/css/overflow-scrolling",
+    "test/css/pointerevents",
+    "test/css/positionsticky",
+    "test/css/pseudoanimations",
+    "test/css/pseudotransitions",
+    "test/css/reflections",
+    "test/css/regions",
+    "test/css/remunit",
+    "test/css/resize",
+    "test/css/rgba",
+    "test/css/scrollbars",
+    "test/css/subpixelfont",
+    "test/css/supports",
+    "test/css/textshadow",
+    "test/css/transforms",
+    "test/css/transforms3d",
+    "test/css/transitions",
+    "test/css/userselect",
+    "test/css/vhunit",
+    "test/css/vmaxunit",
+    "test/css/vminunit",
+    "test/css/vwunit",
+    "test/css/wrapflow",
+    "test/dom/classlist",
+    "test/dom/createElement-attrs",
+    "test/dom/dataset",
+    "test/dom/microdata",
+    "test/elem/datalist",
+    "test/elem/details",
+    "test/elem/output",
+    "test/elem/progress-meter",
+    "test/elem/ruby",
+    "test/elem/time",
+    "test/elem/track",
+    "test/es5/strictmode",
+    "test/event/deviceorientation-motion",
+    "test/file/api",
+    "test/file/filesystem",
+    "test/forms/fileinput",
+    "test/forms/formattribute",
+    "test/forms/inputnumber-l10n",
+    "test/forms/placeholder",
+    "test/forms/validation",
+    "test/htmlimports",
+    "test/iframe/sandbox",
+    "test/iframe/seamless",
+    "test/iframe/srcdoc",
+    "test/img/apng",
+    "test/img/webp-lossless",
+    "test/img/webp",
+    "test/network/beacon",
+    "test/network/connection",
+    "test/network/eventsource",
+    "test/network/xhr2",
+    "test/script/async",
+    "test/script/defer",
+    "test/storage/localstorage",
+    "test/storage/sessionstorage",
+    "test/storage/websqldatabase",
+    "test/style/scoped",
+    "test/svg/clippaths",
+    "test/svg/filters",
+    "test/svg/inline",
+    "test/svg/smil",
+    "test/url/data-uri",
+    "test/webgl/extensions",
+    "test/websockets/binary",
+    "test/window/framed",
+    "test/workers/blobworkers",
+    "test/workers/dataworkers",
+    "test/workers/sharedworkers",
+    "test/workers/webworkers",
+    "test/webrtc/getusermedia",
+    "test/webrtc/peerconnection",
+    "test/applicationcache",
+    "test/audio",
+    "test/battery",
+    "test/blob",
+    "test/canvas",
+    "test/canvastext",
+    "test/contenteditable",
+    "test/contentsecuritypolicy",
+    "test/contextmenu",
+    "test/cookies",
+    "test/cors",
+    "test/custom-protocol-handler",
+    "test/dart",
+    "test/dataview-api",
+    "test/draganddrop",
+    "test/emoji",
+    "test/exif-orientation",
+    "test/fullscreen-api",
+    "test/gamepad",
+    "test/hashchange",
+    "test/history",
+    "test/ie8compat",
+    "test/indexeddb",
+    "test/indexeddbblob",
+    "test/input",
+    "test/inputtypes",
+    "test/json",
+    "test/lists-reversed",
+    "test/mathml",
+    "test/notification",
+    "test/pagevisibility-api",
+    "test/performance",
+    "test/pointerevents",
+    "test/pointerlock-api",
+    "test/postmessage",
+    "test/quota-management-api",
+    "test/requestanimationframe",
+    "test/svg",
+    "test/touchevents",
+    "test/unicode",
+    "test/userdata",
+    "test/vibration",
+    "test/video",
+    "test/video/autoplay",
+    "test/web-intents",
+    "test/webgl",
+    "test/websockets"
+  ]
+}</textarea>
+</div>
+
+<button id="build">If you build it</button>
+
+<div>
+  <h1>Modernizr Output</h1>
+  <h3>Development</h3>
+  <textarea id="buildoutput"></textarea>
+
+  <br />
+  <h3>Minified</h3>
+  <textarea id="buildoutputmin"></textarea>
+</div>
+
+
+
+<script src="r.js"></script>
+
+<script src="/node_modules/underscore/underscore-min.js"></script>
+<script>
+  var buildButton = document.getElementById('build');
+  var configArea = document.getElementById('config-json');
+
+  var license = '/*!\n' +
+ ' * Modernizr v3.0.0pre\n' +
+ ' * modernizr.com\n' +
+ ' *\n' +
+ ' * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton\n' +
+ ' * MIT License\n' +
+ '*/\n' +
+ ' \n' +
+ '/*\n' +
+ ' * Modernizr tests which native CSS3 and HTML5 features are available in the\n' +
+ ' * current UA and makes the results available to you in two ways: as properties on\n' +
+ ' * a global `Modernizr` object, and as classes on the `<html>` element. This\n' +
+ ' * information allows you to progressively enhance your pages with a granular level\n' +
+ ' * of control over the experience.\n' +
+ ' *\n' +
+ ' *\n' +
+ ' * Authors        Faruk Ates, Paul Irish, Alex Sexton\n' +
+ ' * Contributors   Ryan Seddon, Ben Alman\n' +
+ ' */';
+  // avoid some config
+  define('underscore', function () { return _; });
+
+  // Handle a build
+  buildButton.onclick = function () {
+    var config = configArea.value;
+    try {
+      config = JSON.parse(config);
+    }
+    catch(e) {
+      alert('Bad config, yo');
+      return;
+    }
+
+    require(['../src/generate'], function( generate ) {
+      var modInit = generate(config);
+
+      requirejs.optimize({
+        "baseUrl" : "../src/",
+        "optimize"    : "none",
+        "optimizeCss" : "none",
+        "paths" : {
+          "test" : "../../feature-detects",
+        },
+        "include" : ["modernizr-init"],
+        rawText: {
+          "modernizr-init" : modInit
+        },
+        wrap: {
+          start: license + "\n;(function(window, document, undefined){",
+          end: "})(this, document);"
+        },
+        onBuildWrite: function (id, path, contents) {
+          if ((/define\(.*?\{/).test(contents)) {
+            //Remove AMD ceremony for use without require.js or almond.js
+            contents = contents.replace(/define\(.*?\{/, '');
+
+            contents = contents.replace(/\}\);\s*?$/,'');
+
+            if ( !contents.match(/Modernizr\.addTest\(/) && !contents.match(/Modernizr\.addAsyncTest\(/) ) {
+              //remove last return statement and trailing })
+              contents = contents.replace(/return.*[^return]*$/,'');
+            }
+          }
+          else if ((/require\([^\{]*?\{/).test(contents)) {
+            contents = contents.replace(/require[^\{]+\{/, '');
+            contents = contents.replace(/\}\);\s*$/,'');
+          }
+          return contents;
+        },
+        out : function (output) {
+          output = output.replace('define("modernizr-init", function(){});', '');
+          // Hack the prefix into place. Anything is way to big for something so small.
+          if ( config && config.classPrefix ) {
+            output = output.replace("classPrefix : '',", "classPrefix : '" + config.classPrefix.replace(/"/g, '\\"') + "',");
+          }
+          var outBox = document.getElementById('buildoutput');
+          var outBoxMin = document.getElementById('buildoutputmin');
+          outBox.innerHTML = output;
+          require({context: 'build'}, ['uglifyjs2'], function (u2){
+            var UglifyJS = u2.UglifyJS;
+            outBoxMin.innerHTML = '/*! Modernizr 3.0.0pre (Custom Build) | MIT */\n' + minify(UglifyJS, output, {});
+          });
+
+          // add in old hack for now, just so i don't forget
+          //outBoxMin.innerHTML = uglify( output, ['--extra', '--unsafe'] ).replace( "return a.history&&history.pushState", "return !!(a.history&&history.pushState)" );
+        }
+      }, function (buildText) {
+        console.log({ buildOutput: buildText });
+      });
+    });
+
+  };
+
+  function minify( UglifyJS, code, options) {
+    options = UglifyJS.defaults(options, {
+      outSourceMap : null,
+      sourceRoot   : null,
+      inSourceMap  : null,
+      fromString   : false,
+      warnings     : false
+    });
+    if (typeof files == "string") {
+      files = [ files ];
+    }
+
+    // 1. parse
+    var toplevel = UglifyJS.parse(code, {
+      filename: 'modernizr-custombuild.min.js',
+      toplevel: toplevel
+    });
+
+    // 2. compress
+    toplevel.figure_out_scope();
+    var sq = UglifyJS.Compressor({
+      warnings: options.warnings,
+      hoist_vars: true
+    });
+    toplevel = toplevel.transform(sq);
+
+    // 3. mangle
+    toplevel.figure_out_scope();
+    toplevel.compute_char_frequency();
+    toplevel.mangle_names({except: ['Modernizr']});
+
+    // 4. output
+    var stream = UglifyJS.OutputStream({});
+    toplevel.print(stream);
+    return stream.toString();
+  }
+</script>
+</body>
+</html>

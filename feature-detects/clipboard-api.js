@@ -12,14 +12,16 @@
 //
 //	See the pull request for more info on why an **accurate** test must be run
 //		manually.
-// 
+//
+//		Pull Request: https://github.com/Modernizr/Modernizr/pull/659
+//
 //	Using the test above, these browsers have been tested and found to
 //		implement the Clipboard API:
 //		- Chrome 21
 //		- Safari 5.1
 //
 //	The test below first checks for a ClipboardEvent constructor, then checks
-//		for a `paste` event on the `document` object if the ClipboardEvent 
+//		for a `paste` event on the `document` object if the ClipboardEvent
 //		constructor is not found.
 //
 //	The test below has the same results as the manual test above.
@@ -27,9 +29,13 @@
 //	by Stanley Stuart <fivetanley>
 
 Modernizr.addTest( 'clipboard', function(){
-  // The spec mentions a ClipboardEvent constructor.
-  // If the browser implements that, it probably implements the Clipboard API.
-  if ( Modernizr.prefixed( 'ClipboardEvent', window, false ) ) return true;
-  // otherwise check for a simple onpaste event on the document
-  return Modernizr.hasEvent( 'paste', document );
+  try {
+    // The spec mentions a ClipboardEvent constructor.
+    // If the browser implements that, it probably implements the Clipboard API.
+    if ( Modernizr.prefixed( 'ClipboardEvent', window, false ) ) return true;
+    // otherwise check for a simple onpaste event on the document
+    return Modernizr.hasEvent( 'paste', document );
+  } catch (e) {
+    return false;
+  }
 });

@@ -159,7 +159,7 @@
     // THE EVALUATOR
 
     function isArray(o) {
-        return Array.isArray ? Array.isArray(o) : 
+        return Array.isArray ? Array.isArray(o) :
           toString.call(o) === "[object Array]";
     }
 
