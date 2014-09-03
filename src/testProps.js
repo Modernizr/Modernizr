@@ -44,7 +44,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'cssToDO
       }
     }
 
-    for ( i in props ) {
+    for ( i = 0; i < props.length; i++ ) {
       prop = props[i];
       before = mStyle.style[prop];
 
