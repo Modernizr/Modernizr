@@ -24,7 +24,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'cssToDO
     }
 
     // Otherwise do it properly
-    var afterInit, i, prop, before;
+    var afterInit, i, propsLength, prop, before;
 
     // If we don't have a style element, that means
     // we're running async or after the core tests,
@@ -44,7 +44,8 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'cssToDO
       }
     }
 
-    for ( i in props ) {
+    propsLength = props.length;
+    for ( i = 0; i < propsLength; i++ ) {
       prop = props[i];
       before = mStyle.style[prop];
 
