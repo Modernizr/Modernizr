@@ -20,7 +20,7 @@ define(['Modernizr'], function( Modernizr ) {
       document.styleSheets[0].addRule('#test-ms-reveal-input-post::-ms-reveal','height: 1000px');
     }catch(e){}
 
-    var input = document.createElement("input");
+    var input = document.createElement('input');
     input.type='password';
     input.id = 'test-ms-reveal-input-pre';
     document.body.appendChild(input);
