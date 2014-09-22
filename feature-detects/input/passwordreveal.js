@@ -29,7 +29,7 @@ define(["Modernizr"], function( Modernizr ) {
         input.id = "test-ms-reveal-input-post";
         var result = false;
         if(height !== computedStyle.getPropertyValue("height")){
-            return true;
+            result = true;
         }
         input.parentNode.removeChild(input);
         return result;
