@@ -126,7 +126,8 @@ window.caniusecb = function(scriptdata) {
 
   // translate 'y' 'n' or 'a' into a boolean that Modernizr uses
   function bool(ciuresult){
-    if (ciuresult == 'y' || ciuresult == 'a') return true;
+    // To handle correctly things like 'y #1' or 'a #2'
+    if (ciuresult.indexOf('y') === 0 || ciuresult.indexOf('a') === 0) return true;
     // 'p' is for polyfill
     if (ciuresult == 'n' || ciuresult == 'p') return false;
     throw 'unknown return value from can i use';
@@ -141,7 +142,7 @@ window.caniusecb = function(scriptdata) {
       o.result = !!o.result;
 
     // if caniuse gave us a 'partial', lets let it pass with a note.
-    if (o.ciuresult == 'a'){
+    if (o.ciuresult.indexOf('a') === 0){
       return ok(true,
                 o.browser + o.version + ': Caniuse reported partial support for ' + o.ciufeature +
                   '. So.. Modernizr\'s ' + o.result + ' is good enough...'
