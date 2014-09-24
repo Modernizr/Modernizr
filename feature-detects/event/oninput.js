@@ -34,7 +34,8 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
     // their trident equivalent.
     try {
       // Older Firefox didn't map oninput attribute to oninput property
-      var testEvent  = document.createEvent('KeyboardEvent');
+      var testEvent;
+
       var supportsOnInput = false;
       var handler = function(e) {
         supportsOnInput = true;
@@ -42,12 +43,26 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
         e.stopPropagation();
       };
 
-      testEvent.initKeyEvent('keypress', true, true, window, false, false, false, false, 0, 'e'.charCodeAt(0));
       docElement.appendChild(input);
-      input.addEventListener('input', handler, false);
       input.focus();
-      input.dispatchEvent(testEvent);
-      input.removeEventListener('input', handler, false);
+
+      if (document.createEvent)  {
+        testEvent = document.createEvent('KeyboardEvent');
+        testEvent.initKeyEvent('keypress', true, true, window, false, false, false, false, 0, 'e'.charCodeAt(0));
+        input.addEventListener('input', handler, false);
+        input.dispatchEvent(testEvent);
+        input.removeEventListener('input', handler, false);
+      } else {
+        testEvent = document.createEventObject();
+        testEvent.altKey = false;
+        testEvent.ctrlKey = false;
+        testEvent.shiftKey = false;
+        testEvent.keyCode = 'e'.charCodeAt(0);
+        testEvent.type = 'keypress';
+        input.attachEvent('oninput', handler);
+        input.fireEvent('onkeypress', testEvent);
+        input.detachEvent('oninput', handler);
+      }
       docElement.removeChild(input);
       return supportsOnInput;
     } catch (e) {}
