@@ -86,6 +86,7 @@
     "test/css/supports",
     "test/css/target",
     "test/css/textshadow",
+    "test/css/textalignlast",
     "test/css/transforms",
     "test/css/transforms3d",
     "test/css/transformstylepreserve3d",
