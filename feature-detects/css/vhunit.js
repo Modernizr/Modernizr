@@ -4,6 +4,7 @@
   "property": "cssvhunit",
   "caniuse": "viewport-units",
   "tags": ["css"],
+  "builderAliases": ["css_vhunit"],
   "notes": [{
     "name": "Related Modernizr Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/572"

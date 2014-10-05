@@ -724,11 +724,23 @@
     "href": "https://github.com/jakearchibald/ES6-Promises",
     "licenses": ["MIT"]
   },
+  "urlparser": {
+    "authors": ["Google Inc."],
+    "href": "https://github.com/Polymer/URL",
+    "licenses": ["BSD"],
+    "name": "Polymer URL parser polyfill"
+  },
   "css-selector-engine": {
     "name": "CSS Selector Engine",
     "authors": ["Егор Халимоненко"],
     "href": "https://github.com/termi/CSS_selector_engine",
     "licenses": ["MIT"]
+  },
+  "mutationobservers": {
+    "authors": ["Google Inc."],
+    "href": "https://github.com/Polymer/MutationObservers",
+    "licenses": ["BSD"],
+    "name": "Mutation Observers polyfill"
   },
   "polymer-htmlimports": {
     "authors": ["Google Inc."],

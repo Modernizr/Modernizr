@@ -4,6 +4,7 @@
   "property": "datauri",
   "caniuse": "datauri",
   "tags": ["url"],
+  "builderAliases": ["url_data_uri"],
   "async": true,
   "notes": [{
     "name": "Wikipedia article",

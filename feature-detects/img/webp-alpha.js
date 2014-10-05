@@ -13,7 +13,7 @@
     "name": "Article about WebP support on Android browsers",
     "href": "http://www.wope-framework.com/en/2013/06/24/webp-support-on-android-browsers/"
   },{
-    "name": "Chormium WebP announcement",
+    "name": "Chromium WebP announcement",
     "href": "http://blog.chromium.org/2011/11/lossless-and-transparency-encoding-in.html?m=1"
   }]
 }

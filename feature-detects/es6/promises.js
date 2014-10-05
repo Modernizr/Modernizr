@@ -26,7 +26,6 @@ define(['Modernizr'], function( Modernizr ) {
     return 'Promise' in window &&
     // Some of these methods are missing from
     // Firefox/Chrome experimental implementations
-    'cast' in window.Promise &&
     'resolve' in window.Promise &&
     'reject' in window.Promise &&
     'all' in window.Promise &&

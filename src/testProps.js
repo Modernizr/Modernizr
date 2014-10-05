@@ -1,4 +1,4 @@
-define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], function( contains, mStyle, createElement, nativeTestProps, is ) {
+define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'cssToDOM'], function( contains, mStyle, createElement, nativeTestProps, is, cssToDOM) {
   // testProps is a generic CSS / DOM property test.
 
   // In testing support for a given CSS property, it's legit to test:
@@ -10,12 +10,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
   // on our modernizr element, but instead just testing undefined vs
   // empty string.
 
-  // Because the testing of the CSS property names (with "-", as
-  // opposed to the camelCase DOM properties) is non-portable and
-  // non-standard but works in WebKit and IE (but not Gecko or Opera),
-  // we explicitly reject properties with dashes so that authors
-  // developing in WebKit or IE first don't end up with
-  // browser-specific content by accident.
+  // Property names can be provided in either camelCase or kebab-case.
 
   function testProps( props, prefixed, value, skipValueTest ) {
     skipValueTest = is(skipValueTest, 'undefined') ? false : skipValueTest;
@@ -29,7 +24,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
     }
 
     // Otherwise do it properly
-    var afterInit, i, prop, before;
+    var afterInit, i, propsLength, prop, before;
 
     // If we don't have a style element, that means
     // we're running async or after the core tests,
@@ -49,11 +44,16 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is'], functio
       }
     }
 
-    for ( i in props ) {
+    propsLength = props.length;
+    for ( i = 0; i < propsLength; i++ ) {
       prop = props[i];
       before = mStyle.style[prop];
 
-      if ( !contains(prop, '-') && mStyle.style[prop] !== undefined ) {
+      if (contains(prop, '-')) {
+        prop = cssToDOM(prop);
+      }
+
+      if ( mStyle.style[prop] !== undefined ) {
 
         // If value to test has been passed in, do a set-and-check test.
         // 0 (integer) is a valid property value, so check that `value` isn't

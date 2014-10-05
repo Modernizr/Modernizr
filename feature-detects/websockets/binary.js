@@ -2,7 +2,8 @@
 {
   "name": "Binary WebSockets",
   "property": "websocketsbinary",
-  "tags": ["websockets"]
+  "tags": ["websockets"],
+  "builderAliases": ["websockets_binary"]
 }
 !*/
 define(['Modernizr'], function( Modernizr ) {

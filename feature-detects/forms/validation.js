@@ -2,7 +2,8 @@
 {
   "name": "Form Validation",
   "property": "formvalidation",
-  "tags": ["forms", "validation", "attribute"]
+  "tags": ["forms", "validation", "attribute"],
+  "builderAliases": ["forms_validation"]
 }
 !*/
 /* DOC

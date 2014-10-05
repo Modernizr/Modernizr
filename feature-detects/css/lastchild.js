@@ -4,6 +4,7 @@
   "caniuse": "css-sel3",
   "property": "lastchild",
   "tags": ["css"],
+  "builderAliases": ["css_lastchild"],
   "notes": [{
     "name": "Related Github Issue",
     "href": "https://github.com/Modernizr/Modernizr/pull/304"

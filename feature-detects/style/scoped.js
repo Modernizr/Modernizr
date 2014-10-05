@@ -4,6 +4,7 @@
   "property": "stylescoped",
   "caniuse": "style-scoped",
   "tags": ["dom"],
+  "builderAliases": ["style_scoped"],
   "authors": ["Cătălin Mariș"],
   "notes": [{
     "name": "WHATWG Specification",

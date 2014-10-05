@@ -7,7 +7,8 @@
     "name": "Web Intents project site",
     "href": "http://webintents.org/"
   }],
-  "polyfills": ["webintents"]
+  "polyfills": ["webintents"],
+  "builderAliases": ["web_intents"]
 }
 !*/
 /* DOC

@@ -6,7 +6,8 @@
     "name": "Impressive Webs article",
     "href": "http://impressivewebs.com/reverse-ordered-lists-html5"
   }],
-  "polyfills": ["impressivewebs"]
+  "polyfills": ["impressivewebs"],
+  "builderAliases": ["lists_reversed"]
 }
 !*/
 /* DOC

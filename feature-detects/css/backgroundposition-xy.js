@@ -3,6 +3,7 @@
   "name": "Background Position XY",
   "property": "bgpositionxy",
   "tags": ["css"],
+  "builderAliases": ["css_backgroundposition_xy"],
   "authors": ["Allan Lei", "Brandom Aaron"],
   "notes": [{
     "name": "Demo",

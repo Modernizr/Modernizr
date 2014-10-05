@@ -4,6 +4,7 @@
   "property": "svgfilters",
   "caniuse": "svg-filters",
   "tags": ["svg"],
+  "builderAliases": ["svg_filters"],
   "authors": ["Erik Dahlstrom"],
   "notes": [{
     "name": "W3C Spec",

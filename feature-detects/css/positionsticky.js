@@ -3,6 +3,7 @@
   "name": "CSS position: sticky",
   "property": "csspositionsticky",
   "tags": ["css"],
+  "builderAliases": ["css_positionsticky"],
   "notes": [
     "using position:sticky on anything but top aligned elements is buggy in Chrome < 37 and iOS <=7+", {
     "name": "Chrome bug report",

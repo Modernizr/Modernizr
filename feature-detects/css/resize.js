@@ -4,6 +4,7 @@
   "property": "cssresize",
   "caniuse": "css-resize",
   "tags": ["css"],
+  "builderAliases": ["css_resize"],
   "notes": [{
     "name": "W3C Specification",
     "href": "http://www.w3.org/TR/css3-ui/#resize"

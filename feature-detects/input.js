@@ -7,7 +7,8 @@
   "notes": [{
     "name": "WHATWG spec",
     "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary"
-  }]
+  }],
+  "knownBugs": ["Some blackberry devices report false positive for input.multiple"]
 }
 !*/
 /* DOC

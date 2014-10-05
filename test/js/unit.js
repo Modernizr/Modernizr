@@ -410,7 +410,7 @@ test('Modernizr.testProp()',function(){
 
   equal(false, Modernizr.testProp('happiness'), 'Nobody supports the happiness style. :(');
   equal(true, Modernizr.testProp('fontSize'), 'Everyone supports fontSize');
-  equal(false, Modernizr.testProp('font-size'), 'Nobody supports font-size');
+  equal(true, Modernizr.testProp('font-size'), 'kebab-case should work too');
 
   equal('pointerEvents' in  document.createElement('div').style,
          Modernizr.testProp('pointerEvents'),
@@ -437,7 +437,7 @@ test('Modernizr.testAllProps()',function(){
 
   equal(false, Modernizr.testAllProps('happiness'), 'Nobody supports the happiness style. :(');
   equal(true, Modernizr.testAllProps('fontSize'), 'Everyone supports fontSize');
-  equal(false, Modernizr.testAllProps('font-size'), 'Nobody supports font-size');
+  equal(true, Modernizr.testAllProps('font-size'), 'kebab-case should work too');
 
   equal(Modernizr.csstransitions, Modernizr.testAllProps('transition'), 'Modernizr result matches API result: csstransitions');
 
@@ -531,6 +531,11 @@ test('Modernizr.prefixed() - css and DOM resolving', function(){
     ok(!!~Modernizr.prefixed(prop.prop, prop.obj, false).toString().indexOf(gimmePrefix(prop.prop, prop.obj)), 'results for ' + prop.prop + ' match the homebaked prefix finder');
   }
 
+});
+
+test('Modernizr.prefixed atRule', function() {
+  equal(Modernizr.prefixed('@import'), '@import', 'Everyone supports import');
+  equal(Modernizr.prefixed('@penguin'), false, 'Nobody supports @penguin');
 });
 
 

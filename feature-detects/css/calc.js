@@ -4,6 +4,7 @@
   "property": "csscalc",
   "caniuse": "calc",
   "tags": ["css"],
+  "builderAliases": ["css_calc"],
   "authors": ["@calvein"]
 }
 !*/

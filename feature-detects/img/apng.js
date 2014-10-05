@@ -4,6 +4,7 @@
   "async": true,
   "property": "apng",
   "tags": ["image"],
+  "builderAliases": ["img_apng"],
   "notes": [{
     "name": "Wikipedia Article",
     "href": "http://en.wikipedia.org/wiki/APNG"
