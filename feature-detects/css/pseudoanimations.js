@@ -8,6 +8,7 @@
 define(['Modernizr', 'testStyles', 'test/css/animations'], function (Modernizr) {
   Modernizr.addTest('csspseudoanimations', function () {
     var result = false;
+    var style;
 
     if (!Modernizr.cssanimations || !window.getComputedStyle) {
       return result;
@@ -21,7 +22,10 @@ define(['Modernizr', 'testStyles', 'test/css/animations'], function (Modernizr) 
     ].join('');
 
     Modernizr.testStyles(styles, function (elem) {
-      result = window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '10px';
+      style = window.getComputedStyle(elem, ':before');
+      if(style !== null) {
+        result = style.getPropertyValue('font-size') === '10px';
+      }
     });
 
     return result;

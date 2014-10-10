@@ -8,6 +8,7 @@
 define(['Modernizr', 'testStyles', 'test/css/transitions'], function (Modernizr) {
   Modernizr.addTest('csspseudotransitions', function () {
     var result = false;
+    var style;
 
     if (!Modernizr.csstransitions || !window.getComputedStyle) {
       return result;
@@ -19,9 +20,11 @@ define(['Modernizr', 'testStyles', 'test/css/transitions'], function (Modernizr)
 
     Modernizr.testStyles(styles, function (elem) {
       // Force rendering of the element's styles so that the transition will trigger
-      window.getComputedStyle(elem, ':before').getPropertyValue('font-size');
-      elem.className += 'trigger';
-      result = window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '5px';
+      style = window.getComputedStyle(elem, ':before');
+      if(style !== null) {
+        elem.className += 'trigger';
+        result = window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '5px';
+      }
     });
 
     return result;

@@ -42,9 +42,12 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
 
     function getStyle( element, styleProperty ) {
       var result;
+      var style;
 
       if ( window.getComputedStyle ) {     // for non-IE browsers
-        result = document.defaultView.getComputedStyle(element,null).getPropertyValue(styleProperty);
+        if ( (style = document.defaultView.getComputedStyle(element,null)) !== null ) {
+          result = style.getPropertyValue(styleProperty);
+        }
       } else if ( element.currentStyle ) { // for IE
         result = element.currentStyle[styleProperty];
       }
