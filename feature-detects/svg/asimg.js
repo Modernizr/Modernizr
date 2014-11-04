@@ -13,7 +13,7 @@
 !*/
 define(['Modernizr', 'addTest'], function( Modernizr ) {
 
-  // Orignal Async test by Stu Cox
+  // Original Async test by Stu Cox
   // https://gist.github.com/chriscoyier/8774501
 
   // Now a Sync test based on good results here

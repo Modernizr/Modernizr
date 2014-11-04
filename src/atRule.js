@@ -15,7 +15,7 @@ define(['ModernizrProto', 'prefixes'], function( ModernizrProto, prefixes ) {
       return false;
     }
 
-    // remove literal @ from begining of provided property
+    // remove literal @ from beginning of provided property
     prop = prop.replace(/^@/,'');
 
     // CSSRules use underscores instead of dashes
