@@ -25,7 +25,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], funct
     };
     var easy_detect;
     var activex;
-    // we wrap activex in a try/catch becuase when flash is disabled through
+    // we wrap activex in a try/catch because when flash is disabled through
     // ActiveX controls, it throws an error.
     try {
       // Pan is an API that exists for flash objects.

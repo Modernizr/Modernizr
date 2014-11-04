@@ -4122,7 +4122,7 @@ parseStatement: true, parseSourceElement: true */
         case 'const':
             return true;
 
-        // For compatiblity to SpiderMonkey and ES.next
+        // For compatibility to SpiderMonkey and ES.next
         case 'yield':
         case 'let':
             return true;
@@ -13002,7 +13002,7 @@ define('source-map/source-map-generator', function (require, exports, module) {
       var result = '';
       var mapping;
 
-      // The mappings must be guarenteed to be in sorted order before we start
+      // The mappings must be guaranteed to be in sorted order before we start
       // serializing them or else the generated line numbers (which are defined
       // via the ';' separators) will be all messed up. Note: it might be more
       // performant to maintain the sorting as we insert them, rather than as we
