@@ -18,6 +18,5 @@
 }
 !*/
 define(['Modernizr'], function( Modernizr ) {
-  // Relies on the fact that a browser vendor should expose the CSSSupportsRule interface
   Modernizr.addTest('supports', 'CSS' in window && 'supports' in window.CSS);
 });
