@@ -24,7 +24,6 @@
     "test/canvas",
     "test/canvastext",
     "test/contenteditable",
-    "test/contentsecuritypolicy",
     "test/contextmenu",
     "test/cookies",
     "test/cors",
