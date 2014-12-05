@@ -159,6 +159,7 @@
     "test/history",
     "test/htmlimports",
     "test/ie8compat",
+    "test/iframe/data-uri",
     "test/iframe/sandbox",
     "test/iframe/seamless",
     "test/iframe/srcdoc",
