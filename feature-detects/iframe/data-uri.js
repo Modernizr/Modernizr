@@ -21,15 +21,16 @@
 /* DOC
 When using a data uri as the `src` of an iframe, it should render the content correctly.
 */
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement', 'getBody'], function( Modernizr, createElement, getBody ) {
   Modernizr.addTest('iframedatauri', function() {
     var support;
+    var body = getBody();
     var iframe = createElement('iframe');
 
     iframe.style.display = 'none';
     iframe.setAttribute('src', 'data:text/html;base64,Kg=='); // This can possibly be simplified by using 'data:;base64,' instead
 
-    document.body.appendChild(iframe);
+    body.appendChild(iframe);
 
     try {
       support = !!iframe.contentDocument;
@@ -37,7 +38,7 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
       support = false;
     }
 
-    document.body.removeChild(iframe);
+    body.removeChild(iframe);
 
     return support;
   });
