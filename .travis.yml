@@ -1,11 +1,12 @@
 language: node_js
-node_js: 
-- 0.10
-before_script: 
-  - npm install grunt-cli -g
-  - grunt build
-script: grunt travis --verbose
-env: 
-  global: 
-  - secure: noRIQS5Wv/9SFs4bK+0NZNQ7nnL+WfP6PhkPQR5QxNmXR1S4wjdiHy4/yv4aO/j1URgFw1YiFf+80k7YIn/9vIT+lMzE0wiw5FXTQM9PIB2mPHC2wzc0Y1Xj5kfuFXZemWTt73y1IkT53PjxezslVSduPKTxjXJuPmUk2FG3yaw=
-  - secure: QUDo7NDflY7K3xrBfcjVmhz6IBKoMOiosABbOEdQo1PiqAa8JBbjd+h02p6k+ZNQNymB1EcBhe20O1dMJYOg2E9BB8vtCsJtXTw1TEKlEwUVPUMkAtP6gpOk8XfmP9o6Ej2uM89+r6vLTDJIH1FPSwYbyxvWzIEi52gjFZUN6Mw=
+node_js:
+  - 0.10
+before_script:
+  - npm install grunt-cli browserstack-runner -g
+script:
+  - grunt travis --verbose
+  - browserstack-runner
+env:
+  global:
+    - secure: "qV/i9OKB0d83BdvVXhSkWY9evl/c7T2k8bo55fyYlzZjeetd/W+wnOLu5Ckgd3r+CAkpkl84U4qK7Ga5VTs/w2DktcAvo1aCHPC2aUiW6IJJcvcauipYQ+MVa9FBuESKH4SRuq/vIYRDTWOlch+dD+e4x5Fn07rzon6DaeRy7Ao="
+    - secure: "e54KI0o84XfI7LzYTIcrWcLhrHHcFDzQ9H7kNmyF6gxf+JeQtjvWZ6rR+EWgmLqZxIpNOUgXKCg0nqyZ3xtQ8FevV+pbxhsSPLZJfU2q5GpcFXNjxhhDXjFfSp1jcy6EJ5QAgrK1v+6tWIrrztiyr/qfT8lRctgwW67kMvznipo="
