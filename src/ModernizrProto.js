@@ -8,6 +8,7 @@ define(['tests'], function ( tests ) {
     _config: {
       classPrefix : '',
       enableClasses : true,
+      enableJSClass : true,
       usePrefixes : true
     },
 
