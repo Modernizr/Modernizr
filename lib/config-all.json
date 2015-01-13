@@ -231,6 +231,7 @@
     "test/webanimations",
     "test/webgl",
     "test/webgl/extensions",
+    "test/webrtc/datachannel",
     "test/webrtc/getusermedia",
     "test/webrtc/peerconnection",
     "test/websockets",
