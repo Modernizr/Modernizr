@@ -36,9 +36,6 @@ module.exports = function( grunt ) {
     nodeunit: {
       files: ['test/api/*.js']
     },
-    classprefix: {
-      build: ['dist/modernizr-build.js']
-    },
     'modernizr-build': {
       options: {
         banner: '<%= banner.full %>'
@@ -138,20 +135,6 @@ module.exports = function( grunt ) {
     }
   });
 
-  // Strip define fn
-  grunt.registerMultiTask('classprefix', 'Hack the class prefix into place.', function() {
-    this.filesSrc.forEach(function(filepath) {
-
-      var mod = grunt.file.read(filepath);
-
-      // Hack the prefix into place. Anything is way too big for something so small.
-      if ( modConfig && modConfig.classPrefix ) {
-        mod = mod.replace('classPrefix : \'\',', 'classPrefix : \'' + modConfig.classPrefix.replace(/"/g, '\\"') + '\',');
-      }
-      grunt.file.write(filepath, mod);
-    });
-  });
-
   grunt.registerMultiTask('modernizr-build', 'Generate Modernizr Build', function() {
     var done = this.async();
     var dest = this.files[0].dest;
@@ -184,7 +167,6 @@ module.exports = function( grunt ) {
   grunt.registerTask('build', [
     'clean',
     'modernizr-build',
-    'classprefix',
     'uglify'
   ]);
 
