@@ -4,7 +4,7 @@
 exports.core = function (test) {
   test.expect(2);
 
-  var modernizr = require("../../lib/cli");
+  var modernizr = require("../../lib/");
   test.ok(modernizr, "modernizr should be truthy");
 
   var keys = Object.keys(modernizr);

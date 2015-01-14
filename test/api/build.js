@@ -15,7 +15,7 @@ exports.setUp = function (callback) {
 
 exports.build = function (test) {
   test.expect(3);
-  var modernizr = require(path.join(cwd, "lib", "cli"));
+  var modernizr = require(path.join(cwd, "lib"));
 
   test.ok(modernizr.build, "should export build function");
   test.equal(typeof modernizr.build, "function", "modernizr.build should be a function");
@@ -30,7 +30,7 @@ exports.build = function (test) {
 
 exports.buildCustom = function (test) {
   test.expect(6);
-  var modernizr = require(path.join(cwd, "lib", "cli"));
+  var modernizr = require(path.join(cwd, "lib"));
 
   test.ok(modernizr.build, "should export build function");
   test.equal(typeof modernizr.build, "function", "modernizr.build should be a function");

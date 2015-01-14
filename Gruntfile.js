@@ -28,7 +28,10 @@ module.exports = function( grunt ) {
         ' *\n' +
         ' */\n'
     },
-    meta: {
+    'modernizr-metadata': {
+      dist: {
+        dest: 'dist/metadata.json'
+      }
     },
     qunit: {
       files: ['test/index.html']
@@ -143,7 +146,7 @@ module.exports = function( grunt ) {
     });
     var banner = grunt.template.process(options.banner);
 
-    var build = require('./lib/build');
+    var build = require('./lib/').build;
 
     build(modConfig, function(content) {
       grunt.file.write(dest, banner + content);
@@ -152,6 +155,12 @@ module.exports = function( grunt ) {
       grunt.fail.warn(err);
     });
 
+  });
+
+  grunt.registerMultiTask('modernizr-metadata', 'Generate Modernizr metadata', function() {
+    var dest = this.files[0].dest;
+    var metadata = require('./lib/').metadata;
+    grunt.file.write(dest, JSON.stringify(metadata, null, '  '));
   });
 
   // Testing tasks
@@ -168,6 +177,10 @@ module.exports = function( grunt ) {
     'clean',
     'modernizr-build',
     'uglify'
+  ]);
+
+  grunt.registerTask('meta', [
+    'modernizr-metadata'
   ]);
 
   grunt.registerTask('default', [
