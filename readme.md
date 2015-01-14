@@ -9,22 +9,7 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
 
 ## New Asynchronous Event Listeners
 
-Often times people want to know when an asynchronous test is done so they can allow their application to react to it.
-In the past, you've had to rely on watching properties or `<html>` classes. Only events on **asynchronous** tests are
-supported. Synchronous tests should be handled synchronously to improve speed and to maintain consistency.
 
-The new api looks like this:
-
-```javascript
-// Listen to a test, give it a callback
-Modernizr.on('testname', function( result ) {
-  if (result) {
-    console.log('The test passed!');
-  }
-  else {
-    console.log('The test failed!');
-  }
-});
 ```
 
 We guarantee that we'll only invoke your function once (per time that you call `on`). We are currently not exposing
