@@ -18,7 +18,7 @@
     "authors": ["Tsvetan Tsvetkov"],
     "href": "https://github.com/ttsvetko/HTML5-Desktop-Notifications",
     "licences": ["Apache2"],
-    "notes": ["A small library that unifies the HTML5 Notifications APIs accross different browsers including IE9 & IE10."]
+    "notes": ["A small library that unifies the HTML5 Notifications APIs across different browsers including IE9 & IE10."]
   },
   "css3pie": {
     "name": "CSS3 PIE",
@@ -724,11 +724,23 @@
     "href": "https://github.com/jakearchibald/ES6-Promises",
     "licenses": ["MIT"]
   },
+  "urlparser": {
+    "authors": ["Google Inc."],
+    "href": "https://github.com/Polymer/URL",
+    "licenses": ["BSD"],
+    "name": "Polymer URL parser polyfill"
+  },
   "css-selector-engine": {
     "name": "CSS Selector Engine",
     "authors": ["Егор Халимоненко"],
     "href": "https://github.com/termi/CSS_selector_engine",
     "licenses": ["MIT"]
+  },
+  "mutationobservers": {
+    "authors": ["Google Inc."],
+    "href": "https://github.com/Polymer/MutationObservers",
+    "licenses": ["BSD"],
+    "name": "Mutation Observers polyfill"
   },
   "polymer-htmlimports": {
     "authors": ["Google Inc."],

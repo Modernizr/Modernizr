@@ -98,7 +98,9 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
       }
 
       // Set a single class (either `feature` or `no-feature`)
-      setClasses([(test ? '' : 'no-') + featureNameSplit.join('-')]);
+      /* jshint -W041 */
+      setClasses([(!!test && test != false ? '' : 'no-') + featureNameSplit.join('-')]);
+      /* jshint +W041 */
 
       // Trigger the event
       Modernizr._trigger(feature, test);

@@ -8,12 +8,12 @@
   "warnings": ["Android < 4 will pass this test, but can only animate a single property at a time"],
   "notes": [{
     "name" : "Article: 'Dispelling the Android CSS animation myths'",
-    "href": "http://goo.gl/CHVJm"
+    "href": "http://goo.gl/OGw5Gm"
   }]
 }
 !*/
 /* DOC
-Detects wether or not elements can be animated using CSS
+Detects whether or not elements can be animated using CSS
 */
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('cssanimations', testAllProps('animationName', 'a', true));

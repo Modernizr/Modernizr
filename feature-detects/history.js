@@ -27,11 +27,12 @@ define(['Modernizr'], function( Modernizr ) {
     var ua = navigator.userAgent;
 
     // We only want Android 2 and 4.0, stock browser, and not Chrome which identifies
-    // itself as 'Mobile Safari' as well
+    // itself as 'Mobile Safari' as well, nor Windows Phone (issue #1471).
     if ((ua.indexOf('Android 2.') !== -1 ||
         (ua.indexOf('Android 4.0') !== -1)) &&
         ua.indexOf('Mobile Safari') !== -1 &&
-        ua.indexOf('Chrome') === -1) {
+        ua.indexOf('Chrome') === -1 &&
+        ua.indexOf('Windows Phone') === -1) {
       return false;
     }
 

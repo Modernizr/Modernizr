@@ -10,7 +10,7 @@
     "name": "WebP Info",
     "href": "http://code.google.com/speed/webp/"
   },{
-    "name": "Chormium blog - Chrome 32 Beta: Animated WebP images and faster Chrome for Android touch input",
+    "name": "Chromium blog - Chrome 32 Beta: Animated WebP images and faster Chrome for Android touch input",
     "href": "http://blog.chromium.org/2013/11/chrome-32-beta-animated-webp-images-and.html"
   }]
 }
