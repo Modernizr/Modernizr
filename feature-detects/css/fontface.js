@@ -26,6 +26,9 @@
   }]
 }
 !*/
+/* DOC
+Detects support for the `@font-face` CSS atrule.
+*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   var blacklist = (function() {
     var ua = navigator.userAgent;

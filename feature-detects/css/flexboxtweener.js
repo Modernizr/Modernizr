@@ -10,6 +10,9 @@
   }]
 }
 !*/
+/* DOC
+Detects the in between flexbox syntax that shipped in IE11.
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('flexboxtweener', testAllProps('flexAlign', 'end', true));
 });

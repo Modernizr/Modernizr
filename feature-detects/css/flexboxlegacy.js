@@ -10,6 +10,9 @@
   }]
 }
 !*/
+/* DOC
+Detects support for the first legacy flexbox syntax.
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('flexboxlegacy', testAllProps('boxDirection', 'reverse', true));
 });

@@ -14,6 +14,9 @@
   }]
 }
 !*/
+/* DOC
+Detects support for `display: run-in`. It allows you to effect the display of a header and make it appear as though it's part of a block of text.
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('displayrunin', testAllProps('display', 'run-in'),
     { aliases: ['display-runin'] });

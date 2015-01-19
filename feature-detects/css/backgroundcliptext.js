@@ -20,7 +20,7 @@
   ]
 }
 !*/
-/*
+/* DOC
 Detects the ability to control specifies whether or not an element's background
 extends beyond its border in CSS
 */

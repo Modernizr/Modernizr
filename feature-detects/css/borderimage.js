@@ -8,6 +8,9 @@
   "tags": ["css"]
 }
 !*/
+/* DOC
+Detects support for the border-image CSS property.
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('borderimage', testAllProps('borderImage', 'url() 1', true));
 });
