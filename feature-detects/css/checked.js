@@ -11,7 +11,13 @@
 }
 !*/
 /* DOC
-Detects support for the `:checked` pseudo-delector, which matches a radio button, checkbox or select option which is currently in an `on` state.
+Detects support for the :checked pseudo-class for radio and checkbox input elements.
+
+```css
+input[type="checkbox"]:checked {
+  color: green;
+}
+```
 */
 define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, createElement, testStyles ) {
   Modernizr.addTest('checked', function(){

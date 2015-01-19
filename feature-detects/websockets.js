@@ -24,6 +24,9 @@
   ]
 }
 !*/
+/* DOC
+Detects support for the stable WebSocket spec.
+*/
 define(['Modernizr'], function( Modernizr ) {
   Modernizr.addTest('websockets', 'WebSocket' in window && window.WebSocket.CLOSING === 2);
 });

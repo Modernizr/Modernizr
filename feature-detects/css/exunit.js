@@ -10,6 +10,11 @@
   }]
 }
 !*/
+/* DOC
+Detects support for the ex CSS unit length.
+
+`1ex` represents the x-height of the selected elements font, which on average is about 0.5em on 1em font.
+*/
 define(['Modernizr', 'modElem'], function (Modernizr, modElem) {
   Modernizr.addTest('cssexunit', function () {
     var elemStyle = modElem.elem.style;
