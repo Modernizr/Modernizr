@@ -246,8 +246,11 @@ window.Modernizr = (function( window, document, undefined ) {
 
         var target = this;
 
-        if (typeof target != "function") {
-            throw new TypeError();
+        try {
+          Object.prototype.toString.call(target) === '[object Function]';
+        }
+        catch(err) {
+          throw new TypeError(err);
         }
 
         var args = slice.call(arguments, 1),
