@@ -8,6 +8,9 @@
   "builderAliases": ["css_filters"]
 }
 !*/
+/* DOC
+Detects support for CSS filters it guards against the incompatible oldIE filter.
+*/
 define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
   // https://github.com/Modernizr/Modernizr/issues/615
   // documentMode is needed for false positives in oldIE, please see issue above

@@ -10,6 +10,9 @@
   }]
 }
 !*/
+/* DOC
+Detects general support for the background-size CSS property.
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('backgroundsize', testAllProps('backgroundSize', '100%', true));
 });

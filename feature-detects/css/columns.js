@@ -7,6 +7,23 @@
   "tags": ["css"]
 }
 !*/
+/* DOC
+Detects support for CSS3 column long hand properties and exposes Boolean subproperties with the results:
+
+```javascript
+Modernizr.csscolumns.width
+Modernizr.csscolumns.span
+Modernizr.csscolumns.fill
+Modernizr.csscolumns.gap
+Modernizr.csscolumns.rule
+Modernizr.csscolumns.rulecolor
+Modernizr.csscolumns.rulestyle
+Modernizr.csscolumns.rulewidth
+Modernizr.csscolumns.breakbefore
+Modernizr.csscolumns.breakafter
+Modernizr.csscolumns.breakinside
+```
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
 
   (function() {

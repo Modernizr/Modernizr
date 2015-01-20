@@ -20,6 +20,9 @@
   }]
 }
 !*/
+/* DOC
+Detects support CSS3 gradient syntax.
+*/
 define(['Modernizr', 'prefixes', 'createElement'], function( Modernizr, prefixes, createElement ) {
 
   Modernizr.addTest('cssgradients', function() {

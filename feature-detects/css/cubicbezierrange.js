@@ -9,6 +9,9 @@
   "warnings": ["cubic-bezier values can't be > 1 for Webkit until [bug #45761](https://bugs.webkit.org/show_bug.cgi?id=45761) is fixed"]
 }
 !*/
+/* DOC
+Detects support for the cubic-bezier timing function that can be used with CSS transitions or animations.
+*/
 define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
   Modernizr.addTest('cubicbezierrange', function() {
     var el = createElement('div');

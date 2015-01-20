@@ -11,6 +11,9 @@
   }]
 }
 !*/
+/* DOC
+Detects if the canvas element can convert the image to a base 64 encoded data url in jpg, png or webp formats.
+*/
 define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
 
   var canvas = createElement('canvas');

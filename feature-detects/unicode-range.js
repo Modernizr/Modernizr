@@ -11,6 +11,10 @@
   }]
 }
 !*/
+/* DOC
+Detects support for the unicode-range @font-face property.
+Unicode-ranges allow you to specify custom fonts for specific unicode characters or ranges.
+*/
 define(['Modernizr', 'testStyles', 'createElement'], function (Modernizr, testStyles, createElement) {
   Modernizr.addTest('unicoderange', function () {
 
@@ -19,7 +23,7 @@ define(['Modernizr', 'testStyles', 'createElement'], function (Modernizr, testSt
       // we use specify a unicode-range of 002E (the `.` glyph,
       // and a monospace font as the fallback. If the first of
       // these test glyphs is a different width than the other
-      // the other three (which are all monospace), then we 
+      // the other three (which are all monospace), then we
       // have a winner.
       var testGlyphs = ['.', '.', 'm', 'm'];
 
