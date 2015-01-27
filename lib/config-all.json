@@ -30,6 +30,7 @@
     "test/crypto/getrandomvalues",
     "test/css/all",
     "test/css/animations",
+    "test/css/appearance",
     "test/css/backgroundblendmode",
     "test/css/backgroundcliptext",
     "test/css/backgroundposition-shorthand",
