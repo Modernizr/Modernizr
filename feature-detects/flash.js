@@ -12,6 +12,13 @@ Detects support flash, as well as flash blocking plugins
 define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], function( Modernizr, createElement, docElement, addTest, getBody ) {
   Modernizr.addAsyncTest(function() {
     /* jshint -W053 */
+
+    var removeFakeBody = function (body) {
+      // If we’re rockin’ an attached fake body, clean it up
+      if (body.fake && body.parentNode) {
+        body.parentNode.removeChild(body);
+      }
+    };
     var runTest = function(result, embed) {
       var bool = !!result;
       if (bool) {
@@ -55,6 +62,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], funct
       // so this check is for all other browsers.
       if (!('Pan' in embed) && !activex) {
         runTest('blocked', embed);
+        removeFakeBody(body);
         return;
       }
 
@@ -84,11 +92,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], funct
             runTest(true, embed);
           }
         }
-
-        // If we’re rockin’ an attached fake body, clean it up
-        if (body.fake && body.parentNode) {
-          body.parentNode.removeChild(body);
-        }
+        removeFakeBody(body);
       };
 
       // If we have got this far, there is still a chance a userland plugin
