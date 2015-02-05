@@ -60,8 +60,8 @@ define(['underscore'], function( _ ) {
     '    Modernizr._q[i]();\n' +
     '  }\n\n';
 
-    output += '  // Leak Modernizr namespace\n' +
-    '  window.Modernizr = Modernizr;\n' +
+    output += '  // Return Modernizr namespace\n' +
+    '  return Modernizr;\n' +
     '\n' +
     '});';
 

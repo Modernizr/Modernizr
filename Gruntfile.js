@@ -140,8 +140,8 @@ module.exports = function( grunt ) {
           }],
           fileExclusionRegExp: /^(.git|node_modules|modulizr|media|test)$/,
           wrap: {
-            start: '<%= banner.full %>' + '\n;(function(window, document, undefined){',
-            end: '})(this, document);'
+            start: '<%= banner.full %>' + grunt.file.read('lib/umd.prefix'),
+            end: grunt.file.read('lib/umd.suffix')
           },
           onBuildWrite: function (id, path, contents) {
             if ((/define\(.*?\{/).test(contents)) {

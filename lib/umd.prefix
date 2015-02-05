@@ -1,0 +1,14 @@
+
+(function (window, factory) {
+    // always expose Modernizr
+    window.Modernizr = factory();
+
+    if (typeof define === 'function' && define.amd) {
+        define([], function () {
+            return window.Modernizr;
+        });
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = window.Modernizr;
+    }
+}(window, function () {
+	return (function (window, document, undefined){
