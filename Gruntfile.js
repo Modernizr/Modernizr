@@ -141,7 +141,7 @@ module.exports = function( grunt ) {
           fileExclusionRegExp: /^(.git|node_modules|modulizr|media|test)$/,
           wrap: {
             start: '<%= banner.full %>' + '\n;(function(window, document, undefined){',
-            end: '})(this, document);'
+            end: '})(window, document);'
           },
           onBuildWrite: function (id, path, contents) {
             if ((/define\(.*?\{/).test(contents)) {
