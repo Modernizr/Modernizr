@@ -26,9 +26,12 @@ module.exports = function( grunt ) {
         ' * information allows you to progressively enhance your pages with a granular level\n' +
         ' * of control over the experience.\n' +
         ' *\n' +
-        ' */'
+        ' */\n'
     },
-    meta: {
+    'modernizr-metadata': {
+      dist: {
+        dest: 'dist/metadata.json'
+      }
     },
     qunit: {
       files: ['test/index.html']
@@ -36,12 +39,12 @@ module.exports = function( grunt ) {
     nodeunit: {
       files: ['test/api/*.js']
     },
-    stripdefine: {
-      build: ['dist/modernizr-build.js']
-    },
-    generateinit: {
-      build: {
-        src: ['tmp/modernizr-init.js']
+    'modernizr-build': {
+      options: {
+        banner: '<%= banner.full %>'
+      },
+      dist: {
+        dest: 'dist/modernizr-build.js'
       }
     },
     uglify: {
@@ -107,63 +110,7 @@ module.exports = function( grunt ) {
       }
     },
     clean: {
-      dist: ['dist'],
-      postbuild: [
-        'build',
-        'tmp'
-      ]
-    },
-    copy: {
-      build: {
-        files: {
-          'dist/modernizr-build.js': 'build/src/modernizr-build.js'
-        }
-      }
-    },
-    requirejs: {
-      compile: {
-        options: {
-          dir: 'build',
-          appDir: '.',
-          baseUrl: 'src',
-          optimize: 'none',
-          optimizeCss: 'none',
-          useStrict: true,
-          paths: {
-            'test': '../feature-detects',
-            'modernizr-init': '../tmp/modernizr-init'
-          },
-          modules: [{
-            'name': 'modernizr-build',
-            'include': ['modernizr-init'],
-            'create': true
-          }],
-          fileExclusionRegExp: /^(.git|node_modules|modulizr|media|test)$/,
-          wrap: {
-            start: '<%= banner.full %>' + '\n;(function(window, document, undefined){',
-            end: '})(this, document);'
-          },
-          onBuildWrite: function (id, path, contents) {
-            if ((/define\(.*?\{/).test(contents)) {
-              //Remove AMD ceremony for use without require.js or almond.js
-              contents = contents.replace(/define\(.*?\{/, '');
-
-              contents = contents.replace(/\}\);\s*?$/,'');
-
-              if ( !contents.match(/Modernizr\.addTest\(/) && !contents.match(/Modernizr\.addAsyncTest\(/) ) {
-                //remove last return statement and trailing })
-                contents = contents.replace(/return.*[^return]*$/,'');
-              }
-            }
-            else if ((/require\([^\{]*?\{/).test(contents)) {
-              contents = contents.replace(/require[^\{]+\{/, '');
-              contents = contents.replace(/\}\);\s*$/,'');
-            }
-
-            return contents;
-          }
-        }
-      }
+      dist: ['dist']
     },
     connect: {
       server: {
@@ -191,28 +138,29 @@ module.exports = function( grunt ) {
     }
   });
 
-  // Strip define fn
-  grunt.registerMultiTask('stripdefine', 'Strip define call from dist file', function() {
-    this.filesSrc.forEach(function(filepath) {
-      // Remove `define('modernizr-init' ...)` and `define('modernizr-build' ...)`
-      var mod = grunt.file.read(filepath).replace(/define\("modernizr-(init|build)", function\(\)\{\}\);/g, '');
-
-      // Hack the prefix into place. Anything is way too big for something so small.
-      if ( modConfig && modConfig.classPrefix ) {
-        mod = mod.replace('classPrefix : \'\',', 'classPrefix : \'' + modConfig.classPrefix.replace(/"/g, '\\"') + '\',');
-      }
-      grunt.file.write(filepath, mod);
+  grunt.registerMultiTask('modernizr-build', 'Generate Modernizr Build', function() {
+    var done = this.async();
+    var dest = this.files[0].dest;
+    var options = this.options({
+      banner: ''
     });
+    var banner = grunt.template.process(options.banner);
+
+    var build = require('./lib/').build;
+
+    build(modConfig, function(content) {
+      grunt.file.write(dest, banner + content);
+      done();
+    }, function(err) {
+      grunt.fail.warn(err);
+    });
+
   });
 
-  grunt.registerMultiTask('generateinit', 'Generate Init file', function() {
-    var requirejs = require('requirejs');
-    requirejs.config({
-      appDir: __dirname + '/src/',
-      baseUrl: __dirname + '/src/'
-    });
-    var generateInit = requirejs('generate');
-    grunt.file.write('tmp/modernizr-init.js', generateInit(modConfig));
+  grunt.registerMultiTask('modernizr-metadata', 'Generate Modernizr metadata', function() {
+    var dest = this.files[0].dest;
+    var metadata = require('./lib/').metadata;
+    grunt.file.write(dest, JSON.stringify(metadata, null, '  '));
   });
 
   // Testing tasks
@@ -227,12 +175,12 @@ module.exports = function( grunt ) {
   // Build
   grunt.registerTask('build', [
     'clean',
-    'generateinit',
-    'requirejs',
-    'copy',
-    'clean:postbuild',
-    'stripdefine',
+    'modernizr-build',
     'uglify'
+  ]);
+
+  grunt.registerTask('meta', [
+    'modernizr-metadata'
   ]);
 
   grunt.registerTask('default', [

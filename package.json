@@ -7,8 +7,6 @@
   },
   "dependencies": {
     "file": "0.2.1",
-    "mkdirp": "~0.3.4",
-    "optimist": "~0.3.5",
     "requirejs": "~2.1.4",
     "underscore": "~1.4.4",
     "marked": "~0.2.8",
@@ -17,11 +15,9 @@
     "grunt-contrib-watch": "~0.3.1",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-copy": "~0.4.0",
-    "grunt-contrib-requirejs": "~0.4.0",
     "grunt-cli": "~0.1.11",
     "load-grunt-tasks": "~0.2.1",
-    "grunt-contrib-jshint": "~0.8.0",
-    "win-spawn": "^2.0.0"
+    "grunt-contrib-jshint": "~0.8.0"
   },
   "devDependencies": {
     "grunt-contrib-connect": "~0.5.0",
@@ -32,7 +28,7 @@
   "scripts": {
     "test": "./node_modules/.bin/grunt test"
   },
-  "main": "./lib/cli",
+  "main": "./lib/",
   "repository": {
     "type": "git",
     "url": "git://github.com/Modernizr/Modernizr.git"

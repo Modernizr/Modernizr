@@ -15,7 +15,7 @@ exports.setUp = function (callback) {
 
 exports.build = function (test) {
   test.expect(3);
-  var modernizr = require(path.join(cwd, "lib", "cli"));
+  var modernizr = require(path.join(cwd, "lib"));
 
   test.ok(modernizr.build, "should export build function");
   test.equal(typeof modernizr.build, "function", "modernizr.build should be a function");
@@ -30,7 +30,7 @@ exports.build = function (test) {
 
 exports.buildCustom = function (test) {
   test.expect(6);
-  var modernizr = require(path.join(cwd, "lib", "cli"));
+  var modernizr = require(path.join(cwd, "lib"));
 
   test.ok(modernizr.build, "should export build function");
   test.equal(typeof modernizr.build, "function", "modernizr.build should be a function");
@@ -41,14 +41,13 @@ exports.buildCustom = function (test) {
       "test/dom/classlist"
     ],
     "verbose": false
-  }, function () {
+  }, function (content) {
     test.ok(true, "should finish build without errors");
-    var file = fs.readFileSync(path.join(cwd, "dist", "modernizr-build.js"), "utf8");
 
-    test.notEqual(file.indexOf("boxsizing"), -1, "Should find test for boxsizing");
-    test.notEqual(file.indexOf("classlist"), -1, "Should find test for classlist");
+    test.notEqual(content.indexOf("boxsizing"), -1, "Should find test for boxsizing");
+    test.notEqual(content.indexOf("classlist"), -1, "Should find test for classlist");
 
-    test.equal(file.indexOf("cssanimations"), -1, "Should not find test for cssanimations");
+    test.equal(content.indexOf("cssanimations"), -1, "Should not find test for cssanimations");
 
     test.done();
   });
