@@ -33,7 +33,7 @@ a method for exposing the `trigger` functionality. Instead, if you'd like to hav
 
 ## Getting Started
 
-- Clone or download the repository
+- Clone or download the repository `git clone https://github.com/Modernizr/Modernizr.git`
 - Install project dependencies with `npm install`
 
 ## Test suite
