@@ -41,9 +41,8 @@ exports.buildCustom = function (test) {
       "test/dom/classlist"
     ],
     "verbose": false
-  }, function () {
+  }, function (file) {
     test.ok(true, "should finish build without errors");
-    var file = fs.readFileSync(path.join(cwd, "dist", "modernizr-build.js"), "utf8");
 
     test.notEqual(file.indexOf("boxsizing"), -1, "Should find test for boxsizing");
     test.notEqual(file.indexOf("classlist"), -1, "Should find test for classlist");
