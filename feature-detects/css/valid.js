@@ -11,7 +11,7 @@
 /* DOC
   Detects support for the ':valid' CSS pseudo-class.
 */
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles, createElement ) {
+define(['Modernizr', 'testStyles', 'createElement'], function( Modernizr, testStyles, createElement ) {
   Modernizr.addTest('cssvalid', function() {
     return testStyles('#modernizr input{height:0;border:0;padding:0;margin:0;width:10px} #modernizr input:valid{width:50px}', function(elem) {
       var input = createElement('input');

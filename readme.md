@@ -46,8 +46,8 @@ Run the [test suite](http://modernizr.github.com/Modernizr/test/)
 
 ```js
 npm install
-grunt build
-//outputs to ./dist/modernizr-build.js
+./bin/modernizr
+//outputs to ./modernizr.js
 ```
 
 ### To run tests (in phantom):
@@ -93,8 +93,7 @@ A `build` method is exposed for generating custom Modernizr builds. Example:
 var modernizr = require("modernizr");
 
 modernizr.build({}, function (result) {
-  console.log(result.code); // full source
-  console.log(result.min); // minfied output
+  console.log(result); // the build
 });
 ```
 

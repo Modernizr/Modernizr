@@ -1,3 +1,108 @@
-#!/usr/bin/env bash
-grunt build > /dev/null
-cat ./dist/modernizr-build.js
+#!/usr/bin/env node
+'use strict';
+
+var fs = require('fs');
+var path = require('path');
+var mkdirp = require('mkdirp');
+var Modernizr = require(path.resolve(__dirname + '/../lib/cli.js'));
+var yargs = require('yargs')
+  .options('h', {
+    alias: 'help',
+    describe: 'Print Help'
+  })
+  .options('V', {
+    alias: 'version',
+    describe: 'Print the version and exit'
+  })
+  .options('c', {
+    alias: 'config',
+    describe: 'Path to a JSON file containing Modernizr configuration. See lib/config-all.json for an example'
+  })
+  .options('d', {
+    alias: 'dest',
+    describe: 'Path to write the Modernizr build file to. Defaults to ./Modernizr.js'
+  })
+  .options('m', {
+    alias: 'metadata',
+    describe: 'Path to where the Modernizr feature-detect metadata should be saved. Defaults to ./metadata.json'
+  })
+  .options('u', {
+    alias: 'uglify',
+    describe: 'uglify/minify the output'
+  })
+  .options('q', {
+    alias: 'quiet',
+    describe: 'Silence all output'
+  });
+var argv = yargs.argv;
+var cwd = process.cwd();
+var dest = cwd + '/Modernizr.js';
+var configPath;
+var config;
+
+function log() {
+  if (!argv.q) {
+    console.log.apply(console, arguments);
+  }
+}
+function stringify(obj, minified) {
+  var args = minified ? [0,2] : [];
+  args.unshift(obj);
+  return JSON.stringify.apply(JSON, args);
+}
+
+if (argv.h) {
+  yargs.showHelp();
+  process.exit();
+}
+
+if (argv.V) {
+  var pkg = require('../package.json');
+  console.log('Modernizr v' + pkg.version);
+  process.exit();
+}
+
+if (argv.d) {
+  dest = path.resolve(argv.d);
+}
+
+if (argv.m) {
+  // path.normalize is used instead of normalize in order to support ~
+  // we get an absolute path on the fallback from cwd, and any user supplied
+  // argument will be relative to their current directory.
+  var metaDest = path.normalize(argv.m === true ? cwd + '/metadata.json' : argv.m);
+  Modernizr.metadata(function(metadata) {
+    mkdirp.sync(path.dirname(metaDest));
+    fs.writeFileSync(metaDest, stringify(metadata, argv.u));
+    log('metadata saved to ' + metaDest);
+  });
+}
+
+if (argv.c) {
+  try {
+    configPath = fs.realpathSync(argv.c);
+  } catch (e) {
+    console.error(argv.c + ' does not exist.');
+    process.exit(1);
+  }
+} else {
+  configPath = path.resolve(__dirname, '../lib/config-all.json');
+}
+
+try {
+  config = require(configPath);
+} catch (e) {
+  console.error(configPath + ' is not valid JSON.');
+  console.error(e);
+  process.exit(1);
+}
+
+if (argv.u) {
+  config.minify = true;
+}
+
+Modernizr.build(config, function(output) {
+  mkdirp.sync(path.dirname(dest));
+  fs.writeFileSync(dest, output);
+  log('Modernizr build saved to ' + dest);
+});
