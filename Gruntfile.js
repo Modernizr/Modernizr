@@ -40,6 +40,7 @@ module.exports = function( grunt ) {
       files: [
         'Gruntfile.js',
         'src/*.js',
+        'lib/*.js',
         'feature-detects/**/*.js'
       ],
       tests: {
@@ -47,6 +48,7 @@ module.exports = function( grunt ) {
           jquery: true,
           globals: {
             Modernizr: true,
+            define: true,
             TEST: true,
             QUnit: true
           }

@@ -2,6 +2,7 @@
 'use strict';
 
 var fs = require('fs');
+var _ = require('lodash');
 var path = require('path');
 var mkdirp = require('mkdirp');
 var Modernizr = require(path.resolve(__dirname + '/../lib/cli.js'));
@@ -63,7 +64,16 @@ if (argv.V) {
 }
 
 if (argv.d) {
-  dest = path.resolve(argv.d);
+  dest = path.normalize(argv.d);
+  var exists = fs.existsSync(dest);
+  var isDir = exists && fs.statSync(dest).isDirectory();
+  var fileRequested = _.endsWith(dest, '.js');
+
+  if ((exists && isDir) || (!exists && !fileRequested)) {
+    dest = path.join(dest, 'modernizr.js');
+  }
+
+  mkdirp.sync(path.dirname(dest));
 }
 
 if (argv.m) {
@@ -73,9 +83,13 @@ if (argv.m) {
   var metaDest = path.normalize(argv.m === true ? cwd + '/metadata.json' : argv.m);
   Modernizr.metadata(function(metadata) {
     mkdirp.sync(path.dirname(metaDest));
-    fs.writeFileSync(metaDest, stringify(metadata, argv.u));
+    fs.writeFileSync(metaDest, stringify(metadata, !argv.u));
     log('metadata saved to ' + metaDest);
   });
+  if (!argv.d) {
+    // return early unless we explictly request Modernizr to be built
+    return;
+  }
 }
 
 if (argv.c) {
@@ -102,7 +116,6 @@ if (argv.u) {
 }
 
 Modernizr.build(config, function(output) {
-  mkdirp.sync(path.dirname(dest));
   fs.writeFileSync(dest, output);
   log('Modernizr build saved to ' + dest);
 });
