@@ -747,5 +747,11 @@
     "href": "https://github.com/polymer/HTMLImports",
     "licenses": ["BSD"],
     "name": "Polymer HTMLImports polyfill"
+  },
+  "matchmediajs": {
+    "authors": ["Scott Jehl", "Paul Irish", "Nicholas Zakas"],
+    "href": "https://github.com/paulirish/matchMedia.js/",
+    "licenses": ["MIT"],
+    "name": "matchMedia.js"
   }
 }
