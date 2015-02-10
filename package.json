@@ -6,6 +6,7 @@
     "test": "test"
   },
   "dependencies": {
+    "file": "^0.2.2",
     "lodash": "^3.1.0",
     "marked": "^0.2.8",
     "mkdirp": "^0.3.4",
@@ -13,7 +14,6 @@
     "yargs": "^2.3.0"
   },
   "devDependencies": {
-    "file": "0.2.1",
     "grunt": "~0.4.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-copy": "~0.4.0",
@@ -54,7 +54,8 @@
     { "name": "Ryan Seddon" },
     { "name": "Alexander Farkas" },
     { "name": "Patrick Kettner" },
-    { "name": "Stu Cox" }
+    { "name": "Stu Cox" },
+    { "name": "Richard Herrera" }
   ],
   "license": "MIT"
 }
