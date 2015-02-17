@@ -27,7 +27,7 @@ define(['Modernizr', 'docElement', 'createElement'], function(Modernizr, docElem
       //skip the test if video itself, or the autoplay
       //element on it isn't supported
       if (!Modernizr.video || !('autoplay' in elem)) {
-        addTest('videoautoplay', false);
+        resultCallback(false);
         return;
       }
 
