@@ -96,12 +96,14 @@ module.exports = function( grunt ) {
   });
 
   grunt.registerMultiTask('generate', 'Create a version of Modernizr from Grunt', function() {
+    var done = this.async();
     var config = require('./lib/config-all');
     var modernizr = require('./lib/cli');
     var dest = this.data;
 
     modernizr.build(config, function(output) {
       grunt.file.write(dest, output);
+      done();
     });
   });
 
