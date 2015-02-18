@@ -7,7 +7,7 @@ define(['ModernizrProto', 'testMediaQuery'], function( ModernizrProto, testMedia
           Modernizr.mq('(min-width:0)')
   * usage:
   * Modernizr.mq('only screen and (max-width:768)')
-*/ 
+*/
   var mq = ModernizrProto.mq = testMediaQuery;
   return mq;
 });
