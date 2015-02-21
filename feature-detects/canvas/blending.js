@@ -1,7 +1,7 @@
 /*!
 {
   "name": "canvas blending support",
-  "property": ["canvasblending"],
+  "property": "canvasblending",
   "tags": ["canvas"],
   "async" : false,
   "notes": [{
@@ -15,7 +15,7 @@
 }
 !*/
 /* DOC
-Detects if Photoshop style blending modes are available in canvas
+Detects if Photoshop style blending modes are available in canvas.
 */
 define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
 

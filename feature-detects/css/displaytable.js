@@ -7,17 +7,13 @@
   "tags": ["css"],
   "builderAliases": ["css_displaytable"],
   "notes": [{
-    "name": "All additional table display values",
+    "name": "Detects for all additional table display values",
     "href": "http://pastebin.com/Gk9PeVaQ"
   }]
 }
 !*/
 /* DOC
 `display: table` and `table-cell` test. (both are tested under one name `table-cell` )
-
-All additional table display values are here: http://pastebin.com/Gk9PeVaQ though Scott
-has seen some IE false positives with that sort of weak detection.
-More testing necessary perhaps.
 */
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   // If a document is in rtl mode this test will fail so we force ltr mode on the injeced

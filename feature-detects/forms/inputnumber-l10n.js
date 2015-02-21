@@ -11,7 +11,7 @@
     "name": "Based on This",
     "href": "http://trac.webkit.org/browser/trunk/LayoutTests/fast/forms/script-tests/input-number-keyoperation.js?rev=80096#L9"
   }],
-  "knownBugs": "Only ever returns true if the browser/OS is configured to use comma as a decimal separator. This is probably fine for most use cases."
+  "knownBugs": ["Only ever returns true if the browser/OS is configured to use comma as a decimal separator. This is probably fine for most use cases."]
 }
 !*/
 /* DOC

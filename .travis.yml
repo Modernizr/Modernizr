@@ -1,12 +1,57 @@
+sudo: false
 language: node_js
 node_js:
-  - 0.10
-  - 0.12
+  - '0.10'
+  - '0.12'
 before_script:
   - npm install grunt-cli -g
-  - grunt build
-script: grunt travis --verbose
+  - export CI_BUILD_NUMBER=$(git rev-parse HEAD)
+
+after_success:
+
+  # Temporary workaround for:
+  # https://github.com/travis-ci/travis-ci/issues/929
+
+  - python travis_after_all.py
+  - export $(cat .to_export_back)
+  - |
+      # If all the tests pass in all the runtimes, make Travis
+      # automatically download and execute the following script
+
+      if [ "$BUILD_LEADER" == "YES" ]; then
+        if [ "$BUILD_AGGREGATE_STATUS" == "others_succeeded" ]; then \
+
+          # Clean up helper files
+          rm -rf travis_after_all.py .to_export_back && \
+
+          # The `update_site_branch.sh` script will run the build,
+          # and if that generates changes, it will commit them to the
+          # `master` branch:
+          #
+          #   * ensuring that the content from the `gh-pages/` directory
+          #     is always in sync with the rest of the content
+          #
+          #   * removing the need to execute the build step locally
+          #     everytime a change is made (especially in the case
+          #     of trivial changes such as typos)
+          #
+          # Note: The `update_site_branch.sh` script will only run
+          # if the commit was made to the `master` branch.
+
+          curl -sSL "https://raw.githubusercontent.com/h5bp-bot/scripts/0.6.1/update_site_branch.sh" |
+              bash -s -- --commands "grunt copy:gh-pages" \
+                         --commit-message "Hey server, this content is for you! [skip ci]" \
+                         --directory "gh-pages" \
+                         --distribution-branch "gh-pages" \
+                         --source-branch "master";
+        fi
+      fi
+
+script:
+  - grunt travis --verbose
+  - curl -sSLo travis_after_all.py https://raw.github.com/dmakhno/travis_after_all/master/travis_after_all.py
 env:
   global:
   - secure: noRIQS5Wv/9SFs4bK+0NZNQ7nnL+WfP6PhkPQR5QxNmXR1S4wjdiHy4/yv4aO/j1URgFw1YiFf+80k7YIn/9vIT+lMzE0wiw5FXTQM9PIB2mPHC2wzc0Y1Xj5kfuFXZemWTt73y1IkT53PjxezslVSduPKTxjXJuPmUk2FG3yaw=
   - secure: QUDo7NDflY7K3xrBfcjVmhz6IBKoMOiosABbOEdQo1PiqAa8JBbjd+h02p6k+ZNQNymB1EcBhe20O1dMJYOg2E9BB8vtCsJtXTw1TEKlEwUVPUMkAtP6gpOk8XfmP9o6Ej2uM89+r6vLTDJIH1FPSwYbyxvWzIEi52gjFZUN6Mw=
+  - secure: F5Xmkr+31YIXvtS1sqt2PDCI1CEQN/zpoJBKzqYXIUZVLvyH/4zVxRRa2LYleLRSIc+YZfzE3YZjfwWUC9vMcEREk380gRwSot9mhVbCOmNd1qhrFocSAzpI0fnwPUMfQknhE/mLuXnFQ0OAJBFzVCFOHHhKTlL8q+I7dNUhErc=

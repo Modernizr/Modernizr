@@ -6,6 +6,7 @@
 
   // Define globals exposed by modern browsers.
   "browser": true,
+  "node": true,
 
   /*
    * TABS AND QUOTES
@@ -87,14 +88,22 @@
   "smarttabs": true,
 
   "globals": {
-    "Modernizr": true,
-    "DocumentTouch": true,
-    "TEST": true,
-    "SVGFEColorMatrixElement": true,
-    "Blob": true,
-    "define": true,
-    "require": true,
+    "_": true,
     "$": true,
-    "QUnit": true
+    "Blob": true,
+    "DocumentTouch": true,
+    "Modernizr": true,
+    "SVGFEColorMatrixElement": true,
+    "TEST": true,
+    "after": true,
+    "afterEach": true,
+    "before": true,
+    "beforeEach": true,
+    "define": true,
+    "describe": true,
+    "expect": true,
+    "it": true,
+    "requirejs": true,
+    "sinon": true
   }
 }

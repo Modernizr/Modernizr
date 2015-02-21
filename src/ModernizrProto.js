@@ -1,15 +1,15 @@
 define(['tests'], function ( tests ) {
   var ModernizrProto = {
     // The current version, dummy
-    _version: 'v3.0.0pre',
+    _version: '__VERSION__',
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
     _config: {
-      classPrefix : '',
-      enableClasses : true,
-      enableJSClass : true,
-      usePrefixes : true
+      'classPrefix' : '',
+      'enableClasses' : true,
+      'enableJSClass' : true,
+      'usePrefixes' : true
     },
 
     // Queue of tests

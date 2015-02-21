@@ -3,21 +3,21 @@
     "name": "HTML5 Shiv",
     "authors": ["Alexander Farkas (@aFarkas)", "Jonathan Neal (@jonathantneal)", "Paul Irish (@paulirish)"],
     "href": "https://github.com/aFarkas/html5shiv",
-    "licences": ["MIT", "GPL2"],
+    "licenses": ["MIT", "GPL2"],
     "notes": ["The HTML5 Shiv enables use of HTML5 sectioning elements in legacy Internet Explorer and provides basic HTML5 styling for Internet Explorer 6-9, Safari 4.x (and iPhone 3.x), and Firefox 3.x."]
   },
   "html5-notifications": {
     "name": "HTML5 Notifications",
     "authors": ["Hendrik Beskow"],
     "href": "https://gist.github.com/Asmod4n/6030828",
-    "licences": ["MIT"],
+    "licenses": ["MIT"],
     "notes": ["A Polyfill to fix the differences in WebKit, Blink and Gecko HTML5 Desktop Notifications, also adds a way to add your own Javascript Notifications in case your Browser doesn't support them natively."]
   },
   "desktop-notify": {
     "name": "HTML5-Desktop-Notifications",
     "authors": ["Tsvetan Tsvetkov"],
     "href": "https://github.com/ttsvetko/HTML5-Desktop-Notifications",
-    "licences": ["Apache2"],
+    "licenses": ["Apache2"],
     "notes": ["A small library that unifies the HTML5 Notifications APIs across different browsers including IE9 & IE10."]
   },
   "css3pie": {
@@ -119,16 +119,19 @@
   },
   "es5shim": {
     "name": "ES5 Shim",
-    "href": "https://github.com/kriskowal/es5-shim"
+    "href": "https://github.com/kriskowal/es5-shim",
+    "licenses": ["MIT"]
   },
   "es5sham": {
     "name": "ES5 Sham",
     "href": "https://github.com/kriskowal/es5-shim",
-    "notes": ["Adds the rest of Object, read carefully before using"]
+    "notes": ["Adds the rest of Object, read carefully before using"],
+    "licenses": ["MIT"]
   },
   "es6shim": {
     "name": "ES6 Shim",
-    "href": "https://github.com/paulmillr/es6-shim"
+    "href": "https://github.com/paulmillr/es6-shim",
+    "licenses": ["MIT"]
   },
   "html5gears": {
     "name": "html5-gears",
@@ -145,7 +148,8 @@
   "flashcanvas": {
     "name": "FlashCanvas",
     "authors": ["Shinya Muramatsu"],
-    "href": "http://flashcanvas.net/"
+    "href": "http://flashcanvas.net/",
+    "licenses": ["MIT"]
   },
   "excanvas": {
     "name": "Explorer Canvas",
@@ -155,7 +159,8 @@
   },
   "slcanvas": {
     "name": "Silverlight HTML 5 Canvas",
-    "href": "http://slcanvas.codeplex.com/"
+    "href": "http://slcanvas.codeplex.com/",
+    "licenses": ["Microsoft Public License (Ms-PL)"]
   },
   "fxcanvas": {
     "name": "fxCanvas",
@@ -185,7 +190,8 @@
   "ppx": {
     "name": "postmessage-proxied-xhr",
     "authors": ["Atul Varma"],
-    "href": "https://github.com/toolness/postmessage-proxied-xhr"
+    "href": "https://github.com/toolness/postmessage-proxied-xhr",
+    "licenses": ["MIT"]
   },
   "flxhr": {
     "name": "flXHR",
@@ -214,19 +220,14 @@
   "jdataview": {
     "name": "jDataView",
     "authors": ["Christopher Chedeau", "Ingvar Stepanyan"],
-    "href": "https://github.com/jDataView/jDataView/"
+    "href": "https://github.com/jDataView/jDataView/",
+    "licenses": ["WTFPL"]
   },
   "screenfulljs": {
     "name": "screenfull.js",
     "authors": ["Sindre Sorhus"],
     "href": "https://github.com/sindresorhus/screenfull.js",
     "licenses": ["MIT"]
-  },
-  "geolocationshim": {
-    "name": "Geolocation Shim",
-    "authors": ["Paul Irish"],
-    "href": "https://gist.github.com/paulirish/366184",
-    "notes": ["Uses Google ClientLocation API as a fallback"]
   },
   "geo-location-javascript": {
     "name": "geo-location-javascript",
@@ -359,11 +360,6 @@
     "href": "https://github.com/dsheiko/HTML5-Form-Shim",
     "licenses": ["MIT"]
   },
-  "jqueryformshim": {
-    "name": "jQuery form shim",
-    "authors": ["Andrew Dodson"],
-    "href": "http://adodson.com/jquery.form.js/"
-  },
   "selectedoptionsjs": {
     "name": "selectedOptions.js",
     "authors": ["Brett Zamir"],
@@ -382,11 +378,6 @@
     "href": "https://github.com/douglascrockford/JSON-js",
     "licenses": ["public domain"]
   },
-  "impressivewebs": {
-    "name": "HTML5 Reverse Ordered Lists",
-    "authors": ["Louis Lazaris", "Remy Sharp"],
-    "href": "https://github.com/impressivewebs/HTML5-Reverse-Ordered-Lists"
-  },
   "mathjax": {
     "name": "MathJax",
     "authors": ["Davide P. Cervone"],
@@ -402,7 +393,8 @@
   "visiblyjs": {
     "name": "visibly.js",
     "authors": ["Addy Osmani"],
-    "href": "https://github.com/addyosmani/visibly.js"
+    "href": "https://github.com/addyosmani/visibly.js",
+    "licenses": ["MIT"]
   },
   "jquery-visibility": {
     "name": "Page Visibility shim for jQuery",
@@ -419,7 +411,8 @@
   "perfnow": {
     "name": "perf.now() polyfill",
     "authors": ["Paul Irish"],
-    "href": "https://gist.github.com/paulirish/5438650"
+    "href": "https://gist.github.com/paulirish/5438650",
+    "licenses": ["MIT"]
   },
   "handjs": {
     "name": "Hand.js",
@@ -444,7 +437,8 @@
   "raf": {
     "name": "requestAnimationFrame polyfill",
     "authors": ["Erik Möller"],
-    "href": "http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating"
+    "href": "https://gist.github.com/paulirish/1579671",
+    "licenses": ["MIT"]
   },
   "cupcake": {
     "name": "CupCake.js",
@@ -477,16 +471,12 @@
     "href": "http://yuilibrary.com/yui/docs/cache/#offline",
     "licenses": ["BSD"]
   },
-  "textstorage": {
-    "name": "Cross-browser TextStorage",
-    "authors": ["sofish"],
-    "href": "https://gist.github.com/sofish/1221115"
-  },
   "scoped-styles": {
     "name": "Scoped Styles",
     "authors": ["Simon Madine"],
     "notes": ["jQuery Plugin to enable the scoped attribute on style blocks so they only affect their parent element's children."],
-    "href": "http://github.com/thingsinjars/jQuery-Scoped-CSS-plugin"
+    "href": "http://github.com/thingsinjars/jQuery-Scoped-CSS-plugin",
+    "licenses": ["MIT"]
   },
   "svgweb": {
     "name": "SVG Web",
@@ -539,13 +529,14 @@
     "name": "fabric.js",
     "authors": ["Juriy Zaytsev (@kangax)"],
     "href": "https://github.com/kangax/fabric.js",
-    "notes": "Can render SVG via canvas",
+    "notes": ["Can render SVG via canvas"],
     "licenses": ["MIT"]
   },
   "inline-svg-polyfill": {
     "name": "inline SVG polyfill",
     "authors": ["Marc Stalfoort (@mstalfoort)"],
-    "href": "http://mstalfoort.posterous.com/inline-svg"
+    "href": "https://gist.github.com/mstalfoort/1293822",
+    "licenses": ["MIT"]
   },
   "joshuabell-polyfill": {
     "name": "polyfill",
@@ -573,7 +564,7 @@
   },
   "sublimevideo": {
     "name": "SublimeVideo",
-    "authors": "Jilion",
+    "authors": ["Jilion SA"],
     "href": "http://sublimevideo.net/",
     "licenses": ["proprietary"]
   },
@@ -607,11 +598,6 @@
     "href": "http://code.google.com/p/jebgl/",
     "licenses": ["MIT"]
   },
-  "webglcompat": {
-    "name": "webgl-compat",
-    "authors": ["Colin MacKenzie"],
-    "href": "https://github.com/sinisterchipmunk/webgl-compat"
-  },
   "cwebgl": {
     "name": "cwebgl",
     "authors": ["Cimaron Shanahan"],
@@ -625,19 +611,19 @@
   },
   "sockjs": {
     "name": "SockJS",
-    "authors": [""],
+    "authors": ["Bryce Kahle"],
     "href": "https://github.com/sockjs/sockjs-client",
-    "licenses": [""]
+    "licenses": ["MIT"]
   },
   "socketio": {
     "name": "socket.io",
-    "authors": [""],
+    "authors": ["Guillermo Rauch"],
     "href": "http://socket.io/",
-    "licenses": [""]
+    "licenses": ["MIT"]
   },
   "kaazing-websocket-gateway": {
     "name": "Kaazing WebSocket Gateway",
-    "href": "http://kaazing.com/products/kaazing-websocket-gateway.html",
+    "href": "http://kaazing.com/products/kaazing-websocket-gateway/",
     "licenses": ["proprietary"]
   },
   "websocketjs": {

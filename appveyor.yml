@@ -1,6 +1,7 @@
 environment:
   matrix:
     - nodejs_version: 0.10
+    - nodejs_version: 0.12
 
 # Get the latest stable version of Node 0.STABLE.latest
 install:
@@ -11,7 +12,9 @@ build: off
 
 before_test:
   - npm install grunt-cli -g
-  - grunt build
 
 test_script:
   - npm test
+
+artifacts:
+  - path: test\coverage

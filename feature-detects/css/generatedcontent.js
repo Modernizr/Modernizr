@@ -3,7 +3,17 @@
   "name": "CSS Generated Content",
   "property": "generatedcontent",
   "tags": ["css"],
-  "warnings": ["Android won't return correct height for anything below 7px #738"]
+  "warnings": ["Android won't return correct height for anything below 7px #738"],
+  "notes": [{
+    "name": "W3C CSS Selectors Level 3 spec",
+    "href": "http://www.w3.org/TR/css3-selectors/#gen-content"
+  },{
+    "name": "MDN article on :before",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/::before"
+  },{
+    "name": "MDN article on :after",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/::before"
+  }]
 }
 !*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {

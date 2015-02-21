@@ -16,7 +16,6 @@
     "galleryhtml5forms",
     "jscolor",
     "html5formshim",
-    "jqueryformshim",
     "selectedoptionsjs",
     "formvalidationjs"
   ]

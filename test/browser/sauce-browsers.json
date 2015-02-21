@@ -1,0 +1,38 @@
+[
+  {
+    "browserName": "firefox",
+    "platform": "WIN7"
+  },
+  {
+    "browserName": "firefox",
+    "platform": "WINXP",
+    "browserVersion": "3"
+  },
+  {
+    "browserName": "chrome",
+    "platform": "WIN7"
+  },
+  {
+    "browserName": "internet explorer",
+    "platform": "WIN8"
+  },
+  {
+    "browserName": "safari",
+    "platform": "OS X 10.6",
+    "version": "5"
+  },
+  {
+    "browserName": "safari",
+    "platform": "OS X 10.8",
+    "version": "6"
+  },
+  {
+    "browserName": "iphone",
+    "platform": "OS X 10.8"
+  },
+  {
+    "browserName": "android",
+    "platform": "Linux",
+    "version": "4.0"
+  }
+]

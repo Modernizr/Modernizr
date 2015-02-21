@@ -15,9 +15,8 @@
   ]
 }
 !*/
-/*
-Detects the ability for the browser to composite backgrounds using blending modes
-similar to ones found in Photoshop or Illustrator
+/* DOC
+Detects the ability for the browser to composite backgrounds using blending modes similar to ones found in Photoshop or Illustrator.
 */
 define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
   Modernizr.addTest('backgroundblendmode', prefixed('backgroundBlendMode', 'text'));

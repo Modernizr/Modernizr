@@ -6,8 +6,8 @@
   "builderAliases": ["canvas_todataurl_type"],
   "async" : false,
   "notes": [{
-    "name": "HTML5 Spec",
-    "href": "http://www.w3.org/TR/html5/the-canvas-element.html#dom-canvas-todataurl"
+    "name": "MDN article",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement.toDataURL"
   }]
 }
 !*/

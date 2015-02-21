@@ -6,7 +6,6 @@
   "tags": ["css"],
   "builderAliases": ["css_mask"],
   "notes": [
-    "This is for the -webkit-mask feature, not for the similar svg mask in Firefox.",
     {
       "name": "Webkit blog on CSS Masks",
       "href": "http://www.webkit.org/blog/181/css-masks/"

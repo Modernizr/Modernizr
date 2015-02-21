@@ -21,7 +21,7 @@ var yargs = require('yargs')
   })
   .options('d', {
     alias: 'dest',
-    describe: 'Path to write the Modernizr build file to. Defaults to ./Modernizr.js'
+    describe: 'Path to write the Modernizr build file to. Defaults to ./modernizr.js'
   })
   .options('m', {
     alias: 'metadata',
@@ -37,7 +37,7 @@ var yargs = require('yargs')
   });
 var argv = yargs.argv;
 var cwd = process.cwd();
-var dest = cwd + '/Modernizr.js';
+var dest = cwd + '/modernizr.js';
 var configPath;
 var config;
 

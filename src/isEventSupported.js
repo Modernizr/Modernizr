@@ -38,16 +38,15 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
           // It could be the `document`, `window`, or something else.
           element = createElement('div');
         }
-        if ( element.setAttribute && element.removeAttribute ) {
-          element.setAttribute(eventName, '');
-          isSupported = typeof element[eventName] === 'function';
 
-          if ( element[eventName] !== undefined ) {
-            // If property was created, "remove it" by setting value to `undefined`.
-            element[eventName] = undefined;
-          }
-          element.removeAttribute(eventName);
+        element.setAttribute(eventName, '');
+        isSupported = typeof element[eventName] === 'function';
+
+        if ( element[eventName] !== undefined ) {
+          // If property was created, "remove it" by setting value to `undefined`.
+          element[eventName] = undefined;
         }
+        element.removeAttribute(eventName);
       }
 
       return isSupported;

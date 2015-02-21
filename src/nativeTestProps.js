@@ -14,7 +14,7 @@ define(['injectElementWithStyles', 'domToCSS'], function ( injectElementWithStyl
       }
       return false;
     }
-    // Otherwise fall back to at-rule (for FF 17 and Opera 12.x)
+    // Otherwise fall back to at-rule (for Opera 12.x)
     else if ('CSSSupportsRule' in window) {
       // Build a condition string for every prefixed variant
       var conditionText = [];
@@ -23,9 +23,7 @@ define(['injectElementWithStyles', 'domToCSS'], function ( injectElementWithStyl
       }
       conditionText = conditionText.join(' or ');
       return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function( node ) {
-        return (window.getComputedStyle ?
-                getComputedStyle(node, null) :
-                node.currentStyle)['position'] == 'absolute';
+        return getComputedStyle(node, null).position == 'absolute';
       });
     }
     return undefined;
