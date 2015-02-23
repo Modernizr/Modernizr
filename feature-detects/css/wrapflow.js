@@ -16,7 +16,7 @@
   ]
 }
 !*/
-define(['Modernizr', 'prefixed', 'docElement', 'createElement'], function( Modernizr, prefixed, docElement, createElement ) {
+define(['Modernizr', 'setCss', 'prefixed', 'docElement', 'createElement'], function( Modernizr, setCss, prefixed, docElement, createElement ) {
   Modernizr.addTest('wrapflow', function () {
     var prefixedProperty = prefixed('wrapFlow');
     if (!prefixedProperty)
@@ -34,7 +34,7 @@ define(['Modernizr', 'prefixed', 'docElement', 'createElement'], function( Moder
        We use the "wrap-flow: end" property to test the actual behavior. (http://dev.w3.org/csswg/css3-exclusions/#wrap-flow-property)
        The wrap-flow property is applied to the exclusion area what has a 50px left offset and a 100px width.
        If the wrap-flow property is working correctly then the content should start after the exclusion area, so the content's left offset should be 150px. */
-    exclusion.style.cssText = 'position: absolute; left: 50px; width: 100px; height: 20px;' + wrapFlowProperty + ':end;';
+    setCss(exclusion, 'position: absolute; left: 50px; width: 100px; height: 20px;' + wrapFlowProperty + ':end;');
     content.innerText = 'X';
 
     container.appendChild(exclusion);

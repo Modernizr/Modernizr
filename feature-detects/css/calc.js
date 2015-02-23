@@ -17,13 +17,13 @@ Method of allowing calculated values for length units. For example:
 }
 ```
 */
-define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
+define(['Modernizr', 'setCss', 'createElement', 'prefixes'], function( Modernizr, setCss, createElement, prefixes ) {
   Modernizr.addTest('csscalc', function() {
     var prop = 'width:';
     var value = 'calc(10px);';
     var el = createElement('div');
 
-    el.style.cssText = prop + prefixes.join(value + prop);
+    setCss(el, prop + prefixes.join(value + prop));
 
     return !!el.style.length;
   });

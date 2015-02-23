@@ -24,10 +24,10 @@
   ]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'setCss', 'createElement'], function( Modernizr, setCss, createElement ) {
   Modernizr.addTest('csspointerevents', function() {
     var element = createElement('x');
-    element.style.cssText = 'pointer-events:auto';
+    setCss(element, 'pointer-events:auto');
     return element.style.pointerEvents === 'auto';
   });
 });

@@ -8,12 +8,12 @@
   "builderAliases": ["css_filters"]
 }
 !*/
-define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
+define(['Modernizr', 'setCss', 'createElement', 'prefixes'], function( Modernizr, setCss, createElement, prefixes ) {
   // https://github.com/Modernizr/Modernizr/issues/615
   // documentMode is needed for false positives in oldIE, please see issue above
   Modernizr.addTest('cssfilters', function() {
     var el = createElement('div');
-    el.style.cssText = prefixes.join('filter:blur(2px); ');
+    setCss(el, prefixes.join('filter:blur(2px); '));
     return !!el.style.length && ((document.documentMode === undefined || document.documentMode > 9));
   });
 
