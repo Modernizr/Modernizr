@@ -26,6 +26,9 @@
   }]
 }
 !*/
+/* DOC
+Detects support for custom fonts in CSS via the [`@font-face` at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face).
+*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   var blacklist = (function() {
     var ua = navigator.userAgent;

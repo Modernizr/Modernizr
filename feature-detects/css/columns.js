@@ -7,6 +7,24 @@
   "tags": ["css"]
 }
 !*/
+/* DOC
+Detects support for the `column-count` CSS property for creating multi-column layouts, plus various related properties:
+
+```javascript
+Modernizr.csscolumns                  // `column-count` supported
+Modernizr.csscolumns.columnwidth      // `column-width` supported
+Modernizr.csscolumns.columnspan       // `column-span` supported
+Modernizr.csscolumns.columnfill       // `column-fill` supported
+Modernizr.csscolumns.columngap        // `column-gap` supported
+Modernizr.csscolumns.columnrule       // `column-rule` supported
+Modernizr.csscolumns.columnrulecolor  // `column-rule-color` supported
+Modernizr.csscolumns.columnrulestyle  // `column-rule-style` supported
+Modernizr.csscolumns.columnrulewidth  // `column-rule-width` supported
+Modernizr.csscolumns.breakbefore      // `break-before` supported
+Modernizr.csscolumns.breakafter       // `break-after` supported
+Modernizr.csscolumns.breakinside      // `break-inside` supported
+```
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
 
   (function() {

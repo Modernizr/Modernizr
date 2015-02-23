@@ -11,6 +11,15 @@
   }]
 }
 !*/
+/* DOC
+Detects whether the `.toDataURL` method is supported for creating image data as a Data URI from a canva graphics:
+
+```javascript
+Modernizr.todataurljpeg     // canvas can be rendered as a JPEG
+Modernizr.todataurlpng      // canvas can be rendered as a PNG
+Modernizr.todataurlwebp     // canvas can be rendered as a WebP
+```
+*/
 define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
 
   var canvas = createElement('canvas');

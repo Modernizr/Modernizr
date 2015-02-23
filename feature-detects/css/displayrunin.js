@@ -1,7 +1,8 @@
 /*!
 {
   "name": "CSS Display run-in",
-  "property": "display-runin",
+  "property": "displayrunin",
+  "aliases": ["displayrunin"],
   "authors": ["alanhogan"],
   "tags": ["css"],
   "builderAliases": ["css_displayrunin"],
@@ -14,6 +15,9 @@
   }]
 }
 !*/
+/* DOC
+Detects support for the `run-in` value for the `display` CSS property, which allows e.g. headings to appear as part of the first line of a paragraph.
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('displayrunin', testAllProps('display', 'run-in'),
     { aliases: ['display-runin'] });

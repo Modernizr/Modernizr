@@ -7,7 +7,7 @@
 }
 !*/
 /* DOC
-Detects whether cookie support is enabled.
+Detects whether cookies can be set/retrived.
 */
 define(['Modernizr'], function( Modernizr ) {
   // https://github.com/Modernizr/Modernizr/issues/191

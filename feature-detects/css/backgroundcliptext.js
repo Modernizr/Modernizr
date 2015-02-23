@@ -20,9 +20,8 @@
   ]
 }
 !*/
-/*
-Detects the ability to control specifies whether or not an element's background
-extends beyond its border in CSS
+/* DOC
+Detects the ability to mask an element's background to the shape of its text, which can be used for image-filled text effects
 */
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('backgroundcliptext', function() {

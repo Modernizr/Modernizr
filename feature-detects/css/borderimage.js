@@ -8,6 +8,9 @@
   "tags": ["css"]
 }
 !*/
+/* DOC
+Detects support for the `border-image` CSS property for using an repeated image in place of the usual `border-style`
+*/
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('borderimage', testAllProps('borderImage', 'url() 1', true));
 });

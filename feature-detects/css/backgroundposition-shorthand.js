@@ -16,11 +16,12 @@
   }]
 }
 !*/
-/*
-Detects if you can use the shorthand method to define multiple parts of an
-element's background-position simultaniously.
+/* DOC
+Detects if you can use the shorthand method to define multiple parts of an element's `background-position` simultaneously, e.g.:
 
-eg `background-position: right 10px bottom 10px`
+```css
+background-position: right 10px bottom 10px;
+```
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('bgpositionshorthand', function() {

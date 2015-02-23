@@ -6,7 +6,16 @@
 }
 !*/
 /* DOC
-Detects the audio element
+Detects support for the audio element and various audio codecs:
+
+```javascript
+Modernizr.audio       // true = basic support
+Modernizr.audio.mp3   // true = support for MP3
+Modernizr.audio.ogg   // true = support for Ogg Vorbis
+Modernizr.audio.opus  // true = support for Ogg Opus
+Modernizr.audio.wav   // true = support for Waveform audio
+Modernizr.audio.m4a   // true = support for AAC
+```
 */
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   // This tests evaluates support of the audio element, as well as

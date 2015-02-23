@@ -15,7 +15,7 @@
   ]
 }
 !*/
-/*
+/* DOC
 Detects the ability for the browser to composite backgrounds using blending modes
 similar to ones found in Photoshop or Illustrator
 */

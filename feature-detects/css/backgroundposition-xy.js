@@ -15,7 +15,7 @@
 }
 !*/
 /* DOC
-Detects the ability to control an element's background position using css
+Detects the ability to control an element's background position using the `background-position-x` and `background-position-y` CSS properies
 */
 define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
   Modernizr.addTest('bgpositionxy', function () {
