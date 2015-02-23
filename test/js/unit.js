@@ -398,7 +398,7 @@ test('Modernizr.testStyles()',function(){
 
 test('Modernizr._[properties]',function(){
 
-  equal(6, Modernizr._prefixes.length, 'Modernizr._prefixes has 6 items');
+  equal(2, Modernizr._prefixes.length, 'Modernizr._prefixes has 2 items');
 
   equal(4, Modernizr._domPrefixes.length, 'Modernizr.domPrefixes has 4 items');
 
