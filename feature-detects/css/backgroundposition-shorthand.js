@@ -16,7 +16,7 @@
   }]
 }
 !*/
-/*
+/* DOC
 Detects if you can use the shorthand method to define multiple parts of an
 element's background-position simultaniously.
 

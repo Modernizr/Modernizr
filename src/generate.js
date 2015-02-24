@@ -20,6 +20,11 @@ define(['lodash'], function(_) {
       output += ', "setClasses", "classes"';
     }
 
+    // Only allow one shiv at a time
+    if  (_.includes(config.options, 'html5printshiv')) {
+      config.options = _.without(config.options, 'html5shiv');
+    }
+
     // Load in the rest of the options (they dont return values, so they aren't declared
     _.forEach(config.options, function (option) {
       output += ', "' + option + '"';

@@ -12,8 +12,7 @@
     "cupcake",
     "storagepolyfill",
     "amplifyjs",
-    "yui-cacheoffline",
-    "textstorage"
+    "yui-cacheoffline"
   ]
 }
 !*/

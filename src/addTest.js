@@ -86,8 +86,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
       // Set the value (this is the magic, right here).
       if (featureNameSplit.length == 1) {
         Modernizr[featureNameSplit[0]] = test;
-      }
-      else if (featureNameSplit.length == 2) {
+      } else {
         // cast to a Boolean, if not one already
         /* jshint -W053 */
         if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {

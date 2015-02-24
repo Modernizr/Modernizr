@@ -16,6 +16,9 @@
   "tags": ["html", "import"]
 }
 !*/
+/* DOC
+Detects support for HTML import, a feature that is used for loading in Web Components.
+ */
 
 define(['Modernizr'], function ( Modernizr ) {
   Modernizr.addTest('htmlimports', 'import' in document.createElement('link'));

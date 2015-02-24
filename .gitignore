@@ -1,4 +1,7 @@
 node_modules
+test/coverage
+test/*.html
+gh-pages
 modernizr.min.js
 metadata.json
 build

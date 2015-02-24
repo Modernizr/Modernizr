@@ -6,11 +6,6 @@ define(['Modernizr', 'mStyle'], function( Modernizr, mStyle ) {
     mStyle.style.cssText = str;
   }
 
-  // Clean up used to happen, but probably isn't
-  // necessary since we delete the element
-  /*Modernizr._q.unshift(function(){
-    setCss('');
-  });*/
 
   return setCss;
 });

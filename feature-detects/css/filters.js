@@ -5,7 +5,11 @@
   "caniuse": "css-filters",
   "polyfills": ["polyfilter"],
   "tags": ["css"],
-  "builderAliases": ["css_filters"]
+  "builderAliases": ["css_filters"],
+  "notes": [{
+    "name": "MDN article on CSS filters",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/filter"
+  }]
 }
 !*/
 define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {

@@ -1,5 +1,6 @@
 define(function() {
   // http://mathiasbynens.be/notes/xhr-responsetype-json#comment-4
+  /* istanbul ignore next */
   var testXhrType = function(type) {
     if (typeof XMLHttpRequest == 'undefined') {
       return false;

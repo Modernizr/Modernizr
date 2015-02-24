@@ -4,7 +4,7 @@
   "property": "webgl",
   "caniuse": "webgl",
   "tags": ["webgl", "graphics"],
-  "polyfills": ["jebgl", "webglcompat", "cwebgl", "iewebgl"]
+  "polyfills": ["jebgl", "cwebgl", "iewebgl"]
 }
 !*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {

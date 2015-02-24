@@ -12,27 +12,19 @@
     "If loading Hyphenator.js via yepnope, be cautious of issue 158: http://code.google.com/p/hyphenator/issues/detail?id=158",
     "This is very large – only include it if you absolutely need it"
     ],
-  "notes": [
-    "csshyphens - tests hyphens:auto actually adds hyphens to text",
-    "softhyphens - tests that &shy; does its job",
-    "softhyphensfind - tests that in-browser Find functionality still works correctly with &shy;",
-    {
-      "name": "The Current State of Hyphenation on the Web.",
-      "href": "http://davidnewton.ca/the-current-state-of-hyphenation-on-the-web"
-    },
-    {
-      "name": "Hyphenation Test Page",
-      "href": "http://davidnewton.ca/demos/hyphenation/test.html"
-    },
-    {
-      "name": "Hyphenation is Language Specific",
-      "href": " http://code.google.com/p/hyphenator/source/diff?spec=svn975&r=975&format=side&path=/trunk/Hyphenator.js#sc_svn975_313"
-    },
-    {
-      "name": "Related Modernizr Issue",
-      "href": "https://github.com/Modernizr/Modernizr/issues/312"
-    }
-  ]
+  "notes": [{
+    "name": "The Current State of Hyphenation on the Web.",
+    "href": "http://davidnewton.ca/the-current-state-of-hyphenation-on-the-web"
+  },{
+    "name": "Hyphenation Test Page",
+    "href": "http://davidnewton.ca/demos/hyphenation/test.html"
+  },{
+    "name": "Hyphenation is Language Specific",
+    "href": " http://code.google.com/p/hyphenator/source/diff?spec=svn975&r=975&format=side&path=/trunk/Hyphenator.js#sc_svn975_313"
+  },{
+    "name": "Related Modernizr Issue",
+    "href": "https://github.com/Modernizr/Modernizr/issues/312"
+  }]
 }
 !*/
 define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], function( Modernizr, prefixes, createElement, testAllProps, addTest ) {

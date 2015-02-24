@@ -5,7 +5,6 @@
   "tags": ["input"],
   "authors": ["Stu Cox"],
   "notes": [
-    "This property name used to refer to the CSS `pointer-events` property, which is now named `csspointerevents`.",
     {
       "name": "W3C spec",
       "href": "http://www.w3.org/TR/pointerevents/"

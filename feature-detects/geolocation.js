@@ -11,7 +11,6 @@
   "polyfills": [
     "joshuabell-polyfill",
     "webshims",
-    "geolocationshim",
     "geo-location-javascript",
     "geolocation-api-polyfill"
   ]

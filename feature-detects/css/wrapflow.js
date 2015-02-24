@@ -4,7 +4,6 @@
   "property": "wrapflow",
   "tags": ["css"],
   "notes": [
-    "This is a separate test from the rest of CSS Exclusions as as IE10 has just implemented this alone.",
     {
       "name": "W3C Exclusions spec",
       "href": "http://www.w3.org/TR/css3-exclusions"

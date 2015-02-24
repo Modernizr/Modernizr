@@ -1,31 +1,53 @@
 /*jshint node: true */
 /*global module */
+
+var browsers = require('./test/browser/sauce-browsers.json');
+var fs = require('fs');
+
 module.exports = function( grunt ) {
   'use strict';
-
-  var browsers = grunt.file.readJSON('lib/sauce-browsers.json');
 
   // Load grunt dependencies
   require('load-grunt-tasks')(grunt);
 
+  var browserTests = grunt.file.expand([
+    'test/universal/**/*.js',
+    'test/browser/**/*.js',
+    '!test/browser/setup.js',
+    '!test/browser/integration/*.js'
+  ]);
+
   grunt.initConfig({
+    env: {
+      nodeTests: [
+        'test/universal/**/*.js',
+        'test/node/**/*.js'
+      ],
+      browserTests: browserTests,
+      coverage: {
+        APP_DIR_FOR_CODE_COVERAGE: 'test/coverage/instrument',
+        urls: [
+          'http://localhost:9999/test/unit.html',
+          'http://localhost:9999/test/index.html'
+        ]
+      }
+    },
     generate: {
       dest: './dist/modernizr-build.js'
     },
-    qunit: {
-      files: ['test/index.html']
-    },
-    nodeunit: {
-      files: ['test/api/*.js']
-    },
-    watch: {
-      files: '<%= jshint.files %>',
-      tasks: 'jshint',
-      tests: {
-        files: '<%= jshint.tests.files.src %>',
-        tasks: [
-          'jshint:tests',
-          'qunit'
+    copy: {
+      'gh-pages': {
+        files: [
+          {
+            expand: true,
+            src: [
+              './**/*',
+              '!./test/coverage/**',
+              '!./node_modules/*grunt-*/**',
+              '!./node_modules/**/node_modules/**'
+            ],
+            dest: 'gh-pages'
+          }
         ]
       }
     },
@@ -45,54 +67,124 @@ module.exports = function( grunt ) {
       ],
       tests: {
         options: {
-          jquery: true,
-          globals: {
-            Modernizr: true,
-            define: true,
-            TEST: true,
-            QUnit: true
-          }
+          jshintrc: true
         },
         files: {
-          src: ['test/js/*.js']
-        }
-      },
-      lib: {
-        options: {
-          node: true
-        },
-        files: {
-          src: ['lib/*.js']
+          src: [
+            '<%= env.nodeTests%>',
+            '<%= env.browserTests %>'
+          ]
         }
       }
     },
     clean: {
-      dist: ['dist']
+      dist: [
+        'dist',
+        'test/coverage',
+        'test/*.html',
+        'gh-pages'
+      ]
+    },
+    jade: {
+      compile: {
+        options: {
+          data: {
+            unitTests: browserTests,
+            integrationTests: grunt.file.expand(['test/browser/integration/*.js'])
+          }
+        },
+        files: {
+          'test/unit.html': 'test/browser/unit.jade',
+          'test/iframe.html': 'test/browser/iframe.jade',
+          'test/index.html': 'test/browser/integration.jade'
+        }
+      }
     },
     connect: {
       server: {
         options: {
+          middleware: function(connect, options) {
+            return [
+              function(req, res, next) {
+                // catchall middleware used in testing
+                var ua = req.headers['user-agent'];
+
+                // record code coverage results from browsers
+                if (req.url == '/coverage/client' && req.method == 'POST') {
+                  var name = encodeURI(ua.replace(/\//g, '-'));
+
+                  req.pipe(fs.createWriteStream('test/coverage/reports/' + name + '.json'))
+                    .on('end', function() {
+                      res.end();
+                    });
+
+                  return;
+                }
+
+                // redirect requests form the `require`d components to their instrumented versions
+                if (req.url.match(/^\/(src|lib)\//)) {
+                  req.url = '/test/coverage/instrument' + req.url;
+                }
+
+                next();
+              },
+              connect.static(options.base)
+            ];
+          },
           base: '',
           port: 9999
         }
       }
     },
-    'saucelabs-qunit': {
+    'saucelabs-mocha': {
       all: {
         options: {
-          urls: ['http://127.0.0.1:9999/test/basic.html'],
-          tunnelTimeout: 5,
-          build: process.env.TRAVIS_JOB_ID,
-          concurrency: 2,
+          urls:  '<%= env.coverage.urls %>',
+          testname: process.env.CI_BUILD_NUMBER || 'Modernizr Test',
           browsers: browsers,
-          testname: 'qunit tests',
-          tags: [
-            'master',
-            '<%= pkg.version %>'
-          ]
+          maxRetries: 2
         }
       }
+    },
+    mocha: {
+      test: {
+        options: {
+          urls: '<%= env.coverage.urls %>'
+        },
+      },
+    },
+    // `mocha` runs browser tests, `mochaTest` runs node tests
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'dot'
+        },
+        src: ['<%= env.nodeTests%>']
+      }
+    },
+    instrument: {
+      files: [
+        'src/**/*.js',
+        'lib/**/*.js'
+      ],
+      options: {
+        basePath: 'test/coverage/instrument/'
+      }
+    },
+    storeCoverage: {
+      options: {
+        dir: 'test/coverage/reports'
+      }
+    },
+    makeReport: {
+      src: 'test/coverage/reports/**/*.json',
+      options: {
+        type: 'lcov',
+        dir: 'test/coverage/reports',
+        print: 'detail'
+      }
     }
+
   });
 
   grunt.registerMultiTask('generate', 'Create a version of Modernizr from Grunt', function() {
@@ -107,11 +199,12 @@ module.exports = function( grunt ) {
     });
   });
 
-  // Testing tasks
-  grunt.registerTask('test', ['jshint', 'build', 'qunit', 'nodeunit', 'clean']);
+  grunt.registerTask('browserTests', ['connect', 'mocha']);
 
-  // Sauce labs CI task
-  grunt.registerTask('sauce', ['connect','saucelabs-qunit']);
+  grunt.registerTask('nodeTests', ['mochaTest']);
+
+  // Testing tasks
+  grunt.registerTask('test', ['clean', 'jshint', 'jade', 'instrument', 'env:coverage', 'nodeTests', 'generate', 'storeCoverage', 'browserTests', 'makeReport']);
 
   // Travis CI task.
   grunt.registerTask('travis', ['test']);
