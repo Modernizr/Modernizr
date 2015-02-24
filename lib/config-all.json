@@ -247,6 +247,7 @@
     "vibration",
     "video",
     "video/autoplay",
+    "video/javascriptautoplay",
     "video/loop",
     "video/preload",
     "vml",
