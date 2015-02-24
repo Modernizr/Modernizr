@@ -13,7 +13,7 @@ after_success:
   # https://github.com/travis-ci/travis-ci/issues/929
 
   - python travis_after_all.py
-  - export $(cat .to_export_back)
+  - export $(cat .to_export_back) &> /dev/null
   - |
       # If all the tests pass in all the runtimes, make Travis
       # automatically download and execute the following script
