@@ -14,7 +14,6 @@ before_test:
   - npm install grunt-cli -g
 
 test_script:
+  - node --version
+  - npm --version
   - npm test
-
-artifacts:
-  - path: test\coverage

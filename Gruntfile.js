@@ -1,8 +1,6 @@
-/*jshint node: true */
 /*global module */
 
 var browsers = require('./test/browser/sauce-browsers.json');
-var fs = require('fs');
 
 module.exports = function( grunt ) {
   'use strict';
@@ -112,11 +110,16 @@ module.exports = function( grunt ) {
                 // record code coverage results from browsers
                 if (req.url == '/coverage/client' && req.method == 'POST') {
                   var name = encodeURI(ua.replace(/\//g, '-'));
+                  var body = '';
 
-                  req.pipe(fs.createWriteStream('test/coverage/reports/' + name + '.json'))
-                    .on('end', function() {
-                      res.end();
-                    });
+                  req.on('data', function(data) {
+                    body = body + data;
+                  });
+
+                  req.on('end', function() {
+                    grunt.file.write('test/coverage/reports/' + name + '.json', body);
+                    res.end();
+                  });
 
                   return;
                 }

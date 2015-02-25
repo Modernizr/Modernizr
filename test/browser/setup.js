@@ -3,12 +3,24 @@ $(document).ready(function() {
 
   var failedTests = [];
 
-  runner.on('end', function() {
-    if (window.__coverage__) {
-      $.post('/coverage/client', JSON.stringify(__coverage__));
-    }
+  runner.once('suite', function() {
+    mocha.suite.afterAll('send coverage', function(done) {
     window.mochaResults = runner.stats;
     window.mochaResults.reports = failedTests;
+
+    if (window.__coverage__) {
+      $.ajax({
+        type: 'POST',
+        url: '/coverage/client',
+        data: JSON.stringify(__coverage__),
+        success: function() {
+          done();
+        }
+      });
+    } else {
+      done();
+    }
+    });
   });
 
   runner.on('fail', logFailure);
@@ -31,6 +43,6 @@ $(document).ready(function() {
       stack: err.stack,
       titles: flattenTitles(test)
     });
-  };
+  }
 });
 
