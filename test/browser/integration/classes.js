@@ -32,7 +32,9 @@ describe('classes', function() {
               expect(!!Modernizr[name[0]][name[1]]).to.equal(result);
             }
           } else {
-            expect(!!Modernizr[name]).to.equal(result);
+            var test = Modernizr[name];
+            var modernizrResult = test instanceof Boolean ? test.valueOf() : !!test;
+            expect(modernizrResult).to.equal(result);
           }
         });
       })
