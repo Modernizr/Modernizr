@@ -56,7 +56,6 @@ window.caniusecb = function(caniuse) {
       displaytable: 'css-table',
       draganddrop: 'dragndrop',
       eventsource: 'eventsource',
-      exiforientation: 'css-image-orientation',
       fileinput: 'forms',
       filereader: 'fileapi',
       filesystem: 'filesystem',
@@ -156,7 +155,8 @@ window.caniusecb = function(caniuse) {
       // if caniuse gave us a 'partial', lets let it pass with a note.
       if (o.caniuseResult.indexOf('a') === 0) {
         return it(o.browser + o.version + ': Caniuse reported partial support for ' + o.ciufeature, function() {
-          expect(ciubool).to.equal(o.result.valueOf());
+          var modernizrResult = o.result instanceof Boolean ? o.result.valueOf() : !!o.result;
+          expect(ciubool).to.equal(modernizrResult);
         });
       }
 
@@ -168,7 +168,8 @@ window.caniusecb = function(caniuse) {
 
       // where we actually do most our assertions
       it(o.browser + o.version + ': Caniuse result for ' + o.ciufeature + ' matches Modernizr\'s ' + (o.fp ? '*false positive*' : 'result') + ' for ' + o.feature, function() {
-        expect(ciubool).to.equal(o.result.valueOf());
+        var modernizrResult = o.result instanceof Boolean ? o.result.valueOf() : !!o.result;
+        expect(ciubool).to.equal(modernizrResult);
       });
     }
 
