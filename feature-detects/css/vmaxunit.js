@@ -14,7 +14,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'docElement', 'testStyles'], function( Modernizr, docElement, testStyles ) {
+define(['Modernizr', 'docElement', 'testStyles', 'roundedEquals'], function( Modernizr, docElement, testStyles, roundedEquals ) {
   testStyles('#modernizr1{width: 50vmax}#modernizr2{width:50px;height:50px;overflow:scroll}', function() {
     var elem = document.getElementById('modernizr1');
     var scroller = document.getElementById('modernizr2');
@@ -27,6 +27,6 @@ define(['Modernizr', 'docElement', 'testStyles'], function( Modernizr, docElemen
                           getComputedStyle(elem, null) :
                           elem.currentStyle)['width'],10);
 
-    Modernizr.addTest('cssvmaxunit', expectedWidth === compWidth || expectedWidth === compWidth - scrollbarWidth);
+    Modernizr.addTest('cssvmaxunit', roundedEquals(expectedWidth, compWidth) || roundedEquals(expectedWidth, compWidth - scrollbarWidth));
   }, 2);
 });
