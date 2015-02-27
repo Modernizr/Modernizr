@@ -15,7 +15,7 @@
 }
 !*/
 define(['Modernizr', 'docElement', 'testStyles', 'roundedEquals'], function( Modernizr, docElement, testStyles, roundedEquals ) {
-  testStyles('#modernizr1{width: 50vmin}#modernizr2{width:50px;height:50px;overflow:scroll}', function() {
+  testStyles('#modernizr1{width: 50vm;width:50vmin}#modernizr2{width:50px;height:50px;overflow:scroll}', function() {
     var elem = document.getElementById('modernizr1');
     var scroller = document.getElementById('modernizr2');
     var scrollbarWidth = parseInt((scroller.offsetWidth - scroller.clientWidth) / 2, 10);
