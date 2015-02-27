@@ -22,6 +22,7 @@ html
       mocha.setup('bdd').timeout(20000);
     each test in integrationTests
       script(src='../'+test)
+    script(src='../node_modules/json3/lib/json3.min.js')
     script(src='../node_modules/expect.js/index.js')
     script(src='http://caniuse.com/jsonp.php?callback=caniusecb')
     script.

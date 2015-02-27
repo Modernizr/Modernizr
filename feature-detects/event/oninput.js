@@ -23,6 +23,7 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
 
   Modernizr.addTest('oninput', function() {
     var input = createElement('input');
+    var supportsOnInput;
     input.setAttribute('oninput', 'return');
 
     if (hasEvent('oninput', docElement) || typeof input.oninput == 'function') {
@@ -35,7 +36,7 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
     try {
       // Older Firefox didn't map oninput attribute to oninput property
       var testEvent  = document.createEvent('KeyboardEvent');
-      var supportsOnInput = false;
+      supportsOnInput = false;
       var handler = function(e) {
         supportsOnInput = true;
         e.preventDefault();
@@ -49,7 +50,9 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
       input.dispatchEvent(testEvent);
       input.removeEventListener('input', handler, false);
       docElement.removeChild(input);
+    } catch (e) {
+      supportsOnInput = false;
+    }
       return supportsOnInput;
-    } catch (e) {}
   });
 });

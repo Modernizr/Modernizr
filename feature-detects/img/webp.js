@@ -63,7 +63,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
         // if the event is from 'onload', check the see if the image's width is
         // 1 pixel (which indiciates support). otherwise, it fails
 
-        var result = event.type === 'load' ? image.width == 1 : false;
+        var result = event && event.type === 'load' ? image.width == 1 : false;
         var baseTest = name === 'webp';
 
         /* jshint -W053 */
@@ -81,7 +81,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
     // test for webp support in general
     test(webp.name, webp.uri, function(e) {
       // if the webp test loaded, test everything else.
-      if (e.type === 'load') {
+      if (e && e.type === 'load') {
         for (var i = 0; i < webpTests.length; i++) {
           test(webpTests[i].name, webpTests[i].uri);
         }
