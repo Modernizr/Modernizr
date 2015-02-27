@@ -58,6 +58,78 @@ describe('cli/build', function() {
         done();
       });
     });
+
+    describe('unminified', function() {
+      var output;
+
+      before(function(done) {
+        var config = {
+          'feature-detects': ['css/boxsizing']
+        };
+
+        build(config, function(file) {
+          output = file;
+          done();
+        });
+      });
+
+      it('strips out the modernizr-init/build `define` section', function() {
+        var defineRe = /define\("modernizr-(init|build)"\)/m;
+        expect(defineRe.test(output)).to.be(false);
+      });
+
+      it('strips out the `define` section', function() {
+        var docRe = /define\(.*?\{/;
+        expect(docRe.test(output)).to.be(false);
+      });
+
+      it('strips out the `require` section', function() {
+        var requireRe = /require[^\{\r\n]+\{/;
+        expect(requireRe.test(output)).to.be(false);
+      });
+
+      it('replaces __VERSION__ ', function() {
+        expect(output).to.not.contain('__VERSION__');
+      });
+
+    });
+
+    describe('minified', function() {
+      var output;
+
+      before(function(done) {
+        var config = {
+          'feature-detects': ['css/boxsizing'],
+          minify: true
+        };
+
+        build(config, function(file) {
+          output = file;
+          done();
+        });
+      });
+
+      it('strips out the modernizr-init/build `define` section', function() {
+        var defineRe = /define\("modernizr-(init|build)"\)/m;
+        expect(defineRe.test(output)).to.be(false);
+      });
+
+      it('strips out the `define` section', function() {
+        var docRe = /define\(.*?\{/;
+        expect(docRe.test(output)).to.be(false);
+      });
+
+      it('strips out the `require` section', function() {
+        var requireRe = /require[^\{\r\n]+\{/;
+        expect(requireRe.test(output)).to.be(false);
+      });
+
+      it('replaces __VERSION__ ', function() {
+        expect(output).to.not.contain('__VERSION__');
+      });
+
+    });
+
   });
 
 });
