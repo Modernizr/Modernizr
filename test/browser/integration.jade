@@ -50,7 +50,10 @@ html
       }
 
       function stringify(obj, minified) {
-        var args = minified ? [0,2] : [];
+        var replacer = function(key, value) {
+          return value;
+        }
+        var args = minified ? [replacer,2] : [];
         args.unshift(obj);
         return JSON.stringify.apply(JSON, args);
       }
