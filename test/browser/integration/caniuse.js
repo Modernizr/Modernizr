@@ -49,7 +49,6 @@ window.caniusecb = function(caniuse) {
       cssvminunit: 'viewport-units',
       cssvwunit: 'viewport-units',
       datalistelem: 'datalist',
-      dataset: 'dataset',
       datauri: 'datauri',
       details: 'details',
       deviceorientation: 'deviceorientation',
