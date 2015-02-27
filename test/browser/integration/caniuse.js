@@ -59,6 +59,8 @@ window.caniusecb = function(caniuse) {
       filereader: 'fileapi',
       filesystem: 'filesystem',
       flexbox: 'flexbox',
+      flexboxtweener: 'flexbox',
+      flexboxlegacy: 'flexbox',
       fontface: 'fontface',
       formvalidation: 'form-validation',
       fullscreen: 'fullscreen',
@@ -156,27 +158,48 @@ window.caniusecb = function(caniuse) {
         ciubool = o.fp = true;
       }
 
+      // caniuse bundles forms into one big wad of detects. we check to see if their result matches
+      // atleast some of our inputtypes.
+      if (o.ciufeature === 'forms') {
+        return it('Caniuse result for forms matches Modernizr\'s result for inputtypes', function() {
+          return expect(ciubool).to.be(_.some(Modernizr.inputtypes, function(modernizrResult) {
+            return modernizrResult;
+          }));
+        });
+      }
+
+
       // we breakout flexbox sniffing into three seperate detects, which borks the caniuse mappings,
       // since no browser supports all three
-      if (o.feature === 'flexbox') {
-        return expect([
-          Modernizr.flexbox,
-          Modernizr.flexboxlegacy,
-          Modernizr.flexboxtweener
-        ]).to.contain(ciubool);
+      if (o.ciufeature === 'flexbox') {
+        return it('Caniuse result for flexbox matches Modernizr\'s result for flexbox', function() {
+          return expect([
+            Modernizr.flexbox,
+            Modernizr.flexboxlegacy,
+            Modernizr.flexboxtweener
+          ]).to.contain(ciubool);
+        });
       }
 
       // caniuse bundles progress and meter elements, so we do too.
       if (_.contains(['meter','progressbar'], o.feature)) {
-        return expect([
-          Modernizr.meter,
-          Modernizr.progressmeter
-        ]).to.contain(ciubool);
+        return it('Caniuse result for ' + o.ciufeature + ' matches Modernizr\'s result for ' + o.feature, function() {
+          return expect([
+            Modernizr.meter,
+            Modernizr.progressmeter
+          ]).to.contain(ciubool);
+        });
       }
 
       // caniuse bundles viewport units, all of which work in IE 9+, save for vmax
       // we skip this comparison with a version gate, hoping its fixed in later versions.
       if (o.feature === 'cssvmaxunit' && o.browser == 'IE' && o.version < 12) {
+        return;
+      }
+
+      // caniuse counts a partial support for CORS via the XDomainRequest,
+      // but thats not really cors - so skip the comparison.
+      if (o.feature === 'cors' && o.browser == 'IE' && o.version < 10) {
         return;
       }
 
