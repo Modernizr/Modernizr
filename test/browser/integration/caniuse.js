@@ -49,7 +49,6 @@ window.caniusecb = function(caniuse) {
       cssvminunit: 'viewport-units',
       cssvwunit: 'viewport-units',
       datalistelem: 'datalist',
-      dataset: 'dataset',
       datauri: 'datauri',
       details: 'details',
       deviceorientation: 'deviceorientation',
@@ -152,6 +151,35 @@ window.caniusecb = function(caniuse) {
         o.result = o.result.valueOf();
       }
 
+      // change the *documented* false positives
+      if (!ciubool && (o.feature == 'textshadow' && o.browser == 'firefox' && o.version == 3)) {
+        ciubool = o.fp = true;
+      }
+
+      // we breakout flexbox sniffing into three seperate detects, which borks the caniuse mappings,
+      // since no browser supports all three
+      if (o.feature === 'flexbox') {
+        return expect([
+          Modernizr.flexbox,
+          Modernizr.flexboxlegacy,
+          Modernizr.flexboxtweener
+        ]).to.contain(ciubool);
+      }
+
+      // caniuse bundles progress and meter elements, so we do too.
+      if (_.contains(['meter','progressbar'], o.feature)) {
+        return expect([
+          Modernizr.meter,
+          Modernizr.progressmeter
+        ]).to.contain(ciubool);
+      }
+
+      // caniuse bundles viewport units, all of which work in IE 9+, save for vmax
+      // we skip this comparison with a version gate, hoping its fixed in later versions.
+      if (o.feature === 'cssvmaxunit' && o.browser == 'IE' && o.version < 12) {
+        return;
+      }
+
       // if caniuse gave us a 'partial', lets let it pass with a note.
       if (o.caniuseResult.indexOf('a') === 0) {
         return it(o.browser + o.version + ': Caniuse reported partial support for ' + o.ciufeature, function() {
@@ -160,11 +188,6 @@ window.caniusecb = function(caniuse) {
         });
       }
 
-
-      // change the *documented* false positives
-      if (!ciubool && (o.feature == 'textshadow' && o.browser == 'firefox' && o.version == 3)) {
-        ciubool = o.fp = true;
-      }
 
       // where we actually do most our assertions
       it(o.browser + o.version + ': Caniuse result for ' + o.ciufeature + ' matches Modernizr\'s ' + (o.fp ? '*false positive*' : 'result') + ' for ' + o.feature, function() {
