@@ -26,7 +26,6 @@ window.caniusecb = function(caniuse) {
       canvas: 'canvas',
       canvasblending: 'canvas-blending',
       canvastext: 'canvas-text',
-      checked: 'css-sel3',
       classlist: 'classlist',
       contenteditable: 'contenteditable',
       contextmenu: 'menu',
@@ -56,7 +55,6 @@ window.caniusecb = function(caniuse) {
       displaytable: 'css-table',
       draganddrop: 'dragndrop',
       eventsource: 'eventsource',
-      fileinput: 'forms',
       filereader: 'fileapi',
       filesystem: 'filesystem',
       flexbox: 'flexbox',
@@ -77,7 +75,6 @@ window.caniusecb = function(caniuse) {
       inputtypes: 'forms',
       jpegxr: 'jpegxr',
       json: 'json',
-      lastchild: 'css-sel3',
       localstorage: 'namevalue-storage',
       mathml: 'mathml',
       mediaqueries: 'css-mediaqueries',
@@ -160,6 +157,10 @@ window.caniusecb = function(caniuse) {
         });
       }
 
+      // caniuse counts `filter` opacity as partial support - we don't.
+      if (o.feature === 'opacity' && o.browser = 'IE' && o.version < 9) {
+        return;
+      }
 
       // change the *documented* false positives
       if (!ciubool && (o.feature == 'textshadow' && o.browser == 'firefox' && o.version == 3)) {

@@ -25,11 +25,11 @@ describe('atRule', function() {
     });
   });
 
-    it('always returns false when the browser does not support CSSRule', function() {
+    it('returns undefined when the browser does not support CSSRule', function() {
       var ref = window.CSSRule;
       window.CSSRule = undefined;
 
-      expect(atRule('charset')).to.be(false);
+      expect(atRule('charset')).to.be(undefined);
 
       window.CSSRule = ref;
     });
