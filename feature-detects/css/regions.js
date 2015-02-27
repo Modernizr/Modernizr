@@ -67,8 +67,8 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
       result = true;
     } else {
       /* IE only allows for the content to come from iframes. This has the
-       * sideeffect of automatic collapsing of iframes once they get the flow-into
-       * property set. checking for a chachange on the height allows us to detect this
+       * side effect of automatic collapsing of iframes once they get the flow-into
+       * property set. checking for a change on the height allows us to detect this
        * in a sync way, without having to wait for a frame to load */
 
       docElement.appendChild(iframeContainer);
