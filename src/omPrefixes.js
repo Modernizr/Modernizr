@@ -9,6 +9,6 @@ define(function() {
   //   erik.eae.net/archives/2008/03/10/21.48.10/
 
   // More here: github.com/Modernizr/Modernizr/issues/issue/21
-  var omPrefixes = 'Webkit Moz O ms';
+  var omPrefixes = 'Moz O ms Webkit';
   return omPrefixes;
 });

@@ -39,6 +39,10 @@ describe('atRule', function() {
         expect(atRule('charset')).to.be('@charset');
       });
 
+      it('returns false when a property is not given', function() {
+        expect(atRule()).to.be(false);
+      });
+
       it('returns false when a property is not found', function() {
         expect(atRule('fart')).to.be(false);
       });

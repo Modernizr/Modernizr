@@ -25,15 +25,15 @@ describe('testPropsAll', function() {
         testProps = _sinon.spy(_testProps);
         cleanup = _cleanup;
 
-        requirejs.undef('testDOMProps');
-        requirejs.undef('testProps');
-
         done();
       });
 
   });
 
   beforeEach(function(done) {
+    requirejs.undef('testDOMProps');
+    requirejs.undef('testProps');
+
     testDOMProps.reset();
     testProps.reset();
 

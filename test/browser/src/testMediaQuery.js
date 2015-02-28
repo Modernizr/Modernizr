@@ -67,40 +67,32 @@ describe('testMediaQuery', function() {
         expect(testMediaQuery('only fake rule')).to.equal(media('only fake rule').matches);
       });
     });
-  }
+  } else  {
+    describe('fallback version', function() {
 
-  describe('fallback version', function() {
-    var msMMOriginal = window.msMatchMedia;
-    var mmOriginal = window.matchMedia;
+      before(function(done) {
+        injectElementWithStyles = sinon.spy(injectElementWithStyles);
+        requirejs.undef('injectElementWithStyles');
+        requirejs.undef('testMediaQuery');
 
-    before(function(done) {
-      injectElementWithStyles = sinon.spy(injectElementWithStyles);
-      requirejs.undef('injectElementWithStyles');
-      requirejs.undef('testMediaQuery');
+        define('injectElementWithStyles', [], function() {return injectElementWithStyles;});
 
-      window.msMatchMedia = undefined;
-      window.matchMedia = undefined;
-
-      define('injectElementWithStyles', [], function() {return injectElementWithStyles;});
-
-      requirejs(['testMediaQuery'], function(_testMediaQuery) {
-        testMediaQuery = _testMediaQuery;
-        done();
+        requirejs(['testMediaQuery'], function(_testMediaQuery) {
+          testMediaQuery = _testMediaQuery;
+          done();
+        });
       });
+
+      it('works', function() {
+
+        expect(testMediaQuery('only screen')).to.equal(media('only screen').matches);
+        expect(testMediaQuery('only fake rule')).to.equal(media('only fake rule').matches);
+        expect(injectElementWithStyles.called).to.be(true);
+      });
+
     });
 
-    it('works', function() {
-
-      expect(testMediaQuery('only screen')).to.equal(media('only screen').matches);
-      expect(testMediaQuery('only fake rule')).to.equal(media('only fake rule').matches);
-      expect(injectElementWithStyles.called).to.be(true);
-    });
-
-    after(function() {
-      window.msMatchMedia = msMMOriginal;
-      window.matchMedia = mmOriginal;
-    });
-  });
+  }
 
   afterEach(function() {
     requirejs.undef('testMediaQuery');

@@ -14,6 +14,8 @@
 /* DOC
 Detects support for creating Blob URLs
 */
-define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('bloburls', 'URL' in window && 'revokeObjectURL' in URL && 'createObjectURL' in URL);
+define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
+  var url = prefixed('URL', window, false);
+  url = url && window[url];
+  Modernizr.addTest('bloburls', url && 'revokeObjectURL' in url && 'createObjectURL' in url);
 });

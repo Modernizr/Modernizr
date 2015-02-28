@@ -1,6 +1,6 @@
 /*!
 {
-  "name": "XMLHttpRequest xhr.responseType",
+  "name": "XHR responseType",
   "property": "xhrresponsetype",
   "tags": ["network"],
   "notes": [{
