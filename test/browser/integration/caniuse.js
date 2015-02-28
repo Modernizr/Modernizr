@@ -200,7 +200,7 @@ window.caniusecb = function(caniuse) {
         return it('Caniuse result for ' + o.ciufeature + ' matches Modernizr\'s result for ' + o.feature, function() {
           return expect([
             Modernizr.meter,
-            Modernizr.progressmeter
+            Modernizr.progressbar
           ]).to.contain(ciubool);
         });
       }

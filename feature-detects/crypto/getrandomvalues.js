@@ -17,8 +17,9 @@
 /* DOC
 Detects support for the window.crypto.getRandomValues for generate cryptographically secure random numbers
 */
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
   // In Safari <=5.0 `window.crypto` exists (for some reason) but is `undefined`, so we have to check
   // it’s truthy before checking for existence of `getRandomValues`
-  Modernizr.addTest('getrandomvalues', 'crypto' in window && !!window.crypto && 'getRandomValues' in window.crypto);
+  var crypto = prefixed('crypto', window);
+  Modernizr.addTest('getrandomvalues', !!crypto && 'getRandomValues' in crypto);
 });

@@ -70,7 +70,9 @@ module.exports = function( grunt ) {
         files: {
           src: [
             '<%= env.nodeTests%>',
-            '<%= env.browserTests %>'
+            '<%= env.browserTests %>',
+            'test/browser/setup.js',
+            'test/browser/integration/*.js'
           ]
         }
       }
