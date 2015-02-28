@@ -158,6 +158,23 @@ window.caniusecb = function(caniuse) {
         ciubool = o.fp = true;
       }
 
+      // caniuse bundles viewport units, all of which work in IE 9+, save for vmax
+      // we skip this comparison with a version gate, hoping its fixed in later versions.
+      if (o.feature === 'cssvmaxunit' && o.browser == 'IE' && o.version < 12) {
+        return;
+      }
+
+      // caniuse counts a partial support for CORS via the XDomainRequest,
+      // but thats not really cors - so skip the comparison.
+      if (o.feature === 'cors' && o.browser == 'IE' && o.version < 10) {
+        return;
+      }
+
+      // Opera 12 has a false positive for `defer`
+      if (o.feature === 'scriptdefer' && o.browser == 'Opera' && parseInt(o.version, 10) === 12) {
+        return;
+      }
+
       // caniuse bundles forms into one big wad of detects. we check to see if their result matches
       // atleast some of our inputtypes.
       if (o.ciufeature === 'forms') {
@@ -189,18 +206,6 @@ window.caniusecb = function(caniuse) {
             Modernizr.progressmeter
           ]).to.contain(ciubool);
         });
-      }
-
-      // caniuse bundles viewport units, all of which work in IE 9+, save for vmax
-      // we skip this comparison with a version gate, hoping its fixed in later versions.
-      if (o.feature === 'cssvmaxunit' && o.browser == 'IE' && o.version < 12) {
-        return;
-      }
-
-      // caniuse counts a partial support for CORS via the XDomainRequest,
-      // but thats not really cors - so skip the comparison.
-      if (o.feature === 'cors' && o.browser == 'IE' && o.version < 10) {
-        return;
       }
 
       // if caniuse gave us a 'partial', lets let it pass with a note.
