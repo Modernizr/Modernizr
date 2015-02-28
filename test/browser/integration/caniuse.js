@@ -214,7 +214,7 @@ window.caniusecb = function(caniuse) {
       }
 
       // caniuse counts `filter` opacity as partial support - we don't.
-      if (o.feature === 'opacity' && o.browser = 'IE' && o.version < 9) {
+      if (o.feature === 'opacity' && o.browser === 'IE' && o.version < 9) {
         return;
       }
 
