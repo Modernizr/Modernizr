@@ -180,6 +180,9 @@
       {"pattern":"(Teleca Q7)",
        "v1_replacement":null,
        "family_replacement":null},
+      {"pattern":"Trident(.*)rv.(\\d+)\.(\\d+)",
+       "v1_replacement":null,
+       "family_replacement":"IE"},
       {"pattern":"(MSIE) (\\d+)\\.(\\d+)",
        "v1_replacement":null,
        "family_replacement":"IE"}
