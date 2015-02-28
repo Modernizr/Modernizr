@@ -11,7 +11,11 @@ define(['ModernizrProto', 'cssomPrefixes'], function( ModernizrProto, prefixes )
     var cssrule = window.CSSRule;
     var rule;
 
-    if (typeof cssrule === 'undefined' || !prop) {
+    if (typeof cssrule === 'undefined') {
+      return undefined;
+    }
+
+    if (!prop) {
       return false;
     }
 

@@ -186,7 +186,7 @@
 
   ];
 
-  var parsers = regexes.map(function(obj) {
+  var parsers = _.map(regexes, function(obj) {
     var regexp = new RegExp(obj.pattern),
         famRep = obj.family_replacement,
         v1Rep = obj.v1_replacement;

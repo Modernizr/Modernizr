@@ -1,9 +1,9 @@
 describe('prefixed @rule', function() {
-  it('Everyone supports import', function() {
-    expect(Modernizr.prefixed('@import')).to.equal('@import');
+  it('(Almost) Everyone supports import', function() {
+    expect(['@import', undefined]).to.contain(Modernizr.prefixed('@import'));
   });
 
   it('Nobody supports @penguin', function() {
-    expect(Modernizr.prefixed('@penguin')).to.equal(false);
+    expect(!!Modernizr.prefixed('@penguin')).to.equal(false);
   });
 });
