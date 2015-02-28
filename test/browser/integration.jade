@@ -19,6 +19,16 @@ html
     script(src='../node_modules/mocha/mocha.js')
     script(src='../test/js/lib/uaparser.js')
     script.
+      window.onerror = function(err) {
+        var uncaughtErr = describe('uncaught errors', function() {
+          it('should not exist', function() {
+            expect(err).to.be(undefined)
+          });
+        });
+
+        mocha.suite.suites.push(uncaughtErr);
+        return true;
+      };
       mocha.setup('bdd').timeout(20000);
     each test in integrationTests
       script(src='../'+test)
