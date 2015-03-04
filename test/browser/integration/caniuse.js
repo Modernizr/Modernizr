@@ -205,17 +205,17 @@ window.caniusecb = function(caniuse) {
         });
       }
 
+      // caniuse counts `filter` opacity as partial support - we don't.
+      if (o.feature === 'opacity' && o.browser === 'IE' && o.version < 9) {
+        return;
+      }
+
       // if caniuse gave us a 'partial', lets let it pass with a note.
       if (o.caniuseResult.indexOf('a') === 0) {
         return it(o.browser + o.version + ': Caniuse reported partial support for ' + o.ciufeature, function() {
           var modernizrResult = o.result instanceof Boolean ? o.result.valueOf() : !!o.result;
           expect(ciubool).to.equal(modernizrResult);
         });
-      }
-
-      // caniuse counts `filter` opacity as partial support - we don't.
-      if (o.feature === 'opacity' && o.browser === 'IE' && o.version < 9) {
-        return;
       }
 
       // where we actually do most our assertions
