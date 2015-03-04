@@ -43,6 +43,24 @@ describe('setClasses', function() {
     });
   });
 
+  describe('cssClasses disabled', function() {
+    before(function(done) {
+      setup(done, {
+        'classPrefix': 'fake',
+        'enableClasses': false
+      });
+    });
+
+    it('should not add anything', function(done) {
+      requirejs(['setClasses'], function(setClasses) {
+        setClasses(['detect']);
+        expect(elm.className).to.not.contain('fakedetect');
+        done();
+      });
+    });
+
+    after(teardown);
+  });
 
   describe('cssClasses enabled, with prefix', function() {
     before(function(done) {
