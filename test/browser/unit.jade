@@ -2,6 +2,7 @@ doctype html
 html
   head
     meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
     title Cow tests
     link(rel='stylesheet', media='all', href='../node_modules/mocha/mocha.css')
   body
@@ -18,7 +19,3 @@ html
       script(src='../'+test)
     script(src='../node_modules/expect.js/index.js')
     script(src="../test/browser/setup.js")
-    script.
-      $(document).ready(function() {
-        setup();
-      });
