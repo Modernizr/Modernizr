@@ -112,6 +112,23 @@ describe('load', function() {
 
   }
 
+  if (!window.console) {
+    describe('browsers without a console', function() {
+
+      it('doesn\'t blow up when calling console.error', function() {
+        expect(ModernizrProto.load).to.not.throwError();
+      });
+
+      it('doesn\'t blow up when calling console.warn', function() {
+        var yepnope = sinon.spy();
+        window.yepnope = yepnope;
+        expect(ModernizrProto.load).to.not.throwError();
+        expect(yepnope.calledOnce).to.be(true);
+      });
+
+    });
+  }
+
   after(function() {
     cleanup();
   });

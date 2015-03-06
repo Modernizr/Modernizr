@@ -25,9 +25,15 @@ describe('hasEvent', function() {
     expect(hasEvent).to.equal(isEventSupported);
   });
 
+  if (ModernizrProto.hasEvent === hasEvent) {
   it('is added to ModernizrProto', function() {
     expect(hasEvent).to.equal(ModernizrProto.hasEvent);
   });
+  } else {
+    it('is added to ModernizrProto', function() {
+      expect(hasEvent).to.equal(ModernizrProto);
+    });
+  }
 
   after(function() {
     cleanup();

@@ -60,7 +60,7 @@ window.caniusecb = function(caniuse) {
       flexboxtweener: 'flexbox',
       flexboxlegacy: 'flexbox',
       fontface: 'fontface',
-      formvalidation: 'form-validation',
+      formvalidationapi: 'form-validation',
       fullscreen: 'fullscreen',
       gamepads: 'gamepad',
       geolocation: 'geolocation',
@@ -150,6 +150,13 @@ window.caniusecb = function(caniuse) {
         o.result = o.result.valueOf();
       }
 
+      // webgl `partial` support means that not all users with these browsers
+      // have WebGL access, so we just ignore this test, and only check if the browser
+      // either fully supports or does not support
+      if (o.feature === 'webgl' && o.caniuseResult.indexOf('a') === 0) {
+        return;
+      }
+
       // change the *documented* false positives
       if (!ciubool && (o.feature == 'textshadow' && o.browser == 'firefox' && o.version == 3)) {
         ciubool = o.fp = true;
@@ -157,7 +164,12 @@ window.caniusecb = function(caniuse) {
 
       // caniuse bundles viewport units, all of which work in IE 9+, save for vmax
       // we skip this comparison with a version gate, hoping its fixed in later versions.
-      if (o.feature === 'cssvmaxunit' && o.browser == 'IE' && o.version < 12) {
+      if (o.feature === 'cssvmaxunit' && o.caniuseResult.indexOf('a') === 0) {
+        return;
+      }
+
+      // safari 7 recognizes the `seamless` attribute but does not actually support it
+      if (o.feature === 'seamless' && o.browser === 'Safari' && o.version === 7) {
         return;
       }
 
@@ -205,17 +217,17 @@ window.caniusecb = function(caniuse) {
         });
       }
 
+      // caniuse counts `filter` opacity as partial support - we don't.
+      if (o.feature === 'opacity' && o.browser === 'IE' && o.version < 9) {
+        return;
+      }
+
       // if caniuse gave us a 'partial', lets let it pass with a note.
       if (o.caniuseResult.indexOf('a') === 0) {
         return it(o.browser + o.version + ': Caniuse reported partial support for ' + o.ciufeature, function() {
           var modernizrResult = o.result instanceof Boolean ? o.result.valueOf() : !!o.result;
           expect(ciubool).to.equal(modernizrResult);
         });
-      }
-
-      // caniuse counts `filter` opacity as partial support - we don't.
-      if (o.feature === 'opacity' && o.browser === 'IE' && o.version < 9) {
-        return;
       }
 
       // where we actually do most our assertions
