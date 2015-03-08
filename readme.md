@@ -5,7 +5,7 @@
 - [Website](http://www.modernizr.com)
 - [Documentation](http://www.modernizr.com/docs/)
 
-Modernizr tests which native CSS3 and HTML5 features are available in the current UA and makes the results available to you in two ways: as properties on a global `Modernizr` object, and as classes on the `<html>` element. This information allows you to progressively enhance your pages with a granular level of control over the experience.
+Modernizr awesomely tests which native CSS3 and HTML5 features are available in the current UA and makes the results available to you in two ways: as properties on a global `Modernizr` object, and as classes on the `<html>` element. This information allows you to progressively enhance your pages with a granular level of control over the experience.
 
 ## New Asynchronous Event Listeners
 
