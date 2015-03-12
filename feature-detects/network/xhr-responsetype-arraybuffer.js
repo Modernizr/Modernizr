@@ -1,6 +1,6 @@
 /*!
 {
-  "name": "XMLHttpRequest xhr.responseType='arraybuffer'",
+  "name": "XHR responseType='arraybuffer'",
   "property": "xhrresponsetypearraybuffer",
   "tags": ["network"],
   "notes": [{
