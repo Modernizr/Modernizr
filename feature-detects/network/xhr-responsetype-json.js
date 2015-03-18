@@ -1,6 +1,6 @@
 /*!
 {
-  "name": "XMLHttpRequest xhr.responseType='json'",
+  "name": "XHR responseType='json'",
   "property": "xhrresponsetypejson",
   "tags": ["network"],
   "notes": [{
