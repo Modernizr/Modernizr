@@ -77,6 +77,11 @@ describe('generate', function() {
     expect(function(){eval(output);}).to.not.throwError();
   });
 
+  it('outputs a valid function when minified', function() {
+    var output = generate({minify: true});
+    expect(function(){eval(output);}).to.not.throwError();
+  });
+
   after(function() {
     cleanup();
   });
