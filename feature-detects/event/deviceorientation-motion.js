@@ -1,6 +1,6 @@
 /*!
 {
-  "name": "Device Orientation and Motion Events",
+  "name": "Orientation and Motion Events",
   "property": ["devicemotion", "deviceorientation"],
   "caniuse": "deviceorientation",
   "notes": [{
