@@ -201,6 +201,7 @@
     "network/beacon",
     "network/connection",
     "network/eventsource",
+    "network/fetch",
     "network/xhr-responsetype",
     "network/xhr-responsetype-arraybuffer",
     "network/xhr-responsetype-blob",
