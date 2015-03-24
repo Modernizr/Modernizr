@@ -1,6 +1,6 @@
 /*!
 {
-  "name": "Web Cryptography API getRandomValues method",
+  "name": "getRandomValues",
   "property": "getrandomvalues",
   "caniuse": "window.crypto.getRandomValues",
   "tags": ["crypto"],
