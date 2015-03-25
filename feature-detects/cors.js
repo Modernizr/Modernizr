@@ -12,8 +12,9 @@
 }
 !*/
 /* DOC
-Detects support for Cross-Origin Resource Sharing: method of performing XMLHttpRequests across domains.
+Detects support for Cross-Origin Resource Sharing: the ability to make cross-domain requests.
 */
 define(['Modernizr'], function( Modernizr ) {
-  Modernizr.addTest('cors', 'XMLHttpRequest' in window && 'withCredentials' in new XMLHttpRequest());
+  Modernizr.addTest('cors', ('XMLHttpRequest' in window && 'withCredentials' in new XMLHttpRequest()) 
+    || 'XDomainRequest' in window);
 });
