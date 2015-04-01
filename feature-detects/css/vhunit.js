@@ -14,11 +14,12 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
+define(['Modernizr', 'testStyles', 'roundedEquals'], function( Modernizr, testStyles, roundedEquals ) {
   testStyles('#modernizr { height: 50vh; }', function( elem ) {
     var height = parseFloat((window.getComputedStyle ?
                               getComputedStyle(elem, null) :
                               elem.currentStyle)['height'],10);
-    Modernizr.addTest('cssvhunit', Math.abs(window.innerHeight - height * 2) < 1);
+
+    Modernizr.addTest('cssvhunit', roundedEquals(parseInt(height * 2, 10), window.innerHeight));
   });
 });
