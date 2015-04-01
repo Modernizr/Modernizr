@@ -16,10 +16,9 @@
 !*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   testStyles('#modernizr { height: 50vh; }', function( elem ) {
-    var height = parseInt(window.innerHeight/2,10);
-    var compStyle = parseInt((window.getComputedStyle ?
+    var height = parseFloat((window.getComputedStyle ?
                               getComputedStyle(elem, null) :
                               elem.currentStyle)['height'],10);
-    Modernizr.addTest('cssvhunit', compStyle == height);
+    Modernizr.addTest('cssvhunit', Math.abs(window.innerHeight - height * 2) < 1);
   });
 });

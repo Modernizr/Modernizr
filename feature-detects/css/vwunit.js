@@ -16,11 +16,10 @@
 !*/
 define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   testStyles('#modernizr { width: 50vw; }', function( elem ) {
-    var width = parseInt(window.innerWidth / 2, 10);
-    var compStyle = parseInt((window.getComputedStyle ?
+    var width = parseFloat((window.getComputedStyle ?
                               getComputedStyle(elem, null) :
                               elem.currentStyle).width, 10);
 
-    Modernizr.addTest('cssvwunit', compStyle == width);
+    Modernizr.addTest('cssvwunit', Math.abs(window.innerWidth - width * 2) < 1);
   });
 });
