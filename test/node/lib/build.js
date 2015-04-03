@@ -59,6 +59,24 @@ describe('cli/build', function() {
       });
     });
 
+    it('should inject the proper classPath when configured and minified', function(done) {
+      var prefix = 'TEST_PREFIX';
+      var config = {
+        classPrefix: prefix,
+        setClasses: true,
+        minify: true
+      };
+      var configRE = /_config:\s*?({[^}]*})/m;
+
+      build(config, function(file) {
+        var parsedConfig = file.match(configRE);
+        //use eval becuase the minified code creates non valid JSON.
+        parsedConfig = eval('(' + parsedConfig[1].replace(/'/g, '"') + ')');
+        expect(parsedConfig.classPrefix).to.be(prefix);
+        done();
+      });
+    });
+
     describe('unminified', function() {
       var output;
 
