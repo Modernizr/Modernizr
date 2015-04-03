@@ -16,10 +16,10 @@
 !*/
 define(['Modernizr', 'testStyles', 'roundedEquals'], function( Modernizr, testStyles, roundedEquals ) {
   testStyles('#modernizr { width: 50vw; }', function( elem ) {
-    var width = parseFloat((window.getComputedStyle ?
+    var width = parseInt((window.getComputedStyle ?
                               getComputedStyle(elem, null) :
                               elem.currentStyle).width, 10);
 
-    Modernizr.addTest('cssvwunit', roundedEquals(parseInt(width * 2, 10), window.innerWidth));
+    Modernizr.addTest('cssvwunit', roundedEquals(width, parseInt(window.innerWidth / 2, 10)));
   });
 });
