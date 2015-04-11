@@ -62,13 +62,6 @@ describe('build-hash', function() {
     expect(hash).to.be('#-cssclasses-dontmin-cssclassprefix:TEST_PREFIX');
   });
 
-  it('does not add classPrefix when setClasses is missing', function() {
-    var hash = buildHash({
-      classPrefix: 'TEST_PREFIX'
-    });
-    expect(hash).to.be('#--dontmin');
-  });
-
   it('strips `html5` from the shiv options', function() {
     var hash = buildHash({
       options: ['html5shiv']
