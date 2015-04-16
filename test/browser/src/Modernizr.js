@@ -6,12 +6,13 @@ describe('Modernizr Base', function() {
 
     define('package', [], function() {return {};});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {cleanup: '../test/cleanup'}
     });
 
-    requirejs(['Modernizr', 'cleanup'], function(_ModernizrBase, _cleanup) {
+    req(['Modernizr', 'cleanup'], function(_ModernizrBase, _cleanup) {
       modernizrBase = _ModernizrBase;
       cleanup = _cleanup;
       done();

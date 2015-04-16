@@ -4,12 +4,13 @@ describe('inputtypes', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['inputtypes', 'cleanup'], function(_inputtypes, _cleanup) {
+    req(['inputtypes', 'cleanup'], function(_inputtypes, _cleanup) {
       inputtypes = _inputtypes;
       cleanup = _cleanup;
       done();

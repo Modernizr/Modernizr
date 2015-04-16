@@ -1,16 +1,18 @@
 describe('testXhrType', function() {
   var cleanup;
+  var req;
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
         cleanup: '../test/cleanup'
       }
     });
 
-    requirejs(['cleanup'], function(_cleanup) {
+    req(['cleanup'], function(_cleanup) {
       cleanup = _cleanup;
       done();
     });
@@ -21,7 +23,7 @@ describe('testXhrType', function() {
     var originalXhr = XMLHttpRequest;
     XMLHttpRequest = undefined;
 
-    requirejs(['testXhrType'], function(testXhrType) {
+    req(['testXhrType'], function(testXhrType) {
       expect(testXhrType('json')).to.equal(false);
       XMLHttpRequest = originalXhr;
       done();
@@ -33,7 +35,7 @@ describe('testXhrType', function() {
   // http://git.io/AemZ
 
   afterEach(function() {
-    requirejs.undef('testXhrType');
+    req.undef('testXhrType');
   });
 
   after(function() {

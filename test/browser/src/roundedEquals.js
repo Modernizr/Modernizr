@@ -4,12 +4,13 @@ describe('roundedEquals', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['roundedEquals', 'cleanup'], function(_roundedEquals, _cleanup) {
+    req(['roundedEquals', 'cleanup'], function(_roundedEquals, _cleanup) {
       roundedEquals = _roundedEquals;
       cleanup = _cleanup;
       done();

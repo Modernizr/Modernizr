@@ -4,10 +4,12 @@ describe('testProps', function() {
   var testProps;
   var cleanup;
   var sinon;
+  var req;
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
         sinon: '../test/js/lib/sinon',
@@ -19,7 +21,7 @@ describe('testProps', function() {
     define('Modernizr', function() {return Modernizr;});
     define('package', [], function() {return {};});
 
-    requirejs(['cleanup', 'sinon'], function(_cleanup, _sinon) {
+    req(['cleanup', 'sinon'], function(_cleanup, _sinon) {
       cleanup = _cleanup;
       sinon = _sinon;
       done();
@@ -40,7 +42,7 @@ describe('testProps', function() {
       define('contains', function() {return contains;});
       define('nativeTestProps', sinon.spy(function() {return nativeTestProps;}));
 
-      requirejs(['testProps'], function(_testProps) {
+      req(['testProps'], function(_testProps) {
         testProps = _testProps;
         done();
       });
@@ -59,11 +61,11 @@ describe('testProps', function() {
     });
 
     afterEach(function() {
-      requirejs.undef('mStyle');
-      requirejs.undef('cssToDOM');
-      requirejs.undef('contains');
-      requirejs.undef('testProps');
-      requirejs.undef('nativeTestProps');
+      req.undef('mStyle');
+      req.undef('cssToDOM');
+      req.undef('contains');
+      req.undef('testProps');
+      req.undef('nativeTestProps');
     });
   });
 
@@ -84,7 +86,7 @@ describe('testProps', function() {
       define('contains', function() {return contains;});
       define('mStyle', function() {return mStyle;});
 
-      requirejs(['testProps'], function(_testProps) {
+      req(['testProps'], function(_testProps) {
         testProps = _testProps;
         done();
       });
@@ -134,12 +136,12 @@ describe('testProps', function() {
 
 
     afterEach(function() {
-      requirejs.undef('mStyle');
-      requirejs.undef('cssToDOM');
-      requirejs.undef('contains');
-      requirejs.undef('testProps');
-      requirejs.undef('ModernizrProto');
-      requirejs.undef('nativeTestProps');
+      req.undef('mStyle');
+      req.undef('cssToDOM');
+      req.undef('contains');
+      req.undef('testProps');
+      req.undef('ModernizrProto');
+      req.undef('nativeTestProps');
     });
   });
 

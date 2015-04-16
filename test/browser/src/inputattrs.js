@@ -4,12 +4,13 @@ describe('inputattrs', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['inputattrs', 'cleanup'], function(_inputattrs, _cleanup) {
+    req(['inputattrs', 'cleanup'], function(_inputattrs, _cleanup) {
       inputattrs = _inputattrs;
       cleanup = _cleanup;
       done();

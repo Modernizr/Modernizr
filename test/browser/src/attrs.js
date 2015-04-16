@@ -4,12 +4,13 @@ describe('attrs', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['attrs', 'cleanup'], function(_attrs, _cleanup) {
+    req(['attrs', 'cleanup'], function(_attrs, _cleanup) {
       attrs = _attrs;
       cleanup = _cleanup;
       done();

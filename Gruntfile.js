@@ -141,20 +141,21 @@ module.exports = function( grunt ) {
         }
       }
     },
-    'saucelabs-mocha': {
+    'saucelabs-custom': {
       all: {
         options: {
           urls:  '<%= env.coverage.urls %>',
           testname: process.env.CI_BUILD_NUMBER || 'Modernizr Test',
           browsers: browsers,
-          maxRetries: 2
+          maxRetries: 3
         }
       }
     },
     mocha: {
       test: {
         options: {
-          urls: '<%= env.coverage.urls %>'
+          urls: '<%= env.coverage.urls %>',
+          log: true
         },
       },
     },
@@ -188,8 +189,15 @@ module.exports = function( grunt ) {
         dir: 'test/coverage/reports',
         print: 'detail'
       }
+    },
+    coveralls: {
+      all: {
+        src: 'test/coverage/reports/lcov.info',
+        options: {
+          force: true
+        }
+      }
     }
-
   });
 
   grunt.registerMultiTask('generate', 'Create a version of Modernizr from Grunt', function() {
@@ -204,24 +212,21 @@ module.exports = function( grunt ) {
     });
   });
 
-  grunt.registerTask('browserTests', ['connect', 'mocha']);
-
   grunt.registerTask('nodeTests', ['mochaTest']);
 
-  // Testing tasks
-  grunt.registerTask('test', ['clean', 'jshint', 'jade', 'instrument', 'env:coverage', 'nodeTests', 'generate', 'storeCoverage', 'browserTests', 'makeReport']);
+  grunt.registerTask('browserTests', ['connect', 'mocha']);
 
-  // Travis CI task.
-  grunt.registerTask('travis', ['test']);
+  grunt.registerTask('build', [ 'clean', 'generate' ]);
 
-  // Build
-  grunt.registerTask('build', [
-    'clean',
-    'generate'
-  ]);
+  grunt.registerTask('default', [ 'jshint', 'build' ]);
 
-  grunt.registerTask('default', [
-    'jshint',
-    'build'
-  ]);
+  var tests = ['clean', 'jshint', 'jade', 'instrument', 'env:coverage', 'nodeTests' ];
+
+  if (process.env.APPVEYOR) {
+    grunt.registerTask('test', tests);
+  } else if (process.env.BROWSER_COVERAGE !== 'true') {
+    grunt.registerTask('test', tests.concat(['generate', 'browserTests']));
+  } else {
+    grunt.registerTask('test', tests.concat([ 'generate', 'storeCoverage', 'browserTests', 'saucelabs-custom', 'makeReport', 'coveralls' ]));
+  }
 };

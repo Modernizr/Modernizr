@@ -9,12 +9,13 @@ describe('testStyles', function() {
 
     define('ModernizrProto', [], function(){return {};});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['ModernizrProto', 'testStyles', 'injectElementWithStyles', 'cleanup'], function(_ModernizrProto, _testStyles, _injectElementWithStyles, _cleanup) {
+    req(['ModernizrProto', 'testStyles', 'injectElementWithStyles', 'cleanup'], function(_ModernizrProto, _testStyles, _injectElementWithStyles, _cleanup) {
       injectElementWithStyles = _injectElementWithStyles;
       ModernizrProto = _ModernizrProto;
       testStyles = _testStyles;

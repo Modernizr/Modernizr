@@ -4,12 +4,13 @@ describe('contains', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['contains', 'cleanup'], function(_contains, _cleanup) {
+    req(['contains', 'cleanup'], function(_contains, _cleanup) {
       contains = _contains;
       cleanup = _cleanup;
       done();

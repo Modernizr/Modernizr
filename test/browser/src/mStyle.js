@@ -2,10 +2,12 @@ describe('mStyle', function() {
   var Modernizr;
   var mStyle;
   var cleanup;
+  var req;
 
   before(function() {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
@@ -16,12 +18,13 @@ describe('mStyle', function() {
     Modernizr = {_q: []};
     define('Modernizr', [], function() {return Modernizr;});
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['mStyle', 'cleanup'], function(_mStyle, _cleanup) {
+    req(['mStyle', 'cleanup'], function(_mStyle, _cleanup) {
       mStyle = _mStyle;
       cleanup = _cleanup;
       done();
@@ -44,8 +47,8 @@ describe('mStyle', function() {
   });
 
   afterEach(function() {
-    requirejs.undef('Modernizr');
-    requirejs.undef('mStyle');
+    req.undef('Modernizr');
+    req.undef('mStyle');
   });
 
   after(function() {

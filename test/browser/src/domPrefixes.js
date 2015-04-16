@@ -1,9 +1,11 @@
 describe('domPrefixes', function() {
+  var req;
+
   var setup = function(done, bool) {
     return (function() {
       define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});
 
-      requirejs(['domPrefixes'], function(_domPrefixes) {
+      req(['domPrefixes'], function(_domPrefixes) {
         domPrefixes = _domPrefixes;
         done();
       });
@@ -12,8 +14,8 @@ describe('domPrefixes', function() {
 
   var teardown = function() {
     domPrefixes = undefined;
-    requirejs.undef('domPrefixes');
-    requirejs.undef('ModernizrProto');
+    req.undef('domPrefixes');
+    req.undef('ModernizrProto');
   };
   var domPrefixes;
   var cleanup;
@@ -21,12 +23,13 @@ describe('domPrefixes', function() {
   before(function(done) {
     define('package', [], function() {return {version: 'v9999'};});
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['cleanup'], function(_cleanup) {
+    req(['cleanup'], function(_cleanup) {
       cleanup = _cleanup;
       done();
     });
@@ -40,7 +43,7 @@ describe('domPrefixes', function() {
     after(teardown);
 
     it('returns prefixes', function(done) {
-      requirejs(['domPrefixes'], function(domPrefixes) {
+      req(['domPrefixes'], function(domPrefixes) {
         expect(domPrefixes).to.not.have.length(0);
         done();
       });
@@ -55,7 +58,7 @@ describe('domPrefixes', function() {
     after(teardown);
 
     it('returns no prefixes', function(done) {
-      requirejs(['domPrefixes'], function(domPrefixes) {
+      req(['domPrefixes'], function(domPrefixes) {
         expect(domPrefixes).to.have.length(0);
         done();
       });

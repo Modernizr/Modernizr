@@ -2,15 +2,17 @@ describe('testDOMProps', function() {
   var elm = document.createElement('div');
   var testDOMProps;
   var cleanup;
+  var req;
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['cleanup'], function(_cleanup) {
+    req(['cleanup'], function(_cleanup) {
       cleanup = _cleanup;
       done();
     });
@@ -18,7 +20,7 @@ describe('testDOMProps', function() {
   });
 
   beforeEach(function(done) {
-    requirejs(['testDOMProps'], function(_testDOMProps) {
+    req(['testDOMProps'], function(_testDOMProps) {
       testDOMProps = _testDOMProps;
       done();
     });

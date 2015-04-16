@@ -13,12 +13,13 @@ describe('atRule', function() {
     define('cssomPrefixes', [], function(){return prefixes;});
     define('package', [], function() {return {};});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['atRule', 'cleanup'], function(_atRule, _cleanup) {
+    req(['atRule', 'cleanup'], function(_atRule, _cleanup) {
       atRule = _atRule;
       cleanup = _cleanup;
       done();

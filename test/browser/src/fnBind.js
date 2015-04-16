@@ -4,12 +4,13 @@ describe('fnBind', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['fnBind', 'cleanup'], function(_fnBind, _cleanup) {
+    req(['fnBind', 'cleanup'], function(_fnBind, _cleanup) {
       fnBind = _fnBind;
       cleanup = _cleanup;
       done();

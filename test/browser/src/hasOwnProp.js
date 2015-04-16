@@ -4,12 +4,13 @@ describe('hasOwnProp', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {cleanup: '../test/cleanup'}
     });
 
-    requirejs(['hasOwnProp', 'cleanup'], function(_hasOwnProp, _cleanup) {
+    req(['hasOwnProp', 'cleanup'], function(_hasOwnProp, _cleanup) {
       hasOwnProp = _hasOwnProp;
       cleanup = _cleanup;
       done();

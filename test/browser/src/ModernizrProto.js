@@ -2,16 +2,18 @@ describe('ModernizrProto', function() {
   var ModernizrProto;
   var cleanup;
   var tests;
+  var req;
 
   before(function() {
     define('package', [], function() {return {version: 'v9999'};});
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {cleanup: '../test/cleanup'}
     });
 
-    requirejs(['cleanup'], function(_cleanup) {
+    req(['cleanup'], function(_cleanup) {
       cleanup = _cleanup;
     });
   });
@@ -21,7 +23,7 @@ describe('ModernizrProto', function() {
     tests = [];
     define('tests', function() {return tests;});
 
-    requirejs(['ModernizrProto', 'tests'], function(_ModernizrProto, _tests) {
+    req(['ModernizrProto', 'tests'], function(_ModernizrProto, _tests) {
       ModernizrProto = _ModernizrProto;
       tests = _tests;
       done();
@@ -30,8 +32,8 @@ describe('ModernizrProto', function() {
   });
 
   afterEach(function() {
-    requirejs.undef('tests');
-    requirejs.undef('ModernizrProto');
+    req.undef('tests');
+    req.undef('ModernizrProto');
   });
 
   it('should define a version', function() {

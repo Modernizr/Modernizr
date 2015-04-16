@@ -4,12 +4,13 @@ describe('classes', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['classes', 'cleanup'], function(_classes, _cleanup) {
+    req(['classes', 'cleanup'], function(_classes, _cleanup) {
       classes = _classes;
       cleanup = _cleanup;
       done();

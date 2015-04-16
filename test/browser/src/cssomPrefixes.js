@@ -3,30 +3,33 @@ describe('cssomPrefixes', function() {
     return (function() {
       define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});
 
-      requirejs(['cssomPrefixes'], function(_cssomPrefixes) {
+      req(['cssomPrefixes'], function(_cssomPrefixes) {
         cssomPrefixes = _cssomPrefixes;
         done();
       });
     })();
   };
+
   var teardown = function() {
     cssomPrefixes = undefined;
-    requirejs.undef('cssomPrefixes');
-    requirejs.undef('ModernizrProto');
+    req.undef('cssomPrefixes');
+    req.undef('ModernizrProto');
   };
+
   var cssomPrefixes;
   var cleanup;
-
+  var req;
 
   before(function(done) {
     define('package', [], function() {return {version: 'v9999'};});
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['cleanup'], function(_cleanup) {
+    req(['cleanup'], function(_cleanup) {
       cleanup = _cleanup;
       done();
     });
@@ -40,7 +43,7 @@ describe('cssomPrefixes', function() {
     after(teardown);
 
     it('returns prefixes', function(done) {
-      requirejs(['cssomPrefixes'], function(cssomPrefixes) {
+      req(['cssomPrefixes'], function(cssomPrefixes) {
         expect(cssomPrefixes).to.not.have.length(0);
         done();
       });
@@ -55,7 +58,7 @@ describe('cssomPrefixes', function() {
     after(teardown);
 
     it('returns no prefixes', function(done) {
-      requirejs(['cssomPrefixes'], function(cssomPrefixes) {
+      req(['cssomPrefixes'], function(cssomPrefixes) {
         expect(cssomPrefixes).to.have.length(0);
         done();
       });

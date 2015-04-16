@@ -4,12 +4,13 @@ describe('getBody', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['getBody', 'cleanup'], function(_getBody, _cleanup) {
+    req(['getBody', 'cleanup'], function(_getBody, _cleanup) {
       getBody = _getBody;
       cleanup = _cleanup;
       done();

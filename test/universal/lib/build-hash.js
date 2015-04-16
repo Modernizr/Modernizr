@@ -11,13 +11,16 @@ if (typeof define !== 'function') {
   var filesRoot = '..';
 }
 var cleanup;
+var req;
+
 
 describe('build-hash', function() {
   var buildHash;
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       paths: {
         lib: filesRoot + '/lib',
         lodash: projectRoot + '/node_modules/lodash/index',
@@ -26,7 +29,7 @@ describe('build-hash', function() {
       }
     });
 
-    requirejs(['lib/build-hash', 'cleanup'], function(_buildHash, _cleanup) {
+    req(['lib/build-hash', 'cleanup'], function(_buildHash, _cleanup) {
       buildHash = _buildHash;
       cleanup = _cleanup;
       done();

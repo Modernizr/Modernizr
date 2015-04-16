@@ -35,8 +35,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'cssToDO
       mStyle.style = mStyle.modElem.style;
     }
 
-    // Delete the objects if we
-    // we created them.
+    // Delete the objects if we created them.
     function cleanElems() {
       if (afterInit) {
         delete mStyle.style;

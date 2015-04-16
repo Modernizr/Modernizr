@@ -3,7 +3,7 @@ describe('prefixes', function() {
     return (function() {
       define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});
 
-      requirejs(['prefixes'], function(_prefixes) {
+      req(['prefixes'], function(_prefixes) {
         prefixes = _prefixes;
         done();
       });
@@ -11,22 +11,24 @@ describe('prefixes', function() {
   };
   var teardown = function() {
     prefixes = undefined;
-    requirejs.undef('prefixes');
-    requirejs.undef('ModernizrProto');
+    req.undef('prefixes');
+    req.undef('ModernizrProto');
   };
   var prefixes;
   var cleanup;
+  var req;
 
 
   before(function(done) {
     define('package', [], function() {return {};});
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['cleanup'], function(_cleanup) {
+    req(['cleanup'], function(_cleanup) {
       cleanup = _cleanup;
       done();
     });
@@ -40,7 +42,7 @@ describe('prefixes', function() {
     after(teardown);
 
     it('returns prefixes', function(done) {
-      requirejs(['prefixes'], function(prefixes) {
+      req(['prefixes'], function(prefixes) {
         expect(prefixes).to.be.an('array');
         expect(prefixes).to.not.have.length(0);
         done();
@@ -56,7 +58,7 @@ describe('prefixes', function() {
     after(teardown);
 
     it('returns no prefixes', function(done) {
-      requirejs(['prefixes'], function(prefixes) {
+      req(['prefixes'], function(prefixes) {
         expect(prefixes).to.be.an('array');
         expect(prefixes).to.have.length(0);
         done();

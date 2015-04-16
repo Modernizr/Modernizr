@@ -2,26 +2,19 @@ describe('modElem', function() {
   var Modernizr;
   var modElem;
   var cleanup;
-
-  before(function() {
-
-    requirejs.config({
-      baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
-    });
-
-  });
+  var req;
 
   beforeEach(function(done) {
     Modernizr = {_q: []};
     define('Modernizr', [], function() {return Modernizr;});
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['modElem', 'cleanup'], function(_modElem, _cleanup) {
+    req(['modElem', 'cleanup'], function(_modElem, _cleanup) {
       modElem = _modElem;
       cleanup = _cleanup;
       done();
@@ -45,8 +38,8 @@ describe('modElem', function() {
   });
 
   afterEach(function() {
-    requirejs.undef('Modernizr');
-    requirejs.undef('modElem');
+    req.undef('Modernizr');
+    req.undef('modElem');
   });
 
   after(function() {

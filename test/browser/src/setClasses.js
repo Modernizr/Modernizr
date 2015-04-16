@@ -2,6 +2,7 @@ describe('setClasses', function() {
   var setClasses;
   var cleanup;
   var elm;
+  var req;
 
   var setup = function(done, config, defaultClassName) {
     return (function() {
@@ -15,7 +16,7 @@ describe('setClasses', function() {
       define('Modernizr', [], function() {return modConfig;});
       define('docElement', [], function() {return elm;});
 
-      requirejs(['setClasses'], function(_setClasses) {
+      req(['setClasses'], function(_setClasses) {
         setClasses = _setClasses;
         done();
       });
@@ -23,21 +24,22 @@ describe('setClasses', function() {
   };
   var teardown = function() {
     setClasses = undefined;
-    requirejs.undef('setClasses');
-    requirejs.undef('docElement');
-    requirejs.undef('Modernizr');
+    req.undef('setClasses');
+    req.undef('docElement');
+    req.undef('Modernizr');
   };
 
 
   before(function(done) {
     define('package', [], function() {return {};});
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['cleanup'], function(_cleanup) {
+    req(['cleanup'], function(_cleanup) {
       cleanup = _cleanup;
       done();
     });
@@ -52,7 +54,7 @@ describe('setClasses', function() {
     });
 
     it('should not add anything', function(done) {
-      requirejs(['setClasses'], function(setClasses) {
+      req(['setClasses'], function(setClasses) {
         setClasses(['detect']);
         expect(elm.className).to.not.contain('fakedetect');
         done();
@@ -71,7 +73,7 @@ describe('setClasses', function() {
     });
 
     it('adds a class with a prefix', function(done) {
-      requirejs(['setClasses'], function(setClasses) {
+      req(['setClasses'], function(setClasses) {
         setClasses(['detect']);
         expect(elm.className).to.contain('fakedetect');
         done();
@@ -91,7 +93,7 @@ describe('setClasses', function() {
     after(teardown);
 
     it('adds a class without a prefix', function(done) {
-      requirejs(['setClasses'], function(setClasses) {
+      req(['setClasses'], function(setClasses) {
         setClasses(['detect']);
         expect(elm.className).to.contain('detect');
         done();
@@ -110,7 +112,7 @@ describe('setClasses', function() {
     });
 
     it('changes the `js` class, and adds a class with a prefix', function(done) {
-      requirejs(['setClasses'], function(setClasses) {
+      req(['setClasses'], function(setClasses) {
         var classNames = elm.className.split(' ');
         expect(classNames).to.contain('fakeno-js');
         setClasses(['detect']);
@@ -140,7 +142,7 @@ describe('setClasses', function() {
     after(teardown);
 
     it('changes the `js` class, and adds a class without a prefix', function(done) {
-      requirejs(['setClasses'], function(setClasses) {
+      req(['setClasses'], function(setClasses) {
         var classNames = elm.className.split(' ');
         expect(classNames).to.contain('no-js');
         setClasses(['detect']);

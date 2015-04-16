@@ -12,20 +12,15 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement', 'prefixes', 'test/css/supports'], function( Modernizr, createElement, prefixes ) {
-  // https://github.com/Modernizr/Modernizr/issues/615
-  // documentMode is needed for false positives in oldIE, please see issue above
+define(['Modernizr', 'createElement', 'prefixes', 'testAllProps', 'test/css/supports'], function( Modernizr, createElement, testAllProps, prefixes ) {
   Modernizr.addTest('cssfilters', function() {
-    var el = createElement('div');
-    el.style.cssText = prefixes.join('filter:blur(2px); ');
     if (Modernizr.supports) {
-      var supports = 'CSS' in window ?
-        window.CSS.supports('filter', 'url()') :
-        window.supportsCSS('filter', 'url()');
-
-      // older firefox only supports `url` filters;
-      return supports;
+      return testAllProps('filter', 'blur(2px)');
     } else {
+      var el = createElement('div');
+      el.style.cssText = prefixes.join('filter:blur(2px); ');
+      // https://github.com/Modernizr/Modernizr/issues/615
+      // documentMode is needed for false positives in oldIE, please see issue above
       return !!el.style.length && ((document.documentMode === undefined || document.documentMode > 9));
     }
   });
