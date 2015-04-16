@@ -18,12 +18,13 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
     var waitTime = 300;
     var elem = createElement('video');
     var elemStyle = elem.style;
-    var testAutoplay = function(arg) {
+
+    function testAutoplay(arg) {
       clearTimeout(timeout);
-      elem.removeEventListener('playing', testAutoplay);
+      elem.removeEventListener('playing', testAutoplay, false);
       addTest('videoautoplay', arg && arg.type === 'playing' || elem.currentTime !== 0);
       elem.parentNode.removeChild(elem);
-    };
+    }
 
     //skip the test if video itself, or the autoplay
     //element on it isn't supported
@@ -55,12 +56,12 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
     }
 
     elem.setAttribute('autoplay','');
-    elem.style = 'display:none';
+    elem.style.cssText = 'display:none';
     docElement.appendChild(elem);
     // wait for the next tick to add the listener, otherwise the element may
     // not have time to play in high load situations (e.g. the test suite)
     setTimeout(function() {
-      elem.addEventListener('playing', testAutoplay);
+      elem.addEventListener('playing', testAutoplay, false);
       timeout = setTimeout(testAutoplay, waitTime);
     }, 0);
   });

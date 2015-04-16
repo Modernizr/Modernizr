@@ -1,57 +1,35 @@
 sudo: false
 language: node_js
 node_js:
-  - '0.10'
-  - '0.12'
+- '0.10'
+- '0.12'
 before_script:
-  - npm install grunt-cli -g
-  - export CI_BUILD_NUMBER=$(git rev-parse HEAD)
-
+- npm install grunt-cli -g
+- export CI_BUILD_NUMBER=$(git rev-parse HEAD)
 after_success:
-
-  # Temporary workaround for:
-  # https://github.com/travis-ci/travis-ci/issues/929
-
-  - python travis_after_all.py
-  - export $(cat .to_export_back) &> /dev/null
-  - |
-      # If all the tests pass in all the runtimes, make Travis
-      # automatically download and execute the following script
-
-      if [ "$BUILD_LEADER" == "YES" ]; then
-        if [ "$BUILD_AGGREGATE_STATUS" == "others_succeeded" ]; then \
-
-          # Clean up helper files
-          rm -rf travis_after_all.py .to_export_back && \
-
-          # The `update_site_branch.sh` script will run the build,
-          # and if that generates changes, it will commit them to the
-          # `master` branch:
-          #
-          #   * ensuring that the content from the `gh-pages/` directory
-          #     is always in sync with the rest of the content
-          #
-          #   * removing the need to execute the build step locally
-          #     everytime a change is made (especially in the case
-          #     of trivial changes such as typos)
-          #
-          # Note: The `update_site_branch.sh` script will only run
-          # if the commit was made to the `master` branch.
-
-          curl -sSL "https://raw.githubusercontent.com/h5bp-bot/scripts/0.6.1/update_site_branch.sh" |
-              bash -s -- --commands "grunt copy:gh-pages" \
-                         --commit-message "Hey server, this content is for you! [skip ci]" \
-                         --directory "gh-pages" \
-                         --distribution-branch "gh-pages" \
-                         --source-branch "master";
-        fi
-      fi
-
+- python travis_after_all.py
+- export $(cat .to_export_back) &> /dev/null
+- ! "# If all the tests pass in all the runtimes, make Travis\n# automatically download
+  and execute the following script\n\nif [ \"$BUILD_LEADER\" == \"YES\" ]; then\n
+  \ if [ \"$BUILD_AGGREGATE_STATUS\" == \"others_succeeded\" ]; then \\\n\n    # Clean
+  up helper files\n    rm -rf travis_after_all.py .to_export_back && \\\n\n    # The
+  `update_site_branch.sh` script will run the build,\n    # and if that generates
+  changes, it will commit them to the\n    # `master` branch:\n    #\n    #   * ensuring
+  that the content from the `gh-pages/` directory\n    #     is always in sync with
+  the rest of the content\n    #\n    #   * removing the need to execute the build
+  step locally\n    #     everytime a change is made (especially in the case\n    #
+  \    of trivial changes such as typos)\n    #\n    # Note: The `update_site_branch.sh`
+  script will only run\n    # if the commit was made to the `master` branch.\n\n    curl
+  -sSL \"https://raw.githubusercontent.com/h5bp-bot/scripts/0.6.1/update_site_branch.sh\"
+  |\n        bash -s -- --commands \"grunt copy:gh-pages\" \\\n                   --commit-message
+  \"Hey server, this content is for you! [skip ci]\" \\\n                   --directory
+  \"gh-pages\" \\\n                   --distribution-branch \"gh-pages\" \\\n                   --source-branch
+  \"master\";\n  fi\nfi\n"
 script:
-  - grunt travis --verbose
-  - curl -sSLo travis_after_all.py https://raw.github.com/dmakhno/travis_after_all/master/travis_after_all.py
+- grunt travis
+- curl -sSLo travis_after_all.py https://raw.github.com/dmakhno/travis_after_all/master/travis_after_all.py
 env:
   global:
-  - secure: noRIQS5Wv/9SFs4bK+0NZNQ7nnL+WfP6PhkPQR5QxNmXR1S4wjdiHy4/yv4aO/j1URgFw1YiFf+80k7YIn/9vIT+lMzE0wiw5FXTQM9PIB2mPHC2wzc0Y1Xj5kfuFXZemWTt73y1IkT53PjxezslVSduPKTxjXJuPmUk2FG3yaw=
-  - secure: QUDo7NDflY7K3xrBfcjVmhz6IBKoMOiosABbOEdQo1PiqAa8JBbjd+h02p6k+ZNQNymB1EcBhe20O1dMJYOg2E9BB8vtCsJtXTw1TEKlEwUVPUMkAtP6gpOk8XfmP9o6Ej2uM89+r6vLTDJIH1FPSwYbyxvWzIEi52gjFZUN6Mw=
   - secure: F5Xmkr+31YIXvtS1sqt2PDCI1CEQN/zpoJBKzqYXIUZVLvyH/4zVxRRa2LYleLRSIc+YZfzE3YZjfwWUC9vMcEREk380gRwSot9mhVbCOmNd1qhrFocSAzpI0fnwPUMfQknhE/mLuXnFQ0OAJBFzVCFOHHhKTlL8q+I7dNUhErc=
+  - secure: GijLoFIOjQ0elKMTLa58uS1Cgti+VzBOYXOPKKLikD8IAyNq2LRoochlYopAI2wAEMmX5UZAUpPiziyVGDCNmaDxCk4hmaG/WEFAHByu4PIcQaRGdqYT/kiGsn5vvKadHv34R2Fs3A0q1Fzx5mpAOJwKpANNvOHcHIESlvWzPvM=
+  - secure: HAztDqXTzRcsZ8StX4rDZiY2116SBQFWF9faf5/pl5UByj55lk6jYuC+DCB5ZHeRvmndMNjGqHLS3AvQZ5wMRVOlHfFMZdXGu+oONjFEWbZ9SHU5YNE8oRWIHB7XsFafvQpyAshReV1ogUj08cKFPC60EG8K3drxH2ybXcSpVi0=

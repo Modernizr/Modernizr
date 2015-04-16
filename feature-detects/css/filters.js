@@ -16,16 +16,26 @@ define(['Modernizr', 'createElement', 'prefixes', 'test/css/supports'], function
   // https://github.com/Modernizr/Modernizr/issues/615
   // documentMode is needed for false positives in oldIE, please see issue above
   Modernizr.addTest('cssfilters', function() {
-    var el = createElement('div');
-    el.style.cssText = prefixes.join('filter:blur(2px); ');
     if (Modernizr.supports) {
-      var supports = 'CSS' in window ?
-        window.CSS.supports('filter', 'url()') :
-        window.supportsCSS('filter', 'url()');
+      var len = prefixes.length;
+      var prop = 'filter';
+      var supports;
 
-      // older firefox only supports `url` filters;
+      for (var i = 0; i < len; i++) {
+        var prefixProp = prefixes[i] + prop;
+        supports = 'CSS' in window ?
+          window.CSS.supports(prefixProp, 'blur(2px)') :
+          window.supportsCSS(prefixProp, 'blur(2px)');
+
+        if (supports) {
+          break;
+        }
+      }
+
       return supports;
     } else {
+      var el = createElement('div');
+      el.style.cssText = prefixes.join('filter:blur(2px); ');
       return !!el.style.length && ((document.documentMode === undefined || document.documentMode > 9));
     }
   });

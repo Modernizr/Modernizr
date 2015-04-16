@@ -4,6 +4,7 @@
   "property": "mathml",
   "caniuse": "mathml",
   "authors": ["Addy Osmani", "Davide P. Cervone", "David Carlisle"],
+  "knownBugs": ["Firefox < 4 will likely return a false, however it does support MathML inside XHTML documents"],
   "notes": [{
     "name": "W3C spec",
     "href": "http://www.w3.org/Math/"
