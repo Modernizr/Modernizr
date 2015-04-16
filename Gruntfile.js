@@ -141,13 +141,13 @@ module.exports = function( grunt ) {
         }
       }
     },
-    'saucelabs-mocha': {
+    'saucelabs-custom': {
       all: {
         options: {
           urls:  '<%= env.coverage.urls %>',
           testname: process.env.CI_BUILD_NUMBER || 'Modernizr Test',
-          browsers: browsers,
-          maxRetries: 2
+          throttled: 10,
+          browsers: browsers
         }
       }
     },
@@ -188,8 +188,15 @@ module.exports = function( grunt ) {
         dir: 'test/coverage/reports',
         print: 'detail'
       }
+    },
+    coveralls: {
+      all: {
+        src: 'test/coverage/reports/lcov.info',
+        options: {
+          force: true
+        }
+      }
     }
-
   });
 
   grunt.registerMultiTask('generate', 'Create a version of Modernizr from Grunt', function() {
@@ -209,10 +216,10 @@ module.exports = function( grunt ) {
   grunt.registerTask('nodeTests', ['mochaTest']);
 
   // Testing tasks
-  grunt.registerTask('test', ['clean', 'jshint', 'jade', 'instrument', 'env:coverage', 'nodeTests', 'generate', 'storeCoverage', 'browserTests', 'makeReport']);
+  grunt.registerTask('test', ['clean', 'jshint', 'jade', 'instrument', 'env:coverage', 'nodeTests', 'generate', 'storeCoverage', 'browserTests', 'saucelabs-custom', 'makeReport']);
 
   // Travis CI task.
-  grunt.registerTask('travis', ['test']);
+  grunt.registerTask('travis', ['test', 'coveralls']);
 
   // Build
   grunt.registerTask('build', [

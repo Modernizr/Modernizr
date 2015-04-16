@@ -1,38 +1,90 @@
 [
   {
-    "browserName": "firefox",
-    "platform": "WIN7"
+    "browserName": "internet explorer",
+    "platform": "XP",
+    "version": "7"
+  }, {
+    "browserName": "internet explorer",
+    "platform": "WIN7",
+    "version": "8"
+  }, {
+    "browserName": "internet explorer",
+    "platform": "WIN7",
+    "version": "9"
+  }, {
+    "browserName": "internet explorer",
+    "platform": "WIN8",
+    "version": "10"
+  }, {
+    "browserName": "internet explorer",
+    "platform": "WIN8.1",
+    "version": "11"
   },
+
+
   {
     "browserName": "firefox",
-    "platform": "WINXP",
-    "browserVersion": "3"
+    "platform": "WIN8",
+    "version": "3.6"
+  }, {
+    "browserName": "firefox",
+    "platform": "WIN8",
+    "version": "35"
+  }, {
+    "browserName": "firefox",
+    "platform": "WIN8",
+    "version": "36"
+  }, {
+    "browserName": "firefox",
+    "platform": "WIN8",
+    "version": "37"
+  }, {
+    "browserName": "firefox",
+    "version": "beta"
   },
+
+
+  {
+    "browserName": "opera",
+    "platform": "Linux",
+    "version": "12"
+  },
+
+
   {
     "browserName": "chrome",
-    "platform": "WIN7"
+    "platform": "WIN8",
+    "version": "39"
+  }, {
+    "browserName": "chrome",
+    "platform": "WIN8",
+    "version": "40"
+  }, {
+    "browserName": "chrome",
+    "platform": "WIN8",
+    "version": "41"
+  }, {
+    "browserName": "chrome",
+    "platform": "WIN8",
+    "version": "beta"
+  }, {
+    "browserName": "chrome",
+    "platform": "WIN8",
+    "version": "dev"
   },
-  {
-    "browserName": "internet explorer",
-    "platform": "WIN8"
-  },
-  {
-    "browserName": "safari",
-    "platform": "OS X 10.6",
-    "version": "5"
-  },
+
+
   {
     "browserName": "safari",
     "platform": "OS X 10.8",
     "version": "6"
-  },
-  {
-    "browserName": "iphone",
-    "platform": "OS X 10.8"
-  },
-  {
-    "browserName": "android",
-    "platform": "Linux",
-    "version": "4.0"
+  }, {
+    "browserName": "safari",
+    "platform": "OS X 10.9",
+    "version": "7"
+  }, {
+    "browserName": "safari",
+    "platform": "OS X 10.10",
+    "version": "8"
   }
 ]

@@ -22,7 +22,14 @@ define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, creat
     return !!Modernizr.canvas && canvas.toDataURL('image/png').indexOf('data:image/png') === 0;
   });
   Modernizr.addTest('todataurlwebp', function() {
-    return !!Modernizr.canvas && canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    var supports = false;
+
+    // firefox 3 throws an error when you use an "invalid" toDataUrl
+    try {
+      supports = !!Modernizr.canvas && canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    } catch(e) {}
+
+    return supports;
   });
 
 });

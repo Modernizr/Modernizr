@@ -22,6 +22,7 @@
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-jade": "^0.14.1",
     "grunt-contrib-jshint": "^0.11.0",
+    "grunt-coveralls": "^1.0.0",
     "grunt-env": "^0.4.2",
     "grunt-istanbul": "^0.4.0",
     "grunt-mocha": "^0.4.11",
@@ -47,11 +48,11 @@
   },
   "inch": {
     "files": {
-        "included": [
-          "feature-detects/",
-          "src/"
-        ]
-      }
+      "included": [
+        "feature-detects/",
+        "src/"
+      ]
+    }
   },
   "keywords": [
     "html5",
@@ -64,14 +65,30 @@
     "url": "http://modernizr.com/"
   },
   "contributors": [
-    { "name": "Faruk Ates" },
-    { "name": "Paul Irish" },
-    { "name": "Alex Sexton" },
-    { "name": "Ryan Seddon" },
-    { "name": "Alexander Farkas" },
-    { "name": "Patrick Kettner" },
-    { "name": "Stu Cox" },
-    { "name": "Richard Herrera" }
+    {
+      "name": "Faruk Ates"
+    },
+    {
+      "name": "Paul Irish"
+    },
+    {
+      "name": "Alex Sexton"
+    },
+    {
+      "name": "Ryan Seddon"
+    },
+    {
+      "name": "Alexander Farkas"
+    },
+    {
+      "name": "Patrick Kettner"
+    },
+    {
+      "name": "Stu Cox"
+    },
+    {
+      "name": "Richard Herrera"
+    }
   ],
   "license": "MIT"
 }
