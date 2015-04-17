@@ -26,7 +26,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], funct
         bool.blocked = (result === 'blocked');
       }
       addTest('flash', function() { return bool; });
-      if (embed && body.contains(embed)) {
+      if (embed && embed.parentNode === body) {
         body.removeChild(embed);
       }
     };
