@@ -5,10 +5,12 @@ describe('testPropsAll', function() {
   var testDOMProps;
   var testProps;
   var cleanup;
+  var req;
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
         sinon: '../test/js/lib/sinon',
@@ -20,7 +22,7 @@ describe('testPropsAll', function() {
     define('Modernizr', [], function(){return Modernizr;});
     define('package', [], function() {return {};});
 
-    requirejs(['testDOMProps', 'testProps', 'cleanup', 'sinon'], function(_testDOMProps, _testProps, _cleanup, _sinon) {
+    req(['testDOMProps', 'testProps', 'cleanup', 'sinon'], function(_testDOMProps, _testProps, _cleanup, _sinon) {
         testDOMProps = _sinon.spy(_testDOMProps);
         testProps = _sinon.spy(_testProps);
         cleanup = _cleanup;
@@ -31,8 +33,8 @@ describe('testPropsAll', function() {
   });
 
   beforeEach(function(done) {
-    requirejs.undef('testDOMProps');
-    requirejs.undef('testProps');
+    req.undef('testDOMProps');
+    req.undef('testProps');
 
     testDOMProps.reset();
     testProps.reset();
@@ -40,7 +42,7 @@ describe('testPropsAll', function() {
     define('testDOMProps', function() {return testDOMProps;});
     define('testProps', function() {return testProps;});
 
-    requirejs(['testPropsAll'], function(_testPropsAll) {
+    req(['testPropsAll'], function(_testPropsAll) {
       testPropsAll = _testPropsAll;
 
       expect(testDOMProps.callCount).to.be(0);
@@ -70,9 +72,9 @@ describe('testPropsAll', function() {
   });
 
   afterEach(function() {
-    requirejs.undef('testPropsAll');
-    requirejs.undef('testDOMProps');
-    requirejs.undef('testProps');
+    req.undef('testPropsAll');
+    req.undef('testDOMProps');
+    req.undef('testProps');
   });
 
   after(function() {

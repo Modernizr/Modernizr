@@ -9,7 +9,8 @@ describe('load', function() {
 
     define('ModernizrProto', [], function(){return {};});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
         sinon: '../test/js/lib/sinon',
@@ -17,7 +18,7 @@ describe('load', function() {
       }
     });
 
-    requirejs(['ModernizrProto', 'sinon', 'load', 'cleanup'], function(_ModernizrProto, _sinon, _load, _cleanup) {
+    req(['ModernizrProto', 'sinon', 'load', 'cleanup'], function(_ModernizrProto, _sinon, _load, _cleanup) {
       ModernizrProto = _ModernizrProto;
       cleanup = _cleanup;
       sinon = _sinon;

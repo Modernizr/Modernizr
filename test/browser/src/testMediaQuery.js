@@ -3,6 +3,8 @@ describe('testMediaQuery', function() {
   var testMediaQuery;
   var cleanup;
   var sinon;
+  var req;
+
   var media = window.matchMedia || (function() {
     // adapted from jQuery Mobile
     // http://git.io/NFWo
@@ -36,7 +38,8 @@ describe('testMediaQuery', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
         sinon: '../test/js/lib/sinon',
@@ -44,7 +47,7 @@ describe('testMediaQuery', function() {
       }
     });
 
-    requirejs(['injectElementWithStyles', 'cleanup', 'sinon'], function(_injectElementWithStyles, _cleanup, _sinon) {
+    req(['injectElementWithStyles', 'cleanup', 'sinon'], function(_injectElementWithStyles, _cleanup, _sinon) {
       injectElementWithStyles = _injectElementWithStyles;
       cleanup = _cleanup;
       sinon = _sinon;
@@ -56,7 +59,7 @@ describe('testMediaQuery', function() {
   if (window.matchMedia || window.msMatchMedia) {
     describe('matchMedia version', function() {
       before(function(done) {
-        requirejs(['testMediaQuery'], function(_testMediaQuery) {
+        req(['testMediaQuery'], function(_testMediaQuery) {
           testMediaQuery = _testMediaQuery;
           done();
         });
@@ -72,12 +75,12 @@ describe('testMediaQuery', function() {
 
       before(function(done) {
         injectElementWithStyles = sinon.spy(injectElementWithStyles);
-        requirejs.undef('injectElementWithStyles');
-        requirejs.undef('testMediaQuery');
+        req.undef('injectElementWithStyles');
+        req.undef('testMediaQuery');
 
         define('injectElementWithStyles', [], function() {return injectElementWithStyles;});
 
-        requirejs(['testMediaQuery'], function(_testMediaQuery) {
+        req(['testMediaQuery'], function(_testMediaQuery) {
           testMediaQuery = _testMediaQuery;
           done();
         });
@@ -95,7 +98,7 @@ describe('testMediaQuery', function() {
   }
 
   afterEach(function() {
-    requirejs.undef('testMediaQuery');
+    req.undef('testMediaQuery');
   });
 
   after(function() {

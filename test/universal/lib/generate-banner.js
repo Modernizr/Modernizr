@@ -8,6 +8,7 @@ if (typeof define !== 'function') {
   var pkg = require(projectRoot + '/package');
   var expect = require('expect.js');
   var domain = 'modernizr.com';
+  var _ = require('lodash');
   var def = function() {
     return requirejs.define.apply(this, arguments);
   };
@@ -16,6 +17,7 @@ if (typeof define !== 'function') {
   var projectRoot = '..';
   var filesRoot = '..';
   var pkg = {};
+  var _ = window.lodash;
   var def = function() {
     return define.apply(this, arguments);
   };
@@ -26,17 +28,19 @@ var cleanup;
 describe('generate-banner', function() {
 
   before(function(done) {
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       paths: {
-        'lib': projectRoot + '/test/mocks/lib',
-        'generateBanner': filesRoot + '/lib/generate-banner',
-        'cleanup': projectRoot + '/test/cleanup'
+        lib: projectRoot + '/test/mocks/lib',
+        generateBanner: filesRoot + '/lib/generate-banner',
+        cleanup: projectRoot + '/test/cleanup'
       }
     });
 
     def('package', [], function() {return pkg;});
+    def('lodash', [], function() {return _;});
 
-    requirejs(['generateBanner', 'package', 'cleanup'], function(_generateBanner, _pkg, _cleanup) {
+    req(['generateBanner', 'package', 'cleanup'], function(_generateBanner, _pkg, _cleanup) {
       generateBanner = _generateBanner;
       cleanup = _cleanup;
       pkg = _pkg;

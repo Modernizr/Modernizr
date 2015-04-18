@@ -6,10 +6,12 @@ describe('prefixed', function() {
   var cleanup;
   var atRule;
   var sinon;
+  var req;
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
         sinon: '../test/js/lib/sinon',
@@ -17,7 +19,7 @@ describe('prefixed', function() {
       }
     });
 
-    requirejs(['sinon', 'cleanup'], function(_sinon, _cleanup) {
+    req(['sinon', 'cleanup'], function(_sinon, _cleanup) {
       sinon = _sinon;
       cleanup = _cleanup;
       done();
@@ -37,7 +39,7 @@ describe('prefixed', function() {
     define('atRule', [], function(){return atRule;});
 
 
-    requirejs(['prefixed'], function(_prefixed) {
+    req(['prefixed'], function(_prefixed) {
       prefixed = _prefixed;
 
       done();
@@ -70,11 +72,11 @@ describe('prefixed', function() {
   });
 
   afterEach(function() {
-    requirejs.undef('ModernizrProto');
-    requirejs.undef('testPropsAll');
-    requirejs.undef('cssToDOM');
-    requirejs.undef('prefixed');
-    requirejs.undef('atRule');
+    req.undef('ModernizrProto');
+    req.undef('testPropsAll');
+    req.undef('cssToDOM');
+    req.undef('prefixed');
+    req.undef('atRule');
   });
 
   after(function() {

@@ -4,12 +4,13 @@ describe('createElement', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['createElement', 'cleanup'], function(_createElement, _cleanup) {
+    req(['createElement', 'cleanup'], function(_createElement, _cleanup) {
       createElement = _createElement;
       cleanup = _cleanup;
       done();

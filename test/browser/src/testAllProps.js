@@ -4,10 +4,12 @@ describe('testAllProps', function() {
   var testPropsAll;
   var cleanup;
   var sinon;
+  var req;
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
         sinon: '../test/js/lib/sinon',
@@ -18,7 +20,7 @@ describe('testAllProps', function() {
     define('ModernizrProto', [], function(){return ModernizrProto;});
     define('package', [], function() {return {};});
 
-    requirejs(['cleanup', 'sinon'], function(_cleanup, _sinon) {
+    req(['cleanup', 'sinon'], function(_cleanup, _sinon) {
       cleanup = _cleanup;
       sinon = _sinon;
       done();
@@ -30,7 +32,7 @@ describe('testAllProps', function() {
 
     define('testPropsAll', function() {return testPropsAll;});
 
-    requirejs(['testAllProps'], function(_testAllProps) {
+    req(['testAllProps'], function(_testAllProps) {
       testAllProps = _testAllProps;
       done();
     });

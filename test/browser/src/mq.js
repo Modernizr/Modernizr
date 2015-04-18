@@ -8,12 +8,13 @@ describe('mq', function() {
 
     define('ModernizrProto', [], function(){return ModernizrProto;});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['mq', 'testMediaQuery', 'cleanup'], function(_mq, _testMediaQuery, _cleanup) {
+    req(['mq', 'testMediaQuery', 'cleanup'], function(_mq, _testMediaQuery, _cleanup) {
       testMediaQuery = _testMediaQuery;
       mq = _mq;
       cleanup = _cleanup;

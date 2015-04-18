@@ -57,8 +57,8 @@ window.caniusecb = function(caniuse) {
       filereader: 'fileapi',
       filesystem: 'filesystem',
       flexbox: 'flexbox',
-      flexboxtweener: 'flexbox',
       flexboxlegacy: 'flexbox',
+      flexboxtweener: 'flexbox',
       fontface: 'fontface',
       formvalidationapi: 'form-validation',
       fullscreen: 'fullscreen',
@@ -145,21 +145,51 @@ window.caniusecb = function(caniuse) {
 
       var ciubool = bool(o.caniuseResult);
 
+      /**************************************************************
+      * `o.caniuseResult` maps to the caniuse `stat` property
+      *
+      * y - (Y)es, supported by default
+      * a - (A)lmost supported (aka Partial support)
+      * n - (N)o support, or disabled by default
+      * p - No support, but has (P)olyfill
+      * u - Support (u)nknown
+      * x - Requires prefi(x) to work
+      * d - (D)isabled by default (need to enable flag or something)
+      **************************************************************/
+
       // caniuse says audio/video are yes/no, Modernizr has more detail which we'll dumb down.
       if (_.contains(['video', 'audio', 'webglextensions'], o.feature)) {
         o.result = o.result.valueOf();
       }
 
-      // webgl `partial` support means that not all users with these browsers
-      // have WebGL access, so we just ignore this test, and only check if the browser
+      // webgl `partial` support means that not all users with these browsers have
+      // WebGL access, so we just ignore this test, and only check if the browser
       // either fully supports or does not support
       if (o.feature === 'webgl' && o.caniuseResult.indexOf('a') === 0) {
         return;
       }
 
       // change the *documented* false positives
-      if (!ciubool && (o.feature == 'textshadow' && o.browser == 'firefox' && o.version == 3)) {
+      if (!ciubool && (o.feature == 'textshadow' && o.browser == 'Firefox' && o.version == 3)) {
         ciubool = o.fp = true;
+      }
+
+      // firefox only supports web animation when a flag is enabled, which we
+      // don't do on sauce
+      if (o.feature === 'webanimations' && o.caniuseResult.indexOf('a d') === 0) {
+        return;
+      }
+
+      // firefox only supports the `url` version of css-filters, which we don't
+      // consider support
+      if (o.feature === 'cssfilters' && o.browser == 'Firefox' && o.caniuseResult.indexOf('a') === 0) {
+        return;
+      }
+
+      // before 4.0, firefox only supports MathML on XHTML documents. Since we
+      // don't run inside of one, we will have a technically false negative
+      if (o.feature === 'mathml' && o.browser == 'Firefox' && o.version < 4) {
+        return;
       }
 
       // caniuse bundles viewport units, all of which work in IE 9+, save for vmax
@@ -168,10 +198,22 @@ window.caniusecb = function(caniuse) {
         return;
       }
 
+      // safari 5 does not support the `FileReader` API, which we test as a requirement
+      if (o.feature === 'filereader' && o.caniuseResult.indexOf('a') === 0) {
+        return;
+      }
+
+      // safari 5 and 6 only support the old version of WebSockets, which breaks most servers.
+      // As a result, we mark it as not supported, and ignore the caniuse match
+      if (o.feature === 'websockets' && o.caniuseResult.indexOf('a') === 0) {
+        return;
+      }
+
       // safari 7 recognizes the `seamless` attribute but does not actually support it
       if (o.feature === 'seamless' && o.browser === 'Safari' && o.version === 7) {
         return;
       }
+
 
       // caniuse counts a partial support for CORS via the XDomainRequest,
       // but thats not really cors - so skip the comparison.

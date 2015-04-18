@@ -4,12 +4,13 @@ describe('docElement', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['docElement', 'cleanup'], function(_docElement, _cleanup) {
+    req(['docElement', 'cleanup'], function(_docElement, _cleanup) {
       docElement = _docElement;
       cleanup = _cleanup;
       done();

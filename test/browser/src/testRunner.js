@@ -1,10 +1,12 @@
 describe('testRunner', function() {
   var Modernizr = {};
   var cleanup;
+  var req;
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
@@ -46,7 +48,7 @@ describe('testRunner', function() {
       ];
     });
 
-    requirejs(['testRunner', 'cleanup'], function(_testRunner, _cleanup) {
+    req(['testRunner', 'cleanup'], function(_testRunner, _cleanup) {
       _testRunner();
       cleanup = _cleanup;
       done();
@@ -76,8 +78,8 @@ describe('testRunner', function() {
   });
 
   afterEach(function() {
-    requirejs.undef('testRunner');
-    requirejs.undef('Modernizr');
+    req.undef('testRunner');
+    req.undef('Modernizr');
   });
 
   after(function() {

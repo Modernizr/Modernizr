@@ -1,17 +1,19 @@
 describe('isEventSupported', function() {
   var isEventSupported;
   var cleanup;
+  var req;
 
   before(function(done) {
 
     define('package', [], function() {return {};});
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['isEventSupported', 'cleanup'], function(_isEventSupported, _cleanup) {
+    req(['isEventSupported', 'cleanup'], function(_isEventSupported, _cleanup) {
       isEventSupported = _isEventSupported;
       cleanup = _cleanup;
       done();
@@ -54,8 +56,8 @@ describe('isEventSupported', function() {
         delete document.documentElement.onblur;
       } catch (e) {}
 
-      requirejs.undef('isEventSupported');
-      requirejs.undef('createElement');
+      req.undef('isEventSupported');
+      req.undef('createElement');
 
       define('createElement', [], function() {
         return function() {
@@ -77,7 +79,7 @@ describe('isEventSupported', function() {
         };
       });
 
-      requirejs(['isEventSupported'], function(_isEventSupported) {
+      req(['isEventSupported'], function(_isEventSupported) {
         isEventSupported = _isEventSupported;
         done();
       });

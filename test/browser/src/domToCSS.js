@@ -4,12 +4,13 @@ describe('domToCSS', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['domToCSS', 'cleanup'], function(_domToCSS, _cleanup) {
+    req(['domToCSS', 'cleanup'], function(_domToCSS, _cleanup) {
       domToCSS = _domToCSS;
       cleanup = _cleanup;
       done();

@@ -6,12 +6,13 @@ describe('nativeTestProps', function() {
 
     define('package', [], function() {return {};});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['nativeTestProps', 'cleanup'], function(_nativeTestProps, _cleanup) {
+    req(['nativeTestProps', 'cleanup'], function(_nativeTestProps, _cleanup) {
       nativeTestProps = _nativeTestProps;
       cleanup = _cleanup;
       done();

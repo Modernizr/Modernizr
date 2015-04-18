@@ -8,12 +8,13 @@ describe('hasEvent', function() {
 
     define('ModernizrProto', [], function(){return ModernizrProto;});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['hasEvent', 'isEventSupported', 'cleanup'], function(_hasEvent, _isEventSupported, _cleanup) {
+    req(['hasEvent', 'isEventSupported', 'cleanup'], function(_hasEvent, _isEventSupported, _cleanup) {
       isEventSupported = _isEventSupported;
       hasEvent = _hasEvent;
       cleanup = _cleanup;

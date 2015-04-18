@@ -4,12 +4,13 @@ describe('slice', function() {
 
   before(function(done) {
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['slice', 'cleanup'], function(_slice, _cleanup) {
+    req(['slice', 'cleanup'], function(_slice, _cleanup) {
       slice = _slice;
       cleanup = _cleanup;
       done();

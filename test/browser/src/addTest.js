@@ -5,10 +5,12 @@ describe('addTest', function() {
   var addTest;
   var cleanup;
   var sinon;
+  var req;
 
   before(function(done) {
 
-    requirejs.config({
+    req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
         cleanup: '../test/cleanup',
@@ -16,7 +18,7 @@ describe('addTest', function() {
       }
     });
 
-    requirejs(['cleanup', 'sinon'], function(_cleanup, _sinon) {
+    req(['cleanup', 'sinon'], function(_cleanup, _sinon) {
       cleanup = _cleanup;
       sinon = _sinon;
       done();
@@ -35,18 +37,18 @@ describe('addTest', function() {
     define('setClasses', [], function() {return setClasses;});
     define('package', [], function() {return {};});
 
-    requirejs(['addTest'], function(_addTest) {
+    req(['addTest'], function(_addTest) {
       addTest = _addTest;
       done();
     });
   });
 
   afterEach(function() {
-    requirejs.undef('ModernizrProto');
-    requirejs.undef('setClasses');
-    requirejs.undef('Modernizr');
-    requirejs.undef('package');
-    requirejs.undef('addTest');
+    req.undef('ModernizrProto');
+    req.undef('setClasses');
+    req.undef('Modernizr');
+    req.undef('package');
+    req.undef('addTest');
   });
 
   describe('setup', function() {

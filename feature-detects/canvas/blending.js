@@ -22,8 +22,11 @@ define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, creat
   Modernizr.addTest('canvasblending', function() {
     if (Modernizr.canvas === false) return false;
     var ctx = createElement('canvas').getContext('2d');
+    // firefox 3 throws an error when setting an invalid `globalCompositeOperation`
+    try {
+      ctx.globalCompositeOperation = 'screen';
+    } catch (e) {}
 
-    ctx.globalCompositeOperation = 'screen';
     return ctx.globalCompositeOperation === 'screen';
   });
 

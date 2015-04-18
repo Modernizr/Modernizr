@@ -9,7 +9,8 @@ describe('injectElementWithStyles', function() {
 
     define('package', [], function() {return {};});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
         cleanup: '../test/cleanup',
@@ -17,7 +18,7 @@ describe('injectElementWithStyles', function() {
       }
     });
 
-    requirejs(['injectElementWithStyles', 'sinon', 'cleanup'], function(_injectElementWithStyles, _sinon, _cleanup) {
+    req(['injectElementWithStyles', 'sinon', 'cleanup'], function(_injectElementWithStyles, _sinon, _cleanup) {
       injectElementWithStyles = _injectElementWithStyles;
       sinon = _sinon;
       cleanup = _cleanup;

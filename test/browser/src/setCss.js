@@ -7,12 +7,13 @@ describe('setCss', function() {
     elm = document.createElement('div');
     define('mStyle', [], function() {return elm;});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['setCss', 'cleanup'], function(_setCss, _cleanup) {
+    req(['setCss', 'cleanup'], function(_setCss, _cleanup) {
       setCss = _setCss;
       cleanup = _cleanup;
       done();

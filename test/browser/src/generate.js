@@ -5,13 +5,18 @@ describe('generate', function() {
   before(function(done) {
 
     define('package', [], function() {return {};});
+    define('Modernizr', [], function() {return {};});
+    define('testRunner', [], function() {return {};});
+    define('lodash', [], function() {return window._;});
+    define('ModernizrProto', [], function() {return {};});
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['generate', 'cleanup'], function(_generate, _cleanup) {
+    req(['generate', 'cleanup'], function(_generate, _cleanup) {
       generate = _generate;
       cleanup = _cleanup;
       done();
@@ -74,12 +79,18 @@ describe('generate', function() {
 
   it('outputs a valid function', function() {
     var output = generate({});
+    var stashedRequire = window.require;
+    window.require = function() {};
     expect(function(){eval(output);}).to.not.throwError();
+    window.require = stashedRequire;
   });
 
   it('outputs a valid function when minified', function() {
     var output = generate({minify: true});
+    var stashedRequire = window.require;
+    window.require = function() {};
     expect(function(){eval(output);}).to.not.throwError();
+    window.require = stashedRequire;
   });
 
   after(function() {

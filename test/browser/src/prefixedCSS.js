@@ -8,12 +8,13 @@ describe('prefixedCSS', function() {
     define('package', [], function() {return {version: 'v9999'};});
 
 
-    requirejs.config({
+    var req = requirejs.config({
+      context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: { cleanup: '../test/cleanup' }
     });
 
-    requirejs(['cleanup', 'prefixedCSS'], function(_cleanup, _prefixedCSS) {
+    req(['cleanup', 'prefixedCSS'], function(_cleanup, _prefixedCSS) {
       prefixedCSS = _prefixedCSS;
       cleanup = _cleanup;
       done();
