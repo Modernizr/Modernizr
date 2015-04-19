@@ -26,9 +26,17 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], funct
         bool.blocked = (result === 'blocked');
       }
       addTest('flash', function() { return bool; });
+
       if (embed && body.contains(embed)) {
+
+        // in case embed has been wrapped, as with ClickToPlugin
+        while (embed.parentNode !== body) {
+          embed = embed.parentNode;
+        }
+
         body.removeChild(embed);
       }
+
     };
     var easy_detect;
     var activex;
