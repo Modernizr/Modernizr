@@ -11,9 +11,12 @@ $(document).ready(function() {
 
   runner.once('suite', function() {
     mocha.suite.afterAll('send coverage', function(done) {
-      // opera 12 can't handle the defualt `window.mochaResults`, so we build
-      // generic test data instead
-      window.global_test_results = results;
+      // ensure timeout errors block normal reporting, to ensure the entire suite is retried
+      if (!window.global_test_results) {
+        // opera 12 can't handle the defualt `window.mochaResults`, so we build
+        // generic test data instead
+        window.global_test_results = results;
+      }
 
       if (window.__coverage__) {
         $.ajax({
@@ -33,6 +36,11 @@ $(document).ready(function() {
   runner.on('fail', logFailure);
 
   function logFailure(test, err) {
+    var isTimeout = _.contains(err.toString(), 'Ensure the done() callback is being called in this test.');
+
+    if (isTimeout) {
+      return window.global_test_results = { message: err };
+    }
 
     if (err) {
       results.failed += 1;
