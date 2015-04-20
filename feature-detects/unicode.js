@@ -11,7 +11,7 @@
 /* DOC
 Detects if unicode characters are supported in the current document.
 */
-define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, createElement, testStyles ) {
+define(['Modernizr', 'createElement', 'testStyles', 'isSVG'], function( Modernizr, createElement, testStyles, isSVG ) {
   /**
    * Unicode special character support
    *
@@ -22,12 +22,12 @@ define(['Modernizr', 'createElement', 'testStyles'], function( Modernizr, create
   Modernizr.addTest('unicode', function() {
     var bool;
     var missingGlyph = createElement('span');
-    var star = document.createElement('span');
+    var star = createElement('span');
 
     testStyles('#modernizr{font-family:Arial,sans;font-size:300em;}', function( node ) {
 
-      missingGlyph.innerHTML = '&#5987';
-      star.innerHTML = '&#9734';
+      missingGlyph.innerHTML = isSVG ? '\u5987' : '&#5987';
+      star.innerHTML = isSVG ? '\u2606' : '&#9734';
 
       node.appendChild(missingGlyph);
       node.appendChild(star);

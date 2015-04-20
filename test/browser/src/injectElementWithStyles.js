@@ -75,7 +75,7 @@ describe('injectElementWithStyles', function() {
   it('creates multiple nodes when requested', function(done) {
 
     var callback = function(elm) {
-      expect(elm.childNodes.length).to.be(10);
+      expect(elm.childNodes.length).to.be(9);
       done();
     };
 

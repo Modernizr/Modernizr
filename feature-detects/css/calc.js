@@ -21,7 +21,7 @@ define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createEl
   Modernizr.addTest('csscalc', function() {
     var prop = 'width:';
     var value = 'calc(10px);';
-    var el = createElement('div');
+    var el = createElement('a');
 
     el.style.cssText = prop + prefixes.join(value + prop);
 

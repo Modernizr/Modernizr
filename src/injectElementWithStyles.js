@@ -19,17 +19,22 @@ define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function( M
       }
     }
 
-    // <style> elements in IE6-9 are considered 'NoScope' elements and therefore will be removed
-    // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element
-    // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
-    // msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
-    // Documents served as xml will throw if using &shy; so use xml friendly encoded version. See issue #277
-    style = ['&#173;','<style id="s', mod, '">', rule, '</style>'].join('');
-    div.id = mod;
+    style = createElement('style');
+    style.type = 'text/css';
+    style.id = 's' + mod;
+
     // IE6 will false positive on some tests due to the style element inside the test div somehow interfering offsetHeight, so insert it into body or fakebody.
     // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
-    (!body.fake ? div : body).innerHTML += style;
+    (!body.fake ? div : body).appendChild(style);
     body.appendChild(div);
+
+    if (style.styleSheet) {
+      style.styleSheet.cssText = rule;
+    } else {
+      style.appendChild(document.createTextNode(rule));
+    }
+    div.id = mod;
+
     if ( body.fake ) {
       //avoid crashing IE8, if background image is used
       body.style.background = '';

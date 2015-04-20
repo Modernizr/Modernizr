@@ -12,8 +12,7 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   // occurrences of "url(" is a reliable method for detecting ACTUAL support for this!
 
   Modernizr.addTest('multiplebgs', function() {
-    var elem = createElement('div');
-    var style = elem.style;
+    var style = createElement('a').style;
     style.cssText = 'background:url(https://),url(https://),red url(https://)';
 
     // If the UA supports multiple backgrounds, there should be three occurrences

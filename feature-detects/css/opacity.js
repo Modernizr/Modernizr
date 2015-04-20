@@ -12,8 +12,7 @@ define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createEl
   // range of [0.0,1.0] - including the leading zero.
 
   Modernizr.addTest('opacity', function() {
-    var elem = createElement('div');
-    var style = elem.style;
+    var style = createElement('a').style;
     style.cssText = prefixes.join('opacity:.55;');
 
     // The non-literal . in this regex is intentional:

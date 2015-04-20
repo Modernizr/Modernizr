@@ -9,7 +9,7 @@
 /* DOC
 Detects support flash, as well as flash blocking plugins
 */
-define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], function( Modernizr, createElement, docElement, addTest, getBody ) {
+define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG'], function( Modernizr, createElement, docElement, addTest, getBody, isSVG ) {
   Modernizr.addAsyncTest(function() {
     /* jshint -W053 */
 
@@ -49,7 +49,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], funct
 
     easy_detect = !( ( 'plugins' in navigator && 'Shockwave Flash' in navigator.plugins ) || activex );
 
-    if (easy_detect) {
+    if (easy_detect || isSVG) {
       runTest(false);
     }
     else {
@@ -80,7 +80,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody'], funct
         // have had time to work.
         if (!docElement.contains(body)) {
           body = document.body || body;
-          embed = document.createElement('embed');
+          embed = createElement('embed');
           embed.type = 'application/x-shockwave-flash';
           body.appendChild(embed);
           return setTimeout(blockedDetect, 1000);

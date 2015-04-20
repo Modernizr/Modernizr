@@ -20,7 +20,7 @@ define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
   // element https://github.com/Modernizr/Modernizr/issues/716
   testStyles('#modernizr{display: table; direction: ltr}#modernizr div{display: table-cell; padding: 10px}', function( elem ) {
     var ret;
-    var child = elem.children;
+    var child = elem.childNodes;
     ret = child[0].offsetLeft < child[1].offsetLeft;
     Modernizr.addTest('displaytable', ret, { aliases: ['display-table'] });
   },2);

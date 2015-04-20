@@ -17,7 +17,7 @@ define(['Modernizr', 'createElement', 'prefixes', 'testAllProps', 'test/css/supp
     if (Modernizr.supports) {
       return testAllProps('filter', 'blur(2px)');
     } else {
-      var el = createElement('div');
+      var el = createElement('a');
       el.style.cssText = prefixes.join('filter:blur(2px); ');
       // https://github.com/Modernizr/Modernizr/issues/615
       // documentMode is needed for false positives in oldIE, please see issue above

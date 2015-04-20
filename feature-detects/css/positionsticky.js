@@ -17,7 +17,7 @@ define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createEl
   Modernizr.addTest('csspositionsticky', function() {
     var prop = 'position:';
     var value = 'sticky';
-    var el = createElement('modernizr');
+    var el = createElement('a');
     var mStyle = el.style;
 
     mStyle.cssText = prop + prefixes.join(value + ';' + prop).slice(0, -prop.length);

@@ -21,11 +21,11 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   // you can test by checking if the prop was ditched
 
   Modernizr.addTest('cssremunit', function() {
-    var div = createElement('div');
+    var style = createElement('a').style;
     try {
-      div.style.fontSize = '3rem';
+      style.fontSize = '3rem';
     }
-    catch( er ) {}
-    return (/rem/).test(div.style.fontSize);
+    catch(e) {}
+    return (/rem/).test(style.fontSize);
   });
 });

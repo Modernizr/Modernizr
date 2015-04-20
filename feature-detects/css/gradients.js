@@ -35,7 +35,7 @@ define(['Modernizr', 'prefixes', 'createElement'], function( Modernizr, prefixes
       css += str1 + '-webkit-' + str2;
     }
 
-    var elem = createElement('div');
+    var elem = createElement('a');
     var style = elem.style;
     style.cssText = css;
 

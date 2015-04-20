@@ -12,8 +12,7 @@
 !*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('rgba', function() {
-    var elem = createElement('div');
-    var style = elem.style;
+    var style = createElement('a').style;
     style.cssText = 'background-color:rgba(150,255,150,.5)';
 
     return ('' + style.backgroundColor).indexOf('rgba') > -1;

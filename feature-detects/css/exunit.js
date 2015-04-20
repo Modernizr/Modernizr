@@ -13,9 +13,13 @@
 define(['Modernizr', 'modElem'], function (Modernizr, modElem) {
   Modernizr.addTest('cssexunit', function () {
     var elemStyle = modElem.elem.style;
+    var supports;
     try {
       elemStyle.fontSize = '3ex';
-    } catch (e) { }
-    return elemStyle.fontSize.indexOf('ex') !== -1;
+      supports = elemStyle.fontSize.indexOf('ex') !== -1;
+    } catch (e) {
+      supports = false;
+    }
+    return supports;
   });
 });
