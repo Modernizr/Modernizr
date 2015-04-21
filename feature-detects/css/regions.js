@@ -12,11 +12,17 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
+define(['Modernizr', 'createElement', 'docElement', 'isSVG'], function( Modernizr, createElement, docElement, isSVG ) {
   // We start with a CSS parser test then we check page geometry to see if it's affected by regions
   // Later we might be able to retire the second part, as WebKit builds with the false positives die out
 
   Modernizr.addTest('regions', function() {
+
+    if (isSVG) {
+      // css regions don't work inside of SVG elements. Rather than update the
+      // below test to work in an SVG context, just exit early to save bytes
+      return false;
+    }
 
     /* Get the 'flowFrom' property name available in the browser. Either default or vendor prefixed.
        If the property name can't be found we'll get Boolean 'false' and fail quickly */

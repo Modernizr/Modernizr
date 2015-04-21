@@ -15,11 +15,12 @@
   ]
 }
 !*/
-define(['Modernizr', 'prefixed', 'docElement', 'createElement'], function( Modernizr, prefixed, docElement, createElement ) {
+define(['Modernizr', 'prefixed', 'docElement', 'createElement', 'isSVG'], function( Modernizr, prefixed, docElement, createElement, isSVG) {
   Modernizr.addTest('wrapflow', function () {
     var prefixedProperty = prefixed('wrapFlow');
-    if (!prefixedProperty)
+    if (!prefixedProperty || isSVG) {
       return false;
+    }
 
     var wrapFlowProperty = prefixedProperty.replace(/([A-Z])/g, function (str, m1) { return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
 

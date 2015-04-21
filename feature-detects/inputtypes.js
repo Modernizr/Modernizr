@@ -56,7 +56,7 @@ define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile']
     for ( var i = 0; i < len; i++ ) {
 
       inputElem.setAttribute('type', inputElemType = props[i]);
-      bool = inputElem.type !== 'text';
+      bool = inputElem.type !== 'text' && 'style' in inputElem;
 
       // We first check to see if the type we give it sticks..
       // If the type does, we feed it a textual value, which shouldn't be valid.

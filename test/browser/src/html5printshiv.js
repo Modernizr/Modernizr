@@ -32,11 +32,15 @@ describe('html5printshiv', function() {
   });
 
   it('shivs the document', function(done) {
-    iframeWindow.requirejs(['html5printshiv'], function() {
-      expect('html5' in iframeWindow).to.be(true);
-      expect(iframeWindow.html5.type).to.equal('default print');
-      done();
-    });
+    try {
+      iframeWindow.requirejs(['html5printshiv'], function() {
+        expect('html5' in iframeWindow).to.be(true);
+        expect(iframeWindow.html5.type).to.equal('default print');
+        done();
+      });
+    } catch (e) {
+      done(e);
+    }
   });
 
   after(function() {

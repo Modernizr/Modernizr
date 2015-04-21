@@ -26,8 +26,8 @@
 !*/
 define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
   Modernizr.addTest('csspointerevents', function() {
-    var element = createElement('x');
-    element.style.cssText = 'pointer-events:auto';
-    return element.style.pointerEvents === 'auto';
+    var style = createElement('a').style;
+    style.cssText = 'pointer-events:auto';
+    return style.pointerEvents === 'auto';
   });
 });

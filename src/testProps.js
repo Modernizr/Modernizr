@@ -26,12 +26,16 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'cssToDO
     // Otherwise do it properly
     var afterInit, i, propsLength, prop, before;
 
-    // If we don't have a style element, that means
-    // we're running async or after the core tests,
-    // so we'll need to create our own elements to use
-    if ( !mStyle.style ) {
+    // If we don't have a style element, that means we're running async or after
+    // the core tests, so we'll need to create our own elements to use
+
+    // inside of an SVG element, in certain browsers, the `style` element is only
+    // defined for valid tags. Therefore, if `modernizr` does not have one, we
+    // fall back to a less used element and hope for the best.
+    var elems = ['modernizr', 'tspan'];
+    while ( !mStyle.style ) {
       afterInit = true;
-      mStyle.modElem = createElement('modernizr');
+      mStyle.modElem = createElement(elems.shift());
       mStyle.style = mStyle.modElem.style;
     }
 
