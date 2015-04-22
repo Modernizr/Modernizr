@@ -13,17 +13,17 @@ define(['ModernizrProto', 'createElement'], function( ModernizrProto, createElem
     var needsFallback = !('onblur' in document.documentElement);
 
     /**
-     * @param  {string|*}           eventName  is the name of an event to test for (e.g. "resize")
-     * @param  {(Object|string|*)=} element    is the element|document|window|tagName to test on
+     * @this {*} is used as `element` for array-style iterations
+     * @param {!string} eventName is the name of an event to test for (e.g. "resize")
+     * @param {(Node|Window|string|number)=} element is a tagname or object to test on
      * @return {boolean}
      */
     function isEventSupportedInner( eventName, element ) {
 
       var isSupported;
       if ( !eventName ) { return false; }
-      if ( !element || typeof element === 'string' ) {
-        element = createElement(element || 'div');
-      }
+      element = typeof element === 'number' ? this && this.valueOf() : element;
+      element = typeof element !== 'string' && element || createElement(element || 'div');
 
       // Testing via the `in` operator is sufficient for modern browsers and IE.
       // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and
