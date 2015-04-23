@@ -12,7 +12,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement', 'docElement', 'isSVG'], function( Modernizr, createElement, docElement, isSVG ) {
+define(['Modernizr', 'createElement', 'docElement', 'isSVG'], function(Modernizr, createElement, docElement, isSVG) {
   // We start with a CSS parser test then we check page geometry to see if it's affected by regions
   // Later we might be able to retire the second part, as WebKit builds with the false positives die out
 
@@ -30,7 +30,7 @@ define(['Modernizr', 'createElement', 'docElement', 'isSVG'], function( Moderniz
     var flowIntoProperty = Modernizr.prefixed('flowInto');
     var result = false;
 
-    if (!flowFromProperty || !flowIntoProperty){
+    if (!flowFromProperty || !flowIntoProperty) {
       return result;
     }
 

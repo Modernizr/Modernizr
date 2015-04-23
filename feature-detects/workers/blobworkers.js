@@ -16,7 +16,7 @@
 /* DOC
 Detects support for creating Web Workers from Blob URIs.
 */
-define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
+define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
   Modernizr.addAsyncTest(function() {
     try {
       // we're avoiding using Modernizr._domPrefixes as the prefix capitalization on
@@ -37,7 +37,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
 
       try {
         blob = new Blob([scriptText], {type:'text/javascript'});
-      } catch(e) {
+      } catch (e) {
         // we'll fall back to the deprecated BlobBuilder
       }
       if (!blob) {

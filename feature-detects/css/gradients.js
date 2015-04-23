@@ -20,7 +20,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'prefixes', 'createElement'], function( Modernizr, prefixes, createElement ) {
+define(['Modernizr', 'prefixes', 'createElement'], function(Modernizr, prefixes, createElement) {
 
   Modernizr.addTest('cssgradients', function() {
 

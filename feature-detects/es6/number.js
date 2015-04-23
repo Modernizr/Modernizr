@@ -15,7 +15,7 @@
 /* DOC
 Check if browser implements ECMAScript 6 Number per specification.
 */
-define(['Modernizr'], function (Modernizr) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('es6number', !!(Number.isFinite &&
     Number.isInteger &&
     Number.isSafeInteger &&

@@ -15,7 +15,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   // "The 'rem' unit ('root em') is relative to the computed
   // value of the 'font-size' value of the root element."
   // you can test by checking if the prop was ditched
@@ -25,7 +25,7 @@ define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
     try {
       style.fontSize = '3rem';
     }
-    catch(e) {}
+    catch (e) {}
     return (/rem/).test(style.fontSize);
   });
 });

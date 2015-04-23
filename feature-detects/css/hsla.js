@@ -6,7 +6,7 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'createElement', 'contains'], function( Modernizr, createElement, contains ) {
+define(['Modernizr', 'createElement', 'contains'], function(Modernizr, createElement, contains) {
   Modernizr.addTest('hsla', function() {
     var style = createElement('a').style;
     style.cssText = 'background-color:hsla(120,40%,100%,.5)';

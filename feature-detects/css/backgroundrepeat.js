@@ -20,7 +20,7 @@
 /* DOC
 Detects the ability to use round and space as properties for background-repeat
 */
-define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
   // Must value-test these
   Modernizr.addTest('bgrepeatround', testAllProps('backgroundRepeat', 'round'));
   Modernizr.addTest('bgrepeatspace', testAllProps('backgroundRepeat', 'space'));

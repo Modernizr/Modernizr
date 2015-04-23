@@ -17,7 +17,7 @@
 /* DOC
 Detects whether input type="number" is capable of receiving and displaying localized numbers, e.g. with comma separator.
 */
-define(['Modernizr', 'createElement', 'docElement', 'getBody', 'test/inputtypes', 'test/forms/validation'], function( Modernizr, createElement, docElement, getBody ) {
+define(['Modernizr', 'createElement', 'docElement', 'getBody', 'test/inputtypes', 'test/forms/validation'], function(Modernizr, createElement, docElement, getBody) {
   Modernizr.addTest('localizednumber', function() {
     // this extends our testing of input[type=number], so bomb out if that's missing
     if (!Modernizr.inputtypes.number) { return false; }
@@ -37,7 +37,7 @@ define(['Modernizr', 'createElement', 'docElement', 'getBody', 'test/inputtypes'
     input.focus();
     try {
       document.execCommand('InsertText', false, '1,1');
-    } catch(e) { // prevent warnings in IE
+    } catch (e) { // prevent warnings in IE
     }
     diff = input.type === 'number' && input.valueAsNumber === 1.1 && input.checkValidity();
     root.removeChild(el);

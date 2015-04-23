@@ -16,7 +16,7 @@
   ]
 }
 !*/
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   // In FF4, if disabled, window.localStorage should === null.
 
   // Normally, we could not test that directly and need to do a
@@ -40,7 +40,7 @@ define(['Modernizr'], function( Modernizr ) {
       localStorage.setItem(mod, mod);
       localStorage.removeItem(mod);
       return true;
-    } catch(e) {
+    } catch (e) {
       return false;
     }
   });

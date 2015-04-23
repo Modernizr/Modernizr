@@ -9,7 +9,7 @@
   ]
 }
 !*/
-define(['Modernizr', 'testAllProps', 'testStyles', 'docElement', 'test/css/supports'], function( Modernizr, testAllProps, testStyles, docElement ) {
+define(['Modernizr', 'testAllProps', 'testStyles', 'docElement', 'test/css/supports'], function(Modernizr, testAllProps, testStyles, docElement) {
   Modernizr.addTest('csstransforms3d', function() {
     var ret = !!testAllProps('perspective', '1px', true);
     var usePrefix = Modernizr._config.usePrefixes;
@@ -18,7 +18,7 @@ define(['Modernizr', 'testAllProps', 'testStyles', 'docElement', 'test/css/suppo
     //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in
     //   some conditions. As a result, Webkit typically recognizes the syntax but
     //   will sometimes throw a false positive, thus we must do a more thorough check:
-    if ( ret && (!usePrefix || 'webkitPerspective' in docElement.style )) {
+    if (ret && (!usePrefix || 'webkitPerspective' in docElement.style)) {
       var mq;
       // Use CSS Conditional Rules if available
       if (Modernizr.supports) {
@@ -27,12 +27,14 @@ define(['Modernizr', 'testAllProps', 'testStyles', 'docElement', 'test/css/suppo
         // Otherwise, Webkit allows this media query to succeed only if the feature is enabled.
         // `@media (transform-3d),(-webkit-transform-3d){ ... }`
         mq = '@media (transform-3d)';
-        if (usePrefix ) mq += ',(-webkit-transform-3d)';
+        if (usePrefix) {
+          mq += ',(-webkit-transform-3d)';
+        }
       }
       // If loaded inside the body tag and the test element inherits any padding, margin or borders it will fail #740
       mq += '{#modernizr{left:9px;position:absolute;height:5px;margin:0;padding:0;border:0}}';
 
-      testStyles(mq, function( elem ) {
+      testStyles(mq, function(elem) {
         ret = elem.offsetLeft === 9 && elem.offsetHeight === 5;
       });
     }

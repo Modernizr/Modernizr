@@ -8,7 +8,7 @@
   "authors": ["@phiggins42"]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   // dataset API for data-* attributes
   Modernizr.addTest('dataset', function() {
     var n = createElement('div');

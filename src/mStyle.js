@@ -1,4 +1,4 @@
-define(['Modernizr', 'modElem'], function( Modernizr, modElem ) {
+define(['Modernizr', 'modElem'], function(Modernizr, modElem) {
   var mStyle = {
     style : modElem.elem.style
   };

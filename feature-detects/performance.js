@@ -18,6 +18,6 @@
 /* DOC
 Detects support for the Navigation Timing API, for measuring browser and connection performance.
 */
-define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
+define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
   Modernizr.addTest('performance', !!prefixed('performance', window));
 });

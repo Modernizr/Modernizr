@@ -14,7 +14,7 @@
 /* DOC
 Detects support for inline SVG in HTML (not within XHTML).
 */
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('inlinesvg', function() {
     var div = createElement('div');
     div.innerHTML = '<svg/>';

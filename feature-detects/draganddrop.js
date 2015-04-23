@@ -14,7 +14,7 @@
 /* DOC
 Detects support for native drag & drop of elements.
 */
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('draganddrop', function() {
     var div = createElement('div');
     return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);

@@ -11,7 +11,7 @@
 /* DOC
 Detect for the RTCDataChannel API that allows for transfer data directly from one peer to another
 */
-define(['Modernizr', 'prefixed', 'domPrefixes', 'test/webrtc/peerconnection'], function( Modernizr, prefixed, domPrefixes ) {
+define(['Modernizr', 'prefixed', 'domPrefixes', 'test/webrtc/peerconnection'], function(Modernizr, prefixed, domPrefixes) {
 
   Modernizr.addTest('datachannel', function() {
     if (!Modernizr.peerconnection) {
@@ -22,7 +22,7 @@ define(['Modernizr', 'prefixed', 'domPrefixes', 'test/webrtc/peerconnection'], f
 
       if (peerConnectionConstructor) {
         var peerConnection = new peerConnectionConstructor({
-          'iceServers': [{ 'url': 'stun:0' }]
+          'iceServers': [{'url': 'stun:0'}]
         });
 
         return 'createDataChannel' in peerConnection;

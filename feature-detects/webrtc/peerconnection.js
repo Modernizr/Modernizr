@@ -10,6 +10,6 @@
   }]
 }
 !*/
-define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
+define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
   Modernizr.addTest('peerconnection', !!prefixed('RTCPeerConnection', window));
 });

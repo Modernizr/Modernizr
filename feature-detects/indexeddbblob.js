@@ -7,7 +7,7 @@
 /* DOC
 Detects if the browser can save File/Blob objects to IndexedDB
 */
-define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function( Modernizr, addTest, prefixed ) {
+define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function(Modernizr, addTest, prefixed) {
   // Vendors had inconsistent prefixing with the experimental Indexed DB:
   // - Webkit's implementation is accessible through webkitIndexedDB
   // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
@@ -21,12 +21,14 @@ define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function( Moderni
     var request;
     var db;
 
-    if (!(Modernizr.indexeddb && Modernizr.indexeddb.deleteDatabase)) return false;
+    if (!(Modernizr.indexeddb && Modernizr.indexeddb.deleteDatabase)) {
+      return false;
+    }
 
     // Calling `deleteDatabase` in a try…catch because some contexts (e.g. data URIs)
     // will throw a `SecurityError`
     try {
-      indexeddb.deleteDatabase(dbname).onsuccess = function () {
+      indexeddb.deleteDatabase(dbname).onsuccess = function() {
         request = indexeddb.open(dbname, 1);
         request.onupgradeneeded = function() {
           request.result.createObjectStore('store');

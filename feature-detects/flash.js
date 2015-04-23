@@ -9,11 +9,11 @@
 /* DOC
 Detects support flash, as well as flash blocking plugins
 */
-define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG'], function( Modernizr, createElement, docElement, addTest, getBody, isSVG ) {
+define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG'], function(Modernizr, createElement, docElement, addTest, getBody, isSVG) {
   Modernizr.addAsyncTest(function() {
     /* jshint -W053 */
 
-    var removeFakeBody = function (body) {
+    var removeFakeBody = function(body) {
       // If we’re rockin’ an attached fake body, clean it up
       if (body.fake && body.parentNode) {
         body.parentNode.removeChild(body);
@@ -45,9 +45,9 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
     try {
       // Pan is an API that exists for flash objects.
       activex = 'ActiveXObject' in window && 'Pan' in new window.ActiveXObject('ShockwaveFlash.ShockwaveFlash');
-    } catch(e) {}
+    } catch (e) {}
 
-    easy_detect = !( ( 'plugins' in navigator && 'Shockwave Flash' in navigator.plugins ) || activex );
+    easy_detect = !(('plugins' in navigator && 'Shockwave Flash' in navigator.plugins) || activex);
 
     if (easy_detect || isSVG) {
       runTest(false);

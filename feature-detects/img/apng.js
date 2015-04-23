@@ -14,8 +14,8 @@
 /* DOC
 Test for animated png support.
 */
-define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function( Modernizr, createElement, addTest ) {
-  Modernizr.addAsyncTest(function () {
+define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function(Modernizr, createElement, addTest) {
+  Modernizr.addAsyncTest(function() {
     if (!Modernizr.canvas) {
       return false;
     }
@@ -24,8 +24,8 @@ define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function( Moder
     var canvas = createElement('canvas');
     var ctx = canvas.getContext('2d');
 
-    image.onload = function () {
-      addTest('apng', function () {
+    image.onload = function() {
+      addTest('apng', function() {
         if (typeof canvas.getContext == 'undefined') {
           return false;
         }

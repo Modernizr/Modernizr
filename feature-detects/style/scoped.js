@@ -16,6 +16,6 @@
 /* DOC
 Support for the `scoped` attribute of the `<style>` element.
 */
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('stylescoped', 'scoped' in createElement('style'));
 });

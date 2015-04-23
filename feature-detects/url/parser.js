@@ -14,8 +14,8 @@
 /* DOC
 Check if browser implements the URL constructor for parsing URLs.
 */
-define(['Modernizr'], function (Modernizr) {
-  Modernizr.addTest('urlparser', function () {
+define(['Modernizr'], function(Modernizr) {
+  Modernizr.addTest('urlparser', function() {
     var url;
     try {
       // have to actually try use it, because Safari defines a dud constructor

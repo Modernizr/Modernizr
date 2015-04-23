@@ -1,5 +1,5 @@
 define(['lodash'], function(_) {
-  return function( config ) {
+  return function(config) {
     // Set some defaults
     if (!config) {
       config = {};
@@ -21,17 +21,17 @@ define(['lodash'], function(_) {
     }
 
     // Only allow one shiv at a time
-    if  (_.includes(config.options, 'html5printshiv')) {
+    if (_.includes(config.options, 'html5printshiv')) {
       config.options = _.without(config.options, 'html5shiv');
     }
 
     // Load in the rest of the options (they dont return values, so they aren't declared
-    _.forEach(config.options, function (option) {
+    _.forEach(config.options, function(option) {
       output += ', "' + option + '"';
     });
 
     // Load in all the detects
-    _.forEach(config['feature-detects'], function (detect) {
+    _.forEach(config['feature-detects'], function(detect) {
       detect = detect.indexOf('test/') === 0 ? detect : 'test/' + detect;
       output += ', "' + detect + '"';
     });

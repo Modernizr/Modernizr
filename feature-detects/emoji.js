@@ -7,9 +7,11 @@
 /* DOC
 Detects support for emoji character sets.
 */
-define(['Modernizr', 'createElement', 'test/canvastext'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement', 'test/canvastext'], function(Modernizr, createElement) {
   Modernizr.addTest('emoji', function() {
-    if (!Modernizr.canvastext) return false;
+    if (!Modernizr.canvastext) {
+      return false;
+    }
     var pixelRatio = window.devicePixelRatio || 1;
     var offset = 12 * pixelRatio;
     var node = createElement('canvas');

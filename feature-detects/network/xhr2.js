@@ -16,7 +16,7 @@
 /* DOC
 Tests for XHR2.
 */
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   // all three of these details report consistently across all target browsers:
   //   !!(window.ProgressEvent);
   //   'XMLHttpRequest' in window && 'withCredentials' in new XMLHttpRequest

@@ -13,6 +13,6 @@
 }
 !*/
 
-define(['Modernizr'], function ( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('speechsynthesis', 'SpeechSynthesisUtterance' in window);
 });

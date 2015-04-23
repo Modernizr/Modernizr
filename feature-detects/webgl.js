@@ -7,7 +7,7 @@
   "polyfills": ["jebgl", "cwebgl", "iewebgl"]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('webgl', function() {
     var canvas = createElement('canvas');
     var supports = 'probablySupportsContext' in canvas ? 'probablySupportsContext' :  'supportsContext';

@@ -15,7 +15,7 @@
   "warnings": ["While IE10 has implemented the track element, IE10 does not expose the underlying APIs to create timed text tracks by JS (really sad)"]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('texttrackapi', typeof (createElement('video').addTextTrack) === 'function');
 
   // a more strict test for track including UI support: document.createElement('track').kind === 'subtitles'

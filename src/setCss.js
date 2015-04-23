@@ -1,8 +1,8 @@
-define(['Modernizr', 'mStyle'], function( Modernizr, mStyle ) {
+define(['Modernizr', 'mStyle'], function(Modernizr, mStyle) {
   /**
    * setCss applies given styles to the Modernizr DOM node.
    */
-  function setCss( str ) {
+  function setCss(str) {
     mStyle.style.cssText = str;
   }
 

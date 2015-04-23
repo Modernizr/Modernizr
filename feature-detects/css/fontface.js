@@ -26,19 +26,19 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function( Modernizr, testStyles ) {
+define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
   var blacklist = (function() {
     var ua = navigator.userAgent;
-    var wkvers = ua.match( /applewebkit\/([0-9]+)/gi ) && parseFloat( RegExp.$1 );
-    var webos = ua.match( /w(eb)?osbrowser/gi );
-    var wppre8 = ua.match( /windows phone/gi ) && ua.match( /iemobile\/([0-9])+/gi ) && parseFloat( RegExp.$1 ) >= 9;
-    var oldandroid = wkvers < 533 && ua.match( /android/gi );
+    var wkvers = ua.match(/applewebkit\/([0-9]+)/gi) && parseFloat(RegExp.$1);
+    var webos = ua.match(/w(eb)?osbrowser/gi);
+    var wppre8 = ua.match(/windows phone/gi) && ua.match(/iemobile\/([0-9])+/gi) && parseFloat(RegExp.$1) >= 9;
+    var oldandroid = wkvers < 533 && ua.match(/android/gi);
     return webos || oldandroid || wppre8;
   }());
-  if( blacklist ) {
+  if (blacklist) {
     Modernizr.addTest('fontface', false);
   } else {
-    testStyles('@font-face {font-family:"font";src:url("https://")}', function( node, rule ) {
+    testStyles('@font-face {font-family:"font";src:url("https://")}', function(node, rule) {
       var style = document.getElementById('smodernizr');
       var sheet = style.sheet || style.styleSheet;
       var cssText = sheet ? (sheet.cssRules && sheet.cssRules[0] ? sheet.cssRules[0].cssText : sheet.cssText || '') : '';

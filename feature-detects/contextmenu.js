@@ -16,7 +16,7 @@
 /* DOC
 Detects support for custom context menus.
 */
-define(['Modernizr', 'docElement'], function( Modernizr, docElement ) {
+define(['Modernizr', 'docElement'], function(Modernizr, docElement) {
   Modernizr.addTest(
     'contextmenu',
     ('contextMenu' in docElement && 'HTMLMenuItemElement' in window)

@@ -8,6 +8,6 @@
 /* DOC
 Detects if an audio element can automatically restart, once it has finished
 */
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('audioloop', 'loop' in createElement('audio'));
 });

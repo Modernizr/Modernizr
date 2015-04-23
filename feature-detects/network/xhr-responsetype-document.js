@@ -12,6 +12,6 @@
 /* DOC
 Tests for XMLHttpRequest xhr.responseType='document'.
 */
-define(['Modernizr', 'testXhrType'], function( Modernizr, testXhrType ) {
+define(['Modernizr', 'testXhrType'], function(Modernizr, testXhrType) {
   Modernizr.addTest('xhrresponsetypedocument', testXhrType('document'));
 });

@@ -12,7 +12,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function( Modernizr, createElement, docElement, testStyles ) {
+define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function(Modernizr, createElement, docElement, testStyles) {
   Modernizr.addTest('details', function() {
     var el = createElement('details');
     var diff;
@@ -22,7 +22,7 @@ define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function( Mod
       return false;
     }
 
-    testStyles('#modernizr details{display:block}', function( node ) {
+    testStyles('#modernizr details{display:block}', function(node) {
       node.appendChild(el);
       el.innerHTML = '<summary>a</summary>b';
       diff = el.offsetHeight;

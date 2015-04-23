@@ -12,12 +12,12 @@
 Method of allowing calculated values for length units. For example:
 
 ```css
-#elem {
+//lem {
   width: calc(100% - 3em);
 }
 ```
 */
-define(['Modernizr', 'createElement', 'prefixes'], function( Modernizr, createElement, prefixes ) {
+define(['Modernizr', 'createElement', 'prefixes'], function(Modernizr, createElement, prefixes) {
   Modernizr.addTest('csscalc', function() {
     var prop = 'width:';
     var value = 'calc(10px);';

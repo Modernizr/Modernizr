@@ -11,7 +11,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'addTest'], function( Modernizr ) {
+define(['Modernizr', 'addTest'], function(Modernizr) {
 
   // Original Async test by Stu Cox
   // https://gist.github.com/chriscoyier/8774501

@@ -15,6 +15,6 @@
 Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string
 based on a locale
 */
-define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
+define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
   Modernizr.addTest('intl', !!prefixed('Intl', window));
 });

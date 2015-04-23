@@ -10,7 +10,7 @@
 Detects whether input form="form_id" is available on the platform
 E.g. IE 10 (and below), don't support this
 */
-define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, createElement, docElement ) {
+define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
 
   Modernizr.addTest('formattribute', function() {
     var form = createElement('form');
@@ -26,8 +26,8 @@ define(['Modernizr', 'createElement', 'docElement'], function( Modernizr, create
     try {
       input.setAttribute('form', id);
     }
-    catch( e ) {
-      if( document.createAttribute ) {
+    catch (e) {
+      if (document.createAttribute) {
         attr = document.createAttribute('form');
         attr.nodeValue = id;
         input.setAttributeNode(attr);

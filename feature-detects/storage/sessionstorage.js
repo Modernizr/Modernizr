@@ -6,7 +6,7 @@
   "polyfills": ["joshuabell-polyfill", "cupcake", "sessionstorage"]
 }
 !*/
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   // Because we are forced to try/catch this, we'll go aggressive.
 
   // Just FWIW: IE8 Compat mode supports these features completely:
@@ -18,7 +18,7 @@ define(['Modernizr'], function( Modernizr ) {
       sessionStorage.setItem(mod, mod);
       sessionStorage.removeItem(mod);
       return true;
-    } catch(e) {
+    } catch (e) {
       return false;
     }
   });

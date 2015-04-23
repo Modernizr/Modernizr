@@ -16,7 +16,7 @@
 /* DOC
 Detects support for creating Web Workers from Data URIs.
 */
-define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
+define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
   Modernizr.addAsyncTest(function() {
     try {
       var data    = 'Modernizr',
@@ -40,7 +40,7 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
 
       worker.postMessage(data);
     } catch (e) {
-      setTimeout(function () {
+      setTimeout(function() {
         addTest('dataworkers', false);
       }, 0);
     }

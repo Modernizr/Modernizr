@@ -17,7 +17,7 @@
 Determines if DOM4 MutationObserver support is available.
 
 */
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('mutationobserver',
     !!window.MutationObserver || !!window.WebKitMutationObserver);
 });

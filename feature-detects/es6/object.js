@@ -15,7 +15,7 @@
 /* DOC
 Check if browser implements ECMAScript 6 Object per specification.
 */
-define(['Modernizr'], function (Modernizr) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('es6object', !!(Object.assign &&
     Object.is &&
     Object.setPrototypeOf));

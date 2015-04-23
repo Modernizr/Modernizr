@@ -14,8 +14,8 @@
 /* DOC
 Check if browser implements everything as specified in ECMAScript 5.
 */
-define([ 'Modernizr', 'test/es5/array', 'test/es5/date', 'test/es5/function', 'test/es5/object', 'test/es5/strictmode', 'test/es5/string', 'test/json', 'test/es5/syntax', 'test/es5/undefined'], function (Modernizr) {
-  Modernizr.addTest('es5', function () {
+define(['Modernizr', 'test/es5/array', 'test/es5/date', 'test/es5/function', 'test/es5/object', 'test/es5/strictmode', 'test/es5/string', 'test/json', 'test/es5/syntax', 'test/es5/undefined'], function(Modernizr) {
+  Modernizr.addTest('es5', function() {
     return !!(
       Modernizr.es5array &&
       Modernizr.es5date &&

@@ -10,8 +10,8 @@
   }]
 }
 !*/
-define(['Modernizr', 'modElem'], function (Modernizr, modElem) {
-  Modernizr.addTest('csschunit', function () {
+define(['Modernizr', 'modElem'], function(Modernizr, modElem) {
+  Modernizr.addTest('csschunit', function() {
     var elemStyle = modElem.elem.style;
     var supports;
     try {

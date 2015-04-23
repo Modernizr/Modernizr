@@ -21,16 +21,16 @@
 /* DOC
 Tests for transparent webp support.
 */
-define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  Modernizr.addAsyncTest(function(){
+define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
+  Modernizr.addAsyncTest(function() {
     var image = new Image();
 
     image.onerror = function() {
-      addTest('webpalpha', false, { aliases: ['webp-alpha'] });
+      addTest('webpalpha', false, {aliases: ['webp-alpha']});
     };
 
     image.onload = function() {
-      addTest('webpalpha', image.width == 1, { aliases: ['webp-alpha'] });
+      addTest('webpalpha', image.width == 1, {aliases: ['webp-alpha']});
     };
 
     image.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==';

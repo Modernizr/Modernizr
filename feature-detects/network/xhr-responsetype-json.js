@@ -15,6 +15,6 @@
 /* DOC
 Tests for XMLHttpRequest xhr.responseType='json'.
 */
-define(['Modernizr', 'testXhrType'], function( Modernizr, testXhrType ) {
+define(['Modernizr', 'testXhrType'], function(Modernizr, testXhrType) {
   Modernizr.addTest('xhrresponsetypejson', testXhrType('json'));
 });

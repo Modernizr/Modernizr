@@ -18,7 +18,7 @@
 /* DOC
 Detects support for the History API for manipulating the browser session history.
 */
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('history', function() {
     // Issue #733
     // The stock browser on Android 2.2 & 2.3, and 4.0.x returns positive on history support

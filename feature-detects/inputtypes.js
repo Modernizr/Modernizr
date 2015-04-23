@@ -40,7 +40,7 @@ Modernizr.inputtypes.url
 Modernizr.inputtypes.week
 ```
 */
-define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile'], function( Modernizr, inputElem, docElement, inputtypes, inputs, smile ) {
+define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile'], function(Modernizr, inputElem, docElement, inputtypes, inputs, smile) {
   // Run through HTML5's new input types to see if the UA understands any.
   //   This is put behind the tests runloop because it doesn't return a
   //   true/false like all the other tests; instead, it returns an object
@@ -53,7 +53,7 @@ define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile']
     var defaultView;
     var len = props.length;
 
-    for ( var i = 0; i < len; i++ ) {
+    for (var i = 0; i < len; i++) {
 
       inputElem.setAttribute('type', inputElemType = props[i]);
       bool = inputElem.type !== 'text' && 'style' in inputElem;
@@ -61,12 +61,12 @@ define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile']
       // We first check to see if the type we give it sticks..
       // If the type does, we feed it a textual value, which shouldn't be valid.
       // If the value doesn't stick, we know there's input sanitization which infers a custom UI
-      if ( bool ) {
+      if (bool) {
 
         inputElem.value         = smile;
         inputElem.style.cssText = 'position:absolute;visibility:hidden;';
 
-        if ( /^range$/.test(inputElemType) && inputElem.style.WebkitAppearance !== undefined ) {
+        if (/^range$/.test(inputElemType) && inputElem.style.WebkitAppearance !== undefined) {
 
           docElement.appendChild(inputElem);
           defaultView = document.defaultView;
@@ -80,14 +80,14 @@ define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile']
 
           docElement.removeChild(inputElem);
 
-        } else if ( /^(search|tel)$/.test(inputElemType) ){
+        } else if (/^(search|tel)$/.test(inputElemType)) {
           // Spec doesn't define any special parsing or detectable UI
           //   behaviors so we pass these through as true
 
           // Interestingly, opera fails the earlier test, so it doesn't
           //  even make it here.
 
-        } else if ( /^(url|email|number)$/.test(inputElemType) ) {
+        } else if (/^(url|email|number)$/.test(inputElemType)) {
           // Real url and email support comes with prebaked validation.
           bool = inputElem.checkValidity && inputElem.checkValidity() === false;
 
