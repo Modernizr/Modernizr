@@ -9,7 +9,7 @@ describe('mStyle', function() {
     req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
   });
@@ -21,7 +21,7 @@ describe('mStyle', function() {
     req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['mStyle', 'cleanup'], function(_mStyle, _cleanup) {

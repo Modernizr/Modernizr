@@ -18,8 +18,8 @@ describe('testPropsAll', function() {
       }
     });
 
-    define('ModernizrProto', [], function(){return ModernizrProto;});
-    define('Modernizr', [], function(){return Modernizr;});
+    define('ModernizrProto', [], function() {return ModernizrProto;});
+    define('Modernizr', [], function() {return Modernizr;});
     define('package', [], function() {return {};});
 
     req(['testDOMProps', 'testProps', 'cleanup', 'sinon'], function(_testDOMProps, _testProps, _cleanup, _sinon) {

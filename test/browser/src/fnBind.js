@@ -7,7 +7,7 @@ describe('fnBind', function() {
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['fnBind', 'cleanup'], function(_fnBind, _cleanup) {
@@ -18,7 +18,7 @@ describe('fnBind', function() {
   });
 
   it('binds to `this`', function() {
-    var foo = { x: 1 };
+    var foo = {x: 1};
     var bar = function() {
       return this.x;
     };

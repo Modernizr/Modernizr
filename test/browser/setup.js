@@ -39,7 +39,7 @@ $(document).ready(function() {
     var isTimeout = _.contains(err.toString(), 'Ensure the done() callback is being called in this test.');
 
     if (isTimeout) {
-      return window.global_test_results = { message: err };
+      return window.global_test_results = {message: err};
     }
 
     if (err) {

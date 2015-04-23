@@ -7,7 +7,7 @@ describe('is', function() {
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['is', 'cleanup'], function(_is, _cleanup) {
@@ -24,7 +24,7 @@ describe('is', function() {
 
   it('recognizes all types', function() {
     var _undefined = is(undefined, 'undefined');
-    var _func = is(function(){}, 'function');
+    var _func = is(function() {}, 'function');
     var _bool = is(true, 'boolean');
     var _null = is(null, 'object');
     var _str = is('1', 'string');

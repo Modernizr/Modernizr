@@ -250,7 +250,7 @@ window.caniusecb = function(caniuse) {
       }
 
       // caniuse bundles progress and meter elements, so we do too.
-      if (_.contains(['meter','progressbar'], o.feature)) {
+      if (_.contains(['meter', 'progressbar'], o.feature)) {
         return it('Caniuse result for ' + o.ciufeature + ' matches Modernizr\'s result for ' + o.feature, function() {
           return expect([
             Modernizr.meter,
@@ -300,7 +300,7 @@ window.caniusecb = function(caniuse) {
 
       // let's get our versions in order..
       var minorver   = ua.minor &&                                  // caniuse doesn't use two digit minors
-        ua.minor.toString().replace(/(\d)\d$/,'$1'); // but opera does.
+        ua.minor.toString().replace(/(\d)\d$/, '$1'); // but opera does.
 
 
       var majorminor = (ua.major + '.' + minorver)
@@ -316,7 +316,7 @@ window.caniusecb = function(caniuse) {
       if (mmResult && mmResult != 'u') { // 'y' 'n' or 'a'
 
         // data ends w/ ` x` if its still prefixed in the imp
-        mmResult = mmResult.replace(' x','');
+        mmResult = mmResult.replace(' x', '');
 
         // match it against our data.
         testify({
@@ -340,7 +340,7 @@ window.caniusecb = function(caniuse) {
         }
 
         // data ends w/ ` x` if its still prefixed in the imp
-        mResult = mResult.replace(' x','');
+        mResult = mResult.replace(' x', '');
 
         testify({
           feature: feature,

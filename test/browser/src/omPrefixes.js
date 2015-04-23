@@ -7,7 +7,7 @@ describe('omPrefixes', function() {
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['omPrefixes', 'cleanup'], function(_omPrefixes, _cleanup) {

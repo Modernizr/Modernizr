@@ -5,7 +5,7 @@ var expect = require('expect.js');
 describe('cli/build', function() {
 
   it('should build without error', function() {
-    expect(function(){build();}).to.not.throwError();
+    expect(function() {build();}).to.not.throwError();
   });
 
   describe('custom builds', function(done) {

@@ -6,12 +6,12 @@ describe('hasEvent', function() {
 
   before(function(done) {
 
-    define('ModernizrProto', [], function(){return ModernizrProto;});
+    define('ModernizrProto', [], function() {return ModernizrProto;});
 
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['hasEvent', 'isEventSupported', 'cleanup'], function(_hasEvent, _isEventSupported, _cleanup) {

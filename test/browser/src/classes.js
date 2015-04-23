@@ -7,7 +7,7 @@ describe('classes', function() {
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['classes', 'cleanup'], function(_classes, _cleanup) {

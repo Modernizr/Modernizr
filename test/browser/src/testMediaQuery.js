@@ -25,9 +25,9 @@ describe('testMediaQuery', function() {
 
       div.innerHTML = '&shy;<style media="' + q + '"> #mq-test-1 { width: 42px; }</style>';
 
-      docElem.insertBefore( fakeBody, refNode );
+      docElem.insertBefore(fakeBody, refNode);
       bool = div.offsetWidth === 42;
-      docElem.removeChild( fakeBody );
+      docElem.removeChild(fakeBody);
 
       return {
         matches: bool,
@@ -70,7 +70,7 @@ describe('testMediaQuery', function() {
         expect(testMediaQuery('only fake rule')).to.equal(media('only fake rule').matches);
       });
     });
-  } else  {
+  } else {
     describe('fallback version', function() {
 
       before(function(done) {

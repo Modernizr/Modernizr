@@ -7,7 +7,7 @@ describe('createElement', function() {
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['createElement', 'cleanup'], function(_createElement, _cleanup) {

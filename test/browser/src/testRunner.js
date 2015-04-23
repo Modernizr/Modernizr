@@ -8,7 +8,7 @@ describe('testRunner', function() {
     req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     define('Modernizr', [], function() {return Modernizr;});
@@ -40,7 +40,7 @@ describe('testRunner', function() {
         }, {
           'name': 'fakeBoolDeep.detect',
           'fn': false
-        },{
+        }, {
           'fn': function() {
             return !!'async test';
           }

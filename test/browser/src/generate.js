@@ -13,7 +13,7 @@ describe('generate', function() {
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['generate', 'cleanup'], function(_generate, _cleanup) {
@@ -28,7 +28,7 @@ describe('generate', function() {
   });
 
   it('does not blow up when no config is given', function() {
-    expect(function(){generate();}).to.not.throwError();
+    expect(function() {generate();}).to.not.throwError();
   });
 
   it('defines `feature-detects` if it is not on the config already', function() {
@@ -81,7 +81,7 @@ describe('generate', function() {
     var output = generate({});
     var stashedRequire = window.require;
     window.require = function() {};
-    expect(function(){eval(output);}).to.not.throwError();
+    expect(function() {eval(output);}).to.not.throwError();
     window.require = stashedRequire;
   });
 
@@ -89,7 +89,7 @@ describe('generate', function() {
     var output = generate({minify: true});
     var stashedRequire = window.require;
     window.require = function() {};
-    expect(function(){eval(output);}).to.not.throwError();
+    expect(function() {eval(output);}).to.not.throwError();
     window.require = stashedRequire;
   });
 

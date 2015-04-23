@@ -34,9 +34,9 @@ describe('prefixed', function() {
     ModernizrProto = {};
 
     define('ModernizrProto', [], function() {return ModernizrProto;});
-    define('testPropsAll', [], function(){return testPropsAll;});
-    define('cssToDOM', [], function(){return cssToDOM;});
-    define('atRule', [], function(){return atRule;});
+    define('testPropsAll', [], function() {return testPropsAll;});
+    define('cssToDOM', [], function() {return cssToDOM;});
+    define('atRule', [], function() {return atRule;});
 
 
     req(['prefixed'], function(_prefixed) {

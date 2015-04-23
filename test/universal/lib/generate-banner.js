@@ -67,7 +67,7 @@ describe('generate-banner', function() {
   });
 
   it('should only accept "full" and "compact" as type arguments', function() {
-    expect(function(){generateBanner('sup');}).to.throwError('banners() must be passed "compact" or "full" as an argument.');
+    expect(function() {generateBanner('sup');}).to.throwError('banners() must be passed "compact" or "full" as an argument.');
   });
 
   after(function() {

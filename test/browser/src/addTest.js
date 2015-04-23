@@ -29,7 +29,7 @@ describe('addTest', function() {
   beforeEach(function(done) {
 
     ModernizrProto = {};
-    Modernizr= {_q: [], _config:  {}};
+    Modernizr = {_q: [], _config:  {}};
     setClasses = sinon.spy();
 
     define('ModernizrProto', [], function() {return ModernizrProto;});
@@ -105,7 +105,7 @@ describe('addTest', function() {
   describe('Modernizr._trigger', function() {
 
     it('skips the callback if it does not exist', function() {
-      expect(function(){ModernizrProto._trigger('fakeDetect');}).to.not.throwError();
+      expect(function() {ModernizrProto._trigger('fakeDetect');}).to.not.throwError();
     });
 
     it('runs the listener calledback if it does exist', function(done) {
@@ -122,7 +122,7 @@ describe('addTest', function() {
 
     it('deletes the listener after it runs', function(done) {
 
-      ModernizrProto.on('fakeDetect', function(){});
+      ModernizrProto.on('fakeDetect', function() {});
 
       expect(ModernizrProto._l.fakeDetect).to.be.an('array');
 
@@ -146,7 +146,7 @@ describe('addTest', function() {
     });
 
     it('sets the proper bool on the Modernizr object with a function', function() {
-      addTest('fakedetect', function(){return true;});
+      addTest('fakedetect', function() {return true;});
       expect(Modernizr.fakedetect).to.be(true);
     });
 
@@ -156,36 +156,36 @@ describe('addTest', function() {
     });
 
     it('does not cast to a bool on the Modernizr object with a truthy value', function() {
-      addTest('fakedetect', function(){return 100;});
+      addTest('fakedetect', function() {return 100;});
       expect(Modernizr.fakedetect).to.be(100);
     });
 
     it('sets a true class for a true value', function() {
-      addTest('fakedetect', function(){return 100;});
+      addTest('fakedetect', function() {return 100;});
       expect(setClasses.callCount).to.be(1);
       expect(setClasses.calledWith(['fakedetect'])).to.be(true);
     });
 
     it('sets a truthy class for a truthy value', function() {
-      addTest('fakedetect', function(){return 100;});
+      addTest('fakedetect', function() {return 100;});
       expect(setClasses.callCount).to.be(1);
       expect(setClasses.calledWith(['fakedetect'])).to.be(true);
     });
 
     it('sets a negative class for a false value', function() {
-      addTest('fakedetect', function(){return false;});
+      addTest('fakedetect', function() {return false;});
       expect(setClasses.callCount).to.be(1);
       expect(setClasses.calledWith(['no-fakedetect'])).to.be(true);
     });
 
     it('sets a negative class for a falsey value', function() {
-      addTest('fakedetect', function(){return undefined;});
+      addTest('fakedetect', function() {return undefined;});
       expect(setClasses.callCount).to.be(1);
       expect(setClasses.calledWith(['no-fakedetect'])).to.be(true);
     });
 
     it('does not cast to a bool on the Modernizr object with a falsy value', function() {
-      addTest('fakedetect', function(){return undefined;});
+      addTest('fakedetect', function() {return undefined;});
       expect('fakedetect' in Modernizr).to.be(true);
       expect(Modernizr.fakedetect).to.be(undefined);
     });
@@ -231,7 +231,7 @@ describe('addTest', function() {
     });
 
     it('properly filters out monkey patched object properties', function() {
-      var noop = function(){};
+      var noop = function() {};
       Object.prototype.MOD_FAKE_VALUE = noop;
       var config = {detect: false};
 

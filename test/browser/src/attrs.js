@@ -7,7 +7,7 @@ describe('attrs', function() {
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['attrs', 'cleanup'], function(_attrs, _cleanup) {

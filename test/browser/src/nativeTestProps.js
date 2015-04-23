@@ -9,7 +9,7 @@ describe('nativeTestProps', function() {
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['nativeTestProps', 'cleanup'], function(_nativeTestProps, _cleanup) {
@@ -29,11 +29,11 @@ describe('nativeTestProps', function() {
       expect(nativeTestProps(['display'], 'fart')).to.be(false);
     });
   } else if ('CSSSupportsRule' in window) {
-    it('supports the old version of the lookup',function() {
+    it('supports the old version of the lookup', function() {
       expect(nativeTestProps(['display'], 'block')).to.be(true);
     });
   } else {
-    it('returns undefined for browsers lacking support',function() {
+    it('returns undefined for browsers lacking support', function() {
       expect(nativeTestProps(['display'], 'block')).to.be(undefined);
     });
   }

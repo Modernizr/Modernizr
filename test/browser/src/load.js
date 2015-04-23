@@ -7,7 +7,7 @@ describe('load', function() {
 
   before(function(done) {
 
-    define('ModernizrProto', [], function(){return {};});
+    define('ModernizrProto', [], function() {return {};});
 
     var req = requirejs.config({
       context: Math.random().toString().slice(2),

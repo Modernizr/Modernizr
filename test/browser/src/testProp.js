@@ -17,7 +17,7 @@ describe('testProp', function() {
       }
     });
 
-    define('ModernizrProto', [], function(){return ModernizrProto;});
+    define('ModernizrProto', [], function() {return ModernizrProto;});
     define('package', [], function() {return {};});
 
     req(['cleanup', 'sinon'], function(_cleanup, _sinon) {

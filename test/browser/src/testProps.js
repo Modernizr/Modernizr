@@ -17,7 +17,7 @@ describe('testProps', function() {
       }
     });
 
-    define('ModernizrProto', [], function(){return ModernizrProto;});
+    define('ModernizrProto', [], function() {return ModernizrProto;});
     define('Modernizr', function() {return Modernizr;});
     define('package', [], function() {return {};});
 

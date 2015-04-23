@@ -54,8 +54,11 @@ module.exports = function(grunt) {
         'Gruntfile.js',
         'src/*.js',
         'lib/*.js',
+        'test/**/*.js',
         'feature-detects/**/*.js',
         '!src/html5printshiv.js',
+        '!test/coverage/**/*.js',
+        '!test/js/lib/**/*.js',
         '!src/html5shiv.js'
       ]
     },

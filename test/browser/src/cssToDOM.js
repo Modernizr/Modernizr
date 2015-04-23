@@ -7,7 +7,7 @@ describe('cssToDOM', function() {
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
-      paths: { cleanup: '../test/cleanup' }
+      paths: {cleanup: '../test/cleanup'}
     });
 
     req(['cssToDOM', 'cleanup'], function(_cssToDOM, _cleanup) {

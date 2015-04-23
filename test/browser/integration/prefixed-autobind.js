@@ -4,18 +4,18 @@ describe('prefixed autobind', function() {
   // quick sniff to find the local rAF prefixed name.
   var vendors = ['r', 'msR', 'mozR', 'webkitR', 'oR'];
   _.forEach(vendors, function(vendor) {
-    rAFName = rAFName || (window[vendor+'equestAnimationFrame'] && vendor+'equestAnimationFrame');
+    rAFName = rAFName || (window[vendor + 'equestAnimationFrame'] && vendor + 'equestAnimationFrame');
   });
 
   if (rAFName) {
     // rAF returns a function
     it('Modernizr.prefixed("requestAnimationFrame", window) returns a function', function() {
-      expect( Modernizr.prefixed('requestAnimationFrame', window)).to.be.a('function');
+      expect(Modernizr.prefixed('requestAnimationFrame', window)).to.be.a('function');
     });
 
     // unless we false it to a string
     it('Modernizr.prefixed("requestAnimationFrame", window, false) returns a string (the prop name)', function() {
-      expect( Modernizr.prefixed('requestAnimationFrame', window, false)).to.be(rAFName);
+      expect(Modernizr.prefixed('requestAnimationFrame', window, false)).to.be(rAFName);
     });
   }
 
