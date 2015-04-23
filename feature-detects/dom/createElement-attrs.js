@@ -11,11 +11,11 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('createelementattrs', function() {
     try {
       return createElement('<input name="test" />').getAttribute('name') == 'test';
-    } catch( e ) {
+    } catch (e) {
       return false;
     }
   }, {

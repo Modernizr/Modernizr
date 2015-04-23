@@ -13,6 +13,6 @@
 /* DOC
 Detects support for IE userData for persisting data, an API similar to localStorage but supported since IE5.
 */
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('userdata', !!createElement('div').addBehavior);
 });

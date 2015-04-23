@@ -18,10 +18,12 @@
 /* DOC
 Detects support for the `window.registerProtocolHandler()` API to allow websites to register themselves as possible handlers for particular protocols.
 */
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('customprotocolhandler', function() {
     // early bailout where it doesn't exist at all
-    if ( !navigator.registerProtocolHandler ) return false;
+    if (!navigator.registerProtocolHandler) {
+      return false;
+    }
 
     // registerProtocolHandler was stubbed in webkit for a while, and didn't
     // actually do anything. We intentionally set it improperly to test for

@@ -13,6 +13,6 @@
 /* DOC
 Detects support for the `window.postMessage` protocol for cross-document messaging.
 */
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('postmessage', 'postMessage' in window);
 });

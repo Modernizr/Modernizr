@@ -1,4 +1,4 @@
-define(['tests', 'Modernizr', 'classes', 'is'], function( tests, Modernizr, classes, is ) {
+define(['tests', 'Modernizr', 'classes', 'is'], function(tests, Modernizr, classes, is) {
   // Run through all tests and detect their support in the current UA.
   function testRunner() {
     var featureNames;
@@ -9,7 +9,7 @@ define(['tests', 'Modernizr', 'classes', 'is'], function( tests, Modernizr, clas
     var featureName;
     var featureNameSplit;
 
-    for ( var featureIdx in tests ) {
+    for (var featureIdx in tests) {
       featureNames = [];
       feature = tests[featureIdx];
       // run the test, throw the return value into the Modernizr,
@@ -19,7 +19,7 @@ define(['tests', 'Modernizr', 'classes', 'is'], function( tests, Modernizr, clas
       //   If there is no name, it's an 'async' test that is run,
       //   but not directly added to the object. That should
       //   be done with a post-run addTest call.
-      if ( feature.name ) {
+      if (feature.name) {
         featureNames.push(feature.name.toLowerCase());
 
         if (feature.options && feature.options.aliases && feature.options.aliases.length) {

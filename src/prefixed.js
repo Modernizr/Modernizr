@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'testPropsAll', 'cssToDOM', 'atRule'], function( ModernizrProto, testPropsAll, cssToDOM, atRule ) {
+define(['ModernizrProto', 'testPropsAll', 'cssToDOM', 'atRule'], function(ModernizrProto, testPropsAll, cssToDOM, atRule) {
   // Modernizr.prefixed() returns the prefixed or nonprefixed property name variant of your input
   // Modernizr.prefixed('boxSizing') // 'MozBoxSizing'
 
@@ -14,7 +14,7 @@ define(['ModernizrProto', 'testPropsAll', 'cssToDOM', 'atRule'], function( Moder
   //     },
   //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
 
-  var prefixed = ModernizrProto.prefixed = function( prop, obj, elem ) {
+  var prefixed = ModernizrProto.prefixed = function(prop, obj, elem) {
     if (prop.indexOf('@') === 0) {
       return atRule(prop);
     }

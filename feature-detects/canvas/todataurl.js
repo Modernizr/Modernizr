@@ -11,7 +11,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement', 'test/canvas'], function(Modernizr, createElement) {
 
   var canvas = createElement('canvas');
 
@@ -27,7 +27,7 @@ define(['Modernizr', 'createElement', 'test/canvas'], function( Modernizr, creat
     // firefox 3 throws an error when you use an "invalid" toDataUrl
     try {
       supports = !!Modernizr.canvas && canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-    } catch(e) {}
+    } catch (e) {}
 
     return supports;
   });

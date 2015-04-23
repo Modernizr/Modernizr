@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( ModernizrProto, Modernizr, hasOwnProp, setClasses ) {
+define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(ModernizrProto, Modernizr, hasOwnProp, setClasses) {
   // As far as I can think of, we shouldn't need or
   // allow 'on' for non-async tests, and you can't do
   // async tests without this 'addTest' module.
@@ -8,7 +8,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
 
   // 'addTest' implies a test after the core runloop,
   // So we'll add in the events
-  ModernizrProto.on = function( test, cb ) {
+  ModernizrProto.on = function(test, cb) {
     // Create the list of listeners if it doesn't exist
     if (!this._l[test]) {
       this._l[test] = [];
@@ -26,7 +26,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
     }
   };
 
-  ModernizrProto._trigger = function( test, res ) {
+  ModernizrProto._trigger = function(test, res) {
     if (!this._l[test]) {
       return;
     }
@@ -40,7 +40,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
         cb = cbs[i];
         cb(res);
       }
-    },0);
+    }, 0);
 
     // Don't trigger these again
     delete this._l[test];
@@ -54,11 +54,11 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
    * @param feature - String naming the feature
    * @param test - Function returning true if feature is supported, false if not
    */
-  function addTest( feature, test ) {
-    if ( typeof feature == 'object' ) {
-      for ( var key in feature ) {
-        if ( hasOwnProp( feature, key ) ) {
-          addTest( key, feature[ key ] );
+  function addTest(feature, test) {
+    if (typeof feature == 'object') {
+      for (var key in feature) {
+        if (hasOwnProp(feature, key)) {
+          addTest(key, feature[ key ]);
         }
       }
     } else {
@@ -72,7 +72,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function( Mo
         last = last[featureNameSplit[1]];
       }
 
-      if ( typeof last != 'undefined' ) {
+      if (typeof last != 'undefined') {
         // we're going to quit if you're trying to overwrite an existing test
         // if we were to allow it, we'd do this:
         //   var re = new RegExp("\\b(no-)?" + feature + "\\b");

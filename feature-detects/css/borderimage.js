@@ -8,6 +8,6 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
   Modernizr.addTest('borderimage', testAllProps('borderImage', 'url() 1', true));
 });

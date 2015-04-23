@@ -6,6 +6,6 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
   Modernizr.addTest('cssreflections', testAllProps('boxReflect', 'above', true));
 });

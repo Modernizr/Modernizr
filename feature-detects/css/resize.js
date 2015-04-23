@@ -17,6 +17,6 @@
 /* DOC
 Test for CSS 3 UI "resize" property
 */
-define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
   Modernizr.addTest('cssresize', testAllProps('resize', 'both', true));
 });

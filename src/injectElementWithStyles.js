@@ -1,6 +1,6 @@
-define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function( ModernizrProto, docElement, createElement, getBody ) {
+define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function(ModernizrProto, docElement, createElement, getBody) {
   // Inject element with style element and some CSS rules
-  function injectElementWithStyles( rule, callback, nodes, testnames ) {
+  function injectElementWithStyles(rule, callback, nodes, testnames) {
     var mod = 'modernizr';
     var style;
     var ret;
@@ -9,10 +9,10 @@ define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function( M
     var div = createElement('div');
     var body = getBody();
 
-    if ( parseInt(nodes, 10) ) {
+    if (parseInt(nodes, 10)) {
       // In order not to give false positives we create a node for each test
       // This also allows the method to scale for unspecified uses
-      while ( nodes-- ) {
+      while (nodes--) {
         node = createElement('div');
         node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
         div.appendChild(node);
@@ -35,7 +35,7 @@ define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function( M
     }
     div.id = mod;
 
-    if ( body.fake ) {
+    if (body.fake) {
       //avoid crashing IE8, if background image is used
       body.style.background = '';
       //Safari 5.13/5.1.4 OSX stops loading if ::-webkit-scrollbar is used and scrollbars are visible
@@ -47,7 +47,7 @@ define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function( M
 
     ret = callback(div, rule);
     // If this is done after page load we don't want to remove the body so check if body exists
-    if ( body.fake ) {
+    if (body.fake) {
       body.parentNode.removeChild(body);
       docElement.style.overflow = docOverflow;
       // Trigger layout so kinetic scrolling isn't disabled in iOS6+

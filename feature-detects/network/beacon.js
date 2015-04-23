@@ -16,6 +16,6 @@
 /* DOC
 Detects support for an API that allows for asynchronous transfer of small HTTP data from the client to a server.
 */
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('beacon', 'sendBeacon' in navigator);
 });

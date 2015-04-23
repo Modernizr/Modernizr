@@ -15,14 +15,14 @@
   ]
 }
 !*/
-define(['Modernizr', 'prefixed', 'docElement', 'createElement', 'isSVG'], function( Modernizr, prefixed, docElement, createElement, isSVG) {
-  Modernizr.addTest('wrapflow', function () {
+define(['Modernizr', 'prefixed', 'docElement', 'createElement', 'isSVG'], function(Modernizr, prefixed, docElement, createElement, isSVG) {
+  Modernizr.addTest('wrapflow', function() {
     var prefixedProperty = prefixed('wrapFlow');
     if (!prefixedProperty || isSVG) {
       return false;
     }
 
-    var wrapFlowProperty = prefixedProperty.replace(/([A-Z])/g, function (str, m1) { return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
+    var wrapFlowProperty = prefixedProperty.replace(/([A-Z])/g, function(str, m1) { return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
 
     /* If the CSS parsing is there we need to determine if wrap-flow actually works to avoid false positive cases, e.g. the browser parses
        the property, but it hasn't got the implementation for the functionality yet. */

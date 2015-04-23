@@ -1,4 +1,4 @@
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   /**
    * Create our "modernizr" element that we do most feature tests on.
    */

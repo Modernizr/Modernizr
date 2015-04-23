@@ -18,16 +18,16 @@
 /* DOC
 Tests for animated webp support.
 */
-define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
-  Modernizr.addAsyncTest(function(){
+define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
+  Modernizr.addAsyncTest(function() {
     var image = new Image();
 
     image.onerror = function() {
-      addTest('webpanimation', false, { aliases: ['webp-animation'] });
+      addTest('webpanimation', false, {aliases: ['webp-animation']});
     };
 
     image.onload = function() {
-      addTest('webpanimation', image.width == 1, { aliases: ['webp-animation'] });
+      addTest('webpanimation', image.width == 1, {aliases: ['webp-animation']});
     };
 
     image.src = 'data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA';

@@ -20,7 +20,7 @@ Detects support for EXIF Orientation in JPEG images.
 
 iOS looks at the EXIF Orientation flag in JPEGs and rotates the image accordingly. Most desktop browsers just ignore this data.
 */
-define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
+define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
   // Bug trackers:
   //    bugzil.la/298619 (unimplemented)
   //    crbug.com/56845 (looks incomplete)
@@ -29,11 +29,11 @@ define(['Modernizr', 'addTest'], function( Modernizr, addTest ) {
     var img = new Image();
 
     img.onerror = function() {
-      addTest('exiforientation', false, { aliases: ['exif-orientation'] });
+      addTest('exiforientation', false, {aliases: ['exif-orientation']});
     };
 
     img.onload = function() {
-      addTest('exiforientation', img.width !== 2, { aliases: ['exif-orientation'] });
+      addTest('exiforientation', img.width !== 2, {aliases: ['exif-orientation']});
     };
 
     // There may be a way to shrink this more, it's a 1x2 white jpg with the orientation flag set to 6

@@ -20,6 +20,6 @@
 Detects support for matchMedia.
 
 */
-define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
+define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
   Modernizr.addTest('matchmedia', !!prefixed('matchMedia', window));
 });

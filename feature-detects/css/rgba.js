@@ -10,7 +10,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('rgba', function() {
     var style = createElement('a').style;
     style.cssText = 'background-color:rgba(150,255,150,.5)';

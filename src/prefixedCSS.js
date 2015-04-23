@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'prefixed', 'domToCSS'], function( ModernizrProto, prefixed, domToCSS ) {
+define(['ModernizrProto', 'prefixed', 'domToCSS'], function(ModernizrProto, prefixed, domToCSS) {
   // Modernizr.prefixedCSS() is like Modernizr.prefixed(), but returns the result in
   // hyphenated form, e.g.:
   // Modernizr.prefixedCSS('transition') // '-moz-transition'

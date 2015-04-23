@@ -27,7 +27,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], function( Modernizr, prefixes, createElement, testAllProps, addTest ) {
+define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], function(Modernizr, prefixes, createElement, testAllProps, addTest) {
 
   Modernizr.addAsyncTest(function() {
     var waitTime = 300;
@@ -63,8 +63,8 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           spanWidth = span.offsetWidth;
 
           /* compare size with hyphenated text */
-          divStyle.cssText = 'position:absolute;top:0;left:0;width:5em;text-align:justify;'+
-            'text-justification:newspaper;'+
+          divStyle.cssText = 'position:absolute;top:0;left:0;width:5em;text-align:justify;' +
+            'text-justification:newspaper;' +
             prefixes.join('hyphens:auto; ');
 
           result = (span.offsetHeight != spanHeight || span.offsetWidth != spanWidth);
@@ -74,13 +74,13 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           div.removeChild(span);
 
           return result;
-        } catch(e) {
+        } catch (e) {
           return false;
         }
       }
 
       // for the softhyphens test
-      function test_hyphens( delimiter, testWidth ) {
+      function test_hyphens(delimiter, testWidth) {
         try {
           /* create a div container and a span within that
            * these have to be appended to document.body, otherwise some browsers can give false negative */
@@ -126,13 +126,13 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           div.removeChild(span);
 
           return result;
-        } catch(e) {
+        } catch (e) {
           return false;
         }
       }
 
       // testing if in-browser Find functionality will work on hyphenated text
-      function test_hyphens_find( delimiter ) {
+      function test_hyphens_find(delimiter) {
         try {
           /* create a dummy input for resetting selection location, and a div container
            * these have to be appended to document.body, otherwise some browsers can give false negative
@@ -155,7 +155,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
            *   stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area */
           if (dummy.setSelectionRange) {
             dummy.focus();
-            dummy.setSelectionRange(0,0);
+            dummy.setSelectionRange(0, 0);
           } else if (dummy.createTextRange) {
             textrange = dummy.createTextRange();
             textrange.collapse(true);
@@ -171,7 +171,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
             try {
               textrange = window.self.document.body.createTextRange();
               result = textrange.findText(testword + testword);
-            } catch(e) {
+            } catch (e) {
               result = false;
             }
           }
@@ -180,21 +180,23 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           document.body.removeChild(dummy);
 
           return result;
-        } catch(e) {
+        } catch (e) {
           return false;
         }
       }
 
       addTest('csshyphens', function() {
 
-        if (!testAllProps('hyphens', 'auto', true)) return false;
+        if (!testAllProps('hyphens', 'auto', true)) {
+          return false;
+        }
 
         /* Chrome lies about its hyphens support so we need a more robust test
            crbug.com/107111
            */
         try {
           return test_hyphens_css();
-        } catch(e) {
+        } catch (e) {
           return false;
         }
       });
@@ -203,7 +205,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
         try {
           // use numeric entity instead of &shy; in case it's XHTML
           return test_hyphens('&#173;', true) && test_hyphens('&#8203;', false);
-        } catch(e) {
+        } catch (e) {
           return false;
         }
       });
@@ -211,7 +213,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
       addTest('softhyphensfind', function() {
         try {
           return test_hyphens_find('&#173;') && test_hyphens_find('&#8203;');
-        } catch(e) {
+        } catch (e) {
           return false;
         }
       });

@@ -13,6 +13,6 @@
   "knownBugs": ["The API will be present in Chrome incognito, but will throw an exception. See crbug.com/93417"]
 }
 !*/
-define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
+define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
   Modernizr.addTest('filesystem', !!prefixed('requestFileSystem', window));
 });

@@ -10,7 +10,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'toStringFn'], function( Modernizr, toStringFn ) {
+define(['Modernizr', 'toStringFn'], function(Modernizr, toStringFn) {
   // SVG SMIL animation
   Modernizr.addTest('smil', function() {
     return !!document.createElementNS &&

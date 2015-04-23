@@ -10,6 +10,6 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('outputelem', 'value' in createElement('output'));
 });

@@ -15,7 +15,7 @@
 /* DOC
 Check if browser implements ECMAScript 6 Array per specification.
 */
-define(['Modernizr'], function (Modernizr) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('es6array', !!(Array.prototype &&
     Array.prototype.copyWithin &&
     Array.prototype.fill &&

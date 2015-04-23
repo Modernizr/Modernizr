@@ -2,7 +2,7 @@
 
 var browsers = require('./test/browser/sauce-browsers.json');
 
-module.exports = function( grunt ) {
+module.exports = function(grunt) {
   'use strict';
 
   // Load grunt dependencies
@@ -48,6 +48,16 @@ module.exports = function( grunt ) {
           }
         ]
       }
+    },
+    jscs: {
+      src: [
+        'Gruntfile.js',
+        'src/*.js',
+        'lib/*.js',
+        'feature-detects/**/*.js',
+        '!src/html5printshiv.js',
+        '!src/html5shiv.js'
+      ]
     },
     jshint: {
       options: {
@@ -216,17 +226,19 @@ module.exports = function( grunt ) {
 
   grunt.registerTask('browserTests', ['connect', 'mocha']);
 
-  grunt.registerTask('build', [ 'clean', 'generate' ]);
+  grunt.registerTask('build', ['clean', 'generate']);
 
-  grunt.registerTask('default', [ 'jshint', 'build' ]);
+  grunt.registerTask('lint', ['jshint', 'jscs']);
 
-  var tests = ['clean', 'jshint', 'jade', 'instrument', 'env:coverage', 'nodeTests' ];
+  grunt.registerTask('default', ['lint', 'build']);
+
+  var tests = ['clean', 'lint', 'jade', 'instrument', 'env:coverage', 'nodeTests'];
 
   if (process.env.APPVEYOR) {
     grunt.registerTask('test', tests);
   } else if (process.env.BROWSER_COVERAGE !== 'true') {
     grunt.registerTask('test', tests.concat(['generate', 'browserTests']));
   } else {
-    grunt.registerTask('test', tests.concat([ 'generate', 'storeCoverage', 'browserTests', 'saucelabs-custom', 'makeReport', 'coveralls' ]));
+    grunt.registerTask('test', tests.concat(['generate', 'storeCoverage', 'browserTests', 'saucelabs-custom', 'makeReport', 'coveralls']));
   }
 };

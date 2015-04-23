@@ -15,6 +15,6 @@
 /* DOC
 Detect support for the Battery API, for accessing information about the system's battery charge level.
 */
-define(['Modernizr', 'prefixed'], function( Modernizr, prefixed ) {
-  Modernizr.addTest('batteryapi', !!prefixed('battery', navigator), { aliases: ['battery-api'] });
+define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
+  Modernizr.addTest('batteryapi', !!prefixed('battery', navigator), {aliases: ['battery-api']});
 });

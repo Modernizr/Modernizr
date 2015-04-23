@@ -15,18 +15,18 @@
 /* DOC
 Detects support for the ':target' CSS pseudo-class.
 */
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   // querySelector
   Modernizr.addTest('target', function() {
     var doc = window.document;
-    if(!('querySelectorAll' in doc) ) {
+    if (!('querySelectorAll' in doc)) {
       return false;
     }
 
     try {
       doc.querySelectorAll(':target');
       return true;
-    } catch(e) {
+    } catch (e) {
       return false;
     }
   });

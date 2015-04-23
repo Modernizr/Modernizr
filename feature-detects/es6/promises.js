@@ -21,7 +21,7 @@
 /* DOC
 Check if browser implements ECMAScript 6 Promises per specification.
 */
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('promises', function() {
     return 'Promise' in window &&
     // Some of these methods are missing from

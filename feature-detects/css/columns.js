@@ -7,19 +7,19 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
 
   (function() {
 
     /* jshint -W053 */
-    Modernizr.addTest('csscolumns', function(){
+    Modernizr.addTest('csscolumns', function() {
       var bool = false;
       var test = testAllProps('columnCount');
       try {
-        if ( bool = !!test ) {
+        if (bool = !!test) {
           bool = new Boolean(bool);
         }
-      } catch(e){}
+      } catch (e) {}
 
       return bool;
     });

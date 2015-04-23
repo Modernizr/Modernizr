@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'cssomPrefixes'], function( ModernizrProto, prefixes ) {
+define(['ModernizrProto', 'cssomPrefixes'], function(ModernizrProto, prefixes) {
   /**
    * atRule returns a given CSS property at-rule (eg @keyframes), possibly in
    * some prefixed form, or false, in the case of an unsupported rule
@@ -20,16 +20,16 @@ define(['ModernizrProto', 'cssomPrefixes'], function( ModernizrProto, prefixes )
     }
 
     // remove literal @ from beginning of provided property
-    prop = prop.replace(/^@/,'');
+    prop = prop.replace(/^@/, '');
 
     // CSSRules use underscores instead of dashes
-    rule = prop.replace(/-/g,'_').toUpperCase() + '_RULE';
+    rule = prop.replace(/-/g, '_').toUpperCase() + '_RULE';
 
     if (rule in cssrule) {
       return '@' + prop;
     }
 
-    for ( var i = 0; i < length; i++ ) {
+    for (var i = 0; i < length; i++) {
       // prefixes gives us something like -o-, and we want O_
       var prefix = prefixes[i];
       var thisRule = prefix.toUpperCase() + '_' + rule;

@@ -9,7 +9,7 @@ define(function() {
     xhr.open('get', '/', true);
     try {
       xhr.responseType = type;
-    } catch(error) {
+    } catch (error) {
       return false;
     }
     return 'response' in xhr && xhr.responseType == type;

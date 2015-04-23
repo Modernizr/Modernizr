@@ -9,6 +9,6 @@
 /* DOC
 Tests for placeholder attribute in inputs and textareas
 */
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('placeholder', ('placeholder' in createElement('input') && 'placeholder' in createElement('textarea')));
 });

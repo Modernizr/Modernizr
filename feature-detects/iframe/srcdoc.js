@@ -13,6 +13,6 @@
 /* DOC
 Test for `srcdoc` attribute in iframes.
 */
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
   Modernizr.addTest('srcdoc', 'srcdoc' in createElement('iframe'));
 });

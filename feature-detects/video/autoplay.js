@@ -11,7 +11,7 @@
 /* DOC
 Checks for support of the autoplay attribute of the video element.
 */
-define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], function( Modernizr, addTest, docElement, createElement ) {
+define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], function(Modernizr, addTest, docElement, createElement) {
 
   Modernizr.addAsyncTest(function() {
     var timeout;
@@ -55,7 +55,7 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
       return;
     }
 
-    elem.setAttribute('autoplay','');
+    elem.setAttribute('autoplay', '');
     elem.style.cssText = 'display:none';
     docElement.appendChild(elem);
     // wait for the next tick to add the listener, otherwise the element may

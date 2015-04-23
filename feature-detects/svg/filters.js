@@ -12,7 +12,7 @@
   }]
 }
 !*/
-define(['Modernizr'], function( Modernizr ) {
+define(['Modernizr'], function(Modernizr) {
   // Should fail in Safari: http://stackoverflow.com/questions/9739955/feature-detecting-support-for-svg-filters.
   Modernizr.addTest('svgfilters', function() {
     var result = false;
@@ -20,7 +20,7 @@ define(['Modernizr'], function( Modernizr ) {
       result = 'SVGFEColorMatrixElement' in window &&
         SVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_SATURATE == 2;
     }
-    catch(e) {}
+    catch (e) {}
     return result;
   });
 });

@@ -14,7 +14,7 @@
 /* DOC
 Detects whether web workers can use `transferables` objects.
 */
-define(['Modernizr', 'addTest', 'test/blob', 'test/url/bloburls', 'test/workers/webworkers', 'test/typed-arrays'], function( Modernizr, addTest ) {
+define(['Modernizr', 'addTest', 'test/blob', 'test/url/bloburls', 'test/workers/webworkers', 'test/typed-arrays'], function(Modernizr, addTest) {
   Modernizr.addAsyncTest(function() {
     var prerequisites = !!(Modernizr.blobconstructor &&
                            Modernizr.bloburls &&

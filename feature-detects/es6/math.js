@@ -15,7 +15,7 @@
 /* DOC
 Check if browser implements ECMAScript 6 Math per specification.
 */
-define(['Modernizr'], function (Modernizr) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('es6math', !!(Math &&
     Math.clz32 &&
     Math.cbrt &&

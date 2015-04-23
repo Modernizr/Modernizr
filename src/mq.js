@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'testMediaQuery'], function( ModernizrProto, testMediaQuery ) {
+define(['ModernizrProto', 'testMediaQuery'], function(ModernizrProto, testMediaQuery) {
   /** Modernizr.mq tests a given media query, live against the current state of the window
    * A few important notes:
         * If a browser does not support media queries at all (eg. oldIE) the mq() will always return false

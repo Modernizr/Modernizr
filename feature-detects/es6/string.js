@@ -15,7 +15,7 @@
 /* DOC
 Check if browser implements ECMAScript 6 String per specification.
 */
-define(['Modernizr'], function (Modernizr) {
+define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('es6string', !!(String.fromCodePoint &&
     String.raw &&
     String.prototype.codePointAt &&

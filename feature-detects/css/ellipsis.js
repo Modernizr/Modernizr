@@ -9,6 +9,6 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function( Modernizr, testAllProps ) {
+define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
   Modernizr.addTest('ellipsis', testAllProps('textOverflow', 'ellipsis'));
 });

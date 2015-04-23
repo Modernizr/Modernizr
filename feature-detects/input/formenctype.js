@@ -18,6 +18,6 @@
 /* DOC
 Detect support for the formenctype attribute on form inputs, which overrides the form enctype attribute
 */
-define(['Modernizr', 'createElement'], function( Modernizr, createElement ) {
-  Modernizr.addTest('inputformenctype', !!('formEnctype' in createElement('input')), { aliases: ['input-formenctype'] });
+define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
+  Modernizr.addTest('inputformenctype', !!('formEnctype' in createElement('input')), {aliases: ['input-formenctype']});
 });

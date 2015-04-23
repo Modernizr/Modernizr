@@ -1,4 +1,4 @@
-define(['tests'], function ( tests ) {
+define(['tests'], function(tests) {
   var ModernizrProto = {
     // The current version, dummy
     _version: '__VERSION__',
@@ -16,7 +16,7 @@ define(['tests'], function ( tests ) {
     _q: [],
 
     // Stub these for people who are listening
-    on: function( test, cb ) {
+    on: function(test, cb) {
       // I don't really think people should do this, but we can
       // safe guard it a bit.
       // -- NOTE:: this gets WAY overridden in src/addTest for
@@ -30,11 +30,11 @@ define(['tests'], function ( tests ) {
       }, 0);
     },
 
-    addTest: function( name, fn, options ) {
-      tests.push({name : name, fn : fn, options : options });
+    addTest: function(name, fn, options) {
+      tests.push({name : name, fn : fn, options : options});
     },
 
-    addAsyncTest: function (fn) {
+    addAsyncTest: function(fn) {
       tests.push({name : null, fn : fn});
     }
   };
