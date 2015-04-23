@@ -1,9 +1,9 @@
 {
-	"preset": "google",
-	"disallowKeywordsOnNewLine": null,
-	"disallowMultipleVarDecl": null,
-	"disallowMultipleLineBreaks": null,
-	"maximumLineLength": null,
-	"requireCamelCaseOrUpperCaseIdentifiers": null,
-	"validateIndentation": null
+  "preset": "google",
+  "disallowKeywordsOnNewLine": null,
+  "disallowMultipleVarDecl": null,
+  "disallowMultipleLineBreaks": null,
+  "maximumLineLength": null,
+  "requireCamelCaseOrUpperCaseIdentifiers": null,
+  "validateIndentation": null
 }
