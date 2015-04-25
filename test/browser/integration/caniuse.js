@@ -52,7 +52,6 @@ window.caniusecb = function(caniuse) {
       details: 'details',
       deviceorientation: 'deviceorientation',
       displaytable: 'css-table',
-      draganddrop: 'dragndrop',
       eventsource: 'eventsource',
       filereader: 'fileapi',
       filesystem: 'filesystem',
