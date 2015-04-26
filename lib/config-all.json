@@ -122,7 +122,6 @@
     "dom/hidden",
     "dom/microdata",
     "dom/mutationObserver",
-    "draganddrop",
     "elem/datalist",
     "elem/details",
     "elem/output",
