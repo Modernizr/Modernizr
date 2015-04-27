@@ -11,7 +11,7 @@ define(['Modernizr', 'createElement', 'test/canvastext'], function( Modernizr, c
   Modernizr.addTest('emoji', function() {
     if (!Modernizr.canvastext) return false;
     var pixelRatio = window.devicePixelRatio || 1;
-    var offset = 8 * pixelRatio;
+    var offset = 12 * pixelRatio;
     var node = createElement('canvas');
     var ctx = node.getContext('2d');
     ctx.fillStyle = '#f00';
