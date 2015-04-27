@@ -8,7 +8,7 @@
     "name": "Test page",
     "href": "http://paulirish.com/demo/inline-svg"
   }, {
-    "name: "Test page and results",
+    "name": "Test page and results",
     "href": "http://codepen.io/eltonmesquita/full/GgXbvo/"
   }],
   "polyfills": ["inline-svg-polyfill"],
