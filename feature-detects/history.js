@@ -37,6 +37,6 @@ define(['Modernizr'], function(Modernizr) {
     }
 
     // Return the regular check
-    return (window.history && 'pushState' in window.history);
+    return (window.history && 'pushState' in window.history && location.protocol !== 'file:');
   });
 });
