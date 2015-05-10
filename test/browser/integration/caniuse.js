@@ -173,6 +173,11 @@ window.caniusecb = function(caniuse) {
         ciubool = o.fp = true;
       }
 
+      // firefox does not support unicode-range without a flag
+      if (o.feature === 'unicoderange' && o.caniuseResult.indexOf('y') === 0 && o.browser == 'Firefox' && o.version <= 40) {
+        return;
+      }
+
       // firefox only supports web animation when a flag is enabled, which we
       // don't do on sauce
       if (o.feature === 'webanimations' && o.caniuseResult.indexOf('a d') === 0) {
