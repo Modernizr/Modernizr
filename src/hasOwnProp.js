@@ -1,4 +1,15 @@
 define(['is'], function(is) {
+  /**
+   * hasOwnProp is a shim for hasOwnProperty that is needed for Safari 2.0 support
+   *
+   * @author kangax
+   * @access private
+   * @function hasOwnProp
+   * @param {object} object - The object to check for a property
+   * @param {string} property - The property to check for
+   * @returns {boolean}
+   */
+
   // hasOwnProperty shim by kangax needed for Safari 2.0 support
   var hasOwnProp;
 

@@ -8,6 +8,7 @@
   "dependencies": {
     "file": "^0.2.2",
     "find-parent-dir": "^0.3.0",
+    "jsdoc-parse": "^1.0.0",
     "lodash": "^3.1.0",
     "marked": "^0.2.8",
     "mkdirp": "^0.5.0",
@@ -29,7 +30,7 @@
     "grunt-mocha": "^0.4.11",
     "grunt-mocha-test": "^0.12.7",
     "grunt-saucelabs": "^8.6.0",
-    "joi": "^5.1.0",
+    "joi": "^6.4.1",
     "jquery": "^1.11.2",
     "json3": "^3.3.2",
     "load-grunt-tasks": "~0.2.1",

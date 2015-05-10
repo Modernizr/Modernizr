@@ -88,8 +88,8 @@ describe('injectElementWithStyles', function() {
       var test = document.getElementById('test');
       var element = document.getElementById('element');
 
-      expect(test).to.not.be(undefined);
-      expect(element).to.not.be(undefined);
+      expect(test).to.not.be(null);
+      expect(element).to.not.be(null);
       done();
     };
 

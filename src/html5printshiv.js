@@ -1,6 +1,10 @@
 define(['isSVG'], function(isSVG) {
-  // Take the html5 variable out of the
-  // html5shiv scope so we can return it.
+/**
+  * @optionName html5printshiv
+  * @optionProp html5printshiv
+  */
+
+  // Take the html5 variable out of the html5shiv scope so we can return it.
   var html5;
   if (!isSVG) {
 

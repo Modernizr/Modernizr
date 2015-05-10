@@ -1,9 +1,9 @@
 define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'testDOMProps'], function(ModernizrProto, cssomPrefixes, is, testProps, domPrefixes, testDOMProps) {
   /**
    * testPropsAll tests a list of DOM properties we want to check against.
-   *     We specify literally ALL possible (known and/or likely) properties on
-   *     the element including the non-vendor prefixed one, for forward-
-   *     compatibility.
+   * We specify literally ALL possible (known and/or likely) properties on
+   * the element including the non-vendor prefixed one, for forward-
+   * compatibility.
    */
   function testPropsAll(prop, prefixed, elem, value, skipValueTest) {
 
@@ -22,7 +22,8 @@ define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'te
   }
 
   // Modernizr.testAllProps() investigates whether a given style property,
-  //     or any of its vendor-prefixed variants, is recognized
+  // or any of its vendor-prefixed variants, is recognized
+  //
   // Note that the property names must be provided in the camelCase variant.
   // Modernizr.testAllProps('boxSizing')
   ModernizrProto.testAllProps = testPropsAll;

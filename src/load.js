@@ -1,4 +1,15 @@
 define(['ModernizrProto'], function(ModernizrProto) {
+  /**
+   * Previously, Modernizr.load was an alias for yepnope. Since yepnope was
+   * deprecated, we removed it as well. It is not available on the website builder,
+   * this is only included as an improved warning to those who build a custom
+   * version locally.
+   *
+   * @memberof Modernizr
+   * @access private
+   * @function load
+   *
+   */
 
   var err = function() {};
   var warn = function() {};
