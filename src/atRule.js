@@ -3,7 +3,26 @@ define(['ModernizrProto', 'cssomPrefixes'], function(ModernizrProto, prefixes) {
    * atRule returns a given CSS property at-rule (eg @keyframes), possibly in
    * some prefixed form, or false, in the case of an unsupported rule
    *
-   * @param prop - String naming the property to test
+   * @memberof Modernizr
+   * @optionName Modernizr.atRule()
+   * @optionProp atRule
+   * @access public
+   * @function atRule
+   * @param {string} prop - String name of the @-rule to test for
+   * @returns {string|false} The string representing the (possibly prefixed)
+   * valid version of the @-rule, or `false` when it is unsupported.
+   * @example
+   * ```js
+   *  var keyframes = Modernizr.atRule('@keyframes');
+   *
+   *  if (keyframes) {
+   *    // keyframes are supported
+   *    // could be `@-webkit-keyframes` or `@keyframes`
+   *  } else {
+   *    // keyframes === `false`
+   *  }
+   * ```
+   *
    */
 
   var atRule = function(prop) {
@@ -41,6 +60,8 @@ define(['ModernizrProto', 'cssomPrefixes'], function(ModernizrProto, prefixes) {
 
     return false;
   };
+
+  ModernizrProto.atRule = atRule;
 
   return atRule;
 });

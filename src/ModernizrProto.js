@@ -1,4 +1,12 @@
 define(['tests'], function(tests) {
+  /**
+   *
+   * ModernizrProto is the constructor for Modernizr
+   *
+   * @class
+   * @access public
+   */
+
   var ModernizrProto = {
     // The current version, dummy
     _version: '__VERSION__',
@@ -19,10 +27,9 @@ define(['tests'], function(tests) {
     on: function(test, cb) {
       // I don't really think people should do this, but we can
       // safe guard it a bit.
-      // -- NOTE:: this gets WAY overridden in src/addTest for
-      // actual async tests. This is in case people listen to
-      // synchronous tests. I would leave it out, but the code
-      // to *disallow* sync tests in the real version of this
+      // -- NOTE:: this gets WAY overridden in src/addTest for actual async tests.
+      // This is in case people listen to synchronous tests. I would leave it out,
+      // but the code to *disallow* sync tests in the real version of this
       // function is actually larger than this.
       var self = this;
       setTimeout(function() {

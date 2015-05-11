@@ -40,18 +40,22 @@ Modernizr.inputtypes.url
 Modernizr.inputtypes.week
 ```
 */
-define(['Modernizr', 'inputElem', 'docElement', 'inputtypes', 'inputs', 'smile'], function(Modernizr, inputElem, docElement, inputtypes, inputs, smile) {
+define(['Modernizr', 'inputElem', 'docElement'], function(Modernizr, inputElem, docElement) {
   // Run through HTML5's new input types to see if the UA understands any.
   //   This is put behind the tests runloop because it doesn't return a
   //   true/false like all the other tests; instead, it returns an object
   //   containing each input type with its corresponding true/false value
 
   // Big thanks to @miketaylr for the html5 forms expertise. miketaylr.com/
+  var inputtypes = 'search tel url email datetime date month week time datetime-local number range color'.split(' ');
+  var inputs = {};
+
   Modernizr['inputtypes'] = (function(props) {
-    var bool;
+    var len = props.length;
+    var smile = ':)';
     var inputElemType;
     var defaultView;
-    var len = props.length;
+    var bool;
 
     for (var i = 0; i < len; i++) {
 

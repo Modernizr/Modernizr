@@ -1,5 +1,15 @@
 define(['injectElementWithStyles', 'domToCSS'], function(injectElementWithStyles, domToCSS) {
-  // Function to allow us to use native feature detection functionality if available.
+  /**
+   * nativeTestProps allows for us to use native feature detection functionality if available.
+   * some prefixed form, or false, in the case of an unsupported rule
+   *
+   * @access private
+   * @function nativeTestProps
+   * @param {array} props - An array of property names
+   * @param {string} value - A string representing the value we want to check via @supports
+   * @returns {boolean|undefined} A boolean when @supports exists, undefined otherwise
+   */
+
   // Accepts a list of property names and a single value
   // Returns `undefined` if native detection not available
   function nativeTestProps (props, value) {

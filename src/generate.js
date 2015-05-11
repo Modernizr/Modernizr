@@ -1,9 +1,22 @@
 define(['lodash'], function(_) {
-  return function(config) {
+  /**
+   * generate creates the base version of a Modernizr build, before the r.js
+   * optimizer actually generates the final code
+   *
+   * @access private
+   * @function generate
+   * @param {object} [config] - A configuration object
+   * @param {array} [config.options[]] - An array of options to include in the build
+   * @param {array} [config.feature-detects[]] - An array of the feature detects to include
+   * @returns {string} A string of the require.js build
+   */
+
+  return function generate(config) {
     // Set some defaults
     if (!config) {
       config = {};
     }
+
     config.options = config.options || [];
     config['feature-detects'] = config['feature-detects'] || [];
 

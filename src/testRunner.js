@@ -1,5 +1,10 @@
 define(['tests', 'Modernizr', 'classes', 'is'], function(tests, Modernizr, classes, is) {
-  // Run through all tests and detect their support in the current UA.
+  /**
+   * Run through all tests and detect their support in the current UA.
+   *
+   * @access private
+   */
+
   function testRunner() {
     var featureNames;
     var feature;
@@ -13,12 +18,12 @@ define(['tests', 'Modernizr', 'classes', 'is'], function(tests, Modernizr, class
       featureNames = [];
       feature = tests[featureIdx];
       // run the test, throw the return value into the Modernizr,
-      //   then based on that boolean, define an appropriate className
-      //   and push it into an array of classes we'll join later.
+      // then based on that boolean, define an appropriate className
+      // and push it into an array of classes we'll join later.
       //
-      //   If there is no name, it's an 'async' test that is run,
-      //   but not directly added to the object. That should
-      //   be done with a post-run addTest call.
+      // If there is no name, it's an 'async' test that is run,
+      // but not directly added to the object. That should
+      // be done with a post-run addTest call.
       if (feature.name) {
         featureNames.push(feature.name.toLowerCase());
 

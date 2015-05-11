@@ -1,4 +1,12 @@
 define(['Modernizr', 'docElement', 'isSVG'], function(Modernizr, docElement, isSVG) {
+  /**
+   * setClasses takes an array of class names and adds them to the root element
+   *
+   * @access private
+   * @function setClasses
+   * @param {string[]} classes - Array of class names
+   */
+
   // Pass in an and array of class names, e.g.:
   //  ['no-webp', 'borderradius', ...]
   function setClasses(classes) {
@@ -9,8 +17,7 @@ define(['Modernizr', 'docElement', 'isSVG'], function(Modernizr, docElement, isS
       className = className.baseVal;
     }
 
-    // Change `no-js` to `js` (we do this independently of the `enableClasses`
-    // option)
+    // Change `no-js` to `js` (independently of the `enableClasses` option)
     // Handle classPrefix on this too
     if (Modernizr._config.enableJSClass) {
       var reJS = new RegExp('(^|\\s)' + classPrefix + 'no-js(\\s|$)');
