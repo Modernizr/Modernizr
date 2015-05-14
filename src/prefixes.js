@@ -4,9 +4,9 @@ define(['ModernizrProto'], function(ModernizrProto) {
    * http://git.io/vUGl4
    *
    * @memberof Modernizr
+   * @name Modernizr._prefixes
    * @optionName Modernizr._prefixes
    * @optionProp prefixes
-   * @name _prefixes
    * @access public
    * @example
    *

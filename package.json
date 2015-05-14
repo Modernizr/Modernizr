@@ -6,9 +6,9 @@
     "test": "test"
   },
   "dependencies": {
+    "doctrine": "^0.6.4",
     "file": "^0.2.2",
     "find-parent-dir": "^0.3.0",
-    "jsdoc-parse": "^1.0.0",
     "lodash": "^3.1.0",
     "marked": "^0.2.8",
     "mkdirp": "^0.5.0",

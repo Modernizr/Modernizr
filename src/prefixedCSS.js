@@ -4,6 +4,7 @@ define(['ModernizrProto', 'prefixed', 'domToCSS'], function(ModernizrProto, pref
    * kebab-case (e.g. `box-sizing`) rather than camelCase (boxSizing).
    *
    * @memberof Modernizr
+   * @name Modernizr.prefixedCSS
    * @optionName Modernizr.prefixedCSS()
    * @optionProp prefixedCSS
    * @access public
