@@ -26,7 +26,6 @@
 !*/
 /* DOC
 Tests for lossy, non-alpha webp support.
-=======
 
 Tests for all forms of webp support (lossless, lossy, alpha, and animated)..
 

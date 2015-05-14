@@ -4,7 +4,6 @@
     "addTest",
     "atRule",
     "domPrefixes",
-    "fnBind",
     "hasEvent",
     "html5shiv",
     "html5printshiv",
