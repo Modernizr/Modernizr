@@ -4,6 +4,7 @@ define(['ModernizrProto', 'testProps'], function(ModernizrProto, testProps) {
    * Property names can be provided in either camelCase or kebab-case.
    *
    * @memberof Modernizr
+   * @name Modernizr.testProp
    * @access public
    * @optionName Modernizr.testProp()
    * @optionProp testProp
@@ -11,7 +12,7 @@ define(['ModernizrProto', 'testProps'], function(ModernizrProto, testProps) {
    * @param {string} prop - Name of the CSS property to check
    * @param {string} [value] - Name of the CSS value to check
    * @param {boolean} [useValue] - Whether or not to check the value if @supports isn't supported
-   * @return {boolean}
+   * @returns {boolean}
    * @example
    *
    * Just like {@link testAllProps}, only it does not check any vendor prefixed

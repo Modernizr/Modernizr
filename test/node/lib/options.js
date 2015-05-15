@@ -26,4 +26,9 @@ describe('cli/options', function() {
     var err = schema.validate(options()).error;
     expect(err).to.be(null);
   });
+
+  it('should return all jsdoc info when the second arg is true', function() {
+    expect(options(null, true) !== options(null)).to.be(true);
+    expect(options(null, true)[0].description).to.not.be(undefined);
+  });
 });

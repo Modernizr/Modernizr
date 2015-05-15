@@ -6,6 +6,7 @@ define(['ModernizrProto'], function(ModernizrProto) {
    * version locally.
    *
    * @memberof Modernizr
+   * @name Modernizr.load
    * @access private
    * @function load
    *

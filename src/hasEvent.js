@@ -3,13 +3,14 @@ define(['ModernizrProto', 'createElement'], function(ModernizrProto, createEleme
    * Modernizr.hasEvent() detects support for a given event
    *
    * @memberof Modernizr
+   * @name Modernizr.hasEvent
    * @optionName Modernizr.hasEvent()
    * @optionProp hasEvent
    * @access public
    * @function hasEvent
    * @param  {string|*}       eventName  is the name of an event to test for (e.g. "resize")
    * @param  {Element|string} [element=HTMLDivElement] is the element|document|window|tagName to test on
-   * @return {boolean}
+   * @returns {boolean}
    * @example
    *  `Modernizr.hasEvent` lets you determine if the browser supports a supplied event.
    *  By default, it does this detection on a div element

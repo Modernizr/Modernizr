@@ -3,9 +3,9 @@ define(['ModernizrProto', 'omPrefixes'], function(ModernizrProto, omPrefixes) {
    * List of JavaScript DOM values used for tests
    *
    * @memberof Modernizr
+   * @name Modernizr._domPrefixes
    * @optionName Modernizr._domPrefixes
    * @optionProp domPrefixes
-   * @name _domPrefixes
    * @access public
    * @example
    *

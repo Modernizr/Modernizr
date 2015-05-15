@@ -9,6 +9,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
    * will get a possibly false negative `undefined` value.
    *
    * @memberof Modernizr
+   * @name Modernizr.on
    * @access public
    * @function on
    * @param {string} feature - String name of the feature detect
@@ -49,6 +50,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
    * callbacks registered through {@link Modernizr.on}
    *
    * @memberof Modernizr
+   * @name Modernizr._trigger
    * @access private
    * @function _trigger
    * @param {string} feature - string name of the feature detect
@@ -84,6 +86,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
    * the html element when configured to do so
    *
    * @memberof Modernizr
+   * @name Modernizr.addTest
    * @optionName Modernizr.addTest()
    * @optionProp addTest
    * @access public

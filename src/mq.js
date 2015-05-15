@@ -5,6 +5,7 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    * gist.github.com/786768
    *
    * @memberof Modernizr
+   * @name Modernizr.mq
    * @optionName Modernizr.mq()
    * @optionProp mq
    * @access public

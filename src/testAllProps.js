@@ -3,6 +3,7 @@ define(['ModernizrProto', 'testPropsAll'], function(ModernizrProto, testPropsAll
    * testAllProps determines whether a given CSS property is supported in the browser
    *
    * @memberof Modernizr
+   * @name Modernizr.testAllProps
    * @optionName Modernizr.testAllProps()
    * @optionProp testAllProps
    * @access public
