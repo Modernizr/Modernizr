@@ -60,7 +60,7 @@ define(['ModernizrProto', 'testPropsAll', 'cssToDOM', 'atRule'], function(Modern
    * var transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
    * ```
    *
-   * If you want a similar lookup, but in kebab-case, you can use {@link prefixedCSS}.
+   * If you want a similar lookup, but in kebab-case, you can use [prefixedCSS](#modernizr-prefixedcss).
    */
 
   var prefixed = ModernizrProto.prefixed = function(prop, obj, elem) {

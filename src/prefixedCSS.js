@@ -1,6 +1,6 @@
 define(['ModernizrProto', 'prefixed', 'domToCSS'], function(ModernizrProto, prefixed, domToCSS) {
   /**
-   * prefixedCSS is just like {@link prefixed}, but the returned values are in
+   * prefixedCSS is just like [prefixed](#modernizr-prefixed), but the returned values are in
    * kebab-case (e.g. `box-sizing`) rather than camelCase (boxSizing).
    *
    * @memberof Modernizr

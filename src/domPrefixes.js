@@ -9,7 +9,7 @@ define(['ModernizrProto', 'omPrefixes'], function(ModernizrProto, omPrefixes) {
    * @access public
    * @example
    *
-   * Modernizr._domPrefixes is exactly the same as {@link _prefixes}, but rather
+   * Modernizr._domPrefixes is exactly the same as [_prefixes](#modernizr-_prefixes), but rather
    * than kebab-case properties, all properties are their Capitalized variant
    *
    * ```js

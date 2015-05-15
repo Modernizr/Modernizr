@@ -15,7 +15,7 @@ define(['ModernizrProto', 'testProps'], function(ModernizrProto, testProps) {
    * @returns {boolean}
    * @example
    *
-   * Just like {@link testAllProps}, only it does not check any vendor prefixed
+   * Just like [testAllProps](#modernizr-testallprops), only it does not check any vendor prefixed
    * version of the string.
    *
    * Note that the property name must be provided in camelCase (e.g. boxSizing not box-sizing)

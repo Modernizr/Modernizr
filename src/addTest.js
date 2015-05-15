@@ -47,7 +47,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
 
   /**
    * _trigger is the private function used to signal test completion and run any
-   * callbacks registered through {@link Modernizr.on}
+   * callbacks registered through [Modernizr.on](#modernizr-on)
    *
    * @memberof Modernizr
    * @name Modernizr._trigger
