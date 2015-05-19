@@ -144,7 +144,9 @@ if (argv.c) {
     console.error(argv.c + ' does not exist.');
     process.exit(1);
   }
-  configPath = path.resolve(__dirname, '../lib/config-all.json');
+  if (!configPath) {
+    configPath = path.resolve(__dirname, '../lib/config-all.json');
+  }
 }
 
 try {
