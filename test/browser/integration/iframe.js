@@ -29,7 +29,7 @@ describe('iframe context', function() {
   });
 
   it('is able to be loaded in an iframe', function(done) {
-      iframeWindow.$.getScript('http://localhost:9999/dist/modernizr-build.js')
+      iframeWindow.$.getScript('../dist/modernizr-build.js')
         .done(function(build, status) {
           expect(status).to.equal('success');
           expect(iframeWindow.Modernizr).to.not.be(undefined);
