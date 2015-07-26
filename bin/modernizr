@@ -150,10 +150,14 @@ if (argv.c) {
 }
 
 try {
-  if (!inlineConfig) {
+  if (!inlineConfig && configPath) {
     config = require(configPath);
   } else if (configPath) {
     config = _.extend(config, require(configPath));
+  } else if (!configPath) {
+    console.error('config file, inline features, or options required.');
+    yargs.showHelp();
+    process.exit(1)
   }
 } catch (e) {
   console.error(configPath + ' is not valid JSON.');
