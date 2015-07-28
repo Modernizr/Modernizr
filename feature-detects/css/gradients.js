@@ -30,7 +30,7 @@ define(['Modernizr', 'prefixes', 'createElement'], function(Modernizr, prefixes,
     var angle;
 
     for (var i = 0, len = prefixes.length - 1; i < len; i++) {
-      angle = (i == 0 ? 'to ' : '') + 'left top';
+      angle = (i === 0 ? 'to ' : '') + 'left top';
       css += str1 + prefixes[i] + 'linear-gradient(' + angle + ', #9f9, white);';
     }
 
