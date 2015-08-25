@@ -150,6 +150,8 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           document.body.insertBefore(div, firstChild);
           document.body.insertBefore(dummy, div);
 
+          var scrollX = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+          var scrollY = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
 
           /* reset the selection to the dummy input element, i.e. BEFORE the div container
            *   stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area */
@@ -175,6 +177,8 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           } catch (e) {
             result = false;
           }
+
+          window.scrollTo(scrollX, scrollY);
 
           document.body.removeChild(div);
           document.body.removeChild(dummy);
