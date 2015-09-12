@@ -12,7 +12,7 @@ var yargs = require('yargs')
     describe: 'Print Help'
   })
   .options('V', {
-    alias: 'version',
+    alias: ['v', 'version'],
     describe: 'Print the version and exit'
   })
   .options('f', {
