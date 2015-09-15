@@ -443,7 +443,7 @@
   "cupcake": {
     "name": "CupCake.js",
     "authors": ["Rivindu Perera"],
-    "href": "http://www.rivindu.com/p/cupcakejs.html",
+    "href": "https://github.com/rivindu/cupcakejs",
     "licenses": ["MIT"]
   },
   "storagepolyfill": {
