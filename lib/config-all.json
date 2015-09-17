@@ -37,6 +37,7 @@
     "contextmenu",
     "cookies",
     "cors",
+    "crypto",
     "crypto/getrandomvalues",
     "css/all",
     "css/animations",
