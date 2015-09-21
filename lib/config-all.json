@@ -41,6 +41,7 @@
     "css/all",
     "css/animations",
     "css/appearance",
+    "css/backdropfilter",
     "css/backgroundblendmode",
     "css/backgroundcliptext",
     "css/backgroundposition-shorthand",
