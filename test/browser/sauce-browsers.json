@@ -1,5 +1,12 @@
 [
   {
+    "browserName": "microsoftedge",
+    "platform": "WIN10",
+    "version": "20.10240"
+  },
+
+
+  {
     "browserName": "internet explorer",
     "platform": "XP",
     "version": "7"
@@ -17,7 +24,7 @@
     "version": "10"
   }, {
     "browserName": "internet explorer",
-    "platform": "WIN8.1",
+    "platform": "WIN10",
     "version": "11"
   },
 
