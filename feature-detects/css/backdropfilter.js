@@ -2,7 +2,7 @@
 {
   "name": "Backdrop Filter",
   "property": "backdropfilter",
-  "tags": ["css"],
+  "tags": ["css"]
 }
 !*/
 define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
