@@ -7,7 +7,7 @@
   }
   !*/
 /* DOC
-Detects support flash, as well as flash blocking plugins
+Detects Flash support as well as Flash-blocking plugins
 */
 define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG'], function(Modernizr, createElement, docElement, addTest, getBody, isSVG) {
   Modernizr.addAsyncTest(function() {
@@ -40,10 +40,10 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
     };
     var easy_detect;
     var activex;
-    // we wrap activex in a try/catch because when flash is disabled through
+    // we wrap activex in a try/catch because when Flash is disabled through
     // ActiveX controls, it throws an error.
     try {
-      // Pan is an API that exists for flash objects.
+      // Pan is an API that exists for Flash objects.
       activex = 'ActiveXObject' in window && 'Pan' in new window.ActiveXObject('ShockwaveFlash.ShockwaveFlash');
     } catch (e) {}
 
@@ -53,7 +53,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
       runTest(false);
     }
     else {
-      // flash seems to be installed, but it might be blocked. We have to
+      // Flash seems to be installed, but it might be blocked. We have to
       // actually create an element to see what happens to it.
       var embed = createElement('embed');
       var body = getBody();
@@ -92,7 +92,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
           inline_style = embed.style.cssText;
           if (inline_style !== '') {
             // the style of the element has changed automatically. This is a
-            // really poor heuristic, but for lower end flash blocks, it the
+            // really poor heuristic, but for lower end Flash blocks, it the
             // only change they can make.
             runTest('blocked', embed);
           }
