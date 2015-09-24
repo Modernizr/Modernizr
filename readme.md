@@ -46,7 +46,7 @@ Run the [test suite](http://modernizr.github.com/Modernizr/test/)
 
 ```js
 npm install
-./bin/modernizr
+./bin/modernizr -c lib/config-all.json
 //outputs to ./modernizr.js
 ```
 
