@@ -177,6 +177,7 @@
     "iframe/srcdoc",
     "img/apng",
     "img/jpegxr",
+    "img/jpeg2000",
     "img/sizes",
     "img/srcset",
     "img/webp",

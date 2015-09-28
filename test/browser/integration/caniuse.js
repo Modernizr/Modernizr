@@ -74,6 +74,7 @@ window.caniusecb = function(caniuse) {
       inlinesvg: 'svg-html5',
       inputtypes: 'forms',
       jpegxr: 'jpegxr',
+      jpeg2000: 'jpeg2000',
       json: 'json',
       localstorage: 'namevalue-storage',
       mathml: 'mathml',
