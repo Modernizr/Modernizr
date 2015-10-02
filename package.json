@@ -31,7 +31,7 @@
     "grunt-mocha": "0.4.13",
     "grunt-mocha-test": "0.12.7",
     "grunt-saucelabs": "8.6.1",
-    "joi": "6.7.1",
+    "joi": "6.8.1",
     "jquery": "1.11.3",
     "json3": "3.3.2",
     "load-grunt-tasks": "0.2.1",
@@ -68,14 +68,30 @@
     "url": "http://modernizr.com/"
   },
   "contributors": [
-    { "name": "Faruk Ates" },
-    { "name": "Paul Irish" },
-    { "name": "Alex Sexton" },
-    { "name": "Ryan Seddon" },
-    { "name": "Alexander Farkas" },
-    { "name": "Patrick Kettner" },
-    { "name": "Stu Cox" },
-    { "name": "Richard Herrera" }
+    {
+      "name": "Faruk Ates"
+    },
+    {
+      "name": "Paul Irish"
+    },
+    {
+      "name": "Alex Sexton"
+    },
+    {
+      "name": "Ryan Seddon"
+    },
+    {
+      "name": "Alexander Farkas"
+    },
+    {
+      "name": "Patrick Kettner"
+    },
+    {
+      "name": "Stu Cox"
+    },
+    {
+      "name": "Richard Herrera"
+    }
   ],
   "license": "MIT"
 }
