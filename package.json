@@ -38,10 +38,12 @@
     "proxyquire": "1.7.2"
   },
   "scripts": {
+    "prepublish": "grunt build",
     "test": "grunt test --stack"
   },
   "main": "./lib/cli",
   "bin": "./bin/modernizr",
+  "browser": "dist/modernizr-build",
   "repository": {
     "type": "git",
     "url": "git://github.com/Modernizr/Modernizr.git"
