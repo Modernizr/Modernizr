@@ -35,7 +35,7 @@
     "jquery": "1.11.3",
     "json3": "3.3.2",
     "load-grunt-tasks": "0.2.1",
-    "proxyquire": "1.7.2"
+    "proxyquire": "1.7.3"
   },
   "scripts": {
     "test": "grunt test --stack"
