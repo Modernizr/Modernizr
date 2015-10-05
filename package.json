@@ -68,14 +68,34 @@
     "url": "http://modernizr.com/"
   },
   "contributors": [
-    { "name": "Faruk Ates" },
-    { "name": "Paul Irish" },
-    { "name": "Alex Sexton" },
-    { "name": "Ryan Seddon" },
-    { "name": "Alexander Farkas" },
-    { "name": "Patrick Kettner" },
-    { "name": "Stu Cox" },
-    { "name": "Richard Herrera" }
+    {
+      "name": "Faruk Ates",
+      "url": "https://twitter.com/KuraFire"
+    },
+    {
+      "name": "Paul Irish",
+      "url": "https://twitter.com/paul_irish"
+    },
+    {
+      "name": "Alex Sexton",
+      "url": "https://twitter.com/SlexAxton"
+    },
+    {
+      "name": "Ryan Seddon",
+      "url": "https://twitter.com/ryanseddon"
+    },
+    {
+      "name": "Patrick Kettner",
+      "url": "https://twitter.com/patrickkettner"
+    },
+    {
+      "name": "Stu Cox",
+      "url": "https://twitter.com/stucoxmedia"
+    },
+    {
+      "name": "Richard Herrera",
+      "url": "https://twitter.com/doctyper"
+    }
   ],
   "license": "MIT"
 }
