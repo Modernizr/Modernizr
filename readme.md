@@ -1,4 +1,4 @@
-# Modernizr [![Build Status](http://img.shields.io/travis/Modernizr/Modernizr/master.svg)](http://travis-ci.org/Modernizr/Modernizr) [![Inline docs](http://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](http://inch-ci.org/github/Modernizr/Modernizr)
+# Modernizr [![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](http://travis-ci.org/Modernizr/Modernizr) [![Inline docs](http://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](http://inch-ci.org/github/Modernizr/Modernizr)
 
 ##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 
@@ -46,7 +46,7 @@ Run the [test suite](http://modernizr.github.com/Modernizr/test/)
 
 ```js
 npm install
-./bin/modernizr
+./bin/modernizr -c lib/config-all.json
 //outputs to ./modernizr.js
 ```
 
