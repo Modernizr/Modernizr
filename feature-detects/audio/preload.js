@@ -4,8 +4,7 @@
   "property": "audiopreload",
   "tags": ["audio", "media"],
   "async" : true,
-  "warnings": ["This test is very large – only include it if you absolutely need it"],
-  "knownBugs": ["Not consistent in Safari and IE when run in Cow tests"]
+  "warnings": ["This test is very large – only include it if you absolutely need it"]
 }
 !*/
 /* DOC
@@ -19,11 +18,11 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/audio'], fu
     var elem = createElement('audio');
     var elemStyle = elem.style;
 
-    function testpreload(arg) {
+    function testpreload(event) {
       clearTimeout(timeout);
-      var result = arg !== undefined && arg.type === 'loadeddata' ? true : false; //to avoid arg being 'undefined' and arg.type throwing out an error, see below comment
+      var result = event !== undefined && event.type === 'loadeddata' ? true : false; //need to check if event is not undefined here in case function is evoked from timeout (no parameters)
       elem.removeEventListener('loadeddata', testpreload, false);
-      addTest('audiopreload', result); //using arg on it's own here as the first condition (see video/autoplay test which might need fixing) would return undefined when arg/eventlistener is not fired so using a 'result' var
+      addTest('audiopreload', result);
       elem.parentNode.removeChild(elem);
     }
 
@@ -63,7 +62,7 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/audio'], fu
       return;
     }
 
-    elem.setAttribute('preload', 'auto'); //not sure if I should be forcing 'auto' here but kinda makes sense to
+    elem.setAttribute('preload', 'auto');
     elem.style.cssText = 'display:none';
     docElement.appendChild(elem);
     // wait for the next tick to add the listener, otherwise the element may
