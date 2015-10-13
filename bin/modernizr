@@ -17,11 +17,11 @@ var yargs = require('yargs')
   })
   .options('f', {
     alias: 'features',
-    describe: 'comma seperate list of feature detects'
+    describe: 'comma separated list of feature detects'
   })
   .options('o', {
     alias: 'options',
-    describe: 'comma seperate list of extensibility options'
+    describe: 'comma separated list of extensibility options'
   })
   .options('c', {
     alias: 'config',
