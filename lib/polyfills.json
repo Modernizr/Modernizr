@@ -176,8 +176,8 @@
   },
   "jquery-contextmenu": {
     "name": "jQuery-contextMenu",
-    "authors": ["Rodney Rehm"],
-    "href": "https://github.com/medialize/jQuery-contextMenu",
+    "authors": ["Rodney Rehm", "Björn Brala"],
+    "href": "https://github.com/swisnl/jQuery-contextMenu",
     "licenses": ["MIT", "GPL3"]
   },
   "pmxdr": {
