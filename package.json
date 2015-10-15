@@ -31,7 +31,7 @@
     "grunt-mocha": "0.4.13",
     "grunt-mocha-test": "0.12.7",
     "grunt-saucelabs": "8.6.1",
-    "joi": "6.9.0",
+    "joi": "6.9.1",
     "jquery": "1.11.3",
     "json3": "3.3.2",
     "load-grunt-tasks": "0.2.1",
