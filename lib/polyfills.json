@@ -745,5 +745,11 @@
     "href": "https://github.com/github/fetch",
     "licenses": ["MIT"],
     "name": "window.fetch polyfill"
+  },
+  "base64js": {
+    "authors": ["David Chambers"],
+    "href": "https://github.com/davidchambers/Base64.js",
+    "licenses": ["Apache2", "WTFPL"],
+    "name": "window.atob and window.btoa polyfill"
   }
 }
