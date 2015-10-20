@@ -26,10 +26,14 @@ define(['Modernizr', 'prefixes', 'createElement'], function(Modernizr, prefixes,
 
     var str1 = 'background-image:';
     var str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));';
-    var str3 = 'linear-gradient(left top,#9f9, white);';
+    var css = '';
+    var angle;
 
-    // standard syntax             // trailing 'background-image:'
-    var css = str1 + prefixes.join(str3 + str1).slice(0, -str1.length);
+    for (var i = 0, len = prefixes.length - 1; i < len; i++) {
+      angle = (i === 0 ? 'to ' : '');
+      css += str1 + prefixes[i] + 'linear-gradient(' + angle + 'left top, #9f9, white);';
+    }
+
     if (Modernizr._config.usePrefixes) {
     // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
       css += str1 + '-webkit-' + str2;
