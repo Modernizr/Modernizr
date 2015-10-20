@@ -266,6 +266,7 @@
     "workers/dataworkers",
     "workers/sharedworkers",
     "workers/transferables",
-    "workers/webworkers"
+    "workers/webworkers",
+    "xdomainrequest"
   ]
 }
