@@ -36,7 +36,7 @@ define(['ModernizrProto', 'testPropsAll'], function(ModernizrProto, testPropsAll
    * ```
    */
 
-  function testAllProps (prop, value, skipValueTest) {
+  function testAllProps(prop, value, skipValueTest) {
     return testPropsAll(prop, undefined, undefined, value, skipValueTest);
   }
   ModernizrProto.testAllProps = testAllProps;

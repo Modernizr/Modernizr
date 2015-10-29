@@ -50,7 +50,7 @@ define(['Modernizr', 'inputElem', 'docElement'], function(Modernizr, inputElem, 
   var inputtypes = 'search tel url email datetime date month week time datetime-local number range color'.split(' ');
   var inputs = {};
 
-  Modernizr['inputtypes'] = (function(props) {
+  Modernizr.inputtypes = (function(props) {
     var len = props.length;
     var smile = ':)';
     var inputElemType;
