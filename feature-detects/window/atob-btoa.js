@@ -1,7 +1,8 @@
 /*!
 {
   "name": "Base 64 encoding/decoding",
-  "property": ["atob-btoa"],
+  "property": ["atobbtoa"],
+  "builderAliases": ["atob-btoa"],
   "caniuse" : "atob-btoa",
   "tags": ["atob", "base64", "WindowBase64", "btoa"],
   "authors": ["Christian Ulbrich"],
@@ -21,5 +22,5 @@ Detects support for WindowBase64 API (window.atob && window.btoa).
 
 */
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('atob-btoa', 'atob' in window && 'btoa' in window);
+  Modernizr.addTest('atobbtoa', 'atob' in window && 'btoa' in window, {aliases: ['atob-btoa']});
 });
