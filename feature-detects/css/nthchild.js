@@ -27,15 +27,12 @@ define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
   // A Javascript loop then tests if the `<div>`s have the expected width
   // using the modulus operator.
   testStyles('#modernizr div {width:1px} #modernizr div:nth-child(2n) {width:2px;}', function(elem) {
-    Modernizr.addTest('nthchild', function() {
-      var elems = elem.getElementsByTagName('div'),
-      test = true;
+    var elems = elem.getElementsByTagName('div');
+    var correctWidths = true;
 
-      for (var i = 0; i < 5; i++) {
-        test = test && elems[i].offsetWidth === i % 2 + 1;
-      }
-
-      return test;
-    });
+    for (var i = 0; i < 5; i++) {
+      correctWidths = correctWidths && elems[i].offsetWidth === i % 2 + 1;
+    }
+    Modernizr.addTest('nthchild', correctWidths);
   }, 5);
 });
