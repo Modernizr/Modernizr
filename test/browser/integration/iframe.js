@@ -12,9 +12,9 @@ describe('iframe context', function() {
 
     $iframe
       .css({
-        'height':10,
-        'width':10,
-        'position':'absolute',
+        'height': 10,
+        'width': 10,
+        'position': 'absolute',
         'top': 0,
         'left': 0
       })

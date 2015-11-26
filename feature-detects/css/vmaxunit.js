@@ -26,7 +26,7 @@ define(['Modernizr', 'docElement', 'testStyles', 'roundedEquals'], function(Mode
     var expectedWidth = parseInt(Math.max(one_vw, one_vh) * 50, 10);
     var compWidth = parseInt((window.getComputedStyle ?
                           getComputedStyle(elem, null) :
-                          elem.currentStyle)['width'], 10);
+                          elem.currentStyle).width, 10);
 
     Modernizr.addTest('cssvmaxunit', roundedEquals(expectedWidth, compWidth) || roundedEquals(expectedWidth, compWidth - scrollbarWidth));
   }, 3);

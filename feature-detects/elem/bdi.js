@@ -23,7 +23,7 @@ define(['Modernizr', 'addTest', 'createElement', 'docElement'], function(Moderni
 
     var supports = ((window.getComputedStyle ?
           getComputedStyle(bdi, null) :
-          bdi.currentStyle)['direction'] === 'rtl');
+          bdi.currentStyle).direction === 'rtl');
 
     docElement.removeChild(div);
 

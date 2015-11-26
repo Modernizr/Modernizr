@@ -40,7 +40,7 @@ define(['Modernizr', 'createElement', 'inputElem'], function(Modernizr, createEl
   var inputattrs = 'autocomplete autofocus list placeholder max min multiple pattern required step'.split(' ');
   var attrs = {};
 
-  Modernizr['input'] = (function(props) {
+  Modernizr.input = (function(props) {
     for (var i = 0, len = props.length; i < len; i++) {
       attrs[ props[i] ] = !!(props[i] in inputElem);
     }

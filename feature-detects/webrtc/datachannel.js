@@ -18,10 +18,10 @@ define(['Modernizr', 'prefixed', 'domPrefixes', 'test/webrtc/peerconnection'], f
       return false;
     }
     for (var i = 0, l = domPrefixes.length; i < l; i++) {
-      var peerConnectionConstructor = window[domPrefixes[i] + 'RTCPeerConnection'];
+      var PeerConnectionConstructor = window[domPrefixes[i] + 'RTCPeerConnection'];
 
-      if (peerConnectionConstructor) {
-        var peerConnection = new peerConnectionConstructor({
+      if (PeerConnectionConstructor) {
+        var peerConnection = new PeerConnectionConstructor({
           'iceServers': [{'url': 'stun:0'}]
         });
 
