@@ -96,7 +96,7 @@ describe('generate', function() {
   it('does not modify options', function() {
     var config = {'options': ['setClasses']};
     generate(config);
-    expect(config['options']).to.eql(['setClasses']);
+    expect(config.options).to.eql(['setClasses']);
   });
 
   after(function() {
