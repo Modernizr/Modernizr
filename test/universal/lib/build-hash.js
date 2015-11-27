@@ -62,7 +62,7 @@ describe('build-query', function() {
       classPrefix: 'TEST_PREFIX',
       options: ['setClasses']
     });
-    expect(query).to.be('?-cssclasses-dontmin-cssclassprefix:TEST_PREFIX');
+    expect(query).to.be('?-setclasses-dontmin-cssclassprefix:TEST_PREFIX');
   });
 
   it('strips `html5` from the shiv options', function() {
