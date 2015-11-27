@@ -757,5 +757,11 @@
     "href": "https://github.com/davidchambers/Base64.js",
     "licenses": ["Apache2", "WTFPL"],
     "name": "window.atob and window.btoa polyfill"
+  },
+  "scrollsnap": {
+    "authors": ["Clemens Krack"],
+    "href": "https://github.com/ckrack/scrollsnap-polyfill",
+    "licenses": ["MIT"],
+    "name": "scrollsnap-polyfill.js"
   }
 }
