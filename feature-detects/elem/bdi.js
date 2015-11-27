@@ -11,12 +11,17 @@
 /* DOC
 Detect support for the bdi element, a way to have text that is isolated from its possibly bidirectional surroundings
 */
-define(['Modernizr', 'addTest', 'createElement', 'docElement'], function(Modernizr, addTest, createElement, docElement) {
+define(['Modernizr', 'createElement', 'docElement', 'isSVG'], function(Modernizr, createElement, docElement, isSVG) {
   Modernizr.addTest('bdi', function() {
     var div = createElement('div');
     var bdi = createElement('bdi');
+    var value = '&#1573';
 
-    bdi.innerHTML = '&#1573';
+    if (isSVG) {
+      value = 'إ';
+    }
+
+    bdi.innerHTML = value;
     div.appendChild(bdi);
 
     docElement.appendChild(div);
