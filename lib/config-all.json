@@ -240,6 +240,7 @@
     "svg/smil",
     "templatestrings",
     "test/elem/bdi",
+    "test/img/crossorigin",
     "test/ligatures",
     "textarea/maxlength",
     "touchevents",
