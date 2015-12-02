@@ -6,7 +6,11 @@
     "test": "test"
   },
   "dependencies": {
+    "browserify-transform-tools": "1.5.0",
     "doctrine": "0.7.2",
+    "escodegen": "1.7.1",
+    "esprima": "2.7.0",
+    "estraverse": "4.1.1",
     "file": "0.2.2",
     "find-parent-dir": "0.3.0",
     "lodash": "3.10.1",
@@ -98,5 +102,13 @@
       "url": "https://twitter.com/doctyper"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "browser": "./browserify/main.js",
+  "browserify": {
+    "transform": [
+      [
+        "./browserify/transform.js"
+      ]
+    ]
+  }
 }
