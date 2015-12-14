@@ -43,7 +43,9 @@ define(['lodash'], function(_) {
 
     // Load in all the detects
     _.forEach(config['feature-detects'], function(detect) {
-      detect = detect.indexOf('test/') === 0 ? detect : 'test/' + detect;
+      if (detect.charAt(0) !== '/' && detect.indexOf('test/') !== 0) {
+        detect = 'test/' + detect;
+      }
       output += ', "' + detect + '"';
     });
 
