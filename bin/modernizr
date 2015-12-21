@@ -159,6 +159,9 @@ try {
     if (configPath) {
       config = _.extend(config, require(configPath));
     }
+    if (config && config.dest) {
+      dest = path.join(cwd, config.dest, 'modernizr.js');
+    }
   }
 } catch (e) {
   console.error(configPath + ' is not valid JSON.');
