@@ -26,7 +26,7 @@ define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function(Moderniz
     } catch (e) {
     }
 
-    if (!(Modernizr.indexeddb && Modernizr.indexeddb.deleteDatabase)) {
+    if (!(Modernizr.indexeddb && Modernizr.indexeddb.deletedatabase)) {
       return false;
     }
 
