@@ -21,7 +21,7 @@ define(['lodash'], function(_) {
     config['feature-detects'] = config['feature-detects'] || [];
 
     // Some special cases
-    var setClasses = _.contains(config.options, 'setClasses');
+    var setClasses = _.includes(config.options, 'setClasses');
 
     var output = 'require(["ModernizrProto", "Modernizr", "testRunner"';
 

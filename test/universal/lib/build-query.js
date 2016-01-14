@@ -23,7 +23,7 @@ describe('build-query', function() {
       context: Math.random().toString().slice(2),
       paths: {
         lib: filesRoot + '/lib',
-        lodash: projectRoot + '/node_modules/lodash/index',
+        lodash: projectRoot + '/node_modules/lodash/lodash',
         metadata: projectRoot + '/test/mocks/lib/metadata',
         cleanup: projectRoot + '/test/cleanup'
       }
