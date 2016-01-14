@@ -40,6 +40,8 @@ define(['Modernizr', 'prefixes', 'testStyles'], function(Modernizr, prefixes, te
     if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
       bool = true;
     } else {
+      // include the 'heartz' as a way to have a non matching MQ to help terminate the join
+      // https://git.io/vznFH
       var query = ['@media (', prefixes.join('touch-enabled),('), 'heartz', ')', '{#modernizr{top:9px;position:absolute}}'].join('');
       testStyles(query, function(node) {
         bool = node.offsetTop === 9;
