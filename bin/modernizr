@@ -119,7 +119,7 @@ if (argv.o || argv.f) {
       .replace(/-/g, ',')
       .split(',')
       .map(function(prop) {
-        var obj = _.findWhere(source, {property: prop});
+        var obj = _.find(source, {property: prop});
 
         if (_.isUndefined(obj)) {
           throw new Error('invalid key value name - ' + prop);
