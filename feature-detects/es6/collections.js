@@ -4,7 +4,7 @@
   "property": "es6collections",
   "notes": [{
     "name": "unofficial ECMAScript 6 draft specification",
-    "href": "http://people.mozilla.org/~jorendorff/es6-draft.html"
+    "href": "https://people.mozilla.org/~jorendorff/es6-draft.html"
   }],
   "polyfills": ["es6shim", "weakmap"],
   "authors": ["Ron Waldon (@jokeyrhyme)"],

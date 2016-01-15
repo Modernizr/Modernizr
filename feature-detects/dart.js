@@ -5,7 +5,7 @@
   "authors": ["Theodoor van Donge"],
   "notes": [{
     "name": "Language website",
-    "href": "http://www.dartlang.org/"
+    "href": "https://www.dartlang.org/"
   }]
 }
 !*/

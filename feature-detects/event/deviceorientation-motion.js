@@ -5,7 +5,7 @@
   "caniuse": "deviceorientation",
   "notes": [{
     "name": "W3C Editor's Draft",
-    "href": "http://dev.w3.org/geo/api/spec-source-orientation.html"
+    "href": "http://w3c.github.io/deviceorientation/spec-source-orientation.html"
   },{
     "name": "Implementation by iOS Safari (Orientation)",
     "href": "http://goo.gl/fhce3"

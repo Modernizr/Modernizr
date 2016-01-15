@@ -1,9 +1,9 @@
-# Modernizr [![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](http://travis-ci.org/Modernizr/Modernizr) [![Inline docs](http://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](http://inch-ci.org/github/Modernizr/Modernizr)
+# Modernizr [![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](https://travis-ci.org/Modernizr/Modernizr) [![Inline docs](https://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](https://inch-ci.org/github/Modernizr/Modernizr)
 
 ##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 
-- [Website](http://www.modernizr.com)
-- [Documentation](http://www.modernizr.com/docs/)
+- [Website](https://modernizr.com)
+- [Documentation](https://modernizr.com/docs/)
 
 Modernizr tests which native CSS3 and HTML5 features are available in the current UA and makes the results available to you in two ways: as properties on a global `Modernizr` object, and as classes on the `<html>` element. This information allows you to progressively enhance your pages with a granular level of control over the experience.
 
@@ -18,7 +18,7 @@ supported. Synchronous tests should be handled synchronously to improve speed an
 
 The new API looks like this:
 
-```javascript
+```js
 // Listen to a test, give it a callback
 Modernizr.on('testname', function( result ) {
   if (result) {
@@ -41,7 +41,7 @@ a method for exposing the `trigger` functionality. Instead, if you'd like to hav
 
 ## Test suite
 
-Run the [test suite](http://modernizr.github.com/Modernizr/test/)
+Run the [test suite](https://modernizr.github.io/Modernizr/test/)
 
 ## Building Modernizr v3
 
@@ -84,7 +84,7 @@ serve the root dir, `<url>/test/modular.html`
 
 Modernizr can be used programmatically via npm:
 
-```javascript
+```js
 var modernizr = require("modernizr");
 ```
 
@@ -106,4 +106,4 @@ The second parameter is a function invoked on task completion.
 
 ## License
 
-[MIT License](http://opensource.org/licenses/MIT)
+[MIT License](https://opensource.org/licenses/MIT)

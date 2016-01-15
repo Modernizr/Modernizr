@@ -4,7 +4,7 @@
   "property": "imgcrossorigin",
   "notes": [{
     "name": "Cross Domain Images and the Tainted Canvas",
-    "href": "http://blog.codepen.io/2013/10/08/cross-domain-images-tainted-canvas/"
+    "href": "https://blog.codepen.io/2013/10/08/cross-domain-images-tainted-canvas/"
   }]
 }
 !*/

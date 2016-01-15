@@ -10,7 +10,7 @@
     "href": "https://github.com/Modernizr/Modernizr/issues/572"
   },{
     "name": "JSFiddle Example",
-    "href": "http://jsfiddle.net/glsee/JRmdq/8/"
+    "href": "https://jsfiddle.net/glsee/JRmdq/8/"
   }]
 }
 !*/

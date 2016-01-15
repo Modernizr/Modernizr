@@ -10,7 +10,7 @@
     },
     {
       "name": "Article",
-      "href": "http://blogs.adobe.com/webplatform/2013/01/28/blending-features-in-canvas"
+      "href": "https://blogs.adobe.com/webplatform/2013/01/28/blending-features-in-canvas"
     }]
 }
 !*/

@@ -7,7 +7,7 @@
     "href": "https://developer.mozilla.org/en/DOM/window.navigator.mozVibrate"
   },{
     "name": "W3C spec",
-    "href": "http://www.w3.org/TR/vibration/"
+    "href": "https://www.w3.org/TR/vibration/"
   }]
 }
 !*/

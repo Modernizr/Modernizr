@@ -9,7 +9,7 @@
     "href": "http://www.html5rocks.com/en/tutorials/notifications/quick/"
   },{
     "name": "W3C spec",
-    "href": "www.w3.org/TR/notifications/"
+    "href": "https://www.w3.org/TR/notifications/"
   }, {
     "name": "Changes in Chrome to Notifications API due to Service Worker Push Notifications",
     "href": "https://developers.google.com/web/updates/2015/05/Notifying-you-of-notificiation-changes"

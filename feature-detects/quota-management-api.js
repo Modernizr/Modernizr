@@ -6,7 +6,7 @@
   "builderAliases": ["quota_management_api"],
   "notes": [{
     "name": "W3C Spec",
-    "href": "http://www.w3.org/TR/quota-api/"
+    "href": "https://www.w3.org/TR/quota-api/"
   }]
 }
 !*/

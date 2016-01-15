@@ -6,7 +6,7 @@
   "builderAliases": ["elem_output"],
   "notes": [{
     "name": "WhatWG Spec",
-    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-button-element.html#the-output-element"
+    "href": "https://html.spec.whatwg.org/multipage/forms.html#the-output-element"
   }]
 }
 !*/

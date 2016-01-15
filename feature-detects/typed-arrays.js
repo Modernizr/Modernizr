@@ -10,7 +10,7 @@
     "href": "https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"
   },{
     "name": "Kronos spec",
-    "href": "http://www.khronos.org/registry/typedarray/specs/latest/"
+    "href": "https://www.khronos.org/registry/typedarray/specs/latest/"
   }],
   "polyfills": ["joshuabell-polyfill"]
 }
