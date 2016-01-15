@@ -7,7 +7,7 @@
   "builderAliases": ["workers_sharedworkers"],
   "notes": [{
     "name": "W3C Reference",
-    "href": "http://www.w3.org/TR/workers/"
+    "href": "https://www.w3.org/TR/workers/"
   }]
 }
 !*/

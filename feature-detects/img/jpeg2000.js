@@ -8,7 +8,7 @@
   "authors": ["@eric_wvgg"],
   "notes": [{
     "name": "Wikipedia Article",
-    "href": "http://en.wikipedia.org/wiki/JPEG_2000"
+    "href": "https://en.wikipedia.org/wiki/JPEG_2000"
   }]
 }
 !*/

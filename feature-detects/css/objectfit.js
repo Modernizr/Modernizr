@@ -7,7 +7,7 @@
   "builderAliases": ["css_objectfit"],
   "notes": [{
     "name": "Opera Article on Object Fit",
-    "href": "http://dev.opera.com/articles/view/css3-object-fit-object-position/"
+    "href": "https://dev.opera.com/articles/css3-object-fit-object-position/"
   }]
 }
 !*/

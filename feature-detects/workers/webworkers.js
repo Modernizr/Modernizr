@@ -6,7 +6,7 @@
   "tags": ["performance", "workers"],
   "notes": [{
     "name": "W3C Reference",
-    "href": "http://www.w3.org/TR/workers/"
+    "href": "https://www.w3.org/TR/workers/"
   }, {
     "name": "HTML5 Rocks article",
     "href": "http://www.html5rocks.com/en/tutorials/workers/basics/"

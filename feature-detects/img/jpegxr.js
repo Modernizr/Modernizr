@@ -7,7 +7,7 @@
   "tags": ["image"],
   "notes": [{
     "name": "Wikipedia Article",
-    "href": "http://en.wikipedia.org/wiki/JPEG_XR"
+    "href": "https://en.wikipedia.org/wiki/JPEG_XR"
   }]
 }
 !*/

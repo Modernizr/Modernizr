@@ -7,7 +7,7 @@
   "builderAliases": ["css_resize"],
   "notes": [{
     "name": "W3C Specification",
-    "href": "http://www.w3.org/TR/css3-ui/#resize"
+    "href": "https://www.w3.org/TR/css3-ui/#resize"
   },{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/CSS/resize"

@@ -7,7 +7,7 @@
   "authors": ["Paul Sayre"],
   "notes": [{
     "name": "MDN Docs",
-    "href": "http://developer.mozilla.org/en/DOM/window.navigator.mozBattery"
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/battery"
   }]
 }
 !*/

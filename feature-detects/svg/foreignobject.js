@@ -5,7 +5,7 @@
   "tags": ["svg"],
   "notes": [{
     "name": "W3C Spec",
-    "href": "http://www.w3.org/TR/SVG11/extend.html"
+    "href": "https://www.w3.org/TR/SVG11/extend.html"
   }]
 }
 !*/

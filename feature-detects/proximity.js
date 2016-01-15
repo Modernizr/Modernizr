@@ -8,7 +8,7 @@
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/Proximity_Events"
   },{
     "name": "W3C specification",
-    "href": "http://www.w3.org/TR/proximity/"
+    "href": "https://www.w3.org/TR/proximity/"
   }],
   "property": "proximity",
   "tags": ["events", "proximity"]

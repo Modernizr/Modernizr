@@ -7,7 +7,7 @@
   "knownBugs": ["Firefox < 4 will likely return a false, however it does support MathML inside XHTML documents"],
   "notes": [{
     "name": "W3C spec",
-    "href": "http://www.w3.org/Math/"
+    "href": "https://www.w3.org/Math/"
   }],
   "polyfills": ["mathjax"]
 }

@@ -8,7 +8,7 @@
   "warnings": ["Android < 4 will pass this test, but can only animate a single property at a time"],
   "notes": [{
     "name" : "Article: 'Dispelling the Android CSS animation myths'",
-    "href": "http://goo.gl/OGw5Gm"
+    "href": "https://goo.gl/OGw5Gm"
   }]
 }
 !*/

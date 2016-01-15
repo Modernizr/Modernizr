@@ -9,7 +9,7 @@
     "href": "https://developer.apple.com/library/mac/releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_7.html#//apple_ref/doc/uid/TP40010355-SW39"
   },{
     "name": "Video example of overlay scrollbars",
-    "href": "http://gfycat.com/FoolishMeaslyAtlanticsharpnosepuffer"
+    "href": "https://gfycat.com/FoolishMeaslyAtlanticsharpnosepuffer"
   }]
 }
 !*/
