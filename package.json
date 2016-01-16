@@ -13,7 +13,7 @@
     "marked": "0.3.5",
     "mkdirp": "0.5.1",
     "requirejs": "2.1.22",
-    "yargs": "3.31.0"
+    "yargs": "3.32.0"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "1.1.1",
