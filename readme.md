@@ -41,7 +41,7 @@ the method for exposing the `trigger` functionality. Instead, if you'd like to h
 
 ## Test suite
 
-Run the [test suite](https://modernizr.github.io/Modernizr/test/)
+Run a [test suite](https://modernizr.github.io/Modernizr/test/)
 
 ## Building Modernizr v3
 
