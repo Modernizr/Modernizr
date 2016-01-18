@@ -307,56 +307,32 @@ window.caniusecb = function(caniuse) {
       var minorver   = ua.minor &&                                  // caniuse doesn't use two digit minors
         ua.minor.toString().replace(/(\d)\d$/, '$1'); // but opera does.
 
-
       var majorminor = (ua.major + '.' + minorver)
         // opera gets grouped in some cases by caniuse
         .replace(/(9\.(6|5))/ , ua.family == 'opera' ? '9.5-9.6'   : '$1')
         .replace(/(10\.(0|1))/, ua.family == 'opera' ? '10.0-10.1' : '$1');
 
-      var mmResult   = browserResults[majorminor];
-      var mResult    = browserResults[ua.major];
+      var versionToUse = _.findLast(_.keys(browserResults), function(ciuVersion) {
+        return parseFloat(ciuVersion) <= parseFloat(majorminor);
+      });
 
+      var latestResult   = browserResults[versionToUse];
 
-      // check it against the major.minor: eg. FF 3.6
-      if (mmResult && mmResult != 'u') { // 'y' 'n' or 'a'
+      if (latestResult && latestResult != 'u') { // 'y' 'n' or 'a'
 
         // data ends w/ ` x` if its still prefixed in the imp
-        mmResult = mmResult.replace(' x', '');
+        latestResult = latestResult.replace(' x', '');
 
         // match it against our data.
         testify({
           feature: feature,
           ciufeature: caniuseFeatureName,
           result: Modernizr[feature],
-          caniuseResult: mmResult,
+          caniuseResult: latestResult,
           browser: ua.family,
-          version: majorminor
-        });
-
-        return; // don't check the major version
-      }
-
-      // check it against just the major version: eg. FF 3
-      if (mResult) {
-
-        // unknown support from caniuse... He would probably like to know our data, though!
-        if (mResult == 'u') {
-          return;
-        }
-
-        // data ends w/ ` x` if its still prefixed in the imp
-        mResult = mResult.replace(' x', '');
-
-        testify({
-          feature: feature,
-          ciufeature: caniuseFeatureName,
-          result: Modernizr[feature],
-          caniuseResult: mResult,
-          browser: ua.family,
-          version: ua.major
+          version: parseFloat(versionToUse)
         });
       }
     });
-
   });
 };
