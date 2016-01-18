@@ -15,7 +15,7 @@ describe('cli', function() {
   });
 
   it('does not throw when being executed', function(done) {
-    cp.exec('node ' + root + '/bin/modernizr -f adownload', done);
+    cp.exec('node ' + root + '/bin/modernizr -f adownload -d modernizr-test.js', done);
   });
 
 });
