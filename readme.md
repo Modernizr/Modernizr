@@ -31,7 +31,7 @@ Modernizr.on('testname', function( result ) {
 ```
 
 We guarantee that we'll only invoke your function once (per time that you call `on`). We are currently not exposing
-a method for exposing the `trigger` functionality. Instead, if you'd like to have control over async tests, use the
+the method for exposing the `trigger` functionality. Instead, if you'd like to have control over asynchronous tests, use the
 `src/addTest` feature, and any test that you set will automatically expose and trigger the `on` functionality.
 
 ## Getting Started
@@ -67,7 +67,7 @@ serve .
 visit <url>/test
 ```
 
-### To see simple build in browser:
+### To see the simple build in the browser:
 
 serve the root dir, `<url>/test/modular.html`
 
