@@ -6,7 +6,7 @@ var serveStatic = require('serve-static');
 module.exports = function(grunt) {
   'use strict';
 
-  // Load grunt dependencies
+  // load grunt dependencies
   require('load-grunt-tasks')(grunt);
 
   var browserTests = grunt.file.expand([
