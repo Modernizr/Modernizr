@@ -60,7 +60,7 @@ describe('prefixes', function() {
     it('returns no prefixes', function(done) {
       req(['prefixes'], function(prefixes) {
         expect(prefixes).to.be.an('array');
-        expect(prefixes).to.have.length(0);
+        expect(prefixes).to.have.length(2);
         done();
       });
     });
