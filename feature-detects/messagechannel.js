@@ -2,6 +2,7 @@
 {
   "name": "Message Channel",
   "property": "MessageChannel",
+  "authors": ["Raju Konga [kongaraju]"],
   "caniuse" : "MessageChannel",
   "tags": ["performance", "messagechannel"],
   "notes": [{
