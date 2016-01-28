@@ -12,7 +12,6 @@
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API/Using_channel_messaging"
   }],
-  "polyfills": ["messagechannel"]
 }
 !*/
 /* DOC
