@@ -15,7 +15,7 @@
 }
 !*/
 /* DOC
-Detects support for  `Message Channel` API from the Channel Messaging spec. Message Channels  provide a simple way for communication between threads.
+Detects support for Message Channels, a way to communicate between different browsing contexts (iframes, workers, etc).
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('messagechannel', 'MessageChannel' in window);
