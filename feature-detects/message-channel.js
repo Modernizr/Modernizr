@@ -15,7 +15,7 @@
 }
 !*/
 /* DOC
-Detects support for Message Channels, a way to communicate between different browsing contexts (iframes, workers, etc).
+Detects support for Message Channels, a way to communicate between different browsing contexts like iframes, workers, etc..
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('messagechannel', 'MessageChannel' in window);
