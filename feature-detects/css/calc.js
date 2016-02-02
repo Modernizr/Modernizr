@@ -17,14 +17,35 @@ Method of allowing calculated values for length units. For example:
 }
 ```
 */
-define(['Modernizr', 'createElement', 'prefixes'], function(Modernizr, createElement, prefixes) {
-  Modernizr.addTest('csscalc', function() {
-    var prop = 'width:';
-    var value = 'calc(10px);';
-    var el = createElement('a');
+/*!
+{
+  "name": "CSS Calc",
+  "property": "csscalc",
+  "caniuse": "calc",
+  "tags": ["css"],
+  "builderAliases": ["css_calc"],
+  "authors": ["@calvein"]
+}
+!*/
+/* DOC
+Method of allowing calculated values for length units. For example:
 
-    el.style.cssText = prop + prefixes.join(value + prop);
+```css
+//lem {
+  width: calc(100% - 3em);
+}
+```
+*/
+import Modernizr from 'Modernizr';
 
-    return !!el.style.length;
-  });
+import createElement from 'createElement';
+import prefixes from 'prefixes';
+Modernizr.addTest('csscalc', function() {
+  var prop = 'width:';
+  var value = 'calc(10px);';
+  var el = createElement('a');
+
+  el.style.cssText = prop + prefixes.join(value + prop);
+
+  return !!el.style.length;
 });

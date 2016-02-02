@@ -13,9 +13,54 @@
 /* DOC
 Detects native support for JSON handling functions.
 */
-define(['Modernizr'], function(Modernizr) {
-  // this will also succeed if you've loaded the JSON2.js polyfill ahead of time
-  //   ... but that should be obvious. :)
+/*!
+{
+  "name": "JSON",
+  "property": "json",
+  "caniuse": "json",
+  "notes": [{
+    "name": "MDN documentation",
+    "href": "http://developer.mozilla.org/en/JSON"
+  }],
+  "polyfills": ["json2"]
+}
+!*/
+/* DOC
+Detects native support for JSON handling functions.
+*/
+/*!
+{
+  "name": "JSON",
+  "property": "json",
+  "caniuse": "json",
+  "notes": [{
+    "name": "MDN documentation",
+    "href": "http://developer.mozilla.org/en/JSON"
+  }],
+  "polyfills": ["json2"]
+}
+!*/
+/* DOC
+Detects native support for JSON handling functions.
+*/
+/*!
+{
+  "name": "JSON",
+  "property": "json",
+  "caniuse": "json",
+  "notes": [{
+    "name": "MDN documentation",
+    "href": "http://developer.mozilla.org/en/JSON"
+  }],
+  "polyfills": ["json2"]
+}
+!*/
+/* DOC
+Detects native support for JSON handling functions.
+*/
+import Modernizr from 'Modernizr';
 
-  Modernizr.addTest('json', 'JSON' in window && 'parse' in JSON && 'stringify' in JSON);
-});
+// this will also succeed if you've loaded the JSON2.js polyfill ahead of time
+//   ... but that should be obvious. :)
+
+Modernizr.addTest('json', 'JSON' in window && 'parse' in JSON && 'stringify' in JSON);

@@ -12,19 +12,63 @@
 /* DOC
 Detects support for the `contenteditable` attribute of elements, allowing their DOM text contents to be edited directly by the user.
 */
-define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
-  Modernizr.addTest('contenteditable', function() {
-    // early bail out
-    if (!('contentEditable' in docElement)) {
-      return;
-    }
+/*!
+{
+  "name": "Content Editable",
+  "property": "contenteditable",
+  "caniuse": "contenteditable",
+  "notes": [{
+    "name": "WHATWG spec",
+    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/editing.html#contenteditable"
+  }]
+}
+!*/
+/* DOC
+Detects support for the `contenteditable` attribute of elements, allowing their DOM text contents to be edited directly by the user.
+*/
+/*!
+{
+  "name": "Content Editable",
+  "property": "contenteditable",
+  "caniuse": "contenteditable",
+  "notes": [{
+    "name": "WHATWG spec",
+    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/editing.html#contenteditable"
+  }]
+}
+!*/
+/* DOC
+Detects support for the `contenteditable` attribute of elements, allowing their DOM text contents to be edited directly by the user.
+*/
+/*!
+{
+  "name": "Content Editable",
+  "property": "contenteditable",
+  "caniuse": "contenteditable",
+  "notes": [{
+    "name": "WHATWG spec",
+    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/editing.html#contenteditable"
+  }]
+}
+!*/
+/* DOC
+Detects support for the `contenteditable` attribute of elements, allowing their DOM text contents to be edited directly by the user.
+*/
+import Modernizr from 'Modernizr';
 
-    // some mobile browsers (android < 3.0, iOS < 5) claim to support
-    // contentEditable, but but don't really. This test checks to see
-    // confirms whether or not it actually supports it.
+import createElement from 'createElement';
+import docElement from 'docElement';
+Modernizr.addTest('contenteditable', function() {
+  // early bail out
+  if (!('contentEditable' in docElement)) {
+    return;
+  }
 
-    var div = createElement('div');
-    div.contentEditable = true;
-    return div.contentEditable === 'true';
-  });
+  // some mobile browsers (android < 3.0, iOS < 5) claim to support
+  // contentEditable, but but don't really. This test checks to see
+  // confirms whether or not it actually supports it.
+
+  var div = createElement('div');
+  div.contentEditable = true;
+  return div.contentEditable === 'true';
 });

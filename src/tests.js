@@ -1,4 +1,2 @@
-define(function() {
-  var tests = [];
-  return tests;
-});
+var tests = [];
+export default tests;

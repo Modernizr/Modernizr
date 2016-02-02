@@ -11,22 +11,37 @@
 /* DOC
 Detect support for the bdi element, a way to have text that is isolated from its possibly bidirectional surroundings
 */
-define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
-  Modernizr.addTest('bdi', function() {
-    var div = createElement('div');
-    var bdi = createElement('bdi');
+/*!
+{
+  "name": "bdi Element",
+  "property": "bdi",
+  "notes": [{
+    "name": "MDN Overview",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi"
+  }]
+}
+!*/
+/* DOC
+Detect support for the bdi element, a way to have text that is isolated from its possibly bidirectional surroundings
+*/
+import Modernizr from 'Modernizr';
 
-    bdi.innerHTML = '&#1573;';
-    div.appendChild(bdi);
+import createElement from 'createElement';
+import docElement from 'docElement';
+Modernizr.addTest('bdi', function() {
+  var div = createElement('div');
+  var bdi = createElement('bdi');
 
-    docElement.appendChild(div);
+  bdi.innerHTML = '&#1573;';
+  div.appendChild(bdi);
 
-    var supports = ((window.getComputedStyle ?
-          getComputedStyle(bdi, null) :
-          bdi.currentStyle).direction === 'rtl');
+  docElement.appendChild(div);
 
-    docElement.removeChild(div);
+  var supports = ((window.getComputedStyle ?
+        getComputedStyle(bdi, null) :
+        bdi.currentStyle).direction === 'rtl');
 
-    return supports;
-  });
+  docElement.removeChild(div);
+
+  return supports;
 });

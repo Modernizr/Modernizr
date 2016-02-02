@@ -6,6 +6,15 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('cssreflections', testAllProps('boxReflect', 'above', true));
-});
+/*!
+{
+  "name": "CSS Reflections",
+  "caniuse": "css-reflections",
+  "property": "cssreflections",
+  "tags": ["css"]
+}
+!*/
+import Modernizr from 'Modernizr';
+
+import testAllProps from 'testAllProps';
+Modernizr.addTest('cssreflections', testAllProps('boxReflect', 'above', true));

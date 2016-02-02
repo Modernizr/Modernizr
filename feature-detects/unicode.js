@@ -11,31 +11,73 @@
 /* DOC
 Detects if unicode characters are supported in the current document.
 */
-define(['Modernizr', 'createElement', 'testStyles', 'isSVG'], function(Modernizr, createElement, testStyles, isSVG) {
-  /**
-   * Unicode special character support
-   *
-   * Detection is made by testing missing glyph box rendering against star character
-   * If widths are the same, this "probably" means the browser didn't support the star character and rendered a glyph box instead
-   * Just need to ensure the font characters have different widths
-   */
-  Modernizr.addTest('unicode', function() {
-    var bool;
-    var missingGlyph = createElement('span');
-    var star = createElement('span');
+/*!
+{
+  "name": "Unicode characters",
+  "property": "unicode",
+  "tags": ["encoding"],
+  "warnings": [
+    "positive Unicode support doesn't mean you can use it inside <title>, this seems more related to OS & Language packs"
+  ]
+}
+!*/
+/* DOC
+Detects if unicode characters are supported in the current document.
+*/
+/*!
+{
+  "name": "Unicode characters",
+  "property": "unicode",
+  "tags": ["encoding"],
+  "warnings": [
+    "positive Unicode support doesn't mean you can use it inside <title>, this seems more related to OS & Language packs"
+  ]
+}
+!*/
+/* DOC
+Detects if unicode characters are supported in the current document.
+*/
+/*!
+{
+  "name": "Unicode characters",
+  "property": "unicode",
+  "tags": ["encoding"],
+  "warnings": [
+    "positive Unicode support doesn't mean you can use it inside <title>, this seems more related to OS & Language packs"
+  ]
+}
+!*/
+/* DOC
+Detects if unicode characters are supported in the current document.
+*/
+import Modernizr from 'Modernizr';
 
-    testStyles('#modernizr{font-family:Arial,sans;font-size:300em;}', function(node) {
+import createElement from 'createElement';
+import testStyles from 'testStyles';
+import isSVG from 'isSVG';
+/**
+ * Unicode special character support
+ *
+ * Detection is made by testing missing glyph box rendering against star character
+ * If widths are the same, this "probably" means the browser didn't support the star character and rendered a glyph box instead
+ * Just need to ensure the font characters have different widths
+ */
+Modernizr.addTest('unicode', function() {
+  var bool;
+  var missingGlyph = createElement('span');
+  var star = createElement('span');
 
-      missingGlyph.innerHTML = isSVG ? '\u5987' : '&#5987';
-      star.innerHTML = isSVG ? '\u2606' : '&#9734';
+  testStyles('#modernizr{font-family:Arial,sans;font-size:300em;}', function(node) {
 
-      node.appendChild(missingGlyph);
-      node.appendChild(star);
+    missingGlyph.innerHTML = isSVG ? '\u5987' : '&#5987';
+    star.innerHTML = isSVG ? '\u2606' : '&#9734';
 
-      bool = 'offsetWidth' in missingGlyph && missingGlyph.offsetWidth !== star.offsetWidth;
-    });
+    node.appendChild(missingGlyph);
+    node.appendChild(star);
 
-    return bool;
-
+    bool = 'offsetWidth' in missingGlyph && missingGlyph.offsetWidth !== star.offsetWidth;
   });
+
+  return bool;
+
 });

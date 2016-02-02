@@ -6,6 +6,15 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('csstransitions', testAllProps('transition', 'all', true));
-});
+/*!
+{
+  "name": "CSS Transitions",
+  "property": "csstransitions",
+  "caniuse": "css-transitions",
+  "tags": ["css"]
+}
+!*/
+import Modernizr from 'Modernizr';
+
+import testAllProps from 'testAllProps';
+Modernizr.addTest('csstransitions', testAllProps('transition', 'all', true));
