@@ -33,7 +33,6 @@ the test can be combined:
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';
-import docElement from 'docElement';
 import testStyles from 'testStyles';
 Modernizr.addTest('formvalidation', function() {
   var form = createElement('form');

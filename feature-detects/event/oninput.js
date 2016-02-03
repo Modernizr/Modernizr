@@ -44,7 +44,6 @@ import Modernizr from 'Modernizr';
 
 import docElement from 'docElement';
 import createElement from 'createElement';
-import testStyles from 'testStyles';
 import hasEvent from 'hasEvent';
 
 Modernizr.addTest('oninput', function() {

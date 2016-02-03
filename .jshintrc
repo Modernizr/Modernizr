@@ -87,6 +87,8 @@
   // latter are used for alignment only. The technique is called SmartTabs.
   "smarttabs": true,
 
+  "esnext": true,
+
   "globals": {
     "DocumentTouch": true,
     "Modernizr": true,

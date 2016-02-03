@@ -32,5 +32,5 @@ Tests for `CSS.escape()` support.
 */
 import Modernizr from 'Modernizr';
 
-var CSS = window.CSS;
-Modernizr.addTest('cssescape', CSS ? typeof CSS.escape == 'function' : false);
+var _CSS = window.CSS;
+Modernizr.addTest('cssescape', _CSS ? typeof _CSS.escape == 'function' : false);

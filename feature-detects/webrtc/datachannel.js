@@ -26,7 +26,6 @@ Detect for the RTCDataChannel API that allows for transfer data directly from on
 */
 import Modernizr from 'Modernizr';
 
-import prefixed from 'prefixed';
 import domPrefixes from 'domPrefixes';
 import 'test/webrtc/peerconnection';
 

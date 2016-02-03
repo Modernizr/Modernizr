@@ -1,4 +1,3 @@
-import ModernizrProto from 'ModernizrProto';
 import docElement from 'docElement';
 import createElement from 'createElement';
 import getBody from 'getBody';

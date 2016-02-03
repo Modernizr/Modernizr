@@ -72,4 +72,4 @@ export default function generate(config) {
   '});';
 
   return output;
-};
+}

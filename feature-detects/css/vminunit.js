@@ -32,7 +32,6 @@
 !*/
 import Modernizr from 'Modernizr';
 
-import docElement from 'docElement';
 import testStyles from 'testStyles';
 import roundedEquals from 'roundedEquals';
 testStyles('#modernizr1{width: 50vm;width:50vmin}#modernizr2{width:50px;height:50px;overflow:scroll}#modernizr3{position:fixed;top:0;left:0;bottom:0;right:0}', function(node) {

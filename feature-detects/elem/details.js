@@ -29,7 +29,6 @@
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';
-import docElement from 'docElement';
 import testStyles from 'testStyles';
 Modernizr.addTest('details', function() {
   var el = createElement('details');
