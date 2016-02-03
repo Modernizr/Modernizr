@@ -16,60 +16,6 @@
 /* DOC
 Detects support for the `window.requestAnimationFrame` API, for offloading animation repainting to the browser for optimized performance.
 */
-/*!
-{
-  "name": "requestAnimationFrame",
-  "property": "requestanimationframe",
-  "aliases": ["raf"],
-  "caniuse": "requestanimationframe",
-  "tags": ["animation"],
-  "authors": ["Addy Osmani"],
-  "notes": [{
-    "name": "W3C spec",
-    "href": "http://www.w3.org/TR/animation-timing/"
-  }],
-  "polyfills": ["raf"]
-}
-!*/
-/* DOC
-Detects support for the `window.requestAnimationFrame` API, for offloading animation repainting to the browser for optimized performance.
-*/
-/*!
-{
-  "name": "requestAnimationFrame",
-  "property": "requestanimationframe",
-  "aliases": ["raf"],
-  "caniuse": "requestanimationframe",
-  "tags": ["animation"],
-  "authors": ["Addy Osmani"],
-  "notes": [{
-    "name": "W3C spec",
-    "href": "http://www.w3.org/TR/animation-timing/"
-  }],
-  "polyfills": ["raf"]
-}
-!*/
-/* DOC
-Detects support for the `window.requestAnimationFrame` API, for offloading animation repainting to the browser for optimized performance.
-*/
-/*!
-{
-  "name": "requestAnimationFrame",
-  "property": "requestanimationframe",
-  "aliases": ["raf"],
-  "caniuse": "requestanimationframe",
-  "tags": ["animation"],
-  "authors": ["Addy Osmani"],
-  "notes": [{
-    "name": "W3C spec",
-    "href": "http://www.w3.org/TR/animation-timing/"
-  }],
-  "polyfills": ["raf"]
-}
-!*/
-/* DOC
-Detects support for the `window.requestAnimationFrame` API, for offloading animation repainting to the browser for optimized performance.
-*/
 import Modernizr from 'Modernizr';
 
 import prefixed from 'prefixed';

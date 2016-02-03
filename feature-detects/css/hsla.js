@@ -6,14 +6,6 @@
   "tags": ["css"]
 }
 !*/
-/*!
-{
-  "name": "CSS HSLA Colors",
-  "caniuse": "css3-colors",
-  "property": "hsla",
-  "tags": ["css"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

@@ -15,57 +15,6 @@ Force Touch Events allow custom behaviours and interactions to take place based 
 
 Force Touch events are available in OS X 10.11 and later on devices equipped with Force Touch trackpads.
 */
-/*!
-{
-  "name": "Force Touch Events",
-  "property": "forcetouch",
-  "authors": ["Kraig Walker"],
-  "notes": [{
-    "name": "Responding to Force Touch Events from JavaScript",
-    "href": "https://developer.apple.com/library/prerelease/mac/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Articles/RespondingtoForceTouchEventsfromJavaScript.html"
-  }]
-}
-!*/
-/* DOC
-Tests whether the browser supports the detection of Force Touch Events.
-Force Touch Events allow custom behaviours and interactions to take place based on the given pressure or change in pressure from a compatible trackpad.
-
-Force Touch events are available in OS X 10.11 and later on devices equipped with Force Touch trackpads.
-*/
-/*!
-{
-  "name": "Force Touch Events",
-  "property": "forcetouch",
-  "authors": ["Kraig Walker"],
-  "notes": [{
-    "name": "Responding to Force Touch Events from JavaScript",
-    "href": "https://developer.apple.com/library/prerelease/mac/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Articles/RespondingtoForceTouchEventsfromJavaScript.html"
-  }]
-}
-!*/
-/* DOC
-Tests whether the browser supports the detection of Force Touch Events.
-Force Touch Events allow custom behaviours and interactions to take place based on the given pressure or change in pressure from a compatible trackpad.
-
-Force Touch events are available in OS X 10.11 and later on devices equipped with Force Touch trackpads.
-*/
-/*!
-{
-  "name": "Force Touch Events",
-  "property": "forcetouch",
-  "authors": ["Kraig Walker"],
-  "notes": [{
-    "name": "Responding to Force Touch Events from JavaScript",
-    "href": "https://developer.apple.com/library/prerelease/mac/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Articles/RespondingtoForceTouchEventsfromJavaScript.html"
-  }]
-}
-!*/
-/* DOC
-Tests whether the browser supports the detection of Force Touch Events.
-Force Touch Events allow custom behaviours and interactions to take place based on the given pressure or change in pressure from a compatible trackpad.
-
-Force Touch events are available in OS X 10.11 and later on devices equipped with Force Touch trackpads.
-*/
 import Modernizr from 'Modernizr';
 
 import hasEvent from 'hasEvent';

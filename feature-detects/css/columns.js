@@ -7,15 +7,6 @@
   "tags": ["css"]
 }
 !*/
-/*!
-{
-  "name": "CSS Columns",
-  "property": "csscolumns",
-  "caniuse": "multicolumn",
-  "polyfills": ["css3multicolumnjs"],
-  "tags": ["css"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import testAllProps from 'testAllProps';

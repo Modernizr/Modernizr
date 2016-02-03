@@ -8,16 +8,6 @@
   "authors": ["Stefan Wallin"]
 }
 !*/
-/*!
-{
-  "name": "progress Element",
-  "caniuse": "progress",
-  "property": ["progressbar", "meter"],
-  "tags": ["elem"],
-  "builderAliases": ["elem_progress_meter"],
-  "authors": ["Stefan Wallin"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

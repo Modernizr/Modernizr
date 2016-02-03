@@ -5,13 +5,6 @@
   "tags": ["css"]
 }
 !*/
-/*!
-{
-  "name": "CSS Generated Content Animations",
-  "property": "csspseudoanimations",
-  "tags": ["css"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import 'testStyles';

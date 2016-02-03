@@ -6,14 +6,6 @@
   "tags": ["css"]
 }
 !*/
-/*!
-{
-  "name": "CSS Transforms",
-  "property": "csstransforms",
-  "caniuse": "transforms2d",
-  "tags": ["css"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import testAllProps from 'testAllProps';

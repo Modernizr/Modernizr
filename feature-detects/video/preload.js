@@ -5,13 +5,6 @@
   "tags": ["video", "media"]
 }
 !*/
-/*!
-{
-  "name": "Video Preload Attribute",
-  "property": "videopreload",
-  "tags": ["video", "media"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

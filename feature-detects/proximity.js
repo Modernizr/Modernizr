@@ -17,63 +17,6 @@
 /* DOC
 Detects support for an API that allows users to get proximity related information from the device's proximity sensor.
 */
-/*!
-{
-  "authors": ["Cătălin Mariș"],
-  "caniuse": "proximity",
-  "name": "Proximity API",
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/API/Proximity_Events"
-  },{
-    "name": "W3C specification",
-    "href": "http://www.w3.org/TR/proximity/"
-  }],
-  "property": "proximity",
-  "tags": ["events", "proximity"]
-}
-!*/
-/* DOC
-Detects support for an API that allows users to get proximity related information from the device's proximity sensor.
-*/
-/*!
-{
-  "authors": ["Cătălin Mariș"],
-  "caniuse": "proximity",
-  "name": "Proximity API",
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/API/Proximity_Events"
-  },{
-    "name": "W3C specification",
-    "href": "http://www.w3.org/TR/proximity/"
-  }],
-  "property": "proximity",
-  "tags": ["events", "proximity"]
-}
-!*/
-/* DOC
-Detects support for an API that allows users to get proximity related information from the device's proximity sensor.
-*/
-/*!
-{
-  "authors": ["Cătălin Mariș"],
-  "caniuse": "proximity",
-  "name": "Proximity API",
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/API/Proximity_Events"
-  },{
-    "name": "W3C specification",
-    "href": "http://www.w3.org/TR/proximity/"
-  }],
-  "property": "proximity",
-  "tags": ["events", "proximity"]
-}
-!*/
-/* DOC
-Detects support for an API that allows users to get proximity related information from the device's proximity sensor.
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

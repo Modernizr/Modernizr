@@ -20,28 +20,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "CSS Gradients",
-  "caniuse": "css-gradients",
-  "property": "cssgradients",
-  "tags": ["css"],
-  "knownBugs": ["False-positives on webOS (https://github.com/Modernizr/Modernizr/issues/202)"],
-  "notes": [{
-    "name": "Webkit Gradient Syntax",
-    "href": "http://webkit.org/blog/175/introducing-css-gradients/"
-  },{
-    "name": "Mozilla Linear Gradient Syntax",
-    "href": "http://developer.mozilla.org/en/CSS/-moz-linear-gradient"
-  },{
-    "name": "Mozilla Radial Gradient Syntax",
-    "href": "http://developer.mozilla.org/en/CSS/-moz-radial-gradient"
-  },{
-    "name": "W3C Gradient Spec",
-    "href": "dev.w3.org/csswg/css3-images/#gradients-"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import prefixes from 'prefixes';

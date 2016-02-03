@@ -19,69 +19,6 @@
 /* DOC
 Detects support for the Geolocation API for users to provide their location to web applications.
 */
-/*!
-{
-  "name": "Geolocation API",
-  "property": "geolocation",
-  "caniuse": "geolocation",
-  "tags": ["media"],
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/WebAPI/Using_geolocation"
-  }],
-  "polyfills": [
-    "joshuabell-polyfill",
-    "webshims",
-    "geo-location-javascript",
-    "geolocation-api-polyfill"
-  ]
-}
-!*/
-/* DOC
-Detects support for the Geolocation API for users to provide their location to web applications.
-*/
-/*!
-{
-  "name": "Geolocation API",
-  "property": "geolocation",
-  "caniuse": "geolocation",
-  "tags": ["media"],
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/WebAPI/Using_geolocation"
-  }],
-  "polyfills": [
-    "joshuabell-polyfill",
-    "webshims",
-    "geo-location-javascript",
-    "geolocation-api-polyfill"
-  ]
-}
-!*/
-/* DOC
-Detects support for the Geolocation API for users to provide their location to web applications.
-*/
-/*!
-{
-  "name": "Geolocation API",
-  "property": "geolocation",
-  "caniuse": "geolocation",
-  "tags": ["media"],
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/WebAPI/Using_geolocation"
-  }],
-  "polyfills": [
-    "joshuabell-polyfill",
-    "webshims",
-    "geo-location-javascript",
-    "geolocation-api-polyfill"
-  ]
-}
-!*/
-/* DOC
-Detects support for the Geolocation API for users to provide their location to web applications.
-*/
 import Modernizr from 'Modernizr';
 
 // geolocation is often considered a trivial feature detect...

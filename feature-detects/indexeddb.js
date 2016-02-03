@@ -9,31 +9,7 @@
 !*/
 /* DOC
 Detects support for the IndexedDB client-side storage API (final spec).
-*/
-/*!
-{
-  "name": "IndexedDB",
-  "property": "indexeddb",
-  "caniuse": "indexeddb",
-  "tags": ["storage"],
-  "polyfills": ["indexeddb"]
-}
-!*/
-/* DOC
-Detects support for the IndexedDB client-side storage API (final spec).
-*/
-/*!
-{
-  "name": "IndexedDB",
-  "property": "indexeddb",
-  "caniuse": "indexeddb",
-  "tags": ["storage"],
-  "polyfills": ["indexeddb"]
-}
-!*/
-/* DOC
-Detects support for the IndexedDB client-side storage API (final spec).
-*/
+
 /*!
 {
   "name": "IndexedDB",

@@ -6,14 +6,6 @@
   "builderAliases": ["websockets_binary"]
 }
 !*/
-/*!
-{
-  "name": "Binary WebSockets",
-  "property": "websocketsbinary",
-  "tags": ["websockets"],
-  "builderAliases": ["websockets_binary"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 // binaryType is truthy if there is support.. returns "blob" in new-ish chrome.

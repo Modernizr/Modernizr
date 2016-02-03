@@ -7,33 +7,6 @@
 /* DOC
 Detects if the browser can save File/Blob objects to IndexedDB
 */
-/*!
-{
-  "name": "IndexedDB Blob",
-  "property": "indexeddbblob"
-}
-!*/
-/* DOC
-Detects if the browser can save File/Blob objects to IndexedDB
-*/
-/*!
-{
-  "name": "IndexedDB Blob",
-  "property": "indexeddbblob"
-}
-!*/
-/* DOC
-Detects if the browser can save File/Blob objects to IndexedDB
-*/
-/*!
-{
-  "name": "IndexedDB Blob",
-  "property": "indexeddbblob"
-}
-!*/
-/* DOC
-Detects if the browser can save File/Blob objects to IndexedDB
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

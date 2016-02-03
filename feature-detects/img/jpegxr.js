@@ -14,22 +14,6 @@
 /* DOC
 Test for JPEG XR support
 */
-/*!
-{
-  "name": "JPEG XR (extended range)",
-  "async": true,
-  "aliases": ["jpeg-xr"],
-  "property": "jpegxr",
-  "tags": ["image"],
-  "notes": [{
-    "name": "Wikipedia Article",
-    "href": "http://en.wikipedia.org/wiki/JPEG_XR"
-  }]
-}
-!*/
-/* DOC
-Test for JPEG XR support
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

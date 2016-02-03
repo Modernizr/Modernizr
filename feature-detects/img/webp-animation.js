@@ -18,26 +18,6 @@
 /* DOC
 Tests for animated webp support.
 */
-/*!
-{
-  "name": "Webp Animation",
-  "async": true,
-  "property": "webpanimation",
-  "aliases": ["webp-animation"],
-  "tags": ["image"],
-  "authors": ["Krister Kari", "Rich Bradshaw", "Ryan Seddon", "Paul Irish"],
-  "notes": [{
-    "name": "WebP Info",
-    "href": "http://code.google.com/speed/webp/"
-  },{
-    "name": "Chromium blog - Chrome 32 Beta: Animated WebP images and faster Chrome for Android touch input",
-    "href": "http://blog.chromium.org/2013/11/chrome-32-beta-animated-webp-images-and.html"
-  }]
-}
-!*/
-/* DOC
-Tests for animated webp support.
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

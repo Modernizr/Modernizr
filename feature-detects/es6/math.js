@@ -15,23 +15,6 @@
 /* DOC
 Check if browser implements ECMAScript 6 Math per specification.
 */
-/*!
-{
-  "name": "ES6 Math",
-  "property": "es6math",
-  "notes": [{
-    "name": "unofficial ECMAScript 6 draft specification",
-    "href": "http://people.mozilla.org/~jorendorff/es6-draft.html"
-  }],
-  "polyfills": ["es6shim"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "warnings": ["ECMAScript 6 is still a only a draft, so this detect may not match the final specification or implementations."],
-  "tags": ["es6"]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 6 Math per specification.
-*/
 import Modernizr from 'Modernizr';
 
 Modernizr.addTest('es6math', !!(Math &&

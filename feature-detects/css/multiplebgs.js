@@ -6,14 +6,6 @@
   "tags": ["css"]
 }
 !*/
-/*!
-{
-  "name": "CSS Multiple Backgrounds",
-  "caniuse": "multibackgrounds",
-  "property": "multiplebgs",
-  "tags": ["css"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

@@ -14,22 +14,6 @@
 /* DOC
 Enable a developer to remove CPU intensive CSS/JS when battery is low
 */
-/*!
-{
-  "name": "Low Battery Level",
-  "property": "lowbattery",
-  "tags": ["hardware", "mobile"],
-  "builderAliases": ["battery_level"],
-  "authors": ["Paul Sayre"],
-  "notes": [{
-    "name": "MDN Docs",
-    "href": "http://developer.mozilla.org/en/DOM/window.navigator.mozBattery"
-  }]
-}
-!*/
-/* DOC
-Enable a developer to remove CPU intensive CSS/JS when battery is low
-*/
 import Modernizr from 'Modernizr';
 
 import prefixed from 'prefixed';

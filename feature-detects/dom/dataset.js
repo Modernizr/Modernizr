@@ -8,16 +8,6 @@
   "authors": ["@phiggins42"]
 }
 !*/
-/*!
-{
-  "name": "dataset API",
-  "caniuse": "dataset",
-  "property": "dataset",
-  "tags": ["dom"],
-  "builderAliases": ["dom_dataset"],
-  "authors": ["@phiggins42"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

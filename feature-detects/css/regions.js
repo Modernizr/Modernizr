@@ -12,20 +12,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "CSS Regions",
-  "caniuse": "css-regions",
-  "authors": ["Mihai Balan"],
-  "property": "regions",
-  "tags": ["css"],
-  "builderAliases": ["css_regions"],
-  "notes": [{
-    "name": "W3C Specification",
-    "href": "http://www.w3.org/TR/css3-regions/"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

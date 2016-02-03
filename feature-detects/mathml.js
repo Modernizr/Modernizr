@@ -15,57 +15,6 @@
 /* DOC
 Detects support for MathML, for mathematic equations in web pages.
 */
-/*!
-{
-  "name": "MathML",
-  "property": "mathml",
-  "caniuse": "mathml",
-  "authors": ["Addy Osmani", "Davide P. Cervone", "David Carlisle"],
-  "knownBugs": ["Firefox < 4 will likely return a false, however it does support MathML inside XHTML documents"],
-  "notes": [{
-    "name": "W3C spec",
-    "href": "http://www.w3.org/Math/"
-  }],
-  "polyfills": ["mathjax"]
-}
-!*/
-/* DOC
-Detects support for MathML, for mathematic equations in web pages.
-*/
-/*!
-{
-  "name": "MathML",
-  "property": "mathml",
-  "caniuse": "mathml",
-  "authors": ["Addy Osmani", "Davide P. Cervone", "David Carlisle"],
-  "knownBugs": ["Firefox < 4 will likely return a false, however it does support MathML inside XHTML documents"],
-  "notes": [{
-    "name": "W3C spec",
-    "href": "http://www.w3.org/Math/"
-  }],
-  "polyfills": ["mathjax"]
-}
-!*/
-/* DOC
-Detects support for MathML, for mathematic equations in web pages.
-*/
-/*!
-{
-  "name": "MathML",
-  "property": "mathml",
-  "caniuse": "mathml",
-  "authors": ["Addy Osmani", "Davide P. Cervone", "David Carlisle"],
-  "knownBugs": ["Firefox < 4 will likely return a false, however it does support MathML inside XHTML documents"],
-  "notes": [{
-    "name": "W3C spec",
-    "href": "http://www.w3.org/Math/"
-  }],
-  "polyfills": ["mathjax"]
-}
-!*/
-/* DOC
-Detects support for MathML, for mathematic equations in web pages.
-*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';

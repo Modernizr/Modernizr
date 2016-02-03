@@ -17,63 +17,6 @@
 /* DOC
 Detects support for the DOM Pointer Events API, which provides a unified event interface for pointing input devices, as implemented in IE10+.
 */
-/*!
-{
-  "name": "DOM Pointer Events API",
-  "property": "pointerevents",
-  "tags": ["input"],
-  "authors": ["Stu Cox"],
-  "notes": [
-    {
-      "name": "W3C spec",
-      "href": "http://www.w3.org/TR/pointerevents/"
-    }
-  ],
-  "warnings": ["This property name now refers to W3C DOM PointerEvents: https://github.com/Modernizr/Modernizr/issues/548#issuecomment-12812099"],
-  "polyfills": ["handjs"]
-}
-!*/
-/* DOC
-Detects support for the DOM Pointer Events API, which provides a unified event interface for pointing input devices, as implemented in IE10+.
-*/
-/*!
-{
-  "name": "DOM Pointer Events API",
-  "property": "pointerevents",
-  "tags": ["input"],
-  "authors": ["Stu Cox"],
-  "notes": [
-    {
-      "name": "W3C spec",
-      "href": "http://www.w3.org/TR/pointerevents/"
-    }
-  ],
-  "warnings": ["This property name now refers to W3C DOM PointerEvents: https://github.com/Modernizr/Modernizr/issues/548#issuecomment-12812099"],
-  "polyfills": ["handjs"]
-}
-!*/
-/* DOC
-Detects support for the DOM Pointer Events API, which provides a unified event interface for pointing input devices, as implemented in IE10+.
-*/
-/*!
-{
-  "name": "DOM Pointer Events API",
-  "property": "pointerevents",
-  "tags": ["input"],
-  "authors": ["Stu Cox"],
-  "notes": [
-    {
-      "name": "W3C spec",
-      "href": "http://www.w3.org/TR/pointerevents/"
-    }
-  ],
-  "warnings": ["This property name now refers to W3C DOM PointerEvents: https://github.com/Modernizr/Modernizr/issues/548#issuecomment-12812099"],
-  "polyfills": ["handjs"]
-}
-!*/
-/* DOC
-Detects support for the DOM Pointer Events API, which provides a unified event interface for pointing input devices, as implemented in IE10+.
-*/
 import Modernizr from 'Modernizr';
 
 import domPrefixes from 'domPrefixes';

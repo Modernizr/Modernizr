@@ -17,25 +17,6 @@
 /* DOC
 Tests for non-alpha lossless webp support.
 */
-/*!
-{
-  "name": "Webp Lossless",
-  "async": true,
-  "property": ["webplossless", "webp-lossless"],
-  "tags": ["image"],
-  "authors": ["@amandeep", "Rich Bradshaw", "Ryan Seddon", "Paul Irish"],
-  "notes": [{
-    "name": "Webp Info",
-    "href": "http://code.google.com/speed/webp/"
-  },{
-    "name": "Webp Lossless Spec",
-    "href": "https://developers.google.com/speed/webp/docs/webp_lossless_bitstream_specification"
-  }]
-}
-!*/
-/* DOC
-Tests for non-alpha lossless webp support.
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

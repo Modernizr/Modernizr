@@ -14,22 +14,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "CSS vmin unit",
-  "property": "cssvminunit",
-  "caniuse": "viewport-units",
-  "tags": ["css"],
-  "builderAliases": ["css_vminunit"],
-  "notes": [{
-    "name": "Related Modernizr Issue",
-    "href": "https://github.com/Modernizr/Modernizr/issues/572"
-  },{
-    "name": "JSFiddle Example",
-    "href": "http://jsfiddle.net/glsee/JRmdq/8/"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';

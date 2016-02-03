@@ -14,22 +14,6 @@
 /* DOC
 Detects whether web workers can use `transferables` objects.
 */
-/*!
-{
-  "name": "Transferables Objects",
-  "property": "transferables",
-  "tags": ["performance", "workers"],
-  "builderAliases": ["transferables"],
-  "notes": [{
-    "name": "HTML5 Rocks article",
-    "href": "http://updates.html5rocks.com/2011/12/Transferable-Objects-Lightning-Fast"
-  }],
-  "async": true
-}
-!*/
-/* DOC
-Detects whether web workers can use `transferables` objects.
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

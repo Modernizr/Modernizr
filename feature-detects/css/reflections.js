@@ -6,14 +6,6 @@
   "tags": ["css"]
 }
 !*/
-/*!
-{
-  "name": "CSS Reflections",
-  "caniuse": "css-reflections",
-  "property": "cssreflections",
-  "tags": ["css"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import testAllProps from 'testAllProps';

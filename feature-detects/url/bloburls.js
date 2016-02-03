@@ -14,22 +14,6 @@
 /* DOC
 Detects support for creating Blob URLs
 */
-/*!
-{
-  "name": "Blob URLs",
-  "property": "bloburls",
-  "caniuse": "bloburls",
-  "notes": [{
-    "name": "W3C Working Draft",
-    "href": "http://www.w3.org/TR/FileAPI/#creating-revoking"
-  }],
-  "tags": ["file", "url"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"]
-}
-!*/
-/* DOC
-Detects support for creating Blob URLs
-*/
 import Modernizr from 'Modernizr';
 
 import prefixed from 'prefixed';

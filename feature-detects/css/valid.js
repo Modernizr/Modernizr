@@ -11,19 +11,6 @@
 /* DOC
   Detects support for the ':valid' CSS pseudo-class.
 */
-/*!
-{
-  "name": "CSS :valid pseudo-class",
-  "property": "cssvalid",
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/:valid"
-  }]
-}
-!*/
-/* DOC
-  Detects support for the ':valid' CSS pseudo-class.
-*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';

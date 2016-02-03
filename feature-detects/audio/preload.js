@@ -10,18 +10,6 @@
 /* DOC
 Detects if audio can be downloaded in the background before it starts playing in the `<audio>` element
 */
-/*!
-{
-  "name": "Audio Preload",
-  "property": "audiopreload",
-  "tags": ["audio", "media"],
-  "async" : true,
-  "warnings": ["This test is very large – only include it if you absolutely need it"]
-}
-!*/
-/* DOC
-Detects if audio can be downloaded in the background before it starts playing in the `<audio>` element
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

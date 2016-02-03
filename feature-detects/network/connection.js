@@ -24,32 +24,6 @@ Unknown devices are assumed as fast
 
 For more rigorous network testing, consider boomerang.js: http://github.com/bluesmoon/boomerang/
 */
-/*!
-{
-  "name": "Low Bandwidth Connection",
-  "property": "lowbandwidth",
-  "tags": ["network"],
-  "builderAliases": ["network_connection"]
-}
-!*/
-/* DOC
-Tests for determining low-bandwidth via `navigator.connection`
-
-There are two iterations of the `navigator.connection` interface.
-
-The first is present in Android 2.2+ and only in the Browser (not WebView)
-
-- http://docs.phonegap.com/en/1.2.0/phonegap_connection_connection.md.html#connection.type
-- http://davidbcalhoun.com/2010/using-navigator-connection-android
-
-The second is specced at http://dev.w3.org/2009/dap/netinfo/ and perhaps landing in WebKit
-
-- http://bugs.webkit.org/show_bug.cgi?id=73528
-
-Unknown devices are assumed as fast
-
-For more rigorous network testing, consider boomerang.js: http://github.com/bluesmoon/boomerang/
-*/
 import Modernizr from 'Modernizr';
 
 Modernizr.addTest('lowbandwidth', function() {

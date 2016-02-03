@@ -21,29 +21,6 @@
 /* DOC
 Check if browser implements ECMAScript 6 Promises per specification.
 */
-/*!
-{
-  "name": "ES6 Promises",
-  "property": "promises",
-  "caniuse": "promises",
-  "polyfills": ["es6promises"],
-  "authors": ["Krister Kari", "Jake Archibald"],
-  "tags": ["es6"],
-  "notes": [{
-    "name": "The ES6 promises spec",
-    "href": "https://github.com/domenic/promises-unwrapping"
-  },{
-    "name": "Chromium dashboard - ES6 Promises",
-    "href": "http://www.chromestatus.com/features/5681726336532480"
-  },{
-    "name": "JavaScript Promises: There and back again - HTML5 Rocks",
-    "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
-  }]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 6 Promises per specification.
-*/
 import Modernizr from 'Modernizr';
 
 Modernizr.addTest('promises', function() {

@@ -5,13 +5,6 @@
   "tags": ["css"]
 }
 !*/
-/*!
-{
-  "name": "CSS Generated Content Transitions",
-  "property": "csspseudotransitions",
-  "tags": ["css"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import 'testStyles';

@@ -14,22 +14,6 @@
 /* DOC
 Check if browser implements the URL constructor for parsing URLs.
 */
-/*!
-{
-  "name": "URL parser",
-  "property": "urlparser",
-  "notes": [{
-    "name": "URL",
-    "href": "https://dvcs.w3.org/hg/url/raw-file/tip/Overview.html"
-  }],
-  "polyfills": ["urlparser"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["url"]
-}
-!*/
-/* DOC
-Check if browser implements the URL constructor for parsing URLs.
-*/
 import Modernizr from 'Modernizr';
 
 Modernizr.addTest('urlparser', function() {

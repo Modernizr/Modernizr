@@ -17,25 +17,6 @@
 /* DOC
 Detects whether input type="number" is capable of receiving and displaying localized numbers, e.g. with comma separator.
 */
-/*!
-{
-  "name": "input[type=\"number\"] Localization",
-  "property": "localizednumber",
-  "tags": ["forms", "localization", "attribute"],
-  "authors": ["Peter Janes"],
-  "notes": [{
-    "name": "Webkit Bug Tracker Listing",
-    "href": "https://bugs.webkit.org/show_bug.cgi?id=42484"
-  },{
-    "name": "Based on This",
-    "href": "http://trac.webkit.org/browser/trunk/LayoutTests/fast/forms/script-tests/input-number-keyoperation.js?rev=80096#L9"
-  }],
-  "knownBugs": ["Only ever returns true if the browser/OS is configured to use comma as a decimal separator. This is probably fine for most use cases."]
-}
-!*/
-/* DOC
-Detects whether input type="number" is capable of receiving and displaying localized numbers, e.g. with comma separator.
-*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

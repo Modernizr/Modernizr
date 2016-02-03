@@ -10,18 +10,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "CSS rgba",
-  "caniuse": "css3-colors",
-  "property": "rgba",
-  "tags": ["css"],
-  "notes": [{
-    "name": "CSSTricks Tutorial",
-    "href": "http://css-tricks.com/rgba-browser-support/"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

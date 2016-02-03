@@ -19,27 +19,6 @@
 /* DOC
 `oninput` tests if the browser is able to detect the input event
 */
-/*!
-{
-  "name": "onInput Event",
-  "property": "oninput",
-  "notes": [{
-    "name": "MDN article",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.oninput"
-  },{
-    "name": "WHATWG spec",
-    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#common-event-behaviors"
-  },{
-    "name": "Detecting onInput support",
-    "href": "http://danielfriesen.name/blog/2010/02/16/html5-browser-maze-oninput-support"
-  }],
-  "authors": ["Patrick Kettner"],
-  "tags": ["event"]
-}
-!*/
-/* DOC
-`oninput` tests if the browser is able to detect the input event
-*/
 import Modernizr from 'Modernizr';
 
 import docElement from 'docElement';

@@ -10,18 +10,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "SVG SMIL animation",
-  "property": "smil",
-  "caniuse": "svg-smil",
-  "tags": ["svg"],
-  "notes": [{
-  "name": "W3C Synchronised Multimedia spec",
-  "href": "http://www.w3.org/AudioVideo/"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import toStringFn from 'toStringFn';

@@ -7,33 +7,6 @@
   "polyfills": ["jebgl", "cwebgl", "iewebgl"]
 }
 !*/
-/*!
-{
-  "name": "WebGL",
-  "property": "webgl",
-  "caniuse": "webgl",
-  "tags": ["webgl", "graphics"],
-  "polyfills": ["jebgl", "cwebgl", "iewebgl"]
-}
-!*/
-/*!
-{
-  "name": "WebGL",
-  "property": "webgl",
-  "caniuse": "webgl",
-  "tags": ["webgl", "graphics"],
-  "polyfills": ["jebgl", "cwebgl", "iewebgl"]
-}
-!*/
-/*!
-{
-  "name": "WebGL",
-  "property": "webgl",
-  "caniuse": "webgl",
-  "tags": ["webgl", "graphics"],
-  "polyfills": ["jebgl", "cwebgl", "iewebgl"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

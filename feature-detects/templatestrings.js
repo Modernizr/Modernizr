@@ -11,45 +11,6 @@
 /* DOC
 Template strings are string literals allowing embedded expressions.
 */
-/*!
-{
-  "name": "Template strings",
-  "property": "templatestrings",
-  "notes": [{
-    "name": "MDN Reference",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings#Browser_compatibility"
-  }]
-}
-!*/
-/* DOC
-Template strings are string literals allowing embedded expressions.
-*/
-/*!
-{
-  "name": "Template strings",
-  "property": "templatestrings",
-  "notes": [{
-    "name": "MDN Reference",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings#Browser_compatibility"
-  }]
-}
-!*/
-/* DOC
-Template strings are string literals allowing embedded expressions.
-*/
-/*!
-{
-  "name": "Template strings",
-  "property": "templatestrings",
-  "notes": [{
-    "name": "MDN Reference",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings#Browser_compatibility"
-  }]
-}
-!*/
-/* DOC
-Template strings are string literals allowing embedded expressions.
-*/
 import Modernizr from 'Modernizr';
 
 Modernizr.addTest('templatestrings', function() {

@@ -9,19 +9,7 @@
 !*/
 /* DOC
 Detects support for the text APIs for `<canvas>` elements.
-*/
-/*!
-{
-  "name": "Canvas text",
-  "property": "canvastext",
-  "caniuse": "canvas-text",
-  "tags": ["canvas", "graphics"],
-  "polyfills": ["canvastext"]
-}
-!*/
-/* DOC
-Detects support for the text APIs for `<canvas>` elements.
-*/
+
 /*!
 {
   "name": "Canvas text",

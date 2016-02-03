@@ -13,51 +13,6 @@
 /* DOC
 Detects native support for JSON handling functions.
 */
-/*!
-{
-  "name": "JSON",
-  "property": "json",
-  "caniuse": "json",
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "http://developer.mozilla.org/en/JSON"
-  }],
-  "polyfills": ["json2"]
-}
-!*/
-/* DOC
-Detects native support for JSON handling functions.
-*/
-/*!
-{
-  "name": "JSON",
-  "property": "json",
-  "caniuse": "json",
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "http://developer.mozilla.org/en/JSON"
-  }],
-  "polyfills": ["json2"]
-}
-!*/
-/* DOC
-Detects native support for JSON handling functions.
-*/
-/*!
-{
-  "name": "JSON",
-  "property": "json",
-  "caniuse": "json",
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "http://developer.mozilla.org/en/JSON"
-  }],
-  "polyfills": ["json2"]
-}
-!*/
-/* DOC
-Detects native support for JSON handling functions.
-*/
 import Modernizr from 'Modernizr';
 
 // this will also succeed if you've loaded the JSON2.js polyfill ahead of time

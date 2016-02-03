@@ -12,20 +12,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "details Element",
-  "caniuse": "details",
-  "property": "details",
-  "tags": ["elem"],
-  "builderAliases": ["elem_details"],
-  "authors": ["@mathias"],
-  "notes": [{
-    "name": "Mathias' Original",
-    "href": "http://mths.be/axh"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

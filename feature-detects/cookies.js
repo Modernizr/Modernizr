@@ -9,39 +9,6 @@
 /* DOC
 Detects whether cookie support is enabled.
 */
-/*!
-{
-  "name": "Cookies",
-  "property": "cookies",
-  "tags": ["storage"],
-  "authors": ["tauren"]
-}
-!*/
-/* DOC
-Detects whether cookie support is enabled.
-*/
-/*!
-{
-  "name": "Cookies",
-  "property": "cookies",
-  "tags": ["storage"],
-  "authors": ["tauren"]
-}
-!*/
-/* DOC
-Detects whether cookie support is enabled.
-*/
-/*!
-{
-  "name": "Cookies",
-  "property": "cookies",
-  "tags": ["storage"],
-  "authors": ["tauren"]
-}
-!*/
-/* DOC
-Detects whether cookie support is enabled.
-*/
 import Modernizr from 'Modernizr';
 
 // https://github.com/Modernizr/Modernizr/issues/191

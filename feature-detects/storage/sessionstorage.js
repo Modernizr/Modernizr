@@ -6,14 +6,6 @@
   "polyfills": ["joshuabell-polyfill", "cupcake", "sessionstorage"]
 }
 !*/
-/*!
-{
-  "name": "Session Storage",
-  "property": "sessionstorage",
-  "tags": ["storage"],
-  "polyfills": ["joshuabell-polyfill", "cupcake", "sessionstorage"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 // Because we are forced to try/catch this, we'll go aggressive.

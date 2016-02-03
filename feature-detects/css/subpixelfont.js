@@ -17,25 +17,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "CSS Subpixel Fonts",
-  "property": "subpixelfont",
-  "tags": ["css"],
-  "builderAliases": ["css_subpixelfont"],
-  "authors": [
-    "@derSchepp",
-    "@gerritvanaaken",
-    "@rodneyrehm",
-    "@yatil",
-    "@ryanseddon"
-  ],
-  "notes": [{
-    "name": "Origin Test",
-    "href": "https://github.com/gerritvanaaken/subpixeldetect"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';

@@ -11,19 +11,6 @@
 /* DOC
   Detects support for the ':invalid' CSS pseudo-class.
 */
-/*!
-{
-  "name": "CSS :invalid pseudo-class",
-  "property": "cssinvalid",
-  "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid"
-  }]
-}
-!*/
-/* DOC
-  Detects support for the ':invalid' CSS pseudo-class.
-*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';

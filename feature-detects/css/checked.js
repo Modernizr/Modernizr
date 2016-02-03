@@ -10,18 +10,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "CSS :checked pseudo-selector",
-  "caniuse": "css-sel3",
-  "property": "checked",
-  "tags": ["css"],
-  "notes": [{
-    "name": "Related Github Issue",
-    "href": "https://github.com/Modernizr/Modernizr/pull/879"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

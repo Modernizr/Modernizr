@@ -14,22 +14,6 @@
 /* DOC
 Test for animated png support.
 */
-/*!
-{
-  "name": "Animated PNG",
-  "async": true,
-  "property": "apng",
-  "tags": ["image"],
-  "builderAliases": ["img_apng"],
-  "notes": [{
-    "name": "Wikipedia Article",
-    "href": "http://en.wikipedia.org/wiki/APNG"
-  }]
-}
-!*/
-/* DOC
-Test for animated png support.
-*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

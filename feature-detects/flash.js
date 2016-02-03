@@ -9,39 +9,6 @@
 /* DOC
 Detects Flash support as well as Flash-blocking plugins
 */
-/*!
-  {
-  "name": "Flash",
-  "property": "flash",
-  "tags": ["flash"],
-  "polyfills": ["shumway"]
-  }
-  !*/
-/* DOC
-Detects Flash support as well as Flash-blocking plugins
-*/
-/*!
-  {
-  "name": "Flash",
-  "property": "flash",
-  "tags": ["flash"],
-  "polyfills": ["shumway"]
-  }
-  !*/
-/* DOC
-Detects Flash support as well as Flash-blocking plugins
-*/
-/*!
-  {
-  "name": "Flash",
-  "property": "flash",
-  "tags": ["flash"],
-  "polyfills": ["shumway"]
-  }
-  !*/
-/* DOC
-Detects Flash support as well as Flash-blocking plugins
-*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

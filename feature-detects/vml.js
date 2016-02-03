@@ -16,26 +16,7 @@
 !*/
 /* DOC
 Detects support for VML.
-*/
-/*!
-{
-  "name": "VML",
-  "property": "vml",
-  "caniuse": "vml",
-  "tags": ["vml"],
-  "authors": ["Craig Andrews (@candrews)"],
-  "notes": [{
-    "name" : "W3C VML reference",
-    "href": "http://www.w3.org/TR/NOTE-VML"
-  },{
-    "name" : "Microsoft VML reference",
-    "href": "http://msdn.microsoft.com/en-us/library/bb263898%28VS.85%29.aspx"
-  }]
-}
-!*/
-/* DOC
-Detects support for VML.
-*/
+
 /*!
 {
   "name": "VML",

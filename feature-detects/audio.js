@@ -8,36 +8,6 @@
 /* DOC
 Detects the audio element
 */
-/*!
-{
-  "name" : "HTML5 Audio Element",
-  "property": "audio",
-  "tags" : ["html5", "audio", "media"]
-}
-!*/
-/* DOC
-Detects the audio element
-*/
-/*!
-{
-  "name" : "HTML5 Audio Element",
-  "property": "audio",
-  "tags" : ["html5", "audio", "media"]
-}
-!*/
-/* DOC
-Detects the audio element
-*/
-/*!
-{
-  "name" : "HTML5 Audio Element",
-  "property": "audio",
-  "tags" : ["html5", "audio", "media"]
-}
-!*/
-/* DOC
-Detects the audio element
-*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

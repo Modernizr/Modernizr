@@ -6,14 +6,6 @@
   "tags": ["css"]
 }
 !*/
-/*!
-{
-  "name": "CSS Opacity",
-  "caniuse": "css-opacity",
-  "property": "opacity",
-  "tags": ["css"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

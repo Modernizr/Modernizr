@@ -16,24 +16,6 @@
   ]
 }
 !*/
-/*!
-{
-  "name": "Local Storage",
-  "property": "localstorage",
-  "caniuse": "namevalue-storage",
-  "tags": ["storage"],
-  "knownBugs": [],
-  "notes": [],
-  "warnings": [],
-  "polyfills": [
-    "joshuabell-polyfill",
-    "cupcake",
-    "storagepolyfill",
-    "amplifyjs",
-    "yui-cacheoffline"
-  ]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 // In FF4, if disabled, window.localStorage should === null.

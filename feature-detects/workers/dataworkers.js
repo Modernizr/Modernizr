@@ -16,24 +16,6 @@
 /* DOC
 Detects support for creating Web Workers from Data URIs.
 */
-/*!
-{
-  "name": "Workers from Data URIs",
-  "property": "dataworkers",
-  "tags": ["performance", "workers"],
-  "builderAliases": ["workers_dataworkers"],
-  "notes": [{
-    "name": "W3C Reference",
-    "href": "http://www.w3.org/TR/workers/"
-  }],
-  "knownBugs": ["This test may output garbage to console."],
-  "authors": ["Jussi Kalliokoski"],
-  "async": true
-}
-!*/
-/* DOC
-Detects support for creating Web Workers from Data URIs.
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

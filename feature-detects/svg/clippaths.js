@@ -14,22 +14,6 @@ Detects support for clip paths in SVG (only, not on HTML content).
 
 See [this discussion](http://github.com/Modernizr/Modernizr/issues/213) regarding applying SVG clip paths to HTML content.
 */
-/*!
-{
-  "name": "SVG clip paths",
-  "property": "svgclippaths",
-  "tags": ["svg"],
-  "notes": [{
-    "name": "Demo",
-    "href": "http://srufaculty.sru.edu/david.dailey/svg/newstuff/clipPath4.svg"
-  }]
-}
-!*/
-/* DOC
-Detects support for clip paths in SVG (only, not on HTML content).
-
-See [this discussion](http://github.com/Modernizr/Modernizr/issues/213) regarding applying SVG clip paths to HTML content.
-*/
 import Modernizr from 'Modernizr';
 
 import toStringFn from 'toStringFn';

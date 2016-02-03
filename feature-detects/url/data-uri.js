@@ -21,29 +21,6 @@ Modernizr.datauri           // true
 Modernizr.datauri.over32kb  // false in IE8
 ```
 */
-/*!
-{
-  "name": "Data URI",
-  "property": "datauri",
-  "caniuse": "datauri",
-  "tags": ["url"],
-  "builderAliases": ["url_data_uri"],
-  "async": true,
-  "notes": [{
-    "name": "Wikipedia article",
-    "href": "http://en.wikipedia.org/wiki/Data_URI_scheme"
-  }],
-  "warnings": ["Support in Internet Explorer 8 is limited to images and linked resources like CSS files, not HTML files"]
-}
-!*/
-/* DOC
-Detects support for data URIs. Provides a subproperty to report support for data URIs over 32kb in size:
-
-```javascript
-Modernizr.datauri           // true
-Modernizr.datauri.over32kb  // false in IE8
-```
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

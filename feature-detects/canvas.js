@@ -10,42 +10,6 @@
 /* DOC
 Detects support for the `<canvas>` element for 2D drawing.
 */
-/*!
-{
-  "name": "Canvas",
-  "property": "canvas",
-  "caniuse": "canvas",
-  "tags": ["canvas", "graphics"],
-  "polyfills": ["flashcanvas", "excanvas", "slcanvas", "fxcanvas"]
-}
-!*/
-/* DOC
-Detects support for the `<canvas>` element for 2D drawing.
-*/
-/*!
-{
-  "name": "Canvas",
-  "property": "canvas",
-  "caniuse": "canvas",
-  "tags": ["canvas", "graphics"],
-  "polyfills": ["flashcanvas", "excanvas", "slcanvas", "fxcanvas"]
-}
-!*/
-/* DOC
-Detects support for the `<canvas>` element for 2D drawing.
-*/
-/*!
-{
-  "name": "Canvas",
-  "property": "canvas",
-  "caniuse": "canvas",
-  "tags": ["canvas", "graphics"],
-  "polyfills": ["flashcanvas", "excanvas", "slcanvas", "fxcanvas"]
-}
-!*/
-/* DOC
-Detects support for the `<canvas>` element for 2D drawing.
-*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

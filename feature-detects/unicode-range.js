@@ -11,45 +11,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "Unicode Range",
-  "property": "unicoderange",
-  "notes": [{
-    "name" : "W3C reference",
-    "href": "http://www.w3.org/TR/2013/CR-css-fonts-3-20131003/#descdef-unicode-range"
-  }, {
-    "name" : "24 Way article",
-    "href": "http://24ways.org/2011/creating-custom-font-stacks-with-unicode-range"
-  }]
-}
-!*/
-/*!
-{
-  "name": "Unicode Range",
-  "property": "unicoderange",
-  "notes": [{
-    "name" : "W3C reference",
-    "href": "http://www.w3.org/TR/2013/CR-css-fonts-3-20131003/#descdef-unicode-range"
-  }, {
-    "name" : "24 Way article",
-    "href": "http://24ways.org/2011/creating-custom-font-stacks-with-unicode-range"
-  }]
-}
-!*/
-/*!
-{
-  "name": "Unicode Range",
-  "property": "unicoderange",
-  "notes": [{
-    "name" : "W3C reference",
-    "href": "http://www.w3.org/TR/2013/CR-css-fonts-3-20131003/#descdef-unicode-range"
-  }, {
-    "name" : "24 Way article",
-    "href": "http://24ways.org/2011/creating-custom-font-stacks-with-unicode-range"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';

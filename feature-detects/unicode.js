@@ -11,45 +11,6 @@
 /* DOC
 Detects if unicode characters are supported in the current document.
 */
-/*!
-{
-  "name": "Unicode characters",
-  "property": "unicode",
-  "tags": ["encoding"],
-  "warnings": [
-    "positive Unicode support doesn't mean you can use it inside <title>, this seems more related to OS & Language packs"
-  ]
-}
-!*/
-/* DOC
-Detects if unicode characters are supported in the current document.
-*/
-/*!
-{
-  "name": "Unicode characters",
-  "property": "unicode",
-  "tags": ["encoding"],
-  "warnings": [
-    "positive Unicode support doesn't mean you can use it inside <title>, this seems more related to OS & Language packs"
-  ]
-}
-!*/
-/* DOC
-Detects if unicode characters are supported in the current document.
-*/
-/*!
-{
-  "name": "Unicode characters",
-  "property": "unicode",
-  "tags": ["encoding"],
-  "warnings": [
-    "positive Unicode support doesn't mean you can use it inside <title>, this seems more related to OS & Language packs"
-  ]
-}
-!*/
-/* DOC
-Detects if unicode characters are supported in the current document.
-*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

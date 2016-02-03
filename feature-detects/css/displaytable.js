@@ -15,23 +15,6 @@
 /* DOC
 `display: table` and `table-cell` test. (both are tested under one name `table-cell` )
 */
-/*!
-{
-  "name": "CSS Display table",
-  "property": "displaytable",
-  "caniuse": "css-table",
-  "authors": ["scottjehl"],
-  "tags": ["css"],
-  "builderAliases": ["css_displaytable"],
-  "notes": [{
-    "name": "Detects for all additional table display values",
-    "href": "http://pastebin.com/Gk9PeVaQ"
-  }]
-}
-!*/
-/* DOC
-`display: table` and `table-cell` test. (both are tested under one name `table-cell` )
-*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';

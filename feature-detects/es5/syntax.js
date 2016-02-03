@@ -17,25 +17,6 @@
 /* DOC
 Check if browser accepts ECMAScript 5 syntax.
 */
-/*!
-{
-  "name": "ES5 Syntax",
-  "property": "es5syntax",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }, {
-    "name": "original implementation of detect code",
-    "href": "http://kangax.github.io/es5-compat-table/"
-  }],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "warnings": ["This detect uses `eval()`, so CSP may be a problem."],
-  "tags": ["es5"]
-}
-!*/
-/* DOC
-Check if browser accepts ECMAScript 5 syntax.
-*/
 import Modernizr from 'Modernizr';
 
 Modernizr.addTest('es5syntax', function() {

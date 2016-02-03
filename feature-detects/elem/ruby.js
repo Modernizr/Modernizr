@@ -12,20 +12,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "ruby, rp, rt Elements",
-  "caniuse": "ruby",
-  "property": "ruby",
-  "tags": ["elem"],
-  "builderAliases": ["elem_ruby"],
-  "authors": ["Cătălin Mariș"],
-  "notes": [{
-    "name": "WHATWG Specification",
-    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-ruby-element"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

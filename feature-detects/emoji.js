@@ -7,33 +7,6 @@
 /* DOC
 Detects support for emoji character sets.
 */
-/*!
-{
-  "name": "Emoji",
-  "property": "emoji"
-}
-!*/
-/* DOC
-Detects support for emoji character sets.
-*/
-/*!
-{
-  "name": "Emoji",
-  "property": "emoji"
-}
-!*/
-/* DOC
-Detects support for emoji character sets.
-*/
-/*!
-{
-  "name": "Emoji",
-  "property": "emoji"
-}
-!*/
-/* DOC
-Detects support for emoji character sets.
-*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

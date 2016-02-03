@@ -10,18 +10,6 @@
   }]
 }
 !*/
-/*!
-{
-  "name": "CSS general sibling selector",
-  "caniuse": "css-sel3",
-  "property": "siblinggeneral",
-  "tags": ["css"],
-  "notes": [{
-    "name": "Related Github Issue",
-    "href": "https://github.com/Modernizr/Modernizr/pull/889"
-  }]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';

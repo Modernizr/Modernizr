@@ -16,24 +16,6 @@
 /* DOC
 Detects support for creating Web Workers from Blob URIs.
 */
-/*!
-{
-  "name": "Workers from Blob URIs",
-  "property": "blobworkers",
-  "tags": ["performance", "workers"],
-  "builderAliases": ["workers_blobworkers"],
-  "notes": [{
-    "name": "W3C Reference",
-    "href": "http://www.w3.org/TR/workers/"
-  }],
-  "knownBugs": ["This test may output garbage to console."],
-  "authors": ["Jussi Kalliokoski"],
-  "async": true
-}
-!*/
-/* DOC
-Detects support for creating Web Workers from Blob URIs.
-*/
 import Modernizr from 'Modernizr';
 
 import addTest from 'addTest';

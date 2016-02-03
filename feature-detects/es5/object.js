@@ -14,22 +14,6 @@
 /* DOC
 Check if browser implements ECMAScript 5 Object per specification.
 */
-/*!
-{
-  "name": "ES5 Object",
-  "property": "es5object",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }],
-  "polyfills": ["es5shim", "es5sham"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["es5"]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 5 Object per specification.
-*/
 import Modernizr from 'Modernizr';
 
 Modernizr.addTest('es5object', function() {

@@ -6,14 +6,6 @@
   "builderAliases": ["css_scrollbars"]
 }
 !*/
-/*!
-{
-  "name": "CSS Stylable Scrollbars",
-  "property": "cssscrollbar",
-  "tags": ["css"],
-  "builderAliases": ["css_scrollbars"]
-}
-!*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';

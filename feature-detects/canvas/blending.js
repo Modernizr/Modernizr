@@ -17,25 +17,6 @@
 /* DOC
 Detects if Photoshop style blending modes are available in canvas.
 */
-/*!
-{
-  "name": "canvas blending support",
-  "property": "canvasblending",
-  "tags": ["canvas"],
-  "async" : false,
-  "notes": [{
-      "name": "HTML5 Spec",
-      "href": "https://dvcs.w3.org/hg/FXTF/rawfile/tip/compositing/index.html#blending"
-    },
-    {
-      "name": "Article",
-      "href": "http://blogs.adobe.com/webplatform/2013/01/28/blending-features-in-canvas"
-    }]
-}
-!*/
-/* DOC
-Detects if Photoshop style blending modes are available in canvas.
-*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

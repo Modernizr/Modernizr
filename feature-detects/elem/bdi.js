@@ -11,19 +11,6 @@
 /* DOC
 Detect support for the bdi element, a way to have text that is isolated from its possibly bidirectional surroundings
 */
-/*!
-{
-  "name": "bdi Element",
-  "property": "bdi",
-  "notes": [{
-    "name": "MDN Overview",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi"
-  }]
-}
-!*/
-/* DOC
-Detect support for the bdi element, a way to have text that is isolated from its possibly bidirectional surroundings
-*/
 import Modernizr from 'Modernizr';
 
 import createElement from 'createElement';

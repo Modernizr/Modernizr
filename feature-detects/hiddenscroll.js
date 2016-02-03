@@ -16,60 +16,6 @@
 /* DOC
 Detects overlay scrollbars (when scrollbars on overflowed blocks are visible). This is found most commonly on mobile and OS X.
 */
-/*!
-{
-  "name": "Hidden Scrollbar",
-  "property": "hiddenscroll",
-  "authors": ["Oleg Korsunsky"],
-  "tags": ["overlay"],
-  "notes": [{
-    "name": "Overlay Scrollbar description",
-    "href": "https://developer.apple.com/library/mac/releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_7.html#//apple_ref/doc/uid/TP40010355-SW39"
-  },{
-    "name": "Video example of overlay scrollbars",
-    "href": "http://gfycat.com/FoolishMeaslyAtlanticsharpnosepuffer"
-  }]
-}
-!*/
-/* DOC
-Detects overlay scrollbars (when scrollbars on overflowed blocks are visible). This is found most commonly on mobile and OS X.
-*/
-/*!
-{
-  "name": "Hidden Scrollbar",
-  "property": "hiddenscroll",
-  "authors": ["Oleg Korsunsky"],
-  "tags": ["overlay"],
-  "notes": [{
-    "name": "Overlay Scrollbar description",
-    "href": "https://developer.apple.com/library/mac/releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_7.html#//apple_ref/doc/uid/TP40010355-SW39"
-  },{
-    "name": "Video example of overlay scrollbars",
-    "href": "http://gfycat.com/FoolishMeaslyAtlanticsharpnosepuffer"
-  }]
-}
-!*/
-/* DOC
-Detects overlay scrollbars (when scrollbars on overflowed blocks are visible). This is found most commonly on mobile and OS X.
-*/
-/*!
-{
-  "name": "Hidden Scrollbar",
-  "property": "hiddenscroll",
-  "authors": ["Oleg Korsunsky"],
-  "tags": ["overlay"],
-  "notes": [{
-    "name": "Overlay Scrollbar description",
-    "href": "https://developer.apple.com/library/mac/releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_7.html#//apple_ref/doc/uid/TP40010355-SW39"
-  },{
-    "name": "Video example of overlay scrollbars",
-    "href": "http://gfycat.com/FoolishMeaslyAtlanticsharpnosepuffer"
-  }]
-}
-!*/
-/* DOC
-Detects overlay scrollbars (when scrollbars on overflowed blocks are visible). This is found most commonly on mobile and OS X.
-*/
 import Modernizr from 'Modernizr';
 
 import testStyles from 'testStyles';
