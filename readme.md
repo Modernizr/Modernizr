@@ -47,7 +47,7 @@ Run the [test suite](https://modernizr.github.io/Modernizr/test/)
 
 ### To generate everything in 'config-all.json':
 
-```js
+```shell
 npm install
 ./bin/modernizr -c lib/config-all.json
 //outputs to ./modernizr.js
@@ -55,7 +55,7 @@ npm install
 
 ### To run tests (in phantom):
 
-```js
+```shell
 grunt test
 ```
 
