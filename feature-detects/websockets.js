@@ -25,5 +25,11 @@
 }
 !*/
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('websockets', 'WebSocket' in window && window.WebSocket.CLOSING === 2);
+  var supports;
+  try {
+    supports = 'WebSocket' in window && window.WebSocket.CLOSING === 2;
+  } catch (e) {
+    supports = false;
+  }
+  Modernizr.addTest('websockets', supports);
 });
