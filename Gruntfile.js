@@ -176,7 +176,8 @@ module.exports = function(grunt) {
     mochaTest: {
       test: {
         options: {
-          reporter: 'dot'
+          reporter: 'dot',
+          timeout: 5000
         },
         src: ['<%= env.nodeTests%>']
       }
