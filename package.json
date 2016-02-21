@@ -6,7 +6,7 @@
     "test": "test"
   },
   "dependencies": {
-    "doctrine": "1.1.0",
+    "doctrine": "1.2.0",
     "file": "0.2.2",
     "find-parent-dir": "0.3.0",
     "lodash": "4.5.0",
