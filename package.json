@@ -26,7 +26,7 @@
     "grunt-contrib-jshint": "1.0.0",
     "grunt-coveralls": "1.0.0",
     "grunt-env": "0.4.4",
-    "grunt-istanbul": "0.6.2",
+    "grunt-istanbul": "0.7.0",
     "grunt-jscs": "2.7.0",
     "grunt-mocha": "0.4.15",
     "grunt-mocha-test": "0.12.7",
