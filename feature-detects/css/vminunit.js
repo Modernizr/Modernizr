@@ -10,7 +10,7 @@
     "href": "https://github.com/Modernizr/Modernizr/issues/572"
   },{
     "name": "JSFiddle Example",
-    "href": "http://jsfiddle.net/glsee/JRmdq/8/"
+    "href": "https://jsfiddle.net/glsee/JRmdq/8/"
   }]
 }
 !*/
@@ -26,7 +26,7 @@ define(['Modernizr', 'docElement', 'testStyles', 'roundedEquals'], function(Mode
     var expectedWidth = parseInt(Math.min(one_vw, one_vh) * 50, 10);
     var compWidth = parseInt((window.getComputedStyle ?
                           getComputedStyle(elem, null) :
-                          elem.currentStyle)['width'], 10);
+                          elem.currentStyle).width, 10);
 
     Modernizr.addTest('cssvminunit', roundedEquals(expectedWidth, compWidth) || roundedEquals(expectedWidth, compWidth - scrollbarWidth));
   }, 3);

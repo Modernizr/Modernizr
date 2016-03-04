@@ -62,7 +62,7 @@ describe('generate-banner', function() {
 
   it('should include a build url', function() {
     var banner = generateBanner();
-    var test = ' * http://' + domain + '/download/?--dontmin';
+    var test = ' * https://' + domain + '/download/?--dontmin';
     expect(banner).to.contain(test);
   });
 

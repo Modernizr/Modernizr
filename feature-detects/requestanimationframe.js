@@ -8,7 +8,7 @@
   "authors": ["Addy Osmani"],
   "notes": [{
     "name": "W3C spec",
-    "href": "http://www.w3.org/TR/animation-timing/"
+    "href": "https://www.w3.org/TR/animation-timing/"
   }],
   "polyfills": ["raf"]
 }

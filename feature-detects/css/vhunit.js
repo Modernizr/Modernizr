@@ -10,7 +10,7 @@
     "href": "https://github.com/Modernizr/Modernizr/issues/572"
   },{
     "name": "Similar JSFiddle",
-    "href": "http://jsfiddle.net/FWeinb/etnYC/"
+    "href": "https://jsfiddle.net/FWeinb/etnYC/"
   }]
 }
 !*/
@@ -19,7 +19,7 @@ define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
     var height = parseInt(window.innerHeight / 2, 10);
     var compStyle = parseInt((window.getComputedStyle ?
                               getComputedStyle(elem, null) :
-                              elem.currentStyle)['height'], 10);
+                              elem.currentStyle).height, 10);
     Modernizr.addTest('cssvhunit', compStyle == height);
   });
 });

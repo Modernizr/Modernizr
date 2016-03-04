@@ -1,7 +1,7 @@
 /*!
 {
   "name": "progress Element",
-  "caniuse": "progressmeter",
+  "caniuse": "progress",
   "property": ["progressbar", "meter"],
   "tags": ["elem"],
   "builderAliases": ["elem_progress_meter"],

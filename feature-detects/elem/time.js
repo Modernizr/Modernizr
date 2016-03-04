@@ -6,7 +6,7 @@
   "builderAliases": ["elem_time"],
   "notes": [{
     "name": "WhatWG Spec",
-    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-time-element"
+    "href": "https://html.spec.whatwg.org/multipage/semantics.html#the-time-element"
   }]
 }
 !*/

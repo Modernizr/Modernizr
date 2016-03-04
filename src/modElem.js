@@ -6,7 +6,7 @@ define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
    */
 
   var modElem = {
-    elem : createElement('modernizr')
+    elem: createElement('modernizr')
   };
 
   // Clean up this element

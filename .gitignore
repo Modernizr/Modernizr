@@ -3,6 +3,7 @@ test/coverage
 test/*.html
 gh-pages
 modernizr.min.js
+modernizr-test.js
 metadata.json
 build
 dist

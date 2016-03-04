@@ -10,7 +10,7 @@ define(['ModernizrProto', 'cssomPrefixes'], function(ModernizrProto, prefixes) {
    * @access public
    * @function atRule
    * @param {string} prop - String name of the @-rule to test for
-   * @returns {string|false} The string representing the (possibly prefixed)
+   * @returns {string|boolean} The string representing the (possibly prefixed)
    * valid version of the @-rule, or `false` when it is unsupported.
    * @example
    * ```js

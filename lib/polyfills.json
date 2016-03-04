@@ -698,6 +698,12 @@
     "href": "http://remysharp.com/2008/06/30/maxlength-plugin/",
     "licenses": ["CC SA"]
   },
+  "weakmap": {
+    "name": "ES6 WeakMap",
+    "authors": ["Google Inc."],
+    "href": "https://github.com/Polymer/WeakMap",
+    "licenses": ["BSD"]
+  },
   "eventlistener": {
     "name": "EventListener",
     "authors": ["Jonathan Neal"],
@@ -745,5 +751,17 @@
     "href": "https://github.com/github/fetch",
     "licenses": ["MIT"],
     "name": "window.fetch polyfill"
+  },
+  "base64js": {
+    "authors": ["David Chambers"],
+    "href": "https://github.com/davidchambers/Base64.js",
+    "licenses": ["Apache2", "WTFPL"],
+    "name": "window.atob and window.btoa polyfill"
+  },
+  "scrollsnap": {
+    "authors": ["Clemens Krack"],
+    "href": "https://github.com/ckrack/scrollsnap-polyfill",
+    "licenses": ["MIT"],
+    "name": "scrollsnap-polyfill.js"
   }
 }

@@ -6,7 +6,7 @@
   "async" : false,
   "notes": [{
     "name": "Article",
-    "href": "http://blogs.adobe.com/webplatform/2013/01/30/winding-rules-in-canvas/"
+    "href": "https://blogs.adobe.com/webplatform/2013/01/30/winding-rules-in-canvas/"
   }]
 }
 !*/

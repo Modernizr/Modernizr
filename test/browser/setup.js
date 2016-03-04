@@ -36,7 +36,7 @@ $(document).ready(function() {
   runner.on('fail', logFailure);
 
   function logFailure(test, err) {
-    var isTimeout = _.contains(err.toString(), 'Ensure the done() callback is being called in this test.');
+    var isTimeout = _.includes(err.toString(), 'Ensure the done() callback is being called in this test.');
 
     if (isTimeout) {
       return window.global_test_results = {message: err};

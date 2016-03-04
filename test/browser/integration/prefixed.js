@@ -34,7 +34,7 @@ describe('prefixed()', function() {
     return false;
   }
 
-  function domToCSS (name) {
+  function domToCSS(name) {
     return name.replace(/([A-Z])/g, function(str, m1) {
       return '-' + m1.toLowerCase();
     }).replace(/^ms-/, '-ms-');

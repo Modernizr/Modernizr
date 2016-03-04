@@ -1,11 +1,12 @@
 /*global module */
 
 var browsers = require('./test/browser/sauce-browsers.json');
+var serveStatic = require('serve-static');
 
 module.exports = function(grunt) {
   'use strict';
 
-  // Load grunt dependencies
+  // load grunt dependencies
   require('load-grunt-tasks')(grunt);
 
   var browserTests = grunt.file.expand([
@@ -116,7 +117,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          middleware: function(connect, options) {
+          middleware: function() {
             return [
               function(req, res, next) {
                 // catchall middleware used in testing
@@ -146,10 +147,9 @@ module.exports = function(grunt) {
 
                 next();
               },
-              connect.static(options.base)
+              serveStatic(__dirname)
             ];
           },
-          base: '',
           port: 9999
         }
       }
@@ -176,7 +176,8 @@ module.exports = function(grunt) {
     mochaTest: {
       test: {
         options: {
-          reporter: 'dot'
+          reporter: 'dot',
+          timeout: 5000
         },
         src: ['<%= env.nodeTests%>']
       }

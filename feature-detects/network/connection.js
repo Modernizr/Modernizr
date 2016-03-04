@@ -18,11 +18,11 @@ The first is present in Android 2.2+ and only in the Browser (not WebView)
 
 The second is specced at http://dev.w3.org/2009/dap/netinfo/ and perhaps landing in WebKit
 
-- http://bugs.webkit.org/show_bug.cgi?id=73528
+- https://bugs.webkit.org/show_bug.cgi?id=73528
 
 Unknown devices are assumed as fast
 
-For more rigorous network testing, consider boomerang.js: http://github.com/bluesmoon/boomerang/
+For more rigorous network testing, consider boomerang.js: https://github.com/bluesmoon/boomerang/
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('lowbandwidth', function() {

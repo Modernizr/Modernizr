@@ -5,7 +5,7 @@
   "caniuse": "json",
   "notes": [{
     "name": "MDN documentation",
-    "href": "http://developer.mozilla.org/en/JSON"
+    "href": "https://developer.mozilla.org/en-US/docs/Glossary/JSON"
   }],
   "polyfills": ["json2"]
 }

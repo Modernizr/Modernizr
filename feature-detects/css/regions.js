@@ -8,7 +8,7 @@
   "builderAliases": ["css_regions"],
   "notes": [{
     "name": "W3C Specification",
-    "href": "http://www.w3.org/TR/css3-regions/"
+    "href": "https://www.w3.org/TR/css3-regions/"
   }]
 }
 !*/

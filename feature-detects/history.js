@@ -7,7 +7,7 @@
   "authors": ["Hay Kranen", "Alexander Farkas"],
   "notes": [{
     "name": "W3C Spec",
-    "href": "http://www.w3.org/TR/html51/browsers.html#the-history-interface"
+    "href": "https://www.w3.org/TR/html51/browsers.html#the-history-interface"
   }, {
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/window.history"
