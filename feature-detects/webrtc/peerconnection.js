@@ -6,7 +6,7 @@
   "authors": ["Ankur Oberoi"],
   "notes": [{
     "name": "W3C Web RTC spec",
-    "href": "http://www.w3.org/TR/webrtc/"
+    "href": "https://www.w3.org/TR/webrtc/"
   }]
 }
 !*/

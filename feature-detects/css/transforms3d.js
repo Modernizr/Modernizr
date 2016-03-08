@@ -20,6 +20,7 @@ define(['Modernizr', 'testAllProps', 'testStyles', 'docElement', 'test/css/suppo
     //   will sometimes throw a false positive, thus we must do a more thorough check:
     if (ret && (!usePrefix || 'webkitPerspective' in docElement.style)) {
       var mq;
+      var defaultStyle = '#modernizr{width:0;height:0}';
       // Use CSS Conditional Rules if available
       if (Modernizr.supports) {
         mq = '@supports (perspective: 1px)';
@@ -31,11 +32,11 @@ define(['Modernizr', 'testAllProps', 'testStyles', 'docElement', 'test/css/suppo
           mq += ',(-webkit-transform-3d)';
         }
       }
-      // If loaded inside the body tag and the test element inherits any padding, margin or borders it will fail #740
-      mq += '{#modernizr{left:9px;position:absolute;height:5px;margin:0;padding:0;border:0}}';
 
-      testStyles(mq, function(elem) {
-        ret = elem.offsetLeft === 9 && elem.offsetHeight === 5;
+      mq += '{#modernizr{width:7px;height:18px;margin:0;padding:0;border:0}}';
+
+      testStyles(defaultStyle + mq, function(elem) {
+        ret = elem.offsetWidth === 7 && elem.offsetHeight === 18;
       });
     }
 

@@ -10,7 +10,7 @@
   ],
   "notes": [{
     "name": "CLOSING State and Spec",
-    "href": "http://www.w3.org/TR/websockets/#the-websocket-interface"
+    "href": "https://www.w3.org/TR/websockets/#the-websocket-interface"
   }],
   "polyfills": [
     "sockjs",
@@ -25,5 +25,9 @@
 }
 !*/
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('websockets', 'WebSocket' in window && window.WebSocket.CLOSING === 2);
+  var supports = false;
+  try {
+    supports = 'WebSocket' in window && window.WebSocket.CLOSING === 2;
+  } catch (e) {}
+  Modernizr.addTest('websockets', supports);
 });

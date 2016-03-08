@@ -7,12 +7,17 @@
   }
   !*/
 /* DOC
-Detects support flash, as well as flash blocking plugins
+Detects Flash support as well as Flash-blocking plugins
 */
 define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG'], function(Modernizr, createElement, docElement, addTest, getBody, isSVG) {
   Modernizr.addAsyncTest(function() {
     /* jshint -W053 */
 
+    var attachBody = function(body) {
+      if (!docElement.contains(body)) {
+        docElement.appendChild(body);
+      }
+    };
     var removeFakeBody = function(body) {
       // If we’re rockin’ an attached fake body, clean it up
       if (body.fake && body.parentNode) {
@@ -40,10 +45,10 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
     };
     var easy_detect;
     var activex;
-    // we wrap activex in a try/catch because when flash is disabled through
+    // we wrap activex in a try/catch because when Flash is disabled through
     // ActiveX controls, it throws an error.
     try {
-      // Pan is an API that exists for flash objects.
+      // Pan is an API that exists for Flash objects.
       activex = 'ActiveXObject' in window && 'Pan' in new window.ActiveXObject('ShockwaveFlash.ShockwaveFlash');
     } catch (e) {}
 
@@ -53,7 +58,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
       runTest(false);
     }
     else {
-      // flash seems to be installed, but it might be blocked. We have to
+      // Flash seems to be installed, but it might be blocked. We have to
       // actually create an element to see what happens to it.
       var embed = createElement('embed');
       var body = getBody();
@@ -64,11 +69,11 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
 
       // Need to do this in the body (fake or otherwise) otherwise IE8 complains
       body.appendChild(embed);
-      docElement.appendChild(body);
 
       // Pan doesn't exist in the embed if its IE (its on the ActiveXObjeect)
       // so this check is for all other browsers.
       if (!('Pan' in embed) && !activex) {
+        attachBody(body);
         runTest('blocked', embed);
         removeFakeBody(body);
         return;
@@ -78,6 +83,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
         // if we used a fake body originally, we need to restart this test, since
         // we haven't been attached to the DOM, and therefore none of the blockers
         // have had time to work.
+        attachBody(body);
         if (!docElement.contains(body)) {
           body = document.body || body;
           embed = createElement('embed');
@@ -92,7 +98,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
           inline_style = embed.style.cssText;
           if (inline_style !== '') {
             // the style of the element has changed automatically. This is a
-            // really poor heuristic, but for lower end flash blocks, it the
+            // really poor heuristic, but for lower end Flash blocks, it the
             // only change they can make.
             runTest('blocked', embed);
           }

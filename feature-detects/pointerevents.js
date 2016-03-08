@@ -7,7 +7,7 @@
   "notes": [
     {
       "name": "W3C spec",
-      "href": "http://www.w3.org/TR/pointerevents/"
+      "href": "https://www.w3.org/TR/pointerevents/"
     }
   ],
   "warnings": ["This property name now refers to W3C DOM PointerEvents: https://github.com/Modernizr/Modernizr/issues/548#issuecomment-12812099"],

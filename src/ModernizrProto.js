@@ -14,10 +14,10 @@ define(['tests'], function(tests) {
     // Any settings that don't work as separate modules
     // can go in here as configuration.
     _config: {
-      'classPrefix' : '',
-      'enableClasses' : true,
-      'enableJSClass' : true,
-      'usePrefixes' : true
+      'classPrefix': '',
+      'enableClasses': true,
+      'enableJSClass': true,
+      'usePrefixes': true
     },
 
     // Queue of tests
@@ -38,11 +38,11 @@ define(['tests'], function(tests) {
     },
 
     addTest: function(name, fn, options) {
-      tests.push({name : name, fn : fn, options : options});
+      tests.push({name: name, fn: fn, options: options});
     },
 
     addAsyncTest: function(fn) {
-      tests.push({name : null, fn : fn});
+      tests.push({name: null, fn: fn});
     }
   };
 

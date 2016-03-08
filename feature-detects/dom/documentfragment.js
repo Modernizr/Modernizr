@@ -4,7 +4,7 @@
   "property": "documentfragment",
   "notes": [{
     "name": "W3C DOM Level 1 Reference",
-    "href": "http://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-B63ED1A3"
+    "href": "https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-B63ED1A3"
   }, {
     "name": "SitePoint Reference",
     "href": "http://reference.sitepoint.com/javascript/DocumentFragment"

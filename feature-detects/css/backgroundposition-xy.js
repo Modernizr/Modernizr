@@ -7,7 +7,7 @@
   "authors": ["Allan Lei", "Brandom Aaron"],
   "notes": [{
     "name": "Demo",
-    "href": "http://jsfiddle.net/allanlei/R8AYS/"
+    "href": "https://jsfiddle.net/allanlei/R8AYS/"
   }, {
     "name": "Adapted From",
     "href": "https://github.com/brandonaaron/jquery-cssHooks/blob/master/bgpos.js"

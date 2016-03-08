@@ -7,7 +7,7 @@
   "authors": ["Alberto Elias"],
   "notes": [{
     "name": "W3C CSSOM View Module",
-    "href": "http://dev.w3.org/csswg/cssom-view/#the-mediaquerylist-interface"
+    "href": "https://drafts.csswg.org/cssom-view/#the-mediaquerylist-interface"
   }, {
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/Window.matchMedia"

@@ -23,7 +23,7 @@ describe('build-query', function() {
       context: Math.random().toString().slice(2),
       paths: {
         lib: filesRoot + '/lib',
-        lodash: projectRoot + '/node_modules/lodash/index',
+        lodash: projectRoot + '/node_modules/lodash/lodash',
         metadata: projectRoot + '/test/mocks/lib/metadata',
         cleanup: projectRoot + '/test/cleanup'
       }
@@ -62,7 +62,7 @@ describe('build-query', function() {
       classPrefix: 'TEST_PREFIX',
       options: ['setClasses']
     });
-    expect(query).to.be('?-cssclasses-dontmin-cssclassprefix:TEST_PREFIX');
+    expect(query).to.be('?-setclasses-dontmin-cssclassprefix:TEST_PREFIX');
   });
 
   it('strips `html5` from the shiv options', function() {
@@ -78,6 +78,14 @@ describe('build-query', function() {
     });
     expect(query).to.be('?-');
   });
+
+  it('removes custom tests from the build query', function() {
+      var query = buildQuery({
+            'feature-detects': ['css/boxsizing', 'custom/test/path']
+          });
+      expect(query).to.be('?-boxsizing-dontmin');
+    });
+
 
   after(function() {
     cleanup();

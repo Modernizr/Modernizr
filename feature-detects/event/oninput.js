@@ -7,7 +7,7 @@
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.oninput"
   },{
     "name": "WHATWG spec",
-    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#common-event-behaviors"
+    "href": "https://html.spec.whatwg.org/multipage/forms.html#common-input-element-attributes"
   },{
     "name": "Detecting onInput support",
     "href": "http://danielfriesen.name/blog/2010/02/16/html5-browser-maze-oninput-support"

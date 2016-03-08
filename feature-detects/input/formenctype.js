@@ -5,10 +5,10 @@
   "aliases": ["input-formenctype"],
   "notes": [{
     "name": "WHATWG Spec",
-    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#attr-fs-formenctype"
+    "href": "https://html.spec.whatwg.org/multipage/forms.html#attr-fs-formenctype"
   }, {
     "name": "Wufoo demo",
-    "href": "http://www.wufoo.com/html5/attributes/16-formenctype.html"
+    "href": "https://www.wufoo.com/html5/attributes/16-formenctype.html"
   }],
   "polyfills": [
     "html5formshim"

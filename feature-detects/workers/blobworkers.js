@@ -6,7 +6,7 @@
   "builderAliases": ["workers_blobworkers"],
   "notes": [{
     "name": "W3C Reference",
-    "href": "http://www.w3.org/TR/workers/"
+    "href": "https://www.w3.org/TR/workers/"
   }],
   "knownBugs": ["This test may output garbage to console."],
   "authors": ["Jussi Kalliokoski"],
@@ -36,7 +36,7 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
           scriptText = 'this.onmessage=function(e){postMessage(e.data)}';
 
       try {
-        blob = new Blob([scriptText], {type:'text/javascript'});
+        blob = new Blob([scriptText], {type: 'text/javascript'});
       } catch (e) {
         // we'll fall back to the deprecated BlobBuilder
       }
