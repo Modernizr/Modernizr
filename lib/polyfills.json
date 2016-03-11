@@ -95,8 +95,8 @@
   },
   "css3multicolumnjs": {
     "name": "css3-multi-column.js",
-    "authors": ["Cdric Savarese"],
-    "href": "http://www.csscripting.com/css-multi-column/",
+    "authors": ["Betley Whitehorne Image", "Cdric Savarese"],
+    "href": "https://github.com/BetleyWhitehorne/CSS3MultiColumn",
     "licenses": ["CC-GNU LGPL"],
     "notes": [
       "Supported Properties: column-count, column-width, column-gap, column-rule.",
