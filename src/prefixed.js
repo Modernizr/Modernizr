@@ -35,7 +35,7 @@ define(['ModernizrProto', 'testPropsAll', 'cssToDOM', 'atRule'], function(Modern
    * ```js
    * var rAF = prefixed('requestAnimationFrame', window);
    *
-   * raf(function() {
+   * rAF(function() {
    *  renderFunction();
    * })
    * ```
@@ -46,7 +46,7 @@ define(['ModernizrProto', 'testPropsAll', 'cssToDOM', 'atRule'], function(Modern
    * ```js
    * var rAFProp = prefixed('requestAnimationFrame', window, false);
    *
-   * rafProp === 'WebkitRequestAnimationFrame' // in older webkit
+   * rAFProp === 'WebkitRequestAnimationFrame' // in older webkit
    * ```
    *
    * One common use case for prefixed is if you're trying to determine which transition
