@@ -11,24 +11,17 @@
 /* DOC
 Detect for the RTCDataChannel API that allows for transfer data directly from one peer to another
 */
-define(['Modernizr', 'prefixed', 'domPrefixes', 'test/webrtc/peerconnection'], function(Modernizr, prefixed, domPrefixes) {
-
+define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
   Modernizr.addTest('datachannel', function() {
-    if (!Modernizr.peerconnection) {
+    /* Return the property because otherwise we get a bound constructor. */
+    var prop = prefixed('RTCPeerConnection', window, false);
+    if (prop) {
+      var peerConnection = new window[prop]({
+        iceServers: [{url: 'stun:0'}],
+      });
+      return 'createDataChannel' in peerConnection;
+    } else {
       return false;
     }
-    for (var i = 0, l = domPrefixes.length; i < l; i++) {
-      var PeerConnectionConstructor = window[domPrefixes[i] + 'RTCPeerConnection'];
-
-      if (PeerConnectionConstructor) {
-        var peerConnection = new PeerConnectionConstructor({
-          'iceServers': [{'url': 'stun:0'}]
-        });
-
-        return 'createDataChannel' in peerConnection;
-      }
-
-    }
-    return false;
   });
 });
