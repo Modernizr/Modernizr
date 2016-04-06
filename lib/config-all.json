@@ -244,6 +244,7 @@
     "test/elem/bdi",
     "test/img/crossorigin",
     "test/ligatures",
+    "test/video/crossorigin",
     "textarea/maxlength",
     "touchevents",
     "typed-arrays",
