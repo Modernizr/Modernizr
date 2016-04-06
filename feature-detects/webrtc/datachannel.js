@@ -13,10 +13,9 @@ Detect for the RTCDataChannel API that allows for transfer data directly from on
 */
 define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
   Modernizr.addTest('datachannel', function() {
-    /* Return the property because otherwise we get a bound constructor. */
-    var prop = prefixed('RTCPeerConnection', window, false);
-    if (prop) {
-      var peerConnection = new window[prop]({
+    var RTCPeerConnectionConstructor = prefixed('RTCPeerConnection', window);
+    if (RTCPeerConnectionConstructor) {
+      var peerConnection = new RTCPeerConnectionConstructor({
         iceServers: [{url: 'stun:0'}],
       });
       return 'createDataChannel' in peerConnection;

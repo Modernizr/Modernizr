@@ -23,14 +23,14 @@ describe('prefixed autobind', function() {
 
     var fn = Modernizr.prefixed('matchesSelector', HTMLElement.prototype, document.body);
 
-    //returns function
+    // returns function
     it('Modernizr.prefixed("matchesSelector", HTMLElement.prototype, document.body) returns a function', function() {
       expect(fn).to.be.a('function');
     });
 
     // fn scoping
     it('Modernizr.prefixed("matchesSelector", HTMLElement.prototype, document.body) is scoped to the body', function() {
-      expect(fn('body')).to.be(true);
+      expect(fn.call(document.body, 'body')).to.be(true);
     });
   }
 
