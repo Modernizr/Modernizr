@@ -28,7 +28,7 @@
     "grunt-env": "0.4.4",
     "grunt-istanbul": "0.7.0",
     "grunt-jscs": "2.8.0",
-    "grunt-mocha": "0.4.15",
+    "grunt-mocha": "1.0.1",
     "grunt-mocha-test": "0.12.7",
     "grunt-saucelabs": "8.6.2",
     "joi": "6.10.0",
