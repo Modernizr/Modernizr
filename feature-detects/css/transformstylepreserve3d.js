@@ -18,17 +18,17 @@ Detects support for `transform-style: preserve-3d`, for getting a proper 3D pers
 */
 define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
   Modernizr.addTest('preserve3d', function() {
-    var outerDiv = createElement('div');
-    var innerDiv = createElement('div');
+    var outerAnchor = createElement('a');
+    var innerAnchor = createElement('a');
 
-    outerDiv.style.cssText = 'transform-style: preserve-3d; transform-origin: right; transform: rotateY(40deg);';
-    innerDiv.style.cssText = 'width: 9px; height: 1px; background: #000; transform-origin: right; transform: rotateY(40deg);';
+    outerAnchor.style.cssText = 'transform-style: preserve-3d; transform-origin: right; transform: rotateY(40deg);';
+    innerAnchor.style.cssText = 'width: 9px; height: 1px; background: #000; transform-origin: right; transform: rotateY(40deg);';
 
-    outerDiv.appendChild(innerDiv);
-    docElement.appendChild(outerDiv);
+    outerAnchor.appendChild(innerAnchor);
+    docElement.appendChild(outerAnchor);
 
-    var result = innerDiv.getBoundingClientRect();
-    docElement.removeChild(outerDiv);
+    var result = innerAnchor.getBoundingClientRect();
+    docElement.removeChild(outerAnchor);
 
     return result.width && result.width < 4;
   });
