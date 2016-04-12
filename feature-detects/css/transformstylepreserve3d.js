@@ -21,8 +21,8 @@ define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createE
     var outerAnchor = createElement('a');
     var innerAnchor = createElement('a');
 
-    outerAnchor.style.cssText = 'transform-style: preserve-3d; transform-origin: right; transform: rotateY(40deg);';
-    innerAnchor.style.cssText = 'width: 9px; height: 1px; background: #000; transform-origin: right; transform: rotateY(40deg);';
+    outerAnchor.style.cssText = 'display: block; transform-style: preserve-3d; transform-origin: right; transform: rotateY(40deg);';
+    innerAnchor.style.cssText = 'display: block; width: 9px; height: 1px; background: #000; transform-origin: right; transform: rotateY(40deg);';
 
     outerAnchor.appendChild(innerAnchor);
     docElement.appendChild(outerAnchor);
