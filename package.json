@@ -18,7 +18,7 @@
   "devDependencies": {
     "@alrra/travis-scripts": "1.1.1",
     "expect.js": "0.3.1",
-    "grunt": "1.0.0",
+    "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-connect": "1.0.1",
     "grunt-contrib-copy": "1.0.0",
