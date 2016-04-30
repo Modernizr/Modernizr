@@ -24,7 +24,7 @@
     "grunt-contrib-copy": "1.0.0",
     "grunt-contrib-jade": "1.0.0",
     "grunt-contrib-jshint": "1.0.0",
-    "grunt-coveralls": "1.0.0",
+    "grunt-coveralls": "1.0.1",
     "grunt-env": "0.4.4",
     "grunt-istanbul": "0.7.0",
     "grunt-jscs": "2.8.0",
