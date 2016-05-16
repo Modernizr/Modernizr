@@ -124,6 +124,7 @@
     "dom/hidden",
     "dom/microdata",
     "dom/mutationObserver",
+    "dom/passiveeventlisteners",
     "elem/datalist",
     "elem/details",
     "elem/output",
