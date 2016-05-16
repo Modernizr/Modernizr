@@ -31,7 +31,7 @@ define(['Modernizr'], function(Modernizr) {
           supportsPassiveOption = true;
         }
       });
-      window.addEventListener("test", null, opts);
+      window.addEventListener('test', null, opts);
     } catch (e) {}
     return supportsPassiveOption;
   });
