@@ -24,7 +24,7 @@ Detects support for the passive option to addEventListener.
 
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('passiveeventlisteners', function() {
-  	var supportsPassiveOption = false;
+    var supportsPassiveOption = false;
     try {
       var opts = Object.defineProperty({}, 'passive', {
         get: function() {
