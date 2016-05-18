@@ -1,6 +1,5 @@
 /*!
 {
-  "async": false,
   "authors": ["Rick Byers"],
   "name": "Passive event listeners",
   "notes": [
