@@ -8,11 +8,11 @@
 !*/
 define(['Modernizr', 'testStyles', 'prefixes'], function(Modernizr, testStyles, prefixes) {
   testStyles('#modernizr{overflow: scroll; width: 40px; height: 40px; }#' + prefixes
-    .join('scrollbar{width:0px}' + ' #modernizr::')
+    .join('scrollbar{width:10px}' + ' #modernizr::')
     .split('#')
     .slice(1)
-    .join('#') + 'scrollbar{width:0px}',
+    .join('#') + 'scrollbar{width:10px}',
   function(node) {
-    Modernizr.addTest('cssscrollbar', node.scrollWidth == 40);
+    Modernizr.addTest('cssscrollbar', 'scrollWidth' in node && node.scrollWidth == 30);
   });
 });
