@@ -4,6 +4,7 @@
   "property": "svgasimg",
   "caniuse" : "svg-img",
   "tags": ["svg"],
+  "aliases": ["svgincss"],
   "authors": ["Chris Coyier"],
   "notes": [{
     "name": "HTML5 Spec",
