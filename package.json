@@ -13,7 +13,7 @@
     "mkdirp": "0.5.1",
     "remarkable": "^1.6.2",
     "requirejs": "2.1.22",
-    "yargs": "4.8.0"
+    "yargs": "4.8.1"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "1.1.1",
