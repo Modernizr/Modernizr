@@ -23,11 +23,10 @@
     "grunt-contrib-connect": "1.0.2",
     "grunt-contrib-copy": "1.0.0",
     "grunt-contrib-jade": "1.0.0",
-    "grunt-contrib-jshint": "1.0.0",
     "grunt-coveralls": "1.0.1",
     "grunt-env": "0.4.4",
+    "grunt-eslint": "^18.1.0",
     "grunt-istanbul": "0.7.0",
-    "grunt-jscs": "3.0.1",
     "grunt-mocha": "0.4.15",
     "grunt-mocha-test": "0.12.7",
     "grunt-saucelabs": "8.6.3",
@@ -99,7 +98,7 @@
     }
   ],
   "greenkeeper": {
-    "ignore": ["joi"]
+    "ignore": ["joi", "grunt-eslint"]
   },
   "license": "MIT"
 }

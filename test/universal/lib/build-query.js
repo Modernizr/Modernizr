@@ -80,11 +80,11 @@ describe('build-query', function() {
   });
 
   it('removes custom tests from the build query', function() {
-      var query = buildQuery({
-            'feature-detects': ['css/boxsizing', 'custom/test/path']
-          });
-      expect(query).to.be('?-boxsizing-dontmin');
+    var query = buildQuery({
+      'feature-detects': ['css/boxsizing', 'custom/test/path']
     });
+    expect(query).to.be('?-boxsizing-dontmin');
+  });
 
 
   after(function() {

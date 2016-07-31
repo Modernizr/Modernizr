@@ -29,21 +29,21 @@ describe('iframe context', function() {
   });
 
   it('is able to be loaded in an iframe', function(done) {
-      iframeWindow.$.getScript('../dist/modernizr-build.js')
-        .done(function(build, status) {
-          expect(status).to.equal('success');
-          expect(iframeWindow.Modernizr).to.not.be(undefined);
-          done();
-        })
-        .fail(function(ajaxResponse, errorType, err) {
-          if (err && err.message) {
-            expect(err.message).to.be(undefined);
-          } else {
-            expect(errorType).to.be(undefined);
-          }
-          done();
-        });
-    });
+    iframeWindow.$.getScript('../dist/modernizr-build.js')
+      .done(function(build, status) {
+        expect(status).to.equal('success');
+        expect(iframeWindow.Modernizr).to.not.be(undefined);
+        done();
+      })
+      .fail(function(ajaxResponse, errorType, err) {
+        if (err && err.message) {
+          expect(err.message).to.be(undefined);
+        } else {
+          expect(errorType).to.be(undefined);
+        }
+        done();
+      });
+  });
 
   after(function() {
     $iframe.remove();

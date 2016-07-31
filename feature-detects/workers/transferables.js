@@ -29,11 +29,11 @@ define(['Modernizr', 'addTest', 'test/blob', 'test/url/bloburls', 'test/workers/
     // Proper test if prerequisites are met
     try {
       var buffer,
-          scriptText = 'var hello = "world"',
-          blob = new Blob([scriptText], {type: 'text/javascript'}),
-          url = URL.createObjectURL(blob),
-          worker = new Worker(url),
-          timeout;
+        scriptText = 'var hello = "world"',
+        blob = new Blob([scriptText], {type: 'text/javascript'}),
+        url = URL.createObjectURL(blob),
+        worker = new Worker(url),
+        timeout;
 
       // Just in case...
       worker.onerror = fail;

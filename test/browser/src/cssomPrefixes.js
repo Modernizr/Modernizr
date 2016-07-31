@@ -1,4 +1,9 @@
 describe('cssomPrefixes', function() {
+  /*
+    eslint no-unused-vars: [ "error", {
+      "varsIgnorePattern": "cssomPrefixes"
+    }]
+ */
   var setup = function(done, bool) {
     return (function() {
       define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});

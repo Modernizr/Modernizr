@@ -1,4 +1,9 @@
 describe('prefixes', function() {
+  /*
+    eslint no-unused-vars: [ "error", {
+      "varsIgnorePattern": "prefixes"
+    }]
+ */
   var setup = function(done, bool) {
     return (function() {
       define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});

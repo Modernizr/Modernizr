@@ -2,7 +2,6 @@ describe('testStyles', function() {
   var injectElementWithStyles;
   var ModernizrProto;
   var cleanup;
-  var testStyles;
 
 
   before(function(done) {
@@ -18,7 +17,6 @@ describe('testStyles', function() {
     req(['ModernizrProto', 'testStyles', 'injectElementWithStyles', 'cleanup'], function(_ModernizrProto, _testStyles, _injectElementWithStyles, _cleanup) {
       injectElementWithStyles = _injectElementWithStyles;
       ModernizrProto = _ModernizrProto;
-      testStyles = _testStyles;
       cleanup = _cleanup;
       done();
     });
