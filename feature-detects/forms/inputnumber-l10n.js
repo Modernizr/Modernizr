@@ -41,7 +41,9 @@ define(['Modernizr', 'createElement', 'docElement', 'getBody', 'test/inputtypes'
     }
     diff = input.type === 'number' && input.valueAsNumber === 1.1 && input.checkValidity();
     root.removeChild(el);
-    body.fake && root.parentNode.removeChild(root);
+    if (body.fake) {
+      root.parentNode.removeChild(root);
+    }
     return diff;
   });
 

@@ -17,6 +17,7 @@ define(['Modernizr'], function(Modernizr) {
     try {
       // A number of tools, including uglifyjs and require, break on a raw "`", so
       // use an eval to get around that.
+      // eslint-disable-next-line
       eval('``');
       supports = true;
     } catch (e) {}

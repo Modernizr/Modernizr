@@ -23,7 +23,7 @@ define(['Modernizr', 'domPrefixes', 'hasEvent'], function(Modernizr, domPrefixes
   Modernizr.addTest('pointerevents', function() {
     // Cannot use `.prefixed()` for events, so test each prefix
     var bool = false,
-    i = domPrefixes.length;
+      i = domPrefixes.length;
 
     // Don't forget un-prefixed...
     bool = Modernizr.hasEvent('pointerdown');

@@ -50,8 +50,12 @@ module.exports = function(grunt) {
         ]
       }
     },
-    jscs: {
-      src: [
+    eslint: {
+      target: [
+        '<%= env.nodeTests%>',
+        '<%= env.browserTests %>',
+        'test/browser/setup.js',
+        'test/browser/integration/*.js',
         'Gruntfile.js',
         'src/*.js',
         'lib/*.js',
@@ -62,34 +66,6 @@ module.exports = function(grunt) {
         '!test/js/lib/**/*.js',
         '!src/html5shiv.js'
       ]
-    },
-    jshint: {
-      options: {
-        jshintrc: true,
-        ignores: [
-          'src/html5printshiv.js',
-          'src/html5shiv.js'
-        ]
-      },
-      files: [
-        'Gruntfile.js',
-        'src/*.js',
-        'lib/*.js',
-        'feature-detects/**/*.js'
-      ],
-      tests: {
-        options: {
-          jshintrc: true
-        },
-        files: {
-          src: [
-            '<%= env.nodeTests%>',
-            '<%= env.browserTests %>',
-            'test/browser/setup.js',
-            'test/browser/integration/*.js'
-          ]
-        }
-      }
     },
     clean: {
       dist: [
@@ -232,11 +208,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['clean', 'generate']);
 
-  grunt.registerTask('lint', ['jshint', 'jscs']);
+  grunt.registerTask('default', ['eslint', 'build']);
 
-  grunt.registerTask('default', ['lint', 'build']);
-
-  var tests = ['clean', 'lint', 'jade', 'instrument', 'env:coverage', 'nodeTests'];
+  var tests = ['clean', 'eslint', 'jade', 'instrument', 'env:coverage', 'nodeTests'];
 
   if (process.env.APPVEYOR) {
     grunt.registerTask('test', tests);

@@ -23,12 +23,12 @@ describe('testPropsAll', function() {
     define('package', [], function() {return {};});
 
     req(['testDOMProps', 'testProps', 'cleanup', 'sinon'], function(_testDOMProps, _testProps, _cleanup, _sinon) {
-        testDOMProps = _sinon.spy(_testDOMProps);
-        testProps = _sinon.spy(_testProps);
-        cleanup = _cleanup;
+      testDOMProps = _sinon.spy(_testDOMProps);
+      testProps = _sinon.spy(_testProps);
+      cleanup = _cleanup;
 
-        done();
-      });
+      done();
+    });
 
   });
 
