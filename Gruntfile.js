@@ -65,7 +65,10 @@ module.exports = function(grunt) {
         '!test/coverage/**/*.js',
         '!test/js/lib/**/*.js',
         '!src/html5shiv.js'
-      ]
+      ],
+      options: {
+        rulePaths: ['test/eslint/rules']
+      }
     },
     clean: {
       dist: [
