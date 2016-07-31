@@ -98,5 +98,8 @@
       "url": "https://twitter.com/doctyper"
     }
   ],
+  "greenkeeper": {
+    "ignore": ["joi"]
+  },
   "license": "MIT"
 }
