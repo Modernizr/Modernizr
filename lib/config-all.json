@@ -243,6 +243,7 @@
     "templatestrings",
     "test/css/scrollsnappoints",
     "test/elem/bdi",
+    "test/iframe/datauri",
     "test/img/crossorigin",
     "test/ligatures",
     "textarea/maxlength",
