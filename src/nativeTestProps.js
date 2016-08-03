@@ -1,4 +1,4 @@
-define(['injectElementWithStyles', 'domToCSS'], function(injectElementWithStyles, domToCSS) {
+define(['injectElementWithStyles', 'domToCSS', 'computedStyle'], function(injectElementWithStyles, domToCSS, computedStyle) {
   /**
    * nativeTestProps allows for us to use native feature detection functionality if available.
    * some prefixed form, or false, in the case of an unsupported rule
@@ -33,7 +33,7 @@ define(['injectElementWithStyles', 'domToCSS'], function(injectElementWithStyles
       }
       conditionText = conditionText.join(' or ');
       return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function(node) {
-        return getComputedStyle(node, null).position == 'absolute';
+        return computedStyle(node, null, 'position') == 'absolute';
       });
     }
     return undefined;

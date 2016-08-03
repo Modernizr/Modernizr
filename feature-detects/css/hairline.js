@@ -1,6 +1,6 @@
 /*! {
   "name": "hairline",
-  "property": "csshairline",
+  "property": "hairline",
   "tags": ["css"],
   "authors": ["strarsis"],
   "notes": [{

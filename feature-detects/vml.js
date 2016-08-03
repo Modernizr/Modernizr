@@ -23,7 +23,7 @@ define(['Modernizr', 'createElement', 'isSVG'], function(Modernizr, createElemen
     var supports = false;
     var shape;
 
-     if (!isSVG) {
+    if (!isSVG) {
       containerDiv.innerHTML = '<v:shape id="vml_flag1" adj="1" />';
       shape = containerDiv.firstChild;
       if ('style' in shape) {

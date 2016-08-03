@@ -53,6 +53,6 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
     } catch (e) {
       supportsOnInput = false;
     }
-      return supportsOnInput;
+    return supportsOnInput;
   });
 });

@@ -20,7 +20,7 @@ define(['Modernizr', 'hasEvent', 'prefixed'], function(Modernizr, hasEvent, pref
 		// github.com/Modernizr/Modernizr/issues/1613
     // Test if the browser supports the force touch event progression (see notes link)
     if (!hasEvent(prefixed('mouseforcewillbegin', window, false), window)) {
-          return false;
+      return false;
     }
 
     // Test if the browser provides thresholds defining a "force touch" from a normal touch/click event

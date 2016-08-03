@@ -26,32 +26,32 @@ describe('atRule', function() {
     });
   });
 
-    it('returns undefined when the browser does not support CSSRule', function() {
-      var ref = window.CSSRule;
-      window.CSSRule = undefined;
+  it('returns undefined when the browser does not support CSSRule', function() {
+    var ref = window.CSSRule;
+    window.CSSRule = undefined;
 
-      expect(atRule('charset')).to.be(undefined);
+    expect(atRule('charset')).to.be(undefined);
 
-      window.CSSRule = ref;
+    window.CSSRule = ref;
+  });
+
+  if (window.CSSRule) {
+    it('detects `@rule`s', function() {
+      expect(atRule('charset')).to.be('@charset');
     });
 
-    if (window.CSSRule) {
-      it('detects `@rule`s', function() {
-        expect(atRule('charset')).to.be('@charset');
-      });
+    it('returns false when a property is not given', function() {
+      expect(atRule()).to.be(false);
+    });
 
-      it('returns false when a property is not given', function() {
-        expect(atRule()).to.be(false);
-      });
+    it('returns false when a property is not found', function() {
+      expect(atRule('fart')).to.be(false);
+    });
 
-      it('returns false when a property is not found', function() {
-        expect(atRule('fart')).to.be(false);
-      });
-
-      it('detects prefixed properties', function() {
-        expect(atRule('fake')).to.be('@-modernizr-fake');
-      });
-    }
+    it('detects prefixed properties', function() {
+      expect(atRule('fake')).to.be('@-modernizr-fake');
+    });
+  }
 
   after(function() {
     if (window.CSSRule) {

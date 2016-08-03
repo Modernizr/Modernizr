@@ -121,7 +121,12 @@ if (argv.o || argv.f) {
       .map(function(prop) {
         var obj = _.find(source, {property: prop});
 
-        if (_.isUndefined(obj)) {
+        // setClasses is technically a flag, not an option. But it is passed
+        // in as an option. Since it doesn't exist as an option we have to
+        // special case around it :[
+        if (prop === 'setClasses') {
+          return 'setClasses';
+        } else if (_.isUndefined(obj)) {
           throw new Error('invalid key value name - ' + prop);
         } else {
           return obj.amdPath || obj.property;
@@ -158,6 +163,9 @@ try {
     config = config || {};
     if (configPath) {
       config = _.extend(config, require(configPath));
+    }
+    if (config && config.dest) {
+      dest = path.join(cwd, config.dest, 'modernizr.js');
     }
   }
 } catch (e) {

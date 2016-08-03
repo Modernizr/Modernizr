@@ -71,6 +71,7 @@ describe('cli/build', function() {
       build(config, function(file) {
         var parsedConfig = file.match(configRE);
         //use eval becuase the minified code creates non valid JSON.
+        // eslint-disable-next-line
         parsedConfig = eval('(' + parsedConfig[1].replace(/'/g, '"') + ')');
         expect(parsedConfig.classPrefix).to.be(prefix);
         done();

@@ -1,4 +1,9 @@
 describe('load', function() {
+  /*
+    eslint no-unused-vars: [ "error", {
+      "varsIgnorePattern": "load"
+    }]
+   */
   var ModernizrProto;
   var cleanup;
   var sinon;

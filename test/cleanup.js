@@ -1,4 +1,3 @@
-/*jshint: globals __coverage__ */
 if (typeof define !== 'function') {
   var requirejs = require('requirejs');
 }
