@@ -65,7 +65,6 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
         var result = event && event.type === 'load' ? image.width == 1 : false;
         var baseTest = name === 'webp';
 
-        /* jshint -W053 */
         addTest(name, baseTest ? new Boolean(result) : result);
 
         if (cb) {

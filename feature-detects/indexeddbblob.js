@@ -14,7 +14,6 @@ define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function(Moderniz
   // For speed, we don't test the legacy (and beta-only) indexedDB
 
   Modernizr.addAsyncTest(function() {
-    /* jshint -W053 */
     var indexeddb;
     var dbname = 'detect-blob-support';
     var supportsBlob = false;

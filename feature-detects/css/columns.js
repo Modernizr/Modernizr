@@ -11,7 +11,6 @@ define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
 
   (function() {
 
-    /* jshint -W053 */
     Modernizr.addTest('csscolumns', function() {
       var bool = false;
       var test = testAllProps('columnCount');

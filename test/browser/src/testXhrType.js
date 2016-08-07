@@ -18,7 +18,6 @@ describe('testXhrType', function() {
     });
   });
 
-  /*jshint -W020 */
   it('returns false when XHR is undefined', function(done) {
     var originalXhr = XMLHttpRequest;
     XMLHttpRequest = undefined;
@@ -29,7 +28,6 @@ describe('testXhrType', function() {
       done();
     });
   });
-  /*jshint +W020 */
 
   // TODO add more tests once sinon's XHR2 features land
   // http://git.io/AemZ
