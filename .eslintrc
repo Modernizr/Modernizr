@@ -46,7 +46,7 @@
       "error",
       "single"
     ],
-    "curly": "off",
+    "curly": "error",
     "wrap-iife": "off",
     "no-caller": "error",
     "no-cond-assign": [
