@@ -35,7 +35,12 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
 
       elem.removeEventListener('playing', testAutoplay, false);
       addTest('videoautoplay', result);
-      elem.parentNode.removeChild(elem);
+
+      // Cleanup, but don't assume elem is still in the page -
+      // an extension (eg Flashblock) may already have removed it.
+      if (elem.parentNode) {
+        elem.parentNode.removeChild(elem);
+      }
     }
 
     //skip the test if video itself, or the autoplay
