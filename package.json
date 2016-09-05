@@ -12,7 +12,7 @@
     "lodash": "4.15.0",
     "mkdirp": "0.5.1",
     "remarkable": "^1.6.2",
-    "requirejs": "2.1.22",
+    "requirejs": "2.3.1",
     "yargs": "5.0.0"
   },
   "devDependencies": {
