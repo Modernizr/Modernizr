@@ -10,7 +10,7 @@
     "href": "http://dev.w3.org/csswg/css3-conditional/#at-supports"
   },{
     "name": "Related Github Issue",
-    "href": "github.com/Modernizr/Modernizr/issues/648"
+    "href": "https://github.com/Modernizr/Modernizr/issues/648"
   },{
     "name": "W3 Info",
     "href": "http://dev.w3.org/csswg/css3-conditional/#the-csssupportsrule-interface"
