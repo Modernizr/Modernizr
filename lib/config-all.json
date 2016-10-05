@@ -158,6 +158,7 @@
     "es6/string",
     "event/deviceorientation-motion",
     "event/oninput",
+    "event/listener-options",
     "eventlistener",
     "exif-orientation",
     "file/api",
