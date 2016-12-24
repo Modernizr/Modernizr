@@ -9,7 +9,7 @@
     "doctrine": "1.2.3",
     "file": "0.2.2",
     "find-parent-dir": "0.3.0",
-    "lodash": "4.15.0",
+    "lodash": "4.17.3",
     "mkdirp": "0.5.1",
     "remarkable": "^1.6.2",
     "requirejs": "2.1.22",
