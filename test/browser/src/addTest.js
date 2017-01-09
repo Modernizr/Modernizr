@@ -76,28 +76,28 @@ describe('addTest', function() {
     var fakeDetect = function() {};
 
     it('keeps track of requests', function() {
-        ModernizrProto.on('fakeDetect', fakeDetect);
-        expect(ModernizrProto._l.fakeDetect).to.be.an('array');
-        expect(ModernizrProto._l.fakeDetect[0]).to.be(fakeDetect);
+      ModernizrProto.on('fakeDetect', fakeDetect);
+      expect(ModernizrProto._l.fakeDetect).to.be.an('array');
+      expect(ModernizrProto._l.fakeDetect[0]).to.be(fakeDetect);
     });
 
     it('does not recreate the queue with duplicate requests', function() {
-        ModernizrProto.on('fakeDetect', fakeDetect);
-        ModernizrProto.on('fakeDetect', fakeDetect);
-        expect(ModernizrProto._l.fakeDetect.length).to.be(2);
+      ModernizrProto.on('fakeDetect', fakeDetect);
+      ModernizrProto.on('fakeDetect', fakeDetect);
+      expect(ModernizrProto._l.fakeDetect.length).to.be(2);
     });
 
 
     it('triggers results if the detect already ran', function(done) {
-        Modernizr.fakeDetect = 'fake';
-        Modernizr._trigger = sinon.spy();
-        ModernizrProto.on('fakeDetect', fakeDetect);
+      Modernizr.fakeDetect = 'fake';
+      Modernizr._trigger = sinon.spy();
+      ModernizrProto.on('fakeDetect', fakeDetect);
 
-        setTimeout(function() {
-          expect(Modernizr._trigger.calledOnce).to.be(true);
-          expect(Modernizr._trigger.calledWith('fakeDetect', Modernizr.fakeDetect)).to.be(true);
-          done();
-        }, 0);
+      setTimeout(function() {
+        expect(Modernizr._trigger.calledOnce).to.be(true);
+        expect(Modernizr._trigger.calledWith('fakeDetect', Modernizr.fakeDetect)).to.be(true);
+        done();
+      }, 0);
     });
 
   });
@@ -196,9 +196,7 @@ describe('addTest', function() {
     });
 
     it('supports nested properties with a bool base', function() {
-      /* jshint -W053 */
       addTest('fake', new Boolean(true));
-      /* jshint +W053 */
       addTest('fake.detect', true);
       expect(Modernizr.fake).to.be.an('object');
       expect(Modernizr.fake.detect).to.be(true);

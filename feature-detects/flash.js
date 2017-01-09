@@ -11,7 +11,6 @@ Detects Flash support as well as Flash-blocking plugins
 */
 define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG'], function(Modernizr, createElement, docElement, addTest, getBody, isSVG) {
   Modernizr.addAsyncTest(function() {
-    /* jshint -W053 */
 
     var attachBody = function(body) {
       if (!docElement.contains(body)) {

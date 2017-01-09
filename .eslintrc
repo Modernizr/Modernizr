@@ -1,0 +1,71 @@
+{
+  "preset": "google",
+  "jsDoc": {
+    "requireHyphenBeforeDescription": true,
+    "requireNewlineAfterDescription": true,
+    "checkRedundantReturns": true,
+    "checkParamExistence": true,
+    "requireReturnTypes": true,
+    "requireParamTypes": true,
+    "checkReturnTypes": true,
+    "checkTypes": true,
+    "checkAnnotations": {
+      "preset": "jsdoc3",
+      "extra": {
+        "access": true,
+        "optionName": true,
+        "optionProp": true,
+        "memberof": true
+      }
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "es6": true,
+    "amd": true
+  },
+  "globals": {
+    "DocumentTouch": true,
+    "Modernizr": true,
+    "requirejs": true,
+    "expect": true,
+    "$": true,
+    "_": true
+  },
+  "rules": {
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "curly": "error",
+    "wrap-iife": "off",
+    "no-caller": "error",
+    "no-cond-assign": [
+      "error",
+      "except-parens"
+    ],
+    "eqeqeq": "off",
+    "no-eq-null": "error",
+    "new-cap": "off",
+    "no-undef": "error",
+    "no-unused-vars": "error",
+    "no-unused-expressions": "error",
+    "no-eval": "error",
+    "comma-style": [
+      "error",
+      "last"
+    ],
+    "dot-notation": "off",
+    "valid-jsdoc": "error",
+    "no-global-getComputedStyle": "error"
+  }
+}

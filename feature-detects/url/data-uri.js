@@ -24,7 +24,6 @@ Modernizr.datauri.over32kb  // false in IE8
 define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
   // https://github.com/Modernizr/Modernizr/issues/14
   Modernizr.addAsyncTest(function() {
-    /* jshint -W053 */
 
     // IE7 throw a mixed content warning on HTTPS for this test, so we'll
     // just blacklist it (we know it doesn't support data URIs anyway)

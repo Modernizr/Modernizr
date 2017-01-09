@@ -31,10 +31,9 @@ define(['Modernizr', 'createElement', 'test/webgl'], function(Modernizr, createE
 
   // Not Async but handles it's own self
   Modernizr.addAsyncTest(function() {
-    /* jshint -W053 */
 
     // Not a good candidate for css classes, so we avoid addTest stuff
-    Modernizr.webglextensions = new Boolean(false);
+    Modernizr.webglextensions = false;
 
     if (!Modernizr.webgl) {
       return;

@@ -11,7 +11,7 @@
 /* DOC
 Detect support for the bdi element, a way to have text that is isolated from its possibly bidirectional surroundings
 */
-define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
+define(['Modernizr', 'createElement', 'docElement', 'computedStyle'], function(Modernizr, createElement, docElement, computedStyle) {
   Modernizr.addTest('bdi', function() {
     var div = createElement('div');
     var bdi = createElement('bdi');
@@ -21,9 +21,7 @@ define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createE
 
     docElement.appendChild(div);
 
-    var supports = ((window.getComputedStyle ?
-          getComputedStyle(bdi, null) :
-          bdi.currentStyle).direction === 'rtl');
+    var supports = computedStyle(bdi, null, 'direction') === 'rtl';
 
     docElement.removeChild(div);
 

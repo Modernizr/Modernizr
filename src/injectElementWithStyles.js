@@ -62,6 +62,7 @@ define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function(Mo
       body.parentNode.removeChild(body);
       docElement.style.overflow = docOverflow;
       // Trigger layout so kinetic scrolling isn't disabled in iOS6+
+      // eslint-disable-next-line
       docElement.offsetHeight;
     } else {
       div.parentNode.removeChild(div);

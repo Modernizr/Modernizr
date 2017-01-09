@@ -18,18 +18,27 @@ Detects support for `transform-style: preserve-3d`, for getting a proper 3D pers
 */
 define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
   Modernizr.addTest('preserve3d', function() {
-    var outerDiv = createElement('div');
-    var innerDiv = createElement('div');
+    var outerAnchor, innerAnchor;
+    var CSS = window.CSS;
+    var result = false;
 
-    outerDiv.style.cssText = 'transform-style: preserve-3d; transform-origin: right; transform: rotateY(40deg);';
-    innerDiv.style.cssText = 'width: 9px; height: 1px; background: #000; transform-origin: right; transform: rotateY(40deg);';
+    if (CSS && CSS.supports && CSS.supports('(transform-style: preserve-3d)')) {
+      return true;
+    }
 
-    outerDiv.appendChild(innerDiv);
-    docElement.appendChild(outerDiv);
+    outerAnchor = createElement('a');
+    innerAnchor = createElement('a');
 
-    var result = innerDiv.getBoundingClientRect();
-    docElement.removeChild(outerDiv);
+    outerAnchor.style.cssText = 'display: block; transform-style: preserve-3d; transform-origin: right; transform: rotateY(40deg);';
+    innerAnchor.style.cssText = 'display: block; width: 9px; height: 1px; background: #000; transform-origin: right; transform: rotateY(40deg);';
 
-    return result.width && result.width < 4;
+    outerAnchor.appendChild(innerAnchor);
+    docElement.appendChild(outerAnchor);
+
+    result = innerAnchor.getBoundingClientRect();
+    docElement.removeChild(outerAnchor);
+
+    result = result.width && result.width < 4;
+    return result;
   });
 });
