@@ -33,7 +33,7 @@
     "joi": "6.10.0",
     "jquery": "1.12.4",
     "json3": "3.3.2",
-    "load-grunt-tasks": "3.4.1",
+    "load-grunt-tasks": "3.5.0",
     "proxyquire": "1.7.10",
     "serve-static": "^1.10.0"
   },
