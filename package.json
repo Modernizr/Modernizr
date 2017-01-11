@@ -28,7 +28,7 @@
     "grunt-eslint": "^18.1.0",
     "grunt-istanbul": "0.7.1",
     "grunt-mocha": "0.4.15",
-    "grunt-mocha-test": "0.12.7",
+    "grunt-mocha-test": "0.13.2",
     "grunt-saucelabs": "9.0.0",
     "joi": "6.10.0",
     "jquery": "1.12.4",
