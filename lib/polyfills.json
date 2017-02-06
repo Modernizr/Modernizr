@@ -446,6 +446,12 @@
     "href": "https://github.com/rivindu/cupcakejs",
     "licenses": ["MIT"]
   },
+  "customelements": {
+    "name": "Custom Elements",
+    "authors": ["Webcomponents"],
+    "href": "https://github.com/webcomponents/custom-elements",
+    "licenses": ["BSD"]
+  },
   "storagepolyfill": {
     "name": "Storage Polyfill",
     "authors": ["Remy Sharp"],
