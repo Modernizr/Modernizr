@@ -74,7 +74,7 @@ serve the root dir, `<url>/test/modular.html`
 ### To see the build tool:
 
 * checkout the modernizr.com code
-* install all your gems and bundles and jekyll and shit
+* install all your gems and bundles and jekyll and any other dependencies
 * `jekyll`
 * `serve ./_sites`
 * visit <url>/download
