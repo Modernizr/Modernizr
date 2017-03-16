@@ -10,6 +10,6 @@ define(['Modernizr', 'createElement', 'contains'], function(Modernizr, createEle
   Modernizr.addTest('hsla', function() {
     var style = createElement('a').style;
     style.cssText = 'background-color:hsla(120,40%,100%,.5)';
-    return contains(style.backgroundColor, 'rgba') || contains(style.backgroundColor, 'hsla');
+    return contains(style.backgroundColor, 'rgb') || contains(style.backgroundColor, 'hsl');
   });
 });
