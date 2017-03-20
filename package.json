@@ -1,6 +1,6 @@
 {
   "name": "modernizr",
-  "version": "3.3.1",
+  "version": "3.4.0",
   "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.",
   "directories": {
     "test": "test"
@@ -9,11 +9,11 @@
     "doctrine": "1.2.3",
     "file": "0.2.2",
     "find-parent-dir": "0.3.0",
-    "lodash": "4.15.0",
+    "lodash": "4.17.4",
     "mkdirp": "0.5.1",
     "remarkable": "^1.6.2",
     "requirejs": "2.1.22",
-    "yargs": "5.0.0"
+    "yargs": "6.6.0"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "1.1.1",
@@ -33,8 +33,8 @@
     "joi": "6.10.0",
     "jquery": "1.12.4",
     "json3": "3.3.2",
-    "load-grunt-tasks": "3.4.1",
-    "proxyquire": "1.7.10",
+    "load-grunt-tasks": "3.5.2",
+    "proxyquire": "1.7.11",
     "serve-static": "^1.10.0"
   },
   "scripts": {

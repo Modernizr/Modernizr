@@ -22,5 +22,5 @@ define(['Modernizr'], function(Modernizr) {
     String.prototype.repeat &&
     String.prototype.startsWith &&
     String.prototype.endsWith &&
-    String.prototype.contains));
+    String.prototype.includes));
 });

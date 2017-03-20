@@ -29,11 +29,9 @@
 define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
   var blacklist = (function() {
     var ua = navigator.userAgent;
-    var wkvers = ua.match(/applewebkit\/([0-9]+)/gi) && parseFloat(RegExp.$1);
     var webos = ua.match(/w(eb)?osbrowser/gi);
     var wppre8 = ua.match(/windows phone/gi) && ua.match(/iemobile\/([0-9])+/gi) && parseFloat(RegExp.$1) >= 9;
-    var oldandroid = wkvers < 533 && ua.match(/android/gi);
-    return webos || oldandroid || wppre8;
+    return webos || wppre8;
   }());
   if (blacklist) {
     Modernizr.addTest('fontface', false);

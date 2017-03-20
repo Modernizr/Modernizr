@@ -36,6 +36,7 @@ define(['Modernizr', 'createElement', 'docElement', 'getBody', 'test/inputtypes'
     root.appendChild(el);
     input.focus();
     try {
+      document.execCommand('SelectAll', false); // Overwrite current input value, rather than appending text
       document.execCommand('InsertText', false, '1,1');
     } catch (e) { // prevent warnings in IE
     }
