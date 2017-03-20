@@ -11,7 +11,7 @@
     }
   ],
   "warnings": ["This property name now refers to W3C DOM PointerEvents: https://github.com/Modernizr/Modernizr/issues/548#issuecomment-12812099"],
-  "polyfills": ["handjs"]
+  "polyfills": ["handjs","pep"]
 }
 !*/
 /* DOC

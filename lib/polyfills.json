@@ -769,5 +769,11 @@
     "href": "https://github.com/ckrack/scrollsnap-polyfill",
     "licenses": ["MIT"],
     "name": "scrollsnap-polyfill.js"
+  },
+  "pep": {
+    "authors": ["jQuery Foundation and other contributors"],
+    "href": "https://github.com/jquery/PEP",
+    "licenses": ["MIT"],
+    "name": "pep.js"
   }
 }
