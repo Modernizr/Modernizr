@@ -9,7 +9,7 @@
   }, {
     "name": "The _old_ CSS Grid",
     "href": "https://www.w3.org/TR/2011/WD-css3-grid-layout-20110407/"
-  }]
+  }],
   "warnings": ["`grid-columns` is only in the old syntax, `grid-column` exists in both and so `grid-template-rows` is used for the new syntax."]
 }
 !*/
