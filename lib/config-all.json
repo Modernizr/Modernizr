@@ -144,6 +144,7 @@
     "es5/array",
     "es5/date",
     "es5/function",
+    "es5/functionprototypebind",
     "es5/object",
     "es5/specification",
     "es5/strictmode",
