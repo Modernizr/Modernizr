@@ -37,7 +37,7 @@ define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
     Modernizr.addTest('fontface', false);
   } else {
     testStyles('@font-face {font-family:"font";src:url("https://")}', function(node, rule) {
-      var style = document.getElementById('smodernizr');
+      var style = document.getElementById('modernizr');
       var sheet = style.sheet || style.styleSheet;
       var cssText = sheet ? (sheet.cssRules && sheet.cssRules[0] ? sheet.cssRules[0].cssText : sheet.cssText || '') : '';
       var bool = /src/i.test(cssText) && cssText.indexOf(rule.split(' ')[0]) === 0;
