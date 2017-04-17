@@ -1,0 +1,25 @@
+{
+  "name": "modernizr",
+  "homepage": "https://github.com/Modernizr/Modernizr",
+  "version": "3.0.0",
+  "main":[
+    "src/Modernizr.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "media",
+    "test",
+    "*.md",
+    "Gruntfile.js",
+    "package.json",
+    "*.yml"
+  ],
+  "keywords": [
+    "modernizr",
+    "javascript",
+    "feature",
+    "detection",
+    "legacy",
+    "browser"
+  ]
+}
