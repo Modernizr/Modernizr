@@ -1,5 +1,5 @@
 /*! {
-  "name": "hairline",
+  "name": "CSS Hairline",
   "property": "hairline",
   "tags": ["css"],
   "authors": ["strarsis"],
