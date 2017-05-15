@@ -34,7 +34,7 @@
     "jquery": "1.12.4",
     "json3": "3.3.2",
     "load-grunt-tasks": "3.5.2",
-    "proxyquire": "1.7.11",
+    "proxyquire": "1.8.0",
     "serve-static": "^1.10.0"
   },
   "scripts": {
