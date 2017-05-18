@@ -73,7 +73,7 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], fu
     }
 
     elem.setAttribute('autoplay', '');
-    elem.style.cssText = 'display:none';
+    elemStyle.cssText = 'display:none';
     docElement.appendChild(elem);
     // wait for the next tick to add the listener, otherwise the element may
     // not have time to play in high load situations (e.g. the test suite)
