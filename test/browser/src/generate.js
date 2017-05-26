@@ -56,6 +56,13 @@ describe('generate', function() {
       var output = generate(config);
       expect(output).to.contain('test/fake');
     });
+
+    it('without clobbering absolute path', function() {
+      var config = {'feature-detects': ['/abs/path/to/test.js']};
+      var output = generate(config);
+      expect(output).to.contain('/abs/path/to/test.js');
+      expect(output).to.not.contain('test//abs/path/to/test.js');
+    });
   });
 
   it('adds `setClasses` and `classes` when defined', function() {
