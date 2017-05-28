@@ -1,6 +1,5 @@
 test
 media
-dist
 gh-pages
 appveyor.yml
 Gruntfile.js
