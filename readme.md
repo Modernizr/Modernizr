@@ -7,8 +7,7 @@
 
 Modernizr tests which native CSS3 and HTML5 features are available in the current UA and makes the results available to you in two ways: as properties on a global `Modernizr` object, and as classes on the `<html>` element. This information allows you to progressively enhance your pages with a granular level of control over the experience.
 
-This project adheres to the [Open Code of Conduct][code-of-conduct]. By participating, you are expected to honor this code.
-[code-of-conduct]: http://todogroup.org/opencodeofconduct/#Modernizr/conduct@modernizr.com
+This project adheres to the [Open Code of Conduct](http://todogroup.org/opencodeofconduct/#Modernizr/conduct@modernizr.com). By participating, you are expected to honor this code.
 
 ## New Asynchronous Event Listeners
 
