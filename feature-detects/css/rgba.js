@@ -15,6 +15,6 @@ define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
     var style = createElement('a').style;
     style.cssText = 'background-color:rgba(150,255,150,.5)';
 
-    return ('' + style.backgroundColor).indexOf('rgba') > -1;
+    return ('' + style.backgroundColor).indexOf('rgb') > -1;
   });
 });
