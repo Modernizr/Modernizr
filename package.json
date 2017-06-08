@@ -26,7 +26,7 @@
     "grunt-coveralls": "1.0.1",
     "grunt-env": "0.4.4",
     "grunt-eslint": "^18.1.0",
-    "grunt-istanbul": "0.7.1",
+    "grunt-istanbul": "0.7.2",
     "grunt-mocha": "0.4.15",
     "grunt-mocha-test": "0.12.7",
     "grunt-saucelabs": "9.0.0",
