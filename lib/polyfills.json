@@ -414,13 +414,6 @@
     "href": "https://gist.github.com/paulirish/5438650",
     "licenses": ["MIT"]
   },
-  "handjs": {
-    "name": "Hand.js",
-    "authors": ["DeltaKosh"],
-    "href": "http://handjs.codeplex.com/",
-    "notes": ["Implements the Pointer Events API"],
-    "licenses": ["Apache2"]
-  },
   "easyxdm": {
     "name": "easyXDM",
     "authors": ["Sean Kinsey"],
