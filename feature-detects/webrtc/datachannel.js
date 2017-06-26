@@ -17,15 +17,18 @@ define(['Modernizr', 'prefixed', 'domPrefixes', 'test/webrtc/peerconnection'], f
     if (!Modernizr.peerconnection) {
       return false;
     }
-    for (var i = 0, l = domPrefixes.length; i < l; i++) {
-      var PeerConnectionConstructor = window[domPrefixes[i] + 'RTCPeerConnection'];
+    try {
+      for (var i = 0, l = domPrefixes.length; i < l; i++) {
+        var PeerConnectionConstructor = window[domPrefixes[i] + 'RTCPeerConnection'];
 
-      if (PeerConnectionConstructor) {
-        var peerConnection = new PeerConnectionConstructor(null);
+        if (PeerConnectionConstructor) {
+          var peerConnection = new PeerConnectionConstructor(null);
 
-        return 'createDataChannel' in peerConnection;
+          return 'createDataChannel' in peerConnection;
+        }
       }
-
+    } catch (e) {
+      // Some SmartTVs throw this exception: "NotSupportedError: DOM Exception 9"
     }
     return false;
   });
