@@ -106,6 +106,24 @@ describe('setClasses', function() {
     });
   });
 
+  describe('cssClasses disabled', function() {
+    before(function(done) {
+      setup(done, {
+        'enableClasses': false
+      });
+    });
+
+    after(teardown);
+
+    it('adds a class without a prefix', function(done) {
+      req(['setClasses'], function(setClasses) {
+        setClasses(['detect']);
+        expect(elm.className).to.not.contain('detect');
+        done();
+      });
+    });
+  });
+
 
   describe('enableJSClass enabled, with prefix', function() {
     before(function(done) {
@@ -163,6 +181,26 @@ describe('setClasses', function() {
     });
 
   });
+
+
+  describe('enableJSClass disabled', function() {
+    before(function(done) {
+      setup(done, {
+        'enableJSClass': false
+      });
+    });
+
+    after(teardown);
+
+    it('should not add a js class', function(done) {
+      req(['setClasses'], function(setClasses) {
+        setClasses(['detect']);
+        expect(elm.className).to.equal('');
+        done();
+      });
+    });
+  });
+
 
   after(function() {
     cleanup();

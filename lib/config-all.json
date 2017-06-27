@@ -1,5 +1,8 @@
 {
   "classPrefix": "",
+  "enableClasses": true,
+  "enableJSClass": true,
+  "usePrefixes": true,
   "options": [
     "addTest",
     "atRule",
