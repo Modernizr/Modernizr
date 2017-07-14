@@ -245,6 +245,7 @@
     "svg",
     "svg/asimg",
     "svg/clippaths",
+    "svg/externalresources",
     "svg/filters",
     "svg/foreignobject",
     "svg/inline",
