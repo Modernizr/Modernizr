@@ -6,7 +6,7 @@ environment:
 # Get the latest stable version of Node 0.STABLE.latest
 install:
   - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
-  - npm install -g npm@5.0.4
+  - npm install -g npm@4.3.0
   - set PATH=%APPDATA%\npm;%PATH%
   - npm install
 
