@@ -11,17 +11,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles', 'test/css/supports'], function(Modernizr, testStyles) {
-  var supportsCssVariables = false;
-
-  if (Modernizr.supports) {
-    var defaultStyle = '#modernizr{background: blue}';
-    var testCase = '@supports (--bg-var: red){#modernizr{background: var(--bg-var);}}';
-    testStyles(defaultStyle + testCase, function(elm) {
-      var computedStyle = window.getComputedStyle(elm);
-      supportsCssVariables = computedStyle.getPropertyValue('background') === 'red';
-    });
-  }
-
-  Modernizr.addTest('customproperties', supportsCssVariables);
+define(['Modernizr'], function(Modernizr) {
+  var supportsFn = (window.CSS && window.CSS.supports.bind(window.CSS)) || (window.supportsCSS);
+  Modernizr.addTest('customproperties', !!supportsFn && supportsFn('color', 'var(--primary)'));
 });
