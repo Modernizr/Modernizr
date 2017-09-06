@@ -1,0 +1,92 @@
+.
+==Mark==
+.
+<p><mark>Mark</mark></p>
+.
+
+
+These are not marks, you have to use exactly two "==":
+.
+x ===foo===
+
+x ==foo===
+
+x ===foo==
+.
+<p>x ===foo===</p>
+<p>x ==foo===</p>
+<p>x ===foo==</p>
+.
+
+Marks have the same priority as emphases:
+
+.
+**==test**==
+
+==**test==**
+.
+<p><strong>==test</strong>==</p>
+<p><mark>**test</mark>**</p>
+.
+
+Marks have the same priority as emphases with respect to links:
+.
+[==link]()==
+
+==[link==]()
+.
+<p><a href="">==link</a>==</p>
+<p>==<a href="">link==</a></p>
+.
+
+Marks have the same priority as emphases with respect to backticks:
+.
+==`code==`
+
+`==code`==
+.
+<p>==<code>code==</code></p>
+<p><code>==code</code>==</p>
+.
+
+Nested marks:
+.
+==foo ==bar== baz==
+.
+<p><mark>foo <mark>bar</mark> baz</mark></p>
+.
+
+.
+==f **o ==o b== a** r==
+.
+<p><mark>f <strong>o <mark>o b</mark> a</strong> r</mark></p>
+.
+
+Should not have a whitespace between text and "==":
+.
+foo == bar == baz
+.
+<p>foo == bar == baz</p>
+.
+
+
+Newline should be considered a whitespace:
+
+.
+==test
+==
+
+==
+test==
+
+==
+test
+==
+.
+<h1>==test</h1>
+<p>==
+test==</p>
+<p>==
+test
+==</p>
+.

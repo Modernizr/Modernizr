@@ -1,0 +1,106 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src line: 3124
+
+.
+- # Foo
+- Bar
+  ---
+  baz
+.
+<ul>
+<li><h1>Foo</h1></li>
+<li><h2>Bar</h2>
+<p>baz</p></li>
+</ul>
+.
+
+error:
+
+<ul>
+<li><h1>Foo</h1>
+</li>
+<li><h2>Bar</h2>
+baz</li>
+</ul>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src line: 5603
+
+.
+![foo *bar*]
+
+[foo *bar*]: train.jpg "train & tracks"
+.
+<p><img src="train.jpg" alt="foo &lt;em&gt;bar&lt;/em&gt;" title="train &amp; tracks" /></p>
+.
+
+error:
+
+<p><img src="train.jpg" alt="foo *bar*" title="train &amp; tracks" /></p>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src line: 5611
+
+.
+![foo *bar*][]
+
+[foo *bar*]: train.jpg "train & tracks"
+.
+<p><img src="train.jpg" alt="foo &lt;em&gt;bar&lt;/em&gt;" title="train &amp; tracks" /></p>
+.
+
+error:
+
+<p><img src="train.jpg" alt="foo *bar*" title="train &amp; tracks" /></p>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src line: 5619
+
+.
+![foo *bar*][foobar]
+
+[FOOBAR]: train.jpg "train & tracks"
+.
+<p><img src="train.jpg" alt="foo &lt;em&gt;bar&lt;/em&gt;" title="train &amp; tracks" /></p>
+.
+
+error:
+
+<p><img src="train.jpg" alt="foo *bar*" title="train &amp; tracks" /></p>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src line: 5679
+
+.
+![*foo* bar][]
+
+[*foo* bar]: /url "title"
+.
+<p><img src="/url" alt="&lt;em&gt;foo&lt;/em&gt; bar" title="title" /></p>
+.
+
+error:
+
+<p><img src="/url" alt="*foo* bar" title="title" /></p>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src line: 5719
+
+.
+![*foo* bar]
+
+[*foo* bar]: /url "title"
+.
+<p><img src="/url" alt="&lt;em&gt;foo&lt;/em&gt; bar" title="title" /></p>
+.
+
+error:
+
+<p><img src="/url" alt="*foo* bar" title="title" /></p>
+
+

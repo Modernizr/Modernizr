@@ -1,0 +1,93 @@
+.
+++Insert++
+.
+<p><ins>Insert</ins></p>
+.
+
+
+These are not inserts, you have to use exactly two "++":
+.
+x +++foo+++
+
+x ++foo+++
+
+x +++foo++
+.
+<p>x +++foo+++</p>
+<p>x ++foo+++</p>
+<p>x +++foo++</p>
+.
+
+Inserts have the same priority as emphases:
+
+.
+**++test**++
+
+++**test++**
+.
+<p><strong>++test</strong>++</p>
+<p><ins>**test</ins>**</p>
+.
+
+Inserts have the same priority as emphases with respect to links:
+.
+[++link]()++
+
+++[link++]()
+.
+<p><a href="">++link</a>++</p>
+<p>++<a href="">link++</a></p>
+.
+
+Inserts have the same priority as emphases with respect to backticks:
+.
+++`code++`
+
+`++code`++
+.
+<p>++<code>code++</code></p>
+<p><code>++code</code>++</p>
+.
+
+Nested inserts:
+.
+++foo ++bar++ baz++
+.
+<p><ins>foo <ins>bar</ins> baz</ins></p>
+.
+
+.
+++f **o ++o b++ a** r++
+.
+<p><ins>f <strong>o <ins>o b</ins> a</strong> r</ins></p>
+.
+
+Should not have a whitespace between text and "++":
+.
+foo ++ bar ++ baz
+.
+<p>foo ++ bar ++ baz</p>
+.
+
+
+Newline should be considered a whitespace:
+
+.
+++test
+++
+
+++
+test++
+
+++
+test
+++
+.
+<p>++test
+++</p>
+<p>++
+test++</p>
+<p>++
+test
+++</p>
+.

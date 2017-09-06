@@ -1,0 +1,79 @@
+.
+[normal link](javascript)
+.
+<p><a href="javascript">normal link</a></p>
+.
+
+
+
+Should not allow some protocols in links and images
+
+.
+[xss link](javascript:alert(1))
+
+[xss link](JAVASCRIPT:alert(1))
+
+[xss link](vbscript:alert(1))
+
+[xss link](VBSCRIPT:alert(1))
+
+[xss link](file:///123)
+.
+<p>[xss link](javascript:alert(1))</p>
+<p>[xss link](JAVASCRIPT:alert(1))</p>
+<p>[xss link](vbscript:alert(1))</p>
+<p>[xss link](VBSCRIPT:alert(1))</p>
+<p>[xss link](file:///123)</p>
+.
+
+
+.
+[xss link](&#34;&#62;&#60;script&#62;alert&#40;&#34;xss&#34;&#41;&#60;/script&#62;)
+.
+<p><a href="&amp;#34;&amp;#62;&amp;#60;script&amp;#62;alert&amp;#40;&amp;#34;xss&amp;#34;&amp;#41;&amp;#60;/script&amp;#62;">xss link</a></p>
+.
+
+.
+[xss link](<javascript:alert(1)>)
+.
+<p>[xss link](&lt;javascript:alert(1)&gt;)</p>
+.
+
+.
+[xss link](javascript&#x3A;alert(1))
+.
+<p>[xss link](javascript:alert(1))</p>
+.
+
+
+Image parser use the same code base.
+
+.
+![xss link](javascript:alert(1))
+.
+<p>![xss link](javascript:alert(1))</p>
+.
+
+
+Autolinks
+
+.
+<javascript&#x3A;alert(1)>
+
+<javascript:alert(1)>
+.
+<p>&lt;javascript:alert(1)&gt;</p>
+<p>&lt;javascript:alert(1)&gt;</p>
+.
+
+
+Linkifier
+
+.
+javascript&#x3A;alert(1)
+
+javascript:alert(1)
+.
+<p>javascript:alert(1)</p>
+<p>javascript:alert(1)</p>
+.

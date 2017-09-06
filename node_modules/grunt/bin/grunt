@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+
+require('grunt-cli/bin/grunt');

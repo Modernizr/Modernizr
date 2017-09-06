@@ -1,0 +1,119 @@
+v1.0.1
+  date: 2016-04-05
+  changes:
+    - minor fix for npm issues when installing grunt and grunt-cli at the same time. Pull #1500.
+v1.0.0
+  date: 2016-04-04
+  changes:
+    - full list of changes is on http://gruntjs.com, please also see changes from 1.0.0-rc1.
+    - if you have a Grunt plugin that includes `grunt` in the `peerDependencies`,
+      we recommend tagging with `"grunt": "">= 0.4.0"` and publishing a new version on npm.
+    - Prevent async callback from being called multiple times. Pull #1464.
+    - Update copyright to jQuery Foundation and remove redundant headers. Fixes #1478.
+    - Update glob to 7.0.x. Fixes #1467.
+    - Removing duplicate BOM strip code. Pull #1482.
+    - Update legacy log and util to 1.0.0.
+    - Update to latest cli ~1.2.0.
+    - Use grunt-known-options for shared options between Grunt and grunt-cli.
+v1.0.0-rc1
+  date: 2016-02-11
+  changes:
+    - full list of changes is on http://gruntjs.com
+    - if you have a Grunt plugin that includes `grunt` in the `peerDependencies`,
+      we recommend tagging with `"grunt": "">= 0.4.0"`
+    - `coffee-script` is upgraded to `~1.10.0` which could incur breaking changes
+      when using the language with plugins and Gruntfiles.
+    - `nopt` is upgraded to `~3.0.6` which has fixed many issues, including passing
+      multiple arguments and dealing with numbers as options. Be aware previously
+      `--foo bar` used to pass the value `'bar'` to the option `foo`. It will now
+      set the option `foo` to `true` and run the task `bar`.
+    -`glob` is upgraded to `~6.0.4` and `minimatch` is upgraded to `~3.0.0`. Results
+      are now sorted by default with `grunt.file.expandMapping()`. Pass the
+      `nosort: true` option if you don't want the results to be sorted.
+    - `lodash` was upgraded to `~4.3.0`. Many changes have occurred. Some of which
+      that directly effect Grunt are `grunt.util._.template()` returns a compile
+      function and `grunt.util._.flatten` no longer flattens deeply.
+      `grunt.util._` is deprecated and we highly encourage you to
+      `npm install lodash` and `var _ = require('lodash')` to use `lodash`.
+      Please see the lodash changelog for a full list of changes: https://github.com/lodash/lodash/wiki/Changelog
+    - `iconv-lite` is upgraded to `~0.4.13` and strips the BOM by default.
+    - `js-yaml` is upgraded to `~3.5.2` and may affect `grunt.file.readYAML`.
+      We encourage you to please `npm install js-yaml` and use
+      `var YAML = require('js-yaml')` directly in case of future deprecations.
+    - A file `mode` option can be passed into
+      [grunt.file.write()](http://gruntjs.com/api/grunt.file#grunt.file.write).
+    - `Done, without errors.` was changed to `Done.` to avoid failing by mistake
+      on the word `errors`.
+v0.4.5:
+  date: 2014-05-12
+  changes:
+    - Updated rimraf to 2.2.8. Closes gh-1134.
+    - Moved grunt.log into separate grunt-legacy-log module.
+    - Updated grunt-legacy-util to 0.2.0. Closes gh-971, gh-1129, gh-1118.
+    - Added grunt.task.exists method to check if a task exists. Closes gh-1131.
+    - Added grunt.config.merge method to deep merge config data. See gh-1039.
+    - Fixed symlink issues with 'file.isPathCwd' and 'file.doesPathContain'. Closes gh-1112.
+    - Config and util.recurse no longer mangle Buffer instances. See gh-971.
+    - Config and util.recurse now enumerate inherited object properties. See gh-1129.
+    - Config and util.recurse now throw useful circular reference error. See gh-1118.
+    - Warn instead of error when no new tasks found via '.loadTasks' method. Closes gh-1059.
+    - Added Windows CI testing. Closes gh-1110.
+    - Removed "CONTRIBUTING.md" from .npmignore. Closes gh-1093.
+v0.4.4:
+  date: 2014-03-12
+  changes:
+    - Only signal completion of tasks async if grunt.task.start is invoked with `{asyncDone:true}`.
+v0.4.3:
+  date: 2014-03-07
+  changes:
+    - When devving Grunt, do "npm install && npm uninstall grunt" (isaacs/npm#3958)
+    - Grunt is now tested on Node.js 0.11
+    - Extracted internal "util" lib to "grunt-legacy-util" lib
+    - task.normalizeMultiTaskFiles now flattens nested "files" arrays. Closes gh-1034.
+    - Better error in renameTask if task doesn't exist. Closes gh-1058.
+    - Update rimraf to latest version. Closes gh-1043.
+    - Empty string "ext" should strip extension. Closes gh-1087.
+    - Add expandMapping .extDot option. Can be 'first' or 'last' but defaults to 'first'. Closes gh-979.
+    - Add default array for util.spawn optional args. Closes gh-1064.
+    - util.spawn "grunt" option now uses proper Node, passes Node exec options. Closes gh-980, gh-981, gh-877.
+    - Make all tasks asynchronous to reduce call stack. Closes gh-1026.
+    - Fix <%= grunt.task.current.target %> in Multitask files. Closes gh-994.
+    - Generalize cli tests, see gh-983, gh-991.
+    - --debug option can optionally be Boolean. Closes Gh-983, gh-991.
+v0.4.2:
+  date: 2013-11-21
+  changes:
+    - Extract internal "namespace" lib to external "getobject" lib.
+    - '"Grunt collections" are now deprecated, use peerDependencies. See "grunt-contrib" 0.8.0 for details.'
+    - Fix stdout / stderr issues on Windows. Closes gh-940, gh-921, gh-744, gh-792, gh-644, gh-708.
+    - Fix pipe-redirecting on Windows. Closes gh-510.
+    - Fixed this.options() in renamed basic tasks. Closes gh-855.
+    - Update underscore.string dependency to follow semver. Closes gh-886.
+    - Output task options in verbose mode. Closes gh-749.
+    - Add file.preserveBOM property. Closes gh-806, gh-937.
+    - Test that file methods warn. Closes gh-909.
+    - Fixed a few spelling errors in code comments. Closes gh-849.
+    - Updated watch, jshint and nodeunit deps. Closes gh-914.
+v0.4.1:
+  date: 2013-03-13
+  changes:
+    - Fix path.join thrown errors with expandMapping rename. Closes gh-725.
+    - Update copyright date to 2013. Closes gh-660.
+    - Remove some side effects from manually requiring Grunt. Closes gh-605.
+    - "grunt.log: add formatting support and implicitly cast msg to a string. Closes gh-703."
+    - Update js-yaml to version 2. Closes gh-683.
+    - The grunt.util.spawn method now falls back to stdout when the `grunt` option is set. Closes gh-691.
+    - Making --verbose "Files:" warnings less scary. Closes gh-657.
+    - "Fixing typo: the grunt.fatal method now defaults to FATAL_ERROR. Closes gh-656, gh-707."
+    - Removed a duplicate line. Closes gh-702.
+    - Gruntfile name should no longer be case sensitive. Closes gh-685.
+    - The grunt.file.delete method warns and returns false if file doesn't exist. Closes gh-635, gh-714.
+    - The grunt.package property is now resolved via require(). Closes gh-704.
+    - The grunt.util.spawn method no longer breaks on multibyte stdio. Closes gh-710.
+    - Fix "path.join arguments must be strings" error in file.expand/recurse when options.cwd is not set. Closes gh-722.
+    - Adding a fairly relevant keyword to package.json (task).
+v0.4.0:
+  date: 2013-02-18
+  changes:
+    - Initial release of 0.4.0.
+    - See http://gruntjs.com/upgrading-from-0.3-to-0.4 for a list of changes / migration guide.

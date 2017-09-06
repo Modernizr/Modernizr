@@ -1,0 +1,26 @@
+{
+  "name": "remarkable",
+  "main": "dist/remarkable.js",
+  "homepage": "https://github.com/jonschlinkert/remarkable",
+  "description": "Markdown parser, done right. Commonmark support, extensions, syntax plugins, high speed - all in one.",
+  "keywords": [
+    "markdown",
+    "md",
+    "commonmark",
+    "parser"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "benchmark",
+    "bower_components",
+    "coverage",
+    "demo",
+    "lib",
+    "node_modules",
+    "support",
+    "test",
+    "Makefile",
+    "index*"
+  ]
+}

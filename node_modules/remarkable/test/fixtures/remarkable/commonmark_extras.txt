@@ -1,0 +1,162 @@
+Regression tests for link backtracking optimizations:
+
+.
+[[some unrelated text [link]
+
+[link]: foo
+.
+<p>[[some unrelated text <a href="foo">link</a></p>
+.
+
+.
+[[some unrelated text [[link]]
+
+[[link]]: foo
+.
+<p>[[some unrelated text <a href="foo">[link]</a></p>
+.
+
+
+
+This is not a valid emphasis, because \n considered a whitespace:
+
+.
+**test
+**
+
+**
+test**
+
+**
+test
+**
+.
+<p>**test
+**</p>
+<p>**
+test**</p>
+<p>**
+test
+**</p>
+.
+
+
+Link label has priority over emphasis (not covered by commonmark tests):
+
+.
+[**link]()**
+
+**[link**]()
+.
+<p><a href="">**link</a>**</p>
+<p>**<a href="">link**</a></p>
+.
+
+
+Issue #55:
+
+.
+![test]
+
+![test](foo bar)
+.
+<p>![test]</p>
+<p>![test](foo bar)</p>
+.
+
+
+Should unescape only needed things in link destinations/titles:
+
+.
+[test](<\f\o\o\>\\>)
+.
+<p><a href="%5Cf%5Co%5Co%3E%5C">test</a></p>
+.
+
+.
+[test](foo "\\\"\b\a\r")
+.
+<p><a href="foo" title="\&quot;\b\a\r">test</a></p>
+.
+
+
+Not a closing tag
+
+.
+</ 123>
+.
+<p>&lt;/ 123&gt;</p>
+.
+
+
+Not a list item
+
+.
+1.list
+.
+<p>1.list</p>
+.
+
+
+Coverage. Direcctive can terminate paragraph.
+
+.
+a
+<?php
+.
+<p>a</p>
+<?php
+.
+
+Normalize link destination, but not text inside it:
+
+.
+<http://example.com/α%CE%B2γ%CE%B4>
+.
+<p><a href="http://example.com/%CE%B1%CE%B2%CE%B3%CE%B4">http://example.com/α%CE%B2γ%CE%B4</a></p>
+.
+
+Autolinks do not allow escaping:
+
+.
+<http://example.com/\[\>
+.
+<p><a href="http://example.com/%5C%5B%5C">http://example.com/\[\</a></p>
+.
+
+
+Should not throw exception on mailformed URI
+
+.
+[foo](<&#x25;test>)
+.
+<p><a href="%25test">foo</a></p>
+.
+
+
+Issue #160:
+
+.
+Hello [google] where are you?
+
+Hello [google][] where are you?
+
+Hello [google]  [] where are you?
+
+[google]: https://google.com
+.
+<p>Hello <a href="https://google.com">google</a> where are you?</p>
+<p>Hello <a href="https://google.com">google</a> where are you?</p>
+<p>Hello <a href="https://google.com">google</a> where are you?</p>
+.
+
+
+Image alt should be unescaped
+
+.
+[Foo\\bar\]]: /url
+
+![Foo\\bar\]]
+.
+<p><img src="/url" alt="Foo\bar]"></p>
+.

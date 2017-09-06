@@ -1,0 +1,79 @@
+.
+~~Strikeout~~
+.
+<p><del>Strikeout</del></p>
+.
+
+Strikeouts have the same priority as emphases:
+
+.
+**~~test**~~
+
+~~**test~~**
+.
+<p><strong>~~test</strong>~~</p>
+<p><del>**test</del>**</p>
+.
+
+Strikeouts have the same priority as emphases with respect to links:
+.
+[~~link]()~~
+
+~~[link~~]()
+.
+<p><a href="">~~link</a>~~</p>
+<p>~~<a href="">link~~</a></p>
+.
+
+Strikeouts have the same priority as emphases with respect to backticks:
+.
+~~`code~~`
+
+`~~code`~~
+.
+<p>~~<code>code~~</code></p>
+<p><code>~~code</code>~~</p>
+.
+
+Nested strikeouts:
+.
+~~foo ~~bar~~ baz~~
+.
+<p><del>foo <del>bar</del> baz</del></p>
+.
+
+.
+~~f **o ~~o b~~ a** r~~
+.
+<p><del>f <strong>o <del>o b</del> a</strong> r</del></p>
+.
+
+Should not have a whitespace between text and "~~":
+.
+foo ~~ bar ~~ baz
+.
+<p>foo ~~ bar ~~ baz</p>
+.
+
+
+Newline should be considered a whitespace:
+
+.
+~~test
+~~
+
+~~
+test~~
+
+~~
+test
+~~
+.
+<p>~~test
+~~</p>
+<p>~~
+test~~</p>
+<p>~~
+test
+~~</p>
+.

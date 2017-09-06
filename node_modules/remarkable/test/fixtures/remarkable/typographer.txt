@@ -1,0 +1,84 @@
+.
+(bad)
+.
+<p>(bad)</p>
+.
+
+
+copyright
+.
+(c) (C)
+.
+<p>© ©</p>
+.
+
+
+reserved
+.
+(r) (R)
+.
+<p>® ®</p>
+.
+
+
+trademark
+.
+(tm) (TM)
+.
+<p>™ ™</p>
+.
+
+
+paragraph
+.
+(p) (P)
+.
+<p>§ §</p>
+.
+
+
+plus-minus
+.
++-5
+.
+<p>±5</p>
+.
+
+
+ellipsis
+.
+test.. test... test..... test?..... test!....
+.
+<p>test… test… test… test?.. test!..</p>
+.
+
+
+dupes
+.
+!!!!!! ???? ,,
+.
+<p>!!! ??? ,</p>
+.
+
+
+dashes
+.
+---remarkable --- super---
+
+remarkable---awesome
+
+abc ----
+.
+<p>—remarkable — super—</p>
+<p>remarkable—awesome</p>
+<p>abc ----</p>
+.
+.
+--remarkable -- super--
+
+remarkable--awesome
+.
+<p>–remarkable – super–</p>
+<p>remarkable–awesome</p>
+.
+

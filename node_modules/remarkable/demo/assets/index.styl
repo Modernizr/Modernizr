@@ -1,0 +1,138 @@
+html, body, .full-height
+  height 100%
+
+
+body
+  overflow-x hidden
+  padding-bottom 180px
+  background-color #fbfbfb
+
+.demo-options
+  margin-bottom 10px
+
+.opt__strict .not-strict
+  opacity 0.3
+
+.checkbox
+  margin-right 10px
+
+.source
+  width 100%
+  font-family Menlo, Monaco, Consolas, "Courier New", monospace
+  font-size 13px
+  padding 2px
+
+.result-html
+  padding 2px 10px
+  overflow auto
+  background-color #fff
+  border 1px solid #ccc
+  border-radius 4px
+  img
+    max-width 35%
+
+.result-src
+.result-debug
+  display none
+  background-color #fff
+
+.result-src-content
+.result-debug-content
+  white-space pre
+
+.result-as-html
+  .result-html
+    display block
+  .result-src
+  .result-debug
+    display none
+.result-as-src
+  .result-src
+    display block
+  .result-html
+  .result-debug
+    display none
+.result-as-debug
+  .result-debug
+    display block
+  .result-html
+  .result-src
+    display none
+
+.demo-control
+  position absolute
+  right 40px
+  top 0
+  //padding 0 10px
+  border-radius 0 0 6px 6px
+  font-size 12px
+  background-color #666
+  color #fff !important
+  opacity .6
+  transition opacity 0.5s ease-in-out
+  &:hover
+    opacity 1
+  a
+    padding 0 20px
+    color #fff !important
+  a:first-child
+    padding-left 30px
+  a:last-child
+    padding-right 30px
+
+.hljs
+  background none
+  padding 0
+
+.footnotes
+  -moz-column-count 2
+  -webkit-column-count 2
+  column-count 2
+
+.footnotes-list
+  padding-left 2em
+
+.gh-ribbon
+  display block
+  position absolute
+  right -60px
+  top 44px
+  transform rotate(45deg)
+  width 230px
+  z-index 10000
+  white-space nowrap
+  font-family "Helvetica Neue", Helvetica, Arial, sans-serif
+  background-color #686868
+  box-shadow 0 0 2px rgba(102,102,102,0.4)
+  padding 1px 0
+
+  a
+    text-decoration none !important
+    border 1px solid #ccc
+    color #fff
+    display block
+    font-size 13px
+    font-weight 700
+    outline medium none
+    padding 4px 50px 2px
+    text-align center
+
+////////////////////////////////////////////////////////////////////////////////
+// Override default responsiveness
+//
+.form-inline
+  .radio
+  .checkbox
+    display inline-block
+    margin-bottom 0
+    margin-top 0
+
+  .form-group
+    display inline-block
+    margin-bottom 0
+    vertical-align: middle
+
+  .form-control
+    display inline-block
+    vertical-align middle
+    width auto

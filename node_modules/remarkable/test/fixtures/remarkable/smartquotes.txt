@@ -1,0 +1,85 @@
+Should parse nested quotes:
+
+.
+"foo 'bar' baz"
+.
+<p>“foo ‘bar’ baz”</p>
+.
+
+.
+'foo 'bar' baz'
+.
+<p>‘foo ‘bar’ baz’</p>
+.
+
+
+Should not overlap quotes:
+
+.
+'foo "bar' baz"
+.
+<p>‘foo &quot;bar’ baz&quot;</p>
+.
+
+
+Should match quotes on the same level:
+
+.
+"foo *bar* baz"
+.
+<p>“foo <em>bar</em> baz”</p>
+.
+
+
+Should not match quotes on different levels:
+
+.
+*"foo* bar"
+
+"foo *bar"*
+.
+<p><em>&quot;foo</em> bar&quot;</p>
+<p>&quot;foo <em>bar&quot;</em></p>
+.
+
+.
+*"foo* bar *baz"*
+.
+<p><em>&quot;foo</em> bar <em>baz&quot;</em></p>
+.
+
+
+Should try and find matching quote in this case:
+
+.
+"foo "bar 'baz"
+.
+<p>&quot;foo “bar 'baz”</p>
+.
+
+
+Should not touch 'inches' in quotes:
+
+.
+"Monitor 21""
+.
+<p>“Monitor 21&quot;”</p>
+.
+
+
+Should render an apostrophe as a rsquo:
+
+.
+This isn't and can't be the best approach to implement this...
+.
+<p>This isn’t and can’t be the best approach to implement this…</p>
+.
+
+
+Apostrophe could end the word, that's why original smartypants replaces all of them as rsquo:
+
+.
+users' stuff
+.
+<p>users’ stuff</p>
+.

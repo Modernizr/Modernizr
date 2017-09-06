@@ -1,0 +1,36 @@
+
+.
+~foo\~
+.
+<p>~foo~</p>
+.
+
+.
+~foo bar~
+.
+<p>~foo bar~</p>
+.
+
+.
+~foo\ bar\ baz~
+.
+<p><sub>foo bar baz</sub></p>
+.
+
+.
+~\ foo\ ~
+.
+<p><sub> foo </sub></p>
+.
+
+.
+~foo\\\\\\\ bar~
+.
+<p><sub>foo\\\ bar</sub></p>
+.
+
+.
+~foo\\\\\\ bar~
+.
+<p>~foo\\\ bar~</p>
+.

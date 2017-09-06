@@ -1,0 +1,87 @@
+
+An example from php markdown readme:
+
+.
+*[HTML]: Hyper Text Markup Language
+*[W3C]:  World Wide Web Consortium
+The HTML specification
+is maintained by the W3C.
+.
+<p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
+is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
+.
+
+They can be multiline (see pandoc implementation). Not sure about newlines, but we should at least skip those definitions:
+
+.
+*[
+foo
+bar
+]: desc
+foo
+.
+<p>foo</p>
+.
+
+They can contain arbitrary markup (see pandoc implementation):
+
+.
+*[`]:`]: foo
+\`]:\`
+.
+<p><abbr title="foo">`]:`</abbr></p>
+.
+
+Can contain matched brackets:
+
+.
+*[[abbr]]: foo
+[abbr]
+.
+<p><abbr title="foo">[abbr]</abbr></p>
+.
+
+No empty abbreviations:
+
+.
+*[foo]: 
+foo
+.
+<p>*[foo]:
+foo</p>
+.
+
+Intersecting abbreviations (first should match):
+
+.
+*[Bar Foo]: 123
+*[Foo Bar]: 456
+
+Foo Bar Foo
+
+Bar Foo Bar
+.
+<p><abbr title="456">Foo Bar</abbr> Foo</p>
+<p><abbr title="123">Bar Foo</abbr> Bar</p>
+.
+
+Don't bother with nested abbreviations (yet?):
+
+.
+*[JS]: javascript
+*[HTTP]: hyper text blah blah
+*[JS HTTP]: is awesome
+JS HTTP is a collection of low-level javascript HTTP-related modules
+.
+<p><abbr title="is awesome">JS HTTP</abbr> is a collection of low-level javascript <abbr title="hyper text blah blah">HTTP</abbr>-related modules</p>
+.
+
+Don't match the middle of the string:
+
+.
+*[foo]: blah
+*[bar]: blah
+foobar
+.
+<p>foobar</p>
+.

@@ -1,0 +1,62 @@
+
+.
+[__proto__]
+
+[__proto__]: blah
+.
+<p><a href="blah"><strong>proto</strong></a></p>
+.
+
+.
+[^__proto__]
+
+[^__proto__]: blah
+.
+<p><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1"  class="footnote-item"><p>blah <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+.
+
+.
+*[__proto__]: blah
+
+__proto__ \_\_proto\_\_
+.
+<p><strong>proto</strong> <abbr title="blah">__proto__</abbr></p>
+.
+
+.
+[hasOwnProperty]
+
+[hasOwnProperty]: blah
+.
+<p><a href="blah">hasOwnProperty</a></p>
+.
+
+.
+[^hasOwnProperty]
+
+[^hasOwnProperty]: blah
+.
+<p><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1"  class="footnote-item"><p>blah <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+.
+
+.
+*[hasOwnProperty]: blah
+
+hasOwnProperty
+.
+<p><abbr title="blah">hasOwnProperty</abbr></p>
+.

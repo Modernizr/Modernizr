@@ -1,0 +1,106 @@
+{
+  "name": "modernizr",
+  "version": "3.5.0",
+  "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "doctrine": "1.2.3",
+    "file": "0.2.2",
+    "find-parent-dir": "0.3.0",
+    "lodash": "4.17.4",
+    "mkdirp": "0.5.1",
+    "remarkable": "^1.6.2",
+    "requirejs": "2.1.22",
+    "yargs": "7.0.2"
+  },
+  "devDependencies": {
+    "@alrra/travis-scripts": "1.1.1",
+    "expect.js": "0.3.1",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "1.1.0",
+    "grunt-contrib-connect": "1.0.2",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-jade": "1.0.0",
+    "grunt-coveralls": "1.0.1",
+    "grunt-env": "0.4.4",
+    "grunt-eslint": "^18.1.0",
+    "grunt-istanbul": "0.7.1",
+    "grunt-mocha": "0.4.15",
+    "grunt-mocha-test": "0.12.7",
+    "joi": "6.10.0",
+    "jquery": "1.12.4",
+    "json3": "3.3.2",
+    "load-grunt-tasks": "3.5.2",
+    "proxyquire": "1.7.11",
+    "serve-static": "^1.10.0"
+  },
+  "scripts": {
+    "test": "grunt test --stack"
+  },
+  "main": "./lib/cli",
+  "bin": "./bin/modernizr",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Modernizr/Modernizr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Modernizr/Modernizr/issues"
+  },
+  "inch": {
+    "files": {
+      "included": [
+        "feature-detects/",
+        "src/"
+      ]
+    }
+  },
+  "keywords": [
+    "html5",
+    "css3",
+    "browser",
+    "feature detection"
+  ],
+  "author": {
+    "name": "Modernizr",
+    "url": "https://modernizr.com/"
+  },
+  "contributors": [
+    {
+      "name": "Faruk Ates",
+      "url": "https://twitter.com/KuraFire"
+    },
+    {
+      "name": "Paul Irish",
+      "url": "https://twitter.com/paul_irish"
+    },
+    {
+      "name": "Alex Sexton",
+      "url": "https://twitter.com/SlexAxton"
+    },
+    {
+      "name": "Ryan Seddon",
+      "url": "https://twitter.com/ryanseddon"
+    },
+    {
+      "name": "Patrick Kettner",
+      "url": "https://twitter.com/patrickkettner"
+    },
+    {
+      "name": "Stu Cox",
+      "url": "https://twitter.com/stucoxmedia"
+    },
+    {
+      "name": "Richard Herrera",
+      "url": "https://twitter.com/doctyper"
+    }
+  ],
+  "greenkeeper": {
+    "ignore": [
+      "joi",
+      "grunt-eslint"
+    ]
+  },
+  "license": "MIT"
+}
