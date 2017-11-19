@@ -347,7 +347,7 @@
   /**
    * addTest allows you to define your own feature detects that are not currently
    * included in Modernizr (under the covers it's the exact same code Modernizr
-   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)). Just like the offical detects, the result
+   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)). Just like the official detects, the result
    * will be added onto the Modernizr object, as well as an appropriate className set on
    * the html element when configured to do so
    *
@@ -385,7 +385,7 @@
    *  in a statement that will return a boolean value works just fine.
    *
    * ```js
-   * Modernizr.addTest('hasJquery', 'jQuery' in window);
+   * Modernizr.addTest('hasJQuery', 'jQuery' in window);
    * ```
    *
    * Just like before, when the above runs `Modernizr.hasjquery` will be true if
@@ -718,7 +718,7 @@
       var expando = '_html5shiv';
 
       /** The id for the the documents expando */
-      var expanID = 0;
+      var expandoID = 0;
 
       /** Cached data for each document */
       var expandoData = {};
@@ -806,9 +806,9 @@
         var data = expandoData[ownerDocument[expando]];
         if (!data) {
           data = {};
-          expanID++;
-          ownerDocument[expando] = expanID;
-          expandoData[expanID] = data;
+          expandoID++;
+          ownerDocument[expando] = expandoID;
+          expandoData[expandoID] = data;
         }
         return data;
       }
@@ -1732,7 +1732,7 @@
 
         // let's bind a function
         if (is(item, 'function')) {
-          // bind to obj unless overriden
+          // bind to obj unless overridden
           return fnBind(item, elem || obj);
         }
 
@@ -2244,7 +2244,7 @@ Detects if audio can be downloaded in the background before it starts playing in
 
     try {
       if (Modernizr.audio.mp3) {
-        //75ms of silence (minumum Mp3 duration loaded by Safari, not tested other formats thoroughly: may be possible to shrink base64 URI)
+        //75ms of silence (minimum Mp3 duration loaded by Safari, not tested other formats thoroughly: may be possible to shrink base64 URI)
         elem.src = 'data:audio/mpeg;base64,//MUxAAB6AXgAAAAAPP+c6nf//yi/6f3//MUxAMAAAIAAAjEcH//0fTX6C9Lf//0//MUxA4BeAIAAAAAAKX2/6zv//+IlR4f//MUxBMCMAH8AAAAABYWalVMQU1FMy45//MUxBUB0AH0AAAAADkuM1VVVVVVVVVV//MUxBgBUATowAAAAFVVVVVVVVVVVVVV';
       }
       else if (Modernizr.audio.m4a) {
@@ -2866,7 +2866,7 @@ extends beyond its border in CSS
 !*/
 /* DOC
 Detects if you can use the shorthand method to define multiple parts of an
-element's background-position simultaniously.
+element's background-position simultaneously.
 
 eg `background-position: right 10px bottom 10px`
 */
@@ -3228,7 +3228,7 @@ Method of allowing calculated values for length units. For example:
 `display: table` and `table-cell` test. (both are tested under one name `table-cell` )
 */
 
-  // If a document is in rtl mode this test will fail so we force ltr mode on the injeced
+  // If a document is in rtl mode this test will fail so we force ltr mode on the injected
   // element https://github.com/Modernizr/Modernizr/issues/716
   testStyles('#modernizr{display: table; direction: ltr}#modernizr div{display: table-cell; padding: 10px}', function(elem) {
     var ret;
@@ -3439,7 +3439,7 @@ else {
   "tags": ["css"],
   "knownBugs": [
     "False Positive: WebOS https://github.com/Modernizr/Modernizr/issues/342",
-    "False Postive: WP7 https://github.com/Modernizr/Modernizr/issues/538"
+    "False Positive: WP7 https://github.com/Modernizr/Modernizr/issues/538"
   ],
   "notes": [{
     "name": "@font-face detection routine by Diego Perini",
@@ -3942,7 +3942,7 @@ Detects support for the ':nth-child()' CSS pseudo-selector.
 
   // 5 `<div>` elements with `1px` width are created.
   // Then every other element has its `width` set to `2px`.
-  // A Javascript loop then tests if the `<div>`s have the expected width
+  // A JavaScript loop then tests if the `<div>`s have the expected width
   // using the modulus operator.
   testStyles('#modernizr div {width:1px} #modernizr div:nth-child(2n) {width:2px;}', function(elem) {
     var elems = elem.getElementsByTagName('div');
@@ -4466,7 +4466,7 @@ Detects support for the ':target' CSS pseudo-class.
   "tags": ["css"],
   "knownBugs": ["IE does not support the 'start' or 'end' values."],
   "notes": [{
-      "name": "Quicksmode",
+      "name": "Quirksmode",
       "href": "http://www.quirksmode.org/css/text/textalignlast.html"
     },{
       "name": "MDN",
@@ -4529,7 +4529,7 @@ Detects support for the ':target' CSS pseudo-class.
   "caniuse": "transforms3d",
   "tags": ["css"],
   "warnings": [
-    "Chrome may occassionally fail this test on some systems; more info: https://code.google.com/p/chromium/issues/detail?id=129004"
+    "Chrome may occasionally fail this test on some systems; more info: https://code.google.com/p/chromium/issues/detail?id=129004"
   ]
 }
 !*/
@@ -6307,7 +6307,7 @@ Detects Flash support as well as Flash-blocking plugins
       // Need to do this in the body (fake or otherwise) otherwise IE8 complains
       body.appendChild(embed);
 
-      // Pan doesn't exist in the embed if its IE (its on the ActiveXObjeect)
+      // Pan doesn't exist in the embed if its IE (its on the ActiveXObject)
       // so this check is for all other browsers.
       if (!('Pan' in embed) && !activex) {
         attachBody(body);
@@ -6571,7 +6571,7 @@ Modernizr.inputtypes.week
           bool = inputElem.checkValidity && inputElem.checkValidity() === false;
 
         } else {
-          // If the upgraded input compontent rejects the :) text, we got a winner
+          // If the upgraded input component rejects the :) text, we got a winner
           bool = inputElem.value != smile;
         }
       }
@@ -7254,13 +7254,13 @@ Tests for all forms of webp support (lossless, lossy, alpha, and animated)..
 
       function addResult(event) {
         // if the event is from 'onload', check the see if the image's width is
-        // 1 pixel (which indiciates support). otherwise, it fails
+        // 1 pixel (which indicates support). otherwise, it fails
 
         var result = event && event.type === 'load' ? image.width == 1 : false;
         var baseTest = name === 'webp';
 
         // if it is the base test, and the result is false, just set a literal false
-        // rather than use the Boolean contrsuctor
+        // rather than use the Boolean constructor
         addTest(name, (baseTest && result) ? new Boolean(result) : result);
 
         if (cb) {

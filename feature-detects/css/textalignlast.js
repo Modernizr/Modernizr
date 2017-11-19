@@ -5,7 +5,7 @@
   "tags": ["css"],
   "knownBugs": ["IE does not support the 'start' or 'end' values."],
   "notes": [{
-      "name": "Quicksmode",
+      "name": "Quirksmode",
       "href": "http://www.quirksmode.org/css/text/textalignlast.html"
     },{
       "name": "MDN",

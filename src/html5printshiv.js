@@ -31,7 +31,7 @@ define(['isSVG'], function(isSVG) {
       var expando = '_html5shiv';
 
       /** The id for the the documents expando */
-      var expanID = 0;
+      var expandoID = 0;
 
       /** Cached data for each document */
       var expandoData = {};
@@ -119,9 +119,9 @@ define(['isSVG'], function(isSVG) {
         var data = expandoData[ownerDocument[expando]];
         if (!data) {
           data = {};
-          expanID++;
-          ownerDocument[expando] = expanID;
-          expandoData[expanID] = data;
+          expandoID++;
+          ownerDocument[expando] = expandoID;
+          expandoData[expandoID] = data;
         }
         return data;
       }

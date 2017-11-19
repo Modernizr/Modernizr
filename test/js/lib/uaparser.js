@@ -201,9 +201,9 @@
 
       if (!m) { return null; }
 
-      var familly = famRep ? famRep.replace('$1', m[1]) : m[1];
+      var family = famRep ? famRep.replace('$1', m[1]) : m[1];
 
-      var obj = new UserAgent(familly);
+      var obj = new UserAgent(family);
       obj.major = parseInt(v1Rep ? v1Rep : m[2]);
       obj.minor = m[3] ? parseInt(m[3]) : null;
       obj.patch = m[4] ? parseInt(m[4]) : null;

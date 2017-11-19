@@ -60,13 +60,13 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
 
       function addResult(event) {
         // if the event is from 'onload', check the see if the image's width is
-        // 1 pixel (which indiciates support). otherwise, it fails
+        // 1 pixel (which indicates support). otherwise, it fails
 
         var result = event && event.type === 'load' ? image.width == 1 : false;
         var baseTest = name === 'webp';
 
         // if it is the base test, and the result is false, just set a literal false
-        // rather than use the Boolean contrsuctor
+        // rather than use the Boolean constructor
         addTest(name, (baseTest && result) ? new Boolean(result) : result);
 
         if (cb) {

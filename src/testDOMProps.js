@@ -25,7 +25,7 @@ define(['is', 'fnBind'], function(is, fnBind) {
 
         // let's bind a function
         if (is(item, 'function')) {
-          // bind to obj unless overriden
+          // bind to obj unless overridden
           return fnBind(item, elem || obj);
         }
 

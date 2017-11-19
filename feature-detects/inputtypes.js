@@ -96,7 +96,7 @@ define(['Modernizr', 'inputElem', 'docElement'], function(Modernizr, inputElem, 
           bool = inputElem.checkValidity && inputElem.checkValidity() === false;
 
         } else {
-          // If the upgraded input compontent rejects the :) text, we got a winner
+          // If the upgraded input component rejects the :) text, we got a winner
           bool = inputElem.value != smile;
         }
       }
