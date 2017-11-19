@@ -7254,7 +7254,7 @@ Tests for all forms of webp support (lossless, lossy, alpha, and animated)..
 
       function addResult(event) {
         // if the event is from 'onload', check the see if the image's width is
-        // 1 pixel (which indiciates support). otherwise, it fails
+        // 1 pixel (which indicates support). otherwise, it fails
 
         var result = event && event.type === 'load' ? image.width == 1 : false;
         var baseTest = name === 'webp';
