@@ -178,7 +178,7 @@ describe('addTest', function() {
       expect(setClasses.calledWith(['no-fakedetect'])).to.be(true);
     });
 
-    it('sets a negative class for a falsey value', function() {
+    it('sets a negative class for a falsy value', function() {
       addTest('fakedetect', function() {return undefined;});
       expect(setClasses.callCount).to.be(1);
       expect(setClasses.calledWith(['no-fakedetect'])).to.be(true);
