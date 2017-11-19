@@ -2866,7 +2866,7 @@ extends beyond its border in CSS
 !*/
 /* DOC
 Detects if you can use the shorthand method to define multiple parts of an
-element's background-position simultaniously.
+element's background-position simultaneously.
 
 eg `background-position: right 10px bottom 10px`
 */
