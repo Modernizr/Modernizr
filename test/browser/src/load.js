@@ -106,7 +106,7 @@ describe('load', function() {
       afterEach(function() {
         yepnope = undefined;
         // ie <= 8 doesn't support deleting window properties,
-        //  so we fallback to setting it to undefiend
+        //  so we fallback to setting it to undefined
         try {
           delete window.yepnope;
         } catch (e) {
