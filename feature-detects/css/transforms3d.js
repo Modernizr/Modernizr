@@ -5,7 +5,7 @@
   "caniuse": "transforms3d",
   "tags": ["css"],
   "warnings": [
-    "Chrome may occassionally fail this test on some systems; more info: https://code.google.com/p/chromium/issues/detail?id=129004"
+    "Chrome may occasionally fail this test on some systems; more info: https://code.google.com/p/chromium/issues/detail?id=129004"
   ]
 }
 !*/
