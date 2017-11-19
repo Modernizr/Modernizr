@@ -10,7 +10,7 @@
     "name": "Webp Info",
     "href": "https://developers.google.com/speed/webp/"
   }, {
-    "name": "Chormium blog - Chrome 32 Beta: Animated WebP images and faster Chrome for Android touch input",
+    "name": "Chromium blog - Chrome 32 Beta: Animated WebP images and faster Chrome for Android touch input",
     "href": "https://blog.chromium.org/2013/11/chrome-32-beta-animated-webp-images-and.html"
   }, {
     "name": "Webp Lossless Spec",
@@ -19,7 +19,7 @@
     "name": "Article about WebP support on Android browsers",
     "href": "http://www.wope-framework.com/en/2013/06/24/webp-support-on-android-browsers/"
   }, {
-    "name": "Chormium WebP announcement",
+    "name": "Chromium WebP announcement",
     "href": "https://blog.chromium.org/2011/11/lossless-and-transparency-encoding-in.html?m=1"
   }]
 }
