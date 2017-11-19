@@ -385,7 +385,7 @@
    *  in a statement that will return a boolean value works just fine.
    *
    * ```js
-   * Modernizr.addTest('hasJquery', 'jQuery' in window);
+   * Modernizr.addTest('hasJQuery', 'jQuery' in window);
    * ```
    *
    * Just like before, when the above runs `Modernizr.hasjquery` will be true if
