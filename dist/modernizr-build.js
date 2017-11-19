@@ -2244,7 +2244,7 @@ Detects if audio can be downloaded in the background before it starts playing in
 
     try {
       if (Modernizr.audio.mp3) {
-        //75ms of silence (minumum Mp3 duration loaded by Safari, not tested other formats thoroughly: may be possible to shrink base64 URI)
+        //75ms of silence (minimum Mp3 duration loaded by Safari, not tested other formats thoroughly: may be possible to shrink base64 URI)
         elem.src = 'data:audio/mpeg;base64,//MUxAAB6AXgAAAAAPP+c6nf//yi/6f3//MUxAMAAAIAAAjEcH//0fTX6C9Lf//0//MUxA4BeAIAAAAAAKX2/6zv//+IlR4f//MUxBMCMAH8AAAAABYWalVMQU1FMy45//MUxBUB0AH0AAAAADkuM1VVVVVVVVVV//MUxBgBUATowAAAAFVVVVVVVVVVVVVV';
       }
       else if (Modernizr.audio.m4a) {
