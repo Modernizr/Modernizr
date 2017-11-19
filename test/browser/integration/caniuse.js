@@ -242,7 +242,7 @@ window.caniusecb = function(caniuse) {
       }
 
 
-      // we breakout flexbox sniffing into three seperate detects, which borks the caniuse mappings,
+      // we breakout flexbox sniffing into three separate detects, which borks the caniuse mappings,
       // since no browser supports all three
       if (o.ciufeature === 'flexbox') {
         return it('Caniuse result for flexbox matches Modernizr\'s result for flexbox', function() {
