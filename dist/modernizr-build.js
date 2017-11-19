@@ -347,7 +347,7 @@
   /**
    * addTest allows you to define your own feature detects that are not currently
    * included in Modernizr (under the covers it's the exact same code Modernizr
-   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)). Just like the offical detects, the result
+   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)). Just like the official detects, the result
    * will be added onto the Modernizr object, as well as an appropriate className set on
    * the html element when configured to do so
    *
