@@ -99,7 +99,7 @@ if (argv.m) {
     log('metadata saved to ' + metaDest);
   });
   if (!argv.d) {
-    // return early unless we explictly request Modernizr to be built
+    // return early unless we explicitly request Modernizr to be built
     return;
   }
 }
