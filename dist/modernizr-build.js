@@ -7260,7 +7260,7 @@ Tests for all forms of webp support (lossless, lossy, alpha, and animated)..
         var baseTest = name === 'webp';
 
         // if it is the base test, and the result is false, just set a literal false
-        // rather than use the Boolean contrsuctor
+        // rather than use the Boolean constructor
         addTest(name, (baseTest && result) ? new Boolean(result) : result);
 
         if (cb) {
