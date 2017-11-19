@@ -6307,7 +6307,7 @@ Detects Flash support as well as Flash-blocking plugins
       // Need to do this in the body (fake or otherwise) otherwise IE8 complains
       body.appendChild(embed);
 
-      // Pan doesn't exist in the embed if its IE (its on the ActiveXObjeect)
+      // Pan doesn't exist in the embed if its IE (its on the ActiveXObject)
       // so this check is for all other browsers.
       if (!('Pan' in embed) && !activex) {
         attachBody(body);
