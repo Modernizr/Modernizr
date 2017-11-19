@@ -2449,7 +2449,7 @@
 
           var original = this;
           var fake = this.instantiateFake();
-          fake.matchingAguments = args;
+          fake.matchingArguments = args;
           fake.parent = this;
           push.call(this.fakes, fake);
 
@@ -2473,7 +2473,7 @@
         },
 
         matches: function (args, strict) {
-          var margs = this.matchingAguments;
+          var margs = this.matchingArguments;
 
           if (margs.length <= args.length &&
                     sinon.deepEqual(margs, args.slice(0, margs.length))) {
