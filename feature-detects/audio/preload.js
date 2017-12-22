@@ -23,7 +23,11 @@ define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/audio'], fu
       var result = event !== undefined && event.type === 'loadeddata' ? true : false; //need to check if event is not undefined here in case function is evoked from timeout (no parameters)
       elem.removeEventListener('loadeddata', testpreload, false);
       addTest('audiopreload', result);
-      elem.parentNode.removeChild(elem);
+      // Cleanup, but don't assume elem is still in the page -
+      // an extension (eg Flashblock) may already have removed it.
+      if (elem.parentNode) {
+        elem.parentNode.removeChild(elem);
+      }
     }
 
     //skip the test if audio itself, or the preload
