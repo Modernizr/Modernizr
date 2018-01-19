@@ -29,20 +29,25 @@ define(['Modernizr', 'prefixed', 'addTest'], function(Modernizr, prefixed, addTe
 
     if (!!indexeddb) {
       var testDBName = 'modernizr-' + Math.random();
-      var req = indexeddb.open(testDBName);
+      try {
+        // "indexeddb.open" may crash when used within an iframe
+        var req = indexeddb.open(testDBName);
 
-      req.onerror = function() {
-        if (req.error && req.error.name === 'InvalidStateError') {
-          addTest('indexeddb', false);
-        } else {
+        req.onerror = function() {
+          if (req.error && req.error.name === 'InvalidStateError') {
+            addTest('indexeddb', false);
+          } else {
+            addTest('indexeddb', true);
+            detectDeleteDatabase(indexeddb, testDBName);
+          }
+        };
+
+        req.onsuccess = function() {
           addTest('indexeddb', true);
           detectDeleteDatabase(indexeddb, testDBName);
-        }
-      };
-
-      req.onsuccess = function() {
-        addTest('indexeddb', true);
-        detectDeleteDatabase(indexeddb, testDBName);
+        };
+      } catch (signal) {
+        addTest('indexeddb', false);
       };
     } else {
       addTest('indexeddb', false);
