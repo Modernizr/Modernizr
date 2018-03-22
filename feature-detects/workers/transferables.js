@@ -61,7 +61,7 @@ define(['Modernizr', 'addTest', 'test/blob', 'test/url/bloburls', 'test/workers/
       if (url) {
         URL.revokeObjectURL(url);
       }
-      if (worker) {
+      if (typeof(worker) !== 'undefined') {    
         worker.terminate();
       }
       if (timeout) {
