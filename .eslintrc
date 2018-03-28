@@ -1,24 +1,5 @@
 {
   "preset": "google",
-  "jsDoc": {
-    "requireHyphenBeforeDescription": true,
-    "requireNewlineAfterDescription": true,
-    "checkRedundantReturns": true,
-    "checkParamExistence": true,
-    "requireReturnTypes": true,
-    "requireParamTypes": true,
-    "checkReturnTypes": true,
-    "checkTypes": true,
-    "checkAnnotations": {
-      "preset": "jsdoc3",
-      "extra": {
-        "access": true,
-        "optionName": true,
-        "optionProp": true,
-        "memberof": true
-      }
-    }
-  },
   "env": {
     "browser": true,
     "node": true,
@@ -34,6 +15,9 @@
     "$": true,
     "_": true
   },
+  "plugins": [
+    "jsdoc"
+  ],
   "rules": {
     "indent": [
       2,
@@ -66,6 +50,13 @@
     ],
     "dot-notation": "off",
     "valid-jsdoc": "error",
-    "no-global-getComputedStyle": "error"
+    "no-global-getComputedStyle": "error",
+    "jsdoc/check-tag-names": 1,
+    "jsdoc/check-types": 1,
+    "jsdoc/newline-after-description": 1,
+    "jsdoc/require-hyphen-before-param-description": 1,
+    "jsdoc/require-param": 1,
+    "jsdoc/require-param-type": 1,
+    "jsdoc/require-returns-type": 1
   }
 }
