@@ -103,7 +103,7 @@ module.exports = function(grunt) {
                 var ua = req.headers['user-agent'];
 
                 // record code coverage results from browsers
-                if (req.url == '/coverage/client' && req.method == 'POST') {
+                if (req.url === '/coverage/client' && req.method === 'POST') {
                   var name = encodeURI(ua.replace(/\//g, '-'));
                   var body = '';
 
@@ -148,8 +148,8 @@ module.exports = function(grunt) {
         options: {
           urls: '<%= env.coverage.urls %>',
           log: true
-        },
-      },
+        }
+      }
     },
     // `mocha` runs browser tests, `mochaTest` runs node tests
     mochaTest: {
