@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         'gh-pages'
       ]
     },
-    jade: {
+    pug: {
       compile: {
         options: {
           data: {
@@ -213,7 +213,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['eslint', 'build']);
 
-  var tests = ['clean', 'eslint', 'jade', 'instrument', 'env:coverage', 'nodeTests'];
+  var tests = ['clean', 'eslint', 'pug', 'instrument', 'env:coverage', 'nodeTests'];
 
   if (process.env.APPVEYOR) {
     grunt.registerTask('test', tests);
