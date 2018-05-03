@@ -1,9 +1,9 @@
 sudo: false
 language: node_js
 node_js:
-  - 4
   - 6
   - 8
+  - 10
 before_install:
   - npm install -g npm@latest
 before_script:
