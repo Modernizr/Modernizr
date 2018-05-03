@@ -5,9 +5,9 @@ define(['is', 'fnBind'], function(is, fnBind) {
    *
    * @access private
    * @function testDOMProps
-   * @param {array.<string>} props - An array of properties to test for
+   * @param {Array<string>} props - An array of properties to test for
    * @param {Object} obj - An object or Element you want to use to test the parameters again
-   * @param {boolean|object} elem - An Element to bind the property lookup again. Use `false` to prevent the check
+   * @param {boolean|Object} elem - An Element to bind the property lookup again. Use `false` to prevent the check
    * @returns {false|*} returns false if the prop is unsupported, otherwise the value that is supported
    */
   function testDOMProps(props, obj, elem) {
