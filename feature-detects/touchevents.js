@@ -33,20 +33,16 @@ It's recommended to bind both mouse and touch/pointer events simultaneously – 
 
 This test will also return `true` for Firefox 4 Multitouch support.
 */
-define(['Modernizr', 'prefixes', 'testStyles'], function(Modernizr, prefixes, testStyles) {
+define(['Modernizr', 'prefixes', 'mq'], function(Modernizr, prefixes, mq) {
   // Chrome (desktop) used to lie about its support on this, but that has since been rectified: http://crbug.com/36415
   Modernizr.addTest('touchevents', function() {
-    var bool;
     if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
-      bool = true;
-    } else {
-      // include the 'heartz' as a way to have a non matching MQ to help terminate the join
-      // https://git.io/vznFH
-      var query = ['@media (', prefixes.join('touch-enabled),('), 'heartz', ')', '{#modernizr{top:9px;position:absolute}}'].join('');
-      testStyles(query, function(node) {
-        bool = node.offsetTop === 9;
-      });
+      return true;
     }
-    return bool;
+
+    // include the 'heartz' as a way to have a non matching MQ to help terminate the join
+    // https://git.io/vznFH
+    var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
+    return mq(query);
   });
 });
