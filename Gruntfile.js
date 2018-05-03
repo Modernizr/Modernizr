@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         'gh-pages'
       ]
     },
-    jade: {
+    pug: {
       compile: {
         options: {
           data: {
@@ -103,7 +103,7 @@ module.exports = function(grunt) {
                 var ua = req.headers['user-agent'];
 
                 // record code coverage results from browsers
-                if (req.url == '/coverage/client' && req.method == 'POST') {
+                if (req.url === '/coverage/client' && req.method === 'POST') {
                   var name = encodeURI(ua.replace(/\//g, '-'));
                   var body = '';
 
@@ -148,8 +148,8 @@ module.exports = function(grunt) {
         options: {
           urls: '<%= env.coverage.urls %>',
           log: true
-        },
-      },
+        }
+      }
     },
     // `mocha` runs browser tests, `mochaTest` runs node tests
     mochaTest: {
@@ -213,7 +213,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['eslint', 'build']);
 
-  var tests = ['clean', 'eslint', 'jade', 'instrument', 'env:coverage', 'nodeTests'];
+  var tests = ['clean', 'eslint', 'pug', 'instrument', 'env:coverage', 'nodeTests'];
 
   if (process.env.APPVEYOR) {
     grunt.registerTask('test', tests);

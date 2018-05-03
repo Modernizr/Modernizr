@@ -1,11 +1,5 @@
 environment:
   matrix:
-    - nodejs_version: 0.10
-      npm_version: 3
-    - nodejs_version: 0.12
-      npm_version: 3
-    - nodejs_version: 4
-      npm_version: 'latest'
     - nodejs_version: 6
       npm_version: 'latest'
     - nodejs_version: 8
