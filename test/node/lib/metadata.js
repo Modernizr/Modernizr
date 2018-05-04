@@ -173,31 +173,31 @@ describe('cli/metadata', function() {
       deps: Joi.array().items(Joi.string()),
 
       notes: Joi.array().items(
-                    Joi.object().keys({
-                      name: Joi.string().required(),
-                      href: Joi.string().required()
-                    })
-                  ).unique(),
+        Joi.object().keys({
+          name: Joi.string().required(),
+          href: Joi.string().required()
+        })
+      ).unique(),
 
       cssclass: Joi.alternatives().try(
-                              Joi.string().lowercase(),
-                              Joi.array().items(Joi.string().lowercase())
-                            ).required(),
+        Joi.string().lowercase(),
+        Joi.array().items(Joi.string().lowercase())
+      ).required(),
 
       property: Joi.alternatives().try(
-                              Joi.string().lowercase(),
-                              Joi.array().items(Joi.string().lowercase())
-                            ).required(),
+        Joi.string().lowercase(),
+        Joi.array().items(Joi.string().lowercase())
+      ).required(),
 
       polyfills: Joi.array().items(
-                                Joi.object().keys({
-                                  name: Joi.string().required(),
-                                  authors: Joi.array().items(Joi.string()),
-                                  notes: Joi.array().items(Joi.string()),
-                                  href: Joi.string().required(),
-                                  licenses: Joi.array().items(Joi.string()).required()
-                                })
-                              ).unique()
+        Joi.object().keys({
+          name: Joi.string().required(),
+          authors: Joi.array().items(Joi.string()),
+          notes: Joi.array().items(Joi.string()),
+          href: Joi.string().required(),
+          licenses: Joi.array().items(Joi.string()).required()
+        })
+      ).unique()
     });
 
     metadata(function(data) {
