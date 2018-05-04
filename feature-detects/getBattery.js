@@ -16,6 +16,5 @@
 Detect support for the Get Battery API, for accessing information about the system's battery charge level.
 */
 define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-    Modernizr.addTest('getbattery', !!prefixed('getbattery', navigator), {aliases: ['get-battery']});
-  });
-  
+  Modernizr.addTest('getbattery', !!prefixed('getbattery', navigator), {aliases: ['get-battery']});
+});
