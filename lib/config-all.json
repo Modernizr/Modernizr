@@ -27,7 +27,6 @@
     "audio/webaudio",
     "battery",
     "battery/lowbattery",
-    "getBattery",
     "blob",
     "canvas",
     "canvas/blending",
