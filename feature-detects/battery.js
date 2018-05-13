@@ -5,7 +5,7 @@
   "aliases": ["battery-api"],
   "builderAliases": ["battery_api"],
   "tags": ["device", "media"],
-  "authors": ["Paul Sayre", Alex Bradley (abrad1212)],
+  "authors": ["Paul Sayre", "Alex Bradley (@abrad1212)"],
   "notes": [{
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en/DOM/window.navigator.mozBattery"
