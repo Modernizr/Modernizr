@@ -41,6 +41,7 @@
     "serve-static": "^1.13.2"
   },
   "scripts": {
+    "start": "grunt default",
     "test": "grunt test --stack"
   },
   "main": "./lib/cli",
