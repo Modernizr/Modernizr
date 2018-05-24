@@ -6,19 +6,19 @@
     "test": "test"
   },
   "dependencies": {
-    "doctrine": "1.2.3",
+    "doctrine": "2.1.0",
     "file": "0.2.2",
     "find-parent-dir": "0.3.0",
     "lodash": "4.17.10",
     "mkdirp": "0.5.1",
-    "remarkable": "^1.6.2",
+    "remarkable": "1.7.1",
     "requirejs": "2.1.22",
-    "yargs": "7.0.2"
+    "yargs": "11.0.0"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
     "eslint": "^4.19.1",
-    "eslint-plugin-jsdoc": "^3.7.0",
+    "eslint-plugin-jsdoc": "^3.7.1",
     "expect.js": "^0.3.1",
     "grunt": "^1.0.2",
     "grunt-contrib-clean": "^1.1.0",
