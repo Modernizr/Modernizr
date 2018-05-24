@@ -6,14 +6,14 @@
     "test": "test"
   },
   "dependencies": {
-    "doctrine": "2.1.0",
-    "file": "0.2.2",
-    "find-parent-dir": "0.3.0",
-    "lodash": "4.17.10",
-    "mkdirp": "0.5.1",
-    "remarkable": "1.7.1",
+    "doctrine": "^2.1.0",
+    "file": "^0.2.2",
+    "find-parent-dir": "^0.3.0",
+    "lodash": "^4.17.10",
+    "mkdirp": "^0.5.1",
+    "remarkable": "^1.7.1",
     "requirejs": "2.1.22",
-    "yargs": "11.0.0"
+    "yargs": "^11.0.0"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
@@ -29,11 +29,11 @@
     "grunt-env": "^0.4.4",
     "grunt-eslint": "^20.1.0",
     "grunt-istanbul": "^0.8.0",
-    "grunt-mocha": "^0.4.15",
+    "grunt-mocha": "0.4.15",
     "grunt-mocha-test": "^0.13.3",
     "grunt-saucelabs": "^9.0.0",
     "joi": "^13.3.0",
-    "jquery": "^1.12.4",
+    "jquery": "3.2.1",
     "json3": "^3.3.2",
     "load-grunt-tasks": "^4.0.0",
     "mocha": "^5.2.0",
