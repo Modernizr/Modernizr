@@ -67,7 +67,7 @@ describe('cli/metadata', function() {
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
         'readFileSync': function() {
-          return 'defin([]),';
+          return 'define_([]),';
         }
       }
     });

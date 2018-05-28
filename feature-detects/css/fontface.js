@@ -6,7 +6,7 @@
   "tags": ["css"],
   "knownBugs": [
     "False Positive: WebOS https://github.com/Modernizr/Modernizr/issues/342",
-    "False Postive: WP7 https://github.com/Modernizr/Modernizr/issues/538"
+    "False Positive: WP7 https://github.com/Modernizr/Modernizr/issues/538"
   ],
   "notes": [{
     "name": "@font-face detection routine by Diego Perini",
