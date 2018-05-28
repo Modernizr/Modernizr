@@ -30,7 +30,9 @@ define(['Modernizr'], function(Modernizr) {
           supportsPassiveOption = true;
         }
       });
-      window.addEventListener('test', null, opts);
+      var noop = function () {};
+      window.addEventListener('testPassiveEventSupport', noop, opts);
+      window.removeEventListener('testPassiveEventSupport', noop, opts);
     } catch (e) {}
     return supportsPassiveOption;
   });
