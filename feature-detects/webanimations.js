@@ -1,7 +1,8 @@
 /*!
 {
   "name": "Web Animation API",
-  "property": "animation",
+  "property": "webanimations",
+  "caniuse": "web-animation",
   "tags": ["webanimations"],
   "polyfills": ["webanimationsjs"],
   "notes": [{
