@@ -94,6 +94,12 @@ module.exports = function(grunt) {
       }
     },
     connect: {
+      browser: {
+        options: {
+          port: 9090,
+          keepalive: true
+        }
+      },
       server: {
         options: {
           middleware: function() {
@@ -207,7 +213,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('nodeTests', ['mochaTest']);
 
-  grunt.registerTask('browserTests', ['connect', 'mocha']);
+  grunt.registerTask('browserTests', ['connect:server', 'mocha']);
+
+  grunt.registerTask('browserResults', ['test', 'connect:browser']);
 
   grunt.registerTask('build', ['clean', 'generate']);
 

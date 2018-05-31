@@ -52,23 +52,21 @@ npm install
 //outputs to ./modernizr.js
 ```
 
-### To run tests (in phantom):
+### To run tests on the console (in phantom):
 
 ```shell
 grunt test
 ```
 
-### To run tests (in browser):
+### To run tests in the browser:
 
 ```shell
-grunt build
-serve .
-visit <url>/test
+grunt browserResults
 ```
 
-### To see simple build in browser:
+then visit `http://localhost:9090/test/unit.html` for unit test results
 
-serve the root dir, `<url>/test/modular.html`
+or visit `http://localhost:9090/test/index.html` to see which features that browser supports
 
 ### To see the build tool:
 
