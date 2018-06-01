@@ -16,5 +16,5 @@
 Detects support for the `font-display` descriptor, which defines how font files are loaded and displayed by the browser.
 */
 define(['Modernizr'], function(Modernizr, testProp) {
-  Modernizr.addTest('font-display', testProp('font-display', 'swap'));
+  Modernizr.addTest('fontDisplay', testProp('font-display', 'swap'));
 });
