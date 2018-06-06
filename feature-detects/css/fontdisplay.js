@@ -2,6 +2,7 @@
 {
   "name": "Font Display",
   "property": "fontdisplay",
+  "authors": ["Patrick Kettner"],
   "caniuse": "css-font-rendering-controls",
   "notes": [{
     "name": "W3C CSS Fonts Module Level 4",
@@ -16,5 +17,5 @@
 Detects support for the `font-display` descriptor, which defines how font files are loaded and displayed by the browser.
 */
 define(['Modernizr'], function(Modernizr, testProp) {
-  Modernizr.addTest('fontDisplay', testProp('font-display', 'swap'));
+  Modernizr.addTest('fontDisplay', testProp('font-display'));
 });
