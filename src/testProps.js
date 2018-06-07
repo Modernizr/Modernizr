@@ -76,14 +76,14 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'cssToDO
           // CSS.supports()
           if (mStyle.style[prop] != before) {
             cleanElems();
-            return prefixed == 'pfx' ? prop : true;
+            return prefixed === 'pfx' ? prop : true;
           }
         }
         // Otherwise just return true, or the property name if this is a
         // `prefixed()` call
         else {
           cleanElems();
-          return prefixed == 'pfx' ? prop : true;
+          return prefixed === 'pfx' ? prop : true;
         }
       }
     }

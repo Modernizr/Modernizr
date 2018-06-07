@@ -27,7 +27,7 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
     };
 
     image.onload = function() {
-      addTest('webpanimation', image.width == 1, {aliases: ['webp-animation']});
+      addTest('webpanimation', image.width === 1, {aliases: ['webp-animation']});
     };
 
     image.src = 'data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA';

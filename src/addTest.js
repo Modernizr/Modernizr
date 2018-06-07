@@ -149,7 +149,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
 
   function addTest(feature, test) {
 
-    if (typeof feature == 'object') {
+    if (typeof feature === 'object') {
       for (var key in feature) {
         if (hasOwnProp(feature, key)) {
           addTest(key, feature[ key ]);
@@ -162,7 +162,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
       var last = Modernizr[featureNameSplit[0]];
 
       // Again, we don't check for parent test existence. Get that right, though.
-      if (featureNameSplit.length == 2) {
+      if (featureNameSplit.length === 2) {
         last = last[featureNameSplit[1]];
       }
 
@@ -175,10 +175,10 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
         return Modernizr;
       }
 
-      test = typeof test == 'function' ? test() : test;
+      test = typeof test === 'function' ? test() : test;
 
       // Set the value (this is the magic, right here).
-      if (featureNameSplit.length == 1) {
+      if (featureNameSplit.length === 1) {
         Modernizr[featureNameSplit[0]] = test;
       } else {
         // cast to a Boolean, if not one already

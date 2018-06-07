@@ -12,7 +12,7 @@ define(['Modernizr'], function(Modernizr) {
   // github.com/Modernizr/Modernizr/issues/370
 
   Modernizr.addTest('websocketsbinary', function() {
-    var protocol = 'https:' == location.protocol ? 'wss' : 'ws',
+    var protocol = 'https:' === location.protocol ? 'wss' : 'ws',
       protoBin;
 
     if ('WebSocket' in window) {

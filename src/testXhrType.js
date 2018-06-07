@@ -11,7 +11,7 @@ define(function() {
 
   /* istanbul ignore next */
   var testXhrType = function(type) {
-    if (typeof XMLHttpRequest == 'undefined') {
+    if (typeof XMLHttpRequest === 'undefined') {
       return false;
     }
     var xhr = new XMLHttpRequest();
@@ -21,7 +21,7 @@ define(function() {
     } catch (error) {
       return false;
     }
-    return 'response' in xhr && xhr.responseType == type;
+    return 'response' in xhr && xhr.responseType === type;
   };
 
   return testXhrType;

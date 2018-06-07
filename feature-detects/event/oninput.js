@@ -26,7 +26,7 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
     var supportsOnInput;
     input.setAttribute('oninput', 'return');
 
-    if (hasEvent('oninput', docElement) || typeof input.oninput == 'function') {
+    if (hasEvent('oninput', docElement) || typeof input.oninput === 'function') {
       return true;
     }
 

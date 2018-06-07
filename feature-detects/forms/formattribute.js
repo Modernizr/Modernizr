@@ -39,7 +39,7 @@ define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createE
 
     docElement.appendChild(div);
 
-    bool = form.elements && form.elements.length === 1 && input.form == form;
+    bool = form.elements && form.elements.length === 1 && input.form === form;
 
     div.parentNode.removeChild(div);
     return bool;

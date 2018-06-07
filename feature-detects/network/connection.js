@@ -29,8 +29,8 @@ define(['Modernizr'], function(Modernizr) {
     // polyfill
     var connection = navigator.connection || {type: 0};
 
-    return connection.type == 3 || // connection.CELL_2G
-      connection.type == 4 || // connection.CELL_3G
+    return connection.type === 3 || // connection.CELL_2G
+      connection.type === 4 || // connection.CELL_3G
       /^[23]g$/.test(connection.type); // string value in new spec
   });
 });

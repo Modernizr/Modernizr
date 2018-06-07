@@ -29,7 +29,7 @@ define(['Modernizr', 'createElement', 'isSVG'], function(Modernizr, createElemen
       if ('style' in shape) {
         shape.style.behavior = 'url(#default#VML)';
       }
-      supports = shape ? typeof shape.adj == 'object' : true;
+      supports = shape ? typeof shape.adj === 'object' : true;
     }
 
     return supports;

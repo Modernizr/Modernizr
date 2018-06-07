@@ -30,7 +30,7 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
     };
 
     image.onload = function() {
-      addTest('webpalpha', image.width == 1, {aliases: ['webp-alpha']});
+      addTest('webpalpha', image.width === 1, {aliases: ['webp-alpha']});
     };
 
     image.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==';

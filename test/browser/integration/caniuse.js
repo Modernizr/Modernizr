@@ -170,12 +170,12 @@ window.caniusecb = function(caniuse) {
       }
 
       // change the *documented* false positives
-      if (!ciubool && (o.feature == 'textshadow' && o.browser == 'Firefox' && o.version == 3)) {
+      if (!ciubool && (o.feature === 'textshadow' && o.browser === 'Firefox' && o.version === 3)) {
         ciubool = o.fp = true;
       }
 
       // firefox does not support unicode-range without a flag
-      if (o.feature === 'unicoderange' && o.caniuseResult.indexOf('y') === 0 && o.browser == 'Firefox' && o.version <= 40) {
+      if (o.feature === 'unicoderange' && o.caniuseResult.indexOf('y') === 0 && o.browser === 'Firefox' && o.version <= 40) {
         return;
       }
 
@@ -187,13 +187,13 @@ window.caniusecb = function(caniuse) {
 
       // firefox only supports the `url` version of css-filters, which we don't
       // consider support
-      if (o.feature === 'cssfilters' && o.browser == 'Firefox' && o.caniuseResult.indexOf('a') === 0) {
+      if (o.feature === 'cssfilters' && o.browser === 'Firefox' && o.caniuseResult.indexOf('a') === 0) {
         return;
       }
 
       // before 4.0, firefox only supports MathML on XHTML documents. Since we
       // don't run inside of one, we will have a technically false negative
-      if (o.feature === 'mathml' && o.browser == 'Firefox' && o.version < 4) {
+      if (o.feature === 'mathml' && o.browser === 'Firefox' && o.version < 4) {
         return;
       }
 
@@ -222,12 +222,12 @@ window.caniusecb = function(caniuse) {
 
       // caniuse counts a partial support for CORS via the XDomainRequest,
       // but thats not really cors - so skip the comparison.
-      if (o.feature === 'cors' && o.browser == 'IE' && o.version < 10) {
+      if (o.feature === 'cors' && o.browser === 'IE' && o.version < 10) {
         return;
       }
 
       // Opera 12 has a false positive for `defer`
-      if (o.feature === 'scriptdefer' && o.browser == 'Opera' && parseInt(o.version, 10) === 12) {
+      if (o.feature === 'scriptdefer' && o.browser === 'Opera' && parseInt(o.version, 10) === 12) {
         return;
       }
 
@@ -309,8 +309,8 @@ window.caniusecb = function(caniuse) {
 
       var majorminor = (ua.major + '.' + minorver)
         // opera gets grouped in some cases by caniuse
-        .replace(/(9\.(6|5))/ , ua.family == 'opera' ? '9.5-9.6'   : '$1')
-        .replace(/(10\.(0|1))/, ua.family == 'opera' ? '10.0-10.1' : '$1');
+        .replace(/(9\.(6|5))/ , ua.family === 'opera' ? '9.5-9.6'   : '$1')
+        .replace(/(10\.(0|1))/, ua.family === 'opera' ? '10.0-10.1' : '$1');
 
       var versionToUse = _.findLast(_.keys(browserResults), function(ciuVersion) {
         return parseFloat(ciuVersion) <= parseFloat(majorminor);

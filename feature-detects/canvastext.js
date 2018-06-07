@@ -15,6 +15,6 @@ define(['Modernizr', 'createElement', 'test/canvas'], function(Modernizr, create
     if (Modernizr.canvas  === false) {
       return false;
     }
-    return typeof createElement('canvas').getContext('2d').fillText == 'function';
+    return typeof createElement('canvas').getContext('2d').fillText === 'function';
   });
 });
