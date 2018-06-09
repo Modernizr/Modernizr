@@ -67,7 +67,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
             'text-justification:newspaper;' +
             prefixes.join('hyphens:auto; ');
 
-          result = (span.offsetHeight != spanHeight || span.offsetWidth != spanWidth);
+          result = (span.offsetHeight !== spanHeight || span.offsetWidth !== spanWidth);
 
           /* results and cleanup */
           document.body.removeChild(div);

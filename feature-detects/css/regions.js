@@ -69,7 +69,7 @@ define(['Modernizr', 'createElement', 'docElement', 'isSVG', 'prefixed'], functi
     delta = parseInt(flowedRect.left - plainRect.left, 10);
     docElement.removeChild(container);
 
-    if (delta == 42) {
+    if (delta === 42) {
       result = true;
     } else {
       /* IE only allows for the content to come from iframes. This has the

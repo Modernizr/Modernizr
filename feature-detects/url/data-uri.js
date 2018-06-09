@@ -41,7 +41,7 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
       addTest('datauri', false);
     };
     datauri.onload = function() {
-      if (datauri.width == 1 && datauri.height == 1) {
+      if (datauri.width === 1 && datauri.height === 1) {
         testOver32kb();
       }
       else {
@@ -65,7 +65,7 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
       datauriBig.onload = function() {
         addTest('datauri', true);
         Modernizr.datauri = new Boolean(true);
-        Modernizr.datauri.over32kb = (datauriBig.width == 1 && datauriBig.height == 1);
+        Modernizr.datauri.over32kb = (datauriBig.width === 1 && datauriBig.height === 1);
       };
 
       var base64str = 'R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';

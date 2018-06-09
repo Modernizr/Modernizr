@@ -14,7 +14,7 @@ Tests for XMLHttpRequest xhr.responseType.
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('xhrresponsetype', (function() {
-    if (typeof XMLHttpRequest == 'undefined') {
+    if (typeof XMLHttpRequest === 'undefined') {
       return false;
     }
     var xhr = new XMLHttpRequest();

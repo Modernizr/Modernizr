@@ -30,7 +30,7 @@ define(['Modernizr', 'createElement', 'addTest'], function(Modernizr, createElem
       width1 = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
       test = function() {
-        addTest('sizes', image.width == 2);
+        addTest('sizes', image.width === 2);
       };
 
       image.onload = test;

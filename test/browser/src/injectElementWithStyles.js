@@ -114,7 +114,7 @@ describe('injectElementWithStyles', function() {
 
       // injectElementWithStyles overrides the background value for fake body to
       // an empty string, however old IE changes this to the following string.
-      if (body.style.background != 'none transparent scroll repeat 0% 0%') {
+      if (body.style.background !== 'none transparent scroll repeat 0% 0%') {
         expect(body.style.background.length).to.be(0);
       }
 

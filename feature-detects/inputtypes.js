@@ -97,7 +97,7 @@ define(['Modernizr', 'inputElem', 'docElement'], function(Modernizr, inputElem, 
 
         } else {
           // If the upgraded input component rejects the :) text, we got a winner
-          bool = inputElem.value != smile;
+          bool = inputElem.value !== smile;
         }
       }
 

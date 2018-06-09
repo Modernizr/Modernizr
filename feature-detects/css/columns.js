@@ -32,7 +32,7 @@ define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
       test = testAllProps('column' + props[i]);
 
       // break-before, break-after & break-inside are not "column"-prefixed in spec
-      if (name === 'breakbefore' || name === 'breakafter' || name == 'breakinside') {
+      if (name === 'breakbefore' || name === 'breakafter' || name === 'breakinside') {
         test = test || testAllProps(props[i]);
       }
 

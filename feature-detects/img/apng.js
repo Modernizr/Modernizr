@@ -26,7 +26,7 @@ define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function(Modern
 
     image.onload = function() {
       addTest('apng', function() {
-        if (typeof canvas.getContext == 'undefined') {
+        if (typeof canvas.getContext === 'undefined') {
           return false;
         }
         else {

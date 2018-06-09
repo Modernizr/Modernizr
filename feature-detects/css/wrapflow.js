@@ -46,6 +46,6 @@ define(['Modernizr', 'prefixed', 'docElement', 'createElement', 'isSVG'], functi
     docElement.removeChild(container);
     exclusion = content = container = undefined;
 
-    return (leftOffset == 150);
+    return (leftOffset === 150);
   });
 });
