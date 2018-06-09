@@ -5,13 +5,13 @@
  * @author Contributors: https://github.com/cjohansen/Sinon.JS/blob/master/AUTHORS
  *
  * (The BSD License)
- *
+ * 
  * Copyright (c) 2010-2014, Christian Johansen, christian@cjohansen.no
  * All rights reserved.
- *
+ * 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- *
+ * 
  *     * Redistributions of source code must retain the above copyright notice,
  *       this list of conditions and the following disclaimer.
  *     * Redistributions in binary form must reproduce the above copyright notice,
@@ -20,7 +20,7 @@
  *     * Neither the name of Christian Johansen nor the names of his contributors
  *       may be used to endorse or promote products derived from this software
  *       without specific prior written permission.
- *
+ * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -47,7 +47,7 @@
   var samsam, formatio;
   (function () {
     function define(mod, deps, fn) {
-      if (mod === 'samsam') {
+      if (mod == 'samsam') {
         samsam = deps();
       } else if (typeof deps === 'function' && mod.length === 0) {
         lolex = deps();
@@ -92,7 +92,7 @@
                 getClass(object) === 'Array') {
       return false;
     }
-    if (typeof object.callee === 'function') { return true; }
+    if (typeof object.callee == 'function') { return true; }
     try {
       object[object.length] = 6;
       delete object[object.length];
@@ -146,8 +146,8 @@
      * ``valueOf``.
      */
   function isDate(value) {
-    return typeof value.getTime === 'function' &&
-            value.getTime() === value.valueOf();
+    return typeof value.getTime == 'function' &&
+            value.getTime() == value.valueOf();
   }
 
     /**
@@ -250,10 +250,10 @@
       var type1 = typeof obj1;
       var type2 = typeof obj2;
 
-            // === null also matches undefined
+            // == null also matches undefined
       if (obj1 === obj2 ||
                     isNaN(obj1) || isNaN(obj2) ||
-                    obj1 === null || obj2 === null ||
+                    obj1 == null || obj2 == null ||
                     type1 !== 'object' || type2 !== 'object') {
 
         return identical(obj1, obj2);
@@ -461,7 +461,7 @@
       module.exports = m(require('samsam'));
     }) || function (m) { this.formatio = m(this.samsam); }
 )(function (samsam) {
-
+    
   var formatio = {
     excludeConstructors: ['Object', /^.$/],
     quoteStrings: true,
@@ -564,7 +564,7 @@
     processed.push(array);
     var pieces = [];
     var i, l;
-    l = (this.limitChildrenCount > 0) ?
+    l = (this.limitChildrenCount > 0) ? 
             Math.min(this.limitChildrenCount, array.length) : array.length;
 
     for (i = 0; i < l; ++i) {
@@ -584,7 +584,7 @@
     var pieces = [], properties = samsam.keys(object).sort();
     var length = 3;
     var prop, str, obj, i, k, l;
-    l = (this.limitChildrenCount > 0) ?
+    l = (this.limitChildrenCount > 0) ? 
             Math.min(this.limitChildrenCount, properties.length) : properties.length;
 
     for (i = 0; i < l; ++i) {
@@ -875,14 +875,14 @@
         }
 
         function callTimer(clock, timer) {
-          if (typeof timer.interval === 'number') {
+          if (typeof timer.interval == 'number') {
             clock.timers[timer.id].callAt += timer.interval;
           } else {
             delete clock.timers[timer.id];
           }
 
           try {
-            if (typeof timer.func === 'function') {
+            if (typeof timer.func == 'function') {
               timer.func.apply(null, timer.args);
             } else {
               eval(timer.func);
@@ -926,7 +926,7 @@
           clock[method].hadOwnProperty = Object.prototype.hasOwnProperty.call(target, method);
           clock['_' + method] = target[method];
 
-          if (method === 'Date') {
+          if (method == 'Date') {
             var date = mirrorDateProperties(clock[method], target[method]);
             target[method] = date;
           } else {
@@ -1026,7 +1026,7 @@
           };
 
           clock.tick = function tick(ms) {
-            ms = typeof ms === 'number' ? ms : parseTime(ms);
+            ms = typeof ms == 'number' ? ms : parseTime(ms);
             var tickFrom = clock.now, tickTo = clock.now + ms, previous = clock.now;
             var timer = firstTimerInRange(clock, tickFrom, tickTo);
 
@@ -1165,7 +1165,7 @@
 
       try {
         obj.appendChild(div);
-        success = div.parentNode === obj;
+        success = div.parentNode == obj;
       } catch (e) {
         return false;
       } finally {
@@ -1297,17 +1297,17 @@
         }
 
         var aString = Object.prototype.toString.call(a);
-        if (aString !== Object.prototype.toString.call(b)) {
+        if (aString != Object.prototype.toString.call(b)) {
           return false;
         }
 
-        if (aString === '[object Date]') {
+        if (aString == '[object Date]') {
           return a.valueOf() === b.valueOf();
         }
 
         var prop, aLength = 0, bLength = 0;
 
-        if (aString === '[object Array]' && a.length !== b.length) {
+        if (aString == '[object Array]' && a.length !== b.length) {
           return false;
         }
 
@@ -1327,7 +1327,7 @@
           bLength += 1;
         }
 
-        return aLength === bLength;
+        return aLength == bLength;
       };
 
       sinon.functionName = function functionName(func) {
@@ -1386,9 +1386,9 @@
       };
 
       sinon.timesInWords = function timesInWords(count) {
-        return count === 1 && 'once' ||
-                count === 2 && 'twice' ||
-                count === 3 && 'thrice' ||
+        return count == 1 && 'once' ||
+                count == 2 && 'twice' ||
+                count == 3 && 'thrice' ||
                 (count || 0) + ' times';
       };
 
@@ -1436,7 +1436,7 @@
       return sinon;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports) {
@@ -1452,7 +1452,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend ../sinon.js
@@ -1543,7 +1543,7 @@
       module.exports = makeApi(sinon);
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     if (isAMD) {
@@ -1555,7 +1555,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend ../sinon.js
@@ -1586,7 +1586,7 @@
       module.exports = makeApi(sinon);
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     if (isAMD) {
@@ -1598,7 +1598,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend ../sinon.js
@@ -1633,7 +1633,7 @@
       module.exports = makeApi(sinon);
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     if (isAMD) {
@@ -1646,8 +1646,8 @@
       makeApi(sinon);
     }
   }(
-    (typeof sinon === 'object' && sinon || null),
-    (typeof formatio === 'object' && formatio)
+    (typeof sinon == 'object' && sinon || null),
+    (typeof formatio == 'object' && formatio)
 ));
 
 /**
@@ -1764,7 +1764,7 @@
             break;
           case 'number':
             m.test = function (actual) {
-              return expectation === actual;
+              return expectation == actual;
             };
             break;
           case 'string':
@@ -1884,7 +1884,7 @@
       return match;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -1901,7 +1901,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend ../sinon.js
@@ -1936,7 +1936,7 @@
 
       function getNodeFormatter(value) {
         function format(value) {
-          return typeof value === 'object' && value.toString === Object.prototype.toString ? util.inspect(value) : value;
+          return typeof value == 'object' && value.toString === Object.prototype.toString ? util.inspect(value) : value;
         };
 
         try {
@@ -1948,7 +1948,7 @@
         return util ? format : valueFormatter;
       }
 
-      var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function',
+      var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function',
         formatter;
 
       if (isNode) {
@@ -1974,7 +1974,7 @@
       module.exports = makeApi(sinon);
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     if (isAMD) {
@@ -1987,8 +1987,8 @@
       makeApi(sinon);
     }
   }(
-    (typeof sinon === 'object' && sinon || null),
-    (typeof formatio === 'object' && formatio)
+    (typeof sinon == 'object' && sinon || null),
+    (typeof formatio == 'object' && formatio)
 ));
 
 /**
@@ -2049,7 +2049,7 @@
         },
 
         calledWithExactly: function calledWithExactly() {
-          return arguments.length === this.args.length &&
+          return arguments.length == this.args.length &&
                     this.calledWith.apply(this, arguments);
         },
 
@@ -2181,7 +2181,7 @@
       return createSpyCall;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -2199,7 +2199,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
   * @depend times_in_words.js
@@ -2224,7 +2224,7 @@
       var callId = 0;
 
       function spy(object, property) {
-        if (!property && typeof object === 'function') {
+        if (!property && typeof object == 'function') {
           return spy.create(object);
         }
 
@@ -2252,9 +2252,9 @@
         this.called = true;
         this.callCount += 1;
         this.notCalled = false;
-        this.calledOnce = this.callCount === 1;
-        this.calledTwice = this.callCount === 2;
-        this.calledThrice = this.callCount === 3;
+        this.calledOnce = this.callCount == 1;
+        this.calledTwice = this.callCount == 2;
+        this.calledThrice = this.callCount == 3;
       }
 
       function createCallProperties() {
@@ -2477,7 +2477,7 @@
 
           if (margs.length <= args.length &&
                     sinon.deepEqual(margs, args.slice(0, margs.length))) {
-            return !strict || margs.length === args.length;
+            return !strict || margs.length == args.length;
           }
         },
 
@@ -2489,7 +2489,7 @@
           return (format || '').replace(/%(.)/g, function (match, specifier) {
             formatter = spyApi.formatters[specifier];
 
-            if (typeof formatter === 'function') {
+            if (typeof formatter == 'function') {
               return formatter.call(null, spy, args);
             } else if (!isNaN(parseInt(specifier, 10))) {
               return sinon.format(args[specifier - 1]);
@@ -2623,7 +2623,7 @@
       return spy;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -2641,7 +2641,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend util/core.js
@@ -2674,7 +2674,7 @@
     })();
 
     function throwsException(error, message) {
-      if (typeof error === 'string') {
+      if (typeof error == 'string') {
         this.exception = new Error(message || '');
         this.exception.name = error;
       } else if (!error) {
@@ -2693,12 +2693,12 @@
         var callArgProp = behavior.callArgProp;
 
         for (var i = 0, l = args.length; i < l; ++i) {
-          if (!callArgProp && typeof args[i] === 'function') {
+          if (!callArgProp && typeof args[i] == 'function') {
             return args[i];
           }
 
           if (callArgProp && args[i] &&
-                    typeof args[i][callArgProp] === 'function') {
+                    typeof args[i][callArgProp] == 'function') {
             return args[i][callArgProp];
           }
         }
@@ -2734,7 +2734,7 @@
       }
 
       function callCallback(behavior, args) {
-        if (typeof behavior.callArgAt === 'number') {
+        if (typeof behavior.callArgAt == 'number') {
           var func = getCallback(behavior, args);
 
           if (typeof func != 'function') {
@@ -2761,9 +2761,9 @@
         },
 
         isPresent: function isPresent() {
-          return (typeof this.callArgAt === 'number' ||
+          return (typeof this.callArgAt == 'number' ||
                         this.exception ||
-                        typeof this.returnArgAt === 'number' ||
+                        typeof this.returnArgAt == 'number' ||
                         this.returnThis ||
                         this.returnValueDefined);
         },
@@ -2773,7 +2773,7 @@
 
           if (this.exception) {
             throw this.exception;
-          } else if (typeof this.returnArgAt === 'number') {
+          } else if (typeof this.returnArgAt == 'number') {
             return args[this.returnArgAt];
           } else if (this.returnThis) {
             return context;
@@ -2960,7 +2960,7 @@
       return proto;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -2977,7 +2977,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend util/core.js
@@ -3007,7 +3007,7 @@
           wrapper = sinon.spy && sinon.spy.create ? sinon.spy.create(func) : func;
         } else {
           var stubLength = 0;
-          if (typeof object === 'object' && typeof object[property] === 'function') {
+          if (typeof object == 'object' && typeof object[property] == 'function') {
             stubLength = object[property].length;
           }
           wrapper = stub.create(stubLength);
@@ -3017,7 +3017,7 @@
           return sinon.stub.create();
         }
 
-        if (typeof property === 'undefined' && typeof object === 'object') {
+        if (typeof property === 'undefined' && typeof object == 'object') {
           for (var prop in object) {
             if (typeof object[prop] === 'function') {
               stub(object, prop);
@@ -3127,7 +3127,7 @@
       return stub;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -3146,7 +3146,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend times_in_words.js
@@ -3231,7 +3231,7 @@
           var object = this.object;
 
           each(this.proxies, function (proxy) {
-            if (typeof object[proxy].restore === 'function') {
+            if (typeof object[proxy].restore == 'function') {
               object[proxy].restore();
             }
           });
@@ -3301,7 +3301,7 @@
       var slice = Array.prototype.slice;
 
       function callCountInWords(callCount) {
-        if (callCount === 0) {
+        if (callCount == 0) {
           return 'never called';
         } else {
           return 'called ' + times(callCount);
@@ -3312,7 +3312,7 @@
         var min = expectation.minCalls;
         var max = expectation.maxCalls;
 
-        if (typeof min === 'number' && typeof max === 'number') {
+        if (typeof min == 'number' && typeof max == 'number') {
           var str = times(min);
 
           if (min != max) {
@@ -3322,7 +3322,7 @@
           return str;
         }
 
-        if (typeof min === 'number') {
+        if (typeof min == 'number') {
           return 'at least ' + times(min);
         }
 
@@ -3330,7 +3330,7 @@
       }
 
       function receivedMinCalls(expectation) {
-        var hasMinLimit = typeof expectation.minCalls === 'number';
+        var hasMinLimit = typeof expectation.minCalls == 'number';
         return !hasMinLimit || expectation.callCount >= expectation.minCalls;
       }
 
@@ -3339,7 +3339,7 @@
           return false;
         }
 
-        return expectation.callCount === expectation.maxCalls;
+        return expectation.callCount == expectation.maxCalls;
       }
 
       function verifyMatcher(possibleMatcher, arg) {
@@ -3574,7 +3574,7 @@
       return mock;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -3594,7 +3594,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend util/core.js
@@ -3626,7 +3626,7 @@
       var fakes = getFakes(fakeCollection);
 
       for (var i = 0, l = fakes.length; i < l; i += 1) {
-        if (typeof fakes[i][method] === 'function') {
+        if (typeof fakes[i][method] == 'function') {
           fakes[i][method]();
         }
       }
@@ -3698,7 +3698,7 @@
               });
             }
           }
-          if (!property && !!object && typeof object === 'object') {
+          if (!property && !!object && typeof object == 'object') {
             var stubbedObj = sinon.stub.apply(sinon, arguments);
 
             for (var prop in stubbedObj) {
@@ -3740,7 +3740,7 @@
       return collection;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -3760,7 +3760,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /*global lolex */
 
@@ -3782,7 +3782,7 @@
  * Copyright (c) 2010-2013 Christian Johansen
  */
 
-  if (typeof sinon === 'undefined') {
+  if (typeof sinon == 'undefined') {
     var sinon = {};
   }
 
@@ -3821,7 +3821,7 @@
       };
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, epxorts, module) {
@@ -3852,7 +3852,7 @@
  * Copyright (c) 2011 Sven Fuchs, Christian Johansen
  */
 
-  if (typeof sinon === 'undefined') {
+  if (typeof sinon == 'undefined') {
     this.sinon = {};
   }
 
@@ -3910,7 +3910,7 @@
           var listeners = this.eventListeners && this.eventListeners[event] || [];
 
           for (var i = 0, l = listeners.length; i < l; ++i) {
-            if (listeners[i] === listener) {
+            if (listeners[i] == listener) {
               return listeners.splice(i, 1);
             }
           }
@@ -3921,7 +3921,7 @@
           var listeners = this.eventListeners && this.eventListeners[type] || [];
 
           for (var i = 0; i < listeners.length; i++) {
-            if (typeof listeners[i] === 'function') {
+            if (typeof listeners[i] == 'function') {
               listeners[i].call(this, event);
             } else {
               listeners[i].handleEvent(event);
@@ -3933,7 +3933,7 @@
       };
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require) {
@@ -4004,7 +4004,7 @@
       module.exports = makeApi(sinon);
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     if (isAMD) {
@@ -4016,7 +4016,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend core.js
@@ -4028,7 +4028,7 @@
  * Fake XDomainRequest object
  */
 
-  if (typeof sinon === 'undefined') {
+  if (typeof sinon == 'undefined') {
     this.sinon = {};
   }
 
@@ -4049,7 +4049,7 @@
         this.status = 0;
         this.timeout = null;
 
-        if (typeof FakeXDomainRequest.onCreate === 'function') {
+        if (typeof FakeXDomainRequest.onCreate == 'function') {
           FakeXDomainRequest.onCreate(this);
         }
       }
@@ -4065,10 +4065,10 @@
       }
 
       function verifyRequestSent(xdr) {
-        if (xdr.readyState === FakeXDomainRequest.UNSENT) {
+        if (xdr.readyState == FakeXDomainRequest.UNSENT) {
           throw new Error('Request not sent');
         }
-        if (xdr.readyState === FakeXDomainRequest.DONE) {
+        if (xdr.readyState == FakeXDomainRequest.DONE) {
           throw new Error('Request done');
         }
       }
@@ -4120,7 +4120,7 @@
 
                 // raising event (if defined)
           if (eventName) {
-            if (typeof this[eventName] === 'function') {
+            if (typeof this[eventName] == 'function') {
               try {
                 this[eventName]();
               } catch (e) {
@@ -4142,7 +4142,7 @@
           this.sendFlag = true;
           this.readyStateChange(FakeXDomainRequest.OPENED);
 
-          if (typeof this.onSend === 'function') {
+          if (typeof this.onSend == 'function') {
             this.onSend(this);
           }
         },
@@ -4179,7 +4179,7 @@
                 // content-type ignored, since XDomainRequest does not carry this
                 // we keep the same syntax for respond(...) as for FakeXMLHttpRequest to ease
                 // test integration across browsers
-          this.status = typeof status === 'number' ? status : 200;
+          this.status = typeof status == 'number' ? status : 200;
           this.setResponseBody(body || '');
         },
 
@@ -4220,7 +4220,7 @@
       sinon.FakeXDomainRequest = FakeXDomainRequest;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -4308,7 +4308,7 @@
         xhr.addEventListener(eventName, function (event) {
           var listener = xhr['on' + eventName];
 
-          if (listener && typeof listener === 'function') {
+          if (listener && typeof listener == 'function') {
             listener.call(this, event);
           }
         });
@@ -4318,7 +4318,7 @@
         addEventListener(events[i]);
       }
 
-      if (typeof FakeXMLHttpRequest.onCreate === 'function') {
+      if (typeof FakeXMLHttpRequest.onCreate == 'function') {
         FakeXMLHttpRequest.onCreate(this);
       }
     }
@@ -4344,7 +4344,7 @@
       var listeners = this.eventListeners[event] || [];
 
       for (var i = 0, l = listeners.length; i < l; ++i) {
-        if (listeners[i] === listener) {
+        if (listeners[i] == listener) {
           return listeners.splice(i, 1);
         }
       }
@@ -4372,7 +4372,7 @@
       header = header.toLowerCase();
 
       for (var h in headers) {
-        if (h.toLowerCase() === header) {
+        if (h.toLowerCase() == header) {
           return h;
         }
       }
@@ -4485,7 +4485,7 @@
     }
 
     function verifyRequestSent(xhr) {
-      if (xhr.readyState === FakeXMLHttpRequest.DONE) {
+      if (xhr.readyState == FakeXMLHttpRequest.DONE) {
         throw new Error('Request done');
       }
     }
@@ -4574,7 +4574,7 @@
         open: function open(method, url, async, username, password) {
           this.method = method;
           this.url = url;
-          this.async = typeof async === 'boolean' ? async : true;
+          this.async = typeof async == 'boolean' ? async : true;
           this.username = username;
           this.password = password;
           this.responseText = null;
@@ -4597,7 +4597,7 @@
         readyStateChange: function readyStateChange(state) {
           this.readyState = state;
 
-          if (typeof this.onreadystatechange === 'function') {
+          if (typeof this.onreadystatechange == 'function') {
             try {
               this.onreadystatechange();
             } catch (e) {
@@ -4672,7 +4672,7 @@
           this.sendFlag = this.async;
           this.readyStateChange(FakeXMLHttpRequest.OPENED);
 
-          if (typeof this.onSend === 'function') {
+          if (typeof this.onSend == 'function') {
             this.onSend(this);
           }
 
@@ -4765,7 +4765,7 @@
         },
 
         respond: function respond(status, headers, body) {
-          this.status = typeof status === 'number' ? status : 200;
+          this.status = typeof status == 'number' ? status : 200;
           this.statusText = FakeXMLHttpRequest.statusCodes[this.status];
           this.setResponseHeaders(headers || {});
           this.setResponseBody(body || '');
@@ -4820,7 +4820,7 @@
 
         if (sinonXhr.supportsActiveX) {
           global.ActiveXObject = function ActiveXObject(objId) {
-            if (objId === 'Microsoft.XMLHTTP' || /^Msxml2\.XMLHTTP/i.test(objId)) {
+            if (objId == 'Microsoft.XMLHTTP' || /^Msxml2\.XMLHTTP/i.test(objId)) {
 
               return new FakeXMLHttpRequest();
             }
@@ -4835,7 +4835,7 @@
       sinon.FakeXMLHttpRequest = FakeXMLHttpRequest;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -4875,7 +4875,7 @@
  * Copyright (c) 2010-2013 Christian Johansen
  */
 
-  if (typeof sinon === 'undefined') {
+  if (typeof sinon == 'undefined') {
     var sinon = {};
   }
 
@@ -4908,9 +4908,9 @@
 
     function matchOne(response, reqMethod, reqUrl) {
       var rmeth = response.method;
-      var matchMethod = !rmeth || rmeth.toLowerCase() === reqMethod.toLowerCase();
+      var matchMethod = !rmeth || rmeth.toLowerCase() == reqMethod.toLowerCase();
       var url = response.url;
-      var matchUrl = !url || url === reqUrl || (typeof url.test === 'function' && url.test(reqUrl));
+      var matchUrl = !url || url == reqUrl || (typeof url.test == 'function' && url.test(reqUrl));
 
       return matchMethod && matchUrl;
     }
@@ -4923,9 +4923,9 @@
       }
 
       if (matchOne(response, this.getHTTPMethod(request), requestUrl)) {
-        if (typeof response.response === 'function') {
+        if (typeof response.response == 'function') {
           var ru = response.url;
-          var args = [request].concat(ru && typeof ru.exec === 'function' ? ru.exec(requestUrl).slice(1) : []);
+          var args = [request].concat(ru && typeof ru.exec == 'function' ? ru.exec(requestUrl).slice(1) : []);
           return response.response.apply(response, args);
         }
 
@@ -5002,19 +5002,19 @@
         },
 
         respondWith: function respondWith(method, url, body) {
-          if (arguments.length === 1 && typeof method != 'function') {
+          if (arguments.length == 1 && typeof method != 'function') {
             this.response = responseArray(method);
             return;
           }
 
           if (!this.responses) { this.responses = []; }
 
-          if (arguments.length === 1) {
+          if (arguments.length == 1) {
             body = method;
             url = method = null;
           }
 
-          if (arguments.length === 2) {
+          if (arguments.length == 2) {
             body = url;
             url = method;
             method = null;
@@ -5023,7 +5023,7 @@
           push.call(this.responses, {
             method: method,
             url: url,
-            response: typeof body === 'function' ? body : responseArray(body)
+            response: typeof body == 'function' ? body : responseArray(body)
           });
         },
 
@@ -5074,7 +5074,7 @@
       };
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -5122,7 +5122,7 @@
 
       sinon.fakeServerWithClock.addRequest = function addRequest(xhr) {
         if (xhr.async) {
-          if (typeof setTimeout.clock === 'object') {
+          if (typeof setTimeout.clock == 'object') {
             this.clock = setTimeout.clock;
           } else {
             this.clock = sinon.useFakeTimers();
@@ -5176,7 +5176,7 @@
       };
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require) {
@@ -5233,7 +5233,7 @@
         var sandbox = sinon.create(sinon.sandbox);
 
         if (config.useFakeServer) {
-          if (typeof config.useFakeServer === 'object') {
+          if (typeof config.useFakeServer == 'object') {
             sandbox.serverPrototype = config.useFakeServer;
           }
 
@@ -5241,7 +5241,7 @@
         }
 
         if (config.useFakeTimers) {
-          if (typeof config.useFakeTimers === 'object') {
+          if (typeof config.useFakeTimers == 'object') {
             sandbox.useFakeTimers.apply(sandbox, config.useFakeTimers);
           } else {
             sandbox.useFakeTimers();
@@ -5316,7 +5316,7 @@
           if (config.properties) {
             for (var i = 0, l = config.properties.length; i < l; i++) {
               prop = config.properties[i];
-              value = exposed[prop] || prop === 'sandbox' && sandbox;
+              value = exposed[prop] || prop == 'sandbox' && sandbox;
               exposeValue(sandbox, config, prop, value);
             }
           } else {
@@ -5334,7 +5334,7 @@
       return sinon.sandbox;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -5387,7 +5387,7 @@
           var exception, result;
           var doneIsWrapped = false;
           var argumentsCopy = Array.prototype.slice.call(arguments);
-          if (argumentsCopy.length > 0 && typeof argumentsCopy[arguments.length - 1] === 'function') {
+          if (argumentsCopy.length > 0 && typeof argumentsCopy[arguments.length - 1] == 'function') {
             var oldDone = argumentsCopy[arguments.length - 1];
             argumentsCopy[arguments.length - 1] = function done(result) {
               if (result) {
@@ -5442,7 +5442,7 @@
       return test;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -5460,7 +5460,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend util/core.js
@@ -5524,7 +5524,7 @@
               continue;
             }
 
-            if (typeof property === 'function' && rPrefix.test(testName)) {
+            if (typeof property == 'function' && rPrefix.test(testName)) {
               method = property;
 
               if (setUp || tearDown) {
@@ -5545,7 +5545,7 @@
       return testCase;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -5563,7 +5563,7 @@
     } else {
       makeApi(sinon);
     }
-  }(typeof sinon === 'object' && sinon || null));
+  }(typeof sinon == 'object' && sinon || null));
 
 /**
  * @depend times_in_words.js
@@ -5618,7 +5618,7 @@
       }
 
       function mirrorPropAsAssertion(name, method, message) {
-        if (arguments.length === 2) {
+        if (arguments.length == 2) {
           message = method;
           method = name;
         }
@@ -5629,10 +5629,10 @@
           var args = slice.call(arguments, 1);
           var failed = false;
 
-          if (typeof method === 'function') {
+          if (typeof method == 'function') {
             failed = !method(fake);
           } else {
-            failed = typeof fake[method] === 'function' ?
+            failed = typeof fake[method] == 'function' ?
                         !fake[method].apply(fake, args) : !fake[method];
           }
 
@@ -5705,8 +5705,8 @@
           }
 
           var o = options || {};
-          var prefix = typeof o.prefix === 'undefined' && 'assert' || o.prefix;
-          var includeFail = typeof o.includeFail === 'undefined' || !!o.includeFail;
+          var prefix = typeof o.prefix == 'undefined' && 'assert' || o.prefix;
+          var includeFail = typeof o.includeFail == 'undefined' || !!o.includeFail;
 
           for (var method in this) {
             if (method != 'expose' && (includeFail || !/^(fail)/.test(method))) {
@@ -5757,7 +5757,7 @@
       return assert;
     }
 
-    var isNode = typeof module !== 'undefined' && module.exports && typeof require === 'function';
+    var isNode = typeof module !== 'undefined' && module.exports && typeof require == 'function';
     var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
     function loadDependencies(require, exports, module) {
@@ -5776,7 +5776,7 @@
       makeApi(sinon);
     }
 
-  }(typeof sinon === 'object' && sinon || null, typeof window != 'undefined' ? window : (typeof self != 'undefined') ? self : global));
+  }(typeof sinon == 'object' && sinon || null, typeof window != 'undefined' ? window : (typeof self != 'undefined') ? self : global));
 
   return sinon;
 }));
