@@ -318,7 +318,7 @@ window.caniusecb = function(caniuse) {
 
       var latestResult   = browserResults[versionToUse];
 
-      if (latestResult && latestResult != 'u') { // 'y' 'n' or 'a'
+      if (latestResult && latestResult !== 'u') { // 'y' 'n' or 'a'
 
         // data ends w/ ` x` if its still prefixed in the imp
         latestResult = latestResult.replace(' x', '');

@@ -69,7 +69,7 @@ define(['ModernizrProto', 'testPropsAll', 'cssToDOM', 'atRule'], function(Modern
       return atRule(prop);
     }
 
-    if (prop.indexOf('-') != -1) {
+    if (prop.indexOf('-') !== -1) {
       // Convert kebab-case to camelCase
       prop = cssToDOM(prop);
     }
