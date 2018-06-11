@@ -27,7 +27,7 @@
     "grunt-contrib-pug": "^1.0.0",
     "grunt-coveralls": "^2.0.0",
     "grunt-env": "^0.4.4",
-    "grunt-eslint": "^20.1.0",
+    "grunt-eslint": "^20.2.0",
     "grunt-istanbul": "^0.8.0",
     "grunt-mocha": "0.4.15",
     "grunt-mocha-test": "^0.13.3",
