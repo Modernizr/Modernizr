@@ -9,5 +9,6 @@ build
 dist
 tmp
 .DS_Store
+.idea
 .project
 *.log
