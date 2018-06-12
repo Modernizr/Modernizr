@@ -16,6 +16,6 @@
 /* DOC
 Specifies how an element's fragments should be rendered when broken across multiple lines, columns, or pages.
 */
-define(['modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
+define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
   Modernizr.addTest('boxdecorationbreak', testAllProps('boxDecorationBreak', 'slice'));
 });
