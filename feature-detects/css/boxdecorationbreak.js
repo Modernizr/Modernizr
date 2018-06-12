@@ -1,6 +1,6 @@
 /*!
 {
-  "name": "CSS box-decoration-break",
+  "name": "Box Decoration Break",
   "property": "boxdecorationbreak",
   "caniuse": "css-boxdecorationbreak",
   "tags": ["css"],
@@ -16,6 +16,6 @@
 /* DOC
 Specifies how an element's fragments should be rendered when broken across multiple lines, columns, or pages.
 */
-define(['modernizr', 'testAllProps'], function(Modernizr, testAllProps ) {
+define(['modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
   Modernizr.addTest('boxdecorationbreak', testAllProps('boxDecorationBreak', 'slice'));
 });
