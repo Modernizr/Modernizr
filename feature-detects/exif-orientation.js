@@ -8,7 +8,7 @@
   "authors": ["Paul Sayre"],
   "notes": [{
     "name": "Article by Dave Perrett",
-    "href": "https://www.daveperrett.com/articles/2012/07/28/exif-orientation-handling-is-a-ghetto//"
+    "href": "https://www.daveperrett.com/articles/2012/07/28/exif-orientation-handling-is-a-ghetto/"
   },{
     "name": "Article by Calvin Hass",
     "href": "https://www.impulseadventure.com/photo/exif-orientation.html"

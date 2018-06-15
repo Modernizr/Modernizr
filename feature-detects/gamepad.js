@@ -19,6 +19,5 @@
 Detects support for the Gamepad API, for access to gamepads and controllers.
 */
 define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-
   Modernizr.addTest('gamepads', !!prefixed('getGamepads', navigator));
 });
