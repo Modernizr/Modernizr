@@ -1,26 +1,21 @@
 /*!
 {
+  "property": "passiveeventlisteners",
+  "tags": ["dom"],
   "authors": ["Rick Byers"],
   "name": "Passive event listeners",
-  "notes": [
-    {
+  "notes": [{
       "name": "WHATWG specification",
       "href": "https://dom.spec.whatwg.org/#dom-addeventlisteneroptions-passive"
-    },
-    {
+    },{
       "name": "WICG explainer",
       "href": "https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md"
-    }
-  ],
-  "property": "passiveeventlisteners",
-  "tags": ["dom"]
+  }]
 }
 !*/
-
 /* DOC
 Detects support for the passive option to addEventListener.
 */
-
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('passiveeventlisteners', function() {
     var supportsPassiveOption = false;
