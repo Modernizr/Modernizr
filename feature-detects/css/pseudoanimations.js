@@ -5,7 +5,7 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testStyles', 'test/css/animations'], function(Modernizr) {
+define(['Modernizr', 'testStyles', 'test/css/animations'], function(Modernizr, testStyles) {
   Modernizr.addTest('csspseudoanimations', function() {
     var result = false;
 
@@ -20,7 +20,7 @@ define(['Modernizr', 'testStyles', 'test/css/animations'], function(Modernizr) {
       '}'
     ].join('');
 
-    Modernizr.testStyles(styles, function(elem) {
+    testStyles(styles, function(elem) {
       result = window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '10px';
     });
 
