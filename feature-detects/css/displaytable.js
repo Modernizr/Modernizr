@@ -8,7 +8,7 @@
   "builderAliases": ["css_displaytable"],
   "notes": [{
     "name": "Detects for all additional table display values",
-    "href": "http://pastebin.com/Gk9PeVaQ"
+    "href": "https://pastebin.com/Gk9PeVaQ"
   }]
 }
 !*/

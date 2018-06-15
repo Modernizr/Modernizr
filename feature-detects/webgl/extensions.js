@@ -9,7 +9,7 @@
   "knownBugs": [],
   "notes": [{
     "name": "Kronos extensions registry",
-    "href": "http://www.khronos.org/registry/webgl/extensions/"
+    "href": "https://www.khronos.org/registry/webgl/extensions/"
   }]
 }
 !*/

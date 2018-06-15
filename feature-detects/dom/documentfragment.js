@@ -10,7 +10,7 @@
     "href": "http://reference.sitepoint.com/javascript/DocumentFragment"
   }, {
     "name": "QuirksMode Compatibility Tables",
-    "href": "http://www.quirksmode.org/m/w3c_core.html#t112"
+    "href": "https://www.quirksmode.org/m/w3c_core.html#t112"
   }],
   "authors": ["Ron Waldon (@jokeyrhyme)"],
   "knownBugs": ["false-positive on Blackberry 9500, see QuirksMode note"],

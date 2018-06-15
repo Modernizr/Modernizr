@@ -5,7 +5,7 @@
   "caniuse": "font-feature",
   "notes": [{
     "name": "Cross-browser Web Fonts",
-    "href": "http://www.sitepoint.com/cross-browser-web-fonts-part-3/"
+    "href": "https://www.sitepoint.com/cross-browser-web-fonts-part-3/"
   }]
 }
 !*/

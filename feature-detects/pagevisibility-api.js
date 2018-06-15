@@ -12,7 +12,7 @@
     "href": "https://www.w3.org/TR/2011/WD-page-visibility-20110602/"
   },{
     "name": "HTML5 Rocks tutorial",
-    "href": "http://www.html5rocks.com/en/tutorials/pagevisibility/intro/"
+    "href": "https://www.html5rocks.com/en/tutorials/pagevisibility/intro/"
   }],
   "polyfills": ["visibilityjs", "visiblyjs", "jquery-visibility"]
 }

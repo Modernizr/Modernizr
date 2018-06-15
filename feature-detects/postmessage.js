@@ -5,7 +5,7 @@
   "caniuse": "x-doc-messaging",
   "notes": [{
     "name": "W3C Spec",
-    "href": "http://www.w3.org/TR/html5/comms.html#posting-messages"
+    "href": "https://www.w3.org/TR/html5/comms.html#posting-messages"
   }],
   "polyfills": ["easyxdm", "postmessage-jquery"]
 }

@@ -7,7 +7,7 @@
   "polyfills": ["webanimationsjs"],
   "notes": [{
     "name": "Introducing Web Animations",
-    "href": "http://brian.sol1.net/svg/2013/06/26/introducing-web-animations/"
+    "href": "https://birtles.wordpress.com/2013/06/26/introducing-web-animations/"
   }]
 }
 !*/
