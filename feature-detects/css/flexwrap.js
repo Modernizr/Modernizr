@@ -5,7 +5,7 @@
   "tags": ["css", "flexbox"],
   "notes": [{
     "name": "W3C Flexible Box Layout spec",
-    "href": "https://drafts.csswg.org/css-flexbox-1/"
+    "href": "https://www.w3.org/TR/css-flexbox-1/"
   }],
   "warnings": [
     "Does not imply a modern implementation – see documentation."

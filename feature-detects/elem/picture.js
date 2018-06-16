@@ -6,7 +6,7 @@
   "authors": ["Scott Jehl", "Mat Marquis"],
   "notes": [{
     "name": "Specification",
-    "href": "http://w3c.github.io/html/semantics-embedded-content.html#the-picture-element"
+    "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#embedded-content"
   },{
     "name": "Relevant spec issue",
     "href": "https://github.com/ResponsiveImagesCG/picture-element/issues/87"
