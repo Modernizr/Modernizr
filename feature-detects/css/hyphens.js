@@ -14,13 +14,13 @@
     ],
   "notes": [{
     "name": "The Current State of Hyphenation on the Web.",
-    "href": "http://davidnewton.ca/the-current-state-of-hyphenation-on-the-web"
+    "href": "https://davidnewton.ca/the-current-state-of-hyphenation-on-the-web"
   },{
     "name": "Hyphenation Test Page",
     "href": "http://davidnewton.ca/demos/hyphenation/test.html"
   },{
     "name": "Hyphenation is Language Specific",
-    "href": " http://code.google.com/p/hyphenator/source/diff?spec=svn975&r=975&format=side&path=/trunk/Hyphenator.js#sc_svn975_313"
+    "href": "http://code.google.com/p/hyphenator/source/diff?spec=svn975&r=975&format=side&path=/trunk/Hyphenator.js#sc_svn975_313"
   },{
     "name": "Related Modernizr Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/312"

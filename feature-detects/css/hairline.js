@@ -15,7 +15,6 @@
 /* DOC
 Detects support for hidpi/retina hairlines, which are CSS borders with less than 1px in width, for being physically 1px on hidpi screens.
 */
-
 define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
   Modernizr.addTest('hairline', function() {
     return testStyles('#modernizr {border:.5px solid transparent}', function(elem) {

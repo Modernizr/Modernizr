@@ -4,7 +4,7 @@
   "property": "es5string",
   "notes": [{
     "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
+    "href": "https://www.ecma-international.org/ecma-262/5.1/"
   }],
   "polyfills": ["es5shim"],
   "authors": ["Ron Waldon (@jokeyrhyme)"],

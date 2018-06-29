@@ -9,8 +9,8 @@
     "name": "Spec",
     "href": "http://picture.responsiveimages.org/#parse-sizes-attr"
     },{
-    "name": "Usage Details",
-    "href": "http://ericportis.com/posts/2014/srcset-sizes/"
+    "name": "Srcset and sizes",
+    "href": "https://ericportis.com/posts/2014/srcset-sizes/"
     }]
 }
 !*/

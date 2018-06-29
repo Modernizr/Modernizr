@@ -7,7 +7,7 @@
   "authors": ["Eric Bidelman", "Masataka Yakura"],
   "notes": [{
     "name": "W3C Media Capture and Streams spec",
-    "href": "http://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia"
+    "href": "https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia"
   }]
 }
 !*/

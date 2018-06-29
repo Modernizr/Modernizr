@@ -8,7 +8,7 @@
   "builderAliases": ["audio_webaudio_api"],
   "authors": ["Addy Osmani"],
   "notes": [{
-    "name": "W3 Specification",
+    "name": "W3 Spec",
     "href": "https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html"
   }]
 }
