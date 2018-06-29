@@ -14,7 +14,7 @@
 define(['Modernizr', 'testStyles', 'createElement'], function(Modernizr, testStyles, createElement) {
   Modernizr.addTest('unicoderange', function() {
 
-    return Modernizr.testStyles('@font-face{font-family:"unicodeRange";src:local("Arial");unicode-range:U+0020,U+002E}#modernizr span{font-size:20px;display:inline-block;font-family:"unicodeRange",monospace}#modernizr .mono{font-family:monospace}', function(elem) {
+    return testStyles('@font-face{font-family:"unicodeRange";src:local("Arial");unicode-range:U+0020,U+002E}#modernizr span{font-size:20px;display:inline-block;font-family:"unicodeRange",monospace}#modernizr .mono{font-family:monospace}', function(elem) {
 
       // we use specify a unicode-range of 002E (the `.` glyph,
       // and a monospace font as the fallback. If the first of
