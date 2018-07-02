@@ -2,7 +2,7 @@
 {
   "name": "getRandomValues",
   "property": "getrandomvalues",
-  "caniuse": "window.crypto.getRandomValues",
+  "caniuse": "getrandomvalues",
   "tags": ["crypto"],
   "authors": ["komachi"],
   "notes": [{
