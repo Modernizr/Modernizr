@@ -2,13 +2,8 @@
 {
   "name": "CSS.escape()",
   "property": "cssescape",
-  "polyfills": [
-    "css-escape"
-  ],
-  "tags": [
-    "css",
-    "cssom"
-  ]
+  "polyfills": ["css-escape"],
+  "tags": ["css", "cssom"]
 }
 !*/
 /* DOC
