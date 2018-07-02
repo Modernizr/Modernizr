@@ -5,7 +5,7 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testStyles', 'test/css/transitions'], function(Modernizr, testStyles) {
+define(['Modernizr', 'testStyles',  'prefixes', 'test/css/transitions'], function(Modernizr, testStyles, prefixes) {
   Modernizr.addTest('csspseudotransitions', function() {
     var result = false;
 
@@ -14,7 +14,7 @@ define(['Modernizr', 'testStyles', 'test/css/transitions'], function(Modernizr, 
     }
 
     var styles =
-      '#modernizr:before { content:" "; font-size:5px;' + Modernizr._prefixes.join('transition:0s 100s;') + '}' +
+      '#modernizr:before { content:" "; font-size:5px;' + prefixes.join('transition:0s 100s;') + '}' +
       '#modernizr.trigger:before { font-size:10px; }';
 
     testStyles(styles, function(elem) {
