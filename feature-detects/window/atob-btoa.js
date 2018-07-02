@@ -1,7 +1,7 @@
 /*!
 {
   "name": "Base 64 encoding/decoding",
-  "property": ["atobbtoa"],
+  "property": "atobbtoa",
   "builderAliases": ["atob-btoa"],
   "caniuse" : "atob-btoa",
   "tags": ["atob", "base64", "WindowBase64", "btoa"],
