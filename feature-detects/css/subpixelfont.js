@@ -4,13 +4,7 @@
   "property": "subpixelfont",
   "tags": ["css"],
   "builderAliases": ["css_subpixelfont"],
-  "authors": [
-    "@derSchepp",
-    "@gerritvanaaken",
-    "@rodneyrehm",
-    "@yatil",
-    "@ryanseddon"
-  ],
+  "authors": ["@derSchepp", "@gerritvanaaken", "@rodneyrehm", "@yatil", "@ryanseddon"],
   "notes": [{
     "name": "Origin Test",
     "href": "https://github.com/gerritvanaaken/subpixeldetect"
