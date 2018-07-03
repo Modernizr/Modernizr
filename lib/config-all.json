@@ -216,6 +216,7 @@
     "mathml",
     "mediaquery/hovermq",
     "mediaquery/pointermq",
+    "media-source-extension-api",
     "messagechannel",
     "network/beacon",
     "network/connection",
