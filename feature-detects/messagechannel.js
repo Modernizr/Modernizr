@@ -2,8 +2,8 @@
 {
   "name": "Message Channel",
   "property": "MessageChannel",
-  "authors": ["Raju Konga [kongaraju]"],
-  "caniuse" : "MessageChannel",
+  "authors": ["Raju Konga (@kongaraju)"],
+  "caniuse" : "channel-messaging",
   "tags": ["performance", "messagechannel"],
   "notes": [{
     "name": "W3C Reference",

@@ -14,7 +14,7 @@
   }],
   "authors": ["Ron Waldon (@jokeyrhyme)"],
   "knownBugs": ["false-positive on Blackberry 9500, see QuirksMode note"],
-  "tags": []
+  "tags": ["dom"]
 }
 !*/
 /* DOC

@@ -2,7 +2,7 @@
 {
   "name": "WebSockets Support",
   "property": "websockets",
-  "authors": ["Phread [fearphage]", "Mike Sherov [mikesherov]", "Burak Yigit Kaya [BYK]"],
+  "authors": ["Phread (@fearphage)", "Mike Sherov (@mikesherov)", "Burak Yigit Kaya (@BYK)"],
   "caniuse": "websockets",
   "tags": ["html5"],
   "warnings": [

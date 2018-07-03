@@ -1,7 +1,7 @@
 /*!
 {
   "name": "canvas winding support",
-  "property": ["canvaswinding"],
+  "property": "canvaswinding",
   "tags": ["canvas"],
   "async" : false,
   "notes": [{
