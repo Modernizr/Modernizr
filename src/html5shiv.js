@@ -1,5 +1,5 @@
 define(['isSVG'], function(isSVG) {
-/**
+ /**
   * @optionName html5shiv
   * @optionProp html5shiv
   */
@@ -30,7 +30,7 @@ define(['isSVG'], function(isSVG) {
       var expando = '_html5shiv';
 
       /** The id for the the documents expando */
-      var expandoID = 0;
+      var expanID = 0;
 
       /** Cached data for each document */
       var expandoData = {};
@@ -51,8 +51,8 @@ define(['isSVG'], function(isSVG) {
             var frag = document.createDocumentFragment();
             return (
               typeof frag.cloneNode == 'undefined' ||
-                typeof frag.createDocumentFragment == 'undefined' ||
-                typeof frag.createElement == 'undefined'
+              typeof frag.createDocumentFragment == 'undefined' ||
+              typeof frag.createElement == 'undefined'
             );
           }());
         } catch(e) {
@@ -92,7 +92,7 @@ define(['isSVG'], function(isSVG) {
 
       /**
        * Extends the built-in list of html5 elements
-       * @memberOf html5
+       * @memberof html5
        * @param {String|Array} newElements whitespace separated list or array of new element names to shiv
        * @param {Document} ownerDocument The context document.
        */
@@ -118,16 +118,16 @@ define(['isSVG'], function(isSVG) {
         var data = expandoData[ownerDocument[expando]];
         if (!data) {
           data = {};
-          expandoID++;
-          ownerDocument[expando] = expandoID;
-          expandoData[expandoID] = data;
+          expanID++;
+          ownerDocument[expando] = expanID;
+          expandoData[expanID] = data;
         }
         return data;
       }
 
       /**
        * returns a shived element for the given nodeName and document
-       * @memberOf html5
+       * @memberof html5
        * @param {String} nodeName name of the element
        * @param {Document|DocumentFragment} ownerDocument The context document.
        * @returns {Object} The shived element.
@@ -164,7 +164,7 @@ define(['isSVG'], function(isSVG) {
 
       /**
        * returns a shived DocumentFragment for the given document
-       * @memberOf html5
+       * @memberof html5
        * @param {Document} ownerDocument The context document.
        * @returns {Object} The shived DocumentFragment.
        */
@@ -210,23 +210,23 @@ define(['isSVG'], function(isSVG) {
         };
 
         ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
-                                                        'var n=f.cloneNode(),c=n.createElement;' +
-                                                        'h.shivMethods&&(' +
-                                                        // unroll the `createElement` calls
-                                                        getElements().join().replace(/[\w\-:]+/g, function(nodeName) {
-                                                          data.createElem(nodeName);
-                                                          data.frag.createElement(nodeName);
-                                                          return 'c("' + nodeName + '")';
-                                                        }) +
+          'var n=f.cloneNode(),c=n.createElement;' +
+          'h.shivMethods&&(' +
+          // unroll the `createElement` calls
+          getElements().join().replace(/[\w\-:]+/g, function(nodeName) {
+            data.createElem(nodeName);
+            data.frag.createElement(nodeName);
+            return 'c("' + nodeName + '")';
+          }) +
           ');return n}'
-                                                       )(html5, data.frag);
+        )(html5, data.frag);
       }
 
       /*--------------------------------------------------------------------------*/
 
       /**
        * Shivs the given document.
-       * @memberOf html5
+       * @memberof html5
        * @param {Document} ownerDocument The document to shiv.
        * @returns {Document} The shived document.
        */
@@ -238,13 +238,13 @@ define(['isSVG'], function(isSVG) {
 
         if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
           data.hasCSS = !!addStyleSheet(ownerDocument,
-                                        // corrects block display not defined in IE6/7/8/9
-                                        'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
-                                        // adds styling not present in IE6/7/8/9
-                                        'mark{background:#FF0;color:#000}' +
-                                        // hides non-rendered elements
-                                        'template{display:none}'
-                                       );
+            // corrects block display not defined in IE6/7/8/9
+            'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
+            // adds styling not present in IE6/7/8/9
+            'mark{background:#FF0;color:#000}' +
+            // hides non-rendered elements
+            'template{display:none}'
+          );
         }
         if (!supportsUnknownElements) {
           shivMethods(ownerDocument, data);
@@ -267,7 +267,7 @@ define(['isSVG'], function(isSVG) {
 
         /**
          * An array or space separated string of node names of the elements to shiv.
-         * @memberOf html5
+         * @memberof html5
          * @type Array|String
          */
         'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video',
@@ -279,14 +279,14 @@ define(['isSVG'], function(isSVG) {
 
         /**
          * A flag to indicate that the HTML5 style sheet should be inserted.
-         * @memberOf html5
+         * @memberof html5
          * @type Boolean
          */
         'shivCSS': (options.shivCSS !== false),
 
         /**
          * Is equal to true if a browser supports creating unknown/HTML5 elements
-         * @memberOf html5
+         * @memberof html5
          * @type boolean
          */
         'supportsUnknownElements': supportsUnknownElements,
@@ -294,14 +294,14 @@ define(['isSVG'], function(isSVG) {
         /**
          * A flag to indicate that the document's `createElement` and `createDocumentFragment`
          * methods should be overwritten.
-         * @memberOf html5
+         * @memberof html5
          * @type Boolean
          */
         'shivMethods': (options.shivMethods !== false),
 
         /**
          * A string to describe the type of `html5` object ("default" or "default print").
-         * @memberOf html5
+         * @memberof html5
          * @type String
          */
         'type': 'default',
@@ -331,7 +331,7 @@ define(['isSVG'], function(isSVG) {
         module.exports = html5;
       }
 
-    }(typeof window !== 'undefined' ? window : this, document));
+    }(typeof window !== "undefined" ? window : this, document));
   }
   return html5;
 });
