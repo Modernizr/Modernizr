@@ -30,12 +30,12 @@ define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'te
     }
   }
 
-  // Modernizr.testAllProps() investigates whether a given style property,
+  // Modernizr.testPropsAll() investigates whether a given style property,
   // or any of its vendor-prefixed variants, is recognized
   //
   // Note that the property names must be provided in the camelCase variant.
-  // Modernizr.testAllProps('boxSizing')
-  ModernizrProto.testAllProps = testPropsAll;
+  // Modernizr.testPropsAll('boxSizing')
+  ModernizrProto.testPropsAll = testPropsAll;
 
   return testPropsAll;
 });
