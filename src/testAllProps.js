@@ -36,6 +36,7 @@ define(['ModernizrProto', 'testPropsAll'], function(ModernizrProto, testPropsAll
    * testAllProps('shapeOutside', 'content-box', true);
    * ```
    */
+
   function testAllProps(prop, value, skipValueTest) {
     return testPropsAll(prop, undefined, undefined, value, skipValueTest);
   }
