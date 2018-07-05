@@ -9,9 +9,7 @@
     "name": "Wufoo demo",
     "href": "https://www.wufoo.com/html5/attributes/14-formmethod.html"
   }],
-  "polyfills": [
-    "webshims"
-  ]
+  "polyfills": ["webshims"]
 }
 !*/
 /* DOC

@@ -10,9 +10,7 @@
   },{
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/navigator.registerProtocolHandler"
-  }],
-  "warnings": [],
-  "polyfills": []
+  }]
 }
 !*/
 /* DOC

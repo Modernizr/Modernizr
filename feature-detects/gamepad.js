@@ -10,9 +10,7 @@
   },{
     "name": "HTML5 Rocks tutorial",
     "href": "https://www.html5rocks.com/en/tutorials/doodles/gamepad/#toc-featuredetect"
-  }],
-  "warnings": [],
-  "polyfills": []
+  }]
 }
 !*/
 /* DOC

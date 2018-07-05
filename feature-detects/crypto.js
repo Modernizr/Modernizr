@@ -9,9 +9,7 @@
     "name": "W3C Editor's Draft",
     "href": "https://www.w3.org/TR/WebCryptoAPI/"
   }],
-  "polyfills": [
-    "polycrypt"
-  ]
+  "polyfills": ["polycrypt"]
 }
 !*/
 /* DOC

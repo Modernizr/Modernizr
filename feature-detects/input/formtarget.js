@@ -10,9 +10,7 @@
     "name": "Wufoo demo",
     "href": "https://www.wufoo.com/html5/attributes/15-formtarget.html"
   }],
-  "polyfills": [
-    "html5formshim"
-  ]
+  "polyfills": ["html5formshim"]
 }
 !*/
 /* DOC

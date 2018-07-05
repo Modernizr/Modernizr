@@ -9,9 +9,7 @@
     "name": "W3C Editor’s Draft",
     "href": "https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#RandomSource-method-getRandomValues"
   }],
-  "polyfills": [
-    "polycrypt"
-  ]
+  "polyfills": ["polycrypt"]
 }
 !*/
 /* DOC

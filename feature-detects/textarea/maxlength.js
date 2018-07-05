@@ -7,9 +7,7 @@
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"
   }],
-  "polyfills": [
-    "maxlength"
-  ]
+  "polyfills": ["maxlength"]
 }
 !*/
 /* DOC
