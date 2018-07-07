@@ -55,7 +55,6 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    * ```
    *
    */
-
   var testStyles = ModernizrProto.testStyles = injectElementWithStyles;
   return testStyles;
 });

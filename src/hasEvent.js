@@ -27,7 +27,6 @@ define(['ModernizrProto', 'createElement'], function(ModernizrProto, createEleme
    * ```
    *
    */
-
   var hasEvent = (function() {
 
     // Detect whether event support can be detected via `in`. Test on a DOM element

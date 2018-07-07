@@ -45,7 +45,6 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    * Note that if the browser does not support media queries (e.g. old IE) mq will
    * always return false.
    */
-
   var mq = (function() {
     var matchMedia = window.matchMedia || window.msMatchMedia;
     if (matchMedia) {

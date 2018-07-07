@@ -26,10 +26,10 @@ define(['ModernizrProto', 'prefixed', 'domToCSS'], function(ModernizrProto, pref
    *
    * Properties can be passed as both the DOM style camelCase or CSS style kebab-case.
    */
-
   var prefixedCSS = ModernizrProto.prefixedCSS = function(prop) {
     var prefixedProp = prefixed(prop);
     return prefixedProp && domToCSS(prefixedProp);
   };
+
   return prefixedCSS;
 });

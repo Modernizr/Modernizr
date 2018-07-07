@@ -21,7 +21,6 @@ define(['ModernizrProto', 'domPrefixes', 'createElement'], function(ModernizrPro
    * ```
    *
    */
-
   var prefixedCSSValue = function(prop, value) {
     var result = false;
     var elem = createElement('div');
