@@ -58,5 +58,12 @@
     "jsdoc/require-param": 1,
     "jsdoc/require-param-type": 1,
     "jsdoc/require-returns-type": 1
+  },
+  "settings": {
+    "jsdoc": {
+      "additionalTagNames": {
+        "customTags": ["optionName", "optionProp"]
+      }
+    }
   }
 }
