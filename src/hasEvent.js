@@ -25,7 +25,6 @@ define(['ModernizrProto', 'createElement'], function(ModernizrProto, createEleme
    * ```js
    *  hasEvent('devicelight', window) // true;
    * ```
-   *
    */
   var hasEvent = (function() {
 
@@ -69,7 +68,6 @@ define(['ModernizrProto', 'createElement'], function(ModernizrProto, createEleme
     }
     return inner;
   })();
-
 
   ModernizrProto.hasEvent = hasEvent;
   return hasEvent;

@@ -19,7 +19,6 @@ define(['ModernizrProto', 'domPrefixes', 'createElement'], function(ModernizrPro
    * ```js
    * Modernizr.prefixedCSSValue('background', 'linear-gradient(left, red, red)')
    * ```
-   *
    */
   var prefixedCSSValue = function(prop, value) {
     var result = false;

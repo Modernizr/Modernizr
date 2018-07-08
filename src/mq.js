@@ -41,7 +41,6 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    *  Modernizr.mq('only all'); // true if MQ are supported, false if not
    * ```
    *
-   *
    * Note that if the browser does not support media queries (e.g. old IE) mq will
    * always return false.
    */
@@ -66,7 +65,6 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
       return bool;
     };
   })();
-
 
   ModernizrProto.mq = mq;
 

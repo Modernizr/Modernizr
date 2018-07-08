@@ -53,7 +53,6 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    *   elem.lastChild === document.getElementById('bar'); // true
    * }, 2, ['foo', 'bar']);
    * ```
-   *
    */
   var testStyles = ModernizrProto.testStyles = injectElementWithStyles;
   return testStyles;

@@ -57,7 +57,6 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
    * @param {Function|boolean} [res] - A feature detection function, or the boolean =
    * result of a feature detection function
    * @returns {void}
-   *
    */
   ModernizrProto._trigger = function(feature, res) {
     if (!this._l[feature]) {

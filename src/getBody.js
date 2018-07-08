@@ -8,7 +8,6 @@ define(['createElement', 'isSVG'], function(createElement, isSVG) {
    * @returns {HTMLElement|SVGElement} Returns the real body of a document, or an
    * artificially created element that stands in for the body
    */
-
   function getBody() {
     // After page load injecting a fake body doesn't work so check if body exists
     var body = document.body;

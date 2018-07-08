@@ -23,7 +23,6 @@ define(['ModernizrProto', 'cssomPrefixes'], function(ModernizrProto, prefixes) {
    *    // keyframes === `false`
    *  }
    * ```
-   *
    */
   var atRule = function(prop) {
     var length = prefixes.length;

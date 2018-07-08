@@ -14,7 +14,6 @@ define(function() {
    * @access private
    * @returns {string} The string representing the vendor-specific style properties
    */
-
   var omPrefixes = 'Moz O ms Webkit';
   return omPrefixes;
 });

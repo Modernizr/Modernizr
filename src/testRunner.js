@@ -3,8 +3,8 @@ define(['tests', 'Modernizr', 'classes', 'is'], function(tests, Modernizr, class
    * Run through all tests and detect their support in the current UA.
    *
    * @access private
+   * @returns {void}
    */
-
   function testRunner() {
     var featureNames;
     var feature;
