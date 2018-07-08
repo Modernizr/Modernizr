@@ -1,0 +1,8 @@
+{
+  "files": {
+    "excluded": [
+      "src/html5printshiv.js",
+      "src/html5shiv.js"
+    ]
+  }
+}
