@@ -58,13 +58,12 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           document.body.insertBefore(div, firstChild);
 
           /* get size of unhyphenated text */
-          divStyle.cssText = 'position:absolute;top:0;left:0;width:5em;text-align:justify;text-justification:newspaper;';
+          divStyle.cssText = 'position:absolute;top:0;left:0;width:5em;text-align:justify;text-justify:newspaper;';
           spanHeight = span.offsetHeight;
           spanWidth = span.offsetWidth;
 
           /* compare size with hyphenated text */
-          divStyle.cssText = 'position:absolute;top:0;left:0;width:5em;text-align:justify;' +
-            'text-justification:newspaper;' +
+          divStyle.cssText = 'position:absolute;top:0;left:0;width:5em;text-align:justify;text-justify:newspaper;' +
             prefixes.join('hyphens:auto; ');
 
           result = (span.offsetHeight !== spanHeight || span.offsetWidth !== spanWidth);
