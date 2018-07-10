@@ -29,6 +29,7 @@
       "error",
       "single"
     ],
+    "comma-dangle": "error",
     "curly": "error",
     "wrap-iife": "off",
     "no-caller": "error",
