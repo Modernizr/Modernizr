@@ -53,14 +53,6 @@
   "bugs": {
     "url": "https://github.com/Modernizr/Modernizr/issues"
   },
-  "inch": {
-    "files": {
-      "included": [
-        "feature-detects/",
-        "src/"
-      ]
-    }
-  },
   "keywords": [
     "modernizr",
     "html5",
