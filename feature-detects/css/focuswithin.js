@@ -9,7 +9,7 @@
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('focuswithin', function() {
     try {
-      document.querySelector(':focus-within')
+      document.querySelector(':focus-within');
     } catch (error) {
       return false;
     }

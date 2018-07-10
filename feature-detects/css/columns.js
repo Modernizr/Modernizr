@@ -15,7 +15,7 @@ define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
       var bool = false;
       var test = testAllProps('columnCount');
       try {
-        bool = !!test
+        bool = !!test;
         if (bool) {
           bool = new Boolean(bool);
         }
@@ -38,8 +38,5 @@ define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
 
       Modernizr.addTest('csscolumns.' + name, test);
     }
-
-
   })();
-
 });

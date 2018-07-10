@@ -48,6 +48,7 @@
       "last"
     ],
     "dot-notation": "off",
+    "semi": "error",
     "valid-jsdoc": "error",
     "no-global-getComputedStyle": "error",
     "jsdoc/check-tag-names": 1,
