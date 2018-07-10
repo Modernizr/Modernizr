@@ -16,7 +16,7 @@ define(['Modernizr'], function(Modernizr) {
       protoBin;
 
     if ('WebSocket' in window) {
-      protoBin = 'binaryType' in WebSocket.prototype
+      protoBin = 'binaryType' in WebSocket.prototype;
       if (protoBin) {
         return protoBin;
       }
