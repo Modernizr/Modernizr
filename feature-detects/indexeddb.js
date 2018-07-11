@@ -33,9 +33,10 @@ define(['Modernizr', 'prefixed', 'addTest'], function(Modernizr, prefixed, addTe
         // "indexeddb.open" may crash when used within an iframe
         var req = indexeddb.open(testDBName);
 
-        req.onerror = function() {
+        req.onerror = function(event) {
           if (req.error && (req.error.name === 'InvalidStateError' || req.error.name === 'UnknownError')) {
             addTest('indexeddb', false);
+            event.preventDefault();
           } else {
             addTest('indexeddb', true);
             detectDeleteDatabase(indexeddb, testDBName);
