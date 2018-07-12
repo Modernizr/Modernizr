@@ -34,7 +34,7 @@ define(['Modernizr', 'prefixed', 'addTest'], function(Modernizr, prefixed, addTe
         var req = indexeddb.open(testDBName);
 
         req.onerror = function() {
-          if (req.error && (req.error.name === 'InvalidStateError' || req.error.name === 'UnknownError')) {
+          if (req.error && req.error.name === 'InvalidStateError') {
             addTest('indexeddb', false);
           } else {
             addTest('indexeddb', true);
