@@ -18,11 +18,11 @@ describe('docElement', function() {
   });
 
   it('is an alias to document.documentElement', function() {
-    expect(docElement).to.equal(document.documentElement);
+    expect(docElement).to.be.equal(document.documentElement);
   });
 
   it('is valid and correct', function() {
-    expect(docElement).to.equal(document.getElementsByTagName('html')[0]);
+    expect(docElement).to.be.equal(document.getElementsByTagName('html')[0]);
   });
 
   after(function() {

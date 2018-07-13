@@ -30,26 +30,26 @@ describe('atRule', function() {
     var ref = window.CSSRule;
     window.CSSRule = undefined;
 
-    expect(atRule('charset')).to.be(undefined);
+    expect(atRule('charset')).to.be.equal(undefined);
 
     window.CSSRule = ref;
   });
 
   if (window.CSSRule) {
     it('detects `@rule`s', function() {
-      expect(atRule('charset')).to.be('@charset');
+      expect(atRule('charset')).to.be.equal('@charset');
     });
 
     it('returns false when a property is not given', function() {
-      expect(atRule()).to.be(false);
+      expect(atRule()).to.be.equal(false);
     });
 
     it('returns false when a property is not found', function() {
-      expect(atRule('fart')).to.be(false);
+      expect(atRule('fart')).to.be.equal(false);
     });
 
     it('detects prefixed properties', function() {
-      expect(atRule('fake')).to.be('@-modernizr-fake');
+      expect(atRule('fake')).to.be.equal('@-modernizr-fake');
     });
   }
 

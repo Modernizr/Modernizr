@@ -50,14 +50,14 @@ describe('testProps', function() {
 
     it('returns the value from nativeTestProp if not undefined', function() {
       expect(testProps(['fake'], undefined, true));
-      expect(nativeTestProps.callCount).to.be(1);
-      expect(contains.callCount).to.be(0);
+      expect(nativeTestProps.callCount).to.be.equal(1);
+      expect(contains.callCount).to.be.equal(0);
     });
 
     it('does not return the value from nativeTestProp when undefined', function() {
       expect(testProps(['fake'], undefined, false));
-      expect(nativeTestProps.callCount).to.be(1);
-      expect(contains.callCount).to.not.be(0);
+      expect(nativeTestProps.callCount).to.be.equal(1);
+      expect(contains.callCount).to.not.be.equal(0);
     });
 
     afterEach(function() {
@@ -94,43 +94,43 @@ describe('testProps', function() {
 
     it('cleans up mStyle changes', function() {
       expect(testProps(['fake'], undefined, true));
-      expect(contains.callCount).to.be(1);
-      expect(mStyle.style).to.equal(undefined);
-      expect(mStyle.modElem).to.equal(undefined);
+      expect(contains.callCount).to.be.equal(1);
+      expect(mStyle.style).to.be.equal(undefined);
+      expect(mStyle.modElem).to.be.equal(undefined);
     });
 
     it('calls cssToDOM when props have a `-`', function() {
       expect(testProps(['fake-detect'], undefined, true));
-      expect(cssToDOM.called).to.be(true);
+      expect(cssToDOM.called).to.be.equal(true);
     });
 
     it('returns true for valid prop, and skipValueTest', function() {
-      expect(testProps(['display'], undefined, true, true)).to.be(true);
+      expect(testProps(['display'], undefined, true, true)).to.be.equal(true);
     });
 
     it('returns true for valid prop, and good value', function() {
-      expect(testProps(['display'], undefined, 'block')).to.be(true);
+      expect(testProps(['display'], undefined, 'block')).to.be.equal(true);
     });
 
     it('returns false for valid prop and bad value', function() {
-      expect(testProps(['display'], undefined, 'penguin')).to.be(false);
+      expect(testProps(['display'], undefined, 'penguin')).to.be.equal(false);
     });
 
     it('returns the prop if a prefixed lookup', function() {
-      expect(testProps(['display'], 'pfx', 'block')).to.be('display');
+      expect(testProps(['display'], 'pfx', 'block')).to.be.equal('display');
     });
 
     it('returns the prop if a prefixed lookup with skipValueTest', function() {
-      expect(testProps(['display'], 'pfx', 'block', true)).to.be('display');
+      expect(testProps(['display'], 'pfx', 'block', true)).to.be.equal('display');
     });
 
     it('works properly', function() {
       // Everyone supports margin
-      expect(testProps(['margin'])).to.equal(true);
+      expect(testProps(['margin'])).to.be.equal(true);
       // Nobody supports the happiness style. :(
-      expect(testProps(['happiness'])).to.equal(false);
+      expect(testProps(['happiness'])).to.be.equal(false);
       // Everyone supports fontSize
-      expect(testProps(['fontSize'])).to.equal(true);
+      expect(testProps(['fontSize'])).to.be.equal(true);
       // kebab-case should work too
     });
 

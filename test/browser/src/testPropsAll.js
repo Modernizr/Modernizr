@@ -45,30 +45,29 @@ describe('testPropsAll', function() {
     req(['testPropsAll'], function(_testPropsAll) {
       testPropsAll = _testPropsAll;
 
-      expect(testDOMProps.callCount).to.be(0);
-      expect(testProps.callCount).to.be(0);
+      expect(testDOMProps.callCount).to.be.equal(0);
+      expect(testProps.callCount).to.be.equal(0);
       done();
     });
-
   });
 
   it('`testProps` is called if `prefixed` is a string', function() {
     testPropsAll('display', 'pfx', undefined, 'block');
-    expect(testProps.callCount).to.be(1);
+    expect(testProps.callCount).to.be.equal(1);
   });
 
   it('`testProps` is called if `prefixed` is undefined', function() {
     testPropsAll('display', undefined, undefined, 'block');
-    expect(testProps.callCount).to.be(1);
+    expect(testProps.callCount).to.be.equal(1);
   });
 
   it('`testDOMProps` is called if `prefixed` is anything else', function() {
     testPropsAll('display', [], undefined, 'block');
-    expect(testDOMProps.callCount).to.be(1);
+    expect(testDOMProps.callCount).to.be.equal(1);
   });
 
   it('is added to ModernizrProto as `testAllProps`', function() {
-    expect(testPropsAll).to.equal(ModernizrProto.testAllProps);
+    expect(testPropsAll).to.be.equal(ModernizrProto.testAllProps);
   });
 
   afterEach(function() {

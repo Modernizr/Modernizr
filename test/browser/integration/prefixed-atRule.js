@@ -4,6 +4,6 @@ describe('prefixed @rule', function() {
   });
 
   it('Nobody supports @penguin', function() {
-    expect(!!Modernizr.prefixed('@penguin')).to.equal(false);
+    expect(!!Modernizr.prefixed('@penguin')).to.be.equal(false);
   });
 });

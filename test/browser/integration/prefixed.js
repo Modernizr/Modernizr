@@ -50,13 +50,13 @@ describe('prefixed()', function() {
 
   _.forEach(propArr, function(prop) {
     it('results for ' + prop + ' match the homebaked prefix finder', function() {
-      expect(Modernizr.prefixed(prop)).to.equal(gimmePrefix(prop));
+      expect(Modernizr.prefixed(prop)).to.be.equal(gimmePrefix(prop));
     });
   });
 
   _.forEach(propArr, function(prop) {
     it('results for ' + prop + ' match the homebaked prefix finder', function() {
-      expect(Modernizr.prefixed(domToCSS(prop))).to.equal(gimmePrefix(prop));
+      expect(Modernizr.prefixed(domToCSS(prop))).to.be.equal(gimmePrefix(prop));
     });
   });
 

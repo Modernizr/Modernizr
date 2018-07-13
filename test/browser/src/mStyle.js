@@ -33,7 +33,7 @@ describe('mStyle', function() {
 
   it('returns an object with a style prop', function() {
     expect(mStyle).to.be.an('object');
-    expect(mStyle.style).to.not.be(undefined);
+    expect(mStyle.style).to.not.be.equal(undefined);
   });
 
   it('pushes a function onto the Modernizr._q', function() {
@@ -41,9 +41,9 @@ describe('mStyle', function() {
   });
 
   it('deletes mStyle.style after the `_q` runs', function() {
-    expect(mStyle.style).to.not.be(undefined);
+    expect(mStyle.style).to.not.be.equal(undefined);
     Modernizr._q[0]();
-    expect(mStyle.style).to.be(undefined);
+    expect(mStyle.style).to.be.equal(undefined);
   });
 
   afterEach(function() {

@@ -24,7 +24,7 @@ describe('hasOwnProp', function() {
   it('works', function() {
     var obj = {};
     obj.prop = true;
-    expect(hasOwnProp(obj, 'prop')).to.be(true);
+    expect(hasOwnProp(obj, 'prop')).to.be.equal(true);
   });
 
   after(function() {

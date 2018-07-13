@@ -42,13 +42,13 @@ describe('injectElementWithStyles', function() {
     };
 
     var result = injectElementWithStyles('#modernizr{width: 10px}', callback);
-    expect(result).to.be(true);
+    expect(result).to.be.equal(true);
   });
 
   it('passes back a rule matching what we gave it', function(done) {
     var style = '#modernizr{width: 10px}';
     var callback = function(elm, rule) {
-      expect(rule).to.be(style);
+      expect(rule).to.be.equal(style);
       done();
     };
 
@@ -58,7 +58,7 @@ describe('injectElementWithStyles', function() {
   it('passes the #modernizr element in the callback', function(done) {
     var style = '#modernizr{width: 10px}';
     var callback = function(elm) {
-      expect(elm.id).to.be('modernizr');
+      expect(elm.id).to.be.equal('modernizr');
       done();
     };
 
@@ -66,21 +66,21 @@ describe('injectElementWithStyles', function() {
   });
 
   it('deletes an element after the test', function() {
-    expect(document.getElementById('modernizr')).to.be(null);
+    expect(document.getElementById('modernizr')).to.be.equal(null);
 
     var callback = function() {
-      expect(document.getElementById('modernizr')).to.not.be(null);
+      expect(document.getElementById('modernizr')).to.not.be.equal(null);
     };
 
     injectElementWithStyles('', callback);
 
-    expect(document.getElementById('modernizr')).to.be(null);
+    expect(document.getElementById('modernizr')).to.be.equal(null);
   });
 
   it('creates multiple nodes when requested', function(done) {
 
     var callback = function(elm) {
-      expect(elm.childNodes.length).to.be(9);
+      expect(elm.childNodes.length).to.be.equal(9);
       done();
     };
 
@@ -93,8 +93,8 @@ describe('injectElementWithStyles', function() {
       var test = document.getElementById('test');
       var element = document.getElementById('element');
 
-      expect(test).to.not.be(null);
-      expect(element).to.not.be(null);
+      expect(test).to.not.be.equal(null);
+      expect(element).to.not.be.equal(null);
       done();
     };
 
@@ -109,19 +109,19 @@ describe('injectElementWithStyles', function() {
     var callback = function() {
       var body = document.body;
 
-      expect(body.fake).to.be(true);
+      expect(body.fake).to.be.equal(true);
 
       // injectElementWithStyles overrides the background value for fake body to
       // an empty string, however old IE changes this to the following string.
       if (body.style.background !== 'none transparent scroll repeat 0% 0%') {
-        expect(body.style.background.length).to.be(0);
+        expect(body.style.background.length).to.be.equal(0);
       }
 
-      expect(body.style.overflow).to.be('hidden');
+      expect(body.style.overflow).to.be.equal('hidden');
       done();
     };
 
-    expect(document.body.fake).to.not.be(true);
+    expect(document.body.fake).to.not.be.equal(true);
     parentNode.removeChild(originalBody);
     injectElementWithStyles('', callback);
 
@@ -131,7 +131,7 @@ describe('injectElementWithStyles', function() {
     if (!$.contains(parentNode, originalBody)) {
       parentNode.appendChild(originalBody);
     }
-    expect(document.body.fake).to.not.be(true);
+    expect(document.body.fake).to.not.be.equal(true);
     cleanup();
   });
 });

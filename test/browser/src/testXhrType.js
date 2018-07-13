@@ -23,7 +23,7 @@ describe('testXhrType', function() {
     XMLHttpRequest = undefined;
 
     req(['testXhrType'], function(testXhrType) {
-      expect(testXhrType('json')).to.equal(false);
+      expect(testXhrType('json')).to.be.equal(false);
       XMLHttpRequest = originalXhr;
       done();
     });

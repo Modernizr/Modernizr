@@ -18,12 +18,15 @@ html
     script(src='../node_modules/jquery/dist/jquery.js')
     script(src='../node_modules/lodash/lodash.js')
     script(src='../node_modules/mocha/mocha.js')
-    script(src='../node_modules/ua-parser-js/src/ua-parser.js')
+    script(src='../node_modules/chai/chai.js')
+    script.
+      var expect = chai.expect;
+    script(src = '../node_modules/ua-parser-js/src/ua-parser.js')
     script.
       window.onerror = function(err) {
         var uncaughtErr = describe('uncaught errors', function() {
           it('should not exist', function() {
-            expect(err).to.be(undefined)
+            expect(err).to.be.equal(undefined)
           });
         });
 
@@ -34,7 +37,6 @@ html
     each test in integrationTests
       script(src='../'+test)
     script(src='../node_modules/json3/lib/json3.js')
-    script(src='../node_modules/expect.js/index.js')
     script.
       $.getJSON("https://raw.githubusercontent.com/Fyrd/caniuse/master/data.json", caniusecb);
 

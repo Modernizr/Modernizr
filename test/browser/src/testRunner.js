@@ -55,24 +55,24 @@ describe('testRunner', function() {
   });
 
   it('returns true if fn returns true', function() {
-    expect('fakefn' in Modernizr).to.be(true);
+    expect('fakefn' in Modernizr).to.be.equal(true);
   });
 
   it('returns true if fn is a bool', function() {
-    expect(Modernizr.fakebool).to.be(false);
+    expect(Modernizr.fakebool).to.be.equal(false);
   });
 
   it('assigns aliased values', function() {
-    expect(Modernizr.newfakedetect).to.equal(Modernizr.fakedetect);
+    expect(Modernizr.newfakedetect).to.be.equal(Modernizr.fakedetect);
   });
 
   it('deep assignments are valid', function() {
-    expect(Modernizr.fake.detect).to.equal(99);
+    expect(Modernizr.fake.detect).to.be.equal(99);
   });
 
   it('deep assignments are true with bool base', function() {
-    expect(Modernizr.fakebooldeep instanceof Boolean).to.be(true);
-    expect(Modernizr.fakebooldeep.detect).to.equal(false);
+    expect(Modernizr.fakebooldeep instanceof Boolean).to.be.equal(true);
+    expect(Modernizr.fakebooldeep.detect).to.be.equal(false);
   });
 
   afterEach(function() {

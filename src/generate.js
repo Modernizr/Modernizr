@@ -69,7 +69,7 @@ define(['lodash'], function(_) {
     output += '  delete ModernizrProto.addAsyncTest;\n' +
     '\n';
 
-    // TODO:: if there's a way to figure out if there will be no items in this queue, then we could avoid the code.
+    // TODO :: if there's a way to figure out if there will be no items in this queue, then we could avoid the code.
     output += '  // Run the things that are supposed to run after the tests\n' +
     '  for (var i = 0; i < Modernizr._q.length; i++) {\n' +
     '    Modernizr._q[i]();\n' +

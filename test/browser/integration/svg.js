@@ -16,7 +16,7 @@ describe('svg context', function() {
         var arg = Array.prototype.slice.call(arguments).join(' ');
         try {
           if (arg.length) {
-            expect(arg).to.be(undefined);
+            expect(arg).to.be.equal(undefined);
           }
         } catch (e) {
           done(e);
@@ -24,7 +24,7 @@ describe('svg context', function() {
       };
 
       object.onsuccess = function(modernizrRef) {
-        expect(modernizrRef).to.not.be(undefined);
+        expect(modernizrRef).to.not.be.equal(undefined);
         done();
       };
 

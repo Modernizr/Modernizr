@@ -18,7 +18,7 @@ describe('contains', function() {
   });
 
   it('finds substrings', function() {
-    expect(contains('fakeDetect', 'akeDet')).to.be(true);
+    expect(contains('fakeDetect', 'akeDet')).to.be.equal(true);
   });
 
   after(function() {
