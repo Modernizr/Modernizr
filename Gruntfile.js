@@ -16,12 +16,17 @@ module.exports = function(grunt) {
     '!test/browser/integration/*.js'
   ]);
 
+  var integrationTests = grunt.file.expand([
+    'test/browser/integration/*.js'
+  ]);
+
+  var nodeTests = grunt.file.expand([
+    'test/universal/**/*.js',
+    'test/node/**/*.js'
+  ]);
+
   grunt.initConfig({
     env: {
-      nodeTests: [
-        'test/universal/**/*.js',
-        'test/node/**/*.js'
-      ],
       browserTests: browserTests,
       coverage: {
         APP_DIR_FOR_CODE_COVERAGE: 'test/coverage/instrument',
@@ -29,7 +34,9 @@ module.exports = function(grunt) {
           'http://localhost:9999/test/unit.html',
           'http://localhost:9999/test/index.html'
         ]
-      }
+      },
+      integrationTests: integrationTests,
+      nodeTests: nodeTests
     },
     generate: {
       dest: './dist/modernizr-build.js'
@@ -52,10 +59,10 @@ module.exports = function(grunt) {
     },
     eslint: {
       target: [
-        '<%= env.nodeTests%>',
+        '<%= env.nodeTests %>',
         '<%= env.browserTests %>',
+        '<%= env.integrationTests %>',
         'test/browser/setup.js',
-        'test/browser/integration/*.js',
         'Gruntfile.js',
         'src/*.js',
         'lib/*.js',
@@ -83,7 +90,7 @@ module.exports = function(grunt) {
         options: {
           data: {
             unitTests: browserTests,
-            integrationTests: grunt.file.expand(['test/browser/integration/*.js'])
+            integrationTests: integrationTests
           }
         },
         files: {
@@ -164,7 +171,7 @@ module.exports = function(grunt) {
           reporter: 'dot',
           timeout: 5000
         },
-        src: ['<%= env.nodeTests%>']
+        src: ['<%= env.nodeTests %>']
       }
     },
     instrument: {
