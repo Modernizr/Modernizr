@@ -4,7 +4,6 @@
   "property": ["todataurljpeg", "todataurlpng", "todataurlwebp"],
   "tags": ["canvas"],
   "builderAliases": ["canvas_todataurl_type"],
-  "async" : false,
   "notes": [{
     "name": "MDN article",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement.toDataURL"
