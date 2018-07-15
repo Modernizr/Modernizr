@@ -22,6 +22,7 @@
     "ambientlight",
     "applicationcache",
     "audio",
+    "audio/autoplay",
     "audio/loop",
     "audio/preload",
     "audio/webaudio",
