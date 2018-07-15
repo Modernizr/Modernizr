@@ -22,10 +22,8 @@ define(['ModernizrProto'], function(ModernizrProto) {
    *
    * @memberof Modernizr
    * @name Modernizr.load
-   * @access private
    * @function load
    * @returns {void}
-   *
    */
   ModernizrProto.load = function() {
     if ('yepnope' in window) {
