@@ -1,11 +1,7 @@
 /*!
 {
   "name": "Pointer Media Query",
-  "property": "pointermq",
-  "notes": [{
-    "name": "//Name of reference document",
-    "href": "//URL of reference document"
-  }]
+  "property": "pointermq"
 }
 !*/
 /* DOC

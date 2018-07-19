@@ -50,8 +50,6 @@ describe('prefixed autobind', function() {
     });
   }
 
-
-
   // Moz only:
   if (!_.isUndefined(document.mozFullScreen)) {
     // boolean

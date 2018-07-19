@@ -6,7 +6,6 @@
   "builderAliases": ["webgl_extensions"],
   "async" : true,
   "authors": ["Ilmari Heikkinen"],
-  "knownBugs": [],
   "notes": [{
     "name": "Kronos extensions registry",
     "href": "https://www.khronos.org/registry/webgl/extensions/"

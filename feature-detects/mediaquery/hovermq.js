@@ -1,11 +1,7 @@
 /*!
 {
   "name": "Hover Media Query",
-  "property": "hovermq",
-  "notes": [{
-    "name": "//Name of reference document",
-    "href": "//URL of reference document"
-  }]
+  "property": "hovermq"
 }
 !*/
 /* DOC

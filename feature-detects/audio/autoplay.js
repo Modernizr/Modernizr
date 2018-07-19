@@ -5,8 +5,6 @@
   "authors": ["Jordy van Dortmont"],
   "tags": ["audio"],
   "async" : true,
-  "warnings": [],
-  "knownBugs": []
 }
 !*/
 /* DOC

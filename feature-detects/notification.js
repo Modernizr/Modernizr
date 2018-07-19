@@ -14,9 +14,7 @@
     "name": "Changes in Chrome to Notifications API due to Service Worker Push Notifications",
     "href": "https://developers.google.com/web/updates/2015/05/Notifying-you-of-notificiation-changes"
   }],
-  "knownBugs": [
-    "Possibility of false-positive on Chrome for Android if permissions we're granted for a website prior to Chrome 44."
-  ],
+  "knownBugs": ["Possibility of false-positive on Chrome for Android if permissions we're granted for a website prior to Chrome 44."],
   "polyfills": ["desktop-notify", "html5-notifications"]
 }
 !*/
