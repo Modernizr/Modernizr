@@ -4,7 +4,7 @@
   "property": "audioautoplay",
   "authors": ["Jordy van Dortmont"],
   "tags": ["audio"],
-  "async" : true,
+  "async": true
 }
 !*/
 /* DOC
