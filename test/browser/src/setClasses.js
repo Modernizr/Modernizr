@@ -1,9 +1,9 @@
 describe('setClasses', function() {
   /*
-    eslint no-unused-vars: [ "error", {
+    eslint no-unused-vars: ["error", {
       "varsIgnorePattern": "setClasses"
     }]
-   */
+  */
   var setClasses;
   var cleanup;
   var elm;
@@ -27,13 +27,13 @@ describe('setClasses', function() {
       });
     })();
   };
+
   var teardown = function() {
     setClasses = undefined;
     req.undef('setClasses');
     req.undef('docElement');
     req.undef('Modernizr');
   };
-
 
   before(function(done) {
     define('package', [], function() {return {};});
@@ -105,7 +105,6 @@ describe('setClasses', function() {
       });
     });
   });
-
 
   describe('enableJSClass enabled, with prefix', function() {
     before(function(done) {

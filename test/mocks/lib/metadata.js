@@ -5,7 +5,7 @@ define([], [
     'caniuse': 'css3-boxsizing',
     'polyfills': [],
     'tags': [],
-    'builderAliases': [ ],
+    'builderAliases': [],
     'notes': [{
       'name': 'MDN Docs',
       'href': 'http://developer.mozilla.org/en/CSS/box-sizing'

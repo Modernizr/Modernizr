@@ -8,7 +8,7 @@
     "name": "Chrome bug report",
     "href":"https://code.google.com/p/chromium/issues/detail?id=322972"
   }],
-  "warnings": [ "using position:sticky on anything but top aligned elements is buggy in Chrome < 37 and iOS <=7+" ]
+  "warnings": ["using position:sticky on anything but top aligned elements is buggy in Chrome < 37 and iOS <=7+"]
 }
 !*/
 define(['Modernizr', 'createElement', 'prefixes'], function(Modernizr, createElement, prefixes) {

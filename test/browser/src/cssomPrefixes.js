@@ -1,9 +1,13 @@
 describe('cssomPrefixes', function() {
   /*
-    eslint no-unused-vars: [ "error", {
+    eslint no-unused-vars: ["error", {
       "varsIgnorePattern": "cssomPrefixes"
     }]
- */
+  */
+  var cssomPrefixes;
+  var cleanup;
+  var req;
+
   var setup = function(done, bool) {
     return (function() {
       define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});
@@ -20,10 +24,6 @@ describe('cssomPrefixes', function() {
     req.undef('cssomPrefixes');
     req.undef('ModernizrProto');
   };
-
-  var cssomPrefixes;
-  var cleanup;
-  var req;
 
   before(function(done) {
     define('package', [], function() {return {version: 'v9999'};});

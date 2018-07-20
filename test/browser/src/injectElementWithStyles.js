@@ -1,9 +1,9 @@
 describe('injectElementWithStyles', function() {
   /*
-    eslint no-unused-vars: [ "error", {
+    eslint no-unused-vars: ["error", {
       "varsIgnorePattern": "sinon"
     }]
- */
+  */
   var injectElementWithStyles;
   var originalBody;
   var parentNode;

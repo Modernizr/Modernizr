@@ -1,14 +1,13 @@
 describe('load', function() {
   /*
-    eslint no-unused-vars: [ "error", {
+    eslint no-unused-vars: ["error", {
       "varsIgnorePattern": "load"
     }]
-   */
+  */
   var ModernizrProto;
   var cleanup;
   var sinon;
   var load;
-
 
   before(function(done) {
 
@@ -35,7 +34,6 @@ describe('load', function() {
   it('creates a reference on `ModernizrProto`', function() {
     expect(ModernizrProto.load).to.be.a('function');
   });
-
 
   if (window.console && console.error) {
     describe('errors', function() {

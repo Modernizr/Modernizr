@@ -1,10 +1,11 @@
 describe('domPrefixes', function() {
   /*
-    eslint no-unused-vars: [ "error", {
+    eslint no-unused-vars: ["error", {
       "varsIgnorePattern": "domPrefixes"
     }]
- */
-
+  */
+  var domPrefixes;
+  var cleanup;
   var req;
 
   var setup = function(done, bool) {
@@ -23,8 +24,6 @@ describe('domPrefixes', function() {
     req.undef('domPrefixes');
     req.undef('ModernizrProto');
   };
-  var domPrefixes;
-  var cleanup;
 
   before(function(done) {
     define('package', [], function() {return {version: 'v9999'};});
