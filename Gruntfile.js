@@ -226,6 +226,14 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['clean', 'generate']);
 
+  /**
+   * Performs the code coverage tasks provided by Istanbul
+   */
+  grunt.registerTask('coverage', ['env:coverage', 'instrument', 'mochaTest', 'storeCoverage', 'makeReport']);
+
+  /**
+   * Default task for creating a modernizr build using lib/config-all.json
+   */
   grunt.registerTask('default', ['eslint', 'build']);
 
   var tests = ['clean', 'eslint', 'pug', 'instrument', 'env:coverage', 'nodeTests'];
