@@ -17,7 +17,6 @@ describe('classes', function() {
     });
   });
 
-
   it('is an array', function() {
     expect(classes).to.be.an('array');
   });

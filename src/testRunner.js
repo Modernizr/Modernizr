@@ -39,7 +39,6 @@ define(['tests', 'Modernizr', 'classes', 'is'], function(tests, Modernizr, class
         // Run the test, or use the raw value if it's not a function
         result = is(feature.fn, 'function') ? feature.fn() : feature.fn;
 
-
         // Set each of the names on the Modernizr object
         for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
           featureName = featureNames[nameIdx];

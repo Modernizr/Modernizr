@@ -3,7 +3,6 @@ describe('testStyles', function() {
   var ModernizrProto;
   var cleanup;
 
-
   before(function(done) {
 
     define('ModernizrProto', [], function() {return {};});

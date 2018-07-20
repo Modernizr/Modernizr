@@ -149,7 +149,6 @@ describe('svg context unit tests', function() {
       });
     });
 
-
     afterEach(function() {
       object.parentNode.removeChild(object);
       cleanup();

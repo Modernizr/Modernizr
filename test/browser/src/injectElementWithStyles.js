@@ -101,7 +101,6 @@ describe('injectElementWithStyles', function() {
     injectElementWithStyles('', callback, 2, ['test', 'element']);
   });
 
-
   it('copes with a fake body', function(done) {
 
     originalBody = document.body;

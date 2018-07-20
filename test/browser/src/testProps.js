@@ -134,7 +134,6 @@ describe('testProps', function() {
       // kebab-case should work too
     });
 
-
     afterEach(function() {
       req.undef('mStyle');
       req.undef('cssToDOM');

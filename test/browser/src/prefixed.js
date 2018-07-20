@@ -38,7 +38,6 @@ describe('prefixed', function() {
     define('cssToDOM', [], function() {return cssToDOM;});
     define('atRule', [], function() {return atRule;});
 
-
     req(['prefixed'], function(_prefixed) {
       prefixed = _prefixed;
 

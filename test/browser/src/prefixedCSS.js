@@ -7,7 +7,6 @@ describe('prefixedCSS', function() {
     define('ModernizrProto', [], function() {return ModernizrProto;});
     define('package', [], function() {return {version: 'v9999'};});
 
-
     var req = requirejs.config({
       context: Math.random().toString().slice(2),
       baseUrl: '../src',

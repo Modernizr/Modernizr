@@ -62,7 +62,6 @@ define(['Modernizr', 'createElement', 'docElement', 'isSVG', 'prefixed'], functi
     var flowedRect, delta;
     var plainRect = content.getBoundingClientRect();
 
-
     content.style[flowIntoProperty] = flowName;
     flowedRect = content.getBoundingClientRect();
 
