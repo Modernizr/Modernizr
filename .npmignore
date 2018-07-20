@@ -5,5 +5,5 @@ gh-pages
 appveyor.yml
 Gruntfile.js
 metadata.json
-modernizr.min.js
+modernizr.js
 .*
