@@ -1,5 +1,3 @@
-/*global module */
-
 var browsers = require('./test/browser/sauce-browsers.json');
 var serveStatic = require('serve-static');
 
