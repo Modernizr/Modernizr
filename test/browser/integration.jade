@@ -35,8 +35,9 @@ html
       script(src='../'+test)
     script(src='../node_modules/json3/lib/json3.min.js')
     script(src='../node_modules/expect.js/index.js')
-    script(src='http://caniuse.com/jsonp.php?callback=caniusecb')
     script.
+      $.getJSON("https://raw.githubusercontent.com/Fyrd/caniuse/master/data.json", caniusecb);
+
       function dumpModernizr() {
         var output = '';
 
@@ -87,7 +88,6 @@ html
           // Modernizr object as text
           updateRawOutput()
         }
-
       }
 
       $('#prettyprint').on('click', updateRawOutput);
