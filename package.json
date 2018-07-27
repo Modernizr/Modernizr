@@ -38,7 +38,8 @@
     "load-grunt-tasks": "^4.0.0",
     "mocha": "^5.2.0",
     "proxyquire": "^2.0.1",
-    "serve-static": "^1.13.2"
+    "serve-static": "^1.13.2",
+    "ua-parser-js": "^0.7.18"
   },
   "scripts": {
     "start": "grunt default",

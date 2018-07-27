@@ -1,12 +1,13 @@
-/* global uaparse */
+/* global UAParser */
 window.caniusecb = function(caniuse) {
+
   // So Phantom doesn't kill the caniuse.com matching exit out as it's useless anyway within PhantomJS
   if (window._phantom) {
     return;
   }
-  describe('caniuse', function() {
 
-    var ua = uaparse(navigator.userAgent);
+  describe('caniuse', function() {
+    var ua = new UAParser(navigator.userAgent).getResult();
     var unusedModernizr = [];
     var unusedCaniuse = _.keys(caniuse.data);
     var map = {
@@ -299,22 +300,19 @@ window.caniusecb = function(caniuse) {
       unusedCaniuse = _.without(unusedCaniuse, caniuseFeatureName);
 
       // get results for this feature for all versions of this browser
-      var browserResults = caniuseFeatureData.stats[ua.family.toLowerCase()];
+      var browserResults = caniuseFeatureData.stats[ua.browser.name.toLowerCase()];
 
-      // let's get our versions in order..
-      var minorver   = ua.minor &&                                  // caniuse doesn't use two digit minors
-        ua.minor.toString().replace(/(\d)\d$/, '$1'); // but opera does.
 
-      var majorminor = (ua.major + '.' + minorver)
-        // opera gets grouped in some cases by caniuse
-        .replace(/(9\.(6|5))/ , ua.family === 'opera' ? '9.5-9.6'   : '$1')
-        .replace(/(10\.(0|1))/, ua.family === 'opera' ? '10.0-10.1' : '$1');
+      var majorminor = ua.browser.version
+      // opera gets grouped in some cases by caniuse
+        .replace(/(9\.(6|5))/ , ua.browser.name === 'Opera' ? '9.5-9.6'   : '$1')
+        .replace(/(10\.(0|1))/, ua.browser.name === 'Opera' ? '10.0-10.1' : '$1');
 
       var versionToUse = _.findLast(_.keys(browserResults), function(ciuVersion) {
         return parseFloat(ciuVersion) <= parseFloat(majorminor);
       });
 
-      var latestResult   = browserResults[versionToUse];
+      var latestResult = browserResults[versionToUse];
 
       if (latestResult && latestResult !== 'u') { // 'y' 'n' or 'a'
 
@@ -327,7 +325,7 @@ window.caniusecb = function(caniuse) {
           ciufeature: caniuseFeatureName,
           result: Modernizr[feature],
           caniuseResult: latestResult,
-          browser: ua.family,
+          browser: ua.browser.name,
           version: parseFloat(versionToUse)
         });
       }
