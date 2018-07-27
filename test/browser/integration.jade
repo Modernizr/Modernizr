@@ -15,7 +15,7 @@ html
     #messages
     #fixtures
     script(src='../dist/modernizr-build.js')
-    script(src='../node_modules/jquery/dist/jquery.min.js')
+    script(src='../node_modules/jquery/dist/jquery.js')
     script(src='../node_modules/lodash/lodash.js')
     script(src='../node_modules/mocha/mocha.js')
     script(src='../node_modules/ua-parser-js/src/ua-parser.js')
@@ -33,7 +33,7 @@ html
       mocha.setup('bdd').timeout(20000);
     each test in integrationTests
       script(src='../'+test)
-    script(src='../node_modules/json3/lib/json3.min.js')
+    script(src='../node_modules/json3/lib/json3.js')
     script(src='../node_modules/expect.js/index.js')
     script.
       $.getJSON("https://raw.githubusercontent.com/Fyrd/caniuse/master/data.json", caniusecb);
