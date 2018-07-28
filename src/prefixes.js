@@ -3,7 +3,7 @@ define(['ModernizrProto'], function(ModernizrProto) {
    * List of property values to set for css tests. See ticket #21
    * http://git.io/vUGl4
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr._prefixes
    * @optionName Modernizr._prefixes
    * @optionProp prefixes
@@ -30,7 +30,6 @@ define(['ModernizrProto'], function(ModernizrProto) {
    * rule === 'display:flex; display:-webkit-flex; display:-moz-flex; display:-o-flex; display:-ms-flex; display:flex'
    * ```
    */
-
   // we use ['',''] rather than an empty array in order to allow a pattern of .`join()`ing prefixes to test
   // values in feature detects to continue to work
   var prefixes = (ModernizrProto._config.usePrefixes ? ' -webkit- -moz- -o- -ms- '.split(' ') : ['','']);

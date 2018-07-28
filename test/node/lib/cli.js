@@ -3,7 +3,6 @@ var expect = require('expect.js');
 var cp = require('child_process');
 var Modernizr = require(root + 'lib/cli');
 
-
 describe('cli', function() {
 
   it('exposes a build function', function() {

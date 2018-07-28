@@ -219,7 +219,6 @@ window.caniusecb = function(caniuse) {
         return;
       }
 
-
       // caniuse counts a partial support for CORS via the XDomainRequest,
       // but thats not really cors - so skip the comparison.
       if (o.feature === 'cors' && o.browser === 'IE' && o.version < 10) {
@@ -240,7 +239,6 @@ window.caniusecb = function(caniuse) {
           }));
         });
       }
-
 
       // we breakout flexbox sniffing into three separate detects, which borks the caniuse mappings,
       // since no browser supports all three

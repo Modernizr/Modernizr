@@ -1,9 +1,13 @@
 describe('prefixes', function() {
   /*
-    eslint no-unused-vars: [ "error", {
+    eslint no-unused-vars: ["error", {
       "varsIgnorePattern": "prefixes"
     }]
- */
+  */
+  var prefixes;
+  var cleanup;
+  var req;
+
   var setup = function(done, bool) {
     return (function() {
       define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});
@@ -14,15 +18,12 @@ describe('prefixes', function() {
       });
     })();
   };
+
   var teardown = function() {
     prefixes = undefined;
     req.undef('prefixes');
     req.undef('ModernizrProto');
   };
-  var prefixes;
-  var cleanup;
-  var req;
-
 
   before(function(done) {
     define('package', [], function() {return {};});

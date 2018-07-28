@@ -17,7 +17,6 @@ describe('createElement', function() {
     });
   });
 
-
   it('is a function', function() {
     expect(createElement).to.be.a('function');
   });

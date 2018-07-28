@@ -87,7 +87,6 @@ describe('addTest', function() {
       expect(ModernizrProto._l.fakeDetect.length).to.be(2);
     });
 
-
     it('triggers results if the detect already ran', function(done) {
       Modernizr.fakeDetect = 'fake';
       Modernizr._trigger = sinon.spy();

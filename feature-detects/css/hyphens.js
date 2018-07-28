@@ -99,7 +99,6 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           div.appendChild(span);
           document.body.insertBefore(div, firstChild);
 
-
           /* get height of unwrapped text */
           span.innerHTML = 'mm';
           spanSize = span.offsetHeight;
@@ -151,7 +150,6 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
 
           document.body.insertBefore(div, firstChild);
           document.body.insertBefore(dummy, div);
-
 
           /* reset the selection to the dummy input element, i.e. BEFORE the div container
            *   stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area */

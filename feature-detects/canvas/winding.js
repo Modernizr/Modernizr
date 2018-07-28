@@ -3,7 +3,6 @@
   "name": "canvas winding support",
   "property": "canvaswinding",
   "tags": ["canvas"],
-  "async" : false,
   "notes": [{
     "name": "Article",
     "href": "https://blogs.adobe.com/webplatform/2013/01/30/winding-rules-in-canvas/"

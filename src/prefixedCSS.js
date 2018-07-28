@@ -3,7 +3,7 @@ define(['ModernizrProto', 'prefixed', 'domToCSS'], function(ModernizrProto, pref
    * prefixedCSS is just like [prefixed](#modernizr-prefixed), but the returned values are in
    * kebab-case (e.g. `box-sizing`) rather than camelCase (boxSizing).
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.prefixedCSS
    * @optionName Modernizr.prefixedCSS()
    * @optionProp prefixedCSS
@@ -26,10 +26,10 @@ define(['ModernizrProto', 'prefixed', 'domToCSS'], function(ModernizrProto, pref
    *
    * Properties can be passed as both the DOM style camelCase or CSS style kebab-case.
    */
-
   var prefixedCSS = ModernizrProto.prefixedCSS = function(prop) {
     var prefixedProp = prefixed(prop);
     return prefixedProp && domToCSS(prefixedProp);
   };
+
   return prefixedCSS;
 });

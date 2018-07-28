@@ -36,6 +36,5 @@ define(['Modernizr', 'createElement', 'testStyles', 'isSVG'], function(Modernizr
     });
 
     return bool;
-
   });
 });

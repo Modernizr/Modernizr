@@ -8,12 +8,13 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
    * asynchronous, they may not finish before your scripts run. As a result you
    * will get a possibly false negative `undefined` value.
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.on
    * @access public
    * @function on
    * @param {string} feature - String name of the feature detect
-   * @param {function} cb - Callback function returning a Boolean - true if feature is supported, false if not
+   * @param {Function} cb - Callback function returning a Boolean - true if feature is supported, false if not
+   * @returns {void}
    * @example
    *
    * ```js
@@ -26,7 +27,6 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
    * });
    * ```
    */
-
   ModernizrProto.on = function(feature, cb) {
     // Create the list of listeners if it doesn't exist
     if (!this._l[feature]) {
@@ -49,15 +49,15 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
    * _trigger is the private function used to signal test completion and run any
    * callbacks registered through [Modernizr.on](#modernizr-on)
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr._trigger
    * @access private
    * @function _trigger
    * @param {string} feature - string name of the feature detect
-   * @param {function|boolean} [res] - A feature detection function, or the boolean =
+   * @param {Function|boolean} [res] - A feature detection function, or the boolean =
    * result of a feature detection function
+   * @returns {void}
    */
-
   ModernizrProto._trigger = function(feature, res) {
     if (!this._l[feature]) {
       return;
@@ -81,20 +81,22 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
   /**
    * addTest allows you to define your own feature detects that are not currently
    * included in Modernizr (under the covers it's the exact same code Modernizr
-   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)). Just like the official detects, the result
+   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)).
+   * Just like the official detects, the result
    * will be added onto the Modernizr object, as well as an appropriate className set on
    * the html element when configured to do so
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.addTest
    * @optionName Modernizr.addTest()
    * @optionProp addTest
    * @access public
    * @function addTest
-   * @param {string|object} feature - The string name of the feature detect, or an
+   * @param {string|Object} feature - The string name of the feature detect, or an
    * object of feature detect names and test
-   * @param {function|boolean} test - Function returning true if feature is supported,
+   * @param {Function|boolean} test - Function returning true if feature is supported,
    * false if not. Otherwise a boolean representing the results of a feature detection
+   * @returns {Object} the Modernizr object to allow chaining
    * @example
    *
    * The most common way of creating your own feature detects is by calling
@@ -146,7 +148,6 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
    * There is really no difference between the first methods and this one, it is
    * just a convenience to let you write more readable code.
    */
-
   function addTest(feature, test) {
 
     if (typeof feature === 'object') {

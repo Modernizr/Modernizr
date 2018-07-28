@@ -50,8 +50,6 @@ describe('prefixed autobind', function() {
     });
   }
 
-
-
   // Moz only:
   if (!_.isUndefined(document.mozFullScreen)) {
     // boolean
@@ -60,7 +58,6 @@ describe('prefixed autobind', function() {
       expect(Modernizr.prefixed('fullScreen', document)).to.be.a('boolean');
     });
   }
-
 
   // Webkit-only.. takes advantage of Webkit's mixed case of prefixes
   if (document.body.style.WebkitAnimation) {

@@ -17,7 +17,6 @@ describe('tests', function() {
     });
   });
 
-
   it('is an array', function() {
     expect(tests).to.be.an('array');
   });

@@ -1,9 +1,9 @@
 describe('injectElementWithStyles', function() {
   /*
-    eslint no-unused-vars: [ "error", {
+    eslint no-unused-vars: ["error", {
       "varsIgnorePattern": "sinon"
     }]
- */
+  */
   var injectElementWithStyles;
   var originalBody;
   var parentNode;
@@ -100,7 +100,6 @@ describe('injectElementWithStyles', function() {
 
     injectElementWithStyles('', callback, 2, ['test', 'element']);
   });
-
 
   it('copes with a fake body', function(done) {
 

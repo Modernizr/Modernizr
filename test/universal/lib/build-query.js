@@ -13,7 +13,6 @@ if (typeof define !== 'function') {
 var cleanup;
 var req;
 
-
 describe('build-query', function() {
   var buildQuery;
 
@@ -85,7 +84,6 @@ describe('build-query', function() {
     });
     expect(query).to.be('?-boxsizing-dontmin');
   });
-
 
   after(function() {
     cleanup();

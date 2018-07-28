@@ -6,7 +6,6 @@ define(['classes'], function(classes) {
    *
    * @access private
    */
-
   var slice = classes.slice;
   return slice;
 });

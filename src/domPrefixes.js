@@ -2,7 +2,7 @@ define(['ModernizrProto', 'omPrefixes'], function(ModernizrProto, omPrefixes) {
   /**
    * List of JavaScript DOM values used for tests
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr._domPrefixes
    * @optionName Modernizr._domPrefixes
    * @optionProp domPrefixes
@@ -16,7 +16,6 @@ define(['ModernizrProto', 'omPrefixes'], function(ModernizrProto, omPrefixes) {
    * Modernizr._domPrefixes === [ "Moz", "O", "ms", "Webkit" ];
    * ```
    */
-
   var domPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.toLowerCase().split(' ') : []);
   ModernizrProto._domPrefixes = domPrefixes;
   return domPrefixes;

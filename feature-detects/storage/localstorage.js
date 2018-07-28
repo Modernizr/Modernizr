@@ -4,9 +4,6 @@
   "property": "localstorage",
   "caniuse": "namevalue-storage",
   "tags": ["storage"],
-  "knownBugs": [],
-  "notes": [],
-  "warnings": [],
   "polyfills": [
     "joshuabell-polyfill",
     "cupcake",

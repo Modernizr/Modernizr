@@ -3,7 +3,6 @@
   "name": "canvas blending support",
   "property": "canvasblending",
   "tags": ["canvas"],
-  "async" : false,
   "notes": [{
       "name": "HTML5 Spec",
       "href": "https://dvcs.w3.org/hg/FXTF/rawfile/tip/compositing/index.html#blending"

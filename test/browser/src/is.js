@@ -17,7 +17,6 @@ describe('is', function() {
     });
   });
 
-
   it('is a function', function() {
     expect(is).to.be.a('function');
   });

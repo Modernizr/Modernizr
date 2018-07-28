@@ -17,7 +17,6 @@ describe('toStringFn', function() {
     });
   });
 
-
   it('is an function', function() {
     expect(toStringFn).to.be.an('function');
   });

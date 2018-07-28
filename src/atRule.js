@@ -3,7 +3,7 @@ define(['ModernizrProto', 'cssomPrefixes'], function(ModernizrProto, prefixes) {
    * atRule returns a given CSS property at-rule (eg @keyframes), possibly in
    * some prefixed form, or false, in the case of an unsupported rule
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.atRule
    * @optionName Modernizr.atRule()
    * @optionProp atRule
@@ -23,9 +23,7 @@ define(['ModernizrProto', 'cssomPrefixes'], function(ModernizrProto, prefixes) {
    *    // keyframes === `false`
    *  }
    * ```
-   *
    */
-
   var atRule = function(prop) {
     var length = prefixes.length;
     var cssrule = window.CSSRule;

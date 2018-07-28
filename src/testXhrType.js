@@ -2,14 +2,12 @@ define(function() {
   /**
    * http://mathiasbynens.be/notes/xhr-responsetype-json#comment-4
    *
+   * @author Mathias Bynens
    * @access private
    * @function testXhrType
    * @param {string} type - String name of the XHR type you want to detect
-   * @returns {boolean}
-   * @author Mathias Bynens
+   * @returns {boolean} true if the responseType is of the specified type
    */
-
-  /* istanbul ignore next */
   var testXhrType = function(type) {
     if (typeof XMLHttpRequest === 'undefined') {
       return false;

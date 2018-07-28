@@ -4,7 +4,7 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    * adapted from matchMedia polyfill by Scott Jehl and Paul Irish
    * gist.github.com/786768
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.mq
    * @optionName Modernizr.mq()
    * @optionProp mq
@@ -41,11 +41,9 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    *  Modernizr.mq('only all'); // true if MQ are supported, false if not
    * ```
    *
-   *
    * Note that if the browser does not support media queries (e.g. old IE) mq will
    * always return false.
    */
-
   var mq = (function() {
     var matchMedia = window.matchMedia || window.msMatchMedia;
     if (matchMedia) {
@@ -67,7 +65,6 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
       return bool;
     };
   })();
-
 
   ModernizrProto.mq = mq;
 

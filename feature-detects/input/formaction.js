@@ -10,9 +10,7 @@
     "name": "Wufoo demo",
     "href": "https://www.wufoo.com/html5/attributes/13-formaction.html"
   }],
-  "polyfills": [
-    "webshims"
-  ]
+  "polyfills": ["webshims"]
 }
 !*/
 /* DOC

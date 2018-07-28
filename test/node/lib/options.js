@@ -10,7 +10,6 @@ var schema = Joi.array().items(
   })
 );
 
-
 describe('cli/options', function() {
   this.timeout(20000);
 

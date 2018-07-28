@@ -32,11 +32,9 @@ describe('hasEvent', function() {
     expect(hasEvent('click', document)).to.be(true);
   });
 
-
   it('returns false when no event name is provided', function() {
     expect(hasEvent()).to.be(false);
   });
-
 
   it('returns true when the event exists', function() {
     expect(hasEvent('click')).to.be(true);

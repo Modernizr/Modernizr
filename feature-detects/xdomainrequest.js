@@ -4,8 +4,7 @@
   "property": "xdomainrequest",
   "tags": ["cors", "xdomainrequest", "ie9", "ie8"],
   "authors": ["Ivan Pan (@hypotenuse)"],
-  "notes": [
-  {
+  "notes": [{
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/XDomainRequest"
   },

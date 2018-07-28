@@ -1,5 +1,3 @@
-/*global module */
-
 var browsers = require('./test/browser/sauce-browsers.json');
 var serveStatic = require('serve-static');
 
@@ -16,12 +14,17 @@ module.exports = function(grunt) {
     '!test/browser/integration/*.js'
   ]);
 
+  var integrationTests = grunt.file.expand([
+    'test/browser/integration/*.js'
+  ]);
+
+  var nodeTests = grunt.file.expand([
+    'test/universal/**/*.js',
+    'test/node/**/*.js'
+  ]);
+
   grunt.initConfig({
     env: {
-      nodeTests: [
-        'test/universal/**/*.js',
-        'test/node/**/*.js'
-      ],
       browserTests: browserTests,
       coverage: {
         APP_DIR_FOR_CODE_COVERAGE: 'test/coverage/instrument',
@@ -29,7 +32,9 @@ module.exports = function(grunt) {
           'http://localhost:9999/test/unit.html',
           'http://localhost:9999/test/index.html'
         ]
-      }
+      },
+      integrationTests: integrationTests,
+      nodeTests: nodeTests
     },
     generate: {
       dest: './dist/modernizr-build.js'
@@ -52,10 +57,10 @@ module.exports = function(grunt) {
     },
     eslint: {
       target: [
-        '<%= env.nodeTests%>',
+        '<%= env.nodeTests %>',
         '<%= env.browserTests %>',
+        '<%= env.integrationTests %>',
         'test/browser/setup.js',
-        'test/browser/integration/*.js',
         'Gruntfile.js',
         'src/*.js',
         'lib/*.js',
@@ -83,7 +88,7 @@ module.exports = function(grunt) {
         options: {
           data: {
             unitTests: browserTests,
-            integrationTests: grunt.file.expand(['test/browser/integration/*.js'])
+            integrationTests: integrationTests
           }
         },
         files: {
@@ -164,7 +169,7 @@ module.exports = function(grunt) {
           reporter: 'dot',
           timeout: 5000
         },
-        src: ['<%= env.nodeTests%>']
+        src: ['<%= env.nodeTests %>']
       }
     },
     instrument: {
@@ -219,6 +224,14 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['clean', 'generate']);
 
+  /**
+   * Performs the code coverage tasks provided by Istanbul
+   */
+  grunt.registerTask('coverage', ['env:coverage', 'instrument', 'mochaTest', 'storeCoverage', 'makeReport']);
+
+  /**
+   * Default task for creating a modernizr build using lib/config-all.json
+   */
   grunt.registerTask('default', ['eslint', 'build']);
 
   var tests = ['clean', 'eslint', 'pug', 'instrument', 'env:coverage', 'nodeTests'];

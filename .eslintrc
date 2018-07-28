@@ -18,39 +18,22 @@
     "jsdoc"
   ],
   "rules": {
-    "indent": [
-      2,
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
+    "comma-dangle": "error",
+    "comma-style": ["error", "last"],
     "curly": "error",
-    "wrap-iife": "off",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "no-caller": "error",
-    "no-cond-assign": [
-      "error",
-      "except-parens"
-    ],
-    "eqeqeq": "off",
+    "no-cond-assign": ["error", "except-parens"],
     "no-eq-null": "error",
-    "new-cap": "off",
-    "no-undef": "error",
-    "no-unused-vars": "error",
-    "no-unused-expressions": "error",
     "no-eval": "error",
-    "comma-style": [
-      "error",
-      "last"
-    ],
-    "dot-notation": "off",
+    "no-global-getComputedStyle": "error",
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "no-undef": "error",
+    "no-unused-expressions": "error",
+    "no-unused-vars": "error",
+    "quotes": ["error", "single"],
     "semi": "error",
     "valid-jsdoc": "error",
-    "no-global-getComputedStyle": "error",
     "jsdoc/check-tag-names": 1,
     "jsdoc/check-types": 1,
     "jsdoc/newline-after-description": 1,
@@ -58,5 +41,12 @@
     "jsdoc/require-param": 1,
     "jsdoc/require-param-type": 1,
     "jsdoc/require-returns-type": 1
+  },
+  "settings": {
+    "jsdoc": {
+      "additionalTagNames": {
+        "customTags": ["memberOf", "optionName", "optionProp"]
+      }
+    }
   }
 }
