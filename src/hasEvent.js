@@ -2,7 +2,7 @@ define(['ModernizrProto', 'createElement'], function(ModernizrProto, createEleme
   /**
    * Modernizr.hasEvent() detects support for a given event
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.hasEvent
    * @optionName Modernizr.hasEvent()
    * @optionProp hasEvent

@@ -1,8 +1,8 @@
 define(['isSVG'], function(isSVG) {
- /**
-  * @optionName html5shiv
-  * @optionProp html5shiv
-  */
+  /**
+   * @optionName html5shiv
+   * @optionProp html5shiv
+   */
 
   // Take the html5 variable out of the html5shiv scope so we can return it.
   var html5;
@@ -11,6 +11,7 @@ define(['isSVG'], function(isSVG) {
      * @preserve HTML5 Shiv 3.7.3 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
      */
     ;(function(window, document) {
+      /*jshint evil:true */
       /** version */
       var version = '3.7.3';
 
@@ -92,7 +93,7 @@ define(['isSVG'], function(isSVG) {
 
       /**
        * Extends the built-in list of html5 elements
-       * @memberof html5
+       * @memberOf html5
        * @param {String|Array} newElements whitespace separated list or array of new element names to shiv
        * @param {Document} ownerDocument The context document.
        */
@@ -127,7 +128,7 @@ define(['isSVG'], function(isSVG) {
 
       /**
        * returns a shived element for the given nodeName and document
-       * @memberof html5
+       * @memberOf html5
        * @param {String} nodeName name of the element
        * @param {Document|DocumentFragment} ownerDocument The context document.
        * @returns {Object} The shived element.
@@ -164,7 +165,7 @@ define(['isSVG'], function(isSVG) {
 
       /**
        * returns a shived DocumentFragment for the given document
-       * @memberof html5
+       * @memberOf html5
        * @param {Document} ownerDocument The context document.
        * @returns {Object} The shived DocumentFragment.
        */
@@ -226,7 +227,7 @@ define(['isSVG'], function(isSVG) {
 
       /**
        * Shivs the given document.
-       * @memberof html5
+       * @memberOf html5
        * @param {Document} ownerDocument The document to shiv.
        * @returns {Document} The shived document.
        */
@@ -267,7 +268,7 @@ define(['isSVG'], function(isSVG) {
 
         /**
          * An array or space separated string of node names of the elements to shiv.
-         * @memberof html5
+         * @memberOf html5
          * @type Array|String
          */
         'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video',
@@ -279,14 +280,14 @@ define(['isSVG'], function(isSVG) {
 
         /**
          * A flag to indicate that the HTML5 style sheet should be inserted.
-         * @memberof html5
+         * @memberOf html5
          * @type Boolean
          */
         'shivCSS': (options.shivCSS !== false),
 
         /**
          * Is equal to true if a browser supports creating unknown/HTML5 elements
-         * @memberof html5
+         * @memberOf html5
          * @type boolean
          */
         'supportsUnknownElements': supportsUnknownElements,
@@ -294,14 +295,14 @@ define(['isSVG'], function(isSVG) {
         /**
          * A flag to indicate that the document's `createElement` and `createDocumentFragment`
          * methods should be overwritten.
-         * @memberof html5
+         * @memberOf html5
          * @type Boolean
          */
         'shivMethods': (options.shivMethods !== false),
 
         /**
          * A string to describe the type of `html5` object ("default" or "default print").
-         * @memberof html5
+         * @memberOf html5
          * @type String
          */
         'type': 'default',

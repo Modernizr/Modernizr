@@ -45,7 +45,7 @@
   "settings": {
     "jsdoc": {
       "additionalTagNames": {
-        "customTags": ["optionName", "optionProp"]
+        "customTags": ["memberOf", "optionName", "optionProp"]
       }
     }
   }

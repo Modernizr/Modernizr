@@ -2,7 +2,7 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
   /**
    * testStyles injects an element with style element and some CSS rules
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.testStyles
    * @optionName Modernizr.testStyles()
    * @optionProp testStyles

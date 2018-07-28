@@ -20,7 +20,7 @@ define(['ModernizrProto'], function(ModernizrProto) {
    * this is only included as an improved warning to those who build a custom
    * version locally.
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.load
    * @function load
    * @returns {void}

@@ -4,7 +4,7 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    * adapted from matchMedia polyfill by Scott Jehl and Paul Irish
    * gist.github.com/786768
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.mq
    * @optionName Modernizr.mq()
    * @optionProp mq

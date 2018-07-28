@@ -3,7 +3,7 @@ define(['ModernizrProto'], function(ModernizrProto) {
    * List of property values to set for css tests. See ticket #21
    * http://git.io/vUGl4
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr._prefixes
    * @optionName Modernizr._prefixes
    * @optionProp prefixes
