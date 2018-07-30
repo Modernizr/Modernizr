@@ -67,8 +67,8 @@ describe('testPropsAll', function() {
     expect(testDOMProps.callCount).to.be(1);
   });
 
-  it('is added to ModernizrProto as `testAllProps`', function() {
-    expect(testPropsAll).to.equal(ModernizrProto.testAllProps);
+  it('is added to ModernizrProto as `testPropsAll`', function() {
+    expect(testPropsAll).to.equal(ModernizrProto.testPropsAll);
   });
 
   afterEach(function() {

@@ -14,6 +14,7 @@ define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'te
    * @param {boolean} [skipValueTest] - An boolean representing if you want to test if value sticks when set
    * @returns {false|string} returns the string version of the property, or false if it is unsupported
    */
+
   function testPropsAll(prop, prefixed, elem, value, skipValueTest) {
 
     var ucProp = prop.charAt(0).toUpperCase() + prop.slice(1),
@@ -30,12 +31,12 @@ define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'te
     }
   }
 
-  // Modernizr.testAllProps() investigates whether a given style property,
+  // Modernizr.testPropsAll() investigates whether a given style property,
   // or any of its vendor-prefixed variants, is recognized
   //
   // Note that the property names must be provided in the camelCase variant.
-  // Modernizr.testAllProps('boxSizing')
-  ModernizrProto.testAllProps = testPropsAll;
+  // Modernizr.testPropsAll('boxSizing')
+  ModernizrProto.testPropsAll = testPropsAll;
 
   return testPropsAll;
 });
