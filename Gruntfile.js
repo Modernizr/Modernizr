@@ -29,8 +29,8 @@ module.exports = function(grunt) {
       coverage: {
         APP_DIR_FOR_CODE_COVERAGE: 'test/coverage/instrument',
         urls: [
-          'http://localhost:9999/test/unit.html',
-          'http://localhost:9999/test/index.html'
+          'http://localhost:9090/test/unit.html',
+          'http://localhost:9090/test/index.html'
         ]
       },
       integrationTests: integrationTests,
@@ -140,7 +140,7 @@ module.exports = function(grunt) {
               serveStatic(__dirname)
             ];
           },
-          port: 9999
+          port: 9090
         }
       }
     },
