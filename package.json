@@ -46,6 +46,14 @@
   },
   "main": "./lib/cli",
   "bin": "./bin/modernizr",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "bin/",
+    "feature-detects/",
+    "lib/",
+    "src/"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/Modernizr/Modernizr.git"
