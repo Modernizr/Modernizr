@@ -70,10 +70,7 @@ module.exports = function(grunt) {
         '!src/html5printshiv.js',
         '!test/coverage/**/*.js',
         '!test/js/lib/**/*.js'
-      ],
-      options: {
-        rulePaths: ['test/eslint/rules']
-      }
+      ]
     },
     clean: {
       dist: [
