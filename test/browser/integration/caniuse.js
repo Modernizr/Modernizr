@@ -302,7 +302,6 @@ window.caniusecb = function(caniuse) {
       // get results for this feature for all versions of this browser
       var browserResults = caniuseFeatureData.stats[ua.browser.name.toLowerCase()];
 
-
       var majorminor = ua.browser.version
       // opera gets grouped in some cases by caniuse
         .replace(/(9\.(6|5))/ , ua.browser.name === 'Opera' ? '9.5-9.6'   : '$1')
