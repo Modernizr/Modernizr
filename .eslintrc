@@ -26,7 +26,6 @@
     "no-cond-assign": ["error", "except-parens"],
     "no-eq-null": "error",
     "no-eval": "error",
-    "no-global-getComputedStyle": "error",
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
     "no-undef": "error",
     "no-unused-expressions": "error",
@@ -40,7 +39,13 @@
     "jsdoc/require-hyphen-before-param-description": 1,
     "jsdoc/require-param": 1,
     "jsdoc/require-param-type": 1,
-    "jsdoc/require-returns-type": 1
+    "jsdoc/require-returns-type": 1,
+    "no-restricted-syntax": [2,
+      {
+          "selector": "CallExpression[callee.name='getComputedStyle']",
+          "message": "Do not use `getComputedStyle`, import and use the `computedStyle` helper"
+      }
+    ]
   },
   "settings": {
     "jsdoc": {
