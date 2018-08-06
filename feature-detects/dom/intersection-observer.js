@@ -22,15 +22,5 @@
 
  */
 define(['Modernizr'], function (Modernizr) {
-  Modernizr.addTest(
-    'intersectionobserver',
-    function () {
-      if ('IntersectionObserver' in window &&
-        'IntersectionObserverEntry' in window &&
-        'intersectionRatio' in window.IntersectionObserverEntry.prototype
-      ) {
-        return true;
-      }
-      return false;
-    });
+  Modernizr.addTest('intersectionobserver', ‘IntersectionObserver’ in window);
 });
