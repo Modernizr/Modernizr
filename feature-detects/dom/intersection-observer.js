@@ -17,10 +17,8 @@
 }
 !*/
 /* DOC
-
  Determines if Intersection Observer API is available.
-
  */
 define(['Modernizr'], function (Modernizr) {
-  Modernizr.addTest('intersectionobserver', ‘IntersectionObserver’ in window);
+  Modernizr.addTest('intersectionobserver', 'IntersectionObserver' in window);
 });
