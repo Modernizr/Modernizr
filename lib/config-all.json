@@ -1,5 +1,6 @@
 {
   "classPrefix": "",
+  "scriptGlobalName": "window",
   "options": [
     "addTest",
     "atRule",
