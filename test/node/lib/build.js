@@ -113,6 +113,31 @@ describe('cli/build', function() {
 
     });
 
+    describe('scriptGlobalName', function() {
+      
+      it('should inject modernizr onto window by default', function(done) {
+        var config = {
+          'feature-detects': ['css/boxsizing']
+        };
+        build(config, function(file) {
+          expect(file).to.contain('})(window, document);');
+          done();
+        });
+      });
+
+      it('should inject modernizr onto custom window global when specified', function(done) {
+        var config = {
+          'scriptGlobalName': 'window.awesomeco',
+          'feature-detects': ['css/boxsizing']
+        };
+        build(config, function(file) {
+          expect(file).to.contain('})(window.awesomeco, document);');
+          done();
+        });
+      });
+
+    });
+
     describe('minified', function() {
       var output;
 
