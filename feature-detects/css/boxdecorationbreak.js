@@ -9,7 +9,7 @@
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/box-decoration-break"
   }, {
     "name": "Demo",
-    "href": "http://jsbin.com/xojoro/edit?css,output"
+    "href": "https://jsbin.com/xojoro/edit?css,output"
   }]
 }
 !*/

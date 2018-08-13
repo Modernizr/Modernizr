@@ -7,7 +7,7 @@
   "authors": ["Mat Marquis"],
   "notes": [{
     "name": "Spec",
-    "href": "http://picture.responsiveimages.org/#parse-sizes-attr"
+    "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element"
     },{
     "name": "Srcset and sizes",
     "href": "https://ericportis.com/posts/2014/srcset-sizes/"

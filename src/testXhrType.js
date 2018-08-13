@@ -1,6 +1,6 @@
 define(function() {
   /**
-   * http://mathiasbynens.be/notes/xhr-responsetype-json#comment-4
+   * https://mathiasbynens.be/notes/xhr-responsetype-json#comment-4
    *
    * @author Mathias Bynens
    * @access private

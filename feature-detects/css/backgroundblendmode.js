@@ -9,7 +9,7 @@
       "href": "https://medium.com/@bennettfeely/css-blend-modes-could-be-the-next-big-thing-in-web-design-6b51bf53743a"
     },{
       "name": "Demo",
-      "href": "http://bennettfeely.com/gradients/"
+      "href": "https://bennettfeely.com/gradients/"
   }]
 }
 !*/
