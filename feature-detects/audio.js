@@ -42,7 +42,7 @@ define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
         bool.m4a  = (elem.canPlayType('audio/x-m4a;')            ||
                      elem.canPlayType('audio/aac;'))             .replace(/^no$/, '');
       }
-    } catch (e) { }
+    } catch (e) {}
 
     return bool;
   });

@@ -69,9 +69,10 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           divStyle.cssText = 'position:absolute;top:0;left:0;width:5em;text-align:justify;text-justify:newspaper;' +
             prefixes.join('hyphens:auto; ');
 
+          /* results */
           result = (span.offsetHeight !== spanHeight || span.offsetWidth !== spanWidth);
 
-          /* results and cleanup */
+          /* cleanup */
           document.body.removeChild(div);
           div.removeChild(span);
 

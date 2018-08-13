@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'createElement'], function(ModernizrProto, createElement) {
+define(['ModernizrProto', 'createElement', 'docElement'], function(ModernizrProto, createElement, docElement) {
   /**
    * Modernizr.hasEvent() detects support for a given event
    *
@@ -30,7 +30,7 @@ define(['ModernizrProto', 'createElement'], function(ModernizrProto, createEleme
 
     // Detect whether event support can be detected via `in`. Test on a DOM element
     // using the "blur" event b/c it should always exist. bit.ly/event-detection
-    var needsFallback = !('onblur' in document.documentElement);
+    var needsFallback = !('onblur' in docElement);
 
     function inner(eventName, element) {
 
