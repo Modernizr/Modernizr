@@ -39,6 +39,10 @@ var yargs = require('yargs')
     alias: 'uglify',
     describe: 'uglify/minify the output'
   })
+  .options('s', {
+    alias: 'scriptGlobalName',
+    describe: 'Script global variable where Modernizr is attached. Defaults to window'
+  })
   .options('q', {
     alias: 'quiet',
     describe: 'Silence all output'
@@ -176,6 +180,10 @@ try {
 
 if (argv.u) {
   config.minify = true;
+}
+
+if (argv.scriptGlobalName) {
+  config.scriptGlobalName = argv.scriptGlobalName;
 }
 
 Modernizr.build(config, function(output) {
