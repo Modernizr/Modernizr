@@ -6,8 +6,8 @@
     "name": "W3C DOM Level 1 Reference",
     "href": "https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-B63ED1A3"
   }, {
-    "name": "SitePoint Reference",
-    "href": "http://reference.sitepoint.com/javascript/DocumentFragment"
+    "name": "MDN Reference",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment"
   }, {
     "name": "QuirksMode Compatibility Tables",
     "href": "https://www.quirksmode.org/m/w3c_core.html#t112"

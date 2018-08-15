@@ -7,11 +7,8 @@
     "name": "W3C Editor's Draft",
     "href": "https://w3c.github.io/deviceorientation/spec-source-orientation.html"
   },{
-    "name": "Implementation by iOS Safari (Orientation)",
-    "href": "http://goo.gl/fhce3"
-  },{
-    "name": "Implementation by iOS Safari (Motion)",
-    "href": "http://goo.gl/rLKz8"
+    "name": "Implementation Orientation & Motion from MDN",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation"
   }],
   "authors": ["Shi Chuan"],
   "tags": ["event"],

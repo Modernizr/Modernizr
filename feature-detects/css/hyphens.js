@@ -17,7 +17,7 @@
     "href": "https://davidnewton.ca/the-current-state-of-hyphenation-on-the-web"
   },{
     "name": "Hyphenation Test Page",
-    "href": "http://davidnewton.ca/demos/hyphenation/test.html"
+    "href": "https://web.archive.org/web/20150319125549/http://davidnewton.ca/demos/hyphenation/test.html"
   },{
     "name": "Hyphenation is Language Specific",
     "href": "https://code.google.com/p/hyphenator/source/diff?spec=svn975&r=975&format=side&path=/trunk/Hyphenator.js#sc_svn975_313"

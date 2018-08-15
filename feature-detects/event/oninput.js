@@ -9,8 +9,8 @@
     "name": "WHATWG spec",
     "href": "https://html.spec.whatwg.org/multipage/forms.html#common-input-element-attributes"
   },{
-    "name": "Detecting onInput support",
-    "href": "http://danielfriesen.name/blog/2010/02/16/html5-browser-maze-oninput-support"
+    "name": "Undetectable",
+    "href": "https://github.com/Modernizr/Modernizr/wiki/Undetectables"
   }],
   "authors": ["Patrick Kettner"],
   "tags": ["event"]

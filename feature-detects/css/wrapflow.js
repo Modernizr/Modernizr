@@ -7,8 +7,8 @@
       "name": "W3C Exclusions spec",
       "href": "https://www.w3.org/TR/css3-exclusions"
     },{
-      "name": "Example by Adobe",
-      "href": "http://html.adobe.com/webstandards/cssexclusions"
+      "name": "Example by Louie Rootfield",
+      "href": "https://webdesign.tutsplus.com/tutorials/css-exclusions--cms-28087"
   }]
 }
 !*/
