@@ -8,7 +8,7 @@
     "href": "https://www.w3.org/TR/html5/interactive-elements.html#context-menus"
   },{
     "name": "thewebrocks.com Demo",
-    "href": "https://thewebrocks.com/demos/context-menu/"
+    "href": "http://thewebrocks.com/demos/context-menu/"
   }],
   "polyfills": ["jquery-contextmenu"]
 }

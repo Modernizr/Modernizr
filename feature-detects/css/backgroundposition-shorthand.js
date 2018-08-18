@@ -8,7 +8,7 @@
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/CSS/background-position"
   }, {
-    "name": "W3 Spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css3-background/#background-position"
   }, {
     "name": "Demo",

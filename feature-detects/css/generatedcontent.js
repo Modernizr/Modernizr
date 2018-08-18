@@ -12,7 +12,7 @@
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/::before"
   },{
     "name": "MDN article on :after",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/::before"
+    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/::after"
   }]
 }
 !*/

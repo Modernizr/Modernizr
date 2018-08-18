@@ -7,7 +7,7 @@
   "authors": ["komachi"],
   "notes": [{
     "name": "W3C Editor’s Draft",
-    "href": "https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#RandomSource-method-getRandomValues"
+    "href": "https://w3c.github.io/webcrypto/#Crypto-interface-methods"
   }],
   "polyfills": ["polycrypt"]
 }
