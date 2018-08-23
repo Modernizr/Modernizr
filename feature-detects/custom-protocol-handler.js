@@ -6,7 +6,7 @@
   "builderAliases": ["custom_protocol_handler"],
   "notes": [{
     "name": "WHATWG overview",
-    "href": "https://developers.whatwg.org/timers.html#custom-handlers"
+    "href": "https://html.spec.whatwg.org/dev/system-state.html#custom-handlers"
   },{
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/navigator.registerProtocolHandler"
