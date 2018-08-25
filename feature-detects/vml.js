@@ -10,7 +10,7 @@
     "href": "https://www.w3.org/TR/NOTE-VML"
   },{
     "name" : "Microsoft VML reference",
-    "href": "https://msdn.microsoft.com/en-us/library/bb263898.aspx"
+    "href": "https://docs.microsoft.com/en-us/windows/desktop/VML/msdn-online-vml-introduction"
   }]
 }
 !*/

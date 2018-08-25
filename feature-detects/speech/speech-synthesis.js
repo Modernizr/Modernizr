@@ -6,7 +6,7 @@
   "name": "Speech Synthesis API",
   "notes": [{
     "name": "W3C Web Speech API Specification - The SpeechSynthesis Interface",
-    "href": "https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section"
+    "href": "https://w3c.github.io/speech-api/speechapi.html#tts-section"
   }]
 }
 !*/

@@ -5,10 +5,10 @@
   "aliases": ["input-formnovalidate"],
   "notes": [{
     "name": "WHATWG Spec",
-    "href": "https://html.spec.whatwg.org/multipage/forms.html#attr-fs-formnovalidate"
+    "href": "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formnovalidate"
   }, {
     "name": "Wufoo demo",
-    "href": "https://www.wufoo.com/html5/attributes/12-formnovalidate.html"
+    "href": "https://www.wufoo.com/html5/formnovalidate-attribute/"
   }],
   "polyfills": ["html5formshim"]
 }

@@ -5,7 +5,7 @@
   "caniuse": "deviceorientation",
   "notes": [{
     "name": "W3C Editor's Draft",
-    "href": "https://w3c.github.io/deviceorientation/spec-source-orientation.html"
+    "href": "https://w3c.github.io/deviceorientation/"
   },{
     "name": "Implementation Orientation & Motion from MDN",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation"

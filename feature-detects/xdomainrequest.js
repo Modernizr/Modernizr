@@ -7,11 +7,7 @@
   "notes": [{
     "name": "MDN documentation",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/XDomainRequest"
-  },
-  {
-    "name": "MSDN documentation",
-    "href": "https://msdn.microsoft.com/library/ie/cc288060.aspx/"
-  }]
+  }
 }
 !*/
 /* DOC

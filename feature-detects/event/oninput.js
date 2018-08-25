@@ -7,7 +7,7 @@
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.oninput"
   },{
     "name": "WHATWG spec",
-    "href": "https://html.spec.whatwg.org/multipage/forms.html#common-input-element-attributes"
+    "href": "https://html.spec.whatwg.org/multipage/input.html#common-input-element-attributes"
   },{
     "name": "Undetectable",
     "href": "https://github.com/Modernizr/Modernizr/wiki/Undetectables"

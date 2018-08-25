@@ -41,7 +41,7 @@ define(['Modernizr', 'prefixes', 'mq'], function(Modernizr, prefixes, mq) {
     }
 
     // include the 'heartz' as a way to have a non matching MQ to help terminate the join
-    // https://git.io/vznFH
+    // https://github.com/Modernizr/Modernizr/issues/1814
     var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
     return mq(query);
   });

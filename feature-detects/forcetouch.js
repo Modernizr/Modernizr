@@ -5,7 +5,7 @@
   "authors": ["Kraig Walker"],
   "notes": [{
     "name": "Responding to Force Touch Events from JavaScript",
-    "href": "https://developer.apple.com/library/prerelease/mac/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Articles/RespondingtoForceTouchEventsfromJavaScript.html"
+    "href": "https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/SafariJSProgTopics/RespondingtoForceTouchEventsfromJavaScript.html"
   }]
 }
 !*/

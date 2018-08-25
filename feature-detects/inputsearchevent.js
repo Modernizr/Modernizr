@@ -6,7 +6,7 @@
   "authors": ["Calvin Webster"],
   "notes": [{
     "name": "Wufoo demo",
-    "href": "https://www.wufoo.com/html5/types/5-search.html?"
+    "href": "https://www.wufoo.com/html5/search-type/"
   }, {
     "name": "CSS Tricks",
     "href": "https://css-tricks.com/webkit-html5-search-inputs/"

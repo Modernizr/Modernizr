@@ -6,7 +6,7 @@
   "tags": ["history"],
   "notes": [{
     "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/API/window.onhashchange"
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onhashchange"
   }],
   "polyfills": [
     "jquery-hashchange",
