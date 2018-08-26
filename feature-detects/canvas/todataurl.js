@@ -5,7 +5,7 @@
   "tags": ["canvas"],
   "builderAliases": ["canvas_todataurl_type"],
   "notes": [{
-    "name": "MDN article",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement.toDataURL"
   }]
 }

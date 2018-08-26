@@ -5,7 +5,7 @@
   "property": "target",
   "tags": ["css"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/:target"
   }],
   "authors": ["@zachleat"],

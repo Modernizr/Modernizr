@@ -5,7 +5,7 @@
   "authors": ["Cătălin Mariș"],
   "name": "Speech Recognition API",
   "notes": [{
-      "name": "W3C Web Speech API Specification - The SpeechRecognition Interface",
+      "name": "W3C Spec",
       "href": "https://w3c.github.io/speech-api/speechapi.html#speechreco-section"
     },{
       "name": "Introduction to the Web Speech API",

@@ -4,7 +4,7 @@
   "property": "contextmenu",
   "caniuse": "menu",
   "notes": [{
-    "name": "W3C spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/html5/interactive-elements.html#context-menus"
   },{
     "name": "thewebrocks.com Demo",

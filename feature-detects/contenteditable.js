@@ -4,7 +4,7 @@
   "property": "contenteditable",
   "caniuse": "contenteditable",
   "notes": [{
-    "name": "WHATWG spec",
+    "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/interaction.html#contenteditable"
   }]
 }

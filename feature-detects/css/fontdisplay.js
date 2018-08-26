@@ -5,7 +5,7 @@
   "authors": ["Patrick Kettner"],
   "caniuse": "css-font-rendering-controls",
   "notes": [{
-    "name": "W3C CSS Fonts Module Level 4",
+    "name": "W3C Spec",
     "href": "https://drafts.csswg.org/css-fonts-4/#font-display-desc"
   },{
     "name": "`font-display` for the masses",

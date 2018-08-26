@@ -7,7 +7,7 @@
   "tags": ["css"],
   "builderAliases": ["css_filters"],
   "notes": [{
-    "name": "MDN article on CSS filters",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/filter"
   }]
 }

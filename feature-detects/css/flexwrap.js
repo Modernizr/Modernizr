@@ -4,7 +4,7 @@
   "property": "flexwrap",
   "tags": ["css", "flexbox"],
   "notes": [{
-    "name": "W3C Flexible Box Layout spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css-flexbox-1/"
   }],
   "warnings": [

@@ -5,7 +5,7 @@
   "tags": ["elem"],
   "authors": ["Scott Jehl", "Mat Marquis"],
   "notes": [{
-    "name": "Specification",
+    "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#embedded-content"
   },{
     "name": "Relevant spec issue",

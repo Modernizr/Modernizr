@@ -3,7 +3,7 @@
   "name": "Internationalization API",
   "property": "intl",
   "notes": [{
-     "name": "MDN documentation",
+     "name": "MDN Docs",
      "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
    },{
      "name": "ECMAScript spec",

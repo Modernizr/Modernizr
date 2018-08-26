@@ -5,7 +5,7 @@
   "caniuse": "cors",
   "authors": ["Florian Mailliet"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes"
   }]
 }

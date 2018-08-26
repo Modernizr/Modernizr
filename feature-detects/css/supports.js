@@ -12,7 +12,7 @@
     "name": "Related Github Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/648"
   },{
-    "name": "W3C Info",
+    "name": "W3C Spec",
     "href": "https://dev.w3.org/csswg/css3-conditional/#the-csssupportsrule-interface"
   }]
 }

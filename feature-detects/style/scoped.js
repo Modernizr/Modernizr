@@ -7,7 +7,7 @@
   "builderAliases": ["style_scoped"],
   "authors": ["Cătălin Mariș"],
   "notes": [{
-    "name": "WHATWG Specification",
+    "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/semantics.html#attr-style-scoped"
   }],
   "polyfills": ["scoped-styles"]

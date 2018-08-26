@@ -4,7 +4,7 @@
   "property": "hidden",
   "tags": ["dom"],
   "notes": [{
-    "name": "WHATWG: The hidden attribute",
+    "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/dev/interaction.html#the-hidden-attribute"
   }, {
     "name": "original implementation of detect code",

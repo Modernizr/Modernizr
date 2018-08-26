@@ -7,7 +7,7 @@
   "tags": ["css"],
   "builderAliases": ["css_regions"],
   "notes": [{
-    "name": "W3C Specification",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css3-regions/"
   }]
 }

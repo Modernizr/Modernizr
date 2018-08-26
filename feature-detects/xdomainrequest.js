@@ -5,9 +5,9 @@
   "tags": ["cors", "xdomainrequest", "ie9", "ie8"],
   "authors": ["Ivan Pan (@hypotenuse)"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/XDomainRequest"
-  }
+  }]
 }
 !*/
 /* DOC

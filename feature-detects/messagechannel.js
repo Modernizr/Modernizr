@@ -6,10 +6,10 @@
   "caniuse" : "channel-messaging",
   "tags": ["performance", "messagechannel"],
   "notes": [{
-    "name": "W3C Reference",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/2011/WD-webmessaging-20110317/#message-channels"
   }, {
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API/Using_channel_messaging"
   }]
 }

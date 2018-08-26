@@ -4,7 +4,7 @@
   "property": "capture",
   "tags": ["video", "image", "audio", "media", "attribute"],
   "notes": [{
-    "name": "W3C draft: HTML Media Capture",
+    "name": "W3C Draft Spec",
     "href": "https://www.w3.org/TR/html-media-capture/"
   }]
 }

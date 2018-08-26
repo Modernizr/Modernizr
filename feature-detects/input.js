@@ -5,7 +5,7 @@
   "tags": ["forms"],
   "authors": ["Mike Taylor"],
   "notes": [{
-    "name": "WHATWG spec",
+    "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/input.html#input-type-attr-summary"
   }],
   "knownBugs": ["Some blackberry devices report false positive for input.multiple"]

@@ -3,7 +3,7 @@
   "name": "Template strings",
   "property": "templatestrings",
   "notes": [{
-    "name": "MDN Reference",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Browser_compatibility"
   }]
 }

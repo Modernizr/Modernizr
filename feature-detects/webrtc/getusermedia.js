@@ -6,7 +6,7 @@
   "tags": ["webrtc"],
   "authors": ["Eric Bidelman", "Masataka Yakura"],
   "notes": [{
-    "name": "W3C Media Capture and Streams spec",
+    "name": "W3C Spec",
     "href": "https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia"
   }]
 }

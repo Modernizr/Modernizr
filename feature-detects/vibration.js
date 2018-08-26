@@ -3,10 +3,10 @@
   "name": "Vibration API",
   "property": "vibrate",
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/DOM/window.navigator.mozVibrate"
   },{
-    "name": "W3C spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/vibration/"
   }]
 }

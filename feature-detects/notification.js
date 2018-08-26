@@ -5,10 +5,10 @@
   "caniuse": "notifications",
   "authors": ["Theodoor van Donge", "Hendrik Beskow"],
   "notes": [{
-    "name": "HTML5 Rocks tutorial",
+    "name": "HTML5 Rocks Tutorial",
     "href": "https://www.html5rocks.com/en/tutorials/notifications/quick/"
   },{
-    "name": "W3C spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/notifications/"
   }, {
     "name": "Changes in Chrome to Notifications API due to Service Worker Push Notifications",

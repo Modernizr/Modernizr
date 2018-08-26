@@ -4,7 +4,7 @@
   "caniuse": "mediasource",
   "property": "mediasource",
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API"
   }],
   "builderAliases": ["media_source_extension_api"]

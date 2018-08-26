@@ -6,7 +6,7 @@
   "tags": ["css"],
   "caniuse": "css-backdrop-filter",
   "notes": [{
-      "name": "W3C Editor’s Draft specification",
+      "name": "W3C Editor’s Draft Spec",
       "href": "https://drafts.fxtf.org/filters-2/#BackdropFilterProperty"
     },{
       "name": "WebKit Blog introduction + Demo",

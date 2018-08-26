@@ -3,14 +3,14 @@
   "name": "onInput Event",
   "property": "oninput",
   "notes": [{
-    "name": "MDN article",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.oninput"
   },{
-    "name": "WHATWG spec",
+    "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/input.html#common-input-element-attributes"
   },{
-    "name": "Undetectable",
-    "href": "https://github.com/Modernizr/Modernizr/wiki/Undetectables"
+    "name": "Related Github Issue",
+    "href": "https://github.com/Modernizr/Modernizr/issues/210"
   }],
   "authors": ["Patrick Kettner"],
   "tags": ["event"]

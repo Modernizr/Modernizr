@@ -6,7 +6,7 @@
   "tags": ["media", "attribute"],
   "builderAliases": ["a_download"],
   "notes": [{
-    "name": "WhatWG Reference",
+    "name": "WHATWG Spec",
     "href": "https://developers.whatwg.org/links.html#downloading-resources"
   }]
 }

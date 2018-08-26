@@ -6,10 +6,10 @@
   "builderAliases": ["elem_track"],
   "authors": ["Addy Osmani"],
   "notes": [{
-    "name": "W3C track Element Spec",
+    "name": "W3C Spec (Track Element)",
     "href": "https://web.archive.org/web/20121119095019/http://www.w3.org/TR/html5/the-track-element.html#the-track-element"
   },{
-    "name": "W3C track API Spec",
+    "name": "W3C Spec (Track API)",
     "href": "https://web.archive.org/web/20121119094620/http://www.w3.org/TR/html5/media-elements.html#text-track-api"
   }],
   "warnings": ["While IE10 has implemented the track element, IE10 does not expose the underlying APIs to create timed text tracks by JS (really sad)"]

@@ -4,7 +4,7 @@
   "property": "xhrresponsetypejson",
   "tags": ["network"],
   "notes": [{
-    "name": "XMLHttpRequest Living Standard",
+    "name": "WHATWG Spec",
     "href": "https://xhr.spec.whatwg.org/#the-responsetype-attribute"
   },{
     "name": "Explanation of xhr.responseType='json'",

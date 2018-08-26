@@ -3,7 +3,7 @@
   "name": "URL parser",
   "property": "urlparser",
   "notes": [{
-    "name": "URL",
+    "name": "WHATWG Spec",
     "href": "https://url.spec.whatwg.org/"
   }],
   "polyfills": ["urlparser"],

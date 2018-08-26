@@ -4,10 +4,10 @@
   "property": ["devicemotion", "deviceorientation"],
   "caniuse": "deviceorientation",
   "notes": [{
-    "name": "W3C Editor's Draft",
+    "name": "W3C Editor's Draft Spec",
     "href": "https://w3c.github.io/deviceorientation/"
   },{
-    "name": "Implementation Orientation & Motion from MDN",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation"
   }],
   "authors": ["Shi Chuan"],

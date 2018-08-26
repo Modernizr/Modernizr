@@ -3,7 +3,7 @@
   "name": "Unicode Range",
   "property": "unicoderange",
   "notes": [{
-    "name" : "W3C reference",
+    "name" : "W3C Spec",
     "href": "https://www.w3.org/TR/2013/CR-css-fonts-3-20131003/#descdef-unicode-range"
   }, {
     "name" : "24 Way article",

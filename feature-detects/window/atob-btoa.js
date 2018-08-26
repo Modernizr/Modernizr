@@ -10,7 +10,7 @@
     "name": "WindowBase64",
     "href": "https://www.w3.org/TR/html5/webappapis.html#windowbase64"
   }, {
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob"
   }],
   "polyfills": ["base64js"]

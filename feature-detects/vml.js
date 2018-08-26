@@ -6,10 +6,10 @@
   "tags": ["vml"],
   "authors": ["Craig Andrews (@candrews)"],
   "notes": [{
-    "name" : "W3C VML reference",
+    "name" : "W3C Spec",
     "href": "https://www.w3.org/TR/NOTE-VML"
   },{
-    "name" : "Microsoft VML reference",
+    "name" : "MSDN Documentation",
     "href": "https://docs.microsoft.com/en-us/windows/desktop/VML/msdn-online-vml-introduction"
   }]
 }

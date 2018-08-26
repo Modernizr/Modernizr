@@ -5,10 +5,10 @@
   "authors": ["Cătălin Mariș"],
   "name": "URLSearchParams API",
   "notes": [{
-      "name": "WHATWG specification",
+      "name": "WHATWG Spec",
       "href": "https://url.spec.whatwg.org/#interface-urlsearchparams"
     },{
-      "name": "MDN documentation",
+      "name": "MDN Docs",
       "href": "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams"
   }]
 }

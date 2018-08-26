@@ -3,7 +3,7 @@
   "name": "CSS :valid pseudo-class",
   "property": "cssvalid",
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/:valid"
   }]
 }

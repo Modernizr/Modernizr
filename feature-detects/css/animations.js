@@ -8,7 +8,7 @@
   "warnings": ["Android < 4 will pass this test, but can only animate a single property at a time"],
   "notes": [{
     "name" : "Article: 'Dispelling the Android CSS animation myths'",
-    "href": "https://web.archive.org/web/20171101194447/https://daneden.me/2011/12/14/putting-up-with-androids-bullshit/"
+    "href": "https://web.archive.org/web/20180602074607/https://daneden.me/2011/12/14/putting-up-with-androids-bullshit/"
   }]
 }
 !*/

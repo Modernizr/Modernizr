@@ -5,7 +5,7 @@
   "tags": ["performance", "workers"],
   "builderAliases": ["workers_dataworkers"],
   "notes": [{
-    "name": "W3C Reference",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/workers/"
   }],
   "knownBugs": ["This test may output garbage to console."],

@@ -5,7 +5,7 @@
   "caniuse": "hashchange",
   "tags": ["history"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onhashchange"
   }],
   "polyfills": [

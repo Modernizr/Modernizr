@@ -6,7 +6,7 @@
   "tags": ["js"],
   "authors": ["Stanley Stuart (@fivetanley)"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays"
   },{
     "name": "Kronos spec",

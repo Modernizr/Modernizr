@@ -4,7 +4,7 @@
   "property": "wrapflow",
   "tags": ["css"],
   "notes": [{
-      "name": "W3C Exclusions spec",
+      "name": "W3C Spec",
       "href": "https://www.w3.org/TR/css3-exclusions"
     },{
       "name": "Example by Louie Rootfield",

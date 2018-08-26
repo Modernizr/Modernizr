@@ -6,7 +6,7 @@
   "tags": ["css"],
   "builderAliases": ["css_customproperties"],
   "notes": [{
-    "name": "MDN",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/--*"
   },{
     "name": "W3C Spec",

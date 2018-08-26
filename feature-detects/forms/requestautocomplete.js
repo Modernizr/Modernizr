@@ -4,7 +4,7 @@
   "property": "requestautocomplete",
   "tags": ["form", "forms", "requestAutocomplete", "payments"],
   "notes": [{
-    "name": "WHATWG proposed spec",
+    "name": "WHATWG Spec",
     "href": "https://wiki.whatwg.org/wiki/RequestAutocomplete"
   }]
 }

@@ -4,7 +4,7 @@
   "property": "bloburls",
   "caniuse": "bloburls",
   "notes": [{
-    "name": "W3C Working Draft",
+    "name": "W3C Working Draft Spec",
     "href": "https://www.w3.org/TR/FileAPI/#creating-revoking"
   }],
   "tags": ["file", "url"],

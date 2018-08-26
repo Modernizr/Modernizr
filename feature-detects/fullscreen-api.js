@@ -4,7 +4,7 @@
   "property": "fullscreen",
   "caniuse": "fullscreen",
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/API/Fullscreen"
   }],
   "polyfills": ["screenfulljs"],
