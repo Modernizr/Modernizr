@@ -307,7 +307,13 @@ window.caniusecb = function(caniuse) {
         .replace(/(9\.(6|5))/ , ua.browser.name === 'Opera' ? '9.5-9.6'   : '$1')
         .replace(/(10\.(0|1))/, ua.browser.name === 'Opera' ? '10.0-10.1' : '$1');
 
-      var versionToUse = _.findLast(_.keys(browserResults), function(ciuVersion) {
+      // make sure the version keys of the caniusedata is sorted as numbers not as strings
+      // otherwise for example firefox 3.6 is the first version in the _.findLast call up next
+      var sortedVersionKeys = _.keys(browserResults).sort(function(key1, key2) {
+        return parseFloat(key1) - parseFloat(key2);
+      });
+
+      var versionToUse = _.findLast(sortedVersionKeys, function(ciuVersion) {
         return parseFloat(ciuVersion) <= parseFloat(majorminor);
       });
 
