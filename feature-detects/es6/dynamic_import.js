@@ -20,8 +20,8 @@ define(['Modernizr'], function(Modernizr) {
     try {
 		  new Function('import("")');
 		  return true;
-		} catch (err) {
-			return false;
-		}
+    } catch (err) {
+      return false;
+    }
   });
 });
