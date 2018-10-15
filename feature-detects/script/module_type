@@ -1,0 +1,3 @@
+Modernizr.addTest('es6module', function(){
+   return 'noModule' in document.createElement('script')
+});
