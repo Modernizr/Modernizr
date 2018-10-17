@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "eslint": "^5.6.1",
+    "eslint": "^5.7.0",
     "eslint-plugin-jsdoc": "^3.8.0",
     "expect.js": "^0.3.1",
     "grunt": "^1.0.3",
@@ -33,7 +33,7 @@
     "grunt-mocha-test": "^0.13.3",
     "grunt-saucelabs": "^9.0.0",
     "jquery": "3.2.1",
-    "joi": "^13.7.0",
+    "joi": "^14.0.0",
     "json3": "^3.3.2",
     "load-grunt-tasks": "^4.0.0",
     "mocha": "^5.2.0",
