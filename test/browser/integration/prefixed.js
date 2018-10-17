@@ -3,8 +3,8 @@ describe('prefixed()', function() {
   // Generic control function used for prefixed() and prefixedCSS() tests
   // https://gist.github.com/523692
   function gimmePrefix(prop, obj) {
-    var prefixes = ['Webkit', 'ms', 'O', 'Moz', 'Khtml'],
-      domPrefixes = ['webkit', 'ms', 'o', 'moz', 'khtml'],
+    var prefixes = ['Khtml', 'Webkit', 'ms', 'O', 'Moz'],
+      domPrefixes = ['khtml', 'webkit', 'ms', 'o', 'moz'],
       elem     = document.createElement('div'),
       upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
       len;
