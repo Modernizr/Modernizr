@@ -18,8 +18,8 @@ describe('injectElementWithStyles', function() {
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
-        sinon: '../node_modules/sinon/lib/sinon',
-        cleanup: '../test/cleanup'
+        cleanup: '../test/cleanup',
+        sinon: '../test/js/lib/sinon'
       }
     });
 

@@ -14,7 +14,7 @@ describe('prefixed', function() {
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
-        sinon: '../node_modules/sinon/lib/sinon',
+        sinon: '../test/js/lib/sinon',
         cleanup: '../test/cleanup'
       }
     });
