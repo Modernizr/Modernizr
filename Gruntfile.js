@@ -68,8 +68,7 @@ module.exports = function(grunt) {
         'feature-detects/**/*.js',
         '!src/html5shiv.js',
         '!src/html5printshiv.js',
-        '!test/coverage/**/*.js',
-        '!test/js/lib/**/*.js'
+        '!test/coverage/**/*.js'
       ]
     },
     clean: {
