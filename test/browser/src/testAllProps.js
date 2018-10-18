@@ -12,7 +12,7 @@ describe('testAllProps', function() {
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
-        sinon: '../test/js/lib/sinon',
+        sinon: '../node_modules/sinon/pkg/sinon',
         cleanup: '../test/cleanup'
       }
     });
