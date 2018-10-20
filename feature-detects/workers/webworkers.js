@@ -2,7 +2,7 @@
 {
   "name": "Web Workers",
   "property": "webworkers",
-  "caniuse" : "webworkers",
+  "caniuse": "webworkers",
   "tags": ["performance", "workers"],
   "notes": [{
     "name": "W3C Spec",

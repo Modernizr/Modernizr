@@ -2,7 +2,7 @@
 {
   "name": "SVG as an <img> tag source",
   "property": "svgasimg",
-  "caniuse" : "svg-img",
+  "caniuse": "svg-img",
   "tags": ["svg"],
   "aliases": ["svgincss"],
   "authors": ["Chris Coyier"],

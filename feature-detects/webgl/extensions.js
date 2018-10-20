@@ -4,7 +4,7 @@
   "property": "webglextensions",
   "tags": ["webgl", "graphics"],
   "builderAliases": ["webgl_extensions"],
-  "async" : true,
+  "async": true,
   "authors": ["Ilmari Heikkinen"],
   "notes": [{
     "name": "Kronos extensions registry",

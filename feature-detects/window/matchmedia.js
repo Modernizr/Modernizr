@@ -2,7 +2,7 @@
 {
   "name": "matchMedia",
   "property": "matchmedia",
-  "caniuse" : "matchmedia",
+  "caniuse": "matchmedia",
   "tags": ["matchmedia"],
   "authors": ["Alberto Elias"],
   "notes": [{

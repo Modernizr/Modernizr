@@ -6,7 +6,7 @@
   "tags": ["queryselector"],
   "authors": ["Andrew Betts (@triblondon)"],
   "notes": [{
-    "name" : "W3C Spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/selectors-api/#queryselectorall"
   }],
   "polyfills": ["css-selector-engine"]

@@ -3,10 +3,10 @@
   "name": "Unicode Range",
   "property": "unicoderange",
   "notes": [{
-    "name" : "W3C Spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/2013/CR-css-fonts-3-20131003/#descdef-unicode-range"
   }, {
-    "name" : "24 Way article",
+    "name": "24 Way article",
     "href": "https://24ways.org/2011/creating-custom-font-stacks-with-unicode-range"
   }]
 }

@@ -5,7 +5,7 @@
   "caniuse": "text-decoration",
   "tags": ["css"],
   "notes": [{
-    "name" : "W3C Spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css-text-decor-3/#line-decoration"
   }]
 }

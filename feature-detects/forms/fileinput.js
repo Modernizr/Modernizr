@@ -2,7 +2,7 @@
 {
   "name": "input[file] Attribute",
   "property": "fileinput",
-  "caniuse" : "forms",
+  "caniuse": "forms",
   "tags": ["file", "forms", "input"],
   "builderAliases": ["forms_fileinput"]
 }

@@ -1,8 +1,8 @@
 /*!
 {
-  "name" : "HTML5 Audio Element",
+  "name": "HTML5 Audio Element",
   "property": "audio",
-  "tags" : ["html5", "audio", "media"]
+  "tags": ["html5", "audio", "media"]
 }
 !*/
 /* DOC

@@ -2,7 +2,7 @@
 {
   "name": "a[download] Attribute",
   "property": "adownload",
-  "caniuse" : "download",
+  "caniuse": "download",
   "tags": ["media", "attribute"],
   "builderAliases": ["a_download"],
   "notes": [{

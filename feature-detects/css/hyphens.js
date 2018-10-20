@@ -5,7 +5,7 @@
   "property": ["csshyphens", "softhyphens", "softhyphensfind"],
   "tags": ["css"],
   "builderAliases": ["css_hyphens"],
-  "async" : true,
+  "async": true,
   "authors": ["David Newton"],
   "warnings": [
     "These tests currently require document.body to be present",

@@ -2,7 +2,7 @@
 {
   "name": "Shared Workers",
   "property": "sharedworkers",
-  "caniuse" : "sharedworkers",
+  "caniuse": "sharedworkers",
   "tags": ["performance", "workers"],
   "builderAliases": ["workers_sharedworkers"],
   "notes": [{
