@@ -2,7 +2,7 @@
 {
   "name": "ES5 Strict Mode",
   "property": "strictmode",
-  "caniuse": "strict-mode",
+  "caniuse": "use-strict",
   "notes": [{
     "name": "ECMAScript 5.1 Language Specification",
     "href": "https://www.ecma-international.org/ecma-262/5.1/"

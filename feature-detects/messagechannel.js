@@ -1,7 +1,7 @@
 /*!
 {
   "name": "Message Channel",
-  "property": "MessageChannel",
+  "property": "messagechannel",
   "authors": ["Raju Konga (@kongaraju)"],
   "caniuse": "channel-messaging",
   "tags": ["performance", "messagechannel"],
