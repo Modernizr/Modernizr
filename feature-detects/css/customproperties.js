@@ -16,5 +16,5 @@
 !*/
 define(['Modernizr'], function(Modernizr) {
   var supportsFn = (window.CSS && window.CSS.supports.bind(window.CSS)) || (window.supportsCSS);
-  Modernizr.addTest('customproperties', !!supportsFn && supportsFn('--f:0'));
+  Modernizr.addTest('customproperties', !!supportsFn && (supportsFn('--f:0') || supportsFn('--f', 0)));
 });
