@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS Custom Properties",
-  "property": "csscustomproperties",
+  "property": "customproperties",
   "caniuse": "css-variables",
   "tags": ["css"],
   "builderAliases": ["css_customproperties"],

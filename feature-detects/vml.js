@@ -2,7 +2,6 @@
 {
   "name": "VML",
   "property": "vml",
-  "caniuse": "vml",
   "tags": ["vml"],
   "authors": ["Craig Andrews (@candrews)"],
   "notes": [{
