@@ -222,6 +222,7 @@
     "messagechannel",
     "network/beacon",
     "network/connection",
+    "network/connection-effectivetype",
     "network/eventsource",
     "network/fetch",
     "network/xhr-responsetype",
