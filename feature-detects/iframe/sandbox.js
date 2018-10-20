@@ -6,7 +6,7 @@
   "builderAliases": ["iframe_sandbox"],
   "notes": [
   {
-    "name": "WhatWG Spec",
+    "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#attr-iframe-sandbox"
   }],
   "knownBugs": ["False-positive on Firefox < 29"]

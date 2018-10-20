@@ -4,14 +4,14 @@
   "property": "shapes",
   "tags": ["css"],
   "notes": [{
-    "name": "CSS Shapes W3C specification",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css-shapes"
   },{
     "name": "Examples from Adobe",
-    "href": "http://webplatform.adobe.com/shapes/"
+    "href": "https://web.archive.org/web/20171230010236/http://webplatform.adobe.com:80/shapes"
   }, {
-    "name": "Samples showcasing uses of Shapes",
-    "href": "http://codepen.io/collection/qFesk"
+    "name": "Examples from CSS-Tricks",
+    "href": "https://css-tricks.com/examples/ShapesOfCSS/"
   }]
 }
 !*/

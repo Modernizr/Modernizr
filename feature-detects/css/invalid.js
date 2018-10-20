@@ -3,7 +3,7 @@
   "name": "CSS :invalid pseudo-class",
   "property": "cssinvalid",
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid"
   }]
 }

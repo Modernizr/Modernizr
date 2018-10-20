@@ -6,11 +6,11 @@
   "tags": ["js"],
   "authors": ["Stanley Stuart (@fivetanley)"],
   "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays"
   },{
     "name": "Kronos spec",
-    "href": "https://www.khronos.org/registry/typedarray/specs/latest/"
+    "href": "http://www.ecma-international.org/ecma-262/6.0/#sec-typedarray-objects"
   }],
   "polyfills": ["joshuabell-polyfill"]
 }

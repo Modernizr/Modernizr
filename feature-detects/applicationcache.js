@@ -5,7 +5,7 @@
   "caniuse": "offline-apps",
   "tags": ["storage", "offline"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/docs/HTML/Using_the_application_cache"
   }],
   "polyfills": ["html5gears"]

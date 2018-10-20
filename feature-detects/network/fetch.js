@@ -5,7 +5,7 @@
   "tags": ["network"],
   "caniuse": "fetch",
   "notes": [{
-    "name": "Fetch Living Standard",
+    "name": "WHATWG Spec",
     "href": "https://fetch.spec.whatwg.org/"
   }],
   "polyfills": ["fetch"]

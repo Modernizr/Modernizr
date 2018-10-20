@@ -5,7 +5,7 @@
   "tags": ["html", "import"],
   "polyfills": ["polymer-htmlimports"],
   "notes": [{
-      "name": "W3C HTML Imports Specification",
+      "name": "W3C Spec",
       "href": "https://w3c.github.io/webcomponents/spec/imports/"
     }, {
       "name": "HTML Imports - #include for the web",

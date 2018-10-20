@@ -7,7 +7,7 @@
   "authors": ["Karel Sedláček (@ksdlck)"],
   "polyfills": ["mutationobservers"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver"
   }]
 }

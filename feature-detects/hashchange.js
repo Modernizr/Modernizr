@@ -5,8 +5,8 @@
   "caniuse": "hashchange",
   "tags": ["history"],
   "notes": [{
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/API/window.onhashchange"
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onhashchange"
   }],
   "polyfills": [
     "jquery-hashchange",

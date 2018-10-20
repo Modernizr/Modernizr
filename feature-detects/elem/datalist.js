@@ -8,7 +8,7 @@
   "warnings": ["This test is a dupe of Modernizr.input.list. Only around for legacy reasons."],
   "notes": [{
     "name": "CSS Tricks Article",
-    "href": "https://css-tricks.com/15346-relevant-dropdowns-polyfill-for-datalist/"
+    "href": "https://css-tricks.com/relevant-dropdowns-polyfill-for-datalist/"
   },{
     "name": "Mike Taylor Code",
     "href": "https://miketaylr.com/code/datalist.html"

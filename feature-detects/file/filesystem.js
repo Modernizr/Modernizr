@@ -4,7 +4,7 @@
   "property": "filesystem",
   "caniuse": "filesystem",
   "notes": [{
-    "name": "W3 Spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/file-system-api/"
   }],
   "authors": ["Eric Bidelman (@ebidel)"],

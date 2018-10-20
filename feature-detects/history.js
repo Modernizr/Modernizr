@@ -9,7 +9,7 @@
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/html51/browsers.html#the-history-interface"
   }, {
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/window.history"
   }],
   "polyfills": ["historyjs", "html5historyapi"]

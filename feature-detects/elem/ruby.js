@@ -7,8 +7,8 @@
   "builderAliases": ["elem_ruby"],
   "authors": ["Cătălin Mariș"],
   "notes": [{
-    "name": "WHATWG Specification",
-    "href": "https://html.spec.whatwg.org/multipage/semantics.html#the-ruby-element"
+    "name": "WHATWG Spec",
+    "href": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element"
   }]
 }
 !*/

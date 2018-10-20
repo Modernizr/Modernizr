@@ -16,8 +16,8 @@
     "name": "Webp Lossless Spec",
     "href": "https://developers.google.com/speed/webp/docs/webp_lossless_bitstream_specification"
   }, {
-    "name": "Article about WebP support on Android browsers",
-    "href": "http://www.wope-framework.com/en/2013/06/24/webp-support-on-android-browsers/"
+    "name": "Article about WebP support",
+    "href": "https://optimus.keycdn.com/support/webp-support/"
   }, {
     "name": "Chromium WebP announcement",
     "href": "https://blog.chromium.org/2011/11/lossless-and-transparency-encoding-in.html?m=1"

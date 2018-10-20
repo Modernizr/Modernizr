@@ -5,7 +5,7 @@
   "tags": ["network"],
   "builderAliases": ["network_xhr2"],
   "notes": [{
-    "name": "W3 Spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/XMLHttpRequest2/"
   },{
     "name": "Details on Related Github Issue",

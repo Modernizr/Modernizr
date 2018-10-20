@@ -3,7 +3,7 @@
   "name": "bdi Element",
   "property": "bdi",
   "notes": [{
-    "name": "MDN Overview",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi"
   }]
 }

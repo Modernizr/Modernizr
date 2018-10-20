@@ -3,7 +3,7 @@
   "name": "RTC Data Channel",
   "property": "datachannel",
   "notes": [{
-    "name": "HTML5 Rocks! Article",
+    "name": "HTML5 Rocks Tutorial",
     "href": "https://www.html5rocks.com/en/tutorials/webrtc/datachannels/"
   }]
 }
