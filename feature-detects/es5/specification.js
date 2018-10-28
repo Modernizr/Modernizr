@@ -2,6 +2,7 @@
 {
   "name": "ES5",
   "property": "es5",
+  "caniuse": "es5",
   "notes": [{
     "name": "ECMAScript 5.1 Language Specification",
     "href": "https://www.ecma-international.org/ecma-262/5.1/"
