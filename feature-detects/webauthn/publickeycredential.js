@@ -12,7 +12,8 @@
     }
   ],
   "property": "publicKeyCredential",
-  "tags": ["webauthn", "web authentication"]
+  "tags": ["webauthn", "web authentication"],
+  "authors": ["Eric Delia"]
 }
 !*/
 /* DOC
