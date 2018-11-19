@@ -6,19 +6,19 @@
     "test": "test"
   },
   "dependencies": {
-    "doctrine": "^2.1.0",
+    "doctrine": "^3.0.0",
     "file": "^0.2.2",
     "find-parent-dir": "^0.3.0",
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "remarkable": "^1.7.1",
     "requirejs": "^2.3.6",
-    "yargs": "^12.0.2"
+    "yargs": "^12.0.4"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "eslint": "^5.7.0",
-    "eslint-plugin-jsdoc": "^3.9.0",
+    "eslint": "^5.9.0",
+    "eslint-plugin-jsdoc": "^3.9.1",
     "expect.js": "^0.3.1",
     "grunt": "^1.0.3",
     "grunt-contrib-clean": "^2.0.0",
@@ -32,7 +32,7 @@
     "grunt-mocha": "0.4.15",
     "grunt-mocha-test": "^0.13.3",
     "grunt-saucelabs": "^9.0.0",
-    "joi": "^14.0.0",
+    "joi": "^14.0.6",
     "jquery": "3.2.1",
     "json3": "^3.3.2",
     "load-grunt-tasks": "^4.0.0",
@@ -40,7 +40,7 @@
     "proxyquire": "^2.1.0",
     "serve-static": "^1.13.2",
     "sinon": "2.4.1",
-    "ua-parser-js": "^0.7.18"
+    "ua-parser-js": "^0.7.19"
   },
   "scripts": {
     "start": "grunt default",
