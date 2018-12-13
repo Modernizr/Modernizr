@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "eslint": "^5.9.0",
-    "eslint-plugin-jsdoc": "^3.9.1",
+    "eslint": "^5.10.0",
+    "eslint-plugin-jsdoc": "^3.14.0",
     "expect.js": "^0.3.1",
     "grunt": "^1.0.3",
     "grunt-contrib-clean": "^2.0.0",
