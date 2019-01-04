@@ -1,7 +1,7 @@
 /*!
 {
   "name": "input[search] search event",
-  "property": "search",
+  "property": "inputsearchevent",
   "tags": ["input","search"],
   "authors": ["Calvin Webster"],
   "notes": [{
