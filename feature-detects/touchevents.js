@@ -35,8 +35,9 @@ This test will also return `true` for Firefox 4 Multitouch support.
 */
 define(['Modernizr', 'prefixes', 'mq'], function(Modernizr, prefixes, mq) {
   // Chrome (desktop) used to lie about its support on this, but that has since been rectified: https://bugs.chromium.org/p/chromium/issues/detail?id=36415
+  // Chrome also changed its behaviour since v70 and recommends the TouchEvent object for detection: https://www.chromestatus.com/feature/4764225348042752
   Modernizr.addTest('touchevents', function() {
-    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+    if (('ontouchstart' in window) || window.TouchEvent || window.DocumentTouch && document instanceof DocumentTouch) {
       return true;
     }
 
