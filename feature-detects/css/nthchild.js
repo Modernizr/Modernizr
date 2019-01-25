@@ -28,7 +28,7 @@ define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
     var correctWidths = true;
 
     for (var i = 0; i < 5; i++) {
-      correctWidths = correctWidths && elems[i].offsetWidth === i % 2 + 1;
+      correctWidths = correctWidths && elems[i].getBoundingClientRect().width === i % 2 + 1;
     }
     Modernizr.addTest('nthchild', correctWidths);
   }, 5);
