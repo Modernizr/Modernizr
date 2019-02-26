@@ -1,6 +1,9 @@
 {
   "classPrefix": "",
   "scriptGlobalName": "window",
+  "enableClasses": true,
+  "enableJSClass": true,
+  "usePrefixes": true,
   "options": [
     "addTest",
     "atRule",
