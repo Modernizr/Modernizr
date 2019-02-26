@@ -13,12 +13,13 @@
     "mkdirp": "^0.5.1",
     "remarkable": "^1.7.1",
     "requirejs": "^2.3.6",
-    "yargs": "^12.0.5"
+    "yargs": "^13.2.1"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "eslint": "^5.12.0",
-    "eslint-plugin-jsdoc": "^3.15.1",
+    "auto-changelog": "^1.11.0",
+    "eslint": "^5.14.1",
+    "eslint-plugin-jsdoc": "^4.1.1",
     "expect.js": "^0.3.1",
     "grunt": "^1.0.3",
     "grunt-contrib-clean": "^2.0.0",
@@ -36,7 +37,7 @@
     "jquery": "3.2.1",
     "json3": "^3.3.2",
     "load-grunt-tasks": "^4.0.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.0.2",
     "proxyquire": "^2.1.0",
     "serve-static": "^1.13.2",
     "sinon": "2.4.1",
@@ -45,6 +46,7 @@
   "scripts": {
     "start": "grunt default",
     "test": "grunt test --stack",
+    "changelog": "auto-changelog --commit-limit false --package",
     "version": "node lib/generate-license.js && git add LICENSE"
   },
   "main": "./lib/cli",
