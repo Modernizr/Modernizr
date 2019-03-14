@@ -1,6 +1,6 @@
 {
   "name": "modernizr",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.",
   "directories": {
     "test": "test"
@@ -106,6 +106,10 @@
     {
       "name": "Richard Herrera",
       "url": "https://twitter.com/doctyper"
+    },
+    {
+      "name": "Veeck",
+      "url": "https://twitter.com/hansalbern"
     }
   ],
   "license": "MIT"
