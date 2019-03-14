@@ -9,8 +9,8 @@
     "doctrine": "^3.0.0",
     "file": "^0.2.2",
     "lodash": "^4.17.11",
+    "markdown-it": "^8.4.2",
     "mkdirp": "^0.5.1",
-    "remarkable": "^1.7.1",
     "requirejs": "^2.3.6",
     "yargs": "^13.2.1"
   },
