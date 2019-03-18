@@ -36,22 +36,6 @@ module.exports = function(grunt) {
       integrationTests: integrationTests,
       nodeTests: nodeTests
     },
-    copy: {
-      'gh-pages': {
-        files: [
-          {
-            expand: true,
-            src: [
-              './**/*',
-              '!./test/coverage/**',
-              '!./node_modules/*grunt-*/**',
-              '!./node_modules/**/node_modules/**'
-            ],
-            dest: 'gh-pages'
-          }
-        ]
-      }
-    },
     connect: {
       browser: {
         options: {

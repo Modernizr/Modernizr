@@ -10,29 +10,39 @@ import modernizr        from './lib/cli';
 import config           from './lib/config-all';
 
 const directories = {
-    browserTests: [
-      'test/universal/**/*.js',
-      'test/browser/**/*.js',
-      '!test/browser/setup.js',
-      '!test/browser/integration/*.js'
-    ],
-    integrationTests: [
-      'test/browser/integration/*.js'
-    ],
-    nodeTests: [
-      'test/universal/**/*.js',
-      'test/node/**/*.js'
-    ]
+  browserTests: [
+    'test/universal/**/*.js',
+    'test/browser/**/*.js',
+    '!test/browser/setup.js',
+    '!test/browser/integration/*.js'
+  ],
+  integrationTests: [
+    'test/browser/integration/*.js'
+  ],
+  nodeTests: [
+    'test/universal/**/*.js',
+    'test/node/**/*.js'
+  ]
 };
 const plugins = gplugins();
 
 gulp.task('clean', () => {
-    return del([
-      'dist',
-      'test/coverage',
-      'test/*.html',
-      'gh-pages'
-    ]);
+  return del([
+    'dist',
+    'test/coverage',
+    'test/*.html',
+    'gh-pages'
+  ]);
+});
+
+gulp.task('copy:gh-pages', () => {
+  return gulp.src([
+    './**/*',
+    '!./test/coverage/**',
+    '!./node_modules/*grunt-*/**',
+    '!./node_modules/**/node_modules/**'
+  ])
+    .pipe(gulp.dest('gh-pages/'))
 });
 
 gulp.task('eslint', () => {
@@ -72,7 +82,7 @@ gulp.task('pug', () => {
         integrationTests: glob.sync(directories.integrationTests.join(','))
       }
     }))
-  .pipe(gulp.dest('test/'))
+    .pipe(gulp.dest('test/'))
 });
 
 gulp.task('default', gulp.series('clean', 'eslint', 'generate'));

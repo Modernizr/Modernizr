@@ -30,7 +30,6 @@
     "grunt": "^1.0.4",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-connect": "^2.0.0",
-    "grunt-contrib-copy": "^1.0.0",
     "grunt-coveralls": "^2.0.0",
     "grunt-env": "^0.4.4",
     "grunt-istanbul": "^0.8.0",
