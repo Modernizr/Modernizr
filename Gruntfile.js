@@ -52,21 +52,6 @@ module.exports = function(grunt) {
         ]
       }
     },
-    pug: {
-      compile: {
-        options: {
-          data: {
-            unitTests: browserTests,
-            integrationTests: integrationTests
-          }
-        },
-        files: {
-          'test/unit.html': 'test/browser/unit.jade',
-          'test/iframe.html': 'test/browser/iframe.jade',
-          'test/index.html': 'test/browser/integration.jade'
-        }
-      }
-    },
     connect: {
       browser: {
         options: {

@@ -4,9 +4,10 @@ import gulp             from    'gulp';
 import gplugins         from    'gulp-load-plugins';
 import del              from    'del';
 import fs               from    'fs-extra';
+import glob             from    'glob';
 
-import modernizr from './lib/cli';
-import config from './lib/config-all';
+import modernizr        from './lib/cli';
+import config           from './lib/config-all';
 
 const directories = {
     browserTests: [
@@ -34,7 +35,6 @@ gulp.task('clean', () => {
     ]);
 });
 
-// Detect errors and potential problems in your JavaScript code (except vendor scripts)
 gulp.task('eslint', () => {
   return gulp.src([
     ...directories.browserTests,
@@ -62,6 +62,17 @@ gulp.task('generate', (done) => {
       done();
     })
   });
+});
+
+gulp.task('pug', () => {
+  return gulp.src('test/browser/*.pug')
+    .pipe(plugins.pug({
+      data: {
+        unitTests: glob.sync(directories.browserTests.join(',')),
+        integrationTests: glob.sync(directories.integrationTests.join(','))
+      }
+    }))
+  .pipe(gulp.dest('test/'))
 });
 
 gulp.task('default', gulp.series('clean', 'eslint', 'generate'));
