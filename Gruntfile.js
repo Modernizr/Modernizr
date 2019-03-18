@@ -100,16 +100,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    // `mocha` runs browser tests, `mochaTest` runs node tests
-    mochaTest: {
-      test: {
-        options: {
-          reporter: 'dot',
-          timeout: 5000
-        },
-        src: ['<%= env.nodeTests %>']
-      }
-    },
     instrument: {
       files: [
         'src/**/*.js',

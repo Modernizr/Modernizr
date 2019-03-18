@@ -74,6 +74,14 @@ gulp.task('generate', (done) => {
   });
 });
 
+gulp.task('mocha:node', () =>
+  gulp.src(directories.nodeTests, {read: false})
+    .pipe(plugins.mocha( {
+      reporter: 'dot',
+      timeout: 5000
+    }))
+);
+
 gulp.task('pug', () => {
   return gulp.src('test/browser/*.pug')
     .pipe(plugins.pug({
