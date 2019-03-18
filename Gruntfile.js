@@ -36,9 +36,6 @@ module.exports = function(grunt) {
       integrationTests: integrationTests,
       nodeTests: nodeTests
     },
-    generate: {
-      dest: './dist/modernizr-build.js'
-    },
     copy: {
       'gh-pages': {
         files: [
@@ -54,30 +51,6 @@ module.exports = function(grunt) {
           }
         ]
       }
-    },
-    eslint: {
-      target: [
-        '<%= env.nodeTests %>',
-        '<%= env.browserTests %>',
-        '<%= env.integrationTests %>',
-        'test/browser/setup.js',
-        'Gruntfile.js',
-        'src/*.js',
-        'lib/*.js',
-        'test/**/*.js',
-        'feature-detects/**/*.js',
-        '!src/html5shiv.js',
-        '!src/html5printshiv.js',
-        '!test/coverage/**/*.js'
-      ]
-    },
-    clean: {
-      dist: [
-        'dist',
-        'test/coverage',
-        'test/*.html',
-        'gh-pages'
-      ]
     },
     pug: {
       compile: {
@@ -200,37 +173,16 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerMultiTask('generate', 'Create a version of Modernizr from Grunt', function() {
-    var done = this.async();
-    var config = require('./lib/config-all');
-    var modernizr = require('./lib/cli');
-    var dest = this.data;
-
-    modernizr.build(config, function(output) {
-      grunt.file.write(dest, output);
-      done();
-    });
-  });
-
-  grunt.registerTask('nodeTests', ['mochaTest']);
-
   grunt.registerTask('browserTests', ['connect:server', 'mocha']);
 
   grunt.registerTask('browserResults', ['test', 'connect:browser']);
-
-  grunt.registerTask('build', ['clean', 'generate']);
 
   /**
    * Performs the code coverage tasks provided by Istanbul
    */
   grunt.registerTask('coverage', ['env:coverage', 'instrument', 'mochaTest', 'storeCoverage', 'makeReport']);
 
-  /**
-   * Default task for creating a modernizr build using lib/config-all.json
-   */
-  grunt.registerTask('default', ['eslint', 'build']);
-
-  var tests = ['clean', 'eslint', 'pug', 'instrument', 'env:coverage', 'nodeTests'];
+  var tests = ['clean', 'eslint', 'pug', 'instrument', 'env:coverage', 'mochaTest'];
 
   if (process.env.APPVEYOR) {
     grunt.registerTask('test', tests);
