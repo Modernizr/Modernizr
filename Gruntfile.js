@@ -92,14 +92,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    mocha: {
-      test: {
-        options: {
-          urls: '<%= env.coverage.urls %>',
-          log: true
-        }
-      }
-    },
     instrument: {
       files: [
         'src/**/*.js',

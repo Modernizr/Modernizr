@@ -4,24 +4,30 @@ import gulp             from    'gulp';
 import gplugins         from    'gulp-load-plugins';
 import del              from    'del';
 import fs               from    'fs-extra';
-import glob             from    'glob';
+import globby           from    'globby';
+
+const mochaChrome     = require('gulp-mocha-chrome');
 
 import modernizr        from './lib/cli';
 import config           from './lib/config-all';
 
 const directories = {
-  browserTests: [
+  browserTests: globby.sync([
     'test/universal/**/*.js',
     'test/browser/**/*.js',
     '!test/browser/setup.js',
     '!test/browser/integration/*.js'
-  ],
-  integrationTests: [
+  ]),
+  integrationTests: globby.sync([
     'test/browser/integration/*.js'
-  ],
+  ]),
   nodeTests: [
     'test/universal/**/*.js',
     'test/node/**/*.js'
+  ],
+  mochaTests: [
+    'test/unit.html',
+    'test/integration.html'
   ]
 };
 const plugins = gplugins();
@@ -74,23 +80,40 @@ gulp.task('generate', (done) => {
   });
 });
 
-gulp.task('mocha:node', () =>
-  gulp.src(directories.nodeTests, {read: false})
-    .pipe(plugins.mocha( {
-      reporter: 'dot',
-      timeout: 5000
-    }))
+gulp.task('mocha:browser', () => {
+    return gulp.src([
+      'test/unit.html',
+      'test/integration.html'
+    ])
+      .pipe(mochaChrome({
+        mocha: {
+          reporter: 'dot',
+          timeout: 5000
+        }
+      }));
+  }
+);
+
+gulp.task('mocha:node', () => {
+    return gulp.src(directories.nodeTests, {read: false})
+      .pipe(plugins.mocha({
+        reporter: 'dot',
+        timeout: 5000
+      }))
+  }
 );
 
 gulp.task('pug', () => {
   return gulp.src('test/browser/*.pug')
     .pipe(plugins.pug({
       data: {
-        unitTests: glob.sync(directories.browserTests.join(',')),
-        integrationTests: glob.sync(directories.integrationTests.join(','))
+        browserTests: directories.browserTests,
+        integrationTests: directories.integrationTests
       }
     }))
     .pipe(gulp.dest('test/'))
 });
+
+gulp.task('test', gulp.series('clean', 'eslint', 'generate', 'pug', 'mocha:node', 'mocha:browser'));
 
 gulp.task('default', gulp.series('clean', 'eslint', 'generate'));
