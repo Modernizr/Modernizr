@@ -15,7 +15,7 @@ install:
 build: off
 
 before_test:
-  - npm install grunt-cli -g
+  - npm install -g gulp-cli
 
 test_script:
   - node --version

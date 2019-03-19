@@ -6,7 +6,7 @@ node_js:
 before_install:
   - npm install -g npm@latest
 before_script:
-  - npm install grunt-cli -g
+  - npm install -g gulp-cli
   - export CI_BUILD_NUMBER=$(git rev-parse HEAD)
   - if [ "${TRAVIS_NODE_VERSION}" = "0.12" ] && [ "${TRAVIS_REPO_SLUG}" = "modernizr-savage/Modernizr" ]; then export BROWSER_COVERAGE=true; fi
 after_success:
@@ -21,7 +21,7 @@ after_success:
                                --distribution-branch "gh-pages" \
                                --source-branch "master"
 script:
-  - grunt test
+  - npm test
 notifications:
   webhooks:
     - http://patrickkettner.com:8080/savage/travis
