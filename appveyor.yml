@@ -1,8 +1,8 @@
 environment:
   matrix:
-    - nodejs_version: 6
-      npm_version: 'latest'
     - nodejs_version: 8
+      npm_version: 'latest'
+    - nodejs_version: 10
       npm_version: 'latest'
 
 # Get the latest stable version of Node 0.STABLE.latest
