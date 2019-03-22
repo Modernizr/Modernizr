@@ -138,7 +138,6 @@ window.caniusecb = function(caniuse) {
       textalignlast: 'css-text-align-last',
       textdecoration: 'text-decoration',
       textshadow: 'css-textshadow',
-      touchevents: 'touch',
       typedarrays: 'typedarrays',
       unicoderange: 'font-unicode-range',
       userselect: 'user-select-none',
