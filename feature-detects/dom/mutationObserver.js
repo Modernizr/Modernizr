@@ -13,9 +13,7 @@
 }
 !*/
 /* DOC
-
 Determines if DOM4 MutationObserver support is available.
-
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('mutationobserver',

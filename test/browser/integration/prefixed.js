@@ -5,8 +5,8 @@ describe('prefixed()', function() {
   function gimmePrefix(prop, obj) {
     var prefixes = ['Khtml', 'Webkit', 'ms', 'O', 'Moz'],
       domPrefixes = ['khtml', 'webkit', 'ms', 'o', 'moz'],
-      elem     = document.createElement('div'),
-      upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
+      elem = document.createElement('div'),
+      upper = prop.charAt(0).toUpperCase() + prop.slice(1),
       len;
 
     if (!obj) {
@@ -15,7 +15,7 @@ describe('prefixed()', function() {
       }
 
       for (len = prefixes.length; len--;) {
-        if ((prefixes[len] + upper)  in elem.style) {
+        if ((prefixes[len] + upper) in elem.style) {
           return (prefixes[len] + upper);
         }
       }
@@ -44,9 +44,9 @@ describe('prefixed()', function() {
     'borderRadius', 'boxShadow', 'columnCount'];
 
   var domPropArr = [
-    {'prop': 'requestAnimationFrame',  'obj': window},
-    {'prop': 'querySelectorAll',       'obj': document},
-    {'prop': 'matchesSelector',        'obj': document.createElement('div')}];
+    {'prop': 'requestAnimationFrame', 'obj': window},
+    {'prop': 'querySelectorAll', 'obj': document},
+    {'prop': 'matchesSelector', 'obj': document.createElement('div')}];
 
   _.forEach(propArr, function(prop) {
     it('results for ' + prop + ' match the homebaked prefix finder', function() {

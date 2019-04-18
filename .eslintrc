@@ -26,6 +26,7 @@
     "no-cond-assign": ["error", "except-parens"],
     "no-eq-null": "error",
     "no-eval": "error",
+    "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
     "no-undef": "error",
     "no-unused-expressions": "error",

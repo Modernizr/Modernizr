@@ -35,7 +35,7 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
     // their trident equivalent.
     try {
       // Older Firefox didn't map oninput attribute to oninput property
-      var testEvent  = document.createEvent('KeyboardEvent');
+      var testEvent = document.createEvent('KeyboardEvent');
       supportsOnInput = false;
       var handler = function(e) {
         supportsOnInput = true;

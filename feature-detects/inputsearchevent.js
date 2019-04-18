@@ -17,5 +17,5 @@
 There is a custom `search` event implemented in webkit browsers when using an `input[search]` element.
 */
 define(['Modernizr', 'hasEvent'], function(Modernizr, hasEvent) {
-  Modernizr.addTest('inputsearchevent',  hasEvent('search'));
+  Modernizr.addTest('inputsearchevent', hasEvent('search'));
 });

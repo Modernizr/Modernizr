@@ -50,7 +50,7 @@ describe('generate-banner', function() {
 
   it('should produce a compact banner when requested', function() {
     var banner = generateBanner('compact');
-    var test = '/*! ' + pkg.name + ' ' + pkg.version + ' (Custom Build) | ' + pkg.license  + ' *';
+    var test = '/*! ' + pkg.name + ' ' + pkg.version + ' (Custom Build) | ' + pkg.license + ' *';
     expect(banner).to.contain(test);
   });
 

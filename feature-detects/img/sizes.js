@@ -25,7 +25,7 @@ define(['Modernizr', 'createElement', 'addTest'], function(Modernizr, createElem
     var isSizes = 'sizes' in image;
 
     // ... but we need to deal with Safari 9...
-    if (!isSizes && ('srcset' in  image)) {
+    if (!isSizes && ('srcset' in image)) {
       width2 = 'data:image/gif;base64,R0lGODlhAgABAPAAAP///wAAACH5BAAAAAAALAAAAAACAAEAAAICBAoAOw==';
       width1 = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 

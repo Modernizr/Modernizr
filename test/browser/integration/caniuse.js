@@ -330,7 +330,7 @@ window.caniusecb = function(caniuse) {
 
       var majorminor = ua.browser.version
       // opera gets grouped in some cases by caniuse
-        .replace(/(9\.(6|5))/ , ua.browser.name === 'Opera' ? '9.5-9.6'   : '$1')
+        .replace(/(9\.(6|5))/ , ua.browser.name === 'Opera' ? '9.5-9.6' : '$1')
         .replace(/(10\.(0|1))/, ua.browser.name === 'Opera' ? '10.0-10.1' : '$1');
 
       // make sure the version keys of the caniusedata is sorted as numbers not as strings

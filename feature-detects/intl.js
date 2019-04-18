@@ -3,11 +3,11 @@
   "name": "Internationalization API",
   "property": "intl",
   "notes": [{
-     "name": "MDN Docs",
-     "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
    },{
-     "name": "ECMAScript spec",
-     "href": "https://www.ecma-international.org/ecma-402/1.0/"
+    "name": "ECMAScript spec",
+    "href": "https://www.ecma-international.org/ecma-402/1.0/"
   }]
 }
  !*/

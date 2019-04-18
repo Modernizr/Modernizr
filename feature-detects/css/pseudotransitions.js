@@ -5,7 +5,7 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testStyles',  'prefixes', 'test/css/transitions'], function(Modernizr, testStyles, prefixes) {
+define(['Modernizr', 'testStyles', 'prefixes', 'test/css/transitions'], function(Modernizr, testStyles, prefixes) {
   Modernizr.addTest('csspseudotransitions', function() {
     var result = false;
 

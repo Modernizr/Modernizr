@@ -17,9 +17,7 @@
 }
 !*/
 /* DOC
-
 Detects support for WindowBase64 API (window.atob && window.btoa).
-
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('atobbtoa', 'atob' in window && 'btoa' in window, {aliases: ['atob-btoa']});

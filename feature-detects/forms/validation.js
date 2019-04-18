@@ -26,7 +26,7 @@ define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function(Mode
     var invalidFired = false;
     var input;
 
-    Modernizr.formvalidationapi =  true;
+    Modernizr.formvalidationapi = true;
 
     // Prevent form from being submitted
     form.addEventListener('submit', function(e) {

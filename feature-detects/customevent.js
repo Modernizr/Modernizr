@@ -15,9 +15,7 @@
 }
 !*/
 /* DOC
-
 Detects support for CustomEvent.
-
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('customevent', 'CustomEvent' in window && typeof window.CustomEvent === 'function');

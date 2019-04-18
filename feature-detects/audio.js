@@ -2,7 +2,11 @@
 {
   "name": "HTML5 Audio Element",
   "property": "audio",
-  "tags": ["html5", "audio", "media"]
+  "tags": ["html5", "audio", "media"],
+  "notes": [{
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements"
+  }]
 }
 !*/
 /* DOC
@@ -29,18 +33,14 @@ define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
     try {
       bool = !!elem.canPlayType;
       if (bool) {
-        bool      = new Boolean(bool);
-        bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"') .replace(/^no$/, '');
-        bool.mp3  = elem.canPlayType('audio/mpeg; codecs="mp3"')   .replace(/^no$/, '');
-        bool.opus  = elem.canPlayType('audio/ogg; codecs="opus"')  ||
-                     elem.canPlayType('audio/webm; codecs="opus"') .replace(/^no$/, '');
-
-        // Mimetypes accepted:
-        //   developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
-        //   bit.ly/iphoneoscodecs
-        bool.wav  = elem.canPlayType('audio/wav; codecs="1"')     .replace(/^no$/, '');
-        bool.m4a  = (elem.canPlayType('audio/x-m4a;')            ||
-                     elem.canPlayType('audio/aac;'))             .replace(/^no$/, '');
+        bool = new Boolean(bool);
+        bool.ogg = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, '');
+        bool.mp3 = elem.canPlayType('audio/mpeg; codecs="mp3"').replace(/^no$/, '');
+        bool.opus = elem.canPlayType('audio/ogg; codecs="opus"') ||
+                    elem.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, '');
+        bool.wav = elem.canPlayType('audio/wav; codecs="1"').replace(/^no$/, '');
+        bool.m4a = (elem.canPlayType('audio/x-m4a;') ||
+                    elem.canPlayType('audio/aac;')).replace(/^no$/, '');
       }
     } catch (e) {}
 
