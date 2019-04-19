@@ -16,8 +16,9 @@ define(['Modernizr', 'prefixed', 'domPrefixes', 'test/webrtc/peerconnection'], f
     if (!Modernizr.peerconnection) {
       return false;
     }
-    for (var i = 0, l = domPrefixes.length; i < l; i++) {
-      var PeerConnectionConstructor = window[domPrefixes[i] + 'RTCPeerConnection'];
+    var prefixes = [''].concat(domPrefixes);
+    for (var i = 0, l = prefixes.length; i < l; i++) {
+      var PeerConnectionConstructor = window[prefixes[i] + 'RTCPeerConnection'];
 
       if (PeerConnectionConstructor) {
         var peerConnection = new PeerConnectionConstructor(null);
