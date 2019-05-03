@@ -46,8 +46,8 @@
     "test": "gulp test",
     "--- MODERNIZR SCRIPTS ---": "",
     "update-gh-pages": "scripts/generate-gh-pages.sh",
-    "changelog": "auto-changelog --commit-limit false --package",
-    "version": "node lib/generate-license.js && git add LICENSE"
+    "update-changelog": "auto-changelog --commit-limit false --package",
+    "update-license": "node scripts/generate-license.js && git add LICENSE"
   },
   "main": "./lib/cli",
   "bin": "./bin/modernizr",
