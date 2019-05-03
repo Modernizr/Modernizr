@@ -230,6 +230,11 @@ module.exports = function(grunt) {
    */
   grunt.registerTask('default', ['eslint', 'build']);
 
+  /**
+   * Build gh-pages
+   */
+  grunt.registerTask('gh-pages', ['clean', 'pug', 'generate', 'copy:gh-pages']);
+
   var tests = ['clean', 'eslint', 'pug', 'instrument', 'env:coverage', 'nodeTests'];
 
   if (process.env.APPVEYOR) {
