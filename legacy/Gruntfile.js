@@ -54,7 +54,9 @@ module.exports = function(grunt) {
               './node_modules/lodash/**',
               './node_modules/mocha/**',
               './node_modules/requirejs/**',
+              './node_modules/sinon/**',
               './node_modules/ua-parser-js/**',
+              './src/**',
               './test/**',
               '!./test/coverage/**'
             ],
@@ -226,8 +228,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('browserResults', ['test', 'connect:browser']);
 
-  grunt.registerTask('build', ['clean', 'generate']);
-
   /**
    * Performs the code coverage tasks provided by Istanbul
    */
@@ -236,13 +236,16 @@ module.exports = function(grunt) {
   /**
    * Default task for creating a modernizr build using lib/config-all.json
    */
-  grunt.registerTask('default', ['eslint', 'build']);
+  grunt.registerTask('default', ['clean', 'eslint', 'generate']);
 
   /**
    * Build gh-pages
    */
   grunt.registerTask('gh-pages', ['clean', 'pug', 'generate', 'copy:gh-pages']);
 
+  /**
+   * Different tasks depending where the tests are run
+   */
   var tests = ['clean', 'eslint', 'pug', 'instrument', 'env:coverage', 'nodeTests'];
 
   if (process.env.APPVEYOR) {
