@@ -45,10 +45,18 @@ module.exports = function(grunt) {
           {
             expand: true,
             src: [
-              './**/*',
-              '!./test/coverage/**',
-              '!./node_modules/*grunt-*/**',
-              '!./node_modules/**/node_modules/**'
+              './README.md',
+              './dist/**',
+              './lib/**',
+              './node_modules/expect.js/**',
+              './node_modules/jquery/**',
+              './node_modules/json3/**',
+              './node_modules/lodash/**',
+              './node_modules/mocha/**',
+              './node_modules/requirejs/**',
+              './node_modules/ua-parser-js/**',
+              './test/**',
+              '!./test/coverage/**'
             ],
             dest: 'gh-pages'
           }

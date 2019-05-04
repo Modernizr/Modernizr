@@ -11,7 +11,8 @@ cd gh-pages
 
 # init git stuff
 git init
-git add -A
+git add --all
+git add --force node_modules
 git commit -m 'Hey server, this content is for you! [skip ci]'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
