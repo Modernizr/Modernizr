@@ -1,12 +1,11 @@
 'use strict';
 
-import gulp             from    'gulp';
-import gplugins         from    'gulp-load-plugins';
-import del              from    'del';
-import fs               from    'fs-extra';
-import globby           from    'globby';
-
-const mochaChrome     = require('gulp-mocha-chrome');
+import gulp             from 'gulp';
+import gplugins         from 'gulp-load-plugins';
+import del              from 'del';
+import fs               from 'fs-extra';
+import globby           from 'globby';
+import { runner }       from 'mocha-headless-chrome';
 
 import modernizr        from './lib/cli';
 import config           from './lib/config-all';
@@ -80,17 +79,30 @@ gulp.task('generate', (done) => {
   });
 });
 
-gulp.task('mocha:browser', () => {
-    return gulp.src([
-      'test/unit.html',
-      'test/integration.html'
-    ])
-      .pipe(mochaChrome({
-        mocha: {
-          reporter: 'dot',
-          timeout: 5000
-        }
-      }));
+gulp.task('mocha:browser', (done) => {
+    const options = {
+      reporter: 'dot',
+      timeout: 5000,
+      args: ['disable-web-security']
+    };
+    runner({
+      ...options,
+      file: 'test/integration.html',
+    })
+      .then(result => {
+        //let json = JSON.stringify(result);
+        //console.log(json);
+
+        runner({
+          ...options,
+          file: 'test/unit.html'
+        })
+          .then(result => {
+            done();
+            //let json = JSON.stringify(result);
+            //console.log(json);
+          });
+      });
   }
 );
 

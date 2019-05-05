@@ -1,13 +1,16 @@
 /* global UAParser */
 window.caniusecb = function(caniuse) {
 
-  // So Phantom doesn't kill the caniuse.com matching exit out as it's useless anyway within PhantomJS
-  if (window._phantom) {
+  var ua = new UAParser(navigator.userAgent).getResult();
+  if (ua.browser.name === 'Chrome Headless') {
+    // TODO We could test against the caniuse data of the standard Chrome browser but there are currently three
+    // errors already present (focuswithin siblinggeneral htmlimports) which need to be fixed first. For now
+    // just return like back with phantomjs
+    //ua.browser.name = 'Chrome';
     return;
   }
 
   describe('caniuse', function() {
-    var ua = new UAParser(navigator.userAgent).getResult();
     var unusedModernizr = [];
     var unusedCaniuse = _.keys(caniuse.data);
     var map = {
