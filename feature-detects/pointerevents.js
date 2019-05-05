@@ -21,22 +21,16 @@
 /* DOC
 Detects support for the DOM Pointer Events API, which provides a unified event interface for pointing input devices, as implemented in IE10+, Edge and Blink.
 */
-define(['Modernizr', 'domPrefixes', 'hasEvent'], function(Modernizr, domPrefixes, hasEvent) {
+define(['Modernizr', 'domPrefixesAll', 'hasEvent'], function(Modernizr, domPrefixesAll, hasEvent) {
   // **Test name hijacked!**
   // Now refers to W3C DOM PointerEvents spec rather than the CSS pointer-events property.
   Modernizr.addTest('pointerevents', function() {
     // Cannot use `.prefixed()` for events, so test each prefix
-    var bool = false,
-      i = domPrefixes.length;
-
-    // Don't forget un-prefixed...
-    bool = Modernizr.hasEvent('pointerdown');
-
-    while (i-- && !bool) {
-      if (hasEvent(domPrefixes[i] + 'pointerdown')) {
-        bool = true;
+    for (var i = 0, len = domPrefixesAll.length; i < len; i++) {
+      if (hasEvent(domPrefixesAll[i] + 'pointerdown')) {
+        return true;
       }
     }
-    return bool;
+    return false;
   });
 });
