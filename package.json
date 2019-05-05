@@ -36,8 +36,6 @@
     "grunt-env": "^0.4.4",
     "grunt-eslint": "^21.0.0",
     "grunt-istanbul": "^0.8.0",
-    "grunt-mocha": "0.4.15",
-    "grunt-mocha-test": "^0.13.3",
     "grunt-saucelabs": "^9.0.1",
     "gulp": "^4.0.1",
     "gulp-eslint": "^5.0.0",
