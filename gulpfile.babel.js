@@ -5,7 +5,9 @@ import gplugins         from 'gulp-load-plugins';
 import del              from 'del';
 import fs               from 'fs-extra';
 import globby           from 'globby';
-import { runner }       from 'mocha-headless-chrome';
+
+import Mocha            from 'mocha';
+import Mochaheadless    from 'mocha-headless-chrome';
 
 import modernizr        from './lib/cli';
 import config           from './lib/config-all';
@@ -20,10 +22,10 @@ const directories = {
   integrationTests: globby.sync([
     'test/browser/integration/*.js'
   ]),
-  nodeTests: [
+  nodeTests: globby.sync([
     'test/universal/**/*.js',
     'test/node/**/*.js'
-  ],
+  ]),
   mochaTests: [
     'test/unit.html',
     'test/integration.html'
@@ -83,35 +85,43 @@ gulp.task('mocha:browser', (done) => {
     timeout: 5000,
     args: ['disable-web-security']
   };
-  runner({
+  Mochaheadless.runner({
     ...options,
     file: 'test/integration.html',
   })
     .then(result => {
-      //let json = JSON.stringify(result);
-      //console.log(json);
-
-      runner({
+      return Mochaheadless.runner({
         ...options,
         file: 'test/unit.html'
-      })
-        .then(result => {
-          done();
-          //let json = JSON.stringify(result);
-          //console.log(json);
-        });
+      });
+    })
+    .then(result => {
+      done();
     });
-  }
-);
+});
 
-gulp.task('mocha:node', () => {
-    return gulp.src(directories.nodeTests, {read: false})
-      .pipe(plugins.mocha({
-        reporter: 'dot',
-        timeout: 5000
-      }))
-  }
-);
+gulp.task('mocha:node', (done) => {
+  const mocha = new Mocha({
+    reporter: 'dot',
+    timeout: 5000
+  });
+
+  directories.nodeTests.forEach(file => {
+    mocha.addFile(file);
+  });
+
+  // Run the tests.
+  mocha.run(failures => {
+    process.exitCode = failures ? 1 : 0;  // exit with non-zero status if there were failures
+
+    done();
+  });
+});
+
+gulp.task('coveralls', () => {
+  gulp.src('test/coverage/**/lcov.info')
+    .pipe(plugins.coveralls())
+});
 
 gulp.task('pug', () => {
   return gulp.src('test/browser/*.pug')

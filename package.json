@@ -30,7 +30,6 @@
     "gulp": "^4.0.1",
     "gulp-eslint": "^5.0.0",
     "gulp-load-plugins": "^1.5.0",
-    "gulp-mocha": "^6.0.0",
     "gulp-pug": "^4.0.1",
     "joi": "^14.3.1",
     "jquery": "3.2.1",
