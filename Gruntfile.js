@@ -39,6 +39,22 @@ module.exports = function(grunt) {
     generate: {
       dest: './dist/modernizr-build.js'
     },
+    copy: {
+      'gh-pages': {
+        files: [
+          {
+            expand: true,
+            src: [
+              './**/*',
+              '!./test/coverage/**',
+              '!./node_modules/*grunt-*/**',
+              '!./node_modules/**/node_modules/**'
+            ],
+            dest: 'gh-pages'
+          }
+        ]
+      }
+    },
     eslint: {
       target: [
         '<%= env.nodeTests %>',
@@ -76,22 +92,6 @@ module.exports = function(grunt) {
           'test/iframe.html': 'test/browser/iframe.jade',
           'test/index.html': 'test/browser/integration.jade'
         }
-      }
-    },
-    copy: {
-      'gh-pages': {
-        files: [
-          {
-            expand: true,
-            src: [
-              './**/*',
-              '!./test/coverage/**',
-              '!./node_modules/*grunt-*/**',
-              '!./node_modules/**/node_modules/**'
-            ],
-            dest: 'gh-pages'
-          }
-        ]
       }
     },
     connect: {
@@ -150,6 +150,14 @@ module.exports = function(grunt) {
         }
       }
     },
+    mocha: {
+      test: {
+        options: {
+          urls: '<%= env.coverage.urls %>',
+          log: true
+        }
+      }
+    },
     // `mocha` runs browser tests, `mochaTest` runs node tests
     mochaTest: {
       test: {
@@ -158,14 +166,6 @@ module.exports = function(grunt) {
           timeout: 5000
         },
         src: ['<%= env.nodeTests %>']
-      }
-    },
-    mocha: {
-      test: {
-        options: {
-          urls: '<%= env.coverage.urls %>',
-          log: true
-        }
       }
     },
     instrument: {
