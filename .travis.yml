@@ -13,7 +13,7 @@ after_success:
   - |
       # Remove grunt-saucelabs since we don't use it on GH Pages, and it complains
       # about large files in the repo from this module
-      npm uninstall --force grunt-saucelabs
+      # npm uninstall --force grunt-saucelabs
       # Automatically update the content from the `gh-pages` branch
       $(npm bin)/update-branch --commands "gulp copy:gh-pages" \
                                --commit-message "Hey server, this content is for you! [skip ci]" \

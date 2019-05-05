@@ -55,12 +55,10 @@ gulp.task('eslint', () => {
     ...directories.browserTests,
     ...directories.integrationTests,
     ...directories.nodeTests,
-    'test/browser/setup.js',
-    'Gruntfile.js',
-    'src/*.js',
-    'lib/*.js',
-    'test/**/*.js',
     'feature-detects/**/*.js',
+    'lib/*.js',
+    'src/*.js',
+    'test/**/*.js',
     '!src/html5shiv.js',
     '!src/html5printshiv.js',
     '!test/coverage/**/*.js'
@@ -80,29 +78,29 @@ gulp.task('generate', (done) => {
 });
 
 gulp.task('mocha:browser', (done) => {
-    const options = {
-      reporter: 'dot',
-      timeout: 5000,
-      args: ['disable-web-security']
-    };
-    runner({
-      ...options,
-      file: 'test/integration.html',
-    })
-      .then(result => {
-        //let json = JSON.stringify(result);
-        //console.log(json);
+  const options = {
+    reporter: 'dot',
+    timeout: 5000,
+    args: ['disable-web-security']
+  };
+  runner({
+    ...options,
+    file: 'test/integration.html',
+  })
+    .then(result => {
+      //let json = JSON.stringify(result);
+      //console.log(json);
 
-        runner({
-          ...options,
-          file: 'test/unit.html'
-        })
-          .then(result => {
-            done();
-            //let json = JSON.stringify(result);
-            //console.log(json);
-          });
-      });
+      runner({
+        ...options,
+        file: 'test/unit.html'
+      })
+        .then(result => {
+          done();
+          //let json = JSON.stringify(result);
+          //console.log(json);
+        });
+    });
   }
 );
 
