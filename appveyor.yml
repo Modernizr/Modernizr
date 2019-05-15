@@ -1,8 +1,7 @@
 environment:
   matrix:
-    - nodejs_version: 8
-    - nodejs_version: 10
-    - nodejs_version: 12
+    - nodejs_version: lts
+    - nodejs_version: stable
 
 install:
   - ps: Install-Product node $env:nodejs_version
