@@ -56,10 +56,10 @@ npm install
 //outputs to ./modernizr.js
 ```
 
-### To run tests on the console (in phantom):
+### To run tests on the console:
 
 ```shell
-grunt test
+npm test
 ```
 
 ### To run tests in the browser:

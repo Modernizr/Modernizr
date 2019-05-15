@@ -46,7 +46,6 @@ gulp.task('copy:gh-pages', () => {
   return gulp.src([
     './**/*',
     '!./test/coverage/**',
-    '!./node_modules/*grunt-*/**',
     '!./node_modules/**/node_modules/**'
   ])
     .pipe(gulp.dest('gh-pages/'))
@@ -113,14 +112,8 @@ gulp.task('mocha:node', (done) => {
   // Run the tests.
   mocha.run(failures => {
     process.exitCode = failures ? 1 : 0;  // exit with non-zero status if there were failures
-
     done();
   });
-});
-
-gulp.task('coveralls', () => {
-  gulp.src('test/coverage/**/lcov.info')
-    .pipe(plugins.coveralls())
 });
 
 gulp.task('pug', () => {
