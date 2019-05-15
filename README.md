@@ -1,13 +1,13 @@
 # Modernizr 
 [![npm version](https://badge.fury.io/js/modernizr.svg)](https://badge.fury.io/js/modernizr)
 [![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](https://travis-ci.org/Modernizr/Modernizr) 
-[![Coverage Status](https://coveralls.io/repos/github/Modernizr/Modernizr/badge.svg?branch=master)](https://coveralls.io/github/Modernizr/Modernizr?branch=master)
 [![Inline docs](https://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](https://inch-ci.org/github/Modernizr/Modernizr)
 
 ##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 
 - [Website](https://modernizr.com)
 - [Documentation](https://modernizr.com/docs/)
+- [Test Suite](https://modernizr.github.io/Modernizr/test/)
 
 Modernizr tests which native CSS3 and HTML5 features are available in the current UA and makes the results available to you in two ways: as properties on a global `Modernizr` object, and as classes on the `<html>` element. This information allows you to progressively enhance your pages with a granular level of control over the experience.
 
@@ -84,11 +84,7 @@ npm start
 
 ## Testing Modernizr
 
-### To run the test suite
-
-Visit this test suite [page](https://modernizr.github.io/Modernizr/test/)
-
-### To run tests on the console:
+To execute the tests on the console run:
 
 ```shell
 npm test
