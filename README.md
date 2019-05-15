@@ -1,13 +1,13 @@
 # Modernizr 
 [![npm version](https://badge.fury.io/js/modernizr.svg)](https://badge.fury.io/js/modernizr)
 [![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](https://travis-ci.org/Modernizr/Modernizr) 
-[![Coverage Status](https://coveralls.io/repos/github/Modernizr/Modernizr/badge.svg?branch=master)](https://coveralls.io/github/Modernizr/Modernizr?branch=master)
 [![Inline docs](https://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](https://inch-ci.org/github/Modernizr/Modernizr)
 
 ##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 
 - [Website](https://modernizr.com)
 - [Documentation](https://modernizr.com/docs/)
+- [Test Suite](https://modernizr.github.io/Modernizr/test/)
 
 Modernizr tests which native CSS3 and HTML5 features are available in the current UA and makes the results available to you in two ways: as properties on a global `Modernizr` object, and as classes on the `<html>` element. This information allows you to progressively enhance your pages with a granular level of control over the experience.
 
@@ -42,54 +42,15 @@ a method for exposing the `trigger` functionality. Instead, if you'd like to hav
 - Clone or download the repository
 - Install project dependencies with `npm install`
 
-## Test suite
+## Building Modernizr 
 
-Run the [test suite](https://modernizr.github.io/Modernizr/test/)
-
-## Building Modernizr v3
-
-### To generate everything in 'config-all.json':
-
-```shell
-npm install
-./bin/modernizr -c lib/config-all.json
-//outputs to ./modernizr.js
-```
-
-### To run tests on the console (in phantom):
-
-```shell
-grunt test
-```
-
-### To run tests in the browser:
-
-```shell
-grunt browserResults
-```
-
-then visit `http://localhost:9090/test/unit.html` for unit test results
-
-or visit `http://localhost:9090/test/index.html` to see which features that browser supports
-
-### To see the build tool:
-
-* checkout the modernizr.com code
-* install all your gems and bundles and jekyll
-* `jekyll`
-* `serve ./_sites`
-* visit <url>/download
-* It should be just a big list of things you can build with no frills.
-
-### API Reference
+### From javascript
 
 Modernizr can be used programmatically via npm:
 
 ```js
 var modernizr = require("modernizr");
 ```
-
-#### Building
 
 A `build` method is exposed for generating custom Modernizr builds. Example:
 
@@ -104,6 +65,30 @@ modernizr.build({}, function (result) {
 The first parameter takes a JSON object of options and feature-detects to include. See [`lib/config-all.json`](lib/config-all.json) for all available options.
 
 The second parameter is a function invoked on task completion.
+
+### From the command-line
+
+We also provide a command line interface for building modernizr. 
+To see all available options run:
+
+```shell
+./bin/modernizr
+```
+
+Or to generate everything in 'config-all.json' run this with npm:
+
+```shell
+npm start
+//outputs to ./dist/modernizr-build.js
+```
+
+## Testing Modernizr
+
+To execute the tests on the console run:
+
+```shell
+npm test
+```
 
 ## License
 
