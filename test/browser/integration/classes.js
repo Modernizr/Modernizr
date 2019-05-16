@@ -6,7 +6,7 @@ describe('classes', function() {
   });
 
   it('_version did not add a class', function() {
-    //TODO :: fix this test: expect(document.documentElement).to.not.contain('_version');
+    expect(document.documentElement).to.not.contain('_version');
   });
 
   it('all classes are lower case', function() {

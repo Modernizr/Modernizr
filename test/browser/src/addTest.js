@@ -197,14 +197,14 @@ describe('addTest', function() {
     it('supports nested properties with a bool base', function() {
       addTest('fake', true);
       addTest('fake.detect', true);
-      //TODO :: fix this test: expect(Modernizr.fake).to.be.an('object');
+      expect(Modernizr.fake).to.be.an('object');
       expect(Modernizr.fake.detect).to.be.equal(true);
     });
 
     it('supports nested properties', function() {
       addTest('fake', true);
       addTest('fake.detect', true);
-      //TODO :: fix this test: expect(Modernizr.fake).to.be.an('object');
+      expect(Modernizr.fake).to.be.an('object');
       expect(Modernizr.fake.detect).to.be.equal(true);
     });
 
