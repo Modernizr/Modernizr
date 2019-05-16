@@ -38,7 +38,7 @@ describe('prefixed autobind', function() {
   if (window.webkitNotifications) {
     // should be an object.
     it('Modernizr.prefixed("Notifications") returns an object', function() {
-      //TODO :: fix this test: expect(Modernizr.prefixed('Notifications', window)).to.be.an('object');
+      expect(Modernizr.prefixed('Notifications', window)).to.be.an('object');
     });
   }
 
