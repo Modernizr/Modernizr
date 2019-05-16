@@ -1,11 +1,11 @@
 'use strict';
 
 import gulp             from 'gulp';
-import gplugins         from 'gulp-load-plugins';
+import eslint           from 'gulp-eslint';
+import pug              from 'gulp-pug';
 import del              from 'del';
 import fs               from 'fs-extra';
 import globby           from 'globby';
-
 import Mocha            from 'mocha';
 import Mochaheadless    from 'mocha-headless-chrome';
 
@@ -25,20 +25,16 @@ const directories = {
   nodeTests: globby.sync([
     'test/universal/**/*.js',
     'test/node/**/*.js'
-  ]),
-  mochaTests: [
-    'test/unit.html',
-    'test/integration.html'
-  ]
+  ])
 };
-const plugins = gplugins();
 
 gulp.task('clean', () => {
   return del([
     'dist',
+    'gh-pages',
     'test/coverage',
     'test/*.html',
-    'gh-pages'
+    'tmp'
   ]);
 });
 
@@ -64,10 +60,10 @@ gulp.task('eslint', () => {
     '!src/html5printshiv.js',
     '!test/coverage/**/*.js'
   ])
-    .pipe(plugins.eslint({
+    .pipe(eslint({
       configFile: '.eslintrc'
     }))
-    .pipe(plugins.eslint.failOnError());
+    .pipe(eslint.failOnError());
 });
 
 gulp.task('generate', (done) => {
@@ -118,7 +114,7 @@ gulp.task('mocha:node', (done) => {
 
 gulp.task('pug', () => {
   return gulp.src('test/browser/*.pug')
-    .pipe(plugins.pug({
+    .pipe(pug({
       data: {
         browserTests: directories.browserTests,
         integrationTests: directories.integrationTests

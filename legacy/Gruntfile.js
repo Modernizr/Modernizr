@@ -1,4 +1,4 @@
-var browsers = require('./test/browser/sauce-browsers.json');
+var browsers = require('../test/browser/sauce-browsers.json');
 var serveStatic = require('serve-static');
 
 module.exports = function(grunt) {
@@ -202,8 +202,8 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('generate', 'Create a version of Modernizr from Grunt', function() {
     var done = this.async();
-    var config = require('./lib/config-all');
-    var modernizr = require('./lib/cli');
+    var config = require('../lib/config-all');
+    var modernizr = require('../lib/cli');
     var dest = this.data;
 
     modernizr.build(config, function(output) {
