@@ -75,6 +75,7 @@ gulp.task('generate', (done) => {
 });
 
 gulp.task('mocha:browser', (done) => {
+  let failures = 0;
   const options = {
     reporter: 'dot',
     timeout: 5000,
@@ -85,12 +86,15 @@ gulp.task('mocha:browser', (done) => {
     file: 'test/integration.html',
   })
     .then(result => {
+      failures += result.result.failures.length;
       return Mochaheadless.runner({
         ...options,
         file: 'test/unit.html'
       });
     })
     .then(result => {
+      failures += result.result.failures.length;
+      process.exitCode = failures;  // exit with non-zero status if there were failures
       done();
     });
 });
