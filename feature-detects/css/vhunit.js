@@ -14,7 +14,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles', 'computedStyle', 'roundedEquals'], function(Modernizr, testStyles, computedStyle, roundedEquals) {
+define(['Modernizr', 'testStyles', 'computedStyle'], function(Modernizr, testStyles, computedStyle) {
   testStyles('#modernizr { height: 50vh; }', function(elem) {
     var compStyle = parseInt(computedStyle(elem, null, 'height'), 10);
 
