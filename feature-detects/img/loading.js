@@ -1,8 +1,8 @@
 /*!
 {
-  "name": "image native lazy loading",
-  "property": "loading",
-  "caniuse": "loading",
+  "name": "image and iframe native lazy loading",
+  "property": "lazyloading",
+  "caniuse": "loading-lazy-attr",
   "tags": ["image", "lazy", "loading"],
   "notes": [{
     "name": "Native image lazy-loading for the web",
@@ -11,7 +11,7 @@
 }
 !*/
 /* DOC
-Test for the loading attribute of images
+Test for the loading attribute of images and iframes
 */
 
 define(['Modernizr'], function (Modernizr) {
