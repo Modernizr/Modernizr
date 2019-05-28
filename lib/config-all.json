@@ -204,7 +204,7 @@
     "img/crossorigin",
     "img/jpeg2000",
     "img/jpegxr",
-    "img/loading",
+    "img/lazyloading",
     "img/sizes",
     "img/srcset",
     "img/webp",
