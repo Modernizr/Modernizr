@@ -14,9 +14,9 @@
   }]
 }
 !*/
-define(["Modernizr", "testStyles", "computedStyle"], function(Modernizr, testStyles, computedStyle) {
-  testStyles("#modernizr { height: 50vh; max-height: 10px; }", function(elem) {
-    var compStyle = parseInt(computedStyle(elem, null, "height"), 10);
-    Modernizr.addTest("cssvhunit", compStyle === 10);
+define(['Modernizr', 'testStyles', 'computedStyle'], function(Modernizr, testStyles, computedStyle) {
+  testStyles('#modernizr { height: 50vh; max-height: 10px; }', function(elem) {
+    var compStyle = parseInt(computedStyle(elem, null, 'height'), 10);
+    Modernizr.addTest('cssvhunit', compStyle == 10);
   });
 });
