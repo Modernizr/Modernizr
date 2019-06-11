@@ -52,6 +52,8 @@ define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
         bool.vp9 = elem.canPlayType('video/webm; codecs="vp9"').replace(/^no$/, '');
 
         bool.hls = elem.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/, '');
+        
+        bool.av1 = elem.canPlayType('video/mp4; codecs="av01"').replace(/^no$/, '');
       }
     } catch (e) {}
 
