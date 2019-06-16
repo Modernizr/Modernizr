@@ -32,7 +32,7 @@ define(['Modernizr', 'prefixes', 'createElement'], function(Modernizr, prefixes,
     }
 
     if (Modernizr._config.usePrefixes) {
-    // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
+    // legacy webkit syntax (TODO:: remove when syntax not in use anymore)
       css += str1 + '-webkit-' + str2;
     }
 

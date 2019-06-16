@@ -3,7 +3,7 @@ window.caniusecb = function(caniuse) {
 
   var ua = new UAParser(navigator.userAgent).getResult();
   if (ua.browser.name === 'Chrome Headless') {
-    // TODO We could test against the caniuse data of the standard Chrome browser but there are currently three
+    // TODO:: We could test against the caniuse data of the standard Chrome browser but there are currently three
     // errors already present (focuswithin siblinggeneral htmlimports) which need to be fixed first. For now
     // just return like back with phantomjs
     //ua.browser.name = 'Chrome';

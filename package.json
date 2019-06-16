@@ -16,13 +16,13 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "auto-changelog": "^1.13.0",
     "del": "^4.1.1",
     "eslint": "^5.16.0",
-    "eslint-plugin-jsdoc": "^5.0.1",
+    "eslint-plugin-jsdoc": "^8.0.1",
     "expect.js": "^0.3.1",
     "find-parent-dir": "^0.3.0",
     "fs-extra": "^8.0.1",
@@ -32,13 +32,13 @@
     "gulp-pug": "^4.0.1",
     "joi": "^14.3.1",
     "jquery": "^3.4.1",
-    "json3": "^3.3.2",
+    "json3": "^3.3.3",
     "mocha": "^6.1.4",
     "mocha-headless-chrome": "^2.0.2",
     "proxyquire": "^2.1.0",
     "serve-static": "^1.14.1",
     "sinon": "2.4.1",
-    "ua-parser-js": "^0.7.19"
+    "ua-parser-js": "^0.7.20"
   },
   "scripts": {
     "--- DEFAULT SCRIPTS ---": "",
