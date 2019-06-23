@@ -9,7 +9,8 @@ gulp gh-pages
 # navigate into the build output directory
 cd gh-pages
 
-#touch .nojekyll
+# otherwise we dont get to have the node_modules
+touch .nojekyll
 
 # init git stuff
 git init

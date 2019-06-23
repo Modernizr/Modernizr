@@ -40,10 +40,20 @@ gulp.task('clean', () => {
 
 gulp.task('copy:gh-pages', () => {
   return gulp.src([
-    './**/*',
-    '!./test/coverage/**',
-    '!./node_modules/**/node_modules/**'
-  ])
+    './dist/**/*',
+    './lib/**/*',
+    './node_modules/expect.js/**/*',
+    './node_modules/jquery/**/*',
+    './node_modules/json3/**/*',
+    './node_modules/lodash/**/*',
+    './node_modules/mocha/**/*',
+    './node_modules/requirejs/**/*',
+    './node_modules/sinon/**/*',
+    './node_modules/ua-parser-js/**/*',
+    './src/**/*',
+    './test/**/*',
+    '!./test/coverage/**/*'
+  ], { 'base' : '.' })
     .pipe(gulp.dest('gh-pages/'))
 });
 
@@ -128,5 +138,7 @@ gulp.task('pug', () => {
 });
 
 gulp.task('test', gulp.series('clean', 'eslint', 'generate', 'pug', 'mocha:node', 'mocha:browser'));
+
+gulp.task('gh-pages', gulp.series('clean', 'pug', 'generate', 'copy:gh-pages'));
 
 gulp.task('default', gulp.series('clean', 'eslint', 'generate'));
