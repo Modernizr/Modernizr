@@ -1,12 +1,10 @@
-node_modules
-test/coverage
-test/*.html
-gh-pages
+/dist
+/gh-pages
+/node_modules
+/test/coverage
+/test/*.html
 modernizr.js
 metadata.json
-build
-dist
-tmp
 .DS_Store
 .idea
 .project
