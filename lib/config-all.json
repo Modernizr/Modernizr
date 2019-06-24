@@ -249,6 +249,7 @@
     "pointerlock-api",
     "postmessage",
     "proximity",
+    "proxy",
     "queryselector",
     "quota-management-api",
     "requestanimationframe",
