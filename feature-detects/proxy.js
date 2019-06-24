@@ -3,7 +3,7 @@
   "name": "Proxy Object",
   "property": "Proxy",
   "caniuse": "proxy",
-  "tags": ["dom"],
+  "authors": ["Brock Beaudry"],
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy"
