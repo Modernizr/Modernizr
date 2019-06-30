@@ -1,6 +1,7 @@
 'use strict';
 
 import gulp             from 'gulp';
+import connect          from 'gulp-connect';
 import eslint           from 'gulp-eslint';
 import pug              from 'gulp-pug';
 import del              from 'del';
@@ -136,6 +137,13 @@ gulp.task('pug', () => {
     }))
     .pipe(gulp.dest('test/'))
 });
+
+gulp.task('serve:gh-pages', gulp.series('clean', 'generate', 'pug',  'copy:gh-pages', (done) => {
+  connect.server({
+    root: 'gh-pages/'
+  });
+  done();
+}));
 
 gulp.task('test', gulp.series('clean', 'eslint', 'generate', 'pug', 'mocha:node', 'mocha:browser'));
 

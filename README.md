@@ -85,12 +85,25 @@ npm start
 
 ## Testing Modernizr
 
-To execute the tests on the console run:
+To execute the tests using mocha-headless-chrome on the console run:
 
 ```shell
 npm test
 ```
 
+You can also run tests in the browser of your choice with this command:
+
+```shell
+npm run serve:gh-pages
+```
+
+and navigating to these two URLs:
+
+```shell
+http://localhost:8080/test/unit.html
+http://localhost:8080/test/integration.html
+```
+ 
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
