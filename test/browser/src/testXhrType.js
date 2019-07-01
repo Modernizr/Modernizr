@@ -29,7 +29,7 @@ describe('testXhrType', function() {
     });
   });
 
-  // TODO add more tests once sinon's XHR2 features land
+  // TODO:: add more tests once sinon's XHR2 features land
   // http://git.io/AemZ
 
   afterEach(function() {

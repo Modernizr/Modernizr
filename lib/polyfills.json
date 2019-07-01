@@ -768,5 +768,11 @@
     "href": "https://github.com/jquery/PEP",
     "licenses": ["MIT"],
     "name": "pep.js"
+  },
+  "harmony-reflect": {
+    "name": "Proxy Object Polyfill",
+    "authors": ["Tom Van Cutsem"],
+    "href": "https://github.com/tvcutsem/harmony-reflect",
+    "licenses": ["Apache2"]
   }
 }

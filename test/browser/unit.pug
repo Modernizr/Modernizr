@@ -10,13 +10,13 @@ html
     #messages
     #fixtures
     script(src='../node_modules/json3/lib/json3.min.js')
-    script(src='../node_modules/jquery/dist/jquery.min.js')
+    script(src='../node_modules/jquery/dist/jquery.js')
     script(src='../node_modules/lodash/lodash.js')
     script(src='../node_modules/requirejs/require.js')
     script(src='../node_modules/mocha/mocha.js')
     script.
       mocha.setup('bdd').timeout(20000);
-    each test in unitTests
+    each test in browserTests
       script(src='../'+test)
     script(src='../node_modules/expect.js/index.js')
     script(src="../test/browser/setup.js")
