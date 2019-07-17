@@ -12,7 +12,7 @@
     "markdown-it": "^9.0.1",
     "mkdirp": "^0.5.1",
     "requirejs": "^2.3.6",
-    "yargs": "^13.2.4"
+    "yargs": "^13.3.0"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
@@ -22,7 +22,7 @@
     "auto-changelog": "^1.14.1",
     "del": "^5.0.0",
     "eslint": "^6.0.1",
-    "eslint-plugin-jsdoc": "^15.3.9",
+    "eslint-plugin-jsdoc": "^15.5.2",
     "expect.js": "^0.3.1",
     "find-parent-dir": "^0.3.0",
     "fs-extra": "^8.1.0",
@@ -45,6 +45,9 @@
     "--- DEFAULT SCRIPTS ---": "",
     "start": "gulp default",
     "test": "gulp test",
+    "--- GULP SCRIPTS ---": "",
+    "clean": "gulp clean",
+    "lint": "gulp eslint",
     "--- MODERNIZR SCRIPTS ---": "",
     "serve-gh-pages": "gulp serve:gh-pages",
     "update-gh-pages": "scripts/generate-gh-pages.sh",
