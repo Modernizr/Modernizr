@@ -94,7 +94,7 @@ npm test
 You can also run tests in the browser of your choice with this command:
 
 ```shell
-npm run serve:gh-pages
+npm run serve-gh-pages
 ```
 
 and navigating to these two URLs:

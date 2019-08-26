@@ -9,3 +9,4 @@ metadata.json
 .idea
 .project
 *.log
+tmp
