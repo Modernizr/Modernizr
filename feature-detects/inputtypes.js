@@ -102,6 +102,9 @@ define(['Modernizr', 'inputElem', 'docElement'], function(Modernizr, inputElem, 
       }
 
       inputs[ props[i] ] = !!bool;
+
+      // Allow Modernizr run setClasses, e.g.
+      Modernizr.addTest('inputtypes-' + props[i], !!bool);
     }
     return inputs;
   })(inputtypes);

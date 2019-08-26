@@ -27,7 +27,7 @@ describe('classes', function() {
               name = name.replace('-', '');
               expect(Modernizr[name]).to.be(result);
             } else {
-              name = name.split('-');
+              name = name.split(/-(.+)/); // split at first occurence of '-'
               expect(Modernizr[name[0]]).to.not.be(undefined);
               expect(!!Modernizr[name[0]][name[1]]).to.equal(result);
             }
