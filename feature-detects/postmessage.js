@@ -17,12 +17,11 @@ Detects support for the `window.postMessage` protocol for cross-document messagi
 `Modernizr.postmessage.structuredclones` reports if `postMessage` can send objects.
 */
 define(['Modernizr'], function( Modernizr ) {
-  var support = new Boolean('postMessage' in window);
-  support.structuredclones = true;
-
+  var bool = true;
   try {
-    window.postMessage({ toString: function () { support.structuredclones = false; } }, '*');
+    window.postMessage({ toString: function () { bool = false; } }, '*');
   } catch (e) {}
 
-  Modernizr.addTest('postmessage', support);
+  Modernizr.addTest('postmessage', new Boolean('postMessage' in window));
+  Modernizr.addTest('postmessage.structuredclones', bool);
 });
