@@ -10,7 +10,12 @@
   }]
 }
 !*/
-
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('speechsynthesis', 'SpeechSynthesisUtterance' in window);
+  Modernizr.addTest('speechsynthesis', function() {
+    try {
+      return 'SpeechSynthesisUtterance' in window;
+    } catch (e) {
+      return false;
+    }
+  });
 });

@@ -14,5 +14,11 @@
 }
 !*/
 define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('speechrecognition', !!prefixed('SpeechRecognition', window));
+  Modernizr.addTest('speechrecognition', function() {
+    try {
+      return !!prefixed('SpeechRecognition', window);
+    } catch (e) {
+      return false;
+    }
+  });
 });
