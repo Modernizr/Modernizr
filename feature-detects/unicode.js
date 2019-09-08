@@ -15,24 +15,24 @@ define(['Modernizr', 'createElement', 'testStyles', 'isSVG'], function(Modernizr
   /**
    * Unicode special character support
    *
-   * Detection is made by testing missing glyph box rendering against star character
-   * If widths are the same, this "probably" means the browser didn't support the star character and rendered a glyph box instead
-   * Just need to ensure the font characters have different widths
+   * Detection is made by testing the missing glyph box rendering against the comet character. If widths are the same,
+   * this "probably" means the browser didn't support the comet character and rendered a glyph box instead. Just need
+   * to ensure the font characters have different widths.
    */
   Modernizr.addTest('unicode', function() {
     var bool;
     var missingGlyph = createElement('span');
-    var star = createElement('span');
+    var comet = createElement('span');
 
     testStyles('#modernizr{font-family:Arial,sans;font-size:300em;}', function(node) {
 
       missingGlyph.innerHTML = isSVG ? '\u5987' : '&#5987;';
-      star.innerHTML = isSVG ? '\u2606' : '&#9734;';
+      comet.innerHTML = isSVG ? '\u2604' : '&#9732;';
 
       node.appendChild(missingGlyph);
-      node.appendChild(star);
+      node.appendChild(comet);
 
-      bool = 'offsetWidth' in missingGlyph && missingGlyph.offsetWidth !== star.offsetWidth;
+      bool = 'offsetWidth' in missingGlyph && missingGlyph.offsetWidth !== comet.offsetWidth;
     });
 
     return bool;
