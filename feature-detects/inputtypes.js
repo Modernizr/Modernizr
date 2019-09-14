@@ -47,18 +47,14 @@ define(['Modernizr', 'inputElem', 'docElement'], function(Modernizr, inputElem, 
   //   containing each input type with its corresponding true/false value
 
   // Big thanks to @miketaylr for the html5 forms expertise. miketaylr.com/
-  var inputtypes = 'search tel url email datetime date month week time datetime-local number range color'.split(' ');
-  var inputs = {};
-
-  Modernizr.inputtypes = (function(props) {
-    var len = props.length;
+  (function() {
+    var props = ['search', 'tel', 'url', 'email', 'datetime', 'date', 'month', 'week','time', 'datetime-local', 'number', 'range', 'color'];
     var smile = '1)';
     var inputElemType;
     var defaultView;
     var bool;
 
-    for (var i = 0; i < len; i++) {
-
+    for (var i = 0; i < props.length; i++) {
       inputElem.setAttribute('type', inputElemType = props[i]);
       bool = inputElem.type !== 'text' && 'style' in inputElem;
 
@@ -101,8 +97,7 @@ define(['Modernizr', 'inputElem', 'docElement'], function(Modernizr, inputElem, 
         }
       }
 
-      inputs[ props[i] ] = !!bool;
+      Modernizr.addTest('inputtypes.' + inputElemType, !!bool);
     }
-    return inputs;
-  })(inputtypes);
+  })();
 });
