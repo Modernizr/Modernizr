@@ -108,8 +108,8 @@ http://localhost:8080/test/integration.html
 These tests are considered deprecated. They are not included anymore in the default build
 and will re removed in the next major version:
 
-- `touchevents` (in 3.9)
-- `unicode` (in 3.9) 
+- `touchevents` (in 4.0)
+- `unicode` (in 4.0) 
 
 
 ## Code of Conduct
