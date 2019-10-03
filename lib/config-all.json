@@ -142,6 +142,8 @@
     "dom/microdata",
     "dom/mutationObserver",
     "dom/passiveeventlisteners",
+    "dom/shadowroot",
+    "dom/shadowrootlegacy",
     "elem/bdi",
     "elem/datalist",
     "elem/details",
