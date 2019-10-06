@@ -257,6 +257,7 @@
     "requestanimationframe",
     "script/async",
     "script/defer",
+    "script/type_module",
     "serviceworker",
     "speech/speech-recognition",
     "speech/speech-synthesis",
