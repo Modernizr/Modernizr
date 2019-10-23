@@ -4,7 +4,6 @@
   "property": "touchevents",
   "caniuse": "touch",
   "tags": ["media", "attribute"],
-  "deprecated": "4.0",
   "notes": [{
     "name": "Touch Events spec",
     "href": "https://www.w3.org/TR/2013/WD-touch-events-20130124/"

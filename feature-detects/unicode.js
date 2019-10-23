@@ -2,7 +2,6 @@
 {
   "name": "Unicode characters",
   "property": "unicode",
-  "deprecated": "4.0",
   "tags": ["encoding"],
   "warnings": [
     "** DEPRECATED see https://github.com/Modernizr/Modernizr/issues/2468 **",

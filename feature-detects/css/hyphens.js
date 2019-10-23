@@ -11,7 +11,7 @@
     "These tests currently require document.body to be present",
     "If loading Hyphenator.js via yepnope, be cautious of issue 158: https://github.com/mnater/hyphenator/issues/158",
     "This is very large – only include it if you absolutely need it"
-    ],
+  ],
   "notes": [{
     "name": "The Current State of Hyphenation on the Web.",
     "href": "https://davidnewton.ca/the-current-state-of-hyphenation-on-the-web"
