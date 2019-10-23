@@ -147,6 +147,10 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           var textrange;
           var firstChild = document.body.firstElementChild || document.body.firstChild;
 
+          /* Make the elements fixed to prevent that the browser's viewport will jump to the top  */
+          dummy.style.cssText = 'position:fixed;top:0;';
+          div.style.cssText = 'position:fixed;top:0;';
+
           div.innerHTML = testword + delimiter + testword;
 
           document.body.insertBefore(div, firstChild);
