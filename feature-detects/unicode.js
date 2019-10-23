@@ -4,6 +4,7 @@
   "property": "unicode",
   "tags": ["encoding"],
   "warnings": [
+    "** DEPRECATED see https://github.com/Modernizr/Modernizr/issues/2468 **",
     "positive Unicode support doesn't mean you can use it inside <title>, this seems more related to OS & Language packs"
   ]
 }

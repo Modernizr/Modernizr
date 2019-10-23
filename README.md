@@ -102,6 +102,16 @@ http://localhost:8080/test/unit.html
 http://localhost:8080/test/integration.html
 ```
  
+ 
+## Deprecation
+
+These tests are considered deprecated. They are not included anymore in the default build
+and will be removed in the next major version:
+
+- `touchevents` (in 4.0)
+- `unicode` (in 4.0) 
+
+
 ## Code of Conduct
 
 This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md). 
