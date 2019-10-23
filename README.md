@@ -12,8 +12,6 @@
 
 Modernizr tests which native CSS3 and HTML5 features are available in the current UA and makes the results available to you in two ways: as properties on a global `Modernizr` object, and as classes on the `<html>` element. This information allows you to progressively enhance your pages with a granular level of control over the experience.
 
-This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md). By participating, you are expected to honor this code.
-
 ## New Asynchronous Event Listeners
 
 Often times people want to know when an asynchronous test is done so they can allow their application to react to it.
@@ -104,6 +102,12 @@ http://localhost:8080/test/unit.html
 http://localhost:8080/test/integration.html
 ```
  
+## Code of Conduct
+
+This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md). 
+By participating, you are expected to honor this code.
+
+
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
