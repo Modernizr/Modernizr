@@ -197,14 +197,14 @@ describe('addTest', function() {
     it('supports nested properties with a bool base', function() {
       addTest('fake', true);
       addTest('fake.detect', true);
-      expect(Modernizr.fake).to.be.an('object');
+      expect(typeof Modernizr.fake).to.be.equal('object'); // workaround for  https://github.com/chaijs/chai/issues/1174
       expect(Modernizr.fake.detect).to.be.equal(true);
     });
 
     it('supports nested properties', function() {
       addTest('fake', true);
       addTest('fake.detect', true);
-      expect(Modernizr.fake).to.be.an('object');
+      expect(typeof Modernizr.fake).to.be.equal('object'); // workaround for  https://github.com/chaijs/chai/issues/1174
       expect(Modernizr.fake.detect).to.be.equal(true);
     });
 

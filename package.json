@@ -22,7 +22,7 @@
     "auto-changelog": "^1.16.1",
     "chai": "^4.2.0",
     "del": "^5.1.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-plugin-jsdoc": "^15.12.1",
     "find-parent-dir": "^0.3.0",
     "fs-extra": "^8.1.0",
