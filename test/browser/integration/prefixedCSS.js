@@ -47,11 +47,11 @@ describe('prefixedCSS', function() {
     var prefixed = gimmePrefix(cssToDOM(prop));
     if (prefixed) {
       it('results for ' + prop + ' match the homebaked prefix finder', function() {
-        expect(Modernizr.prefixedCSS(prop)).to.be(domToCSS(prefixed));
+        expect(Modernizr.prefixedCSS(prop)).to.be.equal(domToCSS(prefixed));
       });
     } else {
       it('results for ' + prop + ' match the homebaked prefix finder', function() {
-        expect(Modernizr.prefixedCSS(prop)).to.be(false);
+        expect(Modernizr.prefixedCSS(prop)).to.be.equal(false);
       });
     }
   }

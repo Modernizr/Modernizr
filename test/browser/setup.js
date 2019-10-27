@@ -1,5 +1,6 @@
 /* globals mocha, __coverage__ */
 $(document).ready(function() {
+
   var runner = mocha.run();
 
   var results = {

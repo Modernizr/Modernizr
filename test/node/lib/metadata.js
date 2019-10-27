@@ -1,7 +1,8 @@
 var root = require('find-parent-dir').sync(__dirname, 'package.json');
 var proxyquire = require('proxyquire').noPreserveCache();
 var metadata = require(root + 'lib/metadata');
-var expect = require('expect.js');
+var chai = require('chai');
+var expect = chai.expect;
 var Joi = require('joi');
 
 describe('cli/metadata', function() {
@@ -33,7 +34,7 @@ describe('cli/metadata', function() {
       }
     });
 
-    expect(metadata).to.throwException(/Error Parsing Metadata/);
+    expect(metadata).to.throw(/Error Parsing Metadata/);
   });
 
   it('should not throw when metadata is missing', function() {
@@ -46,7 +47,7 @@ describe('cli/metadata', function() {
       }
     });
 
-    expect(metadata).to.not.throwException(/Error Parsing Metadata/);
+    expect(metadata).to.not.throw(/Error Parsing Metadata/);
   });
 
   it('should throw on malformed deps', function() {
@@ -59,7 +60,7 @@ describe('cli/metadata', function() {
       }
     });
 
-    expect(metadata).to.throwException(/Couldn't parse dependencies/);
+    expect(metadata).to.throw(/Couldn't parse dependencies/);
   });
 
   it('should throw if we can\'t find the define', function() {
@@ -72,7 +73,7 @@ describe('cli/metadata', function() {
       }
     });
 
-    expect(metadata).to.throwException(/Couldn't find the define/);
+    expect(metadata).to.throw(/Couldn't find the define/);
   });
 
   it('should use amdPath as a fallback for name', function() {
@@ -91,7 +92,7 @@ describe('cli/metadata', function() {
     });
     var result = metadata();
 
-    expect(result.name).to.equal(result.amdPath);
+    expect(result.name).to.be.equal(result.amdPath);
   });
 
   it('should throw if we can\'t find the define', function() {
@@ -104,7 +105,7 @@ describe('cli/metadata', function() {
       }
     });
 
-    expect(metadata).to.throwException(/Polyfill not found/);
+    expect(metadata).to.throw(/Polyfill not found/);
   });
 
   it('should throw if we can\'t find the define', function() {
@@ -119,7 +120,7 @@ describe('cli/metadata', function() {
 
     var firstResult = metadata()[0];
 
-    expect(firstResult.cssclass).to.be(null);
+    expect(firstResult.cssclass).to.be.equal(null);
   });
 
   it('should rename `docs` to `doc` when found', function() {
@@ -134,7 +135,7 @@ describe('cli/metadata', function() {
 
     var firstResult = metadata()[0];
 
-    expect(firstResult.docs).to.be(undefined);
+    expect(firstResult.docs).to.be.equal(undefined);
     expect(firstResult.doc).to.match(/originally docs/);
   });
 
@@ -143,7 +144,7 @@ describe('cli/metadata', function() {
   });
 
   it('return nothing when given a callback', function() {
-    expect(metadata(function noop() {})).to.be(undefined);
+    expect(metadata(function noop() {})).to.be.equal(undefined);
   });
 
   it('pass the json blob when given a callback', function(done) {
@@ -204,7 +205,7 @@ describe('cli/metadata', function() {
       data.forEach(function(obj) {
         var err = schema.validate(obj).error;
         it('for ' + obj.name, function() {
-          expect(err).to.be(null);
+          expect(err).to.be.equal(null);
         });
       });
     });

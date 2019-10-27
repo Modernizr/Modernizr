@@ -50,24 +50,24 @@ describe('prefixed', function() {
   });
 
   it('creates a reference on `ModernizrProto`', function() {
-    expect(prefixed).to.equal(ModernizrProto.prefixed);
+    expect(prefixed).to.be.equal(ModernizrProto.prefixed);
   });
 
   it('uses atRule to lookup rules starting with "@"', function() {
-    expect(prefixed('@fakeRule')).to.equal('@fakeRule');
-    expect(atRule.calledOnce).to.be(true);
+    expect(prefixed('@fakeRule')).to.be.equal('@fakeRule');
+    expect(atRule.calledOnce).to.be.equal(true);
   });
 
   it('uses cssToDOM to lookup rules with "-"', function() {
-    expect(prefixed('fake-rule')).to.equal('fakeRule');
-    expect(cssToDOM.calledOnce).to.be(true);
-    expect(testPropsAll.calledOnce).to.be(true);
+    expect(prefixed('fake-rule')).to.be.equal('fakeRule');
+    expect(cssToDOM.calledOnce).to.be.equal(true);
+    expect(testPropsAll.calledOnce).to.be.equal(true);
   });
 
   it('looks up properties on an element, when one is provided', function() {
     var elm = document.createElement('div');
-    expect(prefixed('children', elm)).to.equal('fakeRule');
-    expect(testPropsAll.calledOnce).to.be(true);
+    expect(prefixed('children', elm)).to.be.equal('fakeRule');
+    expect(testPropsAll.calledOnce).to.be.equal(true);
   });
 
   afterEach(function() {

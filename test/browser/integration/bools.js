@@ -21,7 +21,7 @@ describe('bools', function() {
             result instanceof Boolean ||
             result === true ||
             result === false
-          ).to.be(true);
+          ).to.be.equal(true);
         });
       })
       .value();

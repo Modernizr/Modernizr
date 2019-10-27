@@ -6,7 +6,8 @@ if (typeof define !== 'function') {
   }
   var requirejs = require('requirejs');
   var pkg = require(projectRoot + '/package');
-  var expect = require('expect.js');
+  var chai = require('chai');
+  var expect = chai.expect;
   var domain = 'modernizr.com';
   var _ = require('lodash');
   var def = function() {
@@ -67,7 +68,7 @@ describe('generate-banner', function() {
   });
 
   it('should only accept "full" and "compact" as type arguments', function() {
-    expect(function() {generateBanner('sup');}).to.throwError('banners() must be passed "compact" or "full" as an argument.');
+    expect(function() {generateBanner('sup');}).to.throw('banners() must be passed "compact" or "full" as an argument.');
   });
 
   after(function() {

@@ -21,15 +21,15 @@ describe('prefixedCSS', function() {
   });
 
   it('creates a reference on `ModernizrProto`', function() {
-    expect(prefixedCSS).to.equal(ModernizrProto.prefixedCSS);
+    expect(prefixedCSS).to.be.equal(ModernizrProto.prefixedCSS);
   });
 
   it('returns false on unknown properties', function() {
-    expect(prefixedCSS('fart')).to.equal(false);
+    expect(prefixedCSS('fart')).to.be.equal(false);
   });
 
   it('returns known values without prefix', function() {
-    expect(prefixedCSS('display')).to.equal('display');
+    expect(prefixedCSS('display')).to.be.equal('display');
   });
 
   after(function() {

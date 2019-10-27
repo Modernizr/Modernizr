@@ -15,7 +15,7 @@ describe('prefixed autobind', function() {
 
     // unless we false it to a string
     it('Modernizr.prefixed("requestAnimationFrame", window, false) returns a string (the prop name)', function() {
-      expect(Modernizr.prefixed('requestAnimationFrame', window, false)).to.be(rAFName);
+      expect(Modernizr.prefixed('requestAnimationFrame', window, false)).to.be.equal(rAFName);
     });
   }
 
@@ -30,7 +30,7 @@ describe('prefixed autobind', function() {
 
     // fn scoping
     it('Modernizr.prefixed("matchesSelector", HTMLElement.prototype, document.body) is scoped to the body', function() {
-      expect(fn('body')).to.be(true);
+      expect(fn('body')).to.be.equal(true);
     });
   }
 
@@ -68,19 +68,19 @@ describe('prefixed autobind', function() {
     });
 
     it('Modernizr.prefixed("animation", document.body.style, false) returns the name of the property: webkitAnimation', function() {
-      expect(Modernizr.prefixed('animation', document.body.style, false)).to.equal('webkitAnimation');
+      expect(Modernizr.prefixed('animation', document.body.style, false)).to.be.equal('webkitAnimation');
     });
   }
 
   it('Modernizr.prefixed("doSomethingAmazing$#$", window) : Gobbledygook with prefixed(str,obj) returns false', function() {
-    expect(Modernizr.prefixed('doSomethingAmazing$#$', window)).to.be(false);
+    expect(Modernizr.prefixed('doSomethingAmazing$#$', window)).to.be.equal(false);
   });
 
   it('Modernizr.prefixed("doSomethingAmazing$#$", window) : Gobbledygook with prefixed(str,obj, scope) returns false', function() {
-    expect(Modernizr.prefixed('doSomethingAmazing$#$', window, document.body)).to.be(false);
+    expect(Modernizr.prefixed('doSomethingAmazing$#$', window, document.body)).to.be.equal(false);
   });
 
   it('Modernizr.prefixed("doSomethingAmazing$#$", window) : Gobbledygook with prefixed(str,obj, false) returns false', function() {
-    expect(Modernizr.prefixed('doSomethingAmazing$#$', window, false)).to.be(false);
+    expect(Modernizr.prefixed('doSomethingAmazing$#$', window, false)).to.be.equal(false);
   });
 });

@@ -31,15 +31,15 @@ describe('iframe context', function() {
   it('is able to be loaded in an iframe', function(done) {
     iframeWindow.$.getScript('../dist/modernizr-build.js')
       .done(function(build, status) {
-        expect(status).to.equal('success');
-        expect(iframeWindow.Modernizr).to.not.be(undefined);
+        expect(status).to.be.equal('success');
+        expect(iframeWindow.Modernizr).to.not.be.equal(undefined);
         done();
       })
       .fail(function(ajaxResponse, errorType, err) {
         if (err && err.message) {
-          expect(err.message).to.be(undefined);
+          expect(err.message).to.be.equal(undefined);
         } else {
-          expect(errorType).to.be(undefined);
+          expect(errorType).to.be.equal(undefined);
         }
         done();
       });

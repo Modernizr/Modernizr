@@ -52,7 +52,7 @@ describe('svg context unit tests', function() {
       object.onerror = function() {
         var arg = Array.prototype.slice.call(arguments).join(' ');
         try {
-          expect(arg).to.be(undefined);
+          expect(arg).to.be.equal(undefined);
         } catch (e) {
           done(e);
         }
@@ -112,7 +112,7 @@ describe('svg context unit tests', function() {
             window._testElem = createElement('a');
           });
 
-          expect(svgContext._testElem.namespaceURI).to.equal('http://www.w3.org/2000/svg');
+          expect(svgContext._testElem.namespaceURI).to.be.equal('http://www.w3.org/2000/svg');
 
           testInstance.cleanup();
 
@@ -139,7 +139,7 @@ describe('svg context unit tests', function() {
             window._body = getBody();
           });
 
-          expect(svgContext._body.nodeName.toLowerCase()).to.equal('svg');
+          expect(svgContext._body.nodeName.toLowerCase()).to.be.equal('svg');
 
           testInstance.cleanup();
 

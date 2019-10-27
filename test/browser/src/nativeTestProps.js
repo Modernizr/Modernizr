@@ -25,16 +25,16 @@ describe('nativeTestProps', function() {
 
   if (window.CSS && window.CSS.supports) {
     it('looks up if the value is supported', function() {
-      expect(nativeTestProps(['display'], 'block')).to.be(true);
-      expect(nativeTestProps(['display'], 'fart')).to.be(false);
+      expect(nativeTestProps(['display'], 'block')).to.be.equal(true);
+      expect(nativeTestProps(['display'], 'fart')).to.be.equal(false);
     });
   } else if ('CSSSupportsRule' in window) {
     it('supports the old version of the lookup', function() {
-      expect(nativeTestProps(['display'], 'block')).to.be(true);
+      expect(nativeTestProps(['display'], 'block')).to.be.equal(true);
     });
   } else {
     it('returns undefined for browsers lacking support', function() {
-      expect(nativeTestProps(['display'], 'block')).to.be(undefined);
+      expect(nativeTestProps(['display'], 'block')).to.be.equal(undefined);
     });
   }
 

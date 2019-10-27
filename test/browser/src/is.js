@@ -28,11 +28,11 @@ describe('is', function() {
     var _null = is(null, 'object');
     var _str = is('1', 'string');
 
-    expect(_undefined).to.be(true);
-    expect(_func).to.be(true);
-    expect(_bool).to.be(true);
-    expect(_null).to.be(true);
-    expect(_str).to.be(true);
+    expect(_undefined).to.be.equal(true);
+    expect(_func).to.be.equal(true);
+    expect(_bool).to.be.equal(true);
+    expect(_null).to.be.equal(true);
+    expect(_str).to.be.equal(true);
   });
 
   after(function() {

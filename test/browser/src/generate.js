@@ -28,19 +28,19 @@ describe('generate', function() {
   });
 
   it('does not blow up when no config is given', function() {
-    expect(function() {generate();}).to.not.throwError();
+    expect(function() {generate();}).to.not.throw();
   });
 
   it('defines `feature-detects` if it is not on the config already', function() {
     var config = {};
     generate(config);
-    expect(config['feature-detects']).to.not.be(undefined);
+    expect(config['feature-detects']).to.not.be.equal(undefined);
   });
 
   it('does not overwrite `feature-detects` if it is defined already', function() {
     var config = {'feature-detects': ['fake']};
     generate(config);
-    expect(config['feature-detects'][0]).to.be('fake');
+    expect(config['feature-detects'][0]).to.be.equal('fake');
   });
 
   describe('outputs feature detects when they are requested', function() {
@@ -82,7 +82,7 @@ describe('generate', function() {
     var stashedRequire = window.require;
     window.require = function() {};
     // eslint-disable-next-line
-    expect(function() {eval(output);}).to.not.throwError();
+    expect(function() {eval(output);}).to.not.throw();
     window.require = stashedRequire;
   });
 
@@ -91,7 +91,7 @@ describe('generate', function() {
     var stashedRequire = window.require;
     window.require = function() {};
     // eslint-disable-next-line
-    expect(function() {eval(output);}).to.not.throwError();
+    expect(function() {eval(output);}).to.not.throw();
     window.require = stashedRequire;
   });
 

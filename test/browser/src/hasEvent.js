@@ -21,27 +21,27 @@ describe('hasEvent', function() {
   });
 
   it('allows you to pass an element to test against', function() {
-    expect(hasEvent('click'), document.createElement('a')).to.be(true);
+    expect(hasEvent('click'), document.createElement('a')).to.be.equal(true);
   });
 
   it('allows you to pass an string name for an element to test against', function() {
-    expect(hasEvent('click', 'a')).to.be(true);
+    expect(hasEvent('click', 'a')).to.be.equal(true);
   });
 
   it('allows you to pass something other then a DOM element or string', function() {
-    expect(hasEvent('click', document)).to.be(true);
+    expect(hasEvent('click', document)).to.be.equal(true);
   });
 
   it('returns false when no event name is provided', function() {
-    expect(hasEvent()).to.be(false);
+    expect(hasEvent()).to.be.equal(false);
   });
 
   it('returns true when the event exists', function() {
-    expect(hasEvent('click')).to.be(true);
+    expect(hasEvent('click')).to.be.equal(true);
   });
 
   it('returns false when the event does not exists', function() {
-    expect(hasEvent('fart')).to.be(false);
+    expect(hasEvent('fart')).to.be.equal(false);
   });
 
   describe('fallback', function() {
@@ -81,21 +81,19 @@ describe('hasEvent', function() {
         hasEvent = _hasEvent;
         done();
       });
-
     });
 
     it('fallsback properly with no element', function() {
-      expect(hasEvent('click')).to.be(true);
+      expect(hasEvent('click')).to.be.equal(true);
     });
 
     it('fallsback properly when testing with a global element', function() {
-      expect(hasEvent('click', document)).to.be(true);
+      expect(hasEvent('click', document)).to.be.equal(true);
     });
 
     after(function() {
       document.documentElement.onblur = onblur;
     });
-
   });
 
   after(function() {

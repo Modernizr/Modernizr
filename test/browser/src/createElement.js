@@ -23,7 +23,7 @@ describe('createElement', function() {
 
   it('creates an element', function() {
     var element = createElement('modernizr');
-    expect(element.nodeName.toUpperCase()).to.be('MODERNIZR');
+    expect(element.nodeName.toUpperCase()).to.be.equal('MODERNIZR');
   });
 
   after(function() {

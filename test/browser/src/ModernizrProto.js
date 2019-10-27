@@ -60,9 +60,9 @@ describe('ModernizrProto', function() {
 
     ModernizrProto.addTest(name, fn, options);
     expect(tests).to.have.length(1);
-    expect(tests[0].name).to.be(name);
-    expect(tests[0].fn).to.be(fn);
-    expect(tests[0].options).to.be(options);
+    expect(tests[0].name).to.be.equal(name);
+    expect(tests[0].fn).to.be.equal(fn);
+    expect(tests[0].options).to.be.equal(options);
   });
 
   it('should define `Modernizr.addAsyncTest` and have it pushed to the internal `tests` queue', function() {
@@ -70,7 +70,7 @@ describe('ModernizrProto', function() {
 
     ModernizrProto.addAsyncTest(fn);
     expect(tests).to.have.length(1);
-    expect(tests[0].fn).to.be(fn);
+    expect(tests[0].fn).to.be.equal(fn);
   });
 
   after(function() {

@@ -2,11 +2,11 @@ describe('classes', function() {
   var classes = document.documentElement.className.split(' ');
 
   it('_version exists', function() {
-    expect(Modernizr._version).to.not.be(undefined);
+    expect(Modernizr._version).to.not.be.equal(undefined);
   });
 
   it('_version did not add a class', function() {
-    expect(document.documentElement).to.not.contain('_version');
+    expect(document.documentElement.className).to.not.contain('_version');
   });
 
   it('all classes are lower case', function() {
@@ -25,20 +25,19 @@ describe('classes', function() {
 
             if (name.replace('-', '') in Modernizr) {
               name = name.replace('-', '');
-              expect(Modernizr[name]).to.be(result);
+              expect(Modernizr[name]).to.be.equal(result);
             } else {
               name = name.split(/-(.+)/); // split at first occurrence of '-'
-              expect(Modernizr[name[0]]).to.not.be(undefined);
-              expect(!!Modernizr[name[0]][name[1]]).to.equal(result);
+              expect(Modernizr[name[0]]).to.not.be.equal(undefined);
+              expect(!!Modernizr[name[0]][name[1]]).to.be.equal(result);
             }
           } else {
             var test = Modernizr[name];
             var modernizrResult = test instanceof Boolean ? test.valueOf() : !!test;
-            expect(modernizrResult).to.equal(result);
+            expect(modernizrResult).to.be.equal(result);
           }
         });
       })
       .value();
   });
-
 });

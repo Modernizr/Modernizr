@@ -23,8 +23,8 @@ describe('modElem', function() {
 
   it('returns an object with an `elem` prop', function() {
     expect(modElem).to.be.an('object');
-    expect(modElem.elem).to.not.be(undefined);
-    expect(modElem.elem.nodeName.toUpperCase()).to.be('MODERNIZR');
+    expect(modElem.elem).to.not.be.equal(undefined);
+    expect(modElem.elem.nodeName.toUpperCase()).to.be.equal('MODERNIZR');
   });
 
   it('pushes a function onto the Modernizr._q', function() {
@@ -32,9 +32,9 @@ describe('modElem', function() {
   });
 
   it('deletes modElem.style after the `_q` runs', function() {
-    expect(modElem.elem).to.not.be(undefined);
+    expect(modElem.elem).to.not.be.equal(undefined);
     Modernizr._q[0]();
-    expect(modElem.elem).to.be(undefined);
+    expect(modElem.elem).to.be.equal(undefined);
   });
 
   afterEach(function() {

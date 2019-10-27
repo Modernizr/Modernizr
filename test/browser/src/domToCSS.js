@@ -18,7 +18,7 @@ describe('domToCSS', function() {
   });
 
   it('converts kebab to camel', function() {
-    expect(domToCSS('fakeDetect')).to.equal('fake-detect');
+    expect(domToCSS('fakeDetect')).to.be.equal('fake-detect');
   });
 
   after(function() {

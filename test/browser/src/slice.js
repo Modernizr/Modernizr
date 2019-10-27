@@ -18,7 +18,7 @@ describe('slice', function() {
   });
 
   it('returns an instance of `slice`', function() {
-    expect(slice).to.equal([].slice);
+    expect(slice).to.be.equal([].slice);
   });
 
   after(function() {
