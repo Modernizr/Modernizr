@@ -9,5 +9,12 @@
 define(['Modernizr'], function(Modernizr) {
   // Chrome incognito mode used to throw an exception when using openDatabase
   // It doesn't anymore.
-  Modernizr.addTest('websqldatabase', 'openDatabase' in window);
+  Modernizr.addTest('websqldatabase', function() {
+    if (window.openDatabase === null) {
+      return false;
+    }
+    else {
+      return 'openDatabase' in window;
+    }
+  });
 });
