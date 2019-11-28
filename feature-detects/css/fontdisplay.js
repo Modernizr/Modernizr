@@ -7,7 +7,7 @@
   "notes": [{
     "name": "W3C Spec",
     "href": "https://drafts.csswg.org/css-fonts-4/#font-display-desc"
-  },{
+  }, {
     "name": "`font-display` for the masses",
     "href": "https://css-tricks.com/font-display-masses/"
   }]

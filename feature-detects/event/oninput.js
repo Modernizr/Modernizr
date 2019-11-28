@@ -5,10 +5,10 @@
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.oninput"
-  },{
+  }, {
     "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/input.html#common-input-element-attributes"
-  },{
+  }, {
     "name": "Related Github Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/210"
   }],

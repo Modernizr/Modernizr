@@ -7,7 +7,7 @@
   "notes": [{
     "name": "Quirksmode",
     "href": "https://www.quirksmode.org/css/text/textalignlast.html"
-    },{
+  }, {
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-align-last"
   }]

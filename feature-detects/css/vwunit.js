@@ -8,7 +8,7 @@
   "notes": [{
     "name": "Related Modernizr Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/572"
-  },{
+  }, {
     "name": "JSFiddle Example",
     "href": "https://jsfiddle.net/FWeinb/etnYC/"
   }]

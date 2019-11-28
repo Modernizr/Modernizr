@@ -7,7 +7,7 @@
   "notes": [{
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/XMLHttpRequest2/"
-  },{
+  }, {
     "name": "Details on Related Github Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/385"
   }]

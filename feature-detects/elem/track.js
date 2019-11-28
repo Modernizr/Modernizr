@@ -8,7 +8,7 @@
   "notes": [{
     "name": "W3C Spec (Track Element)",
     "href": "https://web.archive.org/web/20121119095019/http://www.w3.org/TR/html5/the-track-element.html#the-track-element"
-  },{
+  }, {
     "name": "W3C Spec (Track API)",
     "href": "https://web.archive.org/web/20121119094620/http://www.w3.org/TR/html5/media-elements.html#text-track-api"
   }],

@@ -8,7 +8,7 @@
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays"
-  },{
+  }, {
     "name": "Kronos spec",
     "href": "http://www.ecma-international.org/ecma-262/6.0/#sec-typedarray-objects"
   }],

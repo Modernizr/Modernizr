@@ -11,16 +11,16 @@
   "notes": [{
     "name": "@font-face detection routine by Diego Perini",
     "href": "http://javascript.nwbox.com/CSSSupport/"
-  },{
+  }, {
     "name": "Filament Group @font-face compatibility research",
     "href": "https://docs.google.com/presentation/d/1n4NyG4uPRjAA8zn_pSQ_Ket0RhcWC6QlZ6LMjKeECo0/edit#slide=id.p"
-  },{
+  }, {
     "name": "Filament Grunticon/@font-face device testing results",
     "href": "https://docs.google.com/spreadsheet/ccc?key=0Ag5_yGvxpINRdHFYeUJPNnZMWUZKR2ItMEpRTXZPdUE#gid=0"
-  },{
+  }, {
     "name": "CSS fonts on Android",
     "href": "https://stackoverflow.com/questions/3200069/css-fonts-on-android"
-  },{
+  }, {
     "name": "@font-face and Android",
     "href": "http://archivist.incutio.com/viewlist/css-discuss/115960"
   }]

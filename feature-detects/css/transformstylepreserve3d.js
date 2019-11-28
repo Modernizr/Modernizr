@@ -7,7 +7,7 @@
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style"
-  },{
+  }, {
     "name": "Related Github Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/1748"
   }]

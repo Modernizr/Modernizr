@@ -5,11 +5,11 @@
   "authors": ["Rick Byers"],
   "name": "Passive event listeners",
   "notes": [{
-      "name": "WHATWG Spec",
-      "href": "https://dom.spec.whatwg.org/#dom-addeventlisteneroptions-passive"
-    },{
-      "name": "WICG explainer",
-      "href": "https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md"
+    "name": "WHATWG Spec",
+    "href": "https://dom.spec.whatwg.org/#dom-addeventlisteneroptions-passive"
+  }, {
+    "name": "WICG explainer",
+    "href": "https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md"
   }]
 }
 !*/

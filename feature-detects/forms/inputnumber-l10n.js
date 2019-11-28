@@ -7,7 +7,7 @@
   "notes": [{
     "name": "Webkit Bug Tracker Listing",
     "href": "https://bugs.webkit.org/show_bug.cgi?id=42484"
-  },{
+  }, {
     "name": "Based on This",
     "href": "https://trac.webkit.org/browser/trunk/LayoutTests/fast/forms/script-tests/input-number-keyoperation.js?rev=80096#L9"
   }],

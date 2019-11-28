@@ -9,7 +9,7 @@
   "notes": [{
     "name": "CSS Tricks Article",
     "href": "https://css-tricks.com/relevant-dropdowns-polyfill-for-datalist/"
-  },{
+  }, {
     "name": "Mike Taylor Code",
     "href": "https://miketaylr.com/code/datalist.html"
   }]

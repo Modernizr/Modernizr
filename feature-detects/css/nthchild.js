@@ -5,11 +5,11 @@
   "property": "nthchild",
   "tags": ["css"],
   "notes": [{
-      "name": "Related Github Issue",
-      "href": "https://github.com/Modernizr/Modernizr/pull/685"
-    },{
-      "name": "Sitepoint :nth-child documentation",
-      "href": "https://www.sitepoint.com/atoz-css-screencast-nth-child/"
+    "name": "Related Github Issue",
+    "href": "https://github.com/Modernizr/Modernizr/pull/685"
+  }, {
+    "name": "Sitepoint :nth-child documentation",
+    "href": "https://www.sitepoint.com/atoz-css-screencast-nth-child/"
   }],
   "authors": ["@emilchristensen"],
   "warnings": ["Known false negative in Safari 3.1 and Safari 3.2.2"]

@@ -7,7 +7,7 @@
   "notes": [{
     "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/dev/system-state.html#custom-handlers"
-  },{
+  }, {
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/navigator.registerProtocolHandler"
   }]

@@ -6,7 +6,7 @@
   "notes": [{
     "name": "W3C Editor's Draft Spec",
     "href": "https://w3c.github.io/deviceorientation/"
-  },{
+  }, {
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation"
   }],

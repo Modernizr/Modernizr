@@ -6,11 +6,11 @@
   "tags": ["css"],
   "caniuse": "css-backdrop-filter",
   "notes": [{
-      "name": "W3C Editor’s Draft Spec",
-      "href": "https://drafts.fxtf.org/filters-2/#BackdropFilterProperty"
-    },{
-      "name": "WebKit Blog introduction + Demo",
-      "href": "https://www.webkit.org/blog/3632/introducing-backdrop-filters/"
+    "name": "W3C Editor’s Draft Spec",
+    "href": "https://drafts.fxtf.org/filters-2/#BackdropFilterProperty"
+  }, {
+    "name": "WebKit Blog introduction + Demo",
+    "href": "https://www.webkit.org/blog/3632/introducing-backdrop-filters/"
   }]
 }
 !*/

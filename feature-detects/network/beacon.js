@@ -4,7 +4,7 @@
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/navigator.sendBeacon"
-  },{
+  }, {
     "name": "W3C Spec",
     "href": "https://w3c.github.io/beacon/"
   }],

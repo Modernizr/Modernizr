@@ -7,10 +7,10 @@
   "notes": [{
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css3-selectors/#gen-content"
-  },{
+  }, {
     "name": "MDN Docs on :before",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/::before"
-  },{
+  }, {
     "name": "MDN Docs on :after",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/::after"
   }]

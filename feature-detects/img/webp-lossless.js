@@ -8,7 +8,7 @@
   "notes": [{
     "name": "Webp Info",
     "href": "https://developers.google.com/speed/webp/"
-  },{
+  }, {
     "name": "Webp Lossless Spec",
     "href": "https://developers.google.com/speed/webp/docs/webp_lossless_bitstream_specification"
   }]

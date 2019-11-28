@@ -5,11 +5,11 @@
   "caniuse": "canvas-blending",
   "tags": ["canvas"],
   "notes": [{
-      "name": "W3C Spec",
-      "href": "https://drafts.fxtf.org/compositing-1/"
-    },{
-      "name": "Article",
-      "href": "https://web.archive.org/web/20171003232921/http://blogs.adobe.com/webplatform/2013/01/28/blending-features-in-canvas/"
+    "name": "W3C Spec",
+    "href": "https://drafts.fxtf.org/compositing-1/"
+  }, {
+    "name": "Article",
+    "href": "https://web.archive.org/web/20171003232921/http://blogs.adobe.com/webplatform/2013/01/28/blending-features-in-canvas/"
   }]
 }
 !*/

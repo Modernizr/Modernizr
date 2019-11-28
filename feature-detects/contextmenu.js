@@ -6,7 +6,7 @@
   "notes": [{
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/html5/interactive-elements.html#context-menus"
-  },{
+  }, {
     "name": "thewebrocks.com Demo",
     "href": "http://thewebrocks.com/demos/context-menu/"
   }],

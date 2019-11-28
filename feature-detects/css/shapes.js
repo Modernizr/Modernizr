@@ -6,7 +6,7 @@
   "notes": [{
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css-shapes"
-  },{
+  }, {
     "name": "Examples from Adobe",
     "href": "https://web.archive.org/web/20171230010236/http://webplatform.adobe.com:80/shapes"
   }, {

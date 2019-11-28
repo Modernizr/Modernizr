@@ -9,10 +9,10 @@
   "notes": [{
     "name": "The ES6 promises spec",
     "href": "https://github.com/domenic/promises-unwrapping"
-  },{
+  }, {
     "name": "Chromium dashboard - ES6 Promises",
     "href": "https://www.chromestatus.com/features/5681726336532480"
-  },{
+  }, {
     "name": "JavaScript Promises: an Introduction",
     "href": "https://developers.google.com/web/fundamentals/primers/promises/"
   }]

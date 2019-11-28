@@ -8,10 +8,10 @@
   "notes": [{
     "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element"
-    },{
+  }, {
     "name": "Srcset and sizes",
     "href": "https://ericportis.com/posts/2014/srcset-sizes/"
-    }]
+  }]
 }
 !*/
 /* DOC

@@ -8,7 +8,7 @@
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/Proximity_Events"
-  },{
+  }, {
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/proximity/"
   }]

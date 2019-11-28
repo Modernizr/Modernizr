@@ -9,10 +9,10 @@
   "notes": [{
     "name": "WebP Info",
     "href": "https://developers.google.com/speed/webp/"
-  },{
+  }, {
     "name": "Article about WebP support",
     "href": "https://optimus.keycdn.com/support/webp-support/"
-  },{
+  }, {
     "name": "Chromium WebP announcement",
     "href": "https://blog.chromium.org/2011/11/lossless-and-transparency-encoding-in.html?m=1"
   }]

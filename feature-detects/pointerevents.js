@@ -5,14 +5,14 @@
   "tags": ["input"],
   "authors": ["Stu Cox"],
   "notes": [{
-      "name": "W3C Spec (Pointer Events)",
-      "href": "https://www.w3.org/TR/pointerevents/"
-    },{
-      "name": "W3C Spec (Pointer Events Level 2)",
-      "href": "https://www.w3.org/TR/pointerevents2/"
-    },{
-      "name": "MDN Docs",
-      "href": "https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent"
+    "name": "W3C Spec (Pointer Events)",
+    "href": "https://www.w3.org/TR/pointerevents/"
+  }, {
+    "name": "W3C Spec (Pointer Events Level 2)",
+    "href": "https://www.w3.org/TR/pointerevents2/"
+  }, {
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent"
   }],
   "warnings": ["This property name now refers to W3C DOM PointerEvents: https://github.com/Modernizr/Modernizr/issues/548#issuecomment-12812099"],
   "polyfills": ["pep"]

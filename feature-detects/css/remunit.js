@@ -9,7 +9,7 @@
   "notes": [{
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css3-values/#relative0"
-  },{
+  }, {
     "name": "Font Size with rem by Jonathan Snook",
     "href": "https://snook.ca/archives/html_and_css/font-size-with-rem"
   }]
