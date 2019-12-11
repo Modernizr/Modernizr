@@ -10,20 +10,20 @@
   }]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
+define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
   Modernizr.addTest('flexgap', function() {
   	// create flex container with row-gap set
-  	var flex = document.createElement('div');
+  	var flex = createElement('div');
 	  flex.style.display = 'flex';
 	  flex.style.flexDirection = 'column';
 	  flex.style.rowGap = '1px';
     
   	// create two, elements inside it
-	  flex.appendChild(document.createElement('div'));
-	  flex.appendChild(document.createElement('div'));
+	  flex.appendChild(createElement('div'));
+	  flex.appendChild(createElement('div'));
     
 	  // append to the DOM (needed to obtain scrollHeight)
-	  document.documentElement.appendChild(flex);
+	  docElement.appendChild(flex);
 	  var isSupported = flex.scrollHeight === 1; // flex container should be 1px high from the row-gap
 	  flex.parentNode.removeChild(flex);
     
