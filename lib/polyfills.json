@@ -715,6 +715,12 @@
     "href": "https://github.com/jakearchibald/ES6-Promises",
     "licenses": ["MIT"]
   },
+  "es6symbol":{
+    "name": "ES6-Symbol",
+    "authors": ["Mariusz Nowak"],
+    "href": "https://github.com/medikoo/es6-symbol",
+    "licenses": ["ISC"]
+  },
   "urlparser": {
     "authors": ["Google Inc."],
     "href": "https://github.com/Polymer/URL",
