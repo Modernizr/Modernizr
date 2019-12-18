@@ -8,7 +8,7 @@
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css-align-3/#gaps"
   }],
-  "authors": "Chris Smith (@chris13524)"
+  "authors": ["Chris Smith (@chris13524)"]
 }
 !*/
 define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
