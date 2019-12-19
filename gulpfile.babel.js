@@ -45,7 +45,7 @@ gulp.task('copy:gh-pages', () => {
   return gulp.src([
     './dist/**/*',
     './lib/**/*',
-    './node_modules/expect.js/**/*',
+    './node_modules/chai/**/*',
     './node_modules/jquery/**/*',
     './node_modules/json3/**/*',
     './node_modules/lodash/**/*',

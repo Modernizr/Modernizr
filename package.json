@@ -16,9 +16,9 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "@babel/core": "^7.7.5",
-    "@babel/preset-env": "^7.7.6",
-    "@babel/register": "^7.7.4",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/register": "^7.7.7",
     "auto-changelog": "^1.16.2",
     "chai": "^4.2.0",
     "del": "^5.1.0",
