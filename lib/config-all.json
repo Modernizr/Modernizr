@@ -176,6 +176,7 @@
     "es6/object",
     "es6/promises",
     "es6/string",
+    "es6/symbol",
     "event/deviceorientation-motion",
     "event/oninput",
     "eventlistener",
