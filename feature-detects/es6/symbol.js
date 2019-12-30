@@ -2,6 +2,7 @@
 {
   "name": "ES6 Symbol",
   "property": "es6symbol",
+  "caniuse": "mdn-javascript_builtins_symbol",
   "notes": [{
     "name": "Official ECMAScript 6 specification",
     "href": "https://www.ecma-international.org/ecma-262/6.0/#sec-symbol-constructor"
@@ -27,11 +28,10 @@ define(['Modernizr'], function(Modernizr) {
     Symbol.match &&
     Symbol.prototype &&
     Symbol.replace &&
-    Symbol.search && 
+    Symbol.search &&
     Symbol.species &&
     Symbol.split &&
-    Symbol.toPrimitive && 
-    Symbol.toStringTag && 
+    Symbol.toPrimitive &&
+    Symbol.toStringTag &&
     Symbol.unscopables));
 });
-  
