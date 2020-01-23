@@ -36,8 +36,8 @@ describe('testPropsAll', function() {
     req.undef('testDOMProps');
     req.undef('testProps');
 
-    testDOMProps.reset();
-    testProps.reset();
+    testDOMProps.resetHistory();
+    testProps.resetHistory();
 
     define('testDOMProps', function() {return testDOMProps;});
     define('testProps', function() {return testProps;});
