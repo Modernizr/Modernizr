@@ -29,6 +29,8 @@ const directories = {
   ])
 };
 
+let failures = 0;
+
 gulp.task('clean', () => {
   return del([
     'dist',
@@ -43,7 +45,7 @@ gulp.task('copy:gh-pages', () => {
   return gulp.src([
     './dist/**/*',
     './lib/**/*',
-    './node_modules/expect.js/**/*',
+    './node_modules/chai/**/*',
     './node_modules/jquery/**/*',
     './node_modules/json3/**/*',
     './node_modules/lodash/**/*',
@@ -86,7 +88,6 @@ gulp.task('generate', (done) => {
 });
 
 gulp.task('mocha:browser', (done) => {
-  let failures = 0;
   const options = {
     reporter: 'dot',
     timeout: 5000,
@@ -121,8 +122,8 @@ gulp.task('mocha:node', (done) => {
   });
 
   // Run the tests.
-  mocha.run(failures => {
-    process.exitCode = failures ? 1 : 0;  // exit with non-zero status if there were failures
+  mocha.run(fails => {
+    failures += fails;
     done();
   });
 });

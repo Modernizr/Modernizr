@@ -120,7 +120,13 @@ if (argv.o || argv.f) {
       .replace(/-/g, ',')
       .split(',')
       .map(function(prop) {
-        var obj = _.find(source, {property: prop});
+        var obj = _.find(source, function(o) {
+          if (o.property instanceof Array) {
+            return o.property.includes(prop);
+          } else {
+            return o.property === prop;
+          }
+        });
 
         // setClasses is technically a flag, not an option. But it is passed
         // in as an option. Since it doesn't exist as an option we have to
