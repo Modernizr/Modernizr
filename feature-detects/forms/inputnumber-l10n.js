@@ -31,7 +31,7 @@ define(['Modernizr', 'createElement', 'getBody', 'test/inputtypes', 'test/forms/
 
     body.insertBefore(div, firstChild);
 
-    div.innerHTML = '<input type="number" value="1.0" step="0.1"/>';
+    div.innerHTML = '<input type="number" value="1.0" step="0.1" style="position: fixed;" />';
     var input = div.childNodes[0];
     body.appendChild(div);
 
