@@ -25,6 +25,7 @@ define(['Modernizr', 'docElement', 'createElement', 'testStyles', 'hasEvent'], f
     var input = createElement('input');
     var supportsOnInput;
     input.setAttribute('oninput', 'return');
+    input.style.cssText = 'position:fixed;top:0;';
 
     if (hasEvent('oninput', docElement) || typeof input.oninput === 'function') {
       return true;
