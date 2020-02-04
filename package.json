@@ -1,6 +1,6 @@
 {
   "name": "modernizr",
-  "version": "3.8.0",
+  "version": "3.9.0",
   "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.",
   "directories": {
     "test": "test"
@@ -16,8 +16,8 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "@babel/core": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "@babel/register": "^7.8.3",
     "auto-changelog": "^1.16.2",
     "chai": "^4.2.0",
