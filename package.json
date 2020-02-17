@@ -10,7 +10,7 @@
     "file": "^0.2.2",
     "lodash": "^4.17.15",
     "markdown-it": "^10.0.0",
-    "mkdirp": "^1.0.3",
+    "mkdirp": "0.5.1",
     "requirejs": "^2.3.6",
     "yargs": "^15.1.0"
   },
