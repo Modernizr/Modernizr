@@ -2,9 +2,50 @@
   "name": "modernizr",
   "version": "3.9.1",
   "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.",
-  "directories": {
-    "test": "test"
+  "main": "./lib/cli.js",
+  "bin": "./bin/modernizr",
+  "bugs": "https://github.com/Modernizr/Modernizr/issues",
+  "homepage": "https://github.com/Modernizr/Modernizr",
+  "repository": "https://github.com/Modernizr/Modernizr.git",
+  "license": "MIT",
+  "author": {
+    "name": "Modernizr",
+    "url": "https://modernizr.com/"
   },
+  "contributors": [
+    {
+      "name": "Faruk Ates",
+      "url": "https://twitter.com/KuraFire"
+    },
+    {
+      "name": "Paul Irish",
+      "url": "https://twitter.com/paul_irish"
+    },
+    {
+      "name": "Alex Sexton",
+      "url": "https://twitter.com/SlexAxton"
+    },
+    {
+      "name": "Ryan Seddon",
+      "url": "https://twitter.com/ryanseddon"
+    },
+    {
+      "name": "Patrick Kettner",
+      "url": "https://twitter.com/patrickkettner"
+    },
+    {
+      "name": "Stu Cox",
+      "url": "https://twitter.com/stucoxmedia"
+    },
+    {
+      "name": "Richard Herrera",
+      "url": "https://twitter.com/doctyper"
+    },
+    {
+      "name": "Veeck",
+      "url": "https://twitter.com/hansalbern"
+    }
+  ],
   "dependencies": {
     "doctrine": "^3.0.0",
     "file": "^0.2.2",
@@ -54,8 +95,6 @@
     "update-changelog": "auto-changelog --commit-limit false --package",
     "update-license": "node scripts/generate-license.js && git add LICENSE"
   },
-  "main": "./lib/cli.js",
-  "bin": "./bin/modernizr",
   "files": [
     "LICENSE",
     "README.md",
@@ -64,13 +103,6 @@
     "lib/",
     "src/"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Modernizr/Modernizr.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Modernizr/Modernizr/issues"
-  },
   "keywords": [
     "modernizr",
     "html5",
@@ -79,43 +111,7 @@
     "browser",
     "feature detection"
   ],
-  "author": {
-    "name": "Modernizr",
-    "url": "https://modernizr.com/"
-  },
-  "contributors": [
-    {
-      "name": "Faruk Ates",
-      "url": "https://twitter.com/KuraFire"
-    },
-    {
-      "name": "Paul Irish",
-      "url": "https://twitter.com/paul_irish"
-    },
-    {
-      "name": "Alex Sexton",
-      "url": "https://twitter.com/SlexAxton"
-    },
-    {
-      "name": "Ryan Seddon",
-      "url": "https://twitter.com/ryanseddon"
-    },
-    {
-      "name": "Patrick Kettner",
-      "url": "https://twitter.com/patrickkettner"
-    },
-    {
-      "name": "Stu Cox",
-      "url": "https://twitter.com/stucoxmedia"
-    },
-    {
-      "name": "Richard Herrera",
-      "url": "https://twitter.com/doctyper"
-    },
-    {
-      "name": "Veeck",
-      "url": "https://twitter.com/hansalbern"
-    }
-  ],
-  "license": "MIT"
+  "directories": {
+    "test": "test"
+  }
 }
