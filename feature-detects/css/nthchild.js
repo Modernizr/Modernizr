@@ -19,17 +19,16 @@
 Detects support for the ':nth-child()' CSS pseudo-selector.
 */
 define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
-  // 5 `<div>` elements with `1px` width are created.
-  // Then every other element has its `width` set to `2px`.
-  // A JavaScript loop then tests if the `<div>`s have the expected width
-  // using the modulus operator.
+  // 4 `<div>` elements with `1px` width are created. Then every other element has its `width` set to `2px`.
+  // Then we check if the width of the even elements is different then the width of the odd elements
+  // while the two even elements have the same width (and the two odd elements too).
+  // Earlier versions of the tests tried to check for the actual width which didnt work on chrome when the
+  // browser was zoomed in our out in specific ways.
   testStyles('#modernizr div {width:1px} #modernizr div:nth-child(2n) {width:2px;}', function(elem) {
     var elems = elem.getElementsByTagName('div');
-    var correctWidths = true;
-
-    for (var i = 0; i < 5; i++) {
-      correctWidths = correctWidths && elems[i].getBoundingClientRect().width === i % 2 + 1;
-    }
+    var correctWidths = elems[0].offsetWidth === elems[2].offsetWidth &&
+      elems[1].offsetWidth === elems[3].offsetWidth &&
+      elems[0].offsetWidth !== elems[1].offsetWidth;
     Modernizr.addTest('nthchild', correctWidths);
-  }, 5);
+  }, 4);
 });
