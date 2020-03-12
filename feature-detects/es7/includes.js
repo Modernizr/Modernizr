@@ -1,3 +1,3 @@
 define(['Modernizr', 'is'], function(Modernizr, is) {
-  Modernizr.addTest('contains', is(Array.prototype.includes, 'function'));
+  Modernizr.addTest('includes', is(Array.prototype.includes, 'function'));
 });
