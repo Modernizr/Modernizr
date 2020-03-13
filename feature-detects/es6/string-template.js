@@ -2,6 +2,7 @@
 {
   "name": "ES6 Template Strings",
   "property": "stringtemplate",
+  "caniuse": "template-literals",
   "notes": [{
     "name": "ECMAScript 6 draft specification",
     "href": "https://tc39wiki.calculist.org/es6/template-strings/"
