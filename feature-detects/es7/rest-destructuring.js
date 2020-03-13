@@ -16,12 +16,12 @@ Check if browser implements ECMAScript 7 Destructuring Assignment per specificat
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('restdestructuring', function() {
-  try {
-  // eslint-disable-next-line
-    eval('var {...rest}={a:1}');
-  } catch (e) {
-    return false;
-  }
-  return true;
+    try {
+      // eslint-disable-next-line
+      eval('var {...rest}={a:1}');
+    } catch (e) {
+      return false;
+    }
+    return true;
   });
 });
