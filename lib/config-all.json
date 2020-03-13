@@ -178,6 +178,7 @@
     "es6/string",
     "es6/symbol",
     "es7/array",
+    "es7/rest-destructuring",
     "event/deviceorientation-motion",
     "event/oninput",
     "eventlistener",
