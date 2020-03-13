@@ -15,6 +15,6 @@
 Check if browser implements ECMAScript 7 Array per specification.
 */
 define(['Modernizr'], function(Modernizr) {
-	Modernizr.addTest('es7array', !!(Array.prototype &&
-		Array.prototype.includes));
+  Modernizr.addTest('es7array', !!(Array.prototype &&
+    Array.prototype.includes));
 });
