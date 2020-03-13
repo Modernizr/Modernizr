@@ -2,6 +2,7 @@
 {
   "name": "ES6 Rest parameters",
   "property": "restparameters",
+  "caniuse": "rest",
   "authors": ["dabretin"],
   "tags": ["es6"]
 }
