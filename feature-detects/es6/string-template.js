@@ -18,7 +18,7 @@ define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('stringtemplate', function() {
     try {
       // eslint-disable-next-line
-      return eval('(function(){var a=1; return `-${a}-`;})()') == '-1-';
+      return eval('(function(){var a=1; return `-${a}-`;})()') === '-1-';
     } catch (e) {
       return false;
     }
