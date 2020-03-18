@@ -1,9 +1,10 @@
 /*!
 {
   "name": "ES7 Rest destructuring",
-  "property": "restdestructuring",
+  "property": [ "restdestructuringarray", "restdestructuringobject" ],
+  "caniuse" : [ "mdn-javascript_operators_destructuring_rest_in_arrays", "mdn-javascript_operators_destructuring_rest_in_objects" ],
   "notes": [{
-    "name": "official ECMAScript 7 Destructuring Assignement draft specification",
+    "name": "official ECMAScript 7 Destructuring Assignment draft specification",
     "href": "https://tc39.es/ecma262/#sec-destructuring-assignment"
   }],
   "authors": ["dabretin"],
@@ -15,7 +16,16 @@
 Check if browser implements ECMAScript 7 Destructuring Assignment per specification.
 */
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('restdestructuring', function() {
+  Modernizr.addTest('restdestructuringarray', function() {
+    try {
+      // eslint-disable-next-line
+      eval('var [...rest]=[1]');
+    } catch (e) {
+      return false;
+    }
+    return true;
+  });
+  Modernizr.addTest('restdestructuringobject', function() {
     try {
       // eslint-disable-next-line
       eval('var {...rest}={a:1}');
