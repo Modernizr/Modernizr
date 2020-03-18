@@ -1,7 +1,7 @@
 /*!
 {
-  "name": "ES6 Spread",
-  "property": "spread",
+  "name": "ES6 Spread array",
+  "property": "spreadarray",
   "notes": [{
     "name": "ECMAScript 6 language specification",
     "href": "https://tc39.es/ecma262/#sec-array-initializer"
@@ -10,7 +10,7 @@
     "name": "Article",
     "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
   }],
-  "caniuse": "spread",
+  "caniuse": "spread array",
   "authors": ["dabretin"],
   "tags": ["es6"]
 }
@@ -20,7 +20,7 @@ Check if browser implements ECMAScript 6 spread syntax (in array and function ca
 WARNING: not for object literals (=> ES7) 
 */
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('spread', function() {
+  Modernizr.addTest('spreadarray', function() {
     try {
       // eslint-disable-next-line
       eval('(function f(){})(...[1])');
