@@ -10,7 +10,7 @@
     "name": "Article",
     "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
   }],
-  "caniuse": "spread array",
+  "caniuse": "mdn-javascript_operators_spread_spread_in_arrays",
   "authors": ["dabretin"],
   "tags": ["es6"]
 }
