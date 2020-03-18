@@ -2,7 +2,7 @@
 {
   "name": "ES7 Rest destructuring",
   "property": [ "restdestructuringarray", "restdestructuringobject" ],
-  "caniuse" : [ "mdn-javascript_operators_destructuring_rest_in_arrays", "mdn-javascript_operators_destructuring_rest_in_objects" ],
+  "caniuse" : "destructuring%20assignment",
   "notes": [{
     "name": "official ECMAScript 7 Destructuring Assignment draft specification",
     "href": "https://tc39.es/ecma262/#sec-destructuring-assignment"
