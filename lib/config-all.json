@@ -179,6 +179,7 @@
     "es6/symbol",
     "es6/string-template",
     "es7/array",
+    "es7/spread-object",
     "event/deviceorientation-motion",
     "event/oninput",
     "eventlistener",
