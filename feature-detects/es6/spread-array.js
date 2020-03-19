@@ -12,12 +12,12 @@
   }],
   "caniuse": "mdn-javascript_operators_spread_spread_in_arrays",
   "authors": ["dabretin"],
+  "warnings": ["not for object literals (implemented in ES7)"],
   "tags": ["es6"]
 }
 !*/
 /* DOC
 Check if browser implements ECMAScript 6 spread syntax (in array and function calls)
-WARNING: not for object literals (=> ES7) 
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('spreadarray', function() {
