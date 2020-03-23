@@ -10,7 +10,7 @@ define(['ModernizrProto', 'prefixed', 'domToCSS'], function(ModernizrProto, pref
    * @access public
    * @function prefixedCSS
    * @param {string} prop - String name of the property to test for
-   * @returns {string|false} The string representing the (possibly prefixed)
+   * @returns {string|boolean} The string representing the (possibly prefixed)
    * valid version of the property, or `false` when it is unsupported.
    * @example
    *
