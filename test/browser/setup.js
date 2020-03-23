@@ -1,4 +1,4 @@
-/* globals mocha, __coverage__ */
+/*global __coverage__*/
 $(document).ready(function() {
 
   var runner = mocha.run();
