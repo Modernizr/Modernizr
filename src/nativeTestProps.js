@@ -5,7 +5,7 @@ define(['injectElementWithStyles', 'domToCSS', 'computedStyle'], function(inject
    *
    * @access private
    * @function nativeTestProps
-   * @param {array} props - An array of property names
+   * @param {Array} props - An array of property names
    * @param {string} value - A string representing the value we want to check via @supports
    * @returns {boolean|undefined} A boolean when @supports exists, undefined otherwise
    */
