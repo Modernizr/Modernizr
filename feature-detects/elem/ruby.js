@@ -40,6 +40,7 @@ define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createE
       return false;
     }
 
+    // TODO replace by computedStyle ?
     function getStyle(element, styleProperty) {
       var result;
 
