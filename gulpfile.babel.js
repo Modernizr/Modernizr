@@ -76,6 +76,7 @@ gulp.task('eslint', () => {
     .pipe(eslint({
       configFile: '.eslintrc'
     }))
+    .pipe(eslint.format())
     .pipe(eslint.failOnError());
 });
 
