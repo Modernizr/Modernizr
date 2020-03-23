@@ -121,7 +121,7 @@ describe('cli/build', function() {
           'feature-detects': ['css/boxsizing']
         };
         build(config, function(file) {
-          expect(file).to.contain('})(window, document);');
+          expect(file).to.contain('})(window, window, document);');
           done();
         });
       });
@@ -132,7 +132,7 @@ describe('cli/build', function() {
           'feature-detects': ['css/boxsizing']
         };
         build(config, function(file) {
-          expect(file).to.contain('})(window.awesomeco, document);');
+          expect(file).to.contain('})(window.awesomeco, window, document);');
           done();
         });
       });

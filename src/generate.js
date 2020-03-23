@@ -76,7 +76,7 @@ define(['lodash'], function(_) {
     '  }\n\n';
 
     output += '  // Leak Modernizr namespace\n' +
-    '  window.Modernizr = Modernizr;\n' +
+    '  scriptGlobalObject.Modernizr = Modernizr;\n' +
     '\n' +
     '});';
 
