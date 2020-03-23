@@ -11,7 +11,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
+define(['Modernizr', 'testStyles', 'computedStyle'], function(Modernizr, testStyles, computedStyle) {
   /*
    * (to infer if GDI or DirectWrite is used on Windows)
    */
@@ -20,8 +20,8 @@ define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
     function(elem) {
       var subpixel = elem.firstChild;
       subpixel.innerHTML = 'This is a text written in Arial';
-      Modernizr.addTest('subpixelfont', window.getComputedStyle ?
-        window.getComputedStyle(subpixel, null).getPropertyValue('width') !== '44px'
+      Modernizr.addTest('subpixelfont', computedStyle ?
+        computedStyle(subpixel, null).getPropertyValue('width') !== '44px'
         : false);
     }, 1, ['subpixel']);
 });

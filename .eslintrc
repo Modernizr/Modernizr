@@ -26,7 +26,7 @@
     "no-prototype-builtins": "off",
     "no-restricted-syntax": ["error",
       {
-        "selector": "CallExpression[callee.name='getComputedStyle']",
+        "selector": "CallExpression[callee.object.name='window'][callee.property.name='getComputedStyle']",
         "message": "Do not use `getComputedStyle`, import and use the `computedStyle` helper"
       }
     ],
