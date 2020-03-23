@@ -1,10 +1,11 @@
 {
+  "extends": ["plugin:jsdoc/recommended"],
   "env": {
+    "amd": true,
     "browser": true,
-    "node": true,
-    "mocha": true,
     "es6": true,
-    "amd": true
+    "node": true,
+    "mocha": true
   },
   "globals": {
     "DocumentTouch": true,
@@ -28,31 +29,19 @@
     "no-eval": "error",
     "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "no-restricted-syntax": ["error",
+      {
+        "selector": "CallExpression[callee.name='getComputedStyle']",
+        "message": "Do not use `getComputedStyle`, import and use the `computedStyle` helper"
+      }
+    ],
     "no-undef": "error",
     "no-unused-expressions": "error",
     "no-unused-vars": "error",
     "quotes": ["error", "single"],
     "semi": "error",
     "valid-jsdoc": "error",
-    "jsdoc/check-tag-names": 1,
-    "jsdoc/check-types": 1,
-    "jsdoc/newline-after-description": 1,
-    "jsdoc/require-hyphen-before-param-description": 1,
-    "jsdoc/require-param": 1,
-    "jsdoc/require-param-type": 1,
-    "jsdoc/require-returns-type": 1,
-    "no-restricted-syntax": [2,
-      {
-          "selector": "CallExpression[callee.name='getComputedStyle']",
-          "message": "Do not use `getComputedStyle`, import and use the `computedStyle` helper"
-      }
-    ]
-  },
-  "settings": {
-    "jsdoc": {
-      "additionalTagNames": {
-        "customTags": ["memberOf", "optionName", "optionProp"]
-      }
-    }
+    "jsdoc/check-tag-names": ["error", { "definedTags": ["memberOf", "optionName", "optionProp"] }],
+    "jsdoc/require-jsdoc": "off"
   }
 }
