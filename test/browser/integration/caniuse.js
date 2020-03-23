@@ -1,4 +1,4 @@
-/* global UAParser */
+/*global UAParser*/
 window.caniusecb = function(caniuse) {
 
   var ua = new UAParser(navigator.userAgent).getResult();

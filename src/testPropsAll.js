@@ -8,11 +8,11 @@ define(['ModernizrProto', 'cssomPrefixes', 'is', 'testProps', 'domPrefixes', 'te
    * @access private
    * @function testPropsAll
    * @param {string} prop - A string of the property to test for
-   * @param {string|Object} [prefixed] - An object to check the prefixed properties on. Use a string to skip
+   * @param {string|object} [prefixed] - An object to check the prefixed properties on. Use a string to skip
    * @param {HTMLElement|SVGElement} [elem] - An element used to test the property and value against
    * @param {string} [value] - A string of a css value
    * @param {boolean} [skipValueTest] - An boolean representing if you want to test if value sticks when set
-   * @returns {false|string} returns the string version of the property, or false if it is unsupported
+   * @returns {string|boolean} returns the string version of the property, or `false` if it is unsupported
    */
   function testPropsAll(prop, prefixed, elem, value, skipValueTest) {
 

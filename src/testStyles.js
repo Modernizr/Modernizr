@@ -9,7 +9,7 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    * @access public
    * @function testStyles
    * @param {string} rule - String representing a css rule
-   * @param {function} callback - A function that is used to test the injected element
+   * @param {Function} callback - A function that is used to test the injected element
    * @param {number} [nodes] - An integer representing the number of additional nodes you want injected
    * @param {string[]} [testnames] - An array of strings that are used as ids for the additional nodes
    * @returns {boolean}

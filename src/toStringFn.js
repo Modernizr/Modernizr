@@ -6,7 +6,7 @@ define(function() {
    *
    * @access private
    * @function toStringFn
-   * @returns {function} An abstracted toString function
+   * @returns {Function} An abstracted toString function
    */
   var toStringFn = ({}).toString;
   return toStringFn;
