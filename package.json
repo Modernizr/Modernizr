@@ -51,7 +51,7 @@
     "file": "^0.2.2",
     "lodash": "^4.17.15",
     "markdown-it": "^10.0.0",
-    "mkdirp": "0.5.3",
+    "mkdirp": "0.5.4",
     "requirejs": "^2.3.6",
     "yargs": "^15.3.1"
   },
