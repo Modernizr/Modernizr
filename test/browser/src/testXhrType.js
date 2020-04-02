@@ -20,11 +20,11 @@ describe('testXhrType', function() {
 
   it('returns false when XHR is undefined', function(done) {
     var originalXhr = XMLHttpRequest;
-    XMLHttpRequest = undefined;
+    XMLHttpRequest = undefined; //eslint-disable-line
 
     req(['testXhrType'], function(testXhrType) {
       expect(testXhrType('json')).to.be.equal(false);
-      XMLHttpRequest = originalXhr;
+      XMLHttpRequest = originalXhr; //eslint-disable-line
       done();
     });
   });

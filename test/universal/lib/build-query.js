@@ -1,6 +1,11 @@
+var projectRoot;
+var filesRoot;
+var cleanup;
+var req;
+
 if (typeof define !== 'function') {
-  var projectRoot = require('find-parent-dir').sync(__dirname, 'package.json');
-  var filesRoot = projectRoot;
+  projectRoot = require('find-parent-dir').sync(__dirname, 'package.json');
+  filesRoot = projectRoot;
   if (process.env.APP_DIR_FOR_CODE_COVERAGE) {
     filesRoot = filesRoot + process.env.APP_DIR_FOR_CODE_COVERAGE;
   }
@@ -8,11 +13,9 @@ if (typeof define !== 'function') {
   var chai = require('chai');
   var expect = chai.expect;
 } else {
-  var projectRoot = '..';
-  var filesRoot = '..';
+  projectRoot = '..';
+  filesRoot = '..';
 }
-var cleanup;
-var req;
 
 describe('build-query', function() {
   var buildQuery;
