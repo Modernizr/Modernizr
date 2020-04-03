@@ -74,6 +74,7 @@ gulp.task('eslint', () => {
     '!test/coverage/**/*.js'
   ])
     .pipe(eslint({
+      fix: true,
       configFile: '.eslintrc'
     }))
     .pipe(eslint.format())

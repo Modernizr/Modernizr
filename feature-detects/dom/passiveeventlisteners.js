@@ -23,6 +23,7 @@ define(['Modernizr'], function(Modernizr) {
       var opts = Object.defineProperty({}, 'passive', {
         get: function() {
           supportsPassiveOption = true;
+          return;
         }
       });
       var noop = function () {};

@@ -1,5 +1,5 @@
 {
-  "extends": ["plugin:jsdoc/recommended"],
+  "extends": ["eslint:recommended", "plugin:jsdoc/recommended"],
   "env": {
     "amd": true,
     "browser": true,
@@ -19,29 +19,17 @@
     "jsdoc"
   ],
   "rules": {
-    "comma-dangle": "error",
-    "comma-style": ["error", "last"],
-    "curly": "error",
-    "indent": ["error", 2, { "SwitchCase": 1 }],
-    "no-caller": "error",
-    "no-cond-assign": ["error", "except-parens"],
-    "no-eq-null": "error",
-    "no-eval": "error",
-    "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
-    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "getter-return": ["error", { "allowImplicit": true }],
+    "jsdoc/check-tag-names": ["error", { "definedTags": ["memberOf", "optionName", "optionProp"] }],
+    "jsdoc/require-jsdoc": "off",
+    "no-empty": "off",
+    "no-prototype-builtins": "off",
     "no-restricted-syntax": ["error",
       {
         "selector": "CallExpression[callee.name='getComputedStyle']",
         "message": "Do not use `getComputedStyle`, import and use the `computedStyle` helper"
       }
     ],
-    "no-undef": "error",
-    "no-unused-expressions": "error",
-    "no-unused-vars": "error",
-    "quotes": ["error", "single"],
-    "semi": "error",
-    "valid-jsdoc": "error",
-    "jsdoc/check-tag-names": ["error", { "definedTags": ["memberOf", "optionName", "optionProp"] }],
-    "jsdoc/require-jsdoc": "off"
+    "no-useless-escape": "off"
   }
 }

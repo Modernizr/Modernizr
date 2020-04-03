@@ -1,30 +1,37 @@
+var projectRoot;
+var filesRoot;
+var domain;
+var generateBanner;
+var cleanup;
+var def;
+var pkg;
+var _;
+
 if (typeof define !== 'function') {
-  var projectRoot = require('find-parent-dir').sync(__dirname, 'package.json');
-  var filesRoot = projectRoot;
+  var requirejs = require('requirejs');
+  var chai = require('chai');
+  var expect = chai.expect;
+  projectRoot = require('find-parent-dir').sync(__dirname, 'package.json');
+  filesRoot = projectRoot;
   if (process.env.APP_DIR_FOR_CODE_COVERAGE) {
     filesRoot = filesRoot + process.env.APP_DIR_FOR_CODE_COVERAGE;
   }
-  var requirejs = require('requirejs');
-  var pkg = require(projectRoot + '/package');
-  var chai = require('chai');
-  var expect = chai.expect;
-  var domain = 'modernizr.com';
-  var _ = require('lodash');
-  var def = function() {
+  domain = 'modernizr.com';
+  pkg = require(projectRoot + '/package');
+  _ = require('lodash');
+  def = function() {
     return requirejs.define.apply(this, arguments);
   };
 } else {
-  var domain = location.host;
-  var projectRoot = '..';
-  var filesRoot = '..';
-  var pkg = {};
-  var _ = window.lodash;
-  var def = function() {
+  projectRoot = '..';
+  filesRoot = '..';
+  domain = location.host;
+  pkg = {};
+  _ = window.lodash;
+  def = function() {
     return define.apply(this, arguments);
   };
 }
-var generateBanner;
-var cleanup;
 
 describe('generate-banner', function() {
 
