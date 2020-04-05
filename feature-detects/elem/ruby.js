@@ -12,25 +12,24 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
+define(['Modernizr', 'createElement', 'docElement', 'computedStyle'], function(Modernizr, createElement, docElement, computedStyle) {
   Modernizr.addTest('ruby', function() {
 
     var ruby = createElement('ruby');
     var rt = createElement('rt');
     var rp = createElement('rp');
-    var displayStyleProperty = 'display';
-    // 'fontSize' - because it`s only used for IE6 and IE7
-    var fontSizeStyleProperty = 'fontSize';
 
     ruby.appendChild(rp);
     ruby.appendChild(rt);
     docElement.appendChild(ruby);
 
+    console.log(computedStyle(rp, '', 'display') );
+
     // browsers that support <ruby> hide the <rp> via "display:none"
-    if (getStyle(rp, displayStyleProperty) === 'none' ||                                                          // for non-IE browsers
+    if (computedStyle(rp, null, 'display') === 'none' ||                                                          // for non-IE browsers
          // but in IE browsers <rp> has "display:inline" so, the test needs other conditions:
-         getStyle(ruby, displayStyleProperty) === 'ruby' && getStyle(rt, displayStyleProperty) === 'ruby-text' || // for IE8+
-         getStyle(rp, fontSizeStyleProperty) === '6pt' && getStyle(rt, fontSizeStyleProperty) === '6pt') {        // for IE6 & IE7
+      computedStyle(ruby, null, 'display') === 'ruby' && computedStyle(rt, null, 'display') === 'ruby-text' || // for IE8+
+      computedStyle(rp, null, 'fontSize') === '6pt' && computedStyle(rt, null, 'fontSize') === '6pt') {        // for IE6 & IE7
 
       cleanUp();
       return true;
@@ -40,19 +39,6 @@ define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createE
       return false;
     }
 
-    // TODO replace by computedStyle ?
-    function getStyle(element, styleProperty) {
-      var result;
-
-      if (window.getComputedStyle) {     // for non-IE browsers
-        result = document.defaultView.getComputedStyle(element, null).getPropertyValue(styleProperty);
-      } else if (element.currentStyle) { // for IE
-        result = element.currentStyle[styleProperty];
-      }
-
-      return result;
-    }
-
     function cleanUp() {
       docElement.removeChild(ruby);
       // the removed child node still exists in memory, so ...
@@ -60,7 +46,5 @@ define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createE
       rt = null;
       rp = null;
     }
-
   });
-
 });
