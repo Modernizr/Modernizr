@@ -21,7 +21,7 @@ define(['Modernizr', 'testStyles', 'computedStyle'], function(Modernizr, testSty
       var subpixel = elem.firstChild;
       subpixel.innerHTML = 'This is a text written in Arial';
       Modernizr.addTest('subpixelfont', computedStyle ?
-        computedStyle(subpixel, null).getPropertyValue('width') !== '44px'
+        computedStyle(subpixel, null, 'width') !== '44px'
         : false);
     }, 1, ['subpixel']);
 });

@@ -19,9 +19,9 @@ define(['Modernizr', 'testStyles', 'prefixes', 'test/css/transitions', 'computed
 
     testStyles(styles, function(elem) {
       // Force rendering of the element's styles so that the transition will trigger
-      computedStyle(elem, ':before').getPropertyValue('font-size');
+      computedStyle(elem, ':before', 'font-size');
       elem.className += 'trigger';
-      result = computedStyle(elem, ':before').getPropertyValue('font-size') === '5px';
+      result = computedStyle(elem, ':before', 'font-size') === '5px';
     });
 
     return result;

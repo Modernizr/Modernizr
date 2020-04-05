@@ -21,7 +21,7 @@ define(['Modernizr', 'testStyles', 'prefixes', 'test/css/animations', 'computedS
     ].join('');
 
     testStyles(styles, function(elem) {
-      result = computedStyle(elem, ':before').getPropertyValue('font-size') === '10px';
+      result = computedStyle(elem, ':before', 'font-size') === '10px';
     });
 
     return result;
