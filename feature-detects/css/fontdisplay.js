@@ -16,6 +16,6 @@
 /* DOC
 Detects support for the `font-display` descriptor, which defines how font files are loaded and displayed by the browser.
 */
-define(['Modernizr'], function(Modernizr, testProp) {
+define(['Modernizr', 'testProp'], function(Modernizr, testProp) {
   Modernizr.addTest('fontDisplay', testProp('font-display'));
 });
