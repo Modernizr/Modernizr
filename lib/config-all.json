@@ -168,6 +168,7 @@
     "es5/undefined",
     "es6/array",
     "es6/arrow",
+    "es6/class",
     "es6/collections",
     "es6/contains",
     "es6/generators",
