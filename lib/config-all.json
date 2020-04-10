@@ -183,6 +183,7 @@
     "es7/array",
     "es7/rest-destructuring",
     "es7/spread-object",
+    "es8/object",
     "event/deviceorientation-motion",
     "event/oninput",
     "eventlistener",
