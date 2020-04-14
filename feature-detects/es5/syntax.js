@@ -17,27 +17,30 @@
 /* DOC
 Check if browser accepts ECMAScript 5 syntax.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('es5syntax', function() {
-    var value, obj, stringAccess, getter, setter, reservedWords, zeroWidthChars;
-    try {
-      /* eslint no-eval: "off" */
-      // Property access on strings
-      stringAccess = eval('"foobar"[3] === "b"');
-      // Getter in property initializer
-      getter = eval('({ get x(){ return 1 } }).x === 1');
-      eval('({ set x(v){ value = v; } }).x = 1');
-      // Setter in property initializer
-      setter = value === 1;
-      // Reserved words as property names
-      eval('obj = ({ if: 1 })');
-      reservedWords = obj['if'] === 1;
-      // Zero-width characters in identifiers
-      zeroWidthChars = eval('_\u200c\u200d = true');
+import Modernizr from '../../src/Modernizr.js';
+import testSyntax from '../../src/testSyntax.js';
 
-      return stringAccess && getter && setter && reservedWords && zeroWidthChars;
-    } catch (ignore) {
-      return false;
-    }
-  });
+Modernizr.addTest('es5syntax', function() {
+  var obj, stringAccess, getter, setter, reservedWords, zeroWidthChars;
+  try {
+    // Property access on strings
+    stringAccess = testSyntax('"foobar"[3] === "b"');
+    // Getter in property initializer
+    getter = testSyntax('({ get x(){} })');
+    // Setter in property initializer
+    setter = testSyntax('({ set x(v){} })');
+
+    // Reserved words as property names
+    // eslint-disable-next-line no-eval
+    eval('obj = ({ if: 1 })');
+    reservedWords = obj['if'] === 1;
+    // Zero-width characters in identifiers
+    zeroWidthChars = testSyntax('var a\u200c\u200d = 1');
+
+    return stringAccess && getter && setter && reservedWords && zeroWidthChars;
+  } catch (ignore) {
+    return false;
+  }
 });
+
+export default Modernizr.es5syntax

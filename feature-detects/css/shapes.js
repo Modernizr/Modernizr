@@ -15,6 +15,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('shapes', testAllProps('shapeOutside', 'content-box', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('shapes', testAllProps('shapeOutside', 'content-box', true));
+
+export default Modernizr.shapes

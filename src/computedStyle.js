@@ -1,39 +1,38 @@
-define(function() {
+/**
+ * wrapper around getComputedStyle, to fix issues with Firefox returning null when
+ * called inside of a hidden iframe
+ *
+ * @access private
+ * @function computedStyle
+ * @param {HTMLElement|SVGElement} elem - The element we want to find the computed styles of
+ * @param {string|null} [pseudo] - An optional pseudo element selector (e.g. :before), of null if none
+ * @param {string} prop - A CSS property
+ * @returns {CSSStyleDeclaration} the value of the specified CSS property
+ */
 
-  /**
-   * wrapper around getComputedStyle, to fix issues with Firefox returning null when
-   * called inside of a hidden iframe
-   *
-   * @access private
-   * @function computedStyle
-   * @param {HTMLElement|SVGElement} elem - The element we want to find the computed styles of
-   * @param {string|null} [pseudo] - An optional pseudo element selector (e.g. :before), of null if none
-   * @param {string} prop - A CSS property
-   * @returns {CSSStyleDeclaration} the value of the specified CSS property
-   */
-  function computedStyle(elem, pseudo, prop) {
-    var result;
+import _globalThis from './globalThis.js';
 
-    if ('getComputedStyle' in window) {
-      result = getComputedStyle.call(window, elem, pseudo);
-      var console = window.console;
+function computedStyle(elem, pseudo, prop) {
+  var result;
 
-      if (result !== null) {
-        if (prop) {
-          result = result.getPropertyValue(prop);
-        }
-      } else {
-        if (console) {
-          var method = console.error ? 'error' : 'log';
-          console[method].call(console, 'getComputedStyle returning null, its possible modernizr test results are inaccurate');
-        }
+  if ('getComputedStyle' in _globalThis) {
+    result = _globalThis.getComputedStyle(elem, pseudo);
+
+    if (result !== null) {
+      if (prop) {
+        result = result.getPropertyValue(prop);
       }
     } else {
-      result = !pseudo && elem.currentStyle && elem.currentStyle[prop];
+      if (_globalThis.console) {
+        var method = _globalThis.console.error ? 'error' : 'log';
+        _globalThis.console[method]('getComputedStyle returning null, its possible modernizr test results are inaccurate');
+      }
     }
-
-    return result;
+  } else {
+    result = !pseudo && elem.currentStyle && elem.currentStyle[prop];
   }
 
-  return computedStyle;
-});
+  return result;
+}
+
+export default computedStyle;

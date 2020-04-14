@@ -12,37 +12,42 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement', 'docElement', 'computedStyle'], function(Modernizr, createElement, docElement, computedStyle) {
-  Modernizr.addTest('ruby', function() {
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+import docElement from '../../src/docElement.js';
+import computedStyle from '../../src/computedStyle.js';
 
-    var ruby = createElement('ruby');
-    var rt = createElement('rt');
-    var rp = createElement('rp');
+Modernizr.addTest('ruby', function() {
 
-    ruby.appendChild(rp);
-    ruby.appendChild(rt);
-    docElement.appendChild(ruby);
+  var ruby = createElement('ruby');
+  var rt = createElement('rt');
+  var rp = createElement('rp');
+  var displayStyleProperty = 'display';
+  // 'fontSize' - because it`s only used for IE6 and IE7
+  var fontSizeStyleProperty = 'fontSize';
 
-    // browsers that support <ruby> hide the <rp> via "display:none"
-    if (computedStyle(rp, null, 'display') === 'none' ||                                                       // for non-IE browsers
-         // but in IE browsers <rp> has "display:inline" so, the test needs other conditions:
-      computedStyle(ruby, null, 'display') === 'ruby' && computedStyle(rt, null, 'display') === 'ruby-text' || // for IE8+
-      computedStyle(rp, null, 'fontSize') === '6pt' && computedStyle(rt, null, 'fontSize') === '6pt') {        // for IE6 & IE7
+  ruby.appendChild(rp);
+  ruby.appendChild(rt);
+  docElement.appendChild(ruby);
 
-      cleanUp();
-      return true;
+  // browsers that support <ruby> hide the <rp> via "display:none"
+  if (computedStyle(rp, null, displayStyleProperty) === 'none' ||                                                          // for non-IE browsers
+       // but in IE browsers <rp> has "display:inline" so, the test needs other conditions:
+       computedStyle(ruby, null, displayStyleProperty) === 'ruby' && computedStyle(rt, null, displayStyleProperty) === 'ruby-text' || // for IE8+
+       computedStyle(rp, null, fontSizeStyleProperty) === '6pt' && computedStyle(rt, null, fontSizeStyleProperty) === '6pt') {        // for IE6 & IE7
 
-    } else {
-      cleanUp();
-      return false;
-    }
+    cleanUp();
+    return true;
 
-    function cleanUp() {
-      docElement.removeChild(ruby);
-      // the removed child node still exists in memory, so ...
-      ruby = null;
-      rt = null;
-      rp = null;
-    }
-  });
+  } else {
+    cleanUp();
+    return false;
+  }
+
+  function cleanUp() {
+    docElement.removeChild(ruby);
+  }
+
 });
+
+export default Modernizr.ruby

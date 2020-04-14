@@ -12,6 +12,9 @@
 /* DOC
 ServiceWorkers (formerly Navigation Controllers) are a way to persistently cache resources to built apps that work better offline.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('serviceworker', 'serviceWorker' in navigator);
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('serviceworker', 'serviceWorker' in _globalThis.navigator);
+
+export default Modernizr.serviceworker

@@ -17,6 +17,9 @@
 /* DOC
 Detects support for CSS Backdrop Filters, allowing for background blur effects like those introduced in iOS 7. Support for this was added to iOS Safari/WebKit in iOS 9.
 */
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('backdropfilter', testAllProps('backdropFilter'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('backdropfilter', testAllProps('backdropFilter'));
+
+export default Modernizr.backdropfilter;

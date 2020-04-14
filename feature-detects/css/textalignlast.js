@@ -4,6 +4,7 @@
   "property": "textalignlast",
   "caniuse": "css-text-align-last",
   "tags": ["css"],
+  "caniuse": "css-text-align-last",
   "knownBugs": ["IE does not support the 'start' or 'end' values."],
   "notes": [{
     "name": "Quirksmode",
@@ -14,6 +15,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('textalignlast', testAllProps('textAlignLast'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('textalignlast', testAllProps('textAlignLast'));
+
+export default Modernizr.textalignlast

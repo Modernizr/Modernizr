@@ -16,6 +16,9 @@
 /* DOC
 Detects support for the Proxy object which is used to create dynamic proxies.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('proxy', 'Proxy' in window);
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('proxy', 'Proxy' in _globalThis);
+
+export default Modernizr.proxy

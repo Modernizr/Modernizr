@@ -8,11 +8,16 @@
 /* DOC
 Detects whether or not the current browser is IE8 in compatibility mode (i.e. acting as IE7).
 */
-define(['Modernizr'], function(Modernizr) {
-  // In this case, IE8 will be acting as IE7. You may choose to remove features in this case.
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+var doc = _globalThis.document
 
-  // related:
-  // james.padolsey.com/javascript/detect-ie-in-js-using-conditional-comments/
+// In this case, IE8 will be acting as IE7. You may choose to remove features in this case.
 
-  Modernizr.addTest('ie8compat', (!window.addEventListener && !!document.documentMode && document.documentMode === 7));
-});
+// related:
+// james.padolsey.com/javascript/detect-ie-in-js-using-conditional-comments/
+
+
+Modernizr.addTest('ie8compat', (!_globalThis.addEventListener && !!doc.documentMode && doc.documentMode === 7));
+
+export default Modernizr.ie8compat

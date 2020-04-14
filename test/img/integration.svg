@@ -1,7 +1,7 @@
 <svg width="180" height="88" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
     <script>window.onerror = window.parent.document.getElementById('svgContext').onerror</script>
-    <script xlink:href="../../dist/modernizr-build.js"></script>
+    <script xlink:href="../test-build.js"></script>
     <script> if (window.Modernizr) {window.parent.document.getElementById('svgContext').onsuccess(window.Modernizr)}</script>
 
     <path fill="none" d="M-1-1h1172v90H-1z" />

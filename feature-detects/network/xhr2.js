@@ -17,9 +17,12 @@
 /* DOC
 Tests for XHR2.
 */
-define(['Modernizr'], function(Modernizr) {
-  // all three of these details report consistently across all target browsers:
-  //   !!(window.ProgressEvent);
-  //   'XMLHttpRequest' in window && 'withCredentials' in new XMLHttpRequest
-  Modernizr.addTest('xhr2', 'XMLHttpRequest' in window && 'withCredentials' in new XMLHttpRequest());
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+// all three of these details report consistently across all target browsers:
+//   !!(_globalThis.ProgressEvent);
+//   'XMLHttpRequest' in _globalThis && 'withCredentials' in new XMLHttpRequest
+Modernizr.addTest('xhr2', 'XMLHttpRequest' in _globalThis && 'withCredentials' in new _globalThis.XMLHttpRequest());
+
+export default Modernizr.xhr2

@@ -13,6 +13,9 @@
 /* DOC
 Detect support for the maxlength attribute of a textarea element
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('textareamaxlength', !!('maxLength' in createElement('textarea')));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('textareamaxlength', !!('maxLength' in createElement('textarea')));
+
+export default Modernizr.textareamaxlength

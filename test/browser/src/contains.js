@@ -1,27 +1,9 @@
 describe('contains', function() {
   var contains;
-  var cleanup;
 
-  before(function(done) {
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['contains', 'cleanup'], function(_contains, _cleanup) {
-      contains = _contains;
-      cleanup = _cleanup;
-      done();
-    });
-  });
+  eval(makeIIFE({file: "./src/contains.js", func: 'contains'}))
 
   it('finds substrings', function() {
     expect(contains('fakeDetect', 'akeDet')).to.be.equal(true);
-  });
-
-  after(function() {
-    cleanup();
   });
 });

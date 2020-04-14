@@ -17,40 +17,45 @@
 /* DOC
 Detects whether input type="number" is capable of receiving and displaying localized numbers, e.g. with comma separator.
 */
-define(['Modernizr', 'createElement', 'getBody', 'test/inputtypes', 'test/forms/validation'], function(Modernizr, createElement, getBody) {
-  Modernizr.addTest('localizednumber', function() {
-    /* this extends our testing of input[type=number], so bomb out if that's missing */
-    if (!Modernizr.inputtypes.number) { return false; }
-    /* we rely on checkValidity later, so bomb out early if we don't have it */
-    if (!Modernizr.formvalidation) { return false; }
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+import getBody from '../../src/getBody.js';
+import '../inputtypes.js';
+import './validation.js';
 
-    var body = getBody();
-    var div = createElement('div');
-    var firstChild = body.firstElementChild || body.firstChild;
-    var result;
+Modernizr.addTest('localizednumber', function() {
+  /* this extends our testing of input[type=number], so bomb out if that's missing */
+  if (!Modernizr.inputtypes.number) { return false; }
+  /* we rely on checkValidity later, so bomb out early if we don't have it */
+  if (!Modernizr.formvalidation) { return false; }
 
-    body.insertBefore(div, firstChild);
+  var body = getBody();
+  var div = createElement('div');
+  var firstChild = body.firstElementChild || body.firstChild;
+  var result;
 
-    div.innerHTML = '<input type="number" value="1.0" step="0.1" style="position: fixed; top: 0;" />';
-    var input = div.childNodes[0];
-    body.appendChild(div);
+  body.insertBefore(div, firstChild);
 
-    input.focus();
-    try {
-      document.execCommand('SelectAll', false); // Overwrite current input value, rather than appending text
-      document.execCommand('InsertText', false, '1,1');
-    } catch (e) {} // prevent warnings in IE
+  div.innerHTML = '<input type="number" value="1.0" step="0.1" style="position: fixed; top: 0;"/>';
+  var input = div.childNodes[0];
+  body.appendChild(div);
 
-    /* results */
-    result = input.type === 'number' && input.valueAsNumber === 1.1 && input.checkValidity();
+  input.focus();
+  try {
+    document.execCommand('SelectAll', false); // Overwrite current input value, rather than appending text
+    document.execCommand('InsertText', false, '1,1');
+  } catch (e) {} // prevent warnings in IE
 
-    /* cleanup */
-    body.removeChild(div);
-    if (body.fake) {
-      body.parentNode.removeChild(body);
-    }
+  /* results */
+  result = input.type === 'number' && input.valueAsNumber === 1.1 && input.checkValidity();
 
-    return result;
-  });
+  /* cleanup */
+  body.removeChild(div);
+  if (body.fake) {
+    body.parentNode.removeChild(body);
+  }
 
+  return result;
 });
+
+export default Modernizr.localizednumber

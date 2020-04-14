@@ -10,6 +10,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('backgroundsize', testAllProps('backgroundSize', '100%', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('backgroundsize', testAllProps('backgroundSize', '100%', true));
+
+export default Modernizr.backgroundsize

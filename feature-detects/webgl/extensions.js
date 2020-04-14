@@ -24,41 +24,41 @@ if ('OES_vertex_array_object' in Modernizr.webglextensions) {
 }
 ```
 */
-define(['Modernizr', 'createElement', 'test/webgl'], function(Modernizr, createElement) {
+import Modernizr, { addTest } from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+import webgl from '../webgl.js';
+var results = {};
+
+(function() {
   // based on code from ilmari heikkinen
   // code.google.com/p/graphics-detect/source/browse/js/detect.js
+  var canvas
+  var ctx;
+  var exts;
 
-  // Not Async but handles it's own self
-  Modernizr.addAsyncTest(function() {
+  if (!webgl) {
+    addTest('webglextensions', false);
+    return;
+  }
 
-    // Not a good candidate for css classes, so we avoid addTest stuff
-    Modernizr.webglextensions = false;
+  try {
+    canvas = createElement('canvas');
+    ctx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    exts = ctx.getSupportedExtensions();
+  }
+  catch (e) {
+    addTest('webglextensions', false);
+    return;
+  }
 
-    if (!Modernizr.webgl) {
-      return;
-    }
+  Modernizr.addTest('webglextensions', new Boolean(ctx !== undefined))
 
-    var canvas;
-    var ctx;
-    var exts;
+  for (var i = -1, len = exts.length; ++i < len;) {
+    results[exts[i]] = true;
+    Modernizr.webglextensions[exts[i]] = true;
+  }
 
-    try {
-      canvas = createElement('canvas');
-      ctx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-      exts = ctx.getSupportedExtensions();
-    }
-    catch (e) {
-      return;
-    }
+  canvas = undefined;
+})()
 
-    if (ctx !== undefined) {
-      Modernizr.webglextensions = new Boolean(true);
-    }
-
-    for (var i = -1, len = exts.length; ++i < len;) {
-      Modernizr.webglextensions[exts[i]] = true;
-    }
-
-    canvas = undefined;
-  });
-});
+export default results

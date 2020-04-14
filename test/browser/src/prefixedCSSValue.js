@@ -1,21 +1,7 @@
 describe('prefixedCSSValue', function() {
   var prefixedCSSValue;
-  var cleanup;
 
-  before(function(done) {
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['cleanup', 'prefixedCSSValue'], function(_cleanup, _prefixedCSSValue) {
-      prefixedCSSValue = _prefixedCSSValue;
-      cleanup = _cleanup;
-      done();
-    });
-  });
+  eval(makeIIFE({file: "./src/prefixedCSSValue.js", func: 'prefixedCSSValue'}))
 
   it('returns the value when it is valid', function() {
     expect(prefixedCSSValue('display', 'block')).to.be.equal('block');
@@ -27,9 +13,5 @@ describe('prefixedCSSValue', function() {
 
   it('returns false when value is not supported', function() {
     expect(prefixedCSSValue('display', 'fart')).to.be.equal(false);
-  });
-
-  after(function() {
-    cleanup();
   });
 });

@@ -1,21 +1,7 @@
 describe('toStringFn', function() {
   var toStringFn;
-  var cleanup;
 
-  before(function(done) {
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['toStringFn', 'cleanup'], function(_toStringFn, _cleanup) {
-      toStringFn = _toStringFn;
-      cleanup = _cleanup;
-      done();
-    });
-  });
+  eval(makeIIFE({file: "./src/toStringFn.js", func: 'toStringFn'}))
 
   it('is an function', function() {
     expect(toStringFn).to.be.an('function');
@@ -28,7 +14,4 @@ describe('toStringFn', function() {
     expect(toStringFn.call(new Date())).to.be.equal('[object Date]');
   });
 
-  after(function() {
-    cleanup();
-  });
 });

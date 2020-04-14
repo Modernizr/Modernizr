@@ -11,12 +11,15 @@
   }]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('speechsynthesis', function() {
-    try {
-      return 'SpeechSynthesisUtterance' in window;
-    } catch (e) {
-      return false;
-    }
-  });
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('speechsynthesis', function() {
+  try {
+    return 'SpeechSynthesisUtterance' in _globalThis;
+  } catch (e) {
+    return false;
+  }
 });
+
+export default Modernizr.speechsynthesis

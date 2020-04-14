@@ -1,5 +1,9 @@
 {
   "extends": ["eslint:recommended", "plugin:jsdoc/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType":"module"
+  },
   "env": {
     "amd": true,
     "browser": true,
@@ -10,16 +14,18 @@
   "globals": {
     "DocumentTouch": true,
     "Modernizr": true,
-    "requirejs": true,
+    "chai": true,
     "expect": true,
+    "sinon": true,
     "$": true,
-    "_": true
+    "makeIIFE": true
   },
   "plugins": [
     "jsdoc"
   ],
   "rules": {
     "getter-return": ["error", { "allowImplicit": true }],
+    "no-global-assign": ["error", {"exceptions": ["require"]}],
     "jsdoc/check-tag-names": ["error", { "definedTags": ["memberOf", "optionName", "optionProp"] }],
     "jsdoc/require-jsdoc": "off",
     "no-empty": "off",

@@ -8,6 +8,9 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('borderimage', testAllProps('borderImage', 'url() 1', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('borderimage', testAllProps('borderImage', 'url() 1', true));
+
+export default Modernizr.borderimage

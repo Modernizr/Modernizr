@@ -1,40 +1,19 @@
 describe('ModernizrProto', function() {
-  var ModernizrProto;
-  var cleanup;
+  var _Modernizr = makeIIFE({file: "./src/Modernizr.js", func: 'Modernizr'})
   var tests;
-  var req;
+  // since it is an internal dependcy, we can't override an import with `external`
+  // like normal, so even uglier hack we replace the string we eval, so the
+  // lookups reference our local decleration above
+  _Modernizr = _Modernizr.replace(/var tests\s*?=/, 'var testz =')
+  eval(_Modernizr)
+  // ModernizrProto is a named export from Modernizr, we have to manually map it in
+  // the IIFE build used in our tests
+  var ModernizrProto = Modernizr.ModernizrProto
 
-  before(function() {
-    define('package', [], function() {return {version: 'v9999'};});
+  beforeEach(function() {
+    tests = []
+  })
 
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['cleanup'], function(_cleanup) {
-      cleanup = _cleanup;
-    });
-  });
-
-  beforeEach(function(done) {
-
-    tests = [];
-    define('tests', function() {return tests;});
-
-    req(['ModernizrProto', 'tests'], function(_ModernizrProto, _tests) {
-      ModernizrProto = _ModernizrProto;
-      tests = _tests;
-      done();
-    });
-
-  });
-
-  afterEach(function() {
-    req.undef('tests');
-    req.undef('ModernizrProto');
-  });
 
   it('should define a version', function() {
     expect(ModernizrProto._version).to.be.a('string');
@@ -47,10 +26,6 @@ describe('ModernizrProto', function() {
     expect(config.enableClasses).to.be.a('boolean');
     expect(config.enableJSClass).to.be.a('boolean');
     expect(config.usePrefixes).to.be.a('boolean');
-  });
-
-  it('should define a working stub for `Modernizr.on`', function(done) {
-    ModernizrProto.on('fakeDetect', done);
   });
 
   it('should define `Modernizr.addTest` and have it pushed to the internal `tests` queue', function() {
@@ -71,10 +46,6 @@ describe('ModernizrProto', function() {
     ModernizrProto.addAsyncTest(fn);
     expect(tests).to.have.length(1);
     expect(tests[0].fn).to.be.equal(fn);
-  });
-
-  after(function() {
-    cleanup();
   });
 
 });

@@ -11,14 +11,17 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('createelementattrs', function() {
-    try {
-      return createElement('<input name="test" />').getAttribute('name') === 'test';
-    } catch (e) {
-      return false;
-    }
-  }, {
-    aliases: ['createelement-attrs']
-  });
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('createelementattrs', function() {
+  try {
+    return createElement('<input name="test" />').getAttribute('name') === 'test';
+  } catch (e) {
+    return false;
+  }
+}, {
+  aliases: ['createelement-attrs']
 });
+
+export default Modernizr.createelementattrs

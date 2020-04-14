@@ -5,6 +5,9 @@
   "tags": ["video", "media"]
 }
 !*/
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('videoloop', 'loop' in createElement('video'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('videoloop', 'loop' in createElement('video'));
+
+export default Modernizr.videoloop

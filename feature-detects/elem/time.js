@@ -10,6 +10,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('time', 'valueAsDate' in createElement('time'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('time', 'valueAsDate' in createElement('time'));
+
+export default Modernizr.time

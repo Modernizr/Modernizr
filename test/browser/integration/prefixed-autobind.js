@@ -3,7 +3,7 @@ describe('prefixed autobind', function() {
 
   // quick sniff to find the local rAF prefixed name.
   var vendors = ['r', 'msR', 'mozR', 'webkitR', 'oR'];
-  _.forEach(vendors, function(vendor) {
+  vendors.forEach(function(vendor) {
     rAFName = rAFName || (window[vendor + 'equestAnimationFrame'] && vendor + 'equestAnimationFrame');
   });
 
@@ -43,7 +43,7 @@ describe('prefixed autobind', function() {
   }
 
   // Webkit only:
-  if (!_.isUndefined(document.webkitIsFullScreen)) {
+  if (typeof document.webkitIsFullScreen !== "undefined") {
     // boolean
     it('Modernizr.prefixed("isFullScreen") returns a boolean', function() {
       expect(Modernizr.prefixed('isFullScreen', document)).to.be.a('boolean');
@@ -51,7 +51,7 @@ describe('prefixed autobind', function() {
   }
 
   // Moz only:
-  if (!_.isUndefined(document.mozFullScreen)) {
+  if ((typeof document.mozFullScreen !== "undefined")) {
     // boolean
 
     it('Modernizr.prefixed("isFullScreen") returns a boolean', function() {

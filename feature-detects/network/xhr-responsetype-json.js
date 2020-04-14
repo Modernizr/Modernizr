@@ -15,6 +15,9 @@
 /* DOC
 Tests for XMLHttpRequest xhr.responseType='json'.
 */
-define(['Modernizr', 'testXhrType'], function(Modernizr, testXhrType) {
-  Modernizr.addTest('xhrresponsetypejson', testXhrType('json'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testXhrType from '../../src/testXhrType.js';
+
+Modernizr.addTest('xhrresponsetypejson', testXhrType('json'));
+
+export default Modernizr.xhrresponsetypejson

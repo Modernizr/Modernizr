@@ -10,6 +10,9 @@
   }]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('microdata', 'getItems' in document);
-});
+import Modernizr from '../../src/Modernizr.js';
+import isBrowser from '../../src/isBrowser.js';
+
+Modernizr.addTest('microdata', isBrowser && 'getItems' in document);
+
+export default Modernizr.microdata

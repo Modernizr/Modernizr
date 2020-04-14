@@ -15,9 +15,11 @@
   }]
 }
 !*/
-define(['Modernizr', 'test/input'], function(Modernizr) {
-  // lol. we already have a test for datalist built in! silly you.
-  // Leaving it around in case anyone's using it
+import Modernizr from '../../src/Modernizr.js';
+import input from '../input.js';
+// lol. we already have a test for datalist built in! silly you.
+// Leaving it around in case anyone's using it
 
-  Modernizr.addTest('datalistelem', Modernizr.input.list);
-});
+Modernizr.addTest('datalistelem', input && input.list);
+
+export default Modernizr.datalistelem

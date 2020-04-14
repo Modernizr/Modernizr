@@ -9,12 +9,22 @@ html
     #mocha
     #messages
     #fixtures
-    script(src='../node_modules/json3/lib/json3.min.js')
     script(src='../node_modules/jquery/dist/jquery.js')
-    script(src='../node_modules/lodash/lodash.js')
+    script(src='../node_modules/sinon/pkg/sinon.js')
     script(src='../node_modules/mocha/mocha.js')
     script(src='../node_modules/chai/chai.js')
-    script(src='../node_modules/requirejs/require.js')
+    script.
+      // return iife versions of (potentially es6) functions
+      var makeIIFE = function(config) {
+        return $.ajax({
+          type: "POST",
+          url: '/iifeGen',
+          data: JSON.stringify(config),
+          contentType: 'application/json; charset=utf-8',
+          async: false
+        }).responseText
+      }
+
     script.
       var expect = chai.expect;
     script.

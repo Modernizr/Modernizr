@@ -14,6 +14,10 @@
 /* DOC
 When used on an `<a>`, this attribute signifies that the resource it points to should be downloaded by the browser rather than navigating to it.
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('adownload', !window.externalHost && 'download' in createElement('a'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('adownload', !_globalThis.externalHost && 'download' in createElement('a'));
+
+export default Modernizr.adownload;

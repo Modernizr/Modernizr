@@ -20,8 +20,16 @@
 /* DOC
 Detects the ability to use round and space as properties for background-repeat
 */
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  // Must value-test these
-  Modernizr.addTest('bgrepeatround', testAllProps('backgroundRepeat', 'round'));
-  Modernizr.addTest('bgrepeatspace', testAllProps('backgroundRepeat', 'space'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+var css_backgroundrepeat = {
+  bgrepeatround: testAllProps('backgroundRepeat', 'round'),
+  bgrepeatspace: testAllProps('backgroundRepeat', 'space')
+}
+
+// Must value-test these
+Modernizr.addTest('bgrepeatround', css_backgroundrepeat.bgrepeatround);
+Modernizr.addTest('bgrepeatspace', css_backgroundrepeat.bgrepeatspace);
+
+export default css_backgroundrepeat

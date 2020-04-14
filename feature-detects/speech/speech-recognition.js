@@ -14,12 +14,16 @@
   }]
 }
 !*/
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('speechrecognition', function() {
-    try {
-      return !!prefixed('SpeechRecognition', window);
-    } catch (e) {
-      return false;
-    }
-  });
+import Modernizr from '../../src/Modernizr.js';
+import prefixed from '../../src/prefixed.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('speechrecognition', function() {
+  try {
+    return !!prefixed('SpeechRecognition', _globalThis);
+  } catch (e) {
+    return false;
+  }
 });
+
+export default Modernizr.speechrecognition

@@ -84,13 +84,6 @@ To see all available options run:
 ./bin/modernizr
 ```
 
-Or to generate everything in 'config-all.json' run this with npm:
-
-```shell
-npm start
-//outputs to ./dist/modernizr-build.js
-```
-
 ## Testing Modernizr
 
 To execute the tests using mocha-headless-chrome on the console run:

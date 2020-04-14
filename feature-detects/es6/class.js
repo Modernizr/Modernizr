@@ -14,14 +14,9 @@
 /* DOC
 Check if browser implements ECMAScript 6 class.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('class', function() {
-    try {
-      // eslint-disable-next-line
-      eval('class A{}');
-    } catch (e) {
-      return false;
-    }
-    return true;
-  });
-});
+import Modernizr from '../../src/Modernizr.js';
+import testSyntax from '../../src/testSyntax.js';
+
+Modernizr.addTest('es6class', testSyntax('class A{}'))
+
+export default Modernizr.es6class

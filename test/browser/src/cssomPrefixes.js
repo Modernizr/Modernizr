@@ -1,76 +1,24 @@
 describe('cssomPrefixes', function() {
   /*
     eslint no-unused-vars: ["error", {
-      "varsIgnorePattern": "cssomPrefixes"
+      "varsIgnorePattern": "Modernizr"
     }]
   */
   var cssomPrefixes;
-  var cleanup;
-  var req;
 
-  var setup = function(done, bool) {
-    return (function() {
-      define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});
-
-      req(['cssomPrefixes'], function(_cssomPrefixes) {
-        cssomPrefixes = _cssomPrefixes;
-        done();
-      });
-    })();
+  var setup = function(bool) {
+    var Modernizr = {ModernizrProto: {_config: {usePrefixes: bool}}}
+    eval(makeIIFE({file: "./src/cssomPrefixes.js", func: 'cssomPrefixes', external: ['./Modernizr.js']}))
+    return cssomPrefixes
   };
 
-  var teardown = function() {
-    cssomPrefixes = undefined;
-    req.undef('cssomPrefixes');
-    req.undef('ModernizrProto');
-  };
-
-  before(function(done) {
-    define('package', [], function() {return {version: 'v9999'};});
-
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
+    it('returns prefixes, when enabled', function() {
+      var cssomPrefixes = setup(true);
+      expect(cssomPrefixes).to.not.have.length(0);
     });
 
-    req(['cleanup'], function(_cleanup) {
-      cleanup = _cleanup;
-      done();
-    });
-  });
-
-  describe('prefixes enabled', function() {
-    before(function(done) {
-      setup(done, true);
-    });
-
-    after(teardown);
-
-    it('returns prefixes', function(done) {
-      req(['cssomPrefixes'], function(cssomPrefixes) {
-        expect(cssomPrefixes).to.not.have.length(0);
-        done();
-      });
-    });
-  });
-
-  describe('prefixes disabled', function() {
-    before(function(done) {
-      setup(done, false);
-    });
-
-    after(teardown);
-
-    it('returns no prefixes', function(done) {
-      req(['cssomPrefixes'], function(cssomPrefixes) {
-        expect(cssomPrefixes).to.have.length(0);
-        done();
-      });
-    });
-  });
-
-  after(function() {
-    cleanup();
+  it('returns no prefixes, when prefixed disabled', function() {
+    var cssomPrefixes = setup(false);
+    expect(cssomPrefixes).to.have.length(0);
   });
 });

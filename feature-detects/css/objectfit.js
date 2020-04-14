@@ -11,6 +11,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('objectfit', !!prefixed('objectFit'), {aliases: ['object-fit']});
-});
+import Modernizr from '../../src/Modernizr.js';
+import prefixed from '../../src/prefixed.js';
+
+Modernizr.addTest('objectfit', !!prefixed('objectFit'), {aliases: ['object-fit']});
+
+export default Modernizr.objectfit

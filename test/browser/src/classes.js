@@ -1,27 +1,10 @@
 describe('classes', function() {
+  var _classes = makeIIFE({file: "./src/classes.js", func: 'classes'})
   var classes;
-  var cleanup;
-
-  before(function(done) {
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['classes', 'cleanup'], function(_classes, _cleanup) {
-      classes = _classes;
-      cleanup = _cleanup;
-      done();
-    });
-  });
+  eval(_classes)
 
   it('is an array', function() {
     expect(classes).to.be.an('array');
-  });
-
-  after(function() {
-    cleanup();
+    expect(classes.length).to.equal(0);
   });
 });

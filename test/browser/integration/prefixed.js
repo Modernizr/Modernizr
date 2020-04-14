@@ -48,23 +48,23 @@ describe('prefixed()', function() {
     {'prop': 'querySelectorAll', 'obj': document},
     {'prop': 'matchesSelector', 'obj': document.createElement('div')}];
 
-  _.forEach(propArr, function(prop) {
+  propArr.forEach(function(prop) {
     it('results for ' + prop + ' match the homebaked prefix finder', function() {
       expect(Modernizr.prefixed(prop)).to.be.equal(gimmePrefix(prop));
     });
   });
 
-  _.forEach(propArr, function(prop) {
+  propArr.forEach(function(prop) {
     it('results for ' + prop + ' match the homebaked prefix finder', function() {
       expect(Modernizr.prefixed(domToCSS(prop))).to.be.equal(gimmePrefix(prop));
     });
   });
 
-  _.forEach(domPropArr, function(prop) {
+  domPropArr.forEach(function(prop) {
     it('results for ' + prop.prop + ' match the homebaked prefix finder', function() {
       var modernizrVersion = Modernizr.prefixed(prop.prop, prop.obj, false);
       var localVersion = gimmePrefix(prop.prop, prop.obj);
-      expect(modernizrVersion).to[(_.isString(localVersion) ? 'contain' : 'equal')](localVersion);
+      expect(modernizrVersion).to[((typeof localVersion === 'string') ? 'contain' : 'equal')](localVersion);
     });
   });
 });

@@ -16,6 +16,9 @@
 /* DOC
 Detect support for the formnovalidate attribute on form inputs, which overrides the form novalidate attribute
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('inputformnovalidate', !!('formNoValidate' in createElement('input')), {aliases: ['input-formnovalidate']});
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('inputformnovalidate', !!('formNoValidate' in createElement('input')), {aliases: ['input-formnovalidate']});
+
+export default Modernizr.inputformnovalidate

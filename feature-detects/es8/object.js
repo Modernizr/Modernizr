@@ -18,7 +18,8 @@
 /* DOC
 Check if browser implements ECMAScript 8 Object.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('es8object', !!(Object.entries &&
-    Object.values));
-});
+import Modernizr from '../../src/Modernizr.js';
+
+Modernizr.addTest('es8object', !!(Object.entries && Object.values));
+
+export default Modernizr.es8object

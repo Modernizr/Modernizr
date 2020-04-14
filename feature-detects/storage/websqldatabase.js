@@ -6,8 +6,11 @@
   "tags": ["storage"]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  // Chrome incognito mode used to throw an exception when using openDatabase
-  // It doesn't anymore.
-  Modernizr.addTest('websqldatabase', 'openDatabase' in window);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+// Chrome incognito mode used to throw an exception when using openDatabase
+// It doesn't anymore.
+Modernizr.addTest('websqldatabase', 'openDatabase' in _globalThis);
+
+export default Modernizr.websqldatabase

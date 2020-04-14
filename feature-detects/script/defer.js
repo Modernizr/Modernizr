@@ -13,6 +13,9 @@
 /* DOC
 Detects support for the `defer` attribute on the `<script>` element.
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('scriptdefer', 'defer' in createElement('script'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('scriptdefer', 'defer' in createElement('script'));
+
+export default Modernizr.scriptdefer

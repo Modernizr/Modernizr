@@ -15,8 +15,9 @@
 /* DOC
 Check if browser implements ECMAScript 6 Map, Set, WeakMap and WeakSet
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('es6collections', !!(
-    window.Map && window.Set && window.WeakMap && window.WeakSet
-  ));
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('es6collections', !!(_globalThis.Map && _globalThis.Set && _globalThis.WeakMap && _globalThis.WeakSet));
+
+export default Modernizr.es6collections

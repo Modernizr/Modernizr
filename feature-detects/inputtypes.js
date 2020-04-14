@@ -40,19 +40,31 @@ Modernizr.inputtypes.url
 Modernizr.inputtypes.week
 ```
 */
-define(['Modernizr', 'inputElem', 'docElement'], function(Modernizr, inputElem, docElement) {
-  // Run through HTML5's new input types to see if the UA understands any.
-  //   This is put behind the tests runloop because it doesn't return a
-  //   true/false like all the other tests; instead, it returns an object
-  //   containing each input type with its corresponding true/false value
+import Modernizr from '../src/Modernizr.js';
+import inputElem from '../src/inputElem.js';
+import docElement from '../src/docElement.js';
+import isBrowser from '../src/isBrowser.js';
+var result = {};
 
-  // Big thanks to @miketaylr for the html5 forms expertise. miketaylr.com/
-  (function() {
-    var props = ['search', 'tel', 'url', 'email', 'datetime', 'date', 'month', 'week','time', 'datetime-local', 'number', 'range', 'color'];
-    var smile = '1)';
-    var inputElemType;
-    var defaultView;
-    var bool;
+// Run through HTML5's new input types to see if the UA understands any.
+//   This is put behind the tests runloop because it doesn't return a
+//   true/false like all the other tests; instead, it returns an object
+//   containing each input type with its corresponding true/false value
+
+// Big thanks to @miketaylr for the html5 forms expertise. miketaylr.com/
+(function() {
+  var props = 'search tel url email datetime date month week time datetime-local number range color'.split(' ');
+  var smile = '1)';
+  var inputElemType;
+  var defaultView;
+  var bool;
+
+  if (isBrowser) {
+    // all of these detects exist as a sub-object to Modernizr.inputtypes. In order for that to work,
+    // Modernizr.inputtypes has to exist before we attempt to hand new props off of it. Since "input type"
+    // is more of less useless (any browser that can run javascript will has inputs with the type attr), we
+    // just skip a test and directly assign it to a POJO
+    Modernizr.inputtypes = {};
 
     for (var i = 0; i < props.length; i++) {
       inputElem.setAttribute('type', inputElemType = props[i]);
@@ -97,7 +109,10 @@ define(['Modernizr', 'inputElem', 'docElement'], function(Modernizr, inputElem, 
         }
       }
 
+      result[inputElemType] = !!bool
       Modernizr.addTest('inputtypes.' + inputElemType, !!bool);
     }
-  })();
-});
+  }
+})();
+
+export default result

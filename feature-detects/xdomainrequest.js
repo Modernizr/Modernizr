@@ -13,6 +13,9 @@
 /* DOC
 Detects support for XDomainRequest in IE9 & IE8
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('xdomainrequest', 'XDomainRequest' in window);
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('xdomainrequest', 'XDomainRequest' in _globalThis);
+
+export default Modernizr.xdomainrequest

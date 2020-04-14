@@ -1,4 +1,4 @@
-/*global __coverage__*/
+/*globals __coverage__*/
 $(document).ready(function() {
 
   var runner = mocha.run();
@@ -23,6 +23,7 @@ $(document).ready(function() {
         $.ajax({
           type: 'POST',
           url: '/coverage/client',
+          contentType: 'application/json; charset=utf-8',
           data: JSON.stringify(__coverage__),
           success: function() {
             done();
@@ -37,7 +38,7 @@ $(document).ready(function() {
   runner.on('fail', logFailure);
 
   function logFailure(test, err) {
-    var isTimeout = _.includes(err.toString(), 'Ensure the done() callback is being called in this test.');
+    var isTimeout = err.toString().indexOf('Ensure the done() callback is being called in this test.') > -1;
 
     if (isTimeout) {
       return window.global_test_results = {message: err};

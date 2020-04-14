@@ -13,6 +13,10 @@
 Detects support for the `will-change` css property, which formally signals to the
 browser that an element will be animating.
 */
-define(['Modernizr', 'docElement'], function(Modernizr, docElement) {
-  Modernizr.addTest('willchange', 'willChange' in docElement.style);
-});
+import Modernizr from '../../src/Modernizr.js';
+import docElement from '../../src/docElement.js';
+import isBrowser from '../../src/isBrowser.js';
+
+Modernizr.addTest('willchange', isBrowser && 'willChange' in docElement.style);
+
+export default Modernizr.willchange

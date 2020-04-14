@@ -1,27 +1,12 @@
 describe('prefixedCSS', function() {
-  var ModernizrProto = {_config: {usePrefixes: true}, _q: []};
   var prefixedCSS;
-  var cleanup;
 
-  before(function(done) {
-    define('ModernizrProto', [], function() {return ModernizrProto;});
-    define('package', [], function() {return {version: 'v9999'};});
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['cleanup', 'prefixedCSS'], function(_cleanup, _prefixedCSS) {
-      prefixedCSS = _prefixedCSS;
-      cleanup = _cleanup;
-      done();
-    });
-  });
+  // we are mocking out the module interface, not the Modernizr api
+  var Modernizr = {ModernizrProto: {_config: {usePrefixes: true}, _q: []}};
+  eval(makeIIFE({file: "./src/prefixedCSS.js", func: 'prefixedCSS', external: ['./Modernizr.js']}))
 
   it('creates a reference on `ModernizrProto`', function() {
-    expect(prefixedCSS).to.be.equal(ModernizrProto.prefixedCSS);
+    expect(prefixedCSS).to.be.equal(Modernizr.ModernizrProto.prefixedCSS);
   });
 
   it('returns false on unknown properties', function() {
@@ -32,7 +17,4 @@ describe('prefixedCSS', function() {
     expect(prefixedCSS('display')).to.be.equal('display');
   });
 
-  after(function() {
-    cleanup();
-  });
 });

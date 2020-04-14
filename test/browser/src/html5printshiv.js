@@ -23,9 +23,6 @@ describe('html5printshiv', function() {
       })
       .on('lockedAndLoaded', function() {
         iframeWindow = $(this)[0].contentWindow;
-        iframeWindow.requirejs.config({
-          baseUrl: '../src'
-        });
         done();
       });
 
@@ -33,11 +30,11 @@ describe('html5printshiv', function() {
 
   it('shivs the document', function(done) {
     try {
-      iframeWindow.requirejs(['html5printshiv'], function() {
-        expect('html5' in iframeWindow).to.be.equal(true);
-        expect(iframeWindow.html5.type).to.be.equal('default print');
-        done();
-      });
+      var html5printshiv = makeIIFE({file: "./src/html5printshiv.js", func: 'html5printshiv'}) 
+      iframeWindow.eval(html5printshiv)
+      expect('html5' in iframeWindow).to.be.equal(true);
+      expect(iframeWindow.html5.type).to.be.equal('default print');
+      done();
     } catch (e) {
       done(e);
     }

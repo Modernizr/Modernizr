@@ -14,6 +14,9 @@
 /* DOC
 Detects support for the fetch API, a modern replacement for XMLHttpRequest.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('fetch', 'fetch' in window);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('fetch', 'fetch' in _globalThis);
+
+export default Modernizr.fetch

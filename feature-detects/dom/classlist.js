@@ -11,6 +11,10 @@
   }]
 }
 !*/
-define(['Modernizr', 'docElement'], function(Modernizr, docElement) {
-  Modernizr.addTest('classlist', 'classList' in docElement);
-});
+import Modernizr from '../../src/Modernizr.js';
+import docElement from '../../src/docElement.js';
+import isBrowser from '../../src/isBrowser.js';
+
+Modernizr.addTest('classlist', isBrowser && 'classList' in docElement);
+
+export default Modernizr.classlist

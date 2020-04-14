@@ -16,6 +16,8 @@ Detects support for the Application Cache, for storing data to enable web-based 
 
 The API has been [heavily criticized](https://alistapart.com/article/application-cache-is-a-douchebag) and discussions are underway to address this.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('applicationcache', 'applicationCache' in window);
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('applicationcache', 'applicationCache' in _globalThis);
+export default Modernizr.applicationcache;

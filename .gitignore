@@ -2,6 +2,7 @@
 /gh-pages
 /node_modules
 /test/coverage
+/test/test-build.js
 /test/*.html
 modernizr.js
 metadata.json
@@ -10,3 +11,9 @@ metadata.json
 .project
 *.log
 tmp
+.nyc_output
+coverage
+lib/_build.js
+lib/buildConfig.js
+lib/generateBanner.js
+lib/metadataStatic.js

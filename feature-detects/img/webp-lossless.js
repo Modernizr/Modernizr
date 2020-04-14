@@ -17,18 +17,20 @@
 /* DOC
 Tests for non-alpha lossless webp support.
 */
-define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
-  Modernizr.addAsyncTest(function() {
-    var image = new Image();
+import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 
-    image.onerror = function() {
-      addTest('webplossless', false, {aliases: ['webp-lossless']});
-    };
+Modernizr.addAsyncTest(function() {
+  var image = new Image();
 
-    image.onload = function() {
-      addTest('webplossless', image.width === 1, {aliases: ['webp-lossless']});
-    };
+  image.onerror = function() {
+    addTest('webplossless', false, {aliases: ['webp-lossless']});
+  };
 
-    image.src = 'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=';
-  });
+  image.onload = function() {
+    addTest('webplossless', image.width === 1, {aliases: ['webp-lossless']});
+  };
+
+  image.src = 'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=';
 });
+
+export default createAsyncTestListener("webplossless");

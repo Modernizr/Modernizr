@@ -15,6 +15,9 @@
 /* DOC
 Detects support for querySelector.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('queryselector', 'querySelector' in document && 'querySelectorAll' in document);
-});
+import Modernizr from '../src/Modernizr.js';
+import isBrowser from '../src/isBrowser.js';
+
+Modernizr.addTest('queryselector', isBrowser && 'querySelector' in document && 'querySelectorAll' in document);
+
+export default Modernizr.queryselector

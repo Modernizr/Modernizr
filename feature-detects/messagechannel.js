@@ -17,6 +17,9 @@
 /* DOC
 Detects support for Message Channels, a way to communicate between different browsing contexts like iframes, workers, etc..
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('messagechannel', 'MessageChannel' in window);
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('messagechannel', 'MessageChannel' in _globalThis);
+
+export default Modernizr.messagechannel

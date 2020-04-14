@@ -14,7 +14,10 @@
   }]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  var supportsFn = (window.CSS && window.CSS.supports.bind(window.CSS)) || (window.supportsCSS);
-  Modernizr.addTest('customproperties', !!supportsFn && (supportsFn('--f:0') || supportsFn('--f', 0)));
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+var supportsFn = (_globalThis.CSS && _globalThis.CSS.supports.bind(_globalThis.CSS)) || (_globalThis.supportsCSS);
+Modernizr.addTest('customproperties', !!supportsFn && (supportsFn('--f:0') || supportsFn('--f', 0)));
+
+export default Modernizr.customproperties

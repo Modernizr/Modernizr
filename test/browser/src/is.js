@@ -1,21 +1,7 @@
 describe('is', function() {
-  var cleanup;
   var is;
 
-  before(function(done) {
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['is', 'cleanup'], function(_is, _cleanup) {
-      is = _is;
-      cleanup = _cleanup;
-      done();
-    });
-  });
+  eval(makeIIFE({file: "./src/is.js", func: 'is'}))
 
   it('is a function', function() {
     expect(is).to.be.a('function');
@@ -33,9 +19,5 @@ describe('is', function() {
     expect(_bool).to.be.equal(true);
     expect(_null).to.be.equal(true);
     expect(_str).to.be.equal(true);
-  });
-
-  after(function() {
-    cleanup();
   });
 });

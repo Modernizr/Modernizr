@@ -13,11 +13,14 @@
 /* DOC
 Detects the ability to request a specific amount of space for filesystem access
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('quotamanagement', function() {
-    var tempStorage = prefixed('temporaryStorage', navigator);
-    var persStorage = prefixed('persistentStorage', navigator);
+import Modernizr from '../src/Modernizr.js';
+import prefixed from '../src/prefixed.js';
 
-    return !!(tempStorage && persStorage);
-  });
+Modernizr.addTest('quotamanagement', function() {
+  var tempStorage = prefixed('temporaryStorage', navigator);
+  var persStorage = prefixed('persistentStorage', navigator);
+
+  return !!(tempStorage && persStorage);
 });
+
+export default Modernizr.quotamanagement

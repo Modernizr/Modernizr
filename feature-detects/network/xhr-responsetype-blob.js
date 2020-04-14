@@ -12,6 +12,9 @@
 /* DOC
 Tests for XMLHttpRequest xhr.responseType='blob'.
 */
-define(['Modernizr', 'testXhrType'], function(Modernizr, testXhrType) {
-  Modernizr.addTest('xhrresponsetypeblob', testXhrType('blob'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testXhrType from '../../src/testXhrType.js';
+
+Modernizr.addTest('xhrresponsetypeblob', testXhrType('blob'));
+
+export default Modernizr.xhrresponsetypeblob

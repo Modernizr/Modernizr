@@ -15,17 +15,20 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  // "The 'rem' unit ('root em') is relative to the computed
-  // value of the 'font-size' value of the root element."
-  // you can test by checking if the prop was ditched
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
 
-  Modernizr.addTest('cssremunit', function() {
-    var style = createElement('a').style;
-    try {
-      style.fontSize = '3rem';
-    }
-    catch (e) {}
-    return (/rem/).test(style.fontSize);
-  });
+// "The 'rem' unit ('root em') is relative to the computed
+// value of the 'font-size' value of the root element."
+// you can test by checking if the prop was ditched
+
+Modernizr.addTest('cssremunit', function() {
+  var style = createElement('a').style;
+  try {
+    style.fontSize = '3rem';
+  }
+  catch (e) {}
+  return (/rem/).test(style.fontSize);
 });
+
+export default Modernizr.cssremunit

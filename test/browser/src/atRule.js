@@ -1,41 +1,28 @@
 describe('atRule', function() {
+  /*
+    eslint no-unused-vars: ["error", {
+      "varsIgnorePattern": "omPrefixes"
+    }]
+  */
+  var omPrefixes = 'Modernizr';
   var atRule;
-  var cleanup;
 
-  before(function(done) {
+  eval(makeIIFE({file: "./src/atRule.js", func: 'atRule', external: ['./omPrefixes.js']}))
 
-    if (window.CSSRule) {
-      window.CSSRule.MODERNIZR_FAKE_RULE = 999;
-    }
-
-    var prefixes = ['Modernizr'];
-
-    define('cssomPrefixes', [], function() {return prefixes;});
-    define('package', [], function() {return {};});
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['atRule', 'cleanup'], function(_atRule, _cleanup) {
-      atRule = _atRule;
-      cleanup = _cleanup;
-      done();
-    });
-  });
+  if (self.CSSRule) {
+    self.CSSRule.MODERNIZR_FAKE_RULE = 999;
+  }
 
   it('returns undefined when the browser does not support CSSRule', function() {
-    var ref = window.CSSRule;
-    window.CSSRule = undefined;
+    var ref = self.CSSRule;
+    self.CSSRule = undefined;
 
     expect(atRule('charset')).to.be.equal(undefined);
 
-    window.CSSRule = ref;
+    self.CSSRule = ref;
   });
 
-  if (window.CSSRule) {
+  if (self.CSSRule) {
     it('detects `@rule`s', function() {
       expect(atRule('charset')).to.be.equal('@charset');
     });
@@ -54,9 +41,8 @@ describe('atRule', function() {
   }
 
   after(function() {
-    if (window.CSSRule) {
-      delete window.CSSRule.MODERNIZR_FAKE_RULE;
+    if (self.CSSRule) {
+      delete self.CSSRule.MODERNIZR_FAKE_RULE;
     }
-    cleanup();
   });
 });

@@ -1,55 +1,12 @@
-describe('addTest', function() {
-  var ModernizrProto;
-  var setClasses;
-  var Modernizr;
-  var addTest;
-  var cleanup;
-  var sinon;
-  var req;
+describe('Modernizr.addTest', function() {
+  var _Modernizr
+  eval(makeIIFE({file: "./src/Modernizr.js", func: '_Modernizr'}))
+  // Since Modernizr has multiple exports, we need to explictly request
+  // the `default` export inside of an IIFE build
+  var addTest = _Modernizr.addTest
+  var Modernizr = _Modernizr.default
+  var ModernizrProto = _Modernizr.ModernizrProto
 
-  before(function(done) {
-
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {
-        sinon: '../node_modules/sinon/pkg/sinon',
-        cleanup: '../test/cleanup'
-      }
-    });
-
-    req(['cleanup', 'sinon'], function(_cleanup, _sinon) {
-      cleanup = _cleanup;
-      sinon = _sinon;
-      done();
-    });
-
-  });
-
-  beforeEach(function(done) {
-
-    ModernizrProto = {};
-    Modernizr = {_q: [], _config:  {}};
-    setClasses = sinon.spy();
-
-    define('ModernizrProto', [], function() {return ModernizrProto;});
-    define('Modernizr', [], function() {return Modernizr;});
-    define('setClasses', [], function() {return setClasses;});
-    define('package', [], function() {return {};});
-
-    req(['addTest'], function(_addTest) {
-      addTest = _addTest;
-      done();
-    });
-  });
-
-  afterEach(function() {
-    req.undef('ModernizrProto');
-    req.undef('setClasses');
-    req.undef('Modernizr');
-    req.undef('package');
-    req.undef('addTest');
-  });
 
   describe('setup', function() {
 
@@ -65,11 +22,6 @@ describe('addTest', function() {
       expect(Modernizr._q).to.have.length(1);
       expect(Modernizr._q[0]).to.be.a('function');
     });
-
-    it('should define Modernizr.addTest at the end of the _q', function() {
-      Modernizr._q[0]();
-      expect(ModernizrProto.addTest).to.be.equal(addTest);
-    });
   });
 
   describe('Modernizr.on', function() {
@@ -79,12 +31,6 @@ describe('addTest', function() {
       ModernizrProto.on('fakeDetect', fakeDetect);
       expect(ModernizrProto._l.fakeDetect).to.be.an('array');
       expect(ModernizrProto._l.fakeDetect[0]).to.be.equal(fakeDetect);
-    });
-
-    it('does not recreate the queue with duplicate requests', function() {
-      ModernizrProto.on('fakeDetect', fakeDetect);
-      ModernizrProto.on('fakeDetect', fakeDetect);
-      expect(ModernizrProto._l.fakeDetect.length).to.be.equal(2);
     });
 
     it('triggers results if the detect already ran', function(done) {
@@ -104,7 +50,7 @@ describe('addTest', function() {
   describe('Modernizr._trigger', function() {
 
     it('skips the callback if it does not exist', function() {
-      expect(function() {ModernizrProto._trigger('fakeDetect');}).to.not.throw();
+      expect(function() {ModernizrProto._trigger('thisDoesNotExist');}).to.not.throw();
     });
 
     it('runs the listener calledback if it does exist', function(done) {
@@ -138,11 +84,19 @@ describe('addTest', function() {
 
     beforeEach(function() {
       Modernizr._trigger = sinon.spy();
-      Modernizr._trigger = sinon.spy();
+    })
+
+    beforeEach(function() {
       expect(Modernizr.fakedetect).to.be.equal(undefined);
       expect(Modernizr.fake).to.be.equal(undefined);
       expect(Modernizr.detect).to.be.equal(undefined);
     });
+
+    afterEach(function() {
+      Modernizr.fakedetect = undefined
+      Modernizr.fake = undefined
+      Modernizr.detect = undefined
+    })
 
     it('sets the proper bool on the Modernizr object with a function', function() {
       addTest('fakedetect', function() {return true;});
@@ -157,30 +111,6 @@ describe('addTest', function() {
     it('does not cast to a bool on the Modernizr object with a truthy value', function() {
       addTest('fakedetect', function() {return 100;});
       expect(Modernizr.fakedetect).to.be.equal(100);
-    });
-
-    it('sets a true class for a true value', function() {
-      addTest('fakedetect', function() {return 100;});
-      expect(setClasses.callCount).to.be.equal(1);
-      expect(setClasses.calledWith(['fakedetect'])).to.be.equal(true);
-    });
-
-    it('sets a truthy class for a truthy value', function() {
-      addTest('fakedetect', function() {return 100;});
-      expect(setClasses.callCount).to.be.equal(1);
-      expect(setClasses.calledWith(['fakedetect'])).to.be.equal(true);
-    });
-
-    it('sets a negative class for a false value', function() {
-      addTest('fakedetect', function() {return false;});
-      expect(setClasses.callCount).to.be.equal(1);
-      expect(setClasses.calledWith(['no-fakedetect'])).to.be.equal(true);
-    });
-
-    it('sets a negative class for a falsy value', function() {
-      addTest('fakedetect', function() {return undefined;});
-      expect(setClasses.callCount).to.be.equal(1);
-      expect(setClasses.calledWith(['no-fakedetect'])).to.be.equal(true);
     });
 
     it('does not cast to a bool on the Modernizr object with a falsy value', function() {
@@ -222,9 +152,6 @@ describe('addTest', function() {
       addTest({fake: true, detect: false});
       expect(Modernizr.fake).to.be.equal(true);
       expect(Modernizr.detect).to.be.equal(false);
-      expect(setClasses.callCount).to.be.equal(2);
-      expect(setClasses.calledWith(['fake'])).to.be.equal(true);
-      expect(setClasses.calledWith(['no-detect'])).to.be.equal(true);
     });
 
     it('properly filters out monkey patched object properties', function() {
@@ -240,7 +167,6 @@ describe('addTest', function() {
       expect(Modernizr.MOD_FAKE_VALUE).to.be.equal(undefined);
       expect(Modernizr.mod_fake_value).to.be.equal(undefined);
       expect(Modernizr.detect).to.be.equal(false);
-      expect(setClasses.callCount).to.be.equal(1);
     });
 
     it('returns an instance of Modernizr for chaining', function() {
@@ -248,7 +174,4 @@ describe('addTest', function() {
     });
   });
 
-  after(function() {
-    cleanup();
-  });
 });

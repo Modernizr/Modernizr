@@ -13,6 +13,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('variablefonts', testAllProps('fontVariationSettings'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('variablefonts', testAllProps('fontVariationSettings'));
+
+export default Modernizr.variablefonts

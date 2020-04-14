@@ -18,6 +18,9 @@ Detects support for the `appearance` css property, which is used to make an
 element inherit the style of a standard user interface element. It can also be
 used to remove the default styles of an element, such as input and buttons.
 */
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('appearance', testAllProps('appearance'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('appearance', testAllProps('appearance'));
+
+export default Modernizr.appearance;

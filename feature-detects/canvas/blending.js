@@ -16,17 +16,21 @@
 /* DOC
 Detects if Photoshop style blending modes are available in canvas.
 */
-define(['Modernizr', 'createElement', 'test/canvas'], function(Modernizr, createElement) {
-  Modernizr.addTest('canvasblending', function() {
-    if (Modernizr.canvas === false) {
-      return false;
-    }
-    var ctx = createElement('canvas').getContext('2d');
-    // firefox 3 throws an error when setting an invalid `globalCompositeOperation`
-    try {
-      ctx.globalCompositeOperation = 'screen';
-    } catch (e) {}
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+import '../canvas.js';
 
-    return ctx.globalCompositeOperation === 'screen';
-  });
+Modernizr.addTest('canvasblending', function() {
+  if (Modernizr.canvas === false) {
+    return false;
+  }
+  var ctx = createElement('canvas').getContext('2d');
+  // firefox 3 throws an error when setting an invalid `globalCompositeOperation`
+  try {
+    ctx.globalCompositeOperation = 'screen';
+  } catch (e) {}
+
+  return ctx.globalCompositeOperation === 'screen';
 });
+
+export default Modernizr.canvasblending;
