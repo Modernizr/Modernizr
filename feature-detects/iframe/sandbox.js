@@ -2,6 +2,7 @@
 {
   "name": "iframe[sandbox] Attribute",
   "property": "sandbox",
+  "caniuse": "iframe-sandbox",
   "tags": ["iframe"],
   "builderAliases": ["iframe_sandbox"],
   "notes": [

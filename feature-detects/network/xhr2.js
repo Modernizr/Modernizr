@@ -2,6 +2,7 @@
 {
   "name": "XML HTTP Request Level 2 XHR2",
   "property": "xhr2",
+  "caniuse": "xhr2",
   "tags": ["network"],
   "builderAliases": ["network_xhr2"],
   "notes": [{

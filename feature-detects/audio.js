@@ -2,6 +2,7 @@
 {
   "name": "HTML5 Audio Element",
   "property": "audio",
+  "caniuse": "audio",
   "tags": ["html5", "audio", "media"],
   "notes": [{
     "name": "MDN Docs",

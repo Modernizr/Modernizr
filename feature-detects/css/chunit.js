@@ -3,6 +3,7 @@
   "name": "CSS Font ch Units",
   "authors": ["Ron Waldon (@jokeyrhyme)"],
   "property": "csschunit",
+  "caniuse": "rem",
   "tags": ["css"],
   "notes": [{
     "name": "W3C Spec",

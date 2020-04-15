@@ -2,6 +2,7 @@
 {
   "name": "iframe[srcdoc] Attribute",
   "property": "srcdoc",
+  "caniuse": "iframe-srcdoc",
   "tags": ["iframe"],
   "builderAliases": ["iframe_srcdoc"],
   "notes": [{

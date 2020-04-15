@@ -2,6 +2,7 @@
 {
   "name": "input[search] search event",
   "property": "inputsearchevent",
+  "caniuse": "input-search",
   "tags": ["input","search"],
   "authors": ["Calvin Webster"],
   "notes": [{

@@ -1,6 +1,7 @@
 /*!
 {
   "property": "passiveeventlisteners",
+  "caniuse": "passive-event-listener",
   "tags": ["dom"],
   "authors": ["Rick Byers"],
   "name": "Passive event listeners",

@@ -3,6 +3,7 @@
   "name": "Webp",
   "async": true,
   "property": "webp",
+  "caniuse": "webp",
   "tags": ["image"],
   "builderAliases": ["img_webp"],
   "authors": ["Krister Kari", "@amandeep", "Rich Bradshaw", "Ryan Seddon", "Paul Irish"],

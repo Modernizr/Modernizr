@@ -2,6 +2,7 @@
 {
   "name": "Vibration API",
   "property": "vibrate",
+  "caniuse": "vibration",
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/DOM/window.navigator.mozVibrate"

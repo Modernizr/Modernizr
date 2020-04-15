@@ -9,6 +9,7 @@
     "href": "https://w3c.github.io/beacon/"
   }],
   "property": "beacon",
+  "caniuse": "beacon",
   "tags": ["beacon", "network"],
   "authors": ["Cătălin Mariș"]
 }

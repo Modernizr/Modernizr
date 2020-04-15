@@ -2,6 +2,7 @@
 {
   "name": "Background Position Shorthand",
   "property": "bgpositionshorthand",
+  "caniuse": "css-background-offsets",
   "tags": ["css"],
   "builderAliases": ["css_backgroundposition_shorthand"],
   "notes": [{

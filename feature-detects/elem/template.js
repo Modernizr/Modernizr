@@ -2,6 +2,7 @@
 {
   "name": "Template Tag",
   "property": "template",
+  "caniuse": "template",
   "tags": ["elem"],
   "notes": [{
     "name": "HTML5Rocks Article",

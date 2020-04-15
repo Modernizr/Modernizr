@@ -2,6 +2,7 @@
 {
   "name": "Custom Elements API",
   "property": "customelements",
+  "caniuse": "custom-elementsv1",
   "tags": ["customelements"],
   "polyfills": ["customelements"],
   "notes": [{
