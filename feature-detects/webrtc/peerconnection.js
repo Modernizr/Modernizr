@@ -2,6 +2,7 @@
 {
   "name": "RTC Peer Connection",
   "property": "peerconnection",
+  "caniuse": "rtcpeerconnection",
   "tags": ["webrtc"],
   "authors": ["Ankur Oberoi"],
   "notes": [{

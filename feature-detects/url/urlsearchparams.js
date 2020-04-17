@@ -1,6 +1,7 @@
 /*!
 {
   "property": "urlsearchparams",
+  "caniuse": "urlsearchparams",
   "tags": ["querystring", "url"],
   "authors": ["Cătălin Mariș"],
   "name": "URLSearchParams API",

@@ -2,6 +2,7 @@
 {
   "name": "GamePad API",
   "property": "gamepads",
+  "caniuse": "gamepad",
   "authors": ["Eric Bidelman"],
   "tags": ["media"],
   "notes": [{

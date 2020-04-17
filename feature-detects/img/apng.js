@@ -3,6 +3,7 @@
   "name": "Animated PNG",
   "async": true,
   "property": "apng",
+  "caniuse": "apng",
   "tags": ["image"],
   "builderAliases": ["img_apng"],
   "notes": [{

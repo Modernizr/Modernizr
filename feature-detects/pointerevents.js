@@ -2,6 +2,7 @@
 {
   "name": "DOM Pointer Events API",
   "property": "pointerevents",
+  "caniuse": "pointer",
   "tags": ["input"],
   "authors": ["Stu Cox"],
   "notes": [{

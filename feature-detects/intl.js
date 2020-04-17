@@ -2,6 +2,7 @@
 {
   "name": "Internationalization API",
   "property": "intl",
+  "caniuse": "internationalization",
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"

@@ -4,6 +4,7 @@
   "async": true,
   "aliases": ["jpeg-2000", "jpg2"],
   "property": "jpeg2000",
+  "caniuse": "jpeg2000",
   "tags": ["image"],
   "authors": ["@eric_wvgg"],
   "notes": [{

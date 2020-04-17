@@ -1,6 +1,7 @@
 /*!
 {
   "property": "speechrecognition",
+  "caniuse": "speech-recognition",
   "tags": ["input", "speech"],
   "authors": ["Cătălin Mariș"],
   "name": "Speech Recognition API",

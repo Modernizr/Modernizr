@@ -1,6 +1,7 @@
 /*!
 {
   "property": "speechsynthesis",
+  "caniuse": "speech-synthesis",
   "tags": ["input", "speech"],
   "authors": ["Cătălin Mariș"],
   "name": "Speech Synthesis API",

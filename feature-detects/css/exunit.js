@@ -3,6 +3,7 @@
   "name": "CSS Font ex Units",
   "authors": ["Ron Waldon (@jokeyrhyme)"],
   "property": "cssexunit",
+  "caniuse": "mdn-css_types_length_ex",
   "tags": ["css"],
   "notes": [{
     "name": "W3C Spec",

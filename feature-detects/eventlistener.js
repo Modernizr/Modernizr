@@ -2,6 +2,7 @@
 {
   "name": "Event Listener",
   "property": "eventlistener",
+  "caniuse": "addeventlistener",
   "authors": ["Andrew Betts (@triblondon)"],
   "notes": [{
     "name": "W3C Spec",
