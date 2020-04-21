@@ -15,10 +15,24 @@ define(['Modernizr', 'createElement', 'test/canvas'], function(Modernizr, create
   var canvas = createElement('canvas');
 
   Modernizr.addTest('todataurljpeg', function() {
-    return !!Modernizr.canvas && canvas.toDataURL('image/jpeg').indexOf('data:image/jpeg') === 0;
+    var supports = false;
+
+    // AVG secure browser with 'Anti-Fingerprinting' turned on throws an exception when using an "invalid" toDataUrl
+    try {
+      supports = !!Modernizr.canvas && canvas.toDataURL('image/jpeg').indexOf('data:image/jpeg') === 0;
+    } catch (e) {}
+
+    return supports;
   });
   Modernizr.addTest('todataurlpng', function() {
-    return !!Modernizr.canvas && canvas.toDataURL('image/png').indexOf('data:image/png') === 0;
+    var supports = false;
+
+    // AVG secure browser with 'Anti-Fingerprinting' turned on throws an exception when using an "invalid" toDataUrl
+    try {
+      supports = !!Modernizr.canvas && canvas.toDataURL('image/png').indexOf('data:image/png') === 0;
+    } catch (e) {}
+
+    return supports;
   });
   Modernizr.addTest('todataurlwebp', function() {
     var supports = false;
