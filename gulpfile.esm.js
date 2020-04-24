@@ -149,7 +149,7 @@ gulp.task('mocha:browser', (done) => {
             if (id.includes('globalThis')) {
               return
             }
-            return id.match(/([^/]*).js$/)[1]
+            return path.basename(id, '.js')
           }}})
           )
           .then(e => res.end(e.output[0].code))
@@ -186,7 +186,7 @@ gulp.task('mocha:node', (done) => {
   const nyc = new NYC(require('./nyc.config.js'))
 
   const mocha = new Mocha({
-    reporter: 'spec',
+    reporter: 'dot',
     timeout: 15000
   });
 
@@ -197,8 +197,6 @@ gulp.task('mocha:node', (done) => {
     mocha.addFile(file);
   });
 
-  nyc.addAllFiles();
-
   // Run the tests.
   const runner = mocha.run(fails => {
     failures += fails;
@@ -206,7 +204,6 @@ gulp.task('mocha:node', (done) => {
 
   runner.on('end', () => {
     nyc.writeCoverageFile();
-    nyc.report();
     done()
   });
 

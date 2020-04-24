@@ -1,23 +1,24 @@
-var buildQuery
-var expect = expect || undefined
-var metadata
-
-if (typeof self === 'undefined') {
-  var root = require('find-parent-dir').sync(__dirname, 'package.json');
-  buildQuery = require(root + 'lib/buildQuery').default;
-  metadata = require(root + 'lib/metadata').default();
-  expect = require('chai').expect;
-} else {
-  buildQuery = makeIIFE({file: "./lib/buildQuery.js", func: 'buildQuery'})
-  eval(buildQuery)
-  var _metadata = $.get({
-    url: '../lib/metadataStatic.js',
-    async: false
-  }).responseText;
-  eval(_metadata)
-}
-
 describe('cli/buildQuery', function() {
+  var buildQuery
+  var expect
+  var metadata
+
+  if (typeof self === 'undefined') {
+    var root = require('find-parent-dir').sync(__dirname, 'package.json');
+    buildQuery = require(root + 'lib/buildQuery').default;
+    metadata = require(root + 'lib/metadata').default();
+    expect = require('chai').expect;
+  } else {
+    expect = chai.expect
+    buildQuery = makeIIFE({file: "./lib/buildQuery.js", func: 'buildQuery'})
+    eval(buildQuery)
+    var _metadata = $.get({
+      url: '../lib/metadataStatic.js',
+      async: false
+    }).responseText;
+    eval(_metadata)
+  }
+
 
   it('renames html5shiv and html5printshiv to shiv and printshiv', function() {
     var shiv_query = buildQuery({'options': ['html5shiv']}, metadata)
