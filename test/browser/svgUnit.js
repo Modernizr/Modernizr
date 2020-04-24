@@ -4,30 +4,15 @@ describe('svg context unit tests', function() {
       "varsIgnorePattern": "createElement|getBody|Modernizr|setClasses"
     }]
   */
-  var createElement
   var getBody
   var object;
   var svgContext;
 
-  if ('createElementNS' in document) {
+  if ('createelementns' in document) {
     var setup = function(settings) {
-      var stringified = settings.stringified;
-      var instrumented = !!stringified.match(/__cov_/);
-
-      if (instrumented) {
-        settings.coverageObjName = stringified.match(/(?:^[^{]*{)([^.]*)/)[1];
-        svgContext[settings.coverageObjName] = window[settings.coverageObjName];
-      }
-
       Object.assign(svgContext, settings.setup);
 
-      svgContext.eval(stringified);
-
-      settings.cleanup = function() {
-        if (instrumented) {
-          window[settings.coverageObjName] = svgContext[settings.coverageObjName] ;
-        }
-      };
+      svgContext.eval(settings.stringified);
 
       return settings;
     };
@@ -60,9 +45,7 @@ describe('svg context unit tests', function() {
       var _Modernizr;
 
       _Modernizr = makeIIFE({file: "./src/Modernizr.js", func: '_Modernizr'})
-      var Modernizr = _Modernizr.default;
-      var setClasses = _Modernizr.setClasses;
-      var testInstance = setup({
+      setup({
         stringified: _Modernizr,
         setup: {
           docElement: svgContext.document.documentElement,
@@ -79,7 +62,6 @@ describe('svg context unit tests', function() {
         });
 
         expect(svgContext.document.documentElement.className.baseVal).to.contain('svgdetect');
-        testInstance.cleanup();
         done();
       }
       catch (e) { done(e); }
@@ -89,7 +71,7 @@ describe('svg context unit tests', function() {
     it('uses the correct namespace when creating elements', function(done) {
       var createElement = makeIIFE({file: "./src/createElement.js", func: 'createElement'})
         try {
-          var testInstance = setup({
+          setup({
             stringified: createElement,
             setup: {
               isSVG: true
@@ -102,8 +84,6 @@ describe('svg context unit tests', function() {
 
           expect(svgContext._testElem.namespaceURI).to.be.equal('http://www.w3.org/2000/svg');
 
-          testInstance.cleanup();
-
           done();
         }
         catch (e) { done(e); }
@@ -112,7 +92,7 @@ describe('svg context unit tests', function() {
     it('uses a SVG element for when making a fake body', function(done) {
       var getBody = makeIIFE({file: "./src/getBody.js", func: 'getBody'})
       try {
-        var testInstance = setup({
+        setup({
           stringified: getBody.toString(),
           setup: {
             isSVG: true,
@@ -127,8 +107,6 @@ describe('svg context unit tests', function() {
         });
 
         expect(svgContext._body.nodeName.toLowerCase()).to.be.equal('svg');
-
-        testInstance.cleanup();
 
         done();
       }

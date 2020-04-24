@@ -17,8 +17,7 @@ import pug                from 'gulp-pug';
 import sirv               from 'sirv';
 import path               from 'path';
 import { rollup }         from 'rollup';
-import istanbul           from 'rollup-plugin-istanbul';
-
+import * as istanbul      from 'istanbul-lib-instrument';
 
 import ModernizrMetadata  from './lib/metadata.js';
 import config             from './lib/config-all';
@@ -123,7 +122,9 @@ gulp.task('mocha:browser', (done) => {
       output: { format: 'iife' },
       plugins: [
         jsonPlugin(),
-        istanbul(),
+        {
+          transform: (c, i) => !i.endsWith('shiv.js') && new istanbul.createInstrumenter({coverageGlobalScope: 'self.top', esModules: true}).instrumentSync(c, i)
+        },
         { load: i => i == f ? `${fs.readFileSync(f)}` : null }
       ]
     }

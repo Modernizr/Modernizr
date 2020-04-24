@@ -19,22 +19,10 @@ describe('isSVG', function() {
   if ('createElementNS' in document) {
     var setup = function(settings) {
       var stringified = settings.stringified;
-      var instrumented = !!stringified.match(/__cov_/);
-
-      if (instrumented) {
-        settings.coverageObjName = stringified.match(/(?:^[^{]*{)([^.]*)/)[1];
-        svgContext[settings.coverageObjName] = window[settings.coverageObjName];
-      }
 
       Object.assign(svgContext, settings.setup);
 
       svgContext.eval(stringified);
-
-      settings.cleanup = function() {
-        if (instrumented) {
-          window[settings.coverageObjName] = svgContext[settings.coverageObjName] ;
-        }
-      };
 
       return settings;
     };
@@ -67,7 +55,7 @@ describe('isSVG', function() {
       var _isSVG = makeIIFE({file: "./src/isSVG.js", func: 'isSVG'})
       eval(_isSVG)
 
-      var testInstance = setup({
+      setup({
         stringified: _isSVG,
         setup: {
           expect: expect,
@@ -82,7 +70,6 @@ describe('isSVG', function() {
         // this runs in the browser thread, so it should be false
         expect(isSVG).to.be.false
 
-        testInstance.cleanup();
         done();
       }
       catch (e) { done(e); }

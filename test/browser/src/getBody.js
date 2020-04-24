@@ -9,20 +9,9 @@ describe('getBody', function() {
     var object;
 
     var setup = function(settings) {
-      var stringified = settings.stringified;
-      var instrumented = !!stringified.match(/var cov_/);
-
       Object.assign(svgContext, settings.setup);
 
-      svgContext.eval(stringified);
-
-      settings.cleanup = function() {
-        if (instrumented) {
-          var coverageObjName = stringified.match(/var path='([^']*getBody.js)'/)[1]
-          Object.assign(window.__coverage__[coverageObjName].s, svgContext.__coverage__[coverageObjName].s);
-          Object.assign(window.__coverage__[coverageObjName].b, svgContext.__coverage__[coverageObjName].b);
-        }
-      };
+      svgContext.eval(settings.stringified);
 
       return settings;
     };
@@ -53,7 +42,7 @@ describe('getBody', function() {
     });
 
     it('works inside of an SVG', function(done) {
-      var testInstance = setup({
+      setup({
         stringified: _getBody,
         setup: {
           expect: expect
@@ -66,7 +55,6 @@ describe('getBody', function() {
           expect(body.nodeName).to.equal('svg')
         });
 
-        testInstance.cleanup();
         done();
       }
       catch (e) { done(e); }

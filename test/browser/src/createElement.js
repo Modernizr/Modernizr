@@ -9,20 +9,10 @@ describe('createElement', function() {
   if ('createElementNS' in document) {
     var spy
     var setup = function(settings) {
-      var stringified = settings.stringified;
-      var instrumented = !!stringified.match(/var cov_/);
 
       Object.assign(svgContext, settings.setup);
 
-      svgContext.eval(stringified);
-
-      settings.cleanup = function() {
-        if (instrumented) {
-          var coverageObjName = stringified.match(/var path='([^']*createElement.js)'/)[1]
-          Object.assign(window.__coverage__[coverageObjName].s, svgContext.__coverage__[coverageObjName].s);
-          Object.assign(window.__coverage__[coverageObjName].b, svgContext.__coverage__[coverageObjName].b);
-        }
-      };
+      svgContext.eval(settings.stringified);
 
       return settings;
     };
@@ -52,7 +42,7 @@ describe('createElement', function() {
     });
 
     it('works inside of an SVG', function(done) {
-      var testInstance = setup({
+      setup({
         stringified: _createElement,
         setup: {
           expect: expect,
@@ -70,7 +60,6 @@ describe('createElement', function() {
           spy.restore()
         });
 
-        testInstance.cleanup();
         done();
       }
       catch (e) { done(e); }

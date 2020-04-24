@@ -77,6 +77,7 @@
     "gulp-connect": "^5.7.0",
     "gulp-eslint": "^6.0.0",
     "gulp-pug": "^4.0.1",
+    "istanbul-lib-instrument": "^4.0.1",
     "jquery": "^3.5.0",
     "json3": "^3.3.3",
     "mocha": "^7.1.2",
