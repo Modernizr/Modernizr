@@ -1,7 +1,7 @@
 /*!
 {
   "name": "ES6 Class",
-  "property": "class",
+  "property": "es6class",
   "notes": [{
     "name": "ECMAScript 6 language specification",
     "href": "https://www.ecma-international.org/ecma-262/6.0/#sec-class-definitions"
