@@ -6,6 +6,7 @@
   "caniuse": "avif",
   "tags": ["image"],
   "authors": ["Markel Ferro (@MarkelFe)"],
+  "polyfills": ["avifjs"],
   "notes": [{
     "name": "Avif Spec",
     "href": "https://aomediacodec.github.io/av1-avif/"
