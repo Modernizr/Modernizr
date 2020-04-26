@@ -11,7 +11,7 @@
       "href": "https://developers.google.com/web/updates/2018/03/webauthn-credential-management#the_solution"
     }
   ],
-  "property": "publicKeyCredential",
+  "property": "publickeycredential",
   "tags": ["webauthn", "web authentication"],
   "authors": ["Eric Delia"]
 }

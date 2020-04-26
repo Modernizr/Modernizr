@@ -13,6 +13,9 @@ window.caniusecb = function(caniuse) {
   describe('caniuse', function() {
     var unusedModernizr = [];
     var unusedCaniuse = _.keys(caniuse.data);
+    // TODO:: This map could (theoretically!) be build automatically by going through all feature-detects and look into
+    // the docs where property and caniuse tags are written down. One should anyway look if some are missing here or in
+    // the feature detect docs
     var map = {
       adownload: 'download',
       ambientlight: 'ambient-light',
