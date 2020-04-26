@@ -5,7 +5,6 @@
   "tags": ["dom"],
   "authors": ["Rick Byers"],
   "name": "Passive event listeners",
-  "caniuse": "passive-event-listener",
   "notes": [{
     "name": "WHATWG Spec",
     "href": "https://dom.spec.whatwg.org/#dom-addeventlisteneroptions-passive"

@@ -4,7 +4,6 @@
   "property": "eventlistener",
   "caniuse": "addeventlistener",
   "authors": ["Andrew Betts (@triblondon)"],
-  "caniuse": "addeventlistener",
   "notes": [{
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-Registration-interfaces"

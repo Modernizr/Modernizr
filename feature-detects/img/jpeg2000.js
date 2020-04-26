@@ -3,7 +3,6 @@
   "name": "JPEG 2000",
   "async": true,
   "aliases": ["jpeg-2000", "jpg2"],
-  "caniuse": "jpeg2000",
   "property": "jpeg2000",
   "caniuse": "jpeg2000",
   "tags": ["image"],

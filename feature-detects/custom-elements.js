@@ -4,7 +4,6 @@
   "property": "customelements",
   "caniuse": "custom-elementsv1",
   "tags": ["customelements"],
-  "caniuse": "custom-elementsv1",
   "polyfills": ["customelements"],
   "notes": [{
     "name": "Specs for Custom Elements",

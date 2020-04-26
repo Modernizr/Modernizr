@@ -30,7 +30,7 @@ describe('cli/metadata', function() {
       }
     }).default;
 
-    expect(metadata).to.throw(/Error Parsing Metadata/);
+    expect(metadata).to.throw();
   });
 
   it('should throw when metadata contains polyfills not found in polyfills.json', function() {
@@ -109,9 +109,9 @@ describe('cli/metadata', function() {
 
     metadata(function(data) {
       data.forEach(function(obj) {
-        var err = schema.validate(obj).error;
+        var err = schema.validate(obj, {convert: false}).error;
         it('for ' + obj.name, function() {
-          expect(err).to.be.equal(undefined);
+          expect(`${obj.name} - ${err}`).to.be.equal(`${obj.name} - ${undefined}`);
         });
       });
     });

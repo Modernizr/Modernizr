@@ -4,7 +4,6 @@
   "property": "bgpositionshorthand",
   "caniuse": "css-background-offsets",
   "tags": ["css"],
-  "caniuse": "css-background-offsets",
   "builderAliases": ["css_backgroundposition_shorthand"],
   "notes": [{
     "name": "MDN Docs",

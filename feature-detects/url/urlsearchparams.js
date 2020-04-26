@@ -4,7 +4,6 @@
   "caniuse": "urlsearchparams",
   "tags": ["querystring", "url"],
   "authors": ["Cătălin Mariș"],
-  "caniuse": "urlsearchparams",
   "name": "URLSearchParams API",
   "notes": [{
     "name": "WHATWG Spec",

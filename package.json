@@ -54,6 +54,7 @@
     "@rollup/plugin-json": "^4.0.2",
     "doctrine": "^3.0.0",
     "esm": "^3.2.25",
+    "find-duplicated-property-keys": "^1.0.14",
     "globby": "^11.0.0",
     "markdown-it": "^10.0.0",
     "mkdirp": "^1.0.4",

@@ -4,7 +4,6 @@
   "property": "textalignlast",
   "caniuse": "css-text-align-last",
   "tags": ["css"],
-  "caniuse": "css-text-align-last",
   "knownBugs": ["IE does not support the 'start' or 'end' values."],
   "notes": [{
     "name": "Quirksmode",

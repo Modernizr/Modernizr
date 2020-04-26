@@ -4,7 +4,6 @@
   "property": "audio",
   "caniuse": "audio",
   "tags": ["html5", "audio", "media"],
-  "caniuse": "audio",
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements"
