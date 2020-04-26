@@ -9,7 +9,7 @@ define(['Modernizr', 'testStyles', 'prefixes', 'test/css/animations', 'computedS
   Modernizr.addTest('csspseudoanimations', function() {
     var result = false;
 
-    if (!Modernizr.cssanimations || !computedStyle) {
+    if (!Modernizr.cssanimations) {
       return result;
     }
 

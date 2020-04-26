@@ -9,7 +9,7 @@ define(['Modernizr', 'testStyles', 'prefixes', 'test/css/transitions', 'computed
   Modernizr.addTest('csspseudotransitions', function() {
     var result = false;
 
-    if (!Modernizr.csstransitions || !computedStyle) {
+    if (!Modernizr.csstransitions) {
       return result;
     }
 
