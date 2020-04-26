@@ -1,7 +1,7 @@
 /*!
 {
   "name": "Proxy Object",
-  "property": "Proxy",
+  "property": "proxy",
   "caniuse": "proxy",
   "authors": ["Brock Beaudry"],
   "notes": [{

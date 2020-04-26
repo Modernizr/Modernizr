@@ -1,7 +1,7 @@
 /*!
 {
   "name": "ES7 Rest destructuring",
-  "property": [ "restdestructuringarray", "restdestructuringobject" ],
+  "property": ["restdestructuringarray", "restdestructuringobject"],
   "caniuse" : "destructuring%20assignment",
   "notes": [{
     "name": "official ECMAScript 7 Destructuring Assignment draft specification",

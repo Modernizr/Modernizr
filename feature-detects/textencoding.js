@@ -1,7 +1,7 @@
 /*!
 {
   "name": "Text Encoding/Decoding",
-  "property": [ "textencoder", "textdecoder" ],
+  "property": ["textencoder", "textdecoder"],
   "caniuse" : "textencoder",
   "notes": [{
     "name": "MDN TextEncoder Doc",
@@ -14,6 +14,6 @@
 }
 !*/
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('textencoder', !!(window.TextEncoder && window.TextEncoder.prototype.encode)); 
+  Modernizr.addTest('textencoder', !!(window.TextEncoder && window.TextEncoder.prototype.encode));
   Modernizr.addTest('textdecoder', !!(window.TextDecoder && window.TextDecoder.prototype.decode));
 });
