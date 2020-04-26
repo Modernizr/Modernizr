@@ -57,9 +57,7 @@ define(['ModernizrProto', 'injectElementWithStyles', 'computedStyle'], function(
       var bool = false;
 
       injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function(node) {
-        bool = (computedStyle ?
-          computedStyle(node, null) :
-          node.currentStyle).position === 'absolute';
+        bool = computedStyle(node, null, 'position') === 'absolute';
       });
 
       return bool;

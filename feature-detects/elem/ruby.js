@@ -23,10 +23,8 @@ define(['Modernizr', 'createElement', 'docElement', 'computedStyle'], function(M
     ruby.appendChild(rt);
     docElement.appendChild(ruby);
 
-    console.log(computedStyle(rp, '', 'display') );
-
     // browsers that support <ruby> hide the <rp> via "display:none"
-    if (computedStyle(rp, null, 'display') === 'none' ||                                                          // for non-IE browsers
+    if (computedStyle(rp, null, 'display') === 'none' ||                                                       // for non-IE browsers
          // but in IE browsers <rp> has "display:inline" so, the test needs other conditions:
       computedStyle(ruby, null, 'display') === 'ruby' && computedStyle(rt, null, 'display') === 'ruby-text' || // for IE8+
       computedStyle(rp, null, 'fontSize') === '6pt' && computedStyle(rt, null, 'fontSize') === '6pt') {        // for IE6 & IE7
