@@ -1,7 +1,7 @@
 /*!
 {
   "name": "ES6 Template Strings",
-  "property": "stringtemplate",
+  "property": "templatestrings",
   "caniuse": "template-literals",
   "notes": [{
     "name": "ECMAScript 6 draft specification",
@@ -15,7 +15,7 @@
 Check if browser implements ECMAScript 6 String template.
 */
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('stringtemplate', function() {
+  Modernizr.addTest('templatestrings', function() {
     try {
       // eslint-disable-next-line
       return eval('(function(){var a=1; return `-${a}-`;})()') === '-1-';
