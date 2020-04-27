@@ -95,9 +95,6 @@
     "update-changelog": "auto-changelog --commit-limit false --package",
     "update-license": "node scripts/generate-license.js && git add LICENSE"
   },
-  "directories": {
-    "test": "test"
-  },
   "engines": {
     "node": ">=10"
   },
