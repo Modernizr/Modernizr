@@ -20,8 +20,8 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
 
     - `touchevents`: [discussion](https://github.com/Modernizr/Modernizr/pull/2432) 
     - `unicode`: [discussion](https://github.com/Modernizr/Modernizr/issues/2468) 
-    - `templatestrings` and `es6/string-templates`: merged into `es6/templatestrings` 
-
+    - `templatestrings`: duplicate of the es6 detect `stringtemplate`
+    
 ## New Asynchronous Event Listeners
 
 Often times people want to know when an asynchronous test is done so they can allow their application to react to it.

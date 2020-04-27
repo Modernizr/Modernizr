@@ -1,8 +1,9 @@
 /*!
 {
   "name": "ES6 Template Strings",
-  "property": "templatestrings",
+  "property": "stringtemplate",
   "caniuse": "template-literals",
+  "builderAliases": ["templatestrings"],
   "notes": [{
     "name": "ECMAScript 6 draft specification",
     "href": "https://tc39wiki.calculist.org/es6/template-strings/"
@@ -15,7 +16,7 @@
 Check if browser implements ECMAScript 6 String template.
 */
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('templatestrings', function() {
+  Modernizr.addTest('stringtemplate', function() {
     try {
       // eslint-disable-next-line
       return eval('(function(){var a=1; return `-${a}-`;})()') === '-1-';
