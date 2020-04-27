@@ -39,7 +39,7 @@ Here it would go a description of the feature test. You can use **markdown** her
 | `tags`           | optional |    A group that encapsulates many feature detects    |                                                           |
 | `caniuse`        | optional |      A conversion table of caniuse and Modernizr     | Consider adding it to test/browser/integration/caniuse.js |
 | `authors`        | optional |          List of contributors of the script          |          There are a couple of ways to express it         |
-| `builderAliases` | optional |                                                      |                                                           |
+| `builderAliases` | optional |     Used by CI and the web when tests are renamed    |                                                           |
 | `polyfills`      | optional |     Available polyfills for not working versions     |               Add them in lib/polyfills.json              |
 | `aliases`        | optional |         Other names that the feature goes by         |                                                           |
 | `async`          | optional |       If the test supports async functionality       |                     Defaults to false                     |
