@@ -281,7 +281,6 @@
     "svg/foreignobject",
     "svg/inline",
     "svg/smil",
-    "templatestrings",
     "textarea/maxlength",
     "textencoding",
     "typed-arrays",
