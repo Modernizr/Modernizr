@@ -51,7 +51,7 @@
     "file": "^0.2.2",
     "lodash": "^4.17.15",
     "markdown-it": "^10.0.0",
-    "mkdirp": "0.5.5",
+    "mkdirp": "1.0.4",
     "requirejs": "^2.3.6",
     "yargs": "^15.3.1"
   },
@@ -95,6 +95,9 @@
     "update-changelog": "auto-changelog --commit-limit false --package",
     "update-license": "node scripts/generate-license.js && git add LICENSE"
   },
+  "engines": {
+    "node": ">=10"
+  },
   "files": [
     "LICENSE",
     "README.md",
@@ -110,8 +113,5 @@
     "javascript",
     "browser",
     "feature detection"
-  ],
-  "directories": {
-    "test": "test"
-  }
+  ]
 }

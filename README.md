@@ -12,6 +12,10 @@
 
 Modernizr tests which native CSS3 and HTML5 features are available in the current UA and makes the results available to you in two ways: as properties on a global `Modernizr` object, and as classes on the `<html>` element. This information allows you to progressively enhance your pages with a granular level of control over the experience.
 
+## Breaking changes with v4
+
+- Dropped Node 8 Support, please upgrade to Node v10
+
 ## New Asynchronous Event Listeners
 
 Often times people want to know when an asynchronous test is done so they can allow their application to react to it.
