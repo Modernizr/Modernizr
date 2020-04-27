@@ -41,7 +41,7 @@ Here it would go a description of the feature test. You can use **markdown** her
 | `authors`        | optional |          List of contributors of the script          |          There are a couple of ways to express it         |
 | `builderAliases` | optional |     Used by CI and the web when tests are renamed    |                                                           |
 | `polyfills`      | optional |     Available polyfills for not working versions     |               Add them in lib/polyfills.json              |
-| `aliases`        | optional |         Other names that the feature goes by         |                                                           |
+| `aliases`        | optional |   Used if a feature has more than a canonical name   |             Should not be needed in new tests             |
 | `async`          | optional |       If the test supports async functionality       |                     Defaults to false                     |
 | `warnings`       | optional |        Notes to the developer using the script       |               Don't mistake it for knownBugs              |
 | `knownBugs`      | optional |  Bugs known of the test (e.g.: doesn't work in IE6)  |                                                           |
