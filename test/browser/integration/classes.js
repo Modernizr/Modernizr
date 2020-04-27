@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 describe('classes', function() {
   var classes = document.documentElement.className.split(' ');
 

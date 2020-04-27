@@ -34,6 +34,14 @@
       {
         "selector": "CallExpression[callee.object.name='window'][callee.property.name='getComputedStyle']",
         "message": "Do not use `getComputedStyle`, import and use the `computedStyle` helper"
+      },
+      {
+        "selector": "CallExpression[callee.object.name='_globalThis'][callee.property.name='getComputedStyle']",
+        "message": "Do not use `getComputedStyle`, import and use the `computedStyle` helper"
+      },
+      {
+        "selector": "BinaryExpression > CallExpression > MemberExpression > Identifier[name = 'indexOf']",
+        "message": "Do not use `indexOf` on strings, import and use the `contains` helper"
       }
     ],
     "no-useless-escape": "off"

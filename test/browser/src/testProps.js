@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 describe('testProps', function() {
   var testProps;
 

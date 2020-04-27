@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /*global UAParser*/
 window.caniusecb = function(caniuse) {
 

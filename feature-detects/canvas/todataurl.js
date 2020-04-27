@@ -11,7 +11,7 @@
 }
 !*/
 import Modernizr from '../../src/Modernizr.js';
-
+import contains from '../../src/contains.js';
 import createElement from '../../src/createElement.js';
 import '../canvas.js';
 
@@ -22,7 +22,7 @@ var supports = function(type) {
   // AVG secure browser with 'Anti-Fingerprinting' turned on throws an exception when using an "invalid" toDataUrl
   // firefox 3 throws an error when you use an "invalid" toDataUrl
   try {
-    result = !!Modernizr.canvas && canvas.toDataURL('image/' + type).indexOf('data:image/' + type) === 0;
+    result = !!Modernizr.canvas && contains(canvas.toDataURL('image/' + type), 'data:image/' + type);
   } catch (e) {}
 
   return result;

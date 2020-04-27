@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * wrapper around getComputedStyle, to fix issues with Firefox returning null when
  * called inside of a hidden iframe

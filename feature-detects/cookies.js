@@ -10,6 +10,7 @@
 Detects whether cookie support is enabled.
 */
 import Modernizr from '../src/Modernizr.js';
+import contains from '../src/contains.js';
 
 // https://github.com/Modernizr/Modernizr/issues/191
 
@@ -26,7 +27,7 @@ Modernizr.addTest('cookies', function() {
   try {
     // Create cookie
     document.cookie = 'cookietest=1';
-    var ret = document.cookie.indexOf('cookietest=') !== -1;
+    var ret = contains(document.cookie, 'cookietest=');
     // Delete cookie
     document.cookie = 'cookietest=1; expires=Thu, 01-Jan-1970 00:00:01 GMT';
     return ret;

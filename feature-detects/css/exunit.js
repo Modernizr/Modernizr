@@ -12,13 +12,14 @@
 }
 !*/
 import Modernizr from '../../src/Modernizr.js';
+import contains from '../../src/contains.js';
 import testStyles from '../../src/testStyles.js';
 import computedStyle from '../../src/computedStyle.js';
 
 testStyles('#modernizr { fontSize: 3ex }', function(elem) {
   var compStyle = computedStyle(elem, null, 'fontSize');
 
-  Modernizr.addTest('csschunit', compStyle.indexOf('ex') !== -1);
+  Modernizr.addTest('csschunit', contains(compStyle, 'ex'));
 });
 
 export default Modernizr.cssexunit

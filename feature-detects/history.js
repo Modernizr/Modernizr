@@ -19,6 +19,7 @@
 Detects support for the History API for manipulating the browser session history.
 */
 import Modernizr from '../src/Modernizr.js';
+import contains from '../src/contains.js';
 import _globalThis from '../src/globalThis.js';
 
 Modernizr.addTest('history', function() {
@@ -36,11 +37,11 @@ Modernizr.addTest('history', function() {
 
   // We only want Android 2 and 4.0, stock browser, and not Chrome which identifies
   // itself as 'Mobile Safari' as well, nor Windows Phone (issue #1471).
-  if ((ua.indexOf('Android 2.') !== -1 ||
-      (ua.indexOf('Android 4.0') !== -1)) &&
-      ua.indexOf('Mobile Safari') !== -1 &&
-      ua.indexOf('Chrome') === -1 &&
-      ua.indexOf('Windows Phone') === -1 &&
+  if ((contains(ua, 'Android 2.') ||
+      (contains(ua, 'Android 4.0'))) &&
+      contains(ua, 'Mobile Safari') &&
+      !contains(ua, 'Chrome') &&
+      !contains(ua, 'Windows Phone') &&
   // Since all documents on file:// share an origin, the History apis are
   // blocked there as well
       location.protocol !== 'file:'

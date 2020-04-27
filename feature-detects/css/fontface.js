@@ -27,6 +27,7 @@
 }
 !*/
 import Modernizr from '../../src/Modernizr.js';
+import contains from '../../src/contains.js';
 import testStyles from '../../src/testStyles.js';
 import isBrowser from '../../src/isBrowser.js';
 
@@ -44,7 +45,7 @@ if (blacklist) {
     var style = document.getElementById('smodernizr');
     var sheet = style.sheet || style.styleSheet;
     var cssText = sheet ? (sheet.cssRules && sheet.cssRules[0] ? sheet.cssRules[0].cssText : sheet.cssText || '') : '';
-    var bool = /src/i.test(cssText) && cssText.indexOf(rule.split(' ')[0]) === 0;
+    var bool = /src/i.test(cssText) && contains(cssText, rule.split(' ')[0]);
     Modernizr.addTest('fontface', bool);
   });
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /*globals __coverage__*/
 $(document).ready(function() {
 

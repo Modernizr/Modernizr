@@ -18,6 +18,7 @@
 }
 !*/
 import Modernizr from '../../src/Modernizr.js';
+import contains from '../../src/contains.js';
 import prefixes from '../../src/prefixes.js';
 import createElement from '../../src/createElement.js';
 
@@ -42,7 +43,7 @@ Modernizr.addTest('cssgradients', function() {
   style.cssText = css;
 
   // IE6 returns undefined so cast to string
-  return ('' + style.backgroundImage).indexOf('gradient') > -1;
+  return contains('' + style.backgroundImage, 'gradient');
 });
 
 export default Modernizr.cssgradients

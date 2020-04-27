@@ -11,13 +11,14 @@
 }
 !*/
 import Modernizr from '../../src/Modernizr.js';
+import contains from '../../src/contains.js';
 import createElement from '../../src/createElement.js';
 
 Modernizr.addTest('rgba', function() {
   var style = createElement('a').style;
   style.cssText = 'background-color:rgba(150,255,150,.5)';
 
-  return ('' + style.backgroundColor).indexOf('rgba') > -1;
+  return contains('' + style.backgroundColor, 'rgba')
 });
 
 export default Modernizr.rgba

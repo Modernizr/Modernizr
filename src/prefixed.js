@@ -1,6 +1,7 @@
 import {ModernizrProto} from './Modernizr.js';
 import testPropsAll from './testPropsAll.js';
 import cssToDOM from './cssToDOM.js';
+import contains from './contains.js';
 import atRule from './atRule.js';
 /**
  * prefixed returns the prefixed or nonprefixed property name variant of your input
@@ -67,11 +68,11 @@ import atRule from './atRule.js';
  * If you want a similar lookup, but in kebab-case, you can use [prefixedCSS](#modernizr-prefixedcss).
  */
 var prefixed = ModernizrProto.prefixed = function(prop, obj, elem) {
-  if (prop.indexOf('@') === 0) {
+  if (contains(prop, '@')) {
     return atRule(prop);
   }
 
-  if (prop.indexOf('-') !== -1) {
+  if (contains(prop, '-')) {
     // Convert kebab-case to camelCase
     prop = cssToDOM(prop);
   }

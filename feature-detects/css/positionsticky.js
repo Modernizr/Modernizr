@@ -14,6 +14,7 @@
 import Modernizr from '../../src/Modernizr.js';
 import createElement from '../../src/createElement.js';
 import prefixes from '../../src/prefixes.js';
+import contains from '../../src/contains.js';
 
 // Sticky positioning - constrains an element to be positioned inside the
 // intersection of its container box, and the viewport.
@@ -25,7 +26,7 @@ Modernizr.addTest('csspositionsticky', function() {
 
   mStyle.cssText = prop + prefixes.join(value + ';' + prop).slice(0, -prop.length);
 
-  return mStyle.position.indexOf(value) !== -1;
+  return contains(mStyle.position, value);
 });
 
 export default Modernizr.csspositionsticky
