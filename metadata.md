@@ -38,7 +38,7 @@ Here it would go a description of the feature test. You can use **markdown** her
 | `property`       | required | The property name established in `Modernizr.addTest` |                   It must be lowercase, without any punctuation                  |
 | `tags`           | optional |    A group that encapsulates many feature detects    |                                                                                  |
 | `caniuse`        | optional |      A conversion table of caniuse and Modernizr     |      Consider adding it to [caniuse.js](test/browser/integration/caniuse.js)     |
-| `authors`        | optional |          List of contributors of the script          |                     There are a couple of ways to express it                     |
+| `authors`        | optional |          List of contributors of the script          |                                                                                  |
 | `builderAliases` | optional |     Used by CI and the web when tests are renamed    |                         Should not be needed in new tests                        |
 | `polyfills`      | optional |     Available polyfills for not working versions     | Any polyfill listed needs to be included in [polyfills.json](lib/polyfills.json) |
 | `aliases`        | optional |   Used if a feature has more than a canonical name   |                             Legacy only - do not use                             |
