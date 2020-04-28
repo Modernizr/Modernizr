@@ -1,10 +1,3 @@
-# How to Write Feature Detects
-The scope of this file is to help you to create new feature detects or edit existing ones. Here you will find details and guidelines that will help you understand how
-Modernizr works.
-
-#### Table of contents
-[Metadata](#metadata)
-
 ## Metadata
 At the top of every feature detect in Modernizr there is a JSON fragment that represents the metadata of the test. This data is used, for example, to build the webpage.
 This is an example of this schema (it does not represent a real test): 
