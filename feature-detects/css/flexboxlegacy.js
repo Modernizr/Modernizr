@@ -10,6 +10,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('flexboxlegacy', testAllProps('boxDirection', 'reverse', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('flexboxlegacy', testAllProps('boxDirection', 'reverse', true));
+
+export default Modernizr.flexboxlegacy

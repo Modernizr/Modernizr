@@ -14,6 +14,8 @@
 Test for the loading attribute of images and iframes
 */
 
-define(['Modernizr'], function (Modernizr) {
-  Modernizr.addTest('lazyloading', 'loading' in HTMLImageElement.prototype);
-});
+import Modernizr from '../../src/Modernizr.js';
+
+Modernizr.addTest('lazyloading', 'loading' in HTMLImageElement.prototype);
+
+export default Modernizr.lazyloading

@@ -17,6 +17,9 @@
 /* DOC
 Detects support for an API that provides utility methods for working with the query string of a URL.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('urlsearchparams', 'URLSearchParams' in window);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('urlsearchparams', 'URLSearchParams' in _globalThis);
+
+export default Modernizr.urlsearchparams

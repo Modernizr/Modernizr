@@ -18,6 +18,10 @@
 /* DOC
 Detects support for the Navigation Timing API, for measuring browser and connection performance.
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('performance', !!prefixed('performance', window));
-});
+import Modernizr from '../src/Modernizr.js';
+import prefixed from '../src/prefixed.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('performance', !!prefixed('performance', _globalThis));
+
+export default Modernizr.performance

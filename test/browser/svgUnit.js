@@ -1,46 +1,21 @@
 describe('svg context unit tests', function() {
-  var svgContext;
-  var cleanup;
+    /*
+    eslint no-unused-vars: ["error", {
+      "varsIgnorePattern": "createElement|getBody|Modernizr|setClasses"
+    }]
+  */
+  var getBody
   var object;
-  var req;
+  var svgContext;
 
-  if ('createElementNS' in document) {
-
+  if ('createelementns' in document) {
     var setup = function(settings) {
-      var stringified = settings.stringified;
-      var instrumented = !!stringified.match(/__cov_/);
+      Object.assign(svgContext, settings.setup);
 
-      if (instrumented) {
-        settings.coverageObjName = stringified.match(/(?:^[^{]*{)([^.]*)/)[1];
-        svgContext[settings.coverageObjName] = window[settings.coverageObjName];
-      }
-
-      _.extend(svgContext, settings.setup);
-
-      svgContext.eval(stringified);
-
-      settings.cleanup = function() {
-        if (instrumented) {
-          window[settings.coverageObjName] = svgContext[settings.coverageObjName] ;
-        }
-      };
+      svgContext.eval(settings.stringified);
 
       return settings;
     };
-
-    before(function(done) {
-
-      req = requirejs.config({
-        context: Math.random().toString().slice(2),
-        baseUrl: '../src',
-        paths: {cleanup: '../test/cleanup'}
-      });
-
-      req(['cleanup'], function(_cleanup) {
-        cleanup = _cleanup;
-        done();
-      });
-    });
 
     beforeEach(function(done) {
       object = document.createElement('object');
@@ -60,12 +35,6 @@ describe('svg context unit tests', function() {
 
       object.runUnitTests = function(thisRef) {
         svgContext = thisRef;
-
-        req = requirejs.config({
-          context: Math.random().toString().slice(2),
-          baseUrl: '../src'
-        });
-
         done();
       };
 
@@ -73,36 +42,37 @@ describe('svg context unit tests', function() {
     });
 
     it('is still able to set classNames correctly', function(done) {
-      req(['setClasses'], function(setClasses) {
-        try {
-          var testInstance = setup({
-            stringified: setClasses.toString(),
-            setup: {
-              Modernizr: {_config: {enableClasses: true}},
-              docElement: svgContext.document.documentElement,
-              isSVG: true
-            }
-          });
+      var _Modernizr;
 
-          svgContext.test(function() {
-            setClasses(['svgdetect']);
-          });
-
-          expect(svgContext.document.documentElement.className.baseVal).to.contain('svgdetect');
-
-          testInstance.cleanup();
-
-          done();
+      _Modernizr = makeIIFE({file: "./src/Modernizr.js", func: '_Modernizr'})
+      setup({
+        stringified: _Modernizr,
+        setup: {
+          docElement: svgContext.document.documentElement,
+          isSVG: true
         }
-        catch (e) { done(e); }
       });
+
+      try {
+        svgContext.test(function() {
+          var Modernizr = _Modernizr.default;
+          var setClasses = _Modernizr.setClasses;
+          Modernizr._config = {enableClasses: true}
+          setClasses(['svgdetect']);
+        });
+
+        expect(svgContext.document.documentElement.className.baseVal).to.contain('svgdetect');
+        done();
+      }
+      catch (e) { done(e); }
+
     });
 
     it('uses the correct namespace when creating elements', function(done) {
-      req(['createElement'], function(createElement) {
+      var createElement = makeIIFE({file: "./src/createElement.js", func: 'createElement'})
         try {
-          var testInstance = setup({
-            stringified: createElement.toString(),
+          setup({
+            stringified: createElement,
             setup: {
               isSVG: true
             }
@@ -114,44 +84,37 @@ describe('svg context unit tests', function() {
 
           expect(svgContext._testElem.namespaceURI).to.be.equal('http://www.w3.org/2000/svg');
 
-          testInstance.cleanup();
-
           done();
         }
         catch (e) { done(e); }
-      });
     });
 
     it('uses a SVG element for when making a fake body', function(done) {
-      req(['getBody'], function(getBody) {
-        try {
-          var testInstance = setup({
-            stringified: getBody.toString(),
-            setup: {
-              isSVG: true,
-              createElement: function() {
-                return svgContext.document.createElement.apply(svgContext.document, arguments);
-              }
+      var getBody = makeIIFE({file: "./src/getBody.js", func: 'getBody'})
+      try {
+        setup({
+          stringified: getBody.toString(),
+          setup: {
+            isSVG: true,
+            createElement: function() {
+              return svgContext.document.createElement.apply(svgContext.document, arguments);
             }
-          });
+          }
+        });
 
-          svgContext.test(function() {
-            window._body = getBody();
-          });
+        svgContext.test(function() {
+          window._body = getBody();
+        });
 
-          expect(svgContext._body.nodeName.toLowerCase()).to.be.equal('svg');
+        expect(svgContext._body.nodeName.toLowerCase()).to.be.equal('svg');
 
-          testInstance.cleanup();
-
-          done();
-        }
-        catch (e) { done(e); }
-      });
+        done();
+      }
+      catch (e) { done(e); }
     });
 
     afterEach(function() {
       object.parentNode.removeChild(object);
-      cleanup();
     });
   }
 });

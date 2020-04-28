@@ -23,12 +23,15 @@ element's background-position simultaneously.
 
 eg `background-position: right 10px bottom 10px`
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('bgpositionshorthand', function() {
-    var elem = createElement('a');
-    var eStyle = elem.style;
-    var val = 'right 10px bottom 10px';
-    eStyle.cssText = 'background-position: ' + val + ';';
-    return (eStyle.backgroundPosition === val);
-  });
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('bgpositionshorthand', function() {
+  var elem = createElement('a');
+  var eStyle = elem.style;
+  var val = 'right 10px bottom 10px';
+  eStyle.cssText = 'background-position: ' + val + ';';
+  return (eStyle.backgroundPosition === val);
 });
+
+export default Modernizr.bgpositionshorthand

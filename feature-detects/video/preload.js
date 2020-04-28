@@ -5,6 +5,9 @@
   "tags": ["video", "media"]
 }
 !*/
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('videopreload', 'preload' in createElement('video'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('videopreload', 'preload' in createElement('video'));
+
+export default Modernizr.videopreload

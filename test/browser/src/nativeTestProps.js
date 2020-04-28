@@ -1,44 +1,39 @@
 describe('nativeTestProps', function() {
   var nativeTestProps;
-  var cleanup;
 
-  before(function(done) {
-
-    define('package', [], function() {return {};});
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['nativeTestProps', 'cleanup'], function(_nativeTestProps, _cleanup) {
-      nativeTestProps = _nativeTestProps;
-      cleanup = _cleanup;
-      done();
-    });
-  });
+  var nativeSupport = window.CSS && window.CSS.supports
+  eval(makeIIFE({file: "./src/nativeTestProps.js", func: 'nativeTestProps'}))
 
   it('is a function', function() {
     expect(nativeTestProps).to.be.a('function');
   });
 
-  if (window.CSS && window.CSS.supports) {
+  if (nativeSupport) {
     it('looks up if the value is supported', function() {
       expect(nativeTestProps(['display'], 'block')).to.be.equal(true);
       expect(nativeTestProps(['display'], 'fart')).to.be.equal(false);
     });
-  } else if ('CSSSupportsRule' in window) {
-    it('supports the old version of the lookup', function() {
-      expect(nativeTestProps(['display'], 'block')).to.be.equal(true);
-    });
-  } else {
+  }
+
+  describe('', function() {
+    var originalRef
+
+    before(function() {
+      if (nativeSupport) {
+        originalRef = window.CSS
+        window.CSS = {}
+      }
+    })
+
     it('returns undefined for browsers lacking support', function() {
       expect(nativeTestProps(['display'], 'block')).to.be.equal(undefined);
     });
-  }
 
-  after(function() {
-    cleanup();
-  });
+    after(function() {
+      if (nativeSupport) {
+        window.CSS = originalRef
+      }
+    })
+  })
+
 });

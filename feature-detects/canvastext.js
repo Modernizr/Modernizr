@@ -10,11 +10,15 @@
 /* DOC
 Detects support for the text APIs for `<canvas>` elements.
 */
-define(['Modernizr', 'createElement', 'test/canvas'], function(Modernizr, createElement) {
-  Modernizr.addTest('canvastext', function() {
-    if (Modernizr.canvas === false) {
-      return false;
-    }
-    return typeof createElement('canvas').getContext('2d').fillText === 'function';
-  });
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+import './canvas.js';
+
+Modernizr.addTest('canvastext', function() {
+  if (Modernizr.canvas === false) {
+    return false;
+  }
+  return typeof createElement('canvas').getContext('2d').fillText === 'function';
 });
+
+export default Modernizr.canvastext;

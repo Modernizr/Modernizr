@@ -16,6 +16,9 @@
 /* DOC
 Detects support for CSS Snap Points
 */
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('scrollsnappoints', testAllProps('scrollSnapType'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('scrollsnappoints', testAllProps('scrollSnapType'));
+
+export default Modernizr.scrollsnappoints

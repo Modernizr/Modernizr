@@ -18,6 +18,10 @@
 /* DOC
 Detects support for matchMedia.
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('matchmedia', !!prefixed('matchMedia', window));
-});
+import Modernizr from '../../src/Modernizr.js';
+import prefixed from '../../src/prefixed.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('matchmedia', !!prefixed('matchMedia', _globalThis));
+
+export default Modernizr.matchmedia

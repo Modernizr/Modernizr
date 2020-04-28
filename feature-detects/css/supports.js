@@ -17,8 +17,11 @@
   }]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  var newSyntax = 'CSS' in window && 'supports' in window.CSS;
-  var oldSyntax = 'supportsCSS' in window;
-  Modernizr.addTest('supports', newSyntax || oldSyntax);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+var newSyntax = 'CSS' in _globalThis && 'supports' in _globalThis.CSS;
+var oldSyntax = 'supportsCSS' in _globalThis;
+Modernizr.addTest('supports', newSyntax || oldSyntax);
+
+export default Modernizr.supports

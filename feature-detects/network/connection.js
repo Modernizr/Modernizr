@@ -24,13 +24,15 @@ Unknown devices are assumed as fast
 
 For more rigorous network testing, consider boomerang.js: https://github.com/bluesmoon/boomerang/
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('lowbandwidth', function() {
-    // polyfill
-    var connection = navigator.connection || {type: 0};
+import Modernizr from '../../src/Modernizr.js';
 
-    return connection.type === 3 || // connection.CELL_2G
-      connection.type === 4 || // connection.CELL_3G
-      /^[23]g$/.test(connection.type); // string value in new spec
-  });
+Modernizr.addTest('lowbandwidth', function() {
+  // polyfill
+  var connection = navigator.connection || {type: 0};
+
+  return connection.type === 3 || // connection.CELL_2G
+    connection.type === 4 || // connection.CELL_3G
+    /^[23]g$/.test(connection.type); // string value in new spec
 });
+
+export default Modernizr.lowbandwidth

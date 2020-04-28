@@ -18,10 +18,13 @@
 /* DOC
 Detects support for inline SVG in HTML (not within XHTML).
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('inlinesvg', function() {
-    var div = createElement('div');
-    div.innerHTML = '<svg/>';
-    return (typeof SVGRect !== 'undefined' && div.firstChild && div.firstChild.namespaceURI) === 'http://www.w3.org/2000/svg';
-  });
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('inlinesvg', function() {
+  var div = createElement('div');
+  div.innerHTML = '<svg/>';
+  return (typeof SVGRect !== 'undefined' && div.firstChild && div.firstChild.namespaceURI) === 'http://www.w3.org/2000/svg';
 });
+
+export default Modernizr.inlinesvg

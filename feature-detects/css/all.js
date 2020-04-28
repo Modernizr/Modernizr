@@ -1,3 +1,4 @@
+
 /*!
 {
   "name": "cssall",
@@ -12,6 +13,9 @@
 Detects support for the `all` css property, which is a shorthand to reset all css properties (except direction and unicode-bidi) to their original value
 */
 
-define(['Modernizr', 'docElement'], function(Modernizr, docElement) {
-  Modernizr.addTest('cssall', 'all' in docElement.style);
-});
+import Modernizr from '../../src/Modernizr.js';
+import docElement from '../../src/docElement.js';
+import isBrowser from '../../src/isBrowser.js';
+
+Modernizr.addTest('cssall', isBrowser && 'all' in docElement.style);
+export default Modernizr.cssall;

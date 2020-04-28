@@ -20,6 +20,9 @@
 /* DOC
 Detects support for the basic `Worker` API from the Web Workers spec. Web Workers provide a simple means for web content to run scripts in background threads.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('webworkers', 'Worker' in window);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('webworkers', 'Worker' in _globalThis);
+
+export default Modernizr.webworkers

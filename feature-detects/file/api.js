@@ -19,6 +19,9 @@ Tests for objects specific to the File API W3C specification without
 being redundant (don't bother testing for Blob since it is assumed
 to be the File object's prototype.)
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('filereader', !!(window.File && window.FileList && window.FileReader));
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('filereader', !!(_globalThis.File && _globalThis.FileList && _globalThis.FileReader));
+
+export default Modernizr.filereader

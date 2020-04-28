@@ -15,18 +15,29 @@
 /* DOC
 Check if browser implements everything as specified in ECMAScript 5.
 */
-define(['Modernizr', 'test/es5/array', 'test/es5/date', 'test/es5/function', 'test/es5/object', 'test/es5/strictmode', 'test/es5/string', 'test/json', 'test/es5/syntax', 'test/es5/undefined'], function(Modernizr) {
-  Modernizr.addTest('es5', function() {
-    return !!(
-      Modernizr.es5array &&
-      Modernizr.es5date &&
-      Modernizr.es5function &&
-      Modernizr.es5object &&
-      Modernizr.strictmode &&
-      Modernizr.es5string &&
-      Modernizr.json &&
-      Modernizr.es5syntax &&
-      Modernizr.es5undefined
-    );
-  });
+import Modernizr from '../../src/Modernizr.js';
+import array from './array.js';
+import date from './date.js';
+import func from './function.js';
+import object from './object.js';
+import strictmode from './strictmode.js';
+import string from './string.js';
+import json from '../json.js';
+import syntax from './syntax.js';
+import undef from './undefined.js';
+
+Modernizr.addTest('es5', function() {
+  return !!(
+    array &&
+    date &&
+    func &&
+    object &&
+    strictmode &&
+    string &&
+    json &&
+    syntax &&
+    undef
+  );
 });
+
+export default Modernizr.es5

@@ -15,6 +15,9 @@
 /* DOC
 Detects support for the Shadow DOM API.
 */
-define(['Modernizr', 'createElement'], function (Modernizr, createElement) {
-  Modernizr.addTest('shadowroot', 'attachShadow' in createElement('div'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('shadowroot', 'attachShadow' in createElement('div'));
+
+export default Modernizr.shadowroot

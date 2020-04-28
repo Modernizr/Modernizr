@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /*global UAParser*/
 window.caniusecb = function(caniuse) {
 
@@ -12,10 +13,11 @@ window.caniusecb = function(caniuse) {
 
   describe('caniuse', function() {
     var unusedModernizr = [];
-    var unusedCaniuse = _.keys(caniuse.data);
+    var unusedCaniuse = Object.keys(caniuse.data);
     // TODO:: This map could (theoretically!) be build automatically by going through all feature-detects and look into
     // the docs where property and caniuse tags are written down. One should anyway look if some are missing here or in
     // the feature detect docs
+
     var map = {
       adownload: 'download',
       ambientlight: 'ambient-light',
@@ -205,7 +207,7 @@ window.caniusecb = function(caniuse) {
       **************************************************************/
 
       // caniuse says audio/video are yes/no, Modernizr has more detail which we'll dumb down.
-      if (_.includes(['video', 'audio', 'webglextensions'], o.feature)) {
+      if (/(video|audio|webglextensions)/.test(o.feature)) {
         o.result = o.result.valueOf();
       }
 
@@ -281,7 +283,7 @@ window.caniusecb = function(caniuse) {
       // atleast some of our inputtypes.
       if (o.ciufeature === 'forms') {
         return it('Caniuse result for forms matches Modernizr\'s result for inputtypes', function() {
-          return expect(ciubool).to.be.equal(_.some(Modernizr.inputtypes, function(modernizrResult) {
+          return expect(ciubool).to.be.equal(Modernizr.inputtypes.some(function(modernizrResult) {
             return modernizrResult;
           }));
         });
@@ -300,7 +302,7 @@ window.caniusecb = function(caniuse) {
       }
 
       // caniuse bundles progress and meter elements, so we do too.
-      if (_.includes(['meter', 'progressbar'], o.feature)) {
+      if (/(meter|progressbar)/.test(o.feature)) {
         return it('Caniuse result for ' + o.ciufeature + ' matches Modernizr\'s result for ' + o.feature, function() {
           return expect([
             Modernizr.meter,
@@ -329,11 +331,11 @@ window.caniusecb = function(caniuse) {
       });
     }
 
-    _.forEach(Modernizr, function(result, feature) {
+    Object.keys(Modernizr).forEach(function(result, feature) {
 
       var caniuseFeatureName = map[feature];
 
-      if (_.isUndefined(caniuseFeatureName)) {
+      if (typeof caniuseFeatureName === 'undefined') {
         return unusedModernizr.push(feature);
       }
 
@@ -343,7 +345,7 @@ window.caniusecb = function(caniuse) {
         throw 'unknown key of caniusedata - ' + caniuseFeatureName;
       }
 
-      unusedCaniuse = _.without(unusedCaniuse, caniuseFeatureName);
+      unusedCaniuse = unusedCaniuse.filter(function(c) { return c !== caniuseFeatureName });
 
       // get results for this feature for all versions of this browser
       var browserResults = caniuseFeatureData.stats[ua.browser.name.toLowerCase()];
@@ -355,11 +357,11 @@ window.caniusecb = function(caniuse) {
 
       // make sure the version keys of the caniusedata is sorted as numbers not as strings
       // otherwise for example firefox 3.6 is the first version in the _.findLast call up next
-      var sortedVersionKeys = _.keys(browserResults).sort(function(key1, key2) {
+      var sortedVersionKeys = Object.keys(browserResults).sort(function(key1, key2) {
         return parseFloat(key1) - parseFloat(key2);
       });
 
-      var versionToUse = _.findLast(sortedVersionKeys, function(ciuVersion) {
+      var versionToUse = sortedVersionKeys.reduceRight(function(ciuVersion) {
         return parseFloat(ciuVersion) <= parseFloat(majorminor);
       });
 

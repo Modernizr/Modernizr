@@ -14,9 +14,8 @@ html
     #mocha
     #messages
     #fixtures
-    script(src='../dist/modernizr-build.js')
+    script(src='../test/test-build.js')
     script(src='../node_modules/jquery/dist/jquery.js')
-    script(src='../node_modules/lodash/lodash.js')
     script(src='../node_modules/mocha/mocha.js')
     script(src='../node_modules/chai/chai.js')
     script.
@@ -46,17 +45,19 @@ html
         dumpModernizr.old = dumpModernizr.old || {};
 
         var templatize = function(obj) {
-          _.forEach(obj, function(result, name) {
-            if (dumpModernizr.old[name]) return;
-            if (_.isObject(result)) {
-              output += '<li class="section"><b>' + name + '{}</b><ul>';
-              templatize(result);
-              output += '</ul></li>'
-            } else {
-              output += '<li id="' + name + '" class="' + (result ? 'pass' : 'fail') + '">' + name + ': ' + result + '</li>';
-            }
-            dumpModernizr.old[name] = true;
-          });
+          Object.keys(obj)
+            .filter(m => obj.hasOwnProperty(m))
+            .forEach(function(result, name) {
+              if (dumpModernizr.old[name]) return;
+              if (typeof result === 'object') {
+                output += '<li class="section"><b>' + name + '{}</b><ul>';
+                templatize(result);
+                output += '</ul></li>'
+              } else {
+                output += '<li id="' + name + '" class="' + (result ? 'pass' : 'fail') + '">' + name + ': ' + result + '</li>';
+              }
+              dumpModernizr.old[name] = true;
+            });
         }
 
         templatize(Modernizr);

@@ -17,6 +17,9 @@
 /* DOC
 Does the browser support the HTML5 [hidden] attribute?
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('hidden', 'hidden' in createElement('a'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('hidden', 'hidden' in createElement('a'));
+
+export default Modernizr.hidden

@@ -8,11 +8,14 @@
   "authors": ["@phiggins42"]
 }
 !*/
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  // dataset API for data-* attributes
-  Modernizr.addTest('dataset', function() {
-    var n = createElement('div');
-    n.setAttribute('data-a-b', 'c');
-    return !!(n.dataset && n.dataset.aB === 'c');
-  });
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+// dataset API for data-* attributes
+Modernizr.addTest('dataset', function() {
+  var n = createElement('div');
+  n.setAttribute('data-a-b', 'c');
+  return !!(n.dataset && n.dataset.aB === 'c');
 });
+
+export default Modernizr.dataset

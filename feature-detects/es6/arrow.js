@@ -9,14 +9,9 @@
 /* DOC
 Check if browser implements ECMAScript 6 Arrow Functions per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('arrow', function() {
-    try {
-      // eslint-disable-next-line
-      eval('()=>{}');
-    } catch (e) {
-      return false;
-    }
-    return true;
-  });
-});
+import Modernizr from '../../src/Modernizr.js';
+import testSyntax from '../../src/testSyntax.js';
+
+Modernizr.addTest('arrow', testSyntax('()=>{}'));
+
+export default Modernizr.arrow

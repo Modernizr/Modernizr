@@ -7,6 +7,9 @@
 /* DOC
 Detect support for Hover based media queries
 */
-define(['Modernizr', 'addTest', 'mq'], function(Modernizr, addTest, mq) {
-  Modernizr.addTest('hovermq', mq('(hover)'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import mq from '../../src/mq.js';
+
+Modernizr.addTest('hovermq', mq('(hover)'));
+
+export default Modernizr.hovermq

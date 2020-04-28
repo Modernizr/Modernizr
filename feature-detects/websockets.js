@@ -24,10 +24,15 @@
   ]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  var supports = false;
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('websockets', function(){
   try {
-    supports = 'WebSocket' in window && window.WebSocket.CLOSING === 2;
-  } catch (e) {}
-  Modernizr.addTest('websockets', supports);
-});
+    return 'WebSocket' in _globalThis && _globalThis.WebSocket.CLOSING === 2;
+  } catch (e) {
+    return false;
+  }
+})
+
+export default Modernizr.websockets

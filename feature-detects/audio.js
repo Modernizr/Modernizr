@@ -20,39 +20,43 @@ Modernizr.audio         // true
 Modernizr.audio.ogg     // 'probably'
 ```
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  // Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
-  //                     thx to NielsLeenheer and zcorpan
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+// Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
+//                     thx to NielsLeenheer and zcorpan
 
-  // Note: in some older browsers, "no" was a return value instead of empty string.
-  //   It was live in FF3.5.0 and 3.5.1, but fixed in 3.5.2
-  //   It was also live in Safari 4.0.0 - 4.0.4, but fixed in 4.0.5
-  (function() {
-    var elem = createElement('audio');
+// Note: in some older browsers, "no" was a return value instead of empty string.
+//   It was live in FF3.5.0 and 3.5.1, but fixed in 3.5.2
+//   It was also live in Safari 4.0.0 - 4.0.4, but fixed in 4.0.5
+(function() {
+  var elem = createElement('audio');
+  var bool = false;
 
-    Modernizr.addTest('audio', function() {
-      var bool = false;
-      try {
-        bool = !!elem.canPlayType;
-        if (bool) {
-          bool = new Boolean(bool);
-        }
-      } catch (e) {}
-
-      return bool;
-    });
-
-    // IE9 Running on Windows Server SKU can cause an exception to be thrown, bug #224
+  Modernizr.addTest('audio', function() {
     try {
-      if (!!elem.canPlayType) {
-        Modernizr.addTest('audio.ogg', elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ''));
-        Modernizr.addTest('audio.mp3', elem.canPlayType('audio/mpeg; codecs="mp3"').replace(/^no$/, ''));
-        Modernizr.addTest('audio.opus', elem.canPlayType('audio/ogg; codecs="opus"') ||
-          elem.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, ''));
-        Modernizr.addTest('audio.wav', elem.canPlayType('audio/wav; codecs="1"').replace(/^no$/, ''));
-        Modernizr.addTest('audio.m4a', (elem.canPlayType('audio/x-m4a;') ||
-          elem.canPlayType('audio/aac;')).replace(/^no$/, ''));
+      bool = !!elem.canPlayType;
+      if (bool) {
+        bool = new Boolean(bool);
       }
     } catch (e) {}
-  })();
-});
+
+    return bool;
+  });
+
+  // IE9 Running on Windows Server SKU can cause an exception to be thrown, bug #224
+  try {
+    if (bool) {
+      var canPlayType = elem.canPlayType.bind(elem)
+
+      Modernizr.addTest('audio.ogg', canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ''));
+      Modernizr.addTest('audio.mp3', canPlayType('audio/mpeg; codecs="mp3"').replace(/^no$/, ''));
+      Modernizr.addTest('audio.opus', canPlayType('audio/ogg; codecs="opus"') ||
+        canPlayType('audio/webm; codecs="opus"').replace(/^no$/, ''));
+      Modernizr.addTest('audio.wav', canPlayType('audio/wav; codecs="1"').replace(/^no$/, ''));
+      Modernizr.addTest('audio.m4a', (canPlayType('audio/x-m4a;') ||
+        canPlayType('audio/aac;')).replace(/^no$/, ''));
+    }
+  } catch (e) {}
+})();
+
+export default Modernizr.audio;

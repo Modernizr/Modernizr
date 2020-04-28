@@ -6,6 +6,9 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('csstransitions', testAllProps('transition', 'all', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('csstransitions', testAllProps('transition', 'all', true));
+
+export default Modernizr.csstransitions

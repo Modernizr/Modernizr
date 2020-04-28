@@ -13,6 +13,9 @@
 /* DOC
 Detects support for IE userData for persisting data, an API similar to localStorage but supported since IE5.
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('userdata', !!createElement('div').addBehavior);
-});
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+
+Modernizr.addTest('userdata', !!createElement('div').addBehavior);
+
+export default Modernizr.userdata

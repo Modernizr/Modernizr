@@ -13,6 +13,10 @@
   "knownBugs": ["The API will be present in Chrome incognito, but will throw an exception. See crbug.com/93417"]
 }
 !*/
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('filesystem', !!prefixed('requestFileSystem', window));
-});
+import Modernizr from '../../src/Modernizr.js';
+import prefixed from '../../src/prefixed.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('filesystem', !!prefixed('requestFileSystem', _globalThis));
+
+export default Modernizr.filesystem

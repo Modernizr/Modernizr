@@ -1,150 +1,86 @@
+/* eslint-disable no-restricted-syntax */
 describe('testProps', function() {
-  var ModernizrProto = {foo: 7};
-  var Modernizr = {_q: []};
   var testProps;
-  var cleanup;
-  var sinon;
-  var req;
-
-  before(function(done) {
-
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {
-        sinon: '../node_modules/sinon/pkg/sinon',
-        cleanup: '../test/cleanup'
-      }
-    });
-
-    define('ModernizrProto', [], function() {return ModernizrProto;});
-    define('Modernizr', function() {return Modernizr;});
-    define('package', [], function() {return {};});
-
-    req(['cleanup', 'sinon'], function(_cleanup, _sinon) {
-      cleanup = _cleanup;
-      sinon = _sinon;
-      done();
-    });
-  });
 
   describe('native detect', function() {
-    var nativeTestProps = function(props, value) {
-      return !!value ? true : undefined;
-    };
-    var contains;
+    var nativeTestProps = sinon.stub().callsFake(function(props, value) { if (!!value) return true });
+    var contains = sinon.spy();
+    eval(makeIIFE({file: "./src/testProps.js", func: 'testProps', external: ['./nativeTestProps.js','./contains.js'] }))
 
-    beforeEach(function(done) {
-      contains = sinon.spy();
-
-      nativeTestProps = sinon.spy(nativeTestProps);
-
-      define('contains', function() {return contains;});
-      define('nativeTestProps', sinon.spy(function() {return nativeTestProps;}));
-
-      req(['testProps'], function(_testProps) {
-        testProps = _testProps;
-        done();
-      });
+    beforeEach(function() {
+      nativeTestProps.resetHistory()
     });
 
     it('returns the value from nativeTestProp if not undefined', function() {
-      expect(testProps(['fake'], undefined, true));
-      expect(nativeTestProps.callCount).to.be.equal(1);
-      expect(contains.callCount).to.be.equal(0);
+      testProps(['fake'], undefined, true)
+      expect(nativeTestProps.callCount).to.equal(1);
+      expect(contains.callCount).to.equal(0);
     });
 
     it('does not return the value from nativeTestProp when undefined', function() {
       expect(testProps(['fake'], undefined, false));
-      expect(nativeTestProps.callCount).to.be.equal(1);
-      expect(contains.callCount).to.not.be.equal(0);
-    });
-
-    afterEach(function() {
-      req.undef('mStyle');
-      req.undef('cssToDOM');
-      req.undef('contains');
-      req.undef('testProps');
-      req.undef('nativeTestProps');
+      expect(nativeTestProps.callCount).to.equal(1);
+      expect(contains.callCount).to.not.equal(0);
     });
   });
 
   describe('nonnative detect', function() {
-    var contains = function(a, b) {return a.indexOf(b) > -1;};
-    var nativeTestProps = function() { return; };
-    var cssToDOM;
-    var mStyle;
+    var contains = sinon.stub().callsFake(function(a, b) {return a.indexOf(b) > -1});
+    var nativeTestProps = sinon.stub().callsFake(function() { return });
+    var cssToDOM = sinon.spy();
+    var mStyle = {};
+    eval(makeIIFE({
+      file: "./src/testProps.js",
+      func: 'testProps',
+      external: ['./nativeTestProps.js','./contains.js', './cssToDOM.js', './mStyle.js']
+    }))
 
-    beforeEach(function(done) {
-      nativeTestProps = sinon.spy(nativeTestProps);
-      contains = sinon.spy(contains);
-      cssToDOM = sinon.spy();
-      mStyle = {};
-
-      define('nativeTestProps', sinon.spy(function() {return nativeTestProps;}));
-      define('cssToDOM', function() {return cssToDOM;});
-      define('contains', function() {return contains;});
-      define('mStyle', function() {return mStyle;});
-
-      req(['testProps'], function(_testProps) {
-        testProps = _testProps;
-        done();
-      });
+    beforeEach(function() {
+      nativeTestProps.resetHistory()
+      contains.resetHistory()
+      cssToDOM.resetHistory()
     });
 
     it('cleans up mStyle changes', function() {
       expect(testProps(['fake'], undefined, true));
-      expect(contains.callCount).to.be.equal(1);
-      expect(mStyle.style).to.be.equal(undefined);
-      expect(mStyle.modElem).to.be.equal(undefined);
+      expect(contains.callCount).to.equal(1);
+      expect(mStyle.style).to.equal(undefined);
+      expect(mStyle.modElem).to.equal(undefined);
     });
 
     it('calls cssToDOM when props have a `-`', function() {
       expect(testProps(['fake-detect'], undefined, true));
-      expect(cssToDOM.called).to.be.equal(true);
+      expect(cssToDOM.called).to.equal(true);
     });
 
     it('returns true for valid prop, and skipValueTest', function() {
-      expect(testProps(['display'], undefined, true, true)).to.be.equal(true);
+      expect(testProps(['display'], undefined, true, true)).to.equal(true);
     });
 
     it('returns true for valid prop, and good value', function() {
-      expect(testProps(['display'], undefined, 'block')).to.be.equal(true);
+      expect(testProps(['display'], undefined, 'block')).to.equal(true);
     });
 
     it('returns false for valid prop and bad value', function() {
-      expect(testProps(['display'], undefined, 'penguin')).to.be.equal(false);
-    });
-
-    it('returns the prop if a prefixed lookup', function() {
-      expect(testProps(['display'], 'pfx', 'block')).to.be.equal('display');
+      expect(testProps(['display'], undefined, 'penguin')).to.equal(false);
     });
 
     it('returns the prop if a prefixed lookup with skipValueTest', function() {
-      expect(testProps(['display'], 'pfx', 'block', true)).to.be.equal('display');
+      expect(testProps(['display'], 'pfx', 'block', true)).to.equal('display');
     });
 
     it('works properly', function() {
       // Everyone supports margin
-      expect(testProps(['margin'])).to.be.equal(true);
+      expect(testProps(['margin'])).to.equal(true);
       // Nobody supports the happiness style. :(
-      expect(testProps(['happiness'])).to.be.equal(false);
+      expect(testProps(['happiness'])).to.equal(false);
       // Everyone supports fontSize
-      expect(testProps(['fontSize'])).to.be.equal(true);
+      expect(testProps(['fontSize'])).to.equal(true);
       // kebab-case should work too
     });
 
-    afterEach(function() {
-      req.undef('mStyle');
-      req.undef('cssToDOM');
-      req.undef('contains');
-      req.undef('testProps');
-      req.undef('ModernizrProto');
-      req.undef('nativeTestProps');
+    it('returns the prop if a prefixed lookup', function() {
+      expect(testProps(['display'], 'pfx', 'block')).to.equal('display');
     });
-  });
-
-  after(function() {
-    cleanup();
   });
 });

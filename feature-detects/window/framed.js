@@ -1,16 +1,19 @@
 /*!
 {
-  "name": "Framed window",
+  "name": "Framed _globalThis",
   "property": "framed",
-  "tags": ["window"],
-  "builderAliases": ["window_framed"]
+  "tags": ["_globalThis"],
+  "builderAliases": ["_globalThis_framed"]
 }
 !*/
 /* DOC
 Tests if page is iframed.
 */
-define(['Modernizr'], function(Modernizr) {
-  // github.com/Modernizr/Modernizr/issues/242
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
 
-  Modernizr.addTest('framed', window.location !== top.location);
-});
+// github.com/Modernizr/Modernizr/issues/242
+
+Modernizr.addTest('framed', _globalThis.location !== _globalThis.top.location);
+
+export default Modernizr.framed

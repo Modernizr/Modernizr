@@ -16,14 +16,17 @@
 /* DOC
 Detects the older non standard webaudio API, (as opposed to the standards based AudioContext API)
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('webaudio', function() {
-    var prefixed = 'webkitAudioContext' in window;
-    var unprefixed = 'AudioContext' in window;
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
 
-    if (Modernizr._config.usePrefixes) {
-      return prefixed || unprefixed;
-    }
-    return unprefixed;
-  });
+Modernizr.addTest('webaudio', function() {
+  var prefixed = 'webkitAudioContext' in _globalThis;
+  var unprefixed = 'AudioContext' in _globalThis;
+
+  if (Modernizr._config.usePrefixes) {
+    return prefixed || unprefixed;
+  }
+  return unprefixed;
 });
+
+export default Modernizr.webaudio;

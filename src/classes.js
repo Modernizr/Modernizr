@@ -1,4 +1,2 @@
-define(function() {
-  var classes = [];
-  return classes;
-});
+var classes = [];
+export default classes;

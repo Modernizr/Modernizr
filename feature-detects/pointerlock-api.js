@@ -12,7 +12,11 @@
 /* DOC
 Detects support the pointer lock API which allows you to lock the mouse cursor to the browser window.
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  // https://developer.mozilla.org/en-US/docs/API/Pointer_Lock_API
-  Modernizr.addTest('pointerlock', !!prefixed('exitPointerLock', document));
-});
+import Modernizr from '../src/Modernizr.js';
+import prefixed from '../src/prefixed.js';
+import _globalThis from '../src/globalThis.js';
+
+// https://developer.mozilla.org/en-US/docs/API/Pointer_Lock_API
+Modernizr.addTest('pointerlock', 'document' in _globalThis && !!prefixed('exitPointerLock', document));
+
+export default Modernizr.pointerlock

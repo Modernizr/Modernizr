@@ -1,42 +1,14 @@
 describe('testProp', function() {
-  var ModernizrProto = {};
-  var testProp;
-  var testProps;
-  var cleanup;
-  var sinon;
-  var req;
+  // we are mocking out the module interface, not the Modernizr api
+  var Modernizr = {ModernizrProto: {_config: {}, _q: []}};
+  var _testProps
+  var testProp
 
-  before(function(done) {
+  eval(makeIIFE({file: "./src/testProps.js", func: '_testProps', external: ['./Modernizr.js']}))
 
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {
-        sinon: '../node_modules/sinon/pkg/sinon',
-        cleanup: '../test/cleanup'
-      }
-    });
+  var testProps = sinon.spy(_testProps)
 
-    define('ModernizrProto', [], function() {return ModernizrProto;});
-    define('package', [], function() {return {};});
-
-    req(['cleanup', 'sinon'], function(_cleanup, _sinon) {
-      cleanup = _cleanup;
-      sinon = _sinon;
-      done();
-    });
-  });
-
-  beforeEach(function(done) {
-    testProps = sinon.spy();
-
-    define('testProps', function() {return testProps;});
-
-    req(['testProp'], function(_testProp) {
-      testProp = _testProp;
-      done();
-    });
-  });
+  eval(makeIIFE({file: "./src/testProp.js", func: 'testProp', external: ['./Modernizr.js', './testProps.js']}))
 
   it('is a curried version of `testProps`', function() {
     testProp('flexAlign', 'end', true);
@@ -51,10 +23,7 @@ describe('testProp', function() {
   });
 
   it('is added to ModernizrProto', function() {
-    expect(testProp).to.be.equal(ModernizrProto.testProp);
+    expect(testProp).to.be.equal(Modernizr.ModernizrProto.testProp);
   });
 
-  after(function() {
-    cleanup();
-  });
 });

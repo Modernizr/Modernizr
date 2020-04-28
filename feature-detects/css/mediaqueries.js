@@ -7,6 +7,9 @@
   "builderAliases": ["css_mediaqueries"]
 }
 !*/
-define(['Modernizr', 'mq'], function(Modernizr, mq) {
-  Modernizr.addTest('mediaqueries', mq('only all'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import mq from '../../src/mq.js';
+
+Modernizr.addTest('mediaqueries', mq('only all'));
+
+export default Modernizr.mediaqueries

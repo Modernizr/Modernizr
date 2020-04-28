@@ -14,59 +14,65 @@
 /* DOC
 Detects whether web workers can use `transferables` objects.
 */
-define(['Modernizr', 'addTest', 'test/blob', 'test/url/bloburls', 'test/workers/webworkers', 'test/typed-arrays'], function(Modernizr, addTest) {
-  Modernizr.addAsyncTest(function() {
-    var prerequisites = !!(Modernizr.blobconstructor &&
-                           Modernizr.bloburls &&
-                           Modernizr.webworkers &&
-                           Modernizr.typedarrays);
+import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
+import '../blob.js';
+import '../url/bloburls.js';
+import './webworkers.js';
+import '../typed-arrays.js';
 
-    // Early exit
-    if (!prerequisites) {
-      return addTest('transferables', false);
+Modernizr.addAsyncTest(function() {
+  var prerequisites = !!(Modernizr.blobconstructor &&
+                         Modernizr.bloburls &&
+                         Modernizr.webworkers &&
+                         Modernizr.typedarrays);
+
+  // Early exit
+  if (!prerequisites) {
+    return addTest('transferables', false);
+  }
+
+  // Proper test if prerequisites are met
+  try {
+    var buffer,
+      scriptText = 'var hello = "world"',
+      blob = new Blob([scriptText], {type: 'text/javascript'}),
+      url = URL.createObjectURL(blob),
+      worker = new Worker(url),
+      timeout;
+
+    // Just in case...
+    worker.onerror = fail;
+    timeout = setTimeout(fail, 200);
+
+    // Building an minimal array buffer to send to the worker
+    buffer = new ArrayBuffer(1);
+
+    // Sending the buffer to the worker
+    worker.postMessage(buffer, [buffer]);
+
+    // If length of buffer is now 0, transferables are working
+    addTest('transferables', buffer.byteLength === 0);
+    cleanup();
+  } catch (e) {
+    fail();
+  }
+
+  function fail() {
+    addTest('transferables', false);
+    cleanup();
+  }
+
+  function cleanup() {
+    if (url) {
+      URL.revokeObjectURL(url);
     }
-
-    // Proper test if prerequisites are met
-    try {
-      var buffer,
-        scriptText = 'var hello = "world"',
-        blob = new Blob([scriptText], {type: 'text/javascript'}),
-        url = URL.createObjectURL(blob),
-        worker = new Worker(url),
-        timeout;
-
-      // Just in case...
-      worker.onerror = fail;
-      timeout = setTimeout(fail, 200);
-
-      // Building an minimal array buffer to send to the worker
-      buffer = new ArrayBuffer(1);
-
-      // Sending the buffer to the worker
-      worker.postMessage(buffer, [buffer]);
-
-      // If length of buffer is now 0, transferables are working
-      addTest('transferables', buffer.byteLength === 0);
-      cleanup();
-    } catch (e) {
-      fail();
+    if (worker) {
+      worker.terminate();
     }
-
-    function fail() {
-      addTest('transferables', false);
-      cleanup();
+    if (timeout) {
+      clearTimeout(timeout);
     }
-
-    function cleanup() {
-      if (url) {
-        URL.revokeObjectURL(url);
-      }
-      if (worker) {
-        worker.terminate();
-      }
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-    }
-  });
+  }
 });
+
+export default createAsyncTestListener("transferables");

@@ -14,8 +14,12 @@
 /* DOC
 Detects support for creating Blob URLs
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  var url = prefixed('URL', window, false);
-  url = url && window[url];
-  Modernizr.addTest('bloburls', url && 'revokeObjectURL' in url && 'createObjectURL' in url);
-});
+import Modernizr from '../../src/Modernizr.js';
+import prefixed from '../../src/prefixed.js';
+import _globalThis from '../../src/globalThis.js';
+
+var url = prefixed('URL', _globalThis, false);
+url = url && _globalThis[url];
+Modernizr.addTest('bloburls', url && 'revokeObjectURL' in url && 'createObjectURL' in url);
+
+export default Modernizr.bloburls

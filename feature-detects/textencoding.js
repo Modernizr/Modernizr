@@ -13,7 +13,18 @@
   "authors": ["dabretin"]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('textencoder', !!(window.TextEncoder && window.TextEncoder.prototype.encode));
-  Modernizr.addTest('textdecoder', !!(window.TextDecoder && window.TextDecoder.prototype.decode));
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+var result = {
+  textencoder: 'TextEncoder' in _globalThis,
+  textdecoder: 'TextDecoder' in _globalThis
+}
+
+Modernizr.addTest('textencoder', result.textencoder);
+Modernizr.addTest('textdecoder', result.textdecoder);
+
+
+export let textencoder = Modernizr.textencoder
+export let textdecoder = Modernizr.textdecoder
+export default result;

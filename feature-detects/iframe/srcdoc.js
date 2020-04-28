@@ -14,6 +14,9 @@
 /* DOC
 Test for `srcdoc` attribute in iframes.
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('srcdoc', 'srcdoc' in createElement('iframe'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('srcdoc', 'srcdoc' in createElement('iframe'));
+
+export default Modernizr.srcdoc

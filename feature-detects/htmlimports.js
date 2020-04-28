@@ -16,6 +16,9 @@
 /* DOC
 Detects support for HTML import, a feature that is used for loading in Web Components.
  */
-define(['Modernizr', 'addTest', 'createElement'], function(Modernizr, addTest, createElement) {
-  Modernizr.addTest('htmlimports', 'import' in createElement('link'));
-});
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+
+Modernizr.addTest('htmlimports', 'import' in createElement('link'));
+
+export default Modernizr.htmlimports

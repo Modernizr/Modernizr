@@ -1,8 +1,8 @@
 var root = require('find-parent-dir').sync(__dirname, 'package.json');
-var options = require(root + 'lib/options');
+var options = require(root + 'lib/options').default;
 var chai = require('chai');
 var expect = chai.expect;
-var Joi = require('joi');
+var Joi = require('@hapi/joi');
 
 var schema = Joi.array().items(
   Joi.object().keys({
@@ -17,14 +17,14 @@ describe('cli/options', function() {
   it('should return an array of objects in a callback', function(done) {
     options(function(opts) {
       var err = schema.validate(opts).error;
-      expect(err).to.be.equal(null);
+      expect(err).to.be.equal(undefined);
       done(err);
     });
   });
 
   it('should return the array of objects immediately after the first run', function() {
     var err = schema.validate(options()).error;
-    expect(err).to.be.equal(null);
+    expect(err).to.be.equal(undefined);
   });
 
   it('should return all jsdoc info when the second arg is true', function() {

@@ -15,7 +15,11 @@
 /* DOC
 Detects support for the cryptographic functionality available under window.crypto.subtle
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  var crypto = prefixed('crypto', window);
-  Modernizr.addTest('crypto', !!prefixed('subtle', crypto));
-});
+import Modernizr from '../src/Modernizr.js';
+import prefixed from '../src/prefixed.js';
+import _globalThis from '../src/globalThis.js';
+
+var crypto = prefixed('crypto', _globalThis);
+Modernizr.addTest('crypto', !!prefixed('subtle', crypto));
+
+export default Modernizr.crypto;

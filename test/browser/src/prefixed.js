@@ -1,56 +1,24 @@
 describe('prefixed', function() {
-  var ModernizrProto;
-  var testPropsAll;
   var prefixed;
-  var cssToDOM;
-  var cleanup;
-  var atRule;
-  var sinon;
-  var req;
 
-  before(function(done) {
+  var testPropsAll = sinon.spy(function() {return 'fakeRule';});
+  var cssToDOM = sinon.spy(function() {return 'fakeRule';});
+  var atRule = sinon.spy(function() {return '@fakeRule';});
+  // we are mocking out the module interface, not the Modernizr api
+  var Modernizr = {ModernizrProto: {_config: {}, _q: []}}
 
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {
-        sinon: '../node_modules/sinon/pkg/sinon',
-        cleanup: '../test/cleanup'
-      }
-    });
-
-    req(['sinon', 'cleanup'], function(_sinon, _cleanup) {
-      sinon = _sinon;
-      cleanup = _cleanup;
-      done();
-    });
-  });
-
-  beforeEach(function(done) {
-
-    testPropsAll = sinon.spy(function() {return 'fakeRule';});
-    cssToDOM = sinon.spy(function() {return 'fakeRule';});
-    atRule = sinon.spy(function() {return '@fakeRule';});
-    ModernizrProto = {};
-
-    define('ModernizrProto', [], function() {return ModernizrProto;});
-    define('testPropsAll', [], function() {return testPropsAll;});
-    define('cssToDOM', [], function() {return cssToDOM;});
-    define('atRule', [], function() {return atRule;});
-
-    req(['prefixed'], function(_prefixed) {
-      prefixed = _prefixed;
-
-      done();
-    });
-  });
+  eval(makeIIFE({
+    file: "./src/prefixed.js",
+    func: 'prefixed',
+    external: ['./Modernizr.js', './cssToDOM.js', './atRule.js', './testPropsAll.js']
+  }))
 
   it('is a function', function() {
     expect(prefixed).to.be.a('function');
   });
 
   it('creates a reference on `ModernizrProto`', function() {
-    expect(prefixed).to.be.equal(ModernizrProto.prefixed);
+    expect(prefixed).to.be.equal(Modernizr.ModernizrProto.prefixed);
   });
 
   it('uses atRule to lookup rules starting with "@"', function() {
@@ -59,7 +27,7 @@ describe('prefixed', function() {
   });
 
   it('uses cssToDOM to lookup rules with "-"', function() {
-    expect(prefixed('fake-rule')).to.be.equal('fakeRule');
+    prefixed('fake-rule')
     expect(cssToDOM.calledOnce).to.be.equal(true);
     expect(testPropsAll.calledOnce).to.be.equal(true);
   });
@@ -71,14 +39,8 @@ describe('prefixed', function() {
   });
 
   afterEach(function() {
-    req.undef('ModernizrProto');
-    req.undef('testPropsAll');
-    req.undef('cssToDOM');
-    req.undef('prefixed');
-    req.undef('atRule');
-  });
-
-  after(function() {
-    cleanup();
+    testPropsAll.resetHistory();
+    cssToDOM.resetHistory();
+    atRule.resetHistory();
   });
 });

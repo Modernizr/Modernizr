@@ -15,13 +15,9 @@
 /* DOC
 Check if browser implements ECMAScript 6 String template.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('stringtemplate', function() {
-    try {
-      // eslint-disable-next-line
-      return eval('(function(){var a=1; return `-${a}-`;})()') === '-1-';
-    } catch (e) {
-      return false;
-    }
-  });
-});
+import Modernizr from '../../src/Modernizr.js';
+import testSyntax from '../../src/testSyntax.js';
+
+Modernizr.addTest('stringtemplate', testSyntax('``'))
+
+export default Modernizr.stringtemplate

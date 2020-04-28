@@ -14,6 +14,9 @@
 /* DOC
 Detects support for the new Promise-based `getUserMedia` API.
 */
-define(['Modernizr'], function (Modernizr) {
-  Modernizr.addTest('getUserMedia', 'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('getUserMedia', 'mediaDevices' in _globalThis.navigator && 'getUserMedia' in navigator.mediaDevices);
+
+export default Modernizr.getUserMedia

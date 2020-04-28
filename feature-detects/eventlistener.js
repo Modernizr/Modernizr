@@ -14,6 +14,9 @@
 /* DOC
 Detects native support for addEventListener
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('eventlistener', 'addEventListener' in window);
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('eventlistener', 'addEventListener' in _globalThis);
+
+export default Modernizr.eventlistener

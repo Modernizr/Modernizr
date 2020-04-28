@@ -1,42 +1,50 @@
 describe('testXhrType', function() {
-  var cleanup;
-  var req;
+  var testXhrType;
 
-  before(function(done) {
+  eval(makeIIFE({file: "./src/testXhrType.js", func: 'testXhrType'}))
 
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {
-        cleanup: '../test/cleanup'
-      }
-    });
-
-    req(['cleanup'], function(_cleanup) {
-      cleanup = _cleanup;
-      done();
-    });
-  });
-
-  it('returns false when XHR is undefined', function(done) {
+  it('returns false when XHR is undefined', function() {
     var originalXhr = XMLHttpRequest;
     XMLHttpRequest = undefined; //eslint-disable-line
 
-    req(['testXhrType'], function(testXhrType) {
-      expect(testXhrType('json')).to.be.equal(false);
-      XMLHttpRequest = originalXhr; //eslint-disable-line
-      done();
-    });
+    expect(testXhrType('json')).to.be.equal(false);
+    XMLHttpRequest = originalXhr; //eslint-disable-line
   });
 
+
+  describe('', function() {
+    before(function() {
+      sinon.stub(XMLHttpRequest.prototype, 'open')
+    })
+
+    it('calls XHR correctly', function() {
+      testXhrType('json')
+      expect(XMLHttpRequest.prototype.open.called).to.be.true
+      expect(XMLHttpRequest.prototype.open.calledWith('get', '/', true)).to.be.true
+    })
+
+    after(function() {
+      XMLHttpRequest.prototype.open.restore()
+    })
+  })
+
+  describe('', function() {
+    var stub;
+    before(function() {
+      stub = sinon.stub(XMLHttpRequest.prototype, 'responseType')
+      stub.set(function() {
+        throw new Error('faked error')
+      })
+    })
+
+    it('returns false when modifying the responseType throws an error', function() {
+      expect(testXhrType('text')).to.be.false
+    })
+
+    after(function() {
+      stub.restore()
+    })
+  })
   // TODO:: add more tests once sinon's XHR2 features land
   // http://git.io/AemZ
-
-  afterEach(function() {
-    req.undef('testXhrType');
-  });
-
-  after(function() {
-    cleanup();
-  });
 });

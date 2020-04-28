@@ -17,6 +17,9 @@
 /* DOC
 Detects support for CustomEvent.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('customevent', 'CustomEvent' in window && typeof window.CustomEvent === 'function');
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('customevent', 'CustomEvent' in _globalThis && typeof _globalThis.CustomEvent === 'function');
+
+export default Modernizr.customevent

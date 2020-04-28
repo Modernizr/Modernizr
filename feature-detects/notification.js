@@ -21,24 +21,27 @@
 /* DOC
 Detects support for the Notifications API
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('notification', function() {
-    if (!window.Notification || !window.Notification.requestPermission) {
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('notification', function() {
+  if (!_globalThis.Notification || !_globalThis.Notification.requestPermission) {
+    return false;
+  }
+  // if permission is already granted, assume support
+  if (_globalThis.Notification.permission === 'granted') {
+    return true;
+  }
+
+  try {
+    new _globalThis.Notification('');
+  } catch (e) {
+    if (e.name === 'TypeError') {
       return false;
     }
-    // if permission is already granted, assume support
-    if (window.Notification.permission === 'granted') {
-      return true;
-    }
+  }
 
-    try {
-      new window.Notification('');
-    } catch (e) {
-      if (e.name === 'TypeError') {
-        return false;
-      }
-    }
-
-    return true;
-  });
+  return true;
 });
+
+export default Modernizr.notification

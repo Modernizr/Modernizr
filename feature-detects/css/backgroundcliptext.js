@@ -20,8 +20,11 @@
 Detects the ability to control specifies whether or not an element's background
 extends beyond its border in CSS
 */
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('backgroundcliptext', function() {
-    return testAllProps('backgroundClip', 'text');
-  });
+import Modernizr from '../../src/Modernizr.js';
+
+import testAllProps from '../../src/testAllProps.js';
+Modernizr.addTest('backgroundcliptext', function() {
+  return testAllProps('backgroundClip', 'text');
 });
+
+export default Modernizr.backgroundcliptext

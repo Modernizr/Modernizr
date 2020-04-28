@@ -15,19 +15,22 @@
 /* DOC
 Detects support for the ':target' CSS pseudo-class.
 */
-define(['Modernizr'], function(Modernizr) {
-  // querySelector
-  Modernizr.addTest('target', function() {
-    var doc = window.document;
-    if (!('querySelectorAll' in doc)) {
-      return false;
-    }
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
 
-    try {
-      doc.querySelectorAll(':target');
-      return true;
-    } catch (e) {
-      return false;
-    }
-  });
+// querySelector
+Modernizr.addTest('target', function() {
+  var doc = _globalThis.document;
+  if (!('querySelectorAll' in doc)) {
+    return false;
+  }
+
+  try {
+    doc.querySelectorAll(':target');
+    return true;
+  } catch (e) {
+    return false;
+  }
 });
+
+export default Modernizr.target

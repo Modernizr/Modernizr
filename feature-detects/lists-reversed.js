@@ -12,6 +12,9 @@
 /* DOC
 Detects support for the `reversed` attribute on the `<ol>` element.
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('olreversed', 'reversed' in createElement('ol'));
-});
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+
+Modernizr.addTest('olreversed', 'reversed' in createElement('ol'));
+
+export default Modernizr.olreversed

@@ -11,16 +11,15 @@
   }]
 }
 !*/
-define(['Modernizr', 'modElem'], function(Modernizr, modElem) {
-  Modernizr.addTest('cssexunit', function() {
-    var elemStyle = modElem.elem.style;
-    var supports;
-    try {
-      elemStyle.fontSize = '3ex';
-      supports = elemStyle.fontSize.indexOf('ex') !== -1;
-    } catch (e) {
-      supports = false;
-    }
-    return supports;
-  });
+import Modernizr from '../../src/Modernizr.js';
+import contains from '../../src/contains.js';
+import testStyles from '../../src/testStyles.js';
+import computedStyle from '../../src/computedStyle.js';
+
+testStyles('#modernizr { fontSize: 3ex }', function(elem) {
+  var compStyle = computedStyle(elem, null, 'fontSize');
+
+  Modernizr.addTest('csschunit', contains(compStyle, 'ex'));
 });
+
+export default Modernizr.cssexunit

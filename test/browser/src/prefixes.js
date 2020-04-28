@@ -1,78 +1,28 @@
 describe('prefixes', function() {
   /*
     eslint no-unused-vars: ["error", {
-      "varsIgnorePattern": "prefixes"
+      "varsIgnorePattern": "Modernizr"
     }]
   */
   var prefixes;
-  var cleanup;
-  var req;
 
-  var setup = function(done, bool) {
-    return (function() {
-      define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});
-
-      req(['prefixes'], function(_prefixes) {
-        prefixes = _prefixes;
-        done();
-      });
-    })();
+  var setup = function(bool) {
+    var Modernizr = {ModernizrProto: {_config: {usePrefixes: bool}}}
+    eval(makeIIFE({file: "./src/prefixes.js", func: 'prefixes', external: ['./Modernizr.js']}))
+    return prefixes
   };
 
-  var teardown = function() {
-    prefixes = undefined;
-    req.undef('prefixes');
-    req.undef('ModernizrProto');
-  };
-
-  before(function(done) {
-    define('package', [], function() {return {};});
-
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['cleanup'], function(_cleanup) {
-      cleanup = _cleanup;
-      done();
-    });
+  it('returns prefixes when enabled', function() {
+    var prefixes = setup(true);
+    expect(prefixes).to.be.an('array');
+    expect(prefixes.length).to.be.above(2);
   });
 
-  describe('prefixes enabled', function() {
-    before(function(done) {
-      setup(done, true);
-    });
-
-    after(teardown);
-
-    it('returns prefixes', function(done) {
-      req(['prefixes'], function(prefixes) {
-        expect(prefixes).to.be.an('array');
-        expect(prefixes).to.not.have.length(0);
-        done();
-      });
-    });
-  });
-
-  describe('prefixes disabled', function() {
-    before(function(done) {
-      setup(done, false);
-    });
-
-    after(teardown);
-
-    it('returns no prefixes', function(done) {
-      req(['prefixes'], function(prefixes) {
-        expect(prefixes).to.be.an('array');
-        expect(prefixes).to.have.length(2);
-        done();
-      });
-    });
-  });
-
-  after(function() {
-    cleanup();
+  it('returns no prefixes', function() {
+    var prefixes = setup(false);
+    expect(prefixes).to.be.an('array');
+    expect(prefixes).to.have.length(2);
+    expect(prefixes[0]).to.equal('');
+    expect(prefixes[1]).to.equal('');
   });
 });

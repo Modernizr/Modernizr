@@ -10,38 +10,41 @@
 Detects whether input form="form_id" is available on the platform
 E.g. IE 10 (and below), don't support this
 */
-define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+import docElement from '../../src/docElement.js';
 
-  Modernizr.addTest('formattribute', function() {
-    var form = createElement('form');
-    var input = createElement('input');
-    var div = createElement('div');
-    var id = 'formtest' + (new Date()).getTime();
-    var attr;
-    var bool = false;
+Modernizr.addTest('formattribute', function() {
+  var form = createElement('form');
+  var input = createElement('input');
+  var div = createElement('div');
+  var id = 'formtest' + (new Date()).getTime();
+  var attr;
+  var bool = false;
 
-    form.id = id;
+  form.id = id;
 
-    //IE6/7 confuses the form idl attribute and the form content attribute, so we use document.createAttribute
-    try {
-      input.setAttribute('form', id);
+  //IE6/7 confuses the form idl attribute and the form content attribute, so we use document.createAttribute
+  try {
+    input.setAttribute('form', id);
+  }
+  catch (e) {
+    if (document.createAttribute) {
+      attr = document.createAttribute('form');
+      attr.nodeValue = id;
+      input.setAttributeNode(attr);
     }
-    catch (e) {
-      if (document.createAttribute) {
-        attr = document.createAttribute('form');
-        attr.nodeValue = id;
-        input.setAttributeNode(attr);
-      }
-    }
+  }
 
-    div.appendChild(form);
-    div.appendChild(input);
+  div.appendChild(form);
+  div.appendChild(input);
 
-    docElement.appendChild(div);
+  docElement.appendChild(div);
 
-    bool = form.elements && form.elements.length === 1 && input.form === form;
+  bool = form.elements && form.elements.length === 1 && input.form === form;
 
-    div.parentNode.removeChild(div);
-    return bool;
-  });
+  div.parentNode.removeChild(div);
+  return bool;
 });
+
+export default Modernizr.formattribute

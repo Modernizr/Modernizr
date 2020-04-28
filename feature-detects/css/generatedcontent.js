@@ -16,9 +16,12 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
-  testStyles('#modernizr{font:0/0 a}#modernizr:after{content:":)";visibility:hidden;font:7px/1 a}', function(node) {
-    // See bug report on why this value is 6 crbug.com/608142
-    Modernizr.addTest('generatedcontent', node.offsetHeight >= 6);
-  });
+import Modernizr from '../../src/Modernizr.js';
+import testStyles from '../../src/testStyles.js';
+
+testStyles('#modernizr{font:0/0 a}#modernizr:after{content:":)";visibility:hidden;font:7px/1 a}', function(node) {
+  // See bug report on why this value is 6 crbug.com/608142
+  Modernizr.addTest('generatedcontent', node.offsetHeight >= 6);
 });
+
+export default Modernizr.generatedcontent

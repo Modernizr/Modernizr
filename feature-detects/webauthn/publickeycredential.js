@@ -20,12 +20,9 @@
 Detects support for PublicKeyCredential as part of the Web Authentication API (also known as webauthn)
 */
 
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('publicKeyCredential', function() {
-    if (window.PublicKeyCredential) {
-      return true;
-    }
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
 
-    return false;
-  });
-});
+Modernizr.addTest('publicKeyCredential', 'PublicKeyCredential' in _globalThis);
+
+export default Modernizr.publicKeyCredential
