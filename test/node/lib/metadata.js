@@ -76,8 +76,7 @@ describe('cli/metadata', function() {
     expect(metadata).to.throw(/Couldn't find the define/);
   });
 
-  // Checks for missing names
-  it('should throw if we can\'t find the define', function() {
+  it('should throw if no name is defined', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
@@ -90,8 +89,7 @@ describe('cli/metadata', function() {
     expect(metadata).to.throw(/Minimal metadata not found/);
   });
 
-  // Checks for missing properties
-  it('should throw if we can\'t find the define', function() {
+  it('should throw if no property is defined', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
@@ -104,8 +102,7 @@ describe('cli/metadata', function() {
     expect(metadata).to.throw(/Minimal metadata not found/);
   });
 
-  // Checks for incorrect polyfills
-  it('should throw if we can\'t find the define', function() {
+  it('should throw if polyfill is incorrectly configured', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
@@ -118,7 +115,7 @@ describe('cli/metadata', function() {
     expect(metadata).to.throw(/Polyfill not found/);
   });
 
-  it('should throw if we can\'t find the define', function() {
+  it('should return null if cssclass is incorrectly configured', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
