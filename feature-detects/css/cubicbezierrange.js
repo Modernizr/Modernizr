@@ -5,7 +5,7 @@
   "tags": ["css"],
   "builderAliases": ["css_cubicbezierrange"],
   "authors": ["@calvein"],
-  "warnings": ["cubic-bezier values can't be > 1 for Webkit until [bug #45761](https://bugs.webkit.org/show_bug.cgi?id=45761) is fixed"],
+  "warnings": ["In old versions (pre-2013) cubic-bezier values can't be > 1 due to Webkit [bug #45761](https://bugs.webkit.org/show_bug.cgi?id=45761)"],
   "notes": [{
     "name": "Comprehensive Compat Chart",
     "href": "https://muddledramblings.com/table-of-css3-border-radius-compliance/"

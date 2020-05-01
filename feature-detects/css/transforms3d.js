@@ -4,8 +4,8 @@
   "property": "csstransforms3d",
   "caniuse": "transforms3d",
   "tags": ["css"],
-  "warnings": [
-    "Chrome may occasionally fail this test on some systems; more info: https://bugs.chromium.org/p/chromium/issues/detail?id=129004"
+  "knownBugs": [
+    "Chrome may occasionally fail this test on some systems; more info: https://bugs.chromium.org/p/chromium/issues/detail?id=129004, however, the issue has been closed."
   ]
 }
 !*/

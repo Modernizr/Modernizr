@@ -8,8 +8,11 @@
     "href": "https://www.w3.org/TR/webmessaging/#crossDocumentMessages"
   }],
   "polyfills": ["easyxdm", "postmessage-jquery"],
-  "knownBugs": ["structuredclones - Android 2&3 can not send a structured clone of dates, filelists or regexps"],
-  "warnings": ["Some old WebKit versions have bugs. Stick with object, array, number and pixeldata to be safe."]
+  "knownBugs": [
+    "structuredclones - Android 2&3 can not send a structured clone of dates, filelists or regexps.",
+    "Some old WebKit versions have bugs."
+  ],
+  "warnings": ["To be safe you should stick with object, array, number and pixeldata."]
 }
 !*/
 /* DOC
