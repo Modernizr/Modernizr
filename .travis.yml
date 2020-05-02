@@ -10,7 +10,7 @@ before_script:
   - export CI_BUILD_NUMBER=$(git rev-parse HEAD)
   - if [ "${TRAVIS_NODE_VERSION}" = "0.12" ] && [ "${TRAVIS_REPO_SLUG}" = "modernizr-savage/Modernizr" ]; then export BROWSER_COVERAGE=true; fi
 after_success:
-  - ./node_modules/.bin/codecov
+  - ./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/codecov --pipe
   - |
       # Automatically update the content from the `gh-pages` branch
       $(npm bin)/update-branch --commands "gulp copy:gh-pages" \
