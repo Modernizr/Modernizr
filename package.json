@@ -62,6 +62,7 @@
     "@babel/register": "^7.9.0",
     "auto-changelog": "^2.0.0",
     "chai": "^4.2.0",
+    "codecov": "^3.6.5",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-jsdoc": "^24.0.0",
