@@ -76,31 +76,38 @@ describe('cli/metadata', function() {
     expect(metadata).to.throw(/Couldn't find the define/);
   });
 
-  it('should use amdPath as a fallback for name', function() {
+  it('should throw if no name is defined', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
-      'file': {
-        'walkSync': function(dir, cb) {
-          cb('/', [], ['fakeDetect.js']);
-        }
-      },
       'fs': {
         'readFileSync': function() {
           return '/*! { "property": "fake"}!*/ define([],';
         }
       }
     });
-    var result = metadata();
 
-    expect(result.name).to.be.equal(result.amdPath);
+    expect(metadata).to.throw(/Minimal metadata not found/);
   });
 
-  it('should throw if we can\'t find the define', function() {
+  it('should throw if no property is defined', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
         'readFileSync': function() {
-          return '/*! { "polyfills": ["fake"]}!*/ define([],';
+          return '/*! { "name": "fake"}!*/ define([],';
+        }
+      }
+    });
+
+    expect(metadata).to.throw(/Minimal metadata not found/);
+  });
+
+  it('should throw if polyfill is incorrectly configured', function() {
+
+    var metadata = proxyquire(root + 'lib/metadata', {
+      'fs': {
+        'readFileSync': function() {
+          return '/*! { "name": "fake", "property": "fake", "polyfills": ["fake"]}!*/ define([],';
         }
       }
     });
@@ -108,12 +115,12 @@ describe('cli/metadata', function() {
     expect(metadata).to.throw(/Polyfill not found/);
   });
 
-  it('should throw if we can\'t find the define', function() {
+  it('should return null if cssclass is incorrectly configured', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
         'readFileSync': function() {
-          return '/*! { "property": "fake", "cssclass": "realFake"}!*/ define([],';
+          return '/*! { "name": "fake", "property": "fake", "cssclass": "realFake"}!*/ define([],';
         }
       }
     });
@@ -128,7 +135,7 @@ describe('cli/metadata', function() {
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
         'readFileSync': function() {
-          return '/*! { "docs": "originally docs" }!*/ define([],';
+          return '/*! { "name": "fake", "property": "fake", "docs": "originally docs" }!*/ define([],';
         }
       }
     });
