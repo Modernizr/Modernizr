@@ -3,12 +3,14 @@
   "name": "ES6 Number",
   "property": "es6number",
   "notes": [{
-    "name": "unofficial ECMAScript 6 draft specification",
-    "href": "https://web.archive.org/web/20180825202128/https://tc39.github.io/ecma262/"
+    "name": "ECMAScript 6 specification",
+    "href": "https://www.ecma-international.org/ecma-262/6.0/index.html"
+  }, {
+    "name": "Last ECMAScript specification",
+    "href": "https://www.ecma-international.org/ecma-262/index.html"
   }],
   "polyfills": ["es6shim"],
   "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "warnings": ["ECMAScript 6 is still a only a draft, so this detect may not match the final specification or implementations."],
   "tags": ["es6"]
 }
 !*/
