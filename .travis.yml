@@ -9,6 +9,8 @@ before_install:
   - npm install -g npm@latest
 before_script:
   - npm install -g gulp-cli
+after_success:
+  - ./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/codecov --pipe
 script:
   - npm test
 
