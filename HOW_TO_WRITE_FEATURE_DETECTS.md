@@ -6,19 +6,19 @@ Modernizr works.
 [Metadata](#metadata)
 
 ## Metadata
-At the top of every feature detect in Modernizr there is a JSON fragment that represents the metadata of the test. This data is used, for example, to build the webpage.
-This is an example of this schema (it does not represent a real test): 
+A JSON fragment at the top of every feature detect in Modernizr represents the metadata of the test. This data is used, for example, to build the webpage.
 ### Schema
+The following code represents an example of the schema (it does not represent a real test):
 ```json
 /*!
 {
   "name": "JPEG 2000",
   "property": "jpeg2000",
-  "tags": ["media", "attribute"],
+  "tags": ["media", "image"],
   "caniuse": "jpeg2000",
   "authors": ["Markel Ferro (@MarkelFe)", "@rejas", "Brandom Aaron"],
-  "builderAliases": ["a_download"],
-  "polyfills": ["xaudiojs"],
+  "builderAliases": ["jpeg2"],
+  "polyfills": ["jpeg2000js"],
   "aliases": ["jpeg-2000", "jpg2"],
   "async": true,
   "warnings": ["These tests currently require document.body to be present"],
@@ -36,7 +36,7 @@ This is an example of this schema (it does not represent a real test):
 Here it would go a description of the feature test. You can use **markdown** here :)
 */
 ```
-> There is no set order in which they must appear, but it is common to see `name` and `property` at the top while `notes` at the bottom.
+> Metadata does no need to appear in a set order, however, it is common to see `name` and `property` at the top while `notes` at the bottom.
 
 ### Item description
 |                  | Necesity |                      Description                     |                                       Notes                                      |
