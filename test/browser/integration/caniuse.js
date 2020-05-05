@@ -24,6 +24,7 @@ window.caniusecb = function(caniuse) {
       applicationcache: 'offline-apps',
       atobbtoa: 'atob-btoa',
       audio: 'audio',
+      avif: 'avif',
       backdropfilter: 'css-backdrop-filter',
       backgroundblendmode: 'css-backgroundblendmode',
       bgpositionshorthand: 'css-background-offsets',

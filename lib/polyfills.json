@@ -780,5 +780,11 @@
     "authors": ["Tom Van Cutsem"],
     "href": "https://github.com/tvcutsem/harmony-reflect",
     "licenses": ["Apache2"]
+  },
+  "avifjs": {
+    "name": "Avif.js",
+    "authors": ["Kagami"],
+    "href": "https://github.com/Kagami/avif.js",
+    "licenses": ["CC0"]
   }
 }
