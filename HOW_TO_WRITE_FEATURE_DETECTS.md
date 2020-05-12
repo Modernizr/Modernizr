@@ -98,7 +98,11 @@ This testing is optional but highly recommended if a caniuse equivalent exists. 
 
 ### Verify Your Tests
 
-There are 2 main ways to verify if your test works correctly. If only you want to check that your test returns the correct answer run `npm test` as it will throw an error if something goes wrong. In case you want to check the test in a specific browser run `npm run serve-gh-pages` and navigate to [localhost:8080/test/integration.html](http://localhost:8080/test/integration.html), where you should find the name of your test in case you performed the [General Testing](#general-testing) steps right. You will also find the caniuse comparison under the [caniuse section](http://localhost:8080/test/integration.html?grep=caniuse) (at the bottom) if you performed the [Caniuse Testing](#caniuse-testing) steps right. You may want to use the search function of your browser.
+There are 2 main ways you can verify if your test works correctly:
+
+**Basic checking:** If only you want to check that your test returns the correct answer run `npm test` as it will throw an error if something goes wrong.
+
+**Specific checking:** In case you want to check the test in a specific browser run `npm run serve-gh-pages` and navigate to [localhost:8080/test/integration.html](http://localhost:8080/test/integration.html), where you should find the name of your test in case you performed the [General Testing](#general-testing) steps right. You will also find the caniuse comparison of your feature detect under the [caniuse section](http://localhost:8080/test/integration.html?grep=caniuse) (at the bottom) if you performed the [Caniuse Testing](#caniuse-testing) steps right. You may want to use the search function of your browser.
 
 ## Install the Basics
 
