@@ -1,7 +1,7 @@
 # How to Write Feature Detects
 
 The scope of this file is to help you to create new feature detects or edit existing ones. Here you will find details and guidelines that will help you understand how
-Modernizr works.
+Modernizr works. All these sections assume that you have npm, node and Modernizr if that is not the case, check first the [Install the basics](#install-the-basics) section.
 
 ## Table of contents
 
@@ -9,8 +9,9 @@ Modernizr works.
 
 [Testing](#testing)
 
-* [General testing](#general-testing)
-* [Caniuse testing](#caniuse-testing)
+* [General Testing](#general-testing)
+* [Caniuse Testing](#caniuse-testing)
+* [Verify Your Tests](#verify-your-tests)
 
 ## Metadata
 
@@ -92,3 +93,7 @@ This testing is optional but highly recommended if a caniuse equivalent exists. 
 
 > Note that it follows JSON schema in alphabetical order. Also consider adding caniuse in [the metadata field](#metadata).
 > The following situations may cause errors: MDN Data, partial supports, flag only support, unknown support.
+
+### Verify Your Tests
+
+There are 2 main ways to verify if your test works correctly. If only you want to check that your test returns the correct answer run `npm test` as it will throw an error if something goes wrong. In case you want to check the test in a specific browser run `npm run serve-gh-pages` and navigate to [localhost:8080/test/integration.html](http://localhost:8080/test/integration.html), where you should find the name of your test in case you performed the [General Testing](#general-testing) steps right. You will also find the caniuse comparison under the [caniuse section](http://localhost:8080/test/integration.html?grep=caniuse) (at the bottom) if you performed the [Caniuse Testing](#caniuse-testing) steps right. You may want to use the search function of your browser.
