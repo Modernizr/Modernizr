@@ -1,18 +1,25 @@
 # How to Write Feature Detects
+
 The scope of this file is to help you to create new feature detects or edit existing ones. Here you will find details and guidelines that will help you understand how
 Modernizr works.
 
-#### Table of contents
+## Table of contents
+
 [Metadata](#metadata)
 
 [Testing](#testing)
+
 * [General testing](#general-testing)
 * [Caniuse testing](#caniuse-testing)
 
 ## Metadata
+
 A JSON fragment at the top of every feature detect in Modernizr represents the metadata of the test. This data is used, for example, to build the webpage.
+
 ### Schema
+
 The following code represents an example of the schema (it does not represent a real test):
+
 ```json
 /*!
 {
@@ -40,9 +47,11 @@ The following code represents an example of the schema (it does not represent a 
 Here it would go a description of the feature test. You can use **markdown** here :)
 */
 ```
+
 > Metadata does no need to appear in a set order, however, it is common to see `name` and `property` at the top while `notes` at the bottom.
 
 ### Item description
+
 |                  | Necessity |                      Description                     |                                       Notes                                      |
 |------------------|:---------:|:----------------------------------------------------:|:--------------------------------------------------------------------------------:|
 | `name`           |  required |             Name of the feature detection            |                                                                                  |
@@ -59,21 +68,27 @@ Here it would go a description of the feature test. You can use **markdown** her
 | `notes`          |  optional |                  Links to resources                  |                                                                                  |
 
 ## Testing
+
 ### General Testing
+
 After creating your feature detect you'll need to add testing. In order to do it you must head to the [lib/config-all.json](lib/config-all.json) and include the relative path with root in the `feature-detects` folder to your test file (without the extension) under the `feature-detects` section. Here are some examples:
+
 ```js
   // lib/config-all.json
   "img/apng", // for "feature-detects/img/apng.js"
   "mathml", // for feature-detects/mathml.js
 ```
+
 > Note that it follows JSON schema in alphabetical order. Also consider adding caniuse testing if possible.
 
 ### Caniuse Testing
+
 This testing is optional but highly recommended if a caniuse equivalent exists. Firstly, click on the `#` symbol to the left of the name of the feature in [caniuse.com](https://caniuse.com). Copy everything in the URL following `https://caniuse.com/#feat=`, for example, in `https://caniuse.com/#feat=channel-messaging` copy only `channel-messaging`. Add this information to the [test/browser/integration/caniuse.js](test/browser/integration/caniuse.js) file under the map variable with the Modernizr property value in the left and the caniuse value in the right, for example, the `channel-messaging` corresponds to the `messagechannel` property so it should appear like this:
+
 ```js
   // test/browser/integration/caniuse.js
   messagechannel: 'channel-messaging', // Modernizr left, caniuse right
 ```
-> Note that it follows JSON schema in alphabetical order. Also consider adding caniuse in [the metadata field](#metadata).
 
+> Note that it follows JSON schema in alphabetical order. Also consider adding caniuse in [the metadata field](#metadata).
 > The following situations may cause errors: MDN Data, partial supports, flag only support, unknown support.
