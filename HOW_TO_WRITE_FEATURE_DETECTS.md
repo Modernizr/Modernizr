@@ -13,6 +13,8 @@ Modernizr works. All these sections assume that you have npm, node and Modernizr
 * [Caniuse Testing](#caniuse-testing)
 * [Verify Your Tests](#verify-your-tests)
 
+[Install the Basics](#install-the-basics)
+
 ## Metadata
 
 A JSON fragment at the top of every feature detect in Modernizr represents the metadata of the test. This data is used, for example, to build the webpage.
@@ -97,3 +99,21 @@ This testing is optional but highly recommended if a caniuse equivalent exists. 
 ### Verify Your Tests
 
 There are 2 main ways to verify if your test works correctly. If only you want to check that your test returns the correct answer run `npm test` as it will throw an error if something goes wrong. In case you want to check the test in a specific browser run `npm run serve-gh-pages` and navigate to [localhost:8080/test/integration.html](http://localhost:8080/test/integration.html), where you should find the name of your test in case you performed the [General Testing](#general-testing) steps right. You will also find the caniuse comparison under the [caniuse section](http://localhost:8080/test/integration.html?grep=caniuse) (at the bottom) if you performed the [Caniuse Testing](#caniuse-testing) steps right. You may want to use the search function of your browser.
+
+## Install the Basics
+
+### Installing Node and Npm
+
+Firstly you will need to install nodejs on your system. Go to [nodejs.org](https://nodejs.org) and download the latest LTS release.
+
+> In case of being using linux use you may use this [DigitalOcean tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04).
+
+### Downloading the Modernizr Repository
+
+> Note: It is recommended that you set your own git environment, however this is a complicated and diverse task so we won't be explaining it here, we recommend using, for example, [Github Desktop](https://desktop.github.com/) (very beginner friendly), [Sublime Merge](https://www.sublimemerge.com/) or the git command-line tool. We also recommend checking this [tutorial website](https://rogerdudler.github.io/git-guide/) if you never used git before.
+
+To download the code of the repository:
+
+* Head to the main [Modernizr repository](https://github.com/Modernizr/Modernizr)
+* Click `Clone or download` and `Download ZIP` afterwards. Optionally you can click [https://github.com/Modernizr/Modernizr/archive/master.zip](https://github.com/Modernizr/Modernizr/archive/master.zip) to download it directly.
+* Finally, unzip the file.
