@@ -13,6 +13,19 @@ build: off
 before_test:
   - npm install -g gulp-cli
 
+# Skipping specific commit files: https://www.appveyor.com/docs/appveyor-yml and https://www.appveyor.com/docs/how-to/filtering-commits
+skip_commits:
+  files:
+    - '**/*.md'
+    - '**/*.png'
+    - '**/*.ai'
+    - '**/*.svg'
+    - '**/*.jpg'
+    - '**/*.pdf'
+    - LICENSE
+    - docs/*
+    - media/*
+
 test_script:
   - node --version
   - npm --version
