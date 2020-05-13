@@ -94,13 +94,13 @@ The following example represents the schema in which polyfills must be defined i
 
 ### Polyfill Item Description
 
-|            | Necessity |           Description          |
-|------------|:---------:|:------------------------------:|
-| `name`     |  required |      Name of the polyfill      |
-| `authors`  |  optional |  Main authors of the polyfill  |
-| `notes`    |  optional |        Extra information       |
-| `href`     |  required | Link to the polyfill main page |
-| `licenses` |  required |     License of the polyfill    |
+|            | Necessity |                       Description                      |
+|------------|:---------:|:------------------------------------------------------:|
+| `name`     |  required | Name of the polyfill used in the [metadata](#metadata) |
+| `authors`  |  optional |              Main authors of the polyfill              |
+| `notes`    |  optional |                    Extra information                   |
+| `href`     |  required |             Link to the polyfill main page             |
+| `licenses` |  required |                 License of the polyfill                |
 
 ## Testing
 
@@ -118,14 +118,18 @@ After creating your feature detect you'll need to add testing. In order to do it
 
 ### Caniuse Testing
 
-This testing is optional but highly recommended if a caniuse equivalent exists. Firstly, click on the `#` symbol to the left of the name of the feature in [caniuse.com](https://caniuse.com). Copy everything in the URL following `https://caniuse.com/#feat=`, for example, in `https://caniuse.com/#feat=channel-messaging` copy only `channel-messaging`. Add this information to the [test/browser/integration/caniuse.js](test/browser/integration/caniuse.js) file under the map variable with the Modernizr property value in the left and the caniuse value in the right, for example, the `channel-messaging` corresponds to the `messagechannel` property so it should appear like this:
+This testing is optional but highly recommended if a caniuse equivalent exists. In order to do it follow this steps:
+
+1. Firstly, click on the `#` symbol to the left of the name of the feature in [caniuse.com](https://caniuse.com).
+2. Copy everything in the URL following `https://caniuse.com/#feat=`, for example, in `https://caniuse.com/#feat=channel-messaging` copy only `channel-messaging`.
+3. Add this information to the [test/browser/integration/caniuse.js](test/browser/integration/caniuse.js) file under the map variable. The Modernizr property value appears in the left and the caniuse value in the right, for example, the `channel-messaging` corresponds to the `messagechannel` test  so it should appear like this:
 
 ```js
 // test/browser/integration/caniuse.js
 messagechannel: 'channel-messaging', // Modernizr left, caniuse right
 ```
 
-> Note that it follows JSON schema in alphabetical order. Also consider adding caniuse in [the metadata field](#metadata).
+> Note that it follows JSON schema in alphabetical order. Also consider adding `caniuse` in [the metadata field](#metadata).
 > The following situations may cause errors: MDN Data, partial supports, flag only support, unknown support.
 
 ### Verify Your Tests
@@ -146,7 +150,7 @@ Firstly you will need to install nodejs on your system. Go to [nodejs.org](https
 
 ### Downloading the Modernizr Repository
 
-> Note: It is recommended that you set your own git environment, however this is a complicated and diverse task so we won't be explaining it here, we recommend using, for example, [Github Desktop](https://desktop.github.com/) (very beginner friendly), [Sublime Merge](https://www.sublimemerge.com/) or the git command-line tool. We also recommend checking this [tutorial website](https://rogerdudler.github.io/git-guide/) if you never used git before.
+> Note: It is recommended that you set your own git environment, however this is a complicated and diverse task so we won't be explaining it here. We recommend using, for example, [Github Desktop](https://desktop.github.com/) (very beginner friendly), [Sublime Merge](https://www.sublimemerge.com/) or the git command-line tool. We also recommend checking this [tutorial website](https://rogerdudler.github.io/git-guide/) if you never used git before.
 
 To download the code of the repository:
 
