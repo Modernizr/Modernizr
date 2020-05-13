@@ -1,7 +1,7 @@
 # How to Write Feature Detects
 
 The scope of this file is to help you to create new feature detects or edit existing ones. Here you will find details and guidelines that will help you understand how
-Modernizr works. All these sections assume that you have npm, node and Modernizr if that is not the case, check first the [Install the basics](#install-the-basics) section.
+Modernizr works. All these sections assume that you have npm, node and Modernizr downloaded. If that is not the case, check first the [Install the basics](#install-the-basics) section.
 
 ## Table of contents
 
@@ -9,11 +9,13 @@ Modernizr works. All these sections assume that you have npm, node and Modernizr
 
 [Polyfills](#polyfills)
 
+[Submitting a PR](#submitting-a-pr)
+
 [Testing](#testing)
 
 * [General Testing](#general-testing)
 * [Caniuse Testing](#caniuse-testing)
-* [Verify Your Tests](#verify-your-tests)
+* [Verify Your Tests](#verify/run-your-tests)
 
 [Install the Basics](#install-the-basics)
 
@@ -74,7 +76,7 @@ Here it would go a description of the feature test. You can use **markdown** her
 
 ## Polyfills
 
-Polyfills can be named in the [metadata](#metadata) with a simple word. In order to do this the [lib/polyfills.json](lib/polyfills.json) must include the description of all polyfills.
+Polyfills can be included in the [metadata](#metadata) with a simple word. In order to do this the [lib/polyfills.json](lib/polyfills.json) must include the description of all polyfills.
 
 ### Polyfill Schema
 
@@ -101,6 +103,12 @@ The following example represents the schema in which polyfills must be defined i
 | `notes`    |  optional |                    Extra information                   |
 | `href`     |  required |             Link to the polyfill main page             |
 | `licenses` |  required |                 License of the polyfill                |
+
+## Submitting a PR
+
+Once you have a feature or bug fix ready commit it to your own branch and submit a PR! There are no requirements to send a PR, no CLA, template you have to follow, title requirements, etc. However, provide a descriptive title and description.
+
+If you need to submit an issue, please include the Modernizr and Node version as well as your OS.
 
 ## Testing
 
@@ -132,7 +140,7 @@ messagechannel: 'channel-messaging', // Modernizr left, caniuse right
 > Note that it follows JSON schema in alphabetical order. Also consider adding `caniuse` in [the metadata field](#metadata).
 > The following situations may cause errors: MDN Data, partial supports, flag only support, unknown support.
 
-### Verify Your Tests
+### Verify/Run Your Tests
 
 There are 2 main ways you can verify if your test works correctly:
 
@@ -144,7 +152,7 @@ There are 2 main ways you can verify if your test works correctly:
 
 ### Installing Node and Npm
 
-Firstly you will need to install nodejs on your system. Go to [nodejs.org](https://nodejs.org) and download the latest LTS release.
+Firstly you will need to install nodejs on your system. Go to [nodejs.org](https://nodejs.org) and download the latest LTS release. NPM will come along the installer.
 
 > In case of being using linux use you may use this [DigitalOcean tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04).
 
