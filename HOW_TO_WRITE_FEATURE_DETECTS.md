@@ -15,7 +15,7 @@ Modernizr works. All these sections assume that you have npm, node and Modernizr
 
 * [General Testing](#general-testing)
 * [Caniuse Testing](#caniuse-testing)
-* [Verify Your Tests](#verify/run-your-tests)
+* [Verify/Run Your Tests](#verify/run-your-tests)
 
 [Install the Basics](#install-the-basics)
 
