@@ -7,6 +7,8 @@ Modernizr works. All these sections assume that you have npm, node and Modernizr
 
 [Metadata](#metadata)
 
+[Polyfills](#polyfills)
+
 [Testing](#testing)
 
 * [General Testing](#general-testing)
@@ -19,7 +21,7 @@ Modernizr works. All these sections assume that you have npm, node and Modernizr
 
 A JSON fragment at the top of every feature detect in Modernizr represents the metadata of the test. This data is used, for example, to build the webpage.
 
-### Schema
+### Metadata Schema
 
 The following code represents an example of the schema (it does not represent a real test):
 
@@ -53,22 +55,52 @@ Here it would go a description of the feature test. You can use **markdown** her
 
 > Metadata does no need to appear in a set order, however, it is common to see `name` and `property` at the top while `notes` at the bottom.
 
-### Item description
+### Metadata Item description
 
-|                  | Necessity |                      Description                     |                                       Notes                                      |
-|------------------|:---------:|:----------------------------------------------------:|:--------------------------------------------------------------------------------:|
-| `name`           |  required |             Name of the feature detection            |                                                                                  |
-| `property`       |  required | The property name established in `Modernizr.addTest` |                   It must be lowercase, without any punctuation                  |
-| `tags`           |  optional |    A group that encapsulates many feature detects    |                                                                                  |
-| `caniuse`        |  optional |      A conversion table of caniuse and Modernizr     |                Consider adding [caniuse testing](#caniuse-testing)               |
-| `authors`        |  optional |          List of contributors of the script          |                                                                                  |
-| `builderAliases` |  optional |     Used by CI and the web when tests are renamed    |                         Should not be needed in new tests                        |
-| `polyfills`      |  optional |     Available polyfills for not working versions     | Any polyfill listed needs to be included in [polyfills.json](lib/polyfills.json) |
-| `aliases`        |  optional |   Used if a feature has more than a canonical name   |                             Legacy only - do not use                             |
-| `async`          |  optional |       If the test supports async functionality       |                                 Defaults to false                                |
-| `warnings`       |  optional |        Notes to the developer using the script       |                          Don't mistake it for knownBugs                          |
-| `knownBugs`      |  optional |  Bugs known of the test (e.g.: doesn't work in IE6)  |                                                                                  |
-| `notes`          |  optional |                  Links to resources                  |                                                                                  |
+|                  | Necessity |                      Description                     |                        Notes                        |
+|------------------|:---------:|:----------------------------------------------------:|:---------------------------------------------------:|
+| `name`           |  required |             Name of the feature detection            |                                                     |
+| `property`       |  required | The property name established in `Modernizr.addTest` |    It must be lowercase, without any punctuation    |
+| `tags`           |  optional |    A group that encapsulates many feature detects    |                                                     |
+| `caniuse`        |  optional |      A conversion table of caniuse and Modernizr     | Consider adding [caniuse testing](#caniuse-testing) |
+| `authors`        |  optional |          List of contributors of the script          |                                                     |
+| `builderAliases` |  optional |     Used by CI and the web when tests are renamed    |          Should not be needed in new tests          |
+| `polyfills`      |  optional |     Available polyfills for not working versions     |      Check the [polyfills section](#polyfills)      |
+| `aliases`        |  optional |   Used if a feature has more than a canonical name   |               Legacy only - do not use              |
+| `async`          |  optional |       If the test supports async functionality       |                  Defaults to false                  |
+| `warnings`       |  optional |        Notes to the developer using the script       |            Don't mistake it for knownBugs           |
+| `knownBugs`      |  optional |  Bugs known of the test (e.g.: doesn't work in IE6)  |                                                     |
+| `notes`          |  optional |                  Links to resources                  |                                                     |
+
+## Polyfills
+
+Polyfills can be named in the [metadata](#metadata) with a simple word. In order to do this the [lib/polyfills.json](lib/polyfills.json) must include the description of all polyfills.
+
+### Polyfill Schema
+
+The following example represents the schema in which polyfills must be defined in the [polyfills.json](lib/polyfills.json) file:
+
+```json
+"css3pie": {
+  "name": "CSS3 PIE",
+  "authors": ["Jason Johnston"],
+  "href": "http://css3pie.com/",
+  "licenses": ["Apache2", "GPL2"],
+  "notes": ["CSS3 decoration rendering for IE 6-9. Supports: border-radius, box-shadow, multiple backgrounds, linear gradients, border-image"]
+},
+```
+
+> Metadata does no need to appear in a set order, however, it is common to follow the order stated above.
+
+### Polyfill Item Description
+
+|            | Necessity |           Description          |
+|------------|:---------:|:------------------------------:|
+| `name`     |  required |      Name of the polyfill      |
+| `authors`  |  optional |  Main authors of the polyfill  |
+| `notes`    |  optional |        Extra information       |
+| `href`     |  required | Link to the polyfill main page |
+| `licenses` |  required |     License of the polyfill    |
 
 ## Testing
 
@@ -77,9 +109,9 @@ Here it would go a description of the feature test. You can use **markdown** her
 After creating your feature detect you'll need to add testing. In order to do it you must head to the [lib/config-all.json](lib/config-all.json) and include the relative path with root in the `feature-detects` folder to your test file (without the extension) under the `feature-detects` section. Here are some examples:
 
 ```js
-  // lib/config-all.json
-  "img/apng", // for "feature-detects/img/apng.js"
-  "mathml", // for feature-detects/mathml.js
+// lib/config-all.json
+"img/apng", // for "feature-detects/img/apng.js"
+"mathml", // for feature-detects/mathml.js
 ```
 
 > Note that it follows JSON schema in alphabetical order. Also consider adding caniuse testing if possible.
@@ -89,8 +121,8 @@ After creating your feature detect you'll need to add testing. In order to do it
 This testing is optional but highly recommended if a caniuse equivalent exists. Firstly, click on the `#` symbol to the left of the name of the feature in [caniuse.com](https://caniuse.com). Copy everything in the URL following `https://caniuse.com/#feat=`, for example, in `https://caniuse.com/#feat=channel-messaging` copy only `channel-messaging`. Add this information to the [test/browser/integration/caniuse.js](test/browser/integration/caniuse.js) file under the map variable with the Modernizr property value in the left and the caniuse value in the right, for example, the `channel-messaging` corresponds to the `messagechannel` property so it should appear like this:
 
 ```js
-  // test/browser/integration/caniuse.js
-  messagechannel: 'channel-messaging', // Modernizr left, caniuse right
+// test/browser/integration/caniuse.js
+messagechannel: 'channel-messaging', // Modernizr left, caniuse right
 ```
 
 > Note that it follows JSON schema in alphabetical order. Also consider adding caniuse in [the metadata field](#metadata).
