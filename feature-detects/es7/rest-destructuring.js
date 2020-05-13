@@ -1,14 +1,13 @@
 /*!
 {
   "name": "ES7 Rest destructuring",
-  "property": [ "restdestructuringarray", "restdestructuringobject" ],
+  "property": ["restdestructuringarray", "restdestructuringobject"],
   "caniuse" : "destructuring%20assignment",
   "notes": [{
-    "name": "official ECMAScript 7 Destructuring Assignment draft specification",
+    "name": "ECMAScript Destructuring Assignment Specification",
     "href": "https://tc39.es/ecma262/#sec-destructuring-assignment"
   }],
   "authors": ["dabretin"],
-  "warnings": ["ECMAScript 7 is still a only a draft, so this detect may not match the final specification or implementations."],
   "tags": ["es7"]
 }
 !*/

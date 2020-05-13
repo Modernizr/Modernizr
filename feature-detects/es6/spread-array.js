@@ -3,7 +3,7 @@
   "name": "ES6 Spread array",
   "property": "spreadarray",
   "notes": [{
-    "name": "ECMAScript 6 language specification",
+    "name": "ECMAScript Specification",
     "href": "https://tc39.es/ecma262/#sec-array-initializer"
   },
   {

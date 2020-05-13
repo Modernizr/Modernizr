@@ -1,4 +1,4 @@
-define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, injectElementWithStyles) {
+define(['ModernizrProto', 'injectElementWithStyles', 'computedStyle'], function(ModernizrProto, injectElementWithStyles, computedStyle) {
   /**
    * Modernizr.mq tests a given media query, live against the current state of the window
    * adapted from matchMedia polyfill by Scott Jehl and Paul Irish
@@ -57,9 +57,7 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
       var bool = false;
 
       injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function(node) {
-        bool = (window.getComputedStyle ?
-          window.getComputedStyle(node, null) :
-          node.currentStyle).position === 'absolute';
+        bool = computedStyle(node, null, 'position') === 'absolute';
       });
 
       return bool;
