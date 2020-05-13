@@ -6,7 +6,7 @@
   "builderAliases": ["css_positionsticky"],
   "notes": [{
     "name": "Chrome bug report",
-    "href":"https://bugs.chromium.org/p/chromium/issues/detail?id=322972"
+    "href": "https://bugs.chromium.org/p/chromium/issues/detail?id=322972"
   }],
   "warnings": ["using position:sticky on anything but top aligned elements is buggy in Chrome < 37 and iOS <=7+"]
 }

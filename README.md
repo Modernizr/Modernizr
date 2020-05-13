@@ -1,6 +1,8 @@
 # Modernizr 
 [![npm version](https://badge.fury.io/js/modernizr.svg)](https://badge.fury.io/js/modernizr)
 [![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](https://travis-ci.org/Modernizr/Modernizr) 
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/Modernizr/modernizr?branch=master&svg=true)](https://ci.appveyor.com/project/rejas/modernizr) 
+[![codecov](https://codecov.io/gh/Modernizr/Modernizr/branch/master/graph/badge.svg)](https://codecov.io/gh/Modernizr/Modernizr)
 [![Inline docs](https://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](https://inch-ci.org/github/Modernizr/Modernizr)
 
 ##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
@@ -12,6 +14,16 @@
 
 Modernizr tests which native CSS3 and HTML5 features are available in the current UA and makes the results available to you in two ways: as properties on a global `Modernizr` object, and as classes on the `<html>` element. This information allows you to progressively enhance your pages with a granular level of control over the experience.
 
+## Breaking changes with v4
+
+- Dropped Node 8 Support, please upgrade to Node v10
+
+- These tests got removed:
+
+    - `touchevents`: [discussion](https://github.com/Modernizr/Modernizr/pull/2432) 
+    - `unicode`: [discussion](https://github.com/Modernizr/Modernizr/issues/2468) 
+    - `templatestrings`: duplicate of the es6 detect `stringtemplate`
+    
 ## New Asynchronous Event Listeners
 
 Often times people want to know when an asynchronous test is done so they can allow their application to react to it.
@@ -101,16 +113,6 @@ and navigating to these two URLs:
 http://localhost:8080/test/unit.html
 http://localhost:8080/test/integration.html
 ```
- 
- 
-## Deprecation
-
-These tests are considered deprecated. They are not included anymore in the default build
-and will be removed in the next major version:
-
-- `touchevents` (in 4.0)
-- `unicode` (in 4.0) 
-
 
 ## Code of Conduct
 

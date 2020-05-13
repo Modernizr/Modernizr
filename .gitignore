@@ -10,3 +10,4 @@ metadata.json
 .project
 *.log
 tmp
+/.nyc_output
