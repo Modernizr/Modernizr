@@ -20,6 +20,7 @@ define(['Modernizr', 'prefixed', 'domPrefixesAll', 'test/webrtc/peerconnection']
       var PeerConnectionConstructor = window[domPrefixesAll[i] + 'RTCPeerConnection'];
       if (PeerConnectionConstructor) {
         var peerConnection = new PeerConnectionConstructor(null);
+        peerConnection.close();
         return 'createDataChannel' in peerConnection;
       }
     }
