@@ -17,14 +17,6 @@ before_test:
 skip_commits:
   files:
     - '**/*.md'
-    - '**/*.png'
-    - '**/*.ai'
-    - '**/*.svg'
-    - '**/*.jpg'
-    - '**/*.pdf'
-    - LICENSE
-    - docs/*
-    - media/*
 
 test_script:
   - node --version
