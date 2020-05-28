@@ -66,7 +66,6 @@ window.caniusecb = function(caniuse) {
       cssvwunit: 'viewport-units',
       customelements: 'custom-elementsv1',
       customproperties: 'css-variables',
-      datalistelem: 'datalist',
       dataset: 'dataset',
       datauri: 'datauri',
       details: 'details',
