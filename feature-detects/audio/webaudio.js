@@ -9,12 +9,12 @@
   "authors": ["Addy Osmani"],
   "notes": [{
     "name": "W3C Spec",
-    "href": "https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html"
+    "href": "https://webaudio.github.io/web-audio-api/"
   }]
 }
 !*/
 /* DOC
-Detects the older non standard webaudio API, (as opposed to the standards based AudioContext API)
+Check for the Web Audio API
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('webaudio', function() {
