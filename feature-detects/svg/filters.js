@@ -13,7 +13,7 @@
 }
 !*/
 define(['Modernizr'], function(Modernizr) {
-  // Should fail in Safari: https://stackoverflow.com/questions/9739955/feature-detecting-support-for-svg-filters.
+  // How it is made to fail in pre 6 versions of Safari: https://stackoverflow.com/questions/9739955/feature-detecting-support-for-svg-filters.
   Modernizr.addTest('svgfilters', function() {
     var result = false;
     try {
