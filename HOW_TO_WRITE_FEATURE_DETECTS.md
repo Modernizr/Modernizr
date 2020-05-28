@@ -1,7 +1,6 @@
 # How to Write Feature Detects
 
-The scope of this file is to help you to create new feature detects or edit existing ones. Here you will find details and guidelines that will help you understand how
-Modernizr works. All these sections assume that you have npm, node and Modernizr downloaded. If that is not the case, check first the [Install the basics](#install-the-basics) section.
+The scope of this file is to help you to create new feature detects or edit existing ones. Here you will find details and guidelines that will help you understand how Modernizr works. All these sections assume that you have npm, node and Modernizr downloaded. If that is not the case, check first the [Install the basics](#install-the-basics) section.
 
 ## Table of contents
 
