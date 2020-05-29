@@ -146,7 +146,6 @@
     "dom/shadowroot",
     "dom/shadowrootlegacy",
     "elem/bdi",
-    "elem/datalist",
     "elem/details",
     "elem/output",
     "elem/picture",
