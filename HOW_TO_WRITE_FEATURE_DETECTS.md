@@ -14,7 +14,7 @@ The scope of this file is to help you to create new feature detects or edit exis
 
 * [General Testing](#general-testing)
 * [Caniuse Testing](#caniuse-testing)
-* [Verify/Run Your Tests](#verify/run-your-tests)
+* [Verifying and Running Your Tests](#verifying-and-running-your-tests)
 
 [Install the Basics](#install-the-basics)
 
@@ -95,13 +95,15 @@ The following example represents the schema in which polyfills must be defined i
 
 ### Polyfill Item Description
 
-|            | Necessity |                       Description                      |
-|------------|:---------:|:------------------------------------------------------:|
-| `name`     |  required | Name of the polyfill used in the [metadata](#metadata) |
-| `authors`  |  optional |              Main authors of the polyfill              |
-| `notes`    |  optional |                    Extra information                   |
-| `href`     |  required |             Link to the polyfill main page             |
-| `licenses` |  required |                 License of the polyfill                |
+|            | Necessity |           Description          |
+|------------|:---------:|:------------------------------:|
+| `name`     |  required |    The name of the polyfill    |
+| `authors`  |  optional |  Main authors of the polyfill  |
+| `notes`    |  optional |        Extra information       |
+| `href`     |  required | Link to the polyfill main page |
+| `licenses` |  required |     License of the polyfill    |
+
+> To reference the polyfill in the [metadata](#metadata) use the head of the object, in this case `css3pie`
 
 ## Submitting a PR
 
@@ -139,7 +141,7 @@ messagechannel: 'channel-messaging', // Modernizr left, caniuse right
 > Note that it follows JSON schema in alphabetical order. Also consider adding `caniuse` in [the metadata field](#metadata).
 > The following situations may cause errors: MDN Data, partial supports, flag only support, unknown support.
 
-### Verify/Run Your Tests
+### Verifying and Running Your Tests
 
 There are 2 main ways you can verify if your test works correctly:
 
