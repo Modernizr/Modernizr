@@ -18,9 +18,10 @@
 /* DOC
 It tests for the whole clipboard API. For sub-features check other tests
 */
-define(['Modernizr', 'addTest', 'testAllProps'], function(Modernizr, addTest, _testAllProps) {
+define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
   Modernizr.addAsyncTest(function() {
-    var result, name;
+    var result;
+    // var name;
     // var props = ['read', 'readText', 'write', 'writeText'];
     if (navigator.clipboard) {
       addTest('clipboard', true);
