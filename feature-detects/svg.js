@@ -8,11 +8,9 @@
   "polyfills": [
     "svgweb",
     "raphael",
-    "amplesdk",
     "canvg",
     "svg-boilerplate",
     "sie",
-    "dojogfx",
     "fabricjs"
   ]
 }

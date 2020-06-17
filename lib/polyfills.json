@@ -68,7 +68,7 @@
   "css-escape": {
     "name": "CSS.escape()",
     "authors": ["Mathias Bynens"],
-    "href": "http://mths.be/cssescape",
+    "href": "https://github.com/mathiasbynens/CSS.escape",
     "licenses": ["MIT"],
     "notes": []
   },
@@ -136,7 +136,7 @@
   "html5gears": {
     "name": "html5-gears",
     "authors": ["Brad Neuberg"],
-    "href": "https://code.google.com/p/html5-gears/",
+    "href": "https://code.google.com/archive/p/html5-gears/",
     "licenses": ["Apache2"]
   },
   "blobjs": {
@@ -145,33 +145,21 @@
     "href": "https://github.com/eligrey/Blob.js",
     "licenses": ["MIT"]
   },
-  "flashcanvas": {
-    "name": "FlashCanvas",
-    "authors": ["Shinya Muramatsu"],
-    "href": "http://flashcanvas.net/",
-    "licenses": ["MIT"]
-  },
   "excanvas": {
     "name": "Explorer Canvas",
     "authors": ["Erik Arvidsson"],
-    "href": "https://code.google.com/p/explorercanvas/",
+    "href": "https://github.com/arv/explorercanvas",
     "licenses": ["Apache2"]
   },
   "slcanvas": {
     "name": "Silverlight HTML 5 Canvas",
-    "href": "http://slcanvas.codeplex.com/",
+    "href": "https://archive.codeplex.com/?p=slcanvas",
     "licenses": ["Microsoft Public License (Ms-PL)"]
-  },
-  "fxcanvas": {
-    "name": "fxCanvas",
-    "authors": ["Evgeny Burzak"],
-    "href": "http://burzak.com/proj/fxcanvas/",
-    "licenses": ["MIT"]
   },
   "canvastext": {
     "name": "canvas-text",
     "authors": ["Fabien Ménager"],
-    "href": "https://code.google.com/p/canvas-text/",
+    "href": "https://code.google.com/archive/p/canvas-text/",
     "licenses": ["MIT"]
   },
   "jquery-contextmenu": {
@@ -232,7 +220,7 @@
   "geo-location-javascript": {
     "name": "geo-location-javascript",
     "authors": ["whoisstan"],
-    "href": "https://code.google.com/p/geo-location-javascript/",
+    "href": "https://code.google.com/archive/p/geo-location-javascript/",
     "notes": ["Mobile-centric: uses non-standard Blackberry and WebOS tricks"],
     "licenses": ["MIT"]
   },
@@ -251,7 +239,7 @@
   "moo-historymanager": {
     "name": "HistoryManager Mootools Plugin",
     "authors": ["Arieh Glazer"],
-    "href": "http://mootools.net/forge/p/historymanager/",
+    "href": "https://mootools.net/forge/p/historymanager/",
     "licenses": ["MIT"]
   },
   "jquery-ajaxy": {
@@ -345,7 +333,7 @@
   "galleryhtml5forms": {
     "name": "YUI Gallery HTML5 Forms",
     "authors": ["Matt Snider"],
-    "href": "http://yuilibrary.com/gallery/show/html5-forms",
+    "href": "https://yuilibrary.com/gallery-archive/gallery/show/html5-forms.html",
     "licenses": ["BSD"]
   },
   "jscolor": {
@@ -381,7 +369,7 @@
   "mathjax": {
     "name": "MathJax",
     "authors": ["Davide P. Cervone"],
-    "href": "http://www.mathjax.org/",
+    "href": "https://www.mathjax.org/",
     "licenses": ["Apache2"]
   },
   "visibilityjs": {
@@ -448,14 +436,7 @@
   "storagepolyfill": {
     "name": "Storage Polyfill",
     "authors": ["Remy Sharp"],
-    "href": "http://gist.github.com/350433",
-    "notes": [],
-    "licenses": ["MIT"]
-  },
-  "sessionstorage": {
-    "name": "sessionstorage",
-    "authors": ["Andrea Giammarchi"],
-    "href": "http://gist.github.com/350433",
+    "href": "https://gist.github.com/remy/350433",
     "licenses": ["MIT"]
   },
   "amplifyjs": {
@@ -467,7 +448,7 @@
   "yui-cacheoffline": {
     "name": "YUI3 CacheOffline",
     "authors": ["YUI Team"],
-    "href": "http://yuilibrary.com/yui/docs/cache/#offline",
+    "href": "https://yuilibrary.com/yui/docs/cache/#offline",
     "licenses": ["BSD"]
   },
   "scoped-styles": {
@@ -480,7 +461,7 @@
   "svgweb": {
     "name": "SVG Web",
     "authors": ["Rick Masters", "Brad Neuberg", "James Hight"],
-    "href": "https://code.google.com/p/svgweb/",
+    "href": "https://code.google.com/archive/p/svgweb/",
     "licenses": ["Apache2"]
   },
   "raphael": {
@@ -490,16 +471,10 @@
     "notes": ["Abstracted API. adds features. fallback for IE via VML"],
     "licenses": ["MIT"]
   },
-  "amplesdk": {
-    "name": "Ample SDK",
-    "authors": ["Sergey Ilinsky"],
-    "href": "http://www.amplesdk.com/examples/svg/",
-    "licenses": ["MIT", "GPL2"]
-  },
   "canvg": {
     "name": "canvg",
     "authors": ["Gabe Lerner"],
-    "href": "http://code.google.com/p/canvg/",
+    "href": "https://github.com/canvg/canvg",
     "notes": ["Writes SVG to canvas. Good for Android"],
     "licenses": ["MIT"]
   },
@@ -513,16 +488,9 @@
   "sie": {
     "name": "SIE SVG library",
     "authors": ["Hiroki Dehara"],
-    "href": "http://sie.sourceforge.jp/",
+    "href": "http://sie.osdn.jp/",
     "notes": ["Fallback to VML for oldIE"],
     "licenses": ["Mozilla1.1", "GPL2", "LGPL2.1"]
-  },
-  "dojogfx": {
-    "name": "Dojo GFX",
-    "authors": ["Eugene Lazutkin", "Kun Xi", "Chris Mitchell"],
-    "href": "http://docs.dojocampus.org/dojox/gfx/",
-    "notes": ["Fallback via VML, Canvas, Silverlight and Flash"],
-    "licenses": ["BSD", "AFL"]
   },
   "fabricjs": {
     "name": "fabric.js",
@@ -543,12 +511,6 @@
     "href": "https://github.com/inexorabletash/polyfill",
     "licenses": ["various"]
   },
-  "text-overflow": {
-    "name": "jQuery text-overflow",
-    "authors": ["Devon Govett"],
-    "href": "http://ajaxian.com/archives/text-overflow-for-firefox-via-jquery",
-    "licenses": ["MIT"]
-  },
   "html5media": {
     "name": "html5media",
     "authors": ["Dave Hall"],
@@ -558,25 +520,19 @@
   "mediaelementjs": {
     "name": "MediaElement.js",
     "authors": ["John Dyer"],
-    "href": "http://mediaelementjs.com/",
+    "href": "http://www.mediaelementjs.com/",
     "licenses": ["MIT"]
-  },
-  "sublimevideo": {
-    "name": "SublimeVideo",
-    "authors": ["Jilion SA"],
-    "href": "http://sublimevideo.net/",
-    "licenses": ["proprietary"]
   },
   "videojs": {
     "name": "video.js",
     "authors": ["Steve Heffernan"],
-    "href": "http://videojs.com/",
+    "href": "https://videojs.com/",
     "licenses": ["Apache2"]
   },
   "leanbackplayer": {
     "name": "LeanBack Player",
     "authors": ["Kapelan Medien GmbH"],
-    "href": "http://www.leanbackplayer.com/",
+    "href": "https://www.leanbackplayer.com/",
     "licenses": ["GPL3"]
   },
   "videoforeverybody": {
@@ -585,22 +541,16 @@
     "href": "http://camendesign.com/code/video_for_everybody",
     "licenses": ["public domain"]
   },
-  "webintents": {
-    "name": "Web Intents JavaScript Shim",
-    "authors": ["Paul Kinlan"],
-    "href": "http://webintents.org/#javascriptshim",
-    "licenses": ["Apache2"]
-  },
   "jebgl": {
     "name": "jebgl",
     "authors": ["Martin Qvist"],
-    "href": "http://code.google.com/p/jebgl/",
+    "href": "https://code.google.com/archive/p/jebgl/",
     "licenses": ["MIT"]
   },
   "cwebgl": {
     "name": "cwebgl",
     "authors": ["Cimaron Shanahan"],
-    "href": "http://code.google.com/p/cwebgl/",
+    "href": "https://code.google.com/archive/p/cwebgl/",
     "licenses": ["MIT"]
   },
   "iewebgl": {
@@ -617,13 +567,8 @@
   "socketio": {
     "name": "socket.io",
     "authors": ["Guillermo Rauch"],
-    "href": "http://socket.io/",
+    "href": "https://socket.io/",
     "licenses": ["MIT"]
-  },
-  "kaazing-websocket-gateway": {
-    "name": "Kaazing WebSocket Gateway",
-    "href": "http://kaazing.com/products/kaazing-websocket-gateway/",
-    "licenses": ["proprietary"]
   },
   "websocketjs": {
     "name": "web-socket-js",
@@ -634,7 +579,7 @@
   "atmosphere": {
     "name": "atmosphere jQuery plugin",
     "authors": ["Jeanfrancois Arcand"],
-    "href": "http://jfarcand.wordpress.com/2010/06/15/using-atmospheres-jquery-plug-in-to-build-applicationsupporting-both-websocket-and-comet/",
+    "href": "https://jfarcand.wordpress.com/2010/06/15/using-atmospheres-jquery-plug-in-to-build-applicationsupporting-both-websocket-and-comet/",
     "licenses": ["Apache2"]
   },
   "graceful-websocket": {
@@ -664,13 +609,13 @@
   "fakeworker": {
     "name": "fakeworker.js",
     "authors": ["Shumpei Shiraishi"],
-    "href": "https://code.google.com/p/fakeworker-js/",
+    "href": "https://code.google.com/archive/p/fakeworker-js/",
     "licenses": ["Apache2"]
   },
   "html5shims": {
     "name": "web worker api shim",
     "authors": ["Jonathan 'J5' Cook"],
-    "href": "https://code.google.com/p/html5-shims/",
+    "href": "https://code.google.com/archive/p/html5-shims/",
     "licenses": ["Apache2"]
   },
   "polycrypt": {
@@ -694,7 +639,7 @@
   "maxlength": {
     "name": "maxlength plugin",
     "authors": ["Remy Sharp"],
-    "href": "http://remysharp.com/2008/06/30/maxlength-plugin/",
+    "href": "https://remysharp.com/2008/06/30/maxlength-plugin/",
     "licenses": ["CC SA"]
   },
   "weakmap": {
