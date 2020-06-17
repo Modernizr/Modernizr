@@ -16,7 +16,7 @@
 }
 !*/
 /* DOC
-It tests for the whole clipboard API. The sub-properties `read`, `readText`, `write` and `writeText` are supported.
+It tests for the whole clipboard API. The sub-properties `read`, `readText`, `write` and `writeText` are supported. Note: This test does not detect the [clipboardEvent](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardEvent/ClipboardEvent).
 
 ```javascript
 Modernizr.clipboard         // Supports the clipboard API
