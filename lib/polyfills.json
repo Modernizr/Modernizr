@@ -30,7 +30,7 @@
   "dynamicaudiojs": {
     "name": "dynamicaudio.js",
     "authors": ["Ben Firshman"],
-    "href": "http://github.com/bfirsh/dynamicaudio.js",
+    "href": "https://github.com/bfirsh/dynamicaudio.js",
     "licenses": ["BSD"],
     "notes": []
   },
@@ -93,7 +93,7 @@
   "flexie": {
     "name": "Flexie",
     "authors": ["Richard Herrera"],
-    "href": "http://github.com/doctyper/flexie",
+    "href": "https://github.com/doctyper/flexie",
     "licenses": ["MIT"],
     "notes": ["Flexible box model - old spec from 2009. (flexbox) Supports: box-orient, box-align, box-direction, box-pack, box-flex, box-ordinal-group"]
   },
@@ -435,7 +435,7 @@
     "name": "Scoped Styles",
     "authors": ["Simon Madine"],
     "notes": ["jQuery Plugin to enable the scoped attribute on style blocks so they only affect their parent element's children."],
-    "href": "http://github.com/thingsinjars/jQuery-Scoped-CSS-plugin",
+    "href": "https://github.com/thingsinjars/jQuery-Scoped-CSS-plugin",
     "licenses": ["MIT"]
   },
   "svgweb": {
@@ -553,7 +553,7 @@
   "websocketjs": {
     "name": "web-socket-js",
     "authors": ["Hiroshi Ichikawa"],
-    "href": "http://github.com/gimite/web-socket-js/",
+    "href": "https://github.com/gimite/web-socket-js/",
     "licenses": ["BSD"]
   },
   "atmosphere": {
