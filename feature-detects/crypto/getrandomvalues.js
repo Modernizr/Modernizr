@@ -8,7 +8,7 @@
   "notes": [{
     "name": "W3C Editor’s Draft Spec",
     "href": "https://w3c.github.io/webcrypto/#Crypto-interface-methods"
-  }],
+  }]
 }
 !*/
 /* DOC
