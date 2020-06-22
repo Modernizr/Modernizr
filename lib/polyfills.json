@@ -20,13 +20,6 @@
     "licenses": ["Apache2"],
     "notes": ["A small library that unifies the HTML5 Notifications APIs across different browsers including IE9 & IE10."]
   },
-  "css3pie": {
-    "name": "CSS3 PIE",
-    "authors": ["Jason Johnston"],
-    "href": "http://css3pie.com/",
-    "licenses": ["Apache2", "GPL2"],
-    "notes": ["CSS3 decoration rendering for IE 6-9. Supports: border-radius, box-shadow, multiple backgrounds, linear gradients, border-image"]
-  },
   "dynamicaudiojs": {
     "name": "dynamicaudio.js",
     "authors": ["Ben Firshman"],
@@ -51,7 +44,7 @@
   "csssandpaper": {
     "name": "CSS Sandpaper",
     "authors": ["Zoltan Hawryluk"],
-    "href": "http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/",
+    "href": "https://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/",
     "licenses": ["MIT"],
     "notes": []
   },
@@ -255,18 +248,18 @@
   "indexeddb": {
     "name": "IndexedDB",
     "authors": ["Parashuram"],
-    "href": "http://nparashuram.com/IndexedDBShim/",
+    "href": "https://nparashuram.com/IndexedDBShim/",
     "licenses": ["GPL2", "BSD"]
   },
   "jquerytools": {
     "name": "jQuery Tools",
-    "href": "http://jquerytools.org",
+    "href": "https://jquerytools.org",
     "licenses": ["public domain"]
   },
   "webshims": {
     "name": "Webshims",
     "authors": ["Alexander Farkas"],
-    "href": "http://afarkas.github.io/webshim/demos/",
+    "href": "https://afarkas.github.io/webshim/demos/",
     "licenses": ["MIT"]
   },
   "h5f": {
@@ -373,7 +366,7 @@
   "notificationjs": {
     "name": "notification.js",
     "authors": ["Andrew Dodson"],
-    "href": "http://adodson.com/notification.js/",
+    "href": "https://adodson.com/notification.js/",
     "licenses": ["MIT"]
   },
   "perfnow": {
@@ -385,7 +378,7 @@
   "easyxdm": {
     "name": "easyXDM",
     "authors": ["Sean Kinsey"],
-    "href": "http://easyxdm.net/wp/",
+    "href": "https://github.com/oyvindkinsey/easyXDM",
     "notes": ["Implements XDM and RPC in most browsers since IE6. Also ships with an endpoint for exposing ajax across the domain boundary."],
     "licenses": ["MIT"]
   },
@@ -422,7 +415,7 @@
   "amplifyjs": {
     "name": "Amplify.js",
     "authors": ["appendTo"],
-    "href": "http://amplifyjs.com/",
+    "href": "https://amplifyjs.com/",
     "licenses": ["MIT", "GPL2"]
   },
   "yui-cacheoffline": {
@@ -468,7 +461,7 @@
   "sie": {
     "name": "SIE SVG library",
     "authors": ["Hiroki Dehara"],
-    "href": "http://sie.osdn.jp/",
+    "href": "https://sie.osdn.jp/",
     "notes": ["Fallback to VML for oldIE"],
     "licenses": ["Mozilla1.1", "GPL2", "LGPL2.1"]
   },
@@ -500,7 +493,7 @@
   "mediaelementjs": {
     "name": "MediaElement.js",
     "authors": ["John Dyer"],
-    "href": "http://www.mediaelementjs.com/",
+    "href": "https://www.mediaelementjs.com/",
     "licenses": ["MIT"]
   },
   "videojs": {
@@ -597,12 +590,6 @@
     "authors": ["Jonathan 'J5' Cook"],
     "href": "https://code.google.com/archive/p/html5-shims/",
     "licenses": ["Apache2"]
-  },
-  "polycrypt": {
-    "name": "PolyCrypt",
-    "authors": ["BBN Technologies"],
-    "href": "http://polycrypt.net/",
-    "licenses": ["BSD"]
   },
   "webanimationsjs": {
     "name": "web-animations-js",
