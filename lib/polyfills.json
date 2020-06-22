@@ -27,16 +27,6 @@
     "licenses": ["Apache2", "GPL2"],
     "notes": ["CSS3 decoration rendering for IE 6-9. Supports: border-radius, box-shadow, multiple backgrounds, linear gradients, border-image"]
   },
-  "xaudiojs": {
-    "name": "XAudioJS",
-    "authors": ["Grant Galitz"],
-    "href": "https://github.com/grantgalitz/XAudioJS",
-    "licenses": [],
-    "notes": [
-      "Audio sample stream output thin-abstraction library that supports mono and stereo audio, as well as resampling the audio stream.",
-      "Supports the Mozilla Audio Data API, Web Audio API, Adobe Flash 10, real-time WAV PCM Data URI generation"
-    ]
-  },
   "dynamicaudiojs": {
     "name": "dynamicaudio.js",
     "authors": ["Ben Firshman"],
@@ -92,16 +82,6 @@
     "href": "https://github.com/doctyper/compass-borderbox",
     "licenses": [],
     "notes": ["box-sizing: border-box; polyfill for SASS/Compass. Outputs equivalent CSS for IE6 & 7"]
-  },
-  "css3multicolumnjs": {
-    "name": "css3-multi-column.js",
-    "authors": ["Betley Whitehorne Image", "Cdric Savarese"],
-    "href": "https://github.com/BetleyWhitehorne/CSS3MultiColumn",
-    "licenses": ["CC-GNU LGPL"],
-    "notes": [
-      "Supported Properties: column-count, column-width, column-gap, column-rule.",
-      "Unsupported Properties: column-rule-width (use column-rule instead), column-rule-style (use column-rule instead), column-rule-color (use column-rule instead), column-span, column-width-policy, column-space-distribution"
-    ]
   },
   "polyfilter": {
     "name": "Polyfilter",

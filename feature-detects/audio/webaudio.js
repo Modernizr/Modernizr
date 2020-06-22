@@ -3,7 +3,7 @@
   "name": "Web Audio API",
   "property": "webaudio",
   "caniuse": "audio-api",
-  "polyfills": ["xaudiojs", "dynamicaudiojs", "audiolibjs"],
+  "polyfills": ["dynamicaudiojs", "audiolibjs"],
   "tags": ["audio", "media"],
   "builderAliases": ["audio_webaudio_api"],
   "authors": ["Addy Osmani"],
