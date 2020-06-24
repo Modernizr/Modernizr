@@ -20,6 +20,13 @@
     "licenses": ["Apache2"],
     "notes": ["A small library that unifies the HTML5 Notifications APIs across different browsers including IE9 & IE10."]
   },
+  "css3pie": {
+    "name": "CSS3 PIE",
+    "authors": ["Jason Johnston"],
+    "href": "http://css3pie.com/",
+    "licenses": ["Apache2", "GPL2"],
+    "notes": ["CSS3 decoration rendering for IE 6-9. Supports: border-radius, box-shadow, multiple backgrounds, linear gradients, border-image"]
+  },
   "dynamicaudiojs": {
     "name": "dynamicaudio.js",
     "authors": ["Ben Firshman"],

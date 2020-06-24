@@ -3,6 +3,7 @@
   "name": "Border Radius",
   "property": "borderradius",
   "caniuse": "border-radius",
+  "polyfills": ["css3pie"],
   "tags": ["css"],
   "notes": [{
     "name": "Comprehensive Compat Chart",
