@@ -3,7 +3,7 @@
   "name": "Session Storage",
   "property": "sessionstorage",
   "tags": ["storage"],
-  "polyfills": ["joshuabell-polyfill", "cupcake", "sessionstorage"]
+  "polyfills": ["joshuabell-polyfill", "cupcake", "storagepolyfill"]
 }
 !*/
 define(['Modernizr'], function(Modernizr) {

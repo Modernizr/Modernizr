@@ -13,7 +13,6 @@
   "polyfills": [
     "sockjs",
     "socketio",
-    "kaazing-websocket-gateway",
     "websocketjs",
     "atmosphere",
     "graceful-websocket",

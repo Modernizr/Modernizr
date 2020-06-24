@@ -8,7 +8,6 @@
   "polyfills": [
     "html5media",
     "mediaelementjs",
-    "sublimevideo",
     "videojs",
     "leanbackplayer",
     "videoforeverybody"
