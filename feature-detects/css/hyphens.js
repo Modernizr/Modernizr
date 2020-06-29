@@ -136,11 +136,11 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
       // testing if in-browser Find functionality will work on hyphenated text
       function test_hyphens_find(delimiter) {
         try {
-          /* create a dummy input for resetting selection location, and a div container
+          /* create a sample input for resetting selection location, and a div container
            * these have to be appended to document.body, otherwise some browsers can give false negative
            * div container gets the doubled testword, separated by the delimiter
            * Note: giving a width to div gives false positive in iOS Safari */
-          var dummy = createElement('input');
+          var sampleInput = createElement('input');
           var div = createElement('div');
           var testword = 'lebowski';
           var result = false;
@@ -148,21 +148,21 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           var firstChild = document.body.firstElementChild || document.body.firstChild;
 
           /* Make the elements fixed to prevent that the browser's viewport will jump to the top  */
-          dummy.style.cssText = 'position:fixed;top:0;';
+          sampleInput.style.cssText = 'position:fixed;top:0;';
           div.style.cssText = 'position:fixed;top:0;';
 
           div.innerHTML = testword + delimiter + testword;
 
           document.body.insertBefore(div, firstChild);
-          document.body.insertBefore(dummy, div);
+          document.body.insertBefore(sampleInput, div);
 
-          /* reset the selection to the dummy input element, i.e. BEFORE the div container
+          /* reset the selection to the sample input element, i.e. BEFORE the div container
            *   stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area */
-          if (dummy.setSelectionRange) {
-            dummy.focus();
-            dummy.setSelectionRange(0, 0);
-          } else if (dummy.createTextRange) {
-            textrange = dummy.createTextRange();
+          if (sampleInput.setSelectionRange) {
+            sampleInput.focus();
+            sampleInput.setSelectionRange(0, 0);
+          } else if (sampleInput.createTextRange) {
+            textrange = sampleInput.createTextRange();
             textrange.collapse(true);
             textrange.moveEnd('character', 0);
             textrange.moveStart('character', 0);
@@ -182,7 +182,7 @@ define(['Modernizr', 'prefixes', 'createElement', 'testAllProps', 'addTest'], fu
           }
 
           document.body.removeChild(div);
-          document.body.removeChild(dummy);
+          document.body.removeChild(sampleInput);
 
           return result;
         } catch (e) {
