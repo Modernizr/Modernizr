@@ -6,7 +6,6 @@ define(['tests'], function(tests) {
    * @access public
    */
   var ModernizrProto = {
-    // The current version, dummy
     _version: '__VERSION__',
 
     // Any settings that don't work as separate modules
