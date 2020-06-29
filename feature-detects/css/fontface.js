@@ -27,13 +27,13 @@
 }
 !*/
 define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
-  var blacklist = (function() {
+  var unsupportedUserAgent = (function() {
     var ua = navigator.userAgent;
     var webos = ua.match(/w(eb)?osbrowser/gi);
     var wppre8 = ua.match(/windows phone/gi) && ua.match(/iemobile\/([0-9])+/gi) && parseFloat(RegExp.$1) >= 9;
     return webos || wppre8;
   }());
-  if (blacklist) {
+  if (unsupportedUserAgent) {
     Modernizr.addTest('fontface', false);
   } else {
     testStyles('@font-face {font-family:"font";src:url("https://")}', function(node, rule) {
