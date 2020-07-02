@@ -123,6 +123,7 @@ window.caniusecb = function(caniuse) {
       queryselector: 'queryselector',
       regions: 'css-regions',
       requestanimationframe: 'requestanimationframe',
+      resizeobserver: 'resizeobserver',
       rgba: 'css3-colors',
       ruby: 'ruby',
       sandbox: 'iframe-sandbox',

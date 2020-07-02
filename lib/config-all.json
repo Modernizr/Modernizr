@@ -312,6 +312,7 @@
     "window/atob-btoa",
     "window/framed",
     "window/matchmedia",
+    "window/resizeobserver",
     "workers/blobworkers",
     "workers/dataworkers",
     "workers/sharedworkers",
