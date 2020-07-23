@@ -39,6 +39,7 @@
     "canvas/todataurl",
     "canvas/winding",
     "canvastext",
+    "clipboard",
     "contenteditable",
     "contextmenu",
     "cookies",
