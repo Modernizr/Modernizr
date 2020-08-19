@@ -19,7 +19,7 @@ define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createE
     flex.style.flexDirection = 'column';
     flex.style.rowGap = '1px';
 
-    // create two, elements inside it
+    // create two elements inside it
     flex.appendChild(createElement('div'));
     flex.appendChild(createElement('div'));
 
