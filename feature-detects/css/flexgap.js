@@ -35,9 +35,14 @@ define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createE
     }
 
     if (getComputedStyle(docElement).height != "") {
-      setTimeout(() => doWork()); // seems Modernizr requires the addTest() call to actually be async
+      // seems Modernizr requires the addTest() call to actually be async, hence setTimeout()
+      setTimeout(function() {
+        doWork();
+      });
     } else {
       // no styles, we must be inside a display:none iframe
+
+      // wait for resize event (triggered by removing display:none)
       window.addEventListener('resize', function() {
         doWork();
       });
