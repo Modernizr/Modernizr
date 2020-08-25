@@ -41,6 +41,7 @@ define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createE
       });
     } else {
       // no styles, we must be inside a display:none iframe
+      // see https://github.com/Modernizr/Modernizr/issues/2590
 
       // wait for resize event (triggered by removing display:none)
       window.addEventListener('resize', function() {
