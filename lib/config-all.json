@@ -269,6 +269,7 @@
     "requestanimationframe",
     "script/async",
     "script/defer",
+    "scrolltooptions",
     "serviceworker",
     "speech/speech-recognition",
     "speech/speech-synthesis",
