@@ -26,6 +26,15 @@ import contains from '../../src/contains.js';
 
 // https://github.com/Modernizr/Modernizr/issues/14
 Modernizr.addAsyncTest(function() {
+    // IE7 throw a mixed content warning on HTTPS for this test, so we'll
+    // just reject it (we know it doesn't support data URIs anyway)
+    // https://github.com/Modernizr/Modernizr/issues/362
+    if (navigator.userAgent.indexOf('MSIE 7.') !== -1) {
+      // Keep the test async
+      setTimeout(function() {
+        Modernizr.addTest('datauri', new Boolean(false));
+      }, 10);
+    }
 
   // IE7 throw a mixed content warning on HTTPS for this test, so we'll
   // just blacklist it (we know it doesn't support data URIs anyway)

@@ -12,7 +12,7 @@
     "href": "https://www.sitepoint.com/atoz-css-screencast-nth-child/"
   }],
   "authors": ["@emilchristensen"],
-  "warnings": ["Known false negative in Safari 3.1 and Safari 3.2.2"]
+  "knownBugs": ["Known false negative in Safari 3.1 and Safari 3.2.2"]
 }
 !*/
 /* DOC

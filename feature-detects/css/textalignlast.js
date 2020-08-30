@@ -4,7 +4,7 @@
   "property": "textalignlast",
   "caniuse": "css-text-align-last",
   "tags": ["css"],
-  "knownBugs": ["IE does not support the 'start' or 'end' values."],
+  "warnings": ["IE does not support the 'start' or 'end' values."],
   "notes": [{
     "name": "Quirksmode",
     "href": "https://www.quirksmode.org/css/text/textalignlast.html"

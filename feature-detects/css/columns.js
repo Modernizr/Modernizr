@@ -3,7 +3,6 @@
   "name": "CSS Columns",
   "property": "csscolumns",
   "caniuse": "multicolumn",
-  "polyfills": ["css3multicolumnjs"],
   "tags": ["css"]
 }
 !*/

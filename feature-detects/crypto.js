@@ -8,8 +8,7 @@
   "notes": [{
     "name": "W3C Editor's Draft Spec",
     "href": "https://www.w3.org/TR/WebCryptoAPI/"
-  }],
-  "polyfills": ["polycrypt"]
+  }]
 }
 !*/
 /* DOC

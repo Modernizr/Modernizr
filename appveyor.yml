@@ -2,6 +2,7 @@ environment:
   matrix:
     - nodejs_version: 10
     - nodejs_version: 12
+    - nodejs_version: 14
 
 install:
   - ps: Install-Product node $env:nodejs_version
@@ -11,6 +12,11 @@ build: off
 
 before_test:
   - npm install -g gulp-cli
+
+# Skipping specific commit files: https://www.appveyor.com/docs/appveyor-yml and https://www.appveyor.com/docs/how-to/filtering-commits
+skip_commits:
+  files:
+    - '**/*.md'
 
 test_script:
   - node --version

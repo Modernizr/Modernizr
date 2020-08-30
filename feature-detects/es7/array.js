@@ -3,11 +3,10 @@
   "name": "ES7 Array",
   "property": "es7array",
   "notes": [{
-    "name": "official ECMAScript 7 array draft specification",
+    "name": "ECMAScript array Specification",
     "href": "https://tc39.es/ecma262/#sec-array.prototype.includes"
   }],
   "authors": ["dabretin"],
-  "warnings": ["ECMAScript 7 is still a only a draft, so this detect may not match the final specification or implementations."],
   "tags": ["es7"]
 }
 !*/

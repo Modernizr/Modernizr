@@ -3,11 +3,10 @@
   "name": "ES7 Spread object",
   "property": "spreadobject",
   "notes": [{
-    "name": "official ECMAScript 7 array draft specification",
-    "href": "http://www.ecma-international.org/ecma-262/9.0/#sec-object-initializer"
+    "name": "ECMAScript array Specification",
+    "href": "http://www.ecma-international.org/ecma-262/#sec-object-initializer"
   }],
   "authors": ["dabretin"],
-  "warnings": ["ECMAScript 7 is still a only a draft, so this detect may not match the final specification or implementations."],
   "tags": ["es7"]
 }
 !*/

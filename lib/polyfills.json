@@ -27,20 +27,10 @@
     "licenses": ["Apache2", "GPL2"],
     "notes": ["CSS3 decoration rendering for IE 6-9. Supports: border-radius, box-shadow, multiple backgrounds, linear gradients, border-image"]
   },
-  "xaudiojs": {
-    "name": "XAudioJS",
-    "authors": ["Grant Galitz"],
-    "href": "https://github.com/grantgalitz/XAudioJS",
-    "licenses": [],
-    "notes": [
-      "Audio sample stream output thin-abstraction library that supports mono and stereo audio, as well as resampling the audio stream.",
-      "Supports the Mozilla Audio Data API, Web Audio API, Adobe Flash 10, real-time WAV PCM Data URI generation"
-    ]
-  },
   "dynamicaudiojs": {
     "name": "dynamicaudio.js",
     "authors": ["Ben Firshman"],
-    "href": "http://github.com/bfirsh/dynamicaudio.js",
+    "href": "https://github.com/bfirsh/dynamicaudio.js",
     "licenses": ["BSD"],
     "notes": []
   },
@@ -61,14 +51,14 @@
   "csssandpaper": {
     "name": "CSS Sandpaper",
     "authors": ["Zoltan Hawryluk"],
-    "href": "http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/",
+    "href": "https://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/",
     "licenses": ["MIT"],
     "notes": []
   },
   "css-escape": {
     "name": "CSS.escape()",
     "authors": ["Mathias Bynens"],
-    "href": "http://mths.be/cssescape",
+    "href": "https://github.com/mathiasbynens/CSS.escape",
     "licenses": ["MIT"],
     "notes": []
   },
@@ -93,16 +83,6 @@
     "licenses": [],
     "notes": ["box-sizing: border-box; polyfill for SASS/Compass. Outputs equivalent CSS for IE6 & 7"]
   },
-  "css3multicolumnjs": {
-    "name": "css3-multi-column.js",
-    "authors": ["Betley Whitehorne Image", "Cdric Savarese"],
-    "href": "https://github.com/BetleyWhitehorne/CSS3MultiColumn",
-    "licenses": ["CC-GNU LGPL"],
-    "notes": [
-      "Supported Properties: column-count, column-width, column-gap, column-rule.",
-      "Unsupported Properties: column-rule-width (use column-rule instead), column-rule-style (use column-rule instead), column-rule-color (use column-rule instead), column-span, column-width-policy, column-space-distribution"
-    ]
-  },
   "polyfilter": {
     "name": "Polyfilter",
     "authors": ["Christian \"Schepp\" Schaefer"],
@@ -113,7 +93,7 @@
   "flexie": {
     "name": "Flexie",
     "authors": ["Richard Herrera"],
-    "href": "http://github.com/doctyper/flexie",
+    "href": "https://github.com/doctyper/flexie",
     "licenses": ["MIT"],
     "notes": ["Flexible box model - old spec from 2009. (flexbox) Supports: box-orient, box-align, box-direction, box-pack, box-flex, box-ordinal-group"]
   },
@@ -136,7 +116,7 @@
   "html5gears": {
     "name": "html5-gears",
     "authors": ["Brad Neuberg"],
-    "href": "https://code.google.com/p/html5-gears/",
+    "href": "https://code.google.com/archive/p/html5-gears/",
     "licenses": ["Apache2"]
   },
   "blobjs": {
@@ -145,33 +125,21 @@
     "href": "https://github.com/eligrey/Blob.js",
     "licenses": ["MIT"]
   },
-  "flashcanvas": {
-    "name": "FlashCanvas",
-    "authors": ["Shinya Muramatsu"],
-    "href": "http://flashcanvas.net/",
-    "licenses": ["MIT"]
-  },
   "excanvas": {
     "name": "Explorer Canvas",
     "authors": ["Erik Arvidsson"],
-    "href": "https://code.google.com/p/explorercanvas/",
+    "href": "https://github.com/arv/explorercanvas",
     "licenses": ["Apache2"]
   },
   "slcanvas": {
     "name": "Silverlight HTML 5 Canvas",
-    "href": "http://slcanvas.codeplex.com/",
+    "href": "https://archive.codeplex.com/?p=slcanvas",
     "licenses": ["Microsoft Public License (Ms-PL)"]
-  },
-  "fxcanvas": {
-    "name": "fxCanvas",
-    "authors": ["Evgeny Burzak"],
-    "href": "http://burzak.com/proj/fxcanvas/",
-    "licenses": ["MIT"]
   },
   "canvastext": {
     "name": "canvas-text",
     "authors": ["Fabien Ménager"],
-    "href": "https://code.google.com/p/canvas-text/",
+    "href": "https://code.google.com/archive/p/canvas-text/",
     "licenses": ["MIT"]
   },
   "jquery-contextmenu": {
@@ -232,7 +200,7 @@
   "geo-location-javascript": {
     "name": "geo-location-javascript",
     "authors": ["whoisstan"],
-    "href": "https://code.google.com/p/geo-location-javascript/",
+    "href": "https://code.google.com/archive/p/geo-location-javascript/",
     "notes": ["Mobile-centric: uses non-standard Blackberry and WebOS tricks"],
     "licenses": ["MIT"]
   },
@@ -251,7 +219,7 @@
   "moo-historymanager": {
     "name": "HistoryManager Mootools Plugin",
     "authors": ["Arieh Glazer"],
-    "href": "http://mootools.net/forge/p/historymanager/",
+    "href": "https://mootools.net/forge/p/historymanager/",
     "licenses": ["MIT"]
   },
   "jquery-ajaxy": {
@@ -287,18 +255,18 @@
   "indexeddb": {
     "name": "IndexedDB",
     "authors": ["Parashuram"],
-    "href": "http://nparashuram.com/IndexedDBShim/",
+    "href": "https://nparashuram.com/IndexedDBShim/",
     "licenses": ["GPL2", "BSD"]
   },
   "jquerytools": {
     "name": "jQuery Tools",
-    "href": "http://jquerytools.org",
+    "href": "https://jquerytools.org",
     "licenses": ["public domain"]
   },
   "webshims": {
     "name": "Webshims",
     "authors": ["Alexander Farkas"],
-    "href": "http://afarkas.github.io/webshim/demos/",
+    "href": "https://afarkas.github.io/webshim/demos/",
     "licenses": ["MIT"]
   },
   "h5f": {
@@ -345,7 +313,7 @@
   "galleryhtml5forms": {
     "name": "YUI Gallery HTML5 Forms",
     "authors": ["Matt Snider"],
-    "href": "http://yuilibrary.com/gallery/show/html5-forms",
+    "href": "https://yuilibrary.com/gallery-archive/gallery/show/html5-forms.html",
     "licenses": ["BSD"]
   },
   "jscolor": {
@@ -381,7 +349,7 @@
   "mathjax": {
     "name": "MathJax",
     "authors": ["Davide P. Cervone"],
-    "href": "http://www.mathjax.org/",
+    "href": "https://www.mathjax.org/",
     "licenses": ["Apache2"]
   },
   "visibilityjs": {
@@ -405,7 +373,7 @@
   "notificationjs": {
     "name": "notification.js",
     "authors": ["Andrew Dodson"],
-    "href": "http://adodson.com/notification.js/",
+    "href": "https://adodson.com/notification.js/",
     "licenses": ["MIT"]
   },
   "perfnow": {
@@ -417,7 +385,7 @@
   "easyxdm": {
     "name": "easyXDM",
     "authors": ["Sean Kinsey"],
-    "href": "http://easyxdm.net/wp/",
+    "href": "https://github.com/oyvindkinsey/easyXDM",
     "notes": ["Implements XDM and RPC in most browsers since IE6. Also ships with an endpoint for exposing ajax across the domain boundary."],
     "licenses": ["MIT"]
   },
@@ -448,39 +416,32 @@
   "storagepolyfill": {
     "name": "Storage Polyfill",
     "authors": ["Remy Sharp"],
-    "href": "http://gist.github.com/350433",
-    "notes": [],
-    "licenses": ["MIT"]
-  },
-  "sessionstorage": {
-    "name": "sessionstorage",
-    "authors": ["Andrea Giammarchi"],
-    "href": "http://gist.github.com/350433",
+    "href": "https://gist.github.com/remy/350433",
     "licenses": ["MIT"]
   },
   "amplifyjs": {
     "name": "Amplify.js",
     "authors": ["appendTo"],
-    "href": "http://amplifyjs.com/",
+    "href": "https://amplifyjs.com/",
     "licenses": ["MIT", "GPL2"]
   },
   "yui-cacheoffline": {
     "name": "YUI3 CacheOffline",
     "authors": ["YUI Team"],
-    "href": "http://yuilibrary.com/yui/docs/cache/#offline",
+    "href": "https://yuilibrary.com/yui/docs/cache/#offline",
     "licenses": ["BSD"]
   },
   "scoped-styles": {
     "name": "Scoped Styles",
     "authors": ["Simon Madine"],
     "notes": ["jQuery Plugin to enable the scoped attribute on style blocks so they only affect their parent element's children."],
-    "href": "http://github.com/thingsinjars/jQuery-Scoped-CSS-plugin",
+    "href": "https://github.com/thingsinjars/jQuery-Scoped-CSS-plugin",
     "licenses": ["MIT"]
   },
   "svgweb": {
     "name": "SVG Web",
     "authors": ["Rick Masters", "Brad Neuberg", "James Hight"],
-    "href": "https://code.google.com/p/svgweb/",
+    "href": "https://code.google.com/archive/p/svgweb/",
     "licenses": ["Apache2"]
   },
   "raphael": {
@@ -490,16 +451,10 @@
     "notes": ["Abstracted API. adds features. fallback for IE via VML"],
     "licenses": ["MIT"]
   },
-  "amplesdk": {
-    "name": "Ample SDK",
-    "authors": ["Sergey Ilinsky"],
-    "href": "http://www.amplesdk.com/examples/svg/",
-    "licenses": ["MIT", "GPL2"]
-  },
   "canvg": {
     "name": "canvg",
     "authors": ["Gabe Lerner"],
-    "href": "http://code.google.com/p/canvg/",
+    "href": "https://github.com/canvg/canvg",
     "notes": ["Writes SVG to canvas. Good for Android"],
     "licenses": ["MIT"]
   },
@@ -513,16 +468,9 @@
   "sie": {
     "name": "SIE SVG library",
     "authors": ["Hiroki Dehara"],
-    "href": "http://sie.sourceforge.jp/",
+    "href": "https://sie.osdn.jp/",
     "notes": ["Fallback to VML for oldIE"],
     "licenses": ["Mozilla1.1", "GPL2", "LGPL2.1"]
-  },
-  "dojogfx": {
-    "name": "Dojo GFX",
-    "authors": ["Eugene Lazutkin", "Kun Xi", "Chris Mitchell"],
-    "href": "http://docs.dojocampus.org/dojox/gfx/",
-    "notes": ["Fallback via VML, Canvas, Silverlight and Flash"],
-    "licenses": ["BSD", "AFL"]
   },
   "fabricjs": {
     "name": "fabric.js",
@@ -543,12 +491,6 @@
     "href": "https://github.com/inexorabletash/polyfill",
     "licenses": ["various"]
   },
-  "text-overflow": {
-    "name": "jQuery text-overflow",
-    "authors": ["Devon Govett"],
-    "href": "http://ajaxian.com/archives/text-overflow-for-firefox-via-jquery",
-    "licenses": ["MIT"]
-  },
   "html5media": {
     "name": "html5media",
     "authors": ["Dave Hall"],
@@ -558,25 +500,19 @@
   "mediaelementjs": {
     "name": "MediaElement.js",
     "authors": ["John Dyer"],
-    "href": "http://mediaelementjs.com/",
+    "href": "https://www.mediaelementjs.com/",
     "licenses": ["MIT"]
-  },
-  "sublimevideo": {
-    "name": "SublimeVideo",
-    "authors": ["Jilion SA"],
-    "href": "http://sublimevideo.net/",
-    "licenses": ["proprietary"]
   },
   "videojs": {
     "name": "video.js",
     "authors": ["Steve Heffernan"],
-    "href": "http://videojs.com/",
+    "href": "https://videojs.com/",
     "licenses": ["Apache2"]
   },
   "leanbackplayer": {
     "name": "LeanBack Player",
     "authors": ["Kapelan Medien GmbH"],
-    "href": "http://www.leanbackplayer.com/",
+    "href": "https://www.leanbackplayer.com/",
     "licenses": ["GPL3"]
   },
   "videoforeverybody": {
@@ -585,22 +521,16 @@
     "href": "http://camendesign.com/code/video_for_everybody",
     "licenses": ["public domain"]
   },
-  "webintents": {
-    "name": "Web Intents JavaScript Shim",
-    "authors": ["Paul Kinlan"],
-    "href": "http://webintents.org/#javascriptshim",
-    "licenses": ["Apache2"]
-  },
   "jebgl": {
     "name": "jebgl",
     "authors": ["Martin Qvist"],
-    "href": "http://code.google.com/p/jebgl/",
+    "href": "https://code.google.com/archive/p/jebgl/",
     "licenses": ["MIT"]
   },
   "cwebgl": {
     "name": "cwebgl",
     "authors": ["Cimaron Shanahan"],
-    "href": "http://code.google.com/p/cwebgl/",
+    "href": "https://code.google.com/archive/p/cwebgl/",
     "licenses": ["MIT"]
   },
   "iewebgl": {
@@ -617,24 +547,19 @@
   "socketio": {
     "name": "socket.io",
     "authors": ["Guillermo Rauch"],
-    "href": "http://socket.io/",
+    "href": "https://socket.io/",
     "licenses": ["MIT"]
-  },
-  "kaazing-websocket-gateway": {
-    "name": "Kaazing WebSocket Gateway",
-    "href": "http://kaazing.com/products/kaazing-websocket-gateway/",
-    "licenses": ["proprietary"]
   },
   "websocketjs": {
     "name": "web-socket-js",
     "authors": ["Hiroshi Ichikawa"],
-    "href": "http://github.com/gimite/web-socket-js/",
+    "href": "https://github.com/gimite/web-socket-js/",
     "licenses": ["BSD"]
   },
   "atmosphere": {
     "name": "atmosphere jQuery plugin",
     "authors": ["Jeanfrancois Arcand"],
-    "href": "http://jfarcand.wordpress.com/2010/06/15/using-atmospheres-jquery-plug-in-to-build-applicationsupporting-both-websocket-and-comet/",
+    "href": "https://jfarcand.wordpress.com/2010/06/15/using-atmospheres-jquery-plug-in-to-build-applicationsupporting-both-websocket-and-comet/",
     "licenses": ["Apache2"]
   },
   "graceful-websocket": {
@@ -664,20 +589,14 @@
   "fakeworker": {
     "name": "fakeworker.js",
     "authors": ["Shumpei Shiraishi"],
-    "href": "https://code.google.com/p/fakeworker-js/",
+    "href": "https://code.google.com/archive/p/fakeworker-js/",
     "licenses": ["Apache2"]
   },
   "html5shims": {
     "name": "web worker api shim",
     "authors": ["Jonathan 'J5' Cook"],
-    "href": "https://code.google.com/p/html5-shims/",
+    "href": "https://code.google.com/archive/p/html5-shims/",
     "licenses": ["Apache2"]
-  },
-  "polycrypt": {
-    "name": "PolyCrypt",
-    "authors": ["BBN Technologies"],
-    "href": "http://polycrypt.net/",
-    "licenses": ["BSD"]
   },
   "webanimationsjs": {
     "name": "web-animations-js",
@@ -694,7 +613,7 @@
   "maxlength": {
     "name": "maxlength plugin",
     "authors": ["Remy Sharp"],
-    "href": "http://remysharp.com/2008/06/30/maxlength-plugin/",
+    "href": "https://remysharp.com/2008/06/30/maxlength-plugin/",
     "licenses": ["CC SA"]
   },
   "weakmap": {
@@ -780,5 +699,11 @@
     "authors": ["Tom Van Cutsem"],
     "href": "https://github.com/tvcutsem/harmony-reflect",
     "licenses": ["Apache2"]
+  },
+  "avifjs": {
+    "name": "Avif.js",
+    "authors": ["Kagami"],
+    "href": "https://github.com/Kagami/avif.js",
+    "licenses": ["CC0"]
   }
 }

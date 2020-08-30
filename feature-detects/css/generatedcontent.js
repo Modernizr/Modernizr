@@ -3,7 +3,7 @@
   "name": "CSS Generated Content",
   "property": "generatedcontent",
   "tags": ["css"],
-  "warnings": ["Android won't return correct height for anything below 7px #738"],
+  "warnings": ["Android may not return correct height for anything below 7px in old versions #738"],
   "notes": [{
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/css3-selectors/#gen-content"

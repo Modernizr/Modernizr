@@ -1,6 +1,8 @@
 # Modernizr
 [![npm version](https://badge.fury.io/js/modernizr.svg)](https://badge.fury.io/js/modernizr)
-[![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](https://travis-ci.org/Modernizr/Modernizr)
+[![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](https://travis-ci.org/Modernizr/Modernizr) 
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/Modernizr/modernizr?branch=master&svg=true)](https://ci.appveyor.com/project/rejas/modernizr) 
+[![codecov](https://codecov.io/gh/Modernizr/Modernizr/branch/master/graph/badge.svg)](https://codecov.io/gh/Modernizr/Modernizr)
 [![Inline docs](https://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](https://inch-ci.org/github/Modernizr/Modernizr)
 
 ##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
@@ -21,6 +23,7 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
     - `touchevents`: [discussion](https://github.com/Modernizr/Modernizr/pull/2432)
     - `unicode`: [discussion](https://github.com/Modernizr/Modernizr/issues/2468)
     - `templatestrings`: duplicate of the es6 detect `stringtemplate`
+    - `datalistelem`: A dupe of Modernizr.input.list
 
 ## New Asynchronous Event Listeners
 
@@ -104,8 +107,6 @@ and navigating to these two URLs:
 http://localhost:8080/test/unit.html
 http://localhost:8080/test/integration.html
 ```
-<<<<<<< HEAD
-=======
 
 ## New Asynchronous Event Listeners
 
@@ -140,7 +141,6 @@ and will be removed in the next major version:
 - `touchevents` (in 4.0)
 - `unicode` (in 4.0)
 
->>>>>>> 6f521daa... update readme, remove deprecations
 
 ## Code of Conduct
 

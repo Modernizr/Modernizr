@@ -185,14 +185,50 @@ Modernizr.addAsyncTest(function() {
           result = false;
         }
 
-        document.body.removeChild(div);
-        document.body.removeChild(dummy);
+      // testing if in-browser Find functionality will work on hyphenated text
+      function test_hyphens_find(delimiter) {
+        try {
+          /* create a sample input for resetting selection location, and a div container
+           * these have to be appended to document.body, otherwise some browsers can give false negative
+           * div container gets the doubled testword, separated by the delimiter
+           * Note: giving a width to div gives false positive in iOS Safari */
+          var sampleInput = createElement('input');
+          var div = createElement('div');
+          var testword = 'lebowski';
+          var result = false;
+          var textrange;
+          var firstChild = document.body.firstElementChild || document.body.firstChild;
+
+          /* Make the elements fixed to prevent that the browser's viewport will jump to the top  */
+          sampleInput.style.cssText = 'position:fixed;top:0;';
+          div.style.cssText = 'position:fixed;top:0;';
+
+          div.innerHTML = testword + delimiter + testword;
+
+          document.body.insertBefore(div, firstChild);
+          document.body.insertBefore(sampleInput, div);
+
+          /* reset the selection to the sample input element, i.e. BEFORE the div container
+           *   stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area */
+          if (sampleInput.setSelectionRange) {
+            sampleInput.focus();
+            sampleInput.setSelectionRange(0, 0);
+          } else if (sampleInput.createTextRange) {
+            textrange = sampleInput.createTextRange();
+            textrange.collapse(true);
+            textrange.moveEnd('character', 0);
+            textrange.moveStart('character', 0);
+            textrange.select();
+          }
 
         return result;
       } catch (e) {
         return false;
       }
     }
+    
+    document.body.removeChild(div);
+    document.body.removeChild(sampleInput);
 
     addTest('csshyphens', function() {
 

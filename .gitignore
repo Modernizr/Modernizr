@@ -11,9 +11,4 @@ metadata.json
 .project
 *.log
 tmp
-.nyc_output
-coverage
-lib/_build.js
-lib/buildConfig.js
-lib/generateBanner.js
-lib/metadataStatic.js
+/.nyc_output

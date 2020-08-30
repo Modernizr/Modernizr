@@ -4,7 +4,7 @@
   "property": "canvas",
   "caniuse": "canvas",
   "tags": ["canvas", "graphics"],
-  "polyfills": ["flashcanvas", "excanvas", "slcanvas", "fxcanvas"]
+  "polyfills": ["excanvas", "slcanvas"]
 }
 !*/
 /* DOC

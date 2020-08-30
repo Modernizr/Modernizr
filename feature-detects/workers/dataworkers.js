@@ -8,7 +8,7 @@
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/workers/"
   }],
-  "knownBugs": ["This test may output garbage to console."],
+  "warnings": ["This test may output garbage to console."],
   "authors": ["Jussi Kalliokoski"],
   "async": true
 }

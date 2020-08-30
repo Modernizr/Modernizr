@@ -3,18 +3,18 @@
   "name": "Web Audio API",
   "property": "webaudio",
   "caniuse": "audio-api",
-  "polyfills": ["xaudiojs", "dynamicaudiojs", "audiolibjs"],
+  "polyfills": ["dynamicaudiojs", "audiolibjs"],
   "tags": ["audio", "media"],
   "builderAliases": ["audio_webaudio_api"],
   "authors": ["Addy Osmani"],
   "notes": [{
     "name": "W3C Spec",
-    "href": "https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html"
+    "href": "https://webaudio.github.io/web-audio-api/"
   }]
 }
 !*/
 /* DOC
-Detects the older non standard webaudio API, (as opposed to the standards based AudioContext API)
+Check for the Web Audio API
 */
 import Modernizr from '../../src/Modernizr.js';
 import _globalThis from '../../src/globalThis.js';
