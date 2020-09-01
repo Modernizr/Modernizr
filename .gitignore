@@ -12,3 +12,7 @@ metadata.json
 *.log
 tmp
 /.nyc_output
+lib/_build.js	
+lib/buildConfig.js	
+lib/generateBanner.js	
+lib/metadataStatic.js
