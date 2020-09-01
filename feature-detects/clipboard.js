@@ -23,24 +23,26 @@ Modernizr.clipboard         // Supports the clipboard API
 Modernizr.clipboard.read    // Supports the read sub-property
 ```
 */
-define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
-  Modernizr.addAsyncTest(function() {
-    var result;
-    var props = ['read', 'readText', 'write', 'writeText'];
-    if (navigator.clipboard) {
-      addTest('clipboard', true);
-      // The sub-modules checked only if API is available to avoid Edge crashes
-      for (var i = 0; i < props.length; i++) {
-        if (navigator.clipboard[props[i]]) {
-          result = true;
-        } else {
-          result = false;
-        }
-        addTest('clipboard.' + props[i].toLowerCase(), result);
+import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
+
+Modernizr.addAsyncTest(function() {
+  var result;
+  var props = ['read', 'readText', 'write', 'writeText'];
+  if (navigator.clipboard) {
+    addTest('clipboard', true);
+    // The sub-modules checked only if API is available to avoid Edge crashes
+    for (var i = 0; i < props.length; i++) {
+      if (navigator.clipboard[props[i]]) {
+        result = true;
+      } else {
+        result = false;
       }
+      addTest('clipboard.' + props[i].toLowerCase(), result);
     }
-    else {
-      addTest('clipboard', false);
-    }
-  });
+  }
+  else {
+    addTest('clipboard', false);
+  }
 });
+
+export default createAsyncTestListener("clipboard");

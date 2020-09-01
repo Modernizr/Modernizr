@@ -20,10 +20,11 @@
   }]
 }
 !*/
-
 /* DOC
 Detects support for ResizeObserver.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('resizeobserver', 'ResizeObserver' in window);
-});
+import Modernizr from '../../src/Modernizr.js';
+
+Modernizr.addTest('resizeobserver', 'ResizeObserver' in window);
+
+export default Modernizr.resizeobserver
