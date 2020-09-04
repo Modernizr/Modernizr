@@ -19,8 +19,12 @@ define(['Modernizr', 'prefixed', 'domPrefixesAll', 'test/webrtc/peerconnection']
     for (var i = 0, len = domPrefixesAll.length; i < len; i++) {
       var PeerConnectionConstructor = window[domPrefixesAll[i] + 'RTCPeerConnection'];
       if (PeerConnectionConstructor) {
-        var peerConnection = new PeerConnectionConstructor(null);
-        return 'createDataChannel' in peerConnection;
+        // Wrapped in a try catch to avoid "Error creating RTCPeerConnection" #2599 & #2221
+        try {
+          var peerConnection = new PeerConnectionConstructor({});
+          return 'createDataChannel' in peerConnection;
+        } catch (e) {
+        }
       }
     }
     return false;
