@@ -102,6 +102,18 @@ describe('cli/metadata', function() {
     expect(metadata).to.throw(/Minimal metadata not found/);
   });
 
+  it('should throw if property is an uppercase string', function() {
+
+    var metadata = proxyquire(root + 'lib/metadata', {
+      'fs': {
+        'readFileSync': function() {
+          return '/*! { "name": "fake", "property": "U_pper-case123"}!*/ define([],';
+        }
+      }
+    });
+    expect(metadata).to.throw(/Property must be a lowercase string/);
+  });
+
   it('should throw if polyfill is incorrectly configured', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
