@@ -23,6 +23,7 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
     - `touchevents`: [discussion](https://github.com/Modernizr/Modernizr/pull/2432) 
     - `unicode`: [discussion](https://github.com/Modernizr/Modernizr/issues/2468) 
     - `templatestrings`: duplicate of the es6 detect `stringtemplate`
+    - `contains`: duplicate of the es6 detect `es6string`
     - `datalistelem`: A dupe of Modernizr.input.list
 
 ## New Asynchronous Event Listeners
