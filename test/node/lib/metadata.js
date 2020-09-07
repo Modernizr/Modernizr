@@ -102,7 +102,7 @@ describe('cli/metadata', function() {
     expect(metadata).to.throw(/Minimal metadata not found/);
   });
 
-  it('should throw if property is an uppercase string', function() {
+  it('should throw if property contains uppercase characters and/or special symbols except dashes', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
@@ -111,7 +111,7 @@ describe('cli/metadata', function() {
         }
       }
     });
-    expect(metadata).to.throw(/Property must be a lowercase string/);
+    expect(metadata).to.throw(/Property can only have lowercase alphanumeric characters and dashes/);
   });
 
   it('should throw if polyfill is incorrectly configured', function() {
