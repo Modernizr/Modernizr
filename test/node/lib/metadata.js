@@ -72,6 +72,19 @@ describe('cli/metadata', function() {
     expect(metadata).to.throw(/Minimal metadata not found/);
   });
 
+  it('should throw if property contains uppercase characters and/or special symbols except dashes', function() {
+
+    var metadata = proxyquire(root + 'lib/metadata', {
+      'fs': {
+        'readFileSync': function() {
+          return '/*! { "name": "fake", "property": "U_pper-case123"}!*/ define([],';
+        }
+      }
+    }).default;
+    
+    expect(metadata).to.throw(/Property can only have lowercase alphanumeric characters and dashes/);
+  });
+
   it('returns a json blob when invoked without callback', function() {
     expect(metadata()).to.be.an('array');
   });
