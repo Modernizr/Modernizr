@@ -1,13 +1,12 @@
 define(['Modernizr'], function (Modernizr) {
-    Modernizr.addTest('mediarecorder', function(){
-        var isMediaRecorderSupported = false;
+    Modernizr.addTest('mediarecorder', typeof MediaRecorder);
+    typeof MediaRecorder !== undefined;
 
-        try {
-            MediaRecorder;
-            isMediaRecorderSupported = true;
-        } catch (err) {
-            console.log("no MediaRecorder");
-        }
-        console.log(isMediaRecorderSupported);
-    })
-});
+
+    if (MediaRecorder) {
+        return true;
+    }
+    else {
+        return false;
+    }
+})
