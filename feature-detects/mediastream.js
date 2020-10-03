@@ -8,8 +8,7 @@
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API"
-  }],
-  "polyfills": ["MediaStream Recording API", "MediaStreamRecordingAPI"]
+  }]
 }
 !*/
 /* DOC
