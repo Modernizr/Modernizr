@@ -17,6 +17,7 @@ window.caniusecb = function(caniuse) {
     // the docs where property and caniuse tags are written down. One should anyway look if some are missing here or in
     // the feature detect docs
     var map = {
+      mediastream: 'mdn-api_mediarecorder',
       adownload: 'download',
       ambientlight: 'ambient-light',
       apng: 'apng',

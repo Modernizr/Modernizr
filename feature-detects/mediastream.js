@@ -18,4 +18,4 @@ Detects support for the MediaStream Recording API for detecting mediastreaming.
 
 define(['Modernizr'], function (Modernizr) {
     Modernizr.addTest('mediarecorder', typeof MediaRecorder);
-})
+});
