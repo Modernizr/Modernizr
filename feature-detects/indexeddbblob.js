@@ -1,7 +1,9 @@
 /*!
 {
   "name": "IndexedDB Blob",
-  "property": "indexeddbblob"
+  "property": "indexeddbblob",
+  "tags": ["storage"],
+  "async": true
 }
 !*/
 /* DOC
