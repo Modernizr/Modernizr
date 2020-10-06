@@ -49,7 +49,11 @@ html
           _.forEach(obj, function(result, name) {
             if (dumpModernizr.old[name]) return;
             if (_.isObject(result)) {
-              output += '<li class="section"><b>' + name + '{}</b><ul>';
+              output += '<li class="section"><b>' + name +'</b>';
+              if (_.isBoolean(result)) {
+                output += '<span class="' + (Boolean(result)  ? 'pass' : 'fail') + '">: ' + Boolean(result) + '</span>'
+              }
+              output += '<ul>'
               templatize(result);
               output += '</ul></li>'
             } else {

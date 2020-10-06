@@ -31,7 +31,8 @@ body {
   color:#854747
 }
 
-.output li.pass {
+.output li.pass,
+.output span.pass {
   color:#090
 }
 
