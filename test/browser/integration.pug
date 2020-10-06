@@ -51,13 +51,13 @@ html
             if (_.isObject(result)) {
               output += '<li class="section"><b>' + name +'</b>';
               if (_.isBoolean(result)) {
-                output += '<span class="' + (Boolean(result)  ? 'pass' : 'fail') + '">: ' + Boolean(result) + '</span>'
+                output += '<span class="' + (Boolean(result)  ? 'pass' : 'fail') + '">: ' + formatResult(result) + '</span>'
               }
               output += '<ul>'
               templatize(result);
               output += '</ul></li>'
             } else {
-              output += '<li id="' + name + '" class="' + (result ? 'pass' : 'fail') + '">' + name + ': ' + result + '</li>';
+              output += '<li id="' + name + '" class="' + (Boolean(result) ? 'pass' : 'fail') + '">' + name + ': ' + formatResult(result) + '</li>';
             }
             dumpModernizr.old[name] = true;
           });
@@ -66,6 +66,12 @@ html
         templatize(Modernizr);
 
         return output;
+      }
+
+      function formatResult(result) {
+        if (result==="")
+          return false;
+        return result;
       }
 
       function stringify(obj, minified) {
