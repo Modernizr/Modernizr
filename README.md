@@ -5,6 +5,9 @@
 [![codecov](https://codecov.io/gh/Modernizr/Modernizr/branch/master/graph/badge.svg)](https://codecov.io/gh/Modernizr/Modernizr)
 [![Inline docs](https://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](https://inch-ci.org/github/Modernizr/Modernizr)
 
+
+- Read this file in Portuguese-BR [here](/README.pt_br.md)
+
 ##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 
 - [Website](https://modernizr.com)
