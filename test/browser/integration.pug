@@ -7,13 +7,19 @@ html
     link(rel='stylesheet', media='all', href='../node_modules/mocha/mocha.css')
     link(rel='stylesheet', media='all', href='../test/browser/integration.css')
   body
-    #modernizrResults
-    textarea#rawResults
-    input(type="checkbox", id="prettyprint", checked)
-    label(for="prettyprint") pretty print raw output
-    #mocha
-    #messages
-    #fixtures
+    section
+      h2 Modernizr results
+      ul#modernizrResults.output
+    section
+      h2 Raw results
+      textarea#rawResults
+      input(type="checkbox", id="prettyprint", checked)
+      label(for="prettyprint") pretty print raw output
+    section
+      h2 Mocha results
+      #mocha
+      #messages
+      #fixtures
     script(src='../dist/modernizr-build.js')
     script(src='../node_modules/jquery/dist/jquery.js')
     script(src='../node_modules/lodash/lodash.js')
@@ -91,14 +97,8 @@ html
         var output = dumpModernizr(Modernizr);
 
         if (output) {
-          var modOutput = $('<ul>')
-            .attr('class',  'output')
-            .html(output);
-
-          $('#modernizrResults').append(modOutput);
-
-          // Modernizr object as text
-          updateRawOutput()
+          $('#modernizrResults').append(output);
+          updateRawOutput();
         }
       }
 

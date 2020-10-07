@@ -5,26 +5,25 @@
 }
 
 body {
-  margin:50px 0 150px
+  margin:20px 0;
 }
 
-#rawResults {
-  margin-top:50px
+section {
+  padding:20px;
 }
 
 #mocha-stats {
   background:#fff;
-  background:rgba(255,255,255,0.8)
+  background:rgba(255,255,255,0.8);
 }
 
 .output,#mocha,label {
-  padding:20px;
+  font-family:Inconsolata,Consolas,monospace;
   margin:0;
-  font-family:Inconsolata,Consolas,monospace
 }
 
 .output ul {
-  margin:0
+  margin:0;
 }
 
 .output li {
@@ -48,7 +47,8 @@ body {
 }
 
 .output {
-  border-bottom:3px solid #ccc
+  border-bottom:3px solid #ccc;
+  padding-bottom:20px;
 }
 
 .section {
