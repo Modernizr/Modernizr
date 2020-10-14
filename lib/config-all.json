@@ -264,6 +264,7 @@
     "proxy",
     "queryselector",
     "quota-management-api",
+    "rel/prefetch",
     "requestanimationframe",
     "script/async",
     "script/defer",
