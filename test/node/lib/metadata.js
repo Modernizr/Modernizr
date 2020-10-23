@@ -224,7 +224,7 @@ describe('cli/metadata', function() {
       data.forEach(function(obj) {
         var err = schema.validate(obj).error;
         it('for ' + obj.name, function() {
-          expect(err).to.be.equal(null);
+          expect(err).to.be.equal(undefined);
         });
       });
     });
