@@ -117,6 +117,7 @@ window.caniusecb = function(caniuse) {
       performance: 'nav-timing',
       picture: 'picture',
       postmessage: 'x-doc-messaging',
+      prefetch: 'link-rel-prefetch',
       progressbar: 'progress',
       promises: 'promises',
       proximity: 'proximity',
