@@ -274,6 +274,7 @@
     "serviceworker",
     "speech/speech-recognition",
     "speech/speech-synthesis",
+    "storage/indexeddb2",
     "storage/localstorage",
     "storage/sessionstorage",
     "storage/websqldatabase",

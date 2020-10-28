@@ -93,6 +93,7 @@ window.caniusecb = function(caniuse) {
       hsla: 'css3-colors',
       htmlimports: 'imports',
       indexeddb: 'indexeddb',
+      indexeddb2: 'indexeddb2',
       inlinesvg: 'svg-html5',
       inputtypes: 'forms',
       intersectionobserver: 'intersectionobserver',
