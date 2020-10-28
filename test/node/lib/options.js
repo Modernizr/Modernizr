@@ -17,14 +17,14 @@ describe('cli/options', function() {
   it('should return an array of objects in a callback', function(done) {
     options(function(opts) {
       var err = schema.validate(opts).error;
-      expect(err).to.be.equal(null);
+      expect(err).to.be.equal(undefined);
       done(err);
     });
   });
 
   it('should return the array of objects immediately after the first run', function() {
     var err = schema.validate(options()).error;
-    expect(err).to.be.equal(null);
+    expect(err).to.be.equal(undefined);
   });
 
   it('should return all jsdoc info when the second arg is true', function() {

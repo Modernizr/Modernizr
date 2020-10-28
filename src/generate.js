@@ -5,9 +5,9 @@ define(['lodash'], function(_) {
    *
    * @access private
    * @function generate
-   * @param {object} [config] - A configuration object
-   * @param {Array} [config.options] - An array of options to include in the build
-   * @param {Array} [config.feature-detects] - An array of the feature detects to include
+   * @param {object} [config] - A configuration object consisting of:
+   *                 [config.options] - An array of options to include in the build
+   *                 [config.feature-detects] - An array of the feature detects to include
    * @returns {string} A string of the require.js build
    */
   return function generate(config) {
