@@ -38,7 +38,7 @@
     "canvas/blending",
     "canvas/todataurl",
     "canvas/winding",
-    "canvastext",
+    "canvas/text",
     "clipboard",
     "contenteditable",
     "contextmenu",

@@ -25,11 +25,12 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
   
   - `class` to `es6class` to keep in line with the rest of the es-tests
 
-- These tests were moved:
+- Following tests got moved in subdirectories:
 
   - `cookies`, `indexeddb`, `indexeddbblock`, `quota-management-api`, `userdata` moved into the storage subdirectory
+  - `canvastext` moved into the canvas subdirectory
      
-- These tests got removed:
+- Following tests got removed:
   
   - `touchevents`: [discussion](https://github.com/Modernizr/Modernizr/pull/2432)
   - `unicode`: [discussion](https://github.com/Modernizr/Modernizr/issues/2468)

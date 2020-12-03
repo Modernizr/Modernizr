@@ -1,7 +1,8 @@
 /*!
 {
   "name": "Pointer Media Query",
-  "property": "pointermq"
+  "property": "pointermq",
+  "tags": ["mediaquery"]
 }
 !*/
 /* DOC
