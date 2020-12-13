@@ -8,14 +8,15 @@
   }],
   "caniuse": "es6-class",
   "authors": ["dabretin"],
-  "tags": ["es6"]
+  "tags": ["es6"],
+  "builderAliases": ["class"]
 }
 !*/
 /* DOC
 Check if browser implements ECMAScript 6 class.
 */
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('class', function() {
+  Modernizr.addTest('es6class', function() {
     try {
       // eslint-disable-next-line
       eval('class A{}');
