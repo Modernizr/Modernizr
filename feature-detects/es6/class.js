@@ -8,7 +8,7 @@
   }],
   "caniuse": "es6-class",
   "authors": ["dabretin"],
-  "tags": ["es6"]
+  "tags": ["es6"],
   "builderAliases": ["class"]
 }
 !*/
