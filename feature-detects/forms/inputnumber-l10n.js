@@ -46,7 +46,7 @@ define(['Modernizr', 'createElement', 'getBody', 'test/inputtypes', 'test/forms/
 
     /* cleanup */
     body.removeChild(div);
-    if (body.fake) {
+    if (body.fake && body.parentNode) {
       body.parentNode.removeChild(body);
     }
 
