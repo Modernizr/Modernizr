@@ -1,12 +1,12 @@
 {
   "name": "modernizr",
-  "version": "4.0.0",
+  "version": "4.0.0-beta.0",
   "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.",
   "main": "./lib/cli.js",
   "module": "./lib/cli.esm.js",
   "bin": "./bin/modernizr",
   "bugs": "https://github.com/Modernizr/Modernizr/issues",
-  "homepage": "https://github.com/Modernizr/Modernizr.git",
+  "homepage": "https://github.com/Modernizr/Modernizr",
   "repository": "https://github.com/Modernizr/Modernizr.git",
   "license": "MIT",
   "author": {

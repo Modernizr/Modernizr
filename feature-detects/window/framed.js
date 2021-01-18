@@ -1,9 +1,9 @@
 /*!
 {
-  "name": "Framed _globalThis",
+  "name": "Framed window",
   "property": "framed",
-  "tags": ["_globalThis"],
-  "builderAliases": ["_globalThis_framed"]
+  "tags": ["window"],
+  "builderAliases": ["window_framed"]
 }
 !*/
 /* DOC

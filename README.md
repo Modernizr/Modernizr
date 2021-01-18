@@ -140,21 +140,10 @@ We guarantee that we'll only invoke your function once (per time that you call `
 a method for exposing the `trigger` functionality. Instead, if you'd like to have control over async tests, use the
 `src/addTest` feature, and any test that you set will automatically expose and trigger the `on` functionality.
 
-
-## Deprecation
-
-These tests are considered deprecated. They are not included anymore in the default build
-and will be removed in the next major version:
-
-- `touchevents` (in 4.0)
-- `unicode` (in 4.0)
-
-
 ## Code of Conduct
 
 This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md).
 By participating, you are expected to honor this code.
-
 
 ## License
 
