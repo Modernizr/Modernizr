@@ -23,7 +23,7 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
 
 - Following tests got renamed:
   
-  - `class` to `esclass` to keep in line with the rest of the es-tests
+  - `class` to `es6class` to keep in line with the rest of the es-tests
 
 - These tests got removed:
   
