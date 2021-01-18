@@ -51,7 +51,7 @@ Modernizr.addTest('localizednumber', function() {
 
   /* cleanup */
   body.removeChild(div);
-  if (body.fake) {
+  if (body.fake && body.parentNode) {
     body.parentNode.removeChild(body);
   }
 

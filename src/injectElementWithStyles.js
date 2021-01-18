@@ -59,7 +59,7 @@ function injectElementWithStyles(rule, callback, nodes, testnames) {
 
   ret = callback(div, rule);
   // If this is done after page load we don't want to remove the body so check if body exists
-  if (body.fake) {
+  if (body.fake && body.parentNode) {
     body.parentNode.removeChild(body);
     docElement.style.overflow = docOverflow;
     // Trigger layout so kinetic scrolling isn't disabled in iOS6+
