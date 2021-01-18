@@ -5,6 +5,9 @@
 [![codecov](https://codecov.io/gh/Modernizr/Modernizr/branch/master/graph/badge.svg)](https://codecov.io/gh/Modernizr/Modernizr)
 [![Inline docs](https://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](https://inch-ci.org/github/Modernizr/Modernizr)
 
+
+- Read this file in Portuguese-BR [here](/README.pt_br.md)
+
 ##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 
 - [Website](https://modernizr.com)
@@ -18,13 +21,17 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
 
 - Dropped Node 8 Support, please upgrade to Node v10
 
-- These tests got removed:
+- Following tests got renamed:
+  
+  - `class` to `esclass` to keep in line with the rest of the es-tests
 
-    - `touchevents`: [discussion](https://github.com/Modernizr/Modernizr/pull/2432)
-    - `unicode`: [discussion](https://github.com/Modernizr/Modernizr/issues/2468)
-    - `templatestrings`: duplicate of the es6 detect `stringtemplate`
-    - `contains`: duplicate of the es6 detect `es6string`
-    - `datalistelem`: A dupe of Modernizr.input.list
+- These tests got removed:
+  
+  - `touchevents`: [discussion](https://github.com/Modernizr/Modernizr/pull/2432)
+  - `unicode`: [discussion](https://github.com/Modernizr/Modernizr/issues/2468)
+  - `templatestrings`: duplicate of the es6 detect `stringtemplate`
+  - `contains`: duplicate of the es6 detect `es6string`
+  - `datalistelem`: A dupe of Modernizr.input.list
 
 ## New Asynchronous Event Listeners
 
