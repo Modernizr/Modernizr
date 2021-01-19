@@ -13,6 +13,9 @@
 /* DOC
 Detects support for the crossOrigin attribute on video tag
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('videocrossorigin', 'crossOrigin' in createElement('video'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('videocrossorigin', 'crossOrigin' in createElement('video'));
+
+export default Modernizr.videocrossorigin

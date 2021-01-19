@@ -15,6 +15,9 @@
 /* DOC
 Detect support for the formmethod attribute on form inputs
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('inputformmethod', !!('formMethod' in createElement('input')));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('inputformmethod', !!('formMethod' in createElement('input')));
+
+export default Modernizr.inputformmethod

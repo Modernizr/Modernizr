@@ -19,14 +19,9 @@
 /* DOC
 Check if browser implements ECMAScript 6 spread syntax (in array and function calls)
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('spreadarray', function() {
-    try {
-      // eslint-disable-next-line
-      eval('(function f(){})(...[1])');
-    } catch (e) {
-      return false;
-    }
-    return true;
-  });
-});
+import Modernizr from '../../src/Modernizr.js';
+import testSyntax from '../../src/testSyntax.js';
+
+Modernizr.addTest('spreadarray', testSyntax('(function f(){})(...[1])'))
+
+export default Modernizr.spreadarray

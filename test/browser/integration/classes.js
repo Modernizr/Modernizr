@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 describe('classes', function() {
   var classes = document.documentElement.className.split(' ');
 
@@ -14,30 +15,29 @@ describe('classes', function() {
   });
 
   describe('everythings ship shape', function() {
-    _.chain(classes)
-      .filter()
-      .sort()
-      .forEach(function(name) {
-        var result = name.indexOf('no-') === -1;
-        name = name.replace(/no-/, '');
-        it(name + ' is correctly ' + result + ' in the classes and object', function() {
-          if (_.includes(name, '-')) {
+    classes
+    .filter(e => e)
+    .sort()
+    .forEach(function(name) {
+      var result = name.indexOf('no-') === -1;
+      name = name.replace(/no-/, '');
+      it(name + ' is correctly ' + result + ' in the classes and object', function() {
+        if (name.indexOf('-') > -1) {
 
-            if (name.replace('-', '') in Modernizr) {
-              name = name.replace('-', '');
-              expect(Modernizr[name]).to.be.equal(result);
-            } else {
-              name = name.split(/-(.+)/); // split at first occurrence of '-'
-              expect(Modernizr[name[0]]).to.not.be.equal(undefined);
-              expect(!!Modernizr[name[0]][name[1]]).to.be.equal(result);
-            }
+          if (name.replace('-', '') in Modernizr) {
+            name = name.replace('-', '');
+            expect(Modernizr[name]).to.be.equal(result);
           } else {
-            var test = Modernizr[name];
-            var modernizrResult = test instanceof Boolean ? test.valueOf() : !!test;
-            expect(modernizrResult).to.be.equal(result);
+            name = name.split(/-(.+)/); // split at first occurrence of '-'
+            expect(Modernizr[name[0]]).to.not.be.equal(undefined);
+            expect(!!Modernizr[name[0]][name[1]]).to.be.equal(result);
           }
-        });
-      })
-      .value();
+        } else {
+          var test = Modernizr[name];
+          var modernizrResult = test instanceof Boolean ? test.valueOf() : !!test;
+          expect(modernizrResult).to.be.equal(result);
+        }
+      });
+    })
   });
 });

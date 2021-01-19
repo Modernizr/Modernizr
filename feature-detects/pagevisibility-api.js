@@ -20,6 +20,10 @@
 /* DOC
 Detects support for the Page Visibility API, which can be used to disable unnecessary actions and otherwise improve user experience.
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('pagevisibility', !!prefixed('hidden', document, false));
-});
+import Modernizr from '../src/Modernizr.js';
+import prefixed from '../src/prefixed.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('pagevisibility', !!prefixed('hidden', _globalThis.document, false));
+
+export default Modernizr.pagevisibility

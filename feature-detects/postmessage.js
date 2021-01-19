@@ -16,15 +16,20 @@
 }
 !*/
 /* DOC
-Detects support for the `window.postMessage` protocol for cross-document messaging.
+Detects support for the `self.postMessage` protocol for cross-document messaging.
 `Modernizr.postmessage.structuredclones` reports if `postMessage` can send objects.
 */
-define(['Modernizr'], function( Modernizr ) {
-  var bool = true;
-  try {
-    window.postMessage({ toString: function () { bool = false; } }, '*');
-  } catch (e) {}
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
 
-  Modernizr.addTest('postmessage', new Boolean('postMessage' in window));
-  Modernizr.addTest('postmessage.structuredclones', bool);
-});
+var bool = true;
+
+try {
+  _globalThis.postMessage({ toString: function () { bool = false; } }, '*');
+} catch (e) {
+}
+
+Modernizr.addTest('postmessage', new Boolean('postMessage' in _globalThis));
+Modernizr.addTest('postmessage.structuredclones', bool);
+
+export default Modernizr.postmessage

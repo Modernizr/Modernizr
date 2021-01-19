@@ -27,28 +27,32 @@ Modernizr.input.required
 Modernizr.input.step
 ```
 */
-define(['Modernizr', 'createElement', 'inputElem'], function(Modernizr, createElement, inputElem) {
-  // Run through HTML5's new input attributes to see if the UA understands any.
-  // Mike Taylr has created a comprehensive resource for testing these attributes
-  //   when applied to all input types:
-  //   miketaylr.com/code/input-type-attr.html
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+import inputElem from '../src/inputElem.js';
+import _globalThis from '../src/globalThis.js';
+// Run through HTML5's new input attributes to see if the UA understands any.
+// Mike Taylr has created a comprehensive resource for testing these attributes
+//   when applied to all input types:
+//   miketaylr.com/code/input-type-attr.html
 
-  // Only input placeholder is tested while textarea's placeholder is not.
-  // Currently Safari 4 and Opera 11 have support only for the input placeholder
-  // Both tests are available in feature-detects/forms-placeholder.js
+// Only input placeholder is tested while textarea's placeholder is not.
+// Currently Safari 4 and Opera 11 have support only for the input placeholder
+// Both tests are available in feature-detects/forms-placeholder.js
 
-  var inputattrs = 'autocomplete autofocus list placeholder max min multiple pattern required step'.split(' ');
-  var attrs = {};
+var inputattrs = 'autocomplete autofocus list placeholder max min multiple pattern required step'.split(' ');
+var attrs = {};
 
-  Modernizr.input = (function(props) {
-    for (var i = 0, len = props.length; i < len; i++) {
-      attrs[ props[i] ] = !!(props[i] in inputElem);
-    }
-    if (attrs.list) {
-      // safari false positive's on datalist: webk.it/74252
-      // see also github.com/Modernizr/Modernizr/issues/146
-      attrs.list = !!(createElement('datalist') && window.HTMLDataListElement);
-    }
-    return attrs;
-  })(inputattrs);
-});
+Modernizr.input = (function(props) {
+  for (var i = 0, len = props.length; i < len; i++) {
+    attrs[ props[i] ] = !!(props[i] in inputElem);
+  }
+  if (attrs.list) {
+    // safari false positive's on datalist: webk.it/74252
+    // see also github.com/Modernizr/Modernizr/issues/146
+    attrs.list = !!(createElement('datalist') && _globalThis.HTMLDataListElement);
+  }
+  return attrs;
+})(inputattrs);
+
+export default attrs

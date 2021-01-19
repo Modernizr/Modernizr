@@ -1,12 +1,10 @@
-#!/usr/bin/env node
-'use strict';
-
-var fs = require('fs');
-var _ = require('lodash');
-var path = require('path');
-var mkdirp = require('mkdirp');
-var Modernizr = require(path.resolve(__dirname + '/../lib/cli.js'));
-var yargs = require('yargs')
+#! /usr/bin/env node
+const fs = require('fs');
+const cwd = process.cwd();
+const path = require('path');
+const mkdirp = require('mkdirp');
+const Modernizr = require(path.resolve(`${__dirname}/../lib/cli.js`));
+const yargs = require('yargs')
   .options('h', {
     alias: 'help',
     describe: 'Print Help'
@@ -39,30 +37,23 @@ var yargs = require('yargs')
     alias: 'uglify',
     describe: 'uglify/minify the output'
   })
-  .options('s', {
-    alias: 'scriptGlobalName',
-    describe: 'Script global variable where Modernizr is attached. Defaults to window'
-  })
   .options('q', {
     alias: 'quiet',
     describe: 'Silence all output'
   });
-var argv = yargs.argv;
-var cwd = process.cwd();
-var dest = cwd + '/modernizr.js';
-var configPath;
-var config;
+const argv = yargs.argv;
+let dest = `${cwd}/modernizr.js`;
+let configPath;
+let config;
 
-function log() {
+function log(...args) {
   if (!argv.q) {
-    console.log.apply(console, arguments);
+    console.log.apply(console, args);
   }
 }
 function stringify(obj, minified) {
-  var replacer = function(key, value) {
-    return value;
-  };
-  var args = minified ? [replacer,2] : [];
+  const replacer = (key, value) => value;
+  const args = minified ? [replacer,2] : [];
   args.unshift(obj);
   return JSON.stringify.apply(JSON, args);
 }
@@ -73,16 +64,16 @@ if (argv.h) {
 }
 
 if (argv.V) {
-  var pkg = require('../package.json');
-  console.log('Modernizr v' + pkg.version);
+  const pkg = require('../package.json');
+  console.log(`Modernizr v${pkg.version}`);
   process.exit();
 }
 
 if (argv.d) {
   dest = path.normalize(argv.d);
-  var exists = fs.existsSync(dest);
-  var isDir = exists && fs.statSync(dest).isDirectory();
-  var fileRequested = _.endsWith(dest, '.js');
+  const exists = fs.existsSync(dest);
+  const isDir = exists && fs.statSync(dest).isDirectory();
+  const fileRequested = dest.endsWith('.js');
 
   if ((exists && isDir) || (!exists && !fileRequested)) {
     dest = path.join(dest, 'modernizr.js');
@@ -92,14 +83,14 @@ if (argv.d) {
 }
 
 if (argv.m) {
-  // path.normalize is used instead of normalize in order to support ~
+  // path.normalize is used instead of resolve in order to support ~
   // we get an absolute path on the fallback from cwd, and any user supplied
   // argument will be relative to their current directory.
-  var metaDest = path.normalize(argv.m === true ? cwd + '/metadata.json' : argv.m);
-  Modernizr.metadata(function(metadata) {
+  const metaDest = path.normalize(argv.m === true ? `${cwd}/metadata.json` : argv.m);
+  Modernizr.metadata(metadata => {
     mkdirp.sync(path.dirname(metaDest));
     fs.writeFileSync(metaDest, stringify(metadata, !argv.u));
-    log('metadata saved to ' + metaDest);
+    log(`metadata saved to ${metaDest}`);
   });
   if (!argv.d) {
     // return early unless we explicitly request Modernizr to be built
@@ -108,10 +99,10 @@ if (argv.m) {
 }
 
 if (argv.o || argv.f) {
-  var metadata = Modernizr.metadata();
-  var options = Modernizr.options();
+  const metadata = Modernizr.metadata();
+  const options = Modernizr.options();
 
-  var find = function(config, source) {
+  const find = (config, source, isFeature) => {
     if (!config) {
       return;
     }
@@ -119,12 +110,12 @@ if (argv.o || argv.f) {
     return config
       .replace(/-/g, ',')
       .split(',')
-      .map(function(prop) {
-        var obj = _.find(source, function(o) {
-          if (o.property instanceof Array) {
-            return o.property.includes(prop);
+      .map(prop => {
+        const obj = source.find(({property}) => {
+          if (Array.isArray(property)) {
+            return property.includes(prop);
           } else {
-            return o.property === prop;
+            return property === prop;
           }
         });
 
@@ -133,8 +124,8 @@ if (argv.o || argv.f) {
         // special case around it :[
         if (prop === 'setClasses') {
           return 'setClasses';
-        } else if (_.isUndefined(obj)) {
-          throw new Error('invalid key value name - ' + prop);
+        } else if (typeof obj === 'undefined') {
+          throw new Error(`${prop} is not a valid ${isFeature ? 'feature detect' : 'option'}`);
         } else {
           return obj.amdPath || obj.property;
         }
@@ -142,7 +133,7 @@ if (argv.o || argv.f) {
   };
 
   config = {
-    'feature-detects': find(argv.f, metadata),
+    'feature-detects': find(argv.f, metadata, true),
     'options': find(argv.o, options)
   };
 }
@@ -151,7 +142,7 @@ if (argv.c) {
   try {
     configPath = fs.realpathSync(argv.c);
   } catch (e) {
-    console.error(argv.c + ' does not exist.');
+    console.error(`${argv.c} does not exist.`);
     process.exit(1);
   }
   if (!configPath) {
@@ -167,14 +158,14 @@ try {
   } else {
     config = config || {};
     if (configPath) {
-      config = _.extend(config, require(configPath));
+      config = Object.assign(config, require(configPath));
     }
     if (config && config.dest) {
       dest = path.join(cwd, config.dest, 'modernizr.js');
     }
   }
 } catch (e) {
-  console.error(configPath + ' is not valid JSON.');
+  console.error(`${configPath} is not valid JSON.`);
   console.error(e);
   process.exit(1);
 }
@@ -187,7 +178,11 @@ if (argv.scriptGlobalName) {
   config.scriptGlobalName = argv.scriptGlobalName;
 }
 
-Modernizr.build(config, function(output) {
+
+config.options = config.options || []
+config['feature-detects'] = config['feature-detects'] || []
+
+Modernizr.build(config, output => {
   fs.writeFileSync(dest, output);
-  log('Modernizr build saved to ' + dest);
+  log(`Modernizr build saved to ${dest}`);
 });

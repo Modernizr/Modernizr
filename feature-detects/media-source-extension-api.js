@@ -13,6 +13,9 @@
 /* DOC
 Detects support the Media Source Extensions API, which allows JavaScript to send byte streams to media codecs within web browsers that support HTML5 video.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('mediasource', 'MediaSource' in window);
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('mediasource', 'MediaSource' in _globalThis);
+
+export default Modernizr.mediasource

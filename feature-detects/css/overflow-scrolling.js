@@ -13,6 +13,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('overflowscrolling', testAllProps('overflowScrolling', 'touch', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('overflowscrolling', testAllProps('overflowScrolling', 'touch', true));
+
+export default Modernizr.overflowscrolling

@@ -15,6 +15,10 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('boxsizing', testAllProps('boxSizing', 'border-box', true) && (document.documentMode === undefined || document.documentMode > 7));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+import isBrowser from '../../src/isBrowser.js';
+
+Modernizr.addTest('boxsizing', isBrowser && testAllProps('boxSizing', 'border-box', true) && (document.documentMode === undefined || document.documentMode > 7));
+
+export default Modernizr.boxsizing

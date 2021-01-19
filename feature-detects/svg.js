@@ -18,6 +18,9 @@
 /* DOC
 Detects support for SVG in `<embed>` or `<object>` elements.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('svg', !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
-});
+import Modernizr from '../src/Modernizr.js';
+import isBrowser from '../src/isBrowser.js';
+
+Modernizr.addTest('svg', isBrowser && !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
+
+export default Modernizr.svg

@@ -14,6 +14,9 @@
 /* DOC
 Detects support for the Custom Elements API, to create custom html elements via js
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('customelements', 'customElements' in window);
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('customelements', 'customElements' in _globalThis);
+
+export default Modernizr.customelements

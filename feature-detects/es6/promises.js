@@ -21,21 +21,24 @@
 /* DOC
 Check if browser implements ECMAScript 6 Promises per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('promises', function() {
-    return 'Promise' in window &&
-    // Some of these methods are missing from
-    // Firefox/Chrome experimental implementations
-    'resolve' in window.Promise &&
-    'reject' in window.Promise &&
-    'all' in window.Promise &&
-    'race' in window.Promise &&
-    // Older version of the spec had a resolver object
-    // as the arg rather than a function
-    (function() {
-      var resolve;
-      new window.Promise(function(r) { resolve = r; });
-      return typeof resolve === 'function';
-    }());
-  });
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('promises', function() {
+  return 'Promise' in _globalThis &&
+  // Some of these methods are missing from
+  // Firefox/Chrome experimental implementations
+  'resolve' in _globalThis.Promise &&
+  'reject' in _globalThis.Promise &&
+  'all' in _globalThis.Promise &&
+  'race' in _globalThis.Promise &&
+  // Older version of the spec had a resolver object
+  // as the arg rather than a function
+  (function() {
+    var resolve;
+    new _globalThis.Promise(function(r) { resolve = r; });
+    return typeof resolve === 'function';
+  }());
 });
+
+export default Modernizr.promises

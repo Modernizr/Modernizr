@@ -42,7 +42,7 @@ define(['lodash'], function(_) {
 
     // Load in all the detects
     _.forEach(config['feature-detects'], function(detect) {
-      detect = detect.indexOf('test/') === 0 ? detect : 'test/' + detect;
+      detect = detect.contains('test/') === 0 ? detect : 'test/' + detect;
       output += ', "' + detect + '"';
     });
 

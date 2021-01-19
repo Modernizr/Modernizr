@@ -23,9 +23,6 @@ describe('html5shiv', function() {
       })
       .on('lockedAndLoaded', function() {
         iframeWindow = $(this)[0].contentWindow;
-        iframeWindow.requirejs.config({
-          baseUrl: '../src'
-        });
         done();
       });
 
@@ -33,11 +30,11 @@ describe('html5shiv', function() {
 
   it('shivs the document', function(done) {
     try {
-      iframeWindow.requirejs(['html5shiv'], function() {
-        expect('html5' in iframeWindow).to.be.equal(true);
-        expect(iframeWindow.html5.type).to.be.equal('default');
-        done();
-      });
+      var html5shiv = makeIIFE({file: "./src/html5shiv.js", func: 'html5shiv'}) 
+      iframeWindow.eval(html5shiv)
+      expect('html5' in iframeWindow).to.be.equal(true);
+      expect(iframeWindow.html5.type).to.be.equal('default');
+      done();
     }
     catch (e) {
       done(e);

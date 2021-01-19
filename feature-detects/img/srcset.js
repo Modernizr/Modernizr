@@ -16,6 +16,9 @@
 /* DOC
 Test for the srcset attribute of images
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('srcset', 'srcset' in createElement('img'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('srcset', 'srcset' in createElement('img'));
+
+export default Modernizr.srcset

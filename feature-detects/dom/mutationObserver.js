@@ -15,7 +15,9 @@
 /* DOC
 Determines if DOM4 MutationObserver support is available.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('mutationobserver',
-    !!window.MutationObserver || !!window.WebKitMutationObserver);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('mutationobserver', !!_globalThis.MutationObserver || !!_globalThis.WebKitMutationObserver);
+
+export default Modernizr.mutationobserver

@@ -14,6 +14,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('textalignlast', testAllProps('textAlignLast'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('textalignlast', testAllProps('textAlignLast'));
+
+export default Modernizr.textalignlast

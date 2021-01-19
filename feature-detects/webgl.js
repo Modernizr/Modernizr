@@ -7,8 +7,9 @@
   "polyfills": ["jebgl", "cwebgl", "iewebgl"]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('webgl', function() {
-    return 'WebGLRenderingContext' in window;
-  });
-});
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('webgl', 'WebGLRenderingContext' in _globalThis);
+
+export default Modernizr.webgl

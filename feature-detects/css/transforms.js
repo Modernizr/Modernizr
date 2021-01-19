@@ -6,11 +6,15 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('csstransforms', function() {
-    // Android < 3.0 is buggy, so we sniff and reject it
-    // https://github.com/Modernizr/Modernizr/issues/903
-    return navigator.userAgent.indexOf('Android 2.') === -1 &&
-           testAllProps('transform', 'scale(1)', true);
-  });
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+import contains from '../../src/contains.js';
+
+Modernizr.addTest('csstransforms', function() {
+  // Android < 3.0 is buggy, so we sniff and reject it
+  // https://github.com/Modernizr/Modernizr/issues/903
+  return contains(navigator.userAgent, 'Android 2.') &&
+         testAllProps('transform', 'scale(1)', true);
 });
+
+export default Modernizr.csstransforms

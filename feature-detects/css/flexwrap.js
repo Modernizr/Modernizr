@@ -26,6 +26,9 @@ else {
 }
 ```
 */
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('flexwrap', testAllProps('flexWrap', 'wrap', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('flexwrap', testAllProps('flexWrap', 'wrap', true));
+
+export default Modernizr.flexwrap

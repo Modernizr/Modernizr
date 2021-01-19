@@ -1,21 +1,7 @@
 describe('docElement', function() {
   var docElement;
-  var cleanup;
 
-  before(function(done) {
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['docElement', 'cleanup'], function(_docElement, _cleanup) {
-      docElement = _docElement;
-      cleanup = _cleanup;
-      done();
-    });
-  });
+  eval(makeIIFE({file: "./src/docElement.js", func: 'docElement'}))
 
   it('is an alias to document.documentElement', function() {
     expect(docElement).to.be.equal(document.documentElement);
@@ -23,9 +9,5 @@ describe('docElement', function() {
 
   it('is valid and correct', function() {
     expect(docElement).to.be.equal(document.getElementsByTagName('html')[0]);
-  });
-
-  after(function() {
-    cleanup();
   });
 });

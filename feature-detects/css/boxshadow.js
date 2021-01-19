@@ -10,6 +10,9 @@
   ]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('boxshadow', testAllProps('boxShadow', '1px 1px', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('boxshadow', testAllProps('boxShadow', '1px 1px', true));
+
+export default Modernizr.boxshadow

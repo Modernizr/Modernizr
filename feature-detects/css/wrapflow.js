@@ -12,37 +12,43 @@
   }]
 }
 !*/
-define(['Modernizr', 'prefixed', 'docElement', 'createElement', 'isSVG'], function(Modernizr, prefixed, docElement, createElement, isSVG) {
-  Modernizr.addTest('wrapflow', function() {
-    var prefixedProperty = prefixed('wrapFlow');
-    if (!prefixedProperty || isSVG) {
-      return false;
-    }
+import Modernizr from '../../src/Modernizr.js';
+import prefixed from '../../src/prefixed.js';
+import docElement from '../../src/docElement.js';
+import createElement from '../../src/createElement.js';
+import isSVG from '../../src/isSVG.js';
 
-    var wrapFlowProperty = prefixedProperty.replace(/([A-Z])/g, function(str, m1) { return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
+Modernizr.addTest('wrapflow', function() {
+  var prefixedProperty = prefixed('wrapFlow');
+  if (!prefixedProperty || isSVG) {
+    return false;
+  }
 
-    /* If the CSS parsing is there we need to determine if wrap-flow actually works to avoid false positive cases, e.g. the browser parses
-       the property, but it hasn't got the implementation for the functionality yet. */
-    var container = createElement('div');
-    var exclusion = createElement('div');
-    var content = createElement('span');
+  var wrapFlowProperty = prefixedProperty.replace(/([A-Z])/g, function(str, m1) { return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
 
-    /* First we create a div with two adjacent divs inside it. The first div will be the content, the second div will be the exclusion area.
-       We use the "wrap-flow: end" property to test the actual behavior. (https://drafts.csswg.org/css-exclusions-1/#wrap-flow-property)
-       The wrap-flow property is applied to the exclusion area what has a 50px left offset and a 100px width.
-       If the wrap-flow property is working correctly then the content should start after the exclusion area, so the content's left offset should be 150px. */
-    exclusion.style.cssText = 'position: absolute; left: 50px; width: 100px; height: 20px;' + wrapFlowProperty + ':end;';
-    content.innerText = 'X';
+  /* If the CSS parsing is there we need to determine if wrap-flow actually works to avoid false positive cases, e.g. the browser parses
+     the property, but it hasn't got the implementation for the functionality yet. */
+  var container = createElement('div');
+  var exclusion = createElement('div');
+  var content = createElement('span');
 
-    container.appendChild(exclusion);
-    container.appendChild(content);
-    docElement.appendChild(container);
+  /* First we create a div with two adjacent divs inside it. The first div will be the content, the second div will be the exclusion area.
+     We use the "wrap-flow: end" property to test the actual behavior. (https://drafts.csswg.org/css-exclusions-1/#wrap-flow-property)
+     The wrap-flow property is applied to the exclusion area what has a 50px left offset and a 100px width.
+     If the wrap-flow property is working correctly then the content should start after the exclusion area, so the content's left offset should be 150px. */
+  exclusion.style.cssText = 'position: absolute; left: 50px; width: 100px; height: 20px;' + wrapFlowProperty + ':end;';
+  content.innerText = 'X';
 
-    var leftOffset = content.offsetLeft;
+  container.appendChild(exclusion);
+  container.appendChild(content);
+  docElement.appendChild(container);
 
-    docElement.removeChild(container);
-    exclusion = content = container = undefined;
+  var leftOffset = content.offsetLeft;
 
-    return (leftOffset === 150);
-  });
+  docElement.removeChild(container);
+  exclusion = content = container = undefined;
+
+  return (leftOffset === 150);
 });
+
+export default Modernizr.wrapflow

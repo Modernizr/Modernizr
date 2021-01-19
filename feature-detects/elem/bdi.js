@@ -11,20 +11,25 @@
 /* DOC
 Detect support for the bdi element, a way to have text that is isolated from its possibly bidirectional surroundings
 */
-define(['Modernizr', 'createElement', 'docElement', 'computedStyle'], function(Modernizr, createElement, docElement, computedStyle) {
-  Modernizr.addTest('bdi', function() {
-    var div = createElement('div');
-    var bdi = createElement('bdi');
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+import docElement from '../../src/docElement.js';
+import computedStyle from '../../src/computedStyle.js';
 
-    bdi.innerHTML = '&#1573;';
-    div.appendChild(bdi);
+Modernizr.addTest('bdi', function() {
+  var div = createElement('div');
+  var bdi = createElement('bdi');
 
-    docElement.appendChild(div);
+  bdi.innerHTML = '&#1573;';
+  div.appendChild(bdi);
 
-    var supports = computedStyle(bdi, null, 'direction') === 'rtl';
+  docElement.appendChild(div);
 
-    docElement.removeChild(div);
+  var supports = computedStyle(bdi, null, 'direction') === 'rtl';
 
-    return supports;
-  });
+  docElement.removeChild(div);
+
+  return supports;
 });
+
+export default Modernizr.bdi

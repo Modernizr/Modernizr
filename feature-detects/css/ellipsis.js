@@ -6,6 +6,9 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('ellipsis', testAllProps('textOverflow', 'ellipsis'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('ellipsis', testAllProps('textOverflow', 'ellipsis'));
+
+export default Modernizr.ellipsis

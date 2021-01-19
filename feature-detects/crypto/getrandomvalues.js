@@ -14,19 +14,25 @@
 /* DOC
 Detects support for the window.crypto.getRandomValues method for generating cryptographically secure random numbers
 */
-define(['Modernizr', 'prefixed', 'is'], function(Modernizr, prefixed, is) {
-  // In Safari <=5.0 `window.crypto` exists (for some reason) but is `undefined`, so we have to check
-  // it’s truthy before checking for existence of `getRandomValues`
-  var crypto = prefixed('crypto', window);
-  var supportsGetRandomValues;
+import Modernizr from '../../src/Modernizr.js';
+import prefixed from '../../src/prefixed.js';
+import is from '../../src/is.js';
+import _globalThis from '../../src/globalThis.js';
 
-  // Safari 6.0 supports crypto.getRandomValues, but does not return the array,
-  // which is required by the spec, so we need to actually check.
-  if (crypto && 'getRandomValues' in crypto && 'Uint32Array' in window) {
-    var array = new Uint32Array(10);
-    var values = crypto.getRandomValues(array);
-    supportsGetRandomValues = values && is(values[0], 'number');
-  }
 
-  Modernizr.addTest('getrandomvalues', !!supportsGetRandomValues);
-});
+// In Safari <=5.0 `_globalThis.crypto` exists (for some reason) but is `undefined`, so we have to check
+// it’s truthy before checking for existence of `getRandomValues`
+var crypto = prefixed('crypto', _globalThis);
+var supportsGetRandomValues;
+
+// Safari 6.0 supports crypto.getRandomValues, but does not return the array,
+// which is required by the spec, so we need to actually check.
+if (crypto && 'getRandomValues' in crypto && 'Uint32Array' in _globalThis) {
+  var array = new Uint32Array(10);
+  var values = crypto.getRandomValues(array);
+  supportsGetRandomValues = values && is(values[0], 'number');
+}
+
+Modernizr.addTest('getrandomvalues', !!supportsGetRandomValues);
+
+export default Modernizr.getrandomvalues;

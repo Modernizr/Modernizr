@@ -21,18 +21,20 @@
 /* DOC
 Tests for transparent webp support.
 */
-define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
-  Modernizr.addAsyncTest(function() {
-    var image = new Image();
+import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 
-    image.onerror = function() {
-      addTest('webpalpha', false, {aliases: ['webp-alpha']});
-    };
+Modernizr.addAsyncTest(function() {
+  var image = new Image();
 
-    image.onload = function() {
-      addTest('webpalpha', image.width === 1, {aliases: ['webp-alpha']});
-    };
+  image.onerror = function() {
+    addTest('webpalpha', false, {aliases: ['webp-alpha']});
+  };
 
-    image.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==';
-  });
+  image.onload = function() {
+    addTest('webpalpha', image.width === 1, {aliases: ['webp-alpha']});
+  };
+
+  image.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==';
 });
+
+export default createAsyncTestListener("webpalpha");

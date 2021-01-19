@@ -16,23 +16,27 @@
 /* DOC
 Detects support for the `window.registerProtocolHandler()` API to allow websites to register themselves as possible handlers for particular protocols.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('customprotocolhandler', function() {
-    // early bailout where it doesn't exist at all
-    if (!navigator.registerProtocolHandler) {
-      return false;
-    }
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
+var navigator = _globalThis.navigator
 
-    // registerProtocolHandler was stubbed in webkit for a while, and didn't
-    // actually do anything. We intentionally set it improperly to test for
-    // the proper sort of failure
-    try {
-      navigator.registerProtocolHandler('thisShouldFail');
-    }
-    catch (e) {
-      return e instanceof TypeError;
-    }
-
+Modernizr.addTest('customprotocolhandler', function() {
+  // early bailout where it doesn't exist at all
+  if (!navigator.registerProtocolHandler) {
     return false;
-  });
+  }
+
+  // registerProtocolHandler was stubbed in webkit for a while, and didn't
+  // actually do anything. We intentionally set it improperly to test for
+  // the proper sort of failure
+  try {
+    navigator.registerProtocolHandler('thisShouldFail');
+  }
+  catch (e) {
+    return e instanceof TypeError;
+  }
+
+  return false;
 });
+
+export default Modernizr.customprotocolhandler

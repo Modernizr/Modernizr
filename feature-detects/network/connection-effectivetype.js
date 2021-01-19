@@ -13,15 +13,10 @@
 /* DOC
 Detects support for determining signal bandwidth via `navigator.connection.effectiveType`
 */
-define(['Modernizr'], function (Modernizr) {
-  Modernizr.addTest('effectiveType', function () {
-    // polyfill
-    var connection = navigator.connection || { effectiveType: 0 };
+import { addTest } from '../../src/Modernizr.js';
 
-    if (connection.effectiveType !== 0) {
-      return true;
-    }
+var result = 'connection' in navigator && 'effectiveType' in navigator.connection
 
-    return false;
-  });
-});
+addTest('effectiveType', 'connection' in navigator && 'effectiveType' in navigator.connection)
+
+export default result

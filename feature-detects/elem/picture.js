@@ -13,6 +13,9 @@
   }]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('picture', 'HTMLPictureElement' in window);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('picture', 'HTMLPictureElement' in _globalThis);
+
+export default Modernizr.picture

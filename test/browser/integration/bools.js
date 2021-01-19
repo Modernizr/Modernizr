@@ -1,14 +1,13 @@
 describe('bools', function() {
   it('all properties are lower case', function() {
-    _.every(Modernizr, function(result, name) {
+    Object.keys(Modernizr).every(function(result, name) {
       return expect(name).to.not.match(/[A-Z]/);
     });
   });
 
   describe('everythings ship shape', function() {
-    _.chain(Modernizr)
-      .keys()
-      .filter()
+    Object.keys(Modernizr)
+      .filter(m => m && Modernizr.hasOwnProperty(m))
       .sort()
       .forEach(function(name) {
         var result = Modernizr[name];
@@ -24,7 +23,6 @@ describe('bools', function() {
           ).to.be.equal(true);
         });
       })
-      .value();
   });
 
 });

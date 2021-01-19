@@ -13,8 +13,16 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  // `grid-columns` is only in the old syntax, `grid-column` exists in both and so `grid-template-rows` is used for the new syntax.
-  Modernizr.addTest('cssgridlegacy', testAllProps('grid-columns', '10px', true));
-  Modernizr.addTest('cssgrid', testAllProps('grid-template-rows', 'none', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+var result = {
+  "cssgridlegacy": testAllProps('grid-columns', '10px', true),
+  "cssgrid": testAllProps('grid-template-rows', 'none', true)
+}
+
+// `grid-columns` is only in the old syntax, `grid-column` exists in both and so `grid-template-rows` is used for the new syntax.
+Modernizr.addTest('cssgridlegacy', result.cssgridlegacy);
+Modernizr.addTest('cssgrid', result.cssgrid);
+
+export default result

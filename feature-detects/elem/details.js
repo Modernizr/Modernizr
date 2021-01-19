@@ -12,24 +12,28 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function(Modernizr, createElement, docElement, testStyles) {
-  Modernizr.addTest('details', function() {
-    var el = createElement('details');
-    var diff;
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+import testStyles from '../../src/testStyles.js';
 
-    // return early if possible; thanks @aFarkas!
-    if (!('open' in el)) {
-      return false;
-    }
+Modernizr.addTest('details', function() {
+  var el = createElement('details');
+  var diff;
 
-    testStyles('#modernizr details{display:block}', function(node) {
-      node.appendChild(el);
-      el.innerHTML = '<summary>a</summary>b';
-      diff = el.offsetHeight;
-      el.open = true;
-      diff = diff !== el.offsetHeight;
-    });
+  // return early if possible; thanks @aFarkas!
+  if (!('open' in el)) {
+    return false;
+  }
 
-    return diff;
+  testStyles('#modernizr details{display:block}', function(node) {
+    node.appendChild(el);
+    el.innerHTML = '<summary>a</summary>b';
+    diff = el.offsetHeight;
+    el.open = true;
+    diff = diff !== el.offsetHeight;
   });
+
+  return diff;
 });
+
+export default Modernizr.details

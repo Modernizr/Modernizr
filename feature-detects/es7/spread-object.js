@@ -13,14 +13,9 @@
 /* DOC
 Check if browser implements ECMAScript 7 object spread syntax 
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('spreadobject', function() {
-    try {
-      // eslint-disable-next-line
-      eval('var a={...{b:1}}');
-    } catch (e) {
-      return false;
-    }
-    return true;
-  });
-});
+import Modernizr from '../../src/Modernizr.js';
+import testSyntax from '../../src/testSyntax.js';
+
+Modernizr.addTest('spreadobject', testSyntax('var a={...{b:1}}'))
+
+export default Modernizr.spreadobject

@@ -6,6 +6,9 @@
   "tags": ["css"]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('cssreflections', testAllProps('boxReflect', 'above', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('cssreflections', testAllProps('boxReflect', 'above', true));
+
+export default Modernizr.cssreflections

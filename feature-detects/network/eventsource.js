@@ -13,6 +13,9 @@
 /* DOC
 Tests for server sent events aka eventsource.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('eventsource', 'EventSource' in window);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('eventsource', 'EventSource' in _globalThis);
+
+export default Modernizr.eventsource

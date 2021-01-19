@@ -1,8 +1,8 @@
 var root = require('find-parent-dir').sync(__dirname, 'package.json');
-var options = require(root + 'lib/options');
+var options = require(root + 'lib/options').default;
 var chai = require('chai');
 var expect = chai.expect;
-var Joi = require('joi');
+var Joi = require('@hapi/joi');
 
 var schema = Joi.array().items(
   Joi.object().keys({

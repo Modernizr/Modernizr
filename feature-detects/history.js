@@ -18,35 +18,39 @@
 /* DOC
 Detects support for the History API for manipulating the browser session history.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('history', function() {
-    // Issue #733
-    // The stock browser on Android 2.2 & 2.3, and 4.0.x returns positive on history support
-    // Unfortunately support is really buggy and there is no clean way to detect
-    // these bugs, so we fall back to a user agent sniff :(
-    var ua = navigator.userAgent;
-    
-    // Some browsers allow to have empty userAgent.
-    // Therefore, we need to check ua before using "indexOf" on it.
-    if(!ua) {
-      return false;
-    }
+import Modernizr from '../src/Modernizr.js';
+import contains from '../src/contains.js';
+import _globalThis from '../src/globalThis.js';
 
-    // We only want Android 2 and 4.0, stock browser, and not Chrome which identifies
-    // itself as 'Mobile Safari' as well, nor Windows Phone (issue #1471).
-    if ((ua.indexOf('Android 2.') !== -1 ||
-        (ua.indexOf('Android 4.0') !== -1)) &&
-        ua.indexOf('Mobile Safari') !== -1 &&
-        ua.indexOf('Chrome') === -1 &&
-        ua.indexOf('Windows Phone') === -1 &&
-    // Since all documents on file:// share an origin, the History apis are
-    // blocked there as well
-        location.protocol !== 'file:'
-    ) {
-      return false;
-    }
+Modernizr.addTest('history', function() {
+  // Issue #733
+  // The stock browser on Android 2.2 & 2.3, and 4.0.x returns positive on history support
+  // Unfortunately support is really buggy and there is no clean way to detect
+  // these bugs, so we fall back to a user agent sniff :(
+  var ua = navigator.userAgent;
 
-    // Return the regular check
-    return (window.history && 'pushState' in window.history);
-  });
+  // Some browsers allow to have empty userAgent.
+  // Therefore, we need to check ua before using "indexOf" on it.
+  if(!ua) {
+    return false;
+  }
+
+  // We only want Android 2 and 4.0, stock browser, and not Chrome which identifies
+  // itself as 'Mobile Safari' as well, nor Windows Phone (issue #1471).
+  if ((contains(ua, 'Android 2.') ||
+      (contains(ua, 'Android 4.0'))) &&
+      contains(ua, 'Mobile Safari') &&
+      !contains(ua, 'Chrome') &&
+      !contains(ua, 'Windows Phone') &&
+  // Since all documents on file:// share an origin, the History apis are
+  // blocked there as well
+      location.protocol !== 'file:'
+  ) {
+    return false;
+  }
+
+  // Return the regular check
+  return (_globalThis.history && 'pushState' in _globalThis.history);
 });
+
+export default Modernizr.history

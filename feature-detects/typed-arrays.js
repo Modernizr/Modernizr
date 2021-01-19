@@ -20,17 +20,20 @@ Detects support for native binary data manipulation via Typed Arrays in JavaScri
 
 Does not check for DataView support; use `Modernizr.dataview` for that.
 */
-define(['Modernizr'], function(Modernizr) {
-  // Should fail in:
-  // Internet Explorer <= 9
-  // Firefox <= 3.6
-  // Chrome <= 6.0
-  // iOS Safari < 4.2
-  // Safari < 5.1
-  // Opera < 11.6
-  // Opera Mini, <= 7.0
-  // Android Browser < 4.0
-  // Blackberry Browser < 10.0
+import Modernizr from '../src/Modernizr.js';
+import _globalThis from '../src/globalThis.js';
 
-  Modernizr.addTest('typedarrays', 'ArrayBuffer' in window);
-});
+// Should fail in:
+// Internet Explorer <= 9
+// Firefox <= 3.6
+// Chrome <= 6.0
+// iOS Safari < 4.2
+// Safari < 5.1
+// Opera < 11.6
+// Opera Mini, <= 7.0
+// Android Browser < 4.0
+// Blackberry Browser < 10.0
+
+Modernizr.addTest('typedarrays', 'ArrayBuffer' in _globalThis);
+
+export default Modernizr.typedarrays

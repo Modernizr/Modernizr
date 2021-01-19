@@ -14,14 +14,9 @@
 /* DOC
 Check if browser implements ECMAScript 6 Rest parameters per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('restparameters', function() {
-    try {
-      // eslint-disable-next-line
-      eval('function f(...rest) {}');
-    } catch (e) {
-      return false;
-    }
-    return true;
-  });
-});
+import Modernizr from '../../src/Modernizr.js';
+import testSyntax from '../../src/testSyntax.js';
+
+Modernizr.addTest('restparameters', testSyntax('function f(...r) {}'))
+
+export default Modernizr.restparameters

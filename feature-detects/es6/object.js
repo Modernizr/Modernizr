@@ -17,8 +17,10 @@
 /* DOC
 Check if browser implements ECMAScript 6 Object per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('es6object', !!(Object.assign &&
-    Object.is &&
-    Object.setPrototypeOf));
-});
+import Modernizr from '../../src/Modernizr.js';
+
+Modernizr.addTest('es6object', !!(Object.assign &&
+  Object.is &&
+  Object.setPrototypeOf));
+
+export default Modernizr.es6object

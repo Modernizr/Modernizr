@@ -1,4 +1,4 @@
-# Modernizr 
+# Modernizr
 [![npm version](https://badge.fury.io/js/modernizr.svg)](https://badge.fury.io/js/modernizr)
 [![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](https://travis-ci.org/Modernizr/Modernizr) 
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/Modernizr/modernizr?branch=master&svg=true)](https://ci.appveyor.com/project/rejas/modernizr) 
@@ -62,14 +62,14 @@ a method for exposing the `trigger` functionality. Instead, if you'd like to hav
 - Clone or download the repository
 - Install project dependencies with `npm install`
 
-## Building Modernizr 
+## Building Modernizr
 
 ### From javascript
 
 Modernizr can be used programmatically via npm:
 
 ```js
-var modernizr = require("modernizr");
+const modernizr = require("modernizr");
 ```
 
 A `build` method is exposed for generating custom Modernizr builds. Example:
@@ -88,18 +88,11 @@ The second parameter is a function invoked on task completion.
 
 ### From the command-line
 
-We also provide a command line interface for building modernizr. 
+We also provide a command line interface for building modernizr.
 To see all available options run:
 
 ```shell
 ./bin/modernizr
-```
-
-Or to generate everything in 'config-all.json' run this with npm:
-
-```shell
-npm start
-//outputs to ./dist/modernizr-build.js
 ```
 
 ## Testing Modernizr
@@ -123,11 +116,34 @@ http://localhost:8080/test/unit.html
 http://localhost:8080/test/integration.html
 ```
 
+## New Asynchronous Event Listeners
+
+Often times people want to know when an asynchronous test is done so they can allow their application to react to it.
+In the past, you've had to rely on watching properties or `<html>` classes. Only events on **asynchronous** tests are
+supported. Synchronous tests should be handled synchronously to improve speed and to maintain consistency.
+
+The new API looks like this:
+
+```js
+// Listen to a test, give it a callback
+Modernizr.on('testname', function( result ) {
+  if (result) {
+    console.log('The test passed!');
+  }
+  else {
+    console.log('The test failed!');
+  }
+});
+```
+
+We guarantee that we'll only invoke your function once (per time that you call `on`). We are currently not exposing
+a method for exposing the `trigger` functionality. Instead, if you'd like to have control over async tests, use the
+`src/addTest` feature, and any test that you set will automatically expose and trigger the `on` functionality.
+
 ## Code of Conduct
 
-This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md). 
+This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md).
 By participating, you are expected to honor this code.
-
 
 ## License
 

@@ -10,11 +10,15 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('rgba', function() {
-    var style = createElement('a').style;
-    style.cssText = 'background-color:rgba(150,255,150,.5)';
+import Modernizr from '../../src/Modernizr.js';
+import contains from '../../src/contains.js';
+import createElement from '../../src/createElement.js';
 
-    return ('' + style.backgroundColor).indexOf('rgba') > -1;
-  });
+Modernizr.addTest('rgba', function() {
+  var style = createElement('a').style;
+  style.cssText = 'background-color:rgba(150,255,150,.5)';
+
+  return contains('' + style.backgroundColor, 'rgba')
 });
+
+export default Modernizr.rgba

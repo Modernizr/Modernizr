@@ -14,23 +14,18 @@
 /* DOC
 Check if browser implements ECMAScript 7 Destructuring Assignment per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('restdestructuringarray', function() {
-    try {
-      // eslint-disable-next-line
-      eval('var [...rest]=[1]');
-    } catch (e) {
-      return false;
-    }
-    return true;
-  });
-  Modernizr.addTest('restdestructuringobject', function() {
-    try {
-      // eslint-disable-next-line
-      eval('var {...rest}={a:1}');
-    } catch (e) {
-      return false;
-    }
-    return true;
-  });
-});
+import Modernizr from '../../src/Modernizr.js';
+import testSyntax from '../../src/testSyntax.js';
+
+Modernizr.addTest('restdestructuringarray', testSyntax('var [...r]=[1]'))
+
+Modernizr.addTest('restdestructuringobject', testSyntax('var {...r}={a:1}'))
+
+var result = {
+  'restdestructuringarray': Modernizr.restdestructuringarray,
+  'restdestructuringobject': Modernizr.restdestructuringobject
+}
+
+export default result
+export const restdestructuringarray = Modernizr.restdestructuringarray
+export const restdestructuringobject = Modernizr.restdestructuringobject

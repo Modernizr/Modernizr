@@ -16,6 +16,9 @@
 /* DOC
 Detect support for the formenctype attribute on form inputs, which overrides the form enctype attribute
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('inputformenctype', !!('formEnctype' in createElement('input')), {aliases: ['input-formenctype']});
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('inputformenctype', !!('formEnctype' in createElement('input')), {aliases: ['input-formenctype']});
+
+export default Modernizr.inputformenctype

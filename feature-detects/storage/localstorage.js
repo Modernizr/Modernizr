@@ -13,35 +13,37 @@
   ]
 }
 !*/
-define(['Modernizr'], function(Modernizr) {
-  // In FF4, if disabled, window.localStorage should === null.
+import Modernizr from '../../src/Modernizr.js';
 
-  // Normally, we could not test that directly and need to do a
-  //   `('localStorage' in window)` test first because otherwise Firefox will
-  //   throw bugzil.la/365772 if cookies are disabled
+// In FF4, if disabled, window.localStorage should === null.
 
-  // Similarly, in Chrome with "Block third-party cookies and site data" enabled,
-  // attempting to access `window.sessionStorage` will throw an exception. crbug.com/357625
+// Normally, we could not test that directly and need to do a
+//   `('localStorage' in window)` test first because otherwise Firefox will
+//   throw bugzil.la/365772 if cookies are disabled
 
-  // Also in iOS5 Private Browsing mode, attempting to use localStorage.setItem
-  // will throw the exception:
-  //   QUOTA_EXCEEDED_ERROR DOM Exception 22.
-  // Peculiarly, getItem and removeItem calls do not throw.
+// Similarly, in Chrome with "Block third-party cookies and site data" enabled,
+// attempting to access `window.sessionStorage` will throw an exception. crbug.com/357625
 
-  // Because we are forced to try/catch this, we'll go aggressive.
+// Also in iOS5 Private Browsing mode, attempting to use localStorage.setItem
+// will throw the exception:
+//   QUOTA_EXCEEDED_ERROR DOM Exception 22.
+// Peculiarly, getItem and removeItem calls do not throw.
 
-  // Just FWIW: IE8 Compat mode supports these features completely:
-  //   www.quirksmode.org/dom/html5.html
-  // But IE8 doesn't support either with local files
+// Because we are forced to try/catch this, we'll go aggressive.
 
-  Modernizr.addTest('localstorage', function() {
-    var mod = 'modernizr';
-    try {
-      localStorage.setItem(mod, mod);
-      localStorage.removeItem(mod);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  });
+// Just FWIW: IE8 Compat mode supports these features completely:
+//   www.quirksmode.org/dom/html5.html
+// But IE8 doesn't support either with local files
+
+Modernizr.addTest('localstorage', function() {
+  var mod = 'modernizr';
+  try {
+    localStorage.setItem(mod, mod);
+    localStorage.removeItem(mod);
+    return true;
+  } catch (e) {
+    return false;
+  }
 });
+
+export default Modernizr.localstorage

@@ -10,6 +10,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('outputelem', 'value' in createElement('output'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('outputelem', 'value' in createElement('output'));
+
+export default Modernizr.outputelem

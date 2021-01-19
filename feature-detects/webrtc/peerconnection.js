@@ -11,6 +11,10 @@
   }]
 }
 !*/
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('peerconnection', !!prefixed('RTCPeerConnection', window));
-});
+import Modernizr from '../../src/Modernizr.js';
+import prefixed from '../../src/prefixed.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('peerconnection', !!prefixed('RTCPeerConnection', _globalThis));
+
+export default Modernizr.peerconnection

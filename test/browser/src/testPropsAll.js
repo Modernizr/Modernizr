@@ -1,54 +1,25 @@
 describe('testPropsAll', function() {
-  var ModernizrProto = {_config: {}};
-  var Modernizr = {_q: []};
+  var _testDOMProps;
+  var _testProps;
   var testPropsAll;
-  var testDOMProps;
-  var testProps;
-  var cleanup;
-  var req;
+  // we are mocking out the module interface, not the Modernizr api
+  var Modernizr = {ModernizrProto: {_config: {}}};
 
-  before(function(done) {
+  eval(makeIIFE({file: "./src/testDOMProps.js", func: '_testDOMProps'}))
+  eval(makeIIFE({file: "./src/testProps.js", func: '_testProps'}))
 
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {
-        sinon: '../node_modules/sinon/pkg/sinon',
-        cleanup: '../test/cleanup'
-      }
-    });
+  var testDOMProps = sinon.spy(_testDOMProps)
+  var testProps = sinon.spy(_testProps)
 
-    define('ModernizrProto', [], function() {return ModernizrProto;});
-    define('Modernizr', [], function() {return Modernizr;});
-    define('package', [], function() {return {};});
+  eval(makeIIFE({
+    file: "./src/testPropsAll.js",
+    func: 'testPropsAll',
+    external: ['./testDOMProps.js', './testProps.js', './Modernizr.js']
+  }));
 
-    req(['testDOMProps', 'testProps', 'cleanup', 'sinon'], function(_testDOMProps, _testProps, _cleanup, _sinon) {
-      testDOMProps = _sinon.spy(_testDOMProps);
-      testProps = _sinon.spy(_testProps);
-      cleanup = _cleanup;
-
-      done();
-    });
-
-  });
-
-  beforeEach(function(done) {
-    req.undef('testDOMProps');
-    req.undef('testProps');
-
+  beforeEach(function() {
     testDOMProps.resetHistory();
     testProps.resetHistory();
-
-    define('testDOMProps', function() {return testDOMProps;});
-    define('testProps', function() {return testProps;});
-
-    req(['testPropsAll'], function(_testPropsAll) {
-      testPropsAll = _testPropsAll;
-
-      expect(testDOMProps.callCount).to.be.equal(0);
-      expect(testProps.callCount).to.be.equal(0);
-      done();
-    });
   });
 
   it('`testProps` is called if `prefixed` is a string', function() {
@@ -67,16 +38,6 @@ describe('testPropsAll', function() {
   });
 
   it('is added to ModernizrProto as `testAllProps`', function() {
-    expect(testPropsAll).to.be.equal(ModernizrProto.testAllProps);
-  });
-
-  afterEach(function() {
-    req.undef('testPropsAll');
-    req.undef('testDOMProps');
-    req.undef('testProps');
-  });
-
-  after(function() {
-    cleanup();
+    expect(testPropsAll).to.be.equal(Modernizr.ModernizrProto.testAllProps);
   });
 });

@@ -17,20 +17,23 @@
 /* DOC
 Detects support for the passive option to addEventListener.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('passiveeventlisteners', function() {
-    var supportsPassiveOption = false;
-    try {
-      var opts = Object.defineProperty({}, 'passive', {
-        get: function() {
-          supportsPassiveOption = true;
-          return;
-        }
-      });
-      var noop = function () {};
-      window.addEventListener('testPassiveEventSupport', noop, opts);
-      window.removeEventListener('testPassiveEventSupport', noop, opts);
-    } catch (e) {}
-    return supportsPassiveOption;
-  });
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('passiveeventlisteners', function() {
+  var supportsPassiveOption = false;
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function() {
+        supportsPassiveOption = true;
+        return;
+      }
+    });
+    var noop = function () {};
+    _globalThis.addEventListener('testPassiveEventSupport', noop, opts);
+    _globalThis.removeEventListener('testPassiveEventSupport', noop, opts);
+  } catch (e) {}
+  return supportsPassiveOption;
 });
+
+export default Modernizr.passiveeventlisteners

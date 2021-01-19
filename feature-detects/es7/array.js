@@ -13,7 +13,8 @@
 /* DOC
 Check if browser implements ECMAScript 7 Array per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('es7array', !!(Array.prototype &&
-    Array.prototype.includes));
-});
+import Modernizr from '../../src/Modernizr.js';
+
+Modernizr.addTest('es7array', !!(Array.prototype && Array.prototype.includes));
+
+export default Modernizr.es7array

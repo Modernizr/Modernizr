@@ -1,8 +1,8 @@
 {
   "classPrefix": "",
+  "globalVar": "Modernizr",
   "enableClasses": true,
   "enableJSClass": true,
-  "scriptGlobalName": "window",
   "usePrefixes": true,
   "minify": false,
   "options": [
@@ -12,12 +12,10 @@
     "hasEvent",
     "html5shiv",
     "html5printshiv",
-    "load",
     "mq",
     "prefixed",
     "prefixes",
     "prefixedCSS",
-    "setClasses",
     "testAllProps",
     "testProp",
     "testStyles"

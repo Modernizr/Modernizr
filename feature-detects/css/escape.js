@@ -9,7 +9,10 @@
 /* DOC
 Tests for `CSS.escape()` support.
 */
-define(['Modernizr'], function(Modernizr) {
-  var CSS = window.CSS;
-  Modernizr.addTest('cssescape', CSS ? typeof CSS.escape === 'function' : false);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+var CSS = _globalThis.CSS;
+Modernizr.addTest('cssescape', CSS ? typeof CSS.escape === 'function' : false);
+
+export default Modernizr.cssescape

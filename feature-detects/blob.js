@@ -15,14 +15,16 @@
 /* DOC
 Detects support for the Blob constructor, for creating file-like objects of immutable, raw data.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('blobconstructor', function() {
-    try {
-      return !!new Blob();
-    } catch (e) {
-      return false;
-    }
-  }, {
-    aliases: ['blob-constructor']
-  });
+import Modernizr from '../src/Modernizr.js';
+
+Modernizr.addTest('blobconstructor', function() {
+  try {
+    return !!new Blob();
+  } catch (e) {
+    return false;
+  }
+}, {
+  aliases: ['blob-constructor']
 });
+
+export default Modernizr.blobconstructor;

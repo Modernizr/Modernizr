@@ -16,6 +16,9 @@
 /* DOC
 Detects the ability for the browser to composite backgrounds using blending modes similar to ones found in Photoshop or Illustrator.
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('backgroundblendmode', prefixed('backgroundBlendMode', 'text'));
-});
+import Modernizr from '../../src/Modernizr.js';
+
+import prefixed from '../../src/prefixed.js';
+Modernizr.addTest('backgroundblendmode', prefixed('backgroundBlendMode', 'text'));
+
+export default Modernizr.backgroundblendmode

@@ -20,6 +20,9 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('cssmask', testAllProps('maskRepeat', 'repeat-x', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('cssmask', testAllProps('maskRepeat', 'repeat-x', true));
+
+export default Modernizr.cssmask

@@ -14,7 +14,10 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('displayrunin', testAllProps('display', 'run-in'),
-    {aliases: ['display-runin']});
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('displayrunin', testAllProps('display', 'run-in'),
+  {aliases: ['display-runin']});
+
+export default Modernizr.displayrunin

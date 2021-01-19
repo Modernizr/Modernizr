@@ -16,6 +16,9 @@
 /* DOC
 Test for `sandbox` attribute in iframes.
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('sandbox', 'sandbox' in createElement('iframe'));
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('sandbox', 'sandbox' in createElement('iframe'));
+
+export default Modernizr.sandbox

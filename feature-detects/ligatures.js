@@ -12,6 +12,9 @@
 /* DOC
 Detects support for OpenType ligatures
 */
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('ligatures', testAllProps('fontFeatureSettings', '"liga" 1'));
-});
+import Modernizr from '../src/Modernizr.js';
+import testAllProps from '../src/testAllProps.js';
+
+Modernizr.addTest('ligatures', testAllProps('fontFeatureSettings', '"liga" 1'));
+
+export default Modernizr.ligatures

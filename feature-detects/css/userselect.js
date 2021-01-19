@@ -12,7 +12,10 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  //https://github.com/Modernizr/Modernizr/issues/250
-  Modernizr.addTest('userselect', testAllProps('userSelect', 'none', true));
-});
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+//https://github.com/Modernizr/Modernizr/issues/250
+Modernizr.addTest('userselect', testAllProps('userSelect', 'none', true));
+
+export default Modernizr.userselect

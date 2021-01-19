@@ -17,23 +17,27 @@
 /* DOC
 Check if browser implements ECMAScript 6 Math per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('es6math', !!(Math &&
-    Math.clz32 &&
-    Math.cbrt &&
-    Math.imul &&
-    Math.sign &&
-    Math.log10 &&
-    Math.log2 &&
-    Math.log1p &&
-    Math.expm1 &&
-    Math.cosh &&
-    Math.sinh &&
-    Math.tanh &&
-    Math.acosh &&
-    Math.asinh &&
-    Math.atanh &&
-    Math.hypot &&
-    Math.trunc &&
-    Math.fround));
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+var M = _globalThis.Math
+
+Modernizr.addTest('es6math', !!(M &&
+  M.clz32 &&
+  M.cbrt &&
+  M.imul &&
+  M.sign &&
+  M.log10 &&
+  M.log2 &&
+  M.log1p &&
+  M.expm1 &&
+  M.cosh &&
+  M.sinh &&
+  M.tanh &&
+  M.acosh &&
+  M.asinh &&
+  M.atanh &&
+  M.hypot &&
+  M.trunc &&
+  M.fround));
+
+export default Modernizr.es6math

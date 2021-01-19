@@ -16,21 +16,25 @@
 /* DOC
 Detects support for VML.
 */
-define(['Modernizr', 'createElement', 'isSVG'], function(Modernizr, createElement, isSVG) {
-  Modernizr.addTest('vml', function() {
-    var containerDiv = createElement('div');
-    var supports = false;
-    var shape;
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+import isSVG from '../src/isSVG.js';
 
-    if (!isSVG) {
-      containerDiv.innerHTML = '<v:shape id="vml_flag1" adj="1" />';
-      shape = containerDiv.firstChild;
-      if ('style' in shape) {
-        shape.style.behavior = 'url(#default#VML)';
-      }
-      supports = shape ? typeof shape.adj === 'object' : true;
+Modernizr.addTest('vml', function() {
+  var containerDiv = createElement('div');
+  var supports = false;
+  var shape;
+
+  if (!isSVG) {
+    containerDiv.innerHTML = '<v:shape id="vml_flag1" adj="1" />';
+    shape = containerDiv.firstChild;
+    if ('style' in shape) {
+      shape.style.behavior = 'url(#default#VML)';
     }
+    supports = shape ? typeof shape.adj === 'object' : true;
+  }
 
-    return supports;
-  });
+  return supports;
 });
+
+export default Modernizr.vml

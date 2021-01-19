@@ -1,9 +1,5 @@
 describe('mq', function() {
-  var injectElementWithStyles;
   var mq;
-  var cleanup;
-  var sinon;
-  var req;
 
   var media = window.matchMedia || (function() {
     // adapted from jQuery Mobile
@@ -36,72 +32,62 @@ describe('mq', function() {
     };
   })();
 
-  before(function(done) {
-
-    req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {
-        sinon: '../node_modules/sinon/pkg/sinon',
-        cleanup: '../test/cleanup'
-      }
-    });
-
-    req(['injectElementWithStyles', 'cleanup', 'sinon'], function(_injectElementWithStyles, _cleanup, _sinon) {
-      injectElementWithStyles = _injectElementWithStyles;
-      cleanup = _cleanup;
-      sinon = _sinon;
-      done();
-    });
-
-  });
 
   if (window.matchMedia || window.msMatchMedia) {
     describe('matchMedia version', function() {
-      before(function(done) {
-        req(['mq'], function(_mq) {
-          mq = _mq;
-          done();
-        });
-      });
+      eval(makeIIFE({file: "./src/mq.js", func: 'mq'}))
 
       it('works', function() {
         expect(mq('only screen')).to.be.equal(media('only screen').matches);
         expect(mq('only fake rule')).to.be.equal(media('only fake rule').matches);
       });
     });
-  } else {
-    describe('fallback version', function() {
-
-      before(function(done) {
-        injectElementWithStyles = sinon.spy(injectElementWithStyles);
-        req.undef('injectElementWithStyles');
-        req.undef('mq');
-
-        define('injectElementWithStyles', [], function() {return injectElementWithStyles;});
-
-        req(['mq'], function(_mq) {
-          mq = _mq;
-          done();
-        });
-      });
-
-      it('works', function() {
-
-        expect(mq('only screen')).to.be.equal(media('only screen').matches);
-        expect(mq('only fake rule')).to.be.equal(media('only fake rule').matches);
-        expect(injectElementWithStyles.called).to.be.equal(true);
-      });
-
-    });
-
   }
 
-  afterEach(function() {
-    req.undef('mq');
+  describe('fallback version', function() {
+    var matchMedia = self.matchMedia
+    var msMatchMedia = self.msMatchMedia;
+
+    before(function() {
+      delete self.matchMedia
+      delete self.msMatchMedia
+    })
+
+    it('works', function() {
+      var _injectElementWithStyles;
+      var injectElementWithStyles
+
+      eval(makeIIFE({file: "./src/injectElementWithStyles.js", func: '_injectElementWithStyles'}))
+
+      injectElementWithStyles = sinon.spy(_injectElementWithStyles)
+
+      eval(makeIIFE({file: "./src/mq.js", func: 'mq', external: ['./injectElementWithStyles.js']}))
+
+      expect(mq('only screen')).to.be.equal(media('only screen').matches);
+      expect(mq('only fake rule')).to.be.equal(media('only fake rule').matches);
+      expect(injectElementWithStyles.called).to.be.equal(true);
+    });
+
+    it('works even without getComputedStyle', function() {
+      /*
+      eslint no-unused-vars: ["error", {
+        "varsIgnorePattern": "_globalThis|injectElementWithStyles"
+      }]
+      */
+      var _globalThis = {}
+      var injectElementWithStyles = function(mediaQuery, callback) {
+        callback({currentStyle: {position: 'absolute'}})
+      }
+
+      eval(makeIIFE({file: "./src/mq.js", func: 'mq', external: ['./injectElementWithStyles.js', './globalThis.js']}))
+
+      expect(mq('only screen')).to.be.equal(media('only screen').matches);
+    });
+
+    after(function() {
+      self.matchMedia = matchMedia
+      self.msMatchMedia = msMatchMedia
+    })
   });
 
-  after(function() {
-    cleanup();
-  });
 });

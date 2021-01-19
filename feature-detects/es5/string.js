@@ -14,8 +14,10 @@
 /* DOC
 Check if browser implements ECMAScript 5 String per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('es5string', function() {
-    return !!(String.prototype && String.prototype.trim);
-  });
+import Modernizr from '../../src/Modernizr.js';
+
+Modernizr.addTest('es5string', function() {
+  return !!(String.prototype && String.prototype.trim);
 });
+
+export default Modernizr.es5string

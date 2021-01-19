@@ -14,11 +14,17 @@
   }]
 }
 !*/
-define(['Modernizr', 'testStyles', 'computedStyle', 'roundedEquals'], function(Modernizr, testStyles, computedStyle, roundedEquals) {
-  testStyles('#modernizr { width: 50vw; }', function(elem) {
-    var width = parseInt(window.innerWidth / 2, 10);
-    var compStyle = parseInt(computedStyle(elem, null, 'width'), 10);
+import Modernizr from '../../src/Modernizr.js';
+import testStyles from '../../src/testStyles.js';
+import computedStyle from '../../src/computedStyle.js';
+import roundedEquals from '../../src/roundedEquals.js';
+import _globalThis from '../../src/globalThis.js';
 
-    Modernizr.addTest('cssvwunit', roundedEquals(compStyle, width));
-  });
+testStyles('#modernizr { width: 50vw; }', function(elem) {
+  var width = parseInt(_globalThis.innerWidth / 2, 10);
+  var compStyle = parseInt(computedStyle(elem, null, 'width'), 10);
+
+  Modernizr.addTest('cssvwunit', roundedEquals(compStyle, width));
 });
+
+export default Modernizr.cssvwunit

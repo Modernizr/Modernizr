@@ -19,6 +19,9 @@
 /* DOC
  Determines if Intersection Observer API is available.
  */
-define(['Modernizr'], function (Modernizr) {
-  Modernizr.addTest('intersectionobserver', 'IntersectionObserver' in window);
-});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('intersectionobserver', 'IntersectionObserver' in _globalThis);
+
+export default Modernizr.intersectionobserver

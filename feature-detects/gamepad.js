@@ -18,6 +18,10 @@
 /* DOC
 Detects support for the Gamepad API, for access to gamepads and controllers.
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('gamepads', !!prefixed('getGamepads', navigator));
-});
+import Modernizr from '../src/Modernizr.js';
+import prefixed from '../src/prefixed.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('gamepads', !!prefixed('getGamepads', _globalThis.navigator));
+
+export default Modernizr.gamepads

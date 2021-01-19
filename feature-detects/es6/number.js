@@ -17,14 +17,16 @@
 /* DOC
 Check if browser implements ECMAScript 6 Number per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('es6number', !!(Number.isFinite &&
-    Number.isInteger &&
-    Number.isSafeInteger &&
-    Number.isNaN &&
-    Number.parseInt &&
-    Number.parseFloat &&
-    Number.isInteger(Number.MAX_SAFE_INTEGER) &&
-    Number.isInteger(Number.MIN_SAFE_INTEGER) &&
-    Number.isFinite(Number.EPSILON)));
-});
+import Modernizr from '../../src/Modernizr.js';
+
+Modernizr.addTest('es6number', !!(Number.isFinite &&
+  Number.isInteger &&
+  Number.isSafeInteger &&
+  Number.isNaN &&
+  Number.parseInt &&
+  Number.parseFloat &&
+  Number.isInteger(Number.MAX_SAFE_INTEGER) &&
+  Number.isInteger(Number.MIN_SAFE_INTEGER) &&
+  Number.isFinite(Number.EPSILON)));
+
+export default Modernizr.es6number

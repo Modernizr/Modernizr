@@ -10,8 +10,11 @@
   }]
 }
 !*/
-define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
-  Modernizr.addTest('csstransformslevel2', function() {
-    return testAllProps('translate', '45px', true);
-  });
+import Modernizr from '../../src/Modernizr.js';
+import testAllProps from '../../src/testAllProps.js';
+
+Modernizr.addTest('csstransformslevel2', function() {
+  return testAllProps('translate', '45px', true);
 });
+
+export default Modernizr.csstransformslevel2

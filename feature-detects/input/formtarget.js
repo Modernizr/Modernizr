@@ -16,6 +16,9 @@
 /* DOC
 Detect support for the formtarget attribute on form inputs, which overrides the form target attribute
 */
-define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
-  Modernizr.addTest('inputformtarget', !!('formTarget' in createElement('input')), {aliases: ['input-formtarget']});
-});
+import Modernizr from '../../src/Modernizr.js';
+import createElement from '../../src/createElement.js';
+
+Modernizr.addTest('inputformtarget', !!('formTarget' in createElement('input')), {aliases: ['input-formtarget']});
+
+export default Modernizr.inputformtarget

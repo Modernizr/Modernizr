@@ -18,20 +18,23 @@
 /* DOC
 Check if browser implements ECMAScript 6 Symbol per specification.
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('es6symbol', !!(typeof(Symbol)==="function" &&
-    Symbol['for'] &&
-    Symbol.hasInstance &&
-    Symbol.isConcatSpreadable &&
-    Symbol.iterator &&
-    Symbol.keyFor &&
-    Symbol.match &&
-    Symbol.prototype &&
-    Symbol.replace &&
-    Symbol.search &&
-    Symbol.species &&
-    Symbol.split &&
-    Symbol.toPrimitive &&
-    Symbol.toStringTag &&
-    Symbol.unscopables));
-});
+import Modernizr from '../../src/Modernizr.js';
+
+Modernizr.addTest('es6symbol', !!(typeof(Symbol)==="function" &&
+  Symbol['for'] &&
+  Symbol.hasInstance &&
+  Symbol.isConcatSpreadable &&
+  Symbol.iterator &&
+  Symbol.keyFor &&
+  Symbol.match &&
+  Symbol.prototype &&
+  Symbol.replace &&
+  Symbol.search &&
+  Symbol.species &&
+  Symbol.split &&
+  Symbol.toPrimitive &&
+  Symbol.toStringTag &&
+  Symbol.unscopables)
+);
+
+export default Modernizr.es6symbol

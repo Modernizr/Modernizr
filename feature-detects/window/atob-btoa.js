@@ -17,8 +17,13 @@
 }
 !*/
 /* DOC
-Detects support for WindowBase64 API (window.atob && window.btoa).
+Detects support for WindowBase64 API (_globalThis.atob && _globalThis.btoa).
 */
-define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('atobbtoa', 'atob' in window && 'btoa' in window, {aliases: ['atob-btoa']});
+import Modernizr from '../../src/Modernizr.js';
+import _globalThis from '../../src/globalThis.js';
+
+Modernizr.addTest('atobbtoa', 'atob' in _globalThis && 'btoa' in _globalThis, {
+  aliases: ['atob-btoa']
 });
+
+export default Modernizr.atobbtoa

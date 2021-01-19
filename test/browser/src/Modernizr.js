@@ -1,29 +1,11 @@
-describe('Modernizr Base', function() {
-  var modernizrBase;
-  var cleanup;
+describe('Modernizr', function() {
+  eval(makeIIFE({file: "./src/Modernizr.js", func: 'Modernizr'}))
+  // Since Modernizr has multiple exports, we need to explictly request
+  // the `default` export inside of an IIFE build
+  var Modernizr = Modernizr.default
 
-  before(function(done) {
+  it('should be an object', function() {
+    expect(Modernizr).to.be.an('object');
+  })
 
-    define('package', [], function() {return {};});
-
-    var req = requirejs.config({
-      context: Math.random().toString().slice(2),
-      baseUrl: '../src',
-      paths: {cleanup: '../test/cleanup'}
-    });
-
-    req(['Modernizr', 'cleanup'], function(_ModernizrBase, _cleanup) {
-      modernizrBase = _ModernizrBase;
-      cleanup = _cleanup;
-      done();
-    });
-  });
-
-  it('should return an object', function() {
-    expect(modernizrBase).to.be.an('object');
-  });
-
-  after(function() {
-    cleanup();
-  });
 });

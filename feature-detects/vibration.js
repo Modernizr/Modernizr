@@ -15,6 +15,10 @@
 /* DOC
 Detects support for the API that provides access to the vibration mechanism of the hosting device, to provide tactile feedback.
 */
-define(['Modernizr', 'prefixed'], function(Modernizr, prefixed) {
-  Modernizr.addTest('vibrate', !!prefixed('vibrate', navigator));
-});
+import Modernizr from '../src/Modernizr.js';
+import prefixed from '../src/prefixed.js';
+import _globalThis from '../src/globalThis.js';
+
+Modernizr.addTest('vibrate', !!prefixed('vibrate', _globalThis.navigator));
+
+export default Modernizr.vibrate

@@ -18,18 +18,20 @@
 /* DOC
 Tests for animated webp support.
 */
-define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
-  Modernizr.addAsyncTest(function() {
-    var image = new Image();
+import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 
-    image.onerror = function() {
-      addTest('webpanimation', false, {aliases: ['webp-animation']});
-    };
+Modernizr.addAsyncTest(function() {
+  var image = new Image();
 
-    image.onload = function() {
-      addTest('webpanimation', image.width === 1, {aliases: ['webp-animation']});
-    };
+  image.onerror = function() {
+    addTest('webpanimation', false, {aliases: ['webp-animation']});
+  };
 
-    image.src = 'data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA';
-  });
+  image.onload = function() {
+    addTest('webpanimation', image.width === 1, {aliases: ['webp-animation']});
+  };
+
+  image.src = 'data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA';
 });
+
+export default createAsyncTestListener("webpanimation");
