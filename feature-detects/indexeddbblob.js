@@ -1,7 +1,9 @@
 /*!
 {
   "name": "IndexedDB Blob",
-  "property": "indexeddbblob"
+  "property": "indexeddbblob",
+  "tags": ["storage"],
+  "async": true
 }
 !*/
 /* DOC
@@ -14,54 +16,52 @@ define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function(Moderniz
   // For speed, we don't test the legacy (and beta-only) indexedDB
 
   Modernizr.addAsyncTest(function() {
-    var indexeddb;
-    var dbname = 'detect-blob-support';
-    var supportsBlob = false;
-    var openRequest;
-    var db;
-    var putRequest;
+    Modernizr.on('indexeddb.deletedatabase', function(result) {
+      if (!result) return;
 
-    try {
-      indexeddb = prefixed('indexedDB', window);
-    } catch (e) {
-    }
+      var indexeddb;
+      var dbname = 'detect-blob-support';
+      var openRequest;
+      var db;
+      var putRequest;
 
-    if (!(Modernizr.indexeddb && Modernizr.indexeddb.deletedatabase)) {
-      return false;
-    }
+      try {
+        indexeddb = prefixed('indexedDB', window);
+      } catch (e) {
+      }
 
-    // Calling `deleteDatabase` in a try…catch because some contexts (e.g. data URIs)
-    // will throw a `SecurityError`
-    try {
-      indexeddb.deleteDatabase(dbname).onsuccess = function() {
-        openRequest = indexeddb.open(dbname, 1);
-        openRequest.onupgradeneeded = function() {
-          openRequest.result.createObjectStore('store');
+      // Calling `deleteDatabase` in a try…catch because some contexts (e.g. data URIs)
+      // will throw a `SecurityError`
+      try {
+        indexeddb.deleteDatabase(dbname).onsuccess = function() {
+          openRequest = indexeddb.open(dbname, 1);
+          openRequest.onupgradeneeded = function() {
+            openRequest.result.createObjectStore('store');
+          };
+          openRequest.onsuccess = function() {
+            db = openRequest.result;
+            try {
+              putRequest = db.transaction('store', 'readwrite').objectStore('store').put(new Blob(), 'key');
+              putRequest.onsuccess = function() {
+                addTest('indexeddbblob', true);
+              };
+              putRequest.onerror = function() {
+                addTest('indexeddbblob', false);
+              };
+            }
+            catch (e) {
+              addTest('indexeddbblob', false);
+            }
+            finally {
+              db.close();
+              indexeddb.deleteDatabase(dbname);
+            }
+          };
         };
-        openRequest.onsuccess = function() {
-          db = openRequest.result;
-          try {
-            putRequest = db.transaction('store', 'readwrite').objectStore('store').put(new Blob(), 'key');
-            putRequest.onsuccess = function() {
-              supportsBlob = true;
-            };
-            putRequest.onerror = function() {
-              supportsBlob = false;
-            };
-          }
-          catch (e) {
-            supportsBlob = false;
-          }
-          finally {
-            addTest('indexeddbblob', supportsBlob);
-            db.close();
-            indexeddb.deleteDatabase(dbname);
-          }
-        };
-      };
-    }
-    catch (e) {
-      addTest('indexeddbblob', false);
-    }
+      }
+      catch (e) {
+        addTest('indexeddbblob', false);
+      }
+    });
   });
 });
