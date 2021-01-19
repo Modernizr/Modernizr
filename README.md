@@ -5,7 +5,7 @@
 
 ##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 
-- [Website](https://modernizr.com)
+- Our Website is outdated and broken, please DO NOT use it (https://modernizr.com) but rather build your modernizr version from npm.
 - [Documentation](https://modernizr.com/docs/)
 - [Integration tests](https://modernizr.github.io/Modernizr/test/integration.html)
 - [Unit tests](https://modernizr.github.io/Modernizr/test/unit.html)
