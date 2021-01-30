@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         node-version: [10.x, 12.x, 14.x]
         include:
           - node: 15.x # This way we have a way to see if it works in the latest 
