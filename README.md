@@ -27,7 +27,7 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
 
 - Following tests got moved in subdirectories:
 
-  - `cookies`, `indexeddb`, `indexeddbblock`, `quota-management-api`, `userdata` moved into the storage subdirectory
+  - `cookies`, `indexeddb`, `indexedblob`, `quota-management-api`, `userdata` moved into the storage subdirectory
   - `canvastext` moved into the canvas subdirectory
   - `exiforientation` moved into the image subdirectory
      
