@@ -1,0 +1,29 @@
+name: Testing
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node-version: [10.x, 12.x, 14.x]
+        include:
+          - node: 15.x # This way we have a way to see if it works in the latest 
+            os: ubuntu-18.04 # Even though we don't officialy maintain it
+            experimental: true
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Installing Node ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Installing dependencies
+      run: npm ci
+    - run: npm install -g gulp-cli
+    - name: Testing Modernizr
+      run: npm test
+    - name: Sending Coverage
+      run: ./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/codecov --pipe
