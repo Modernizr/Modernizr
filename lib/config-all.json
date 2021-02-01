@@ -34,7 +34,7 @@
     "battery/battery",
     "battery/lowbattery",
     "blob",
-    "canvas",
+    "canvas/canvas",
     "canvas/blending",
     "canvas/todataurl",
     "canvas/winding",

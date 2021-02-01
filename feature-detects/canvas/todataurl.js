@@ -10,7 +10,7 @@
   }]
 }
 !*/
-define(['Modernizr', 'createElement', 'test/canvas'], function(Modernizr, createElement) {
+define(['Modernizr', 'createElement', 'test/canvas/canvas'], function(Modernizr, createElement) {
 
   var canvas = createElement('canvas');
 
