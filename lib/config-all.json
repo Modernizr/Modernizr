@@ -294,7 +294,7 @@
     "url/parser",
     "url/urlsearchparams",
     "vibration",
-    "video",
+    "video/video",
     "video/autoplay",
     "video/crossorigin",
     "video/loop",
