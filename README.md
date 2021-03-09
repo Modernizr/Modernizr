@@ -31,7 +31,11 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
   - `audio` moved into the audio subdirectory
   - `battery` moved into the battery subdirectory
   - `canvas`, `canvastext` moved into the canvas subdirectory
+  - `customevent`, `eventlistener`, `forcetouch`, `hashchange`, `pointerevents`, `proximity` moved into the event subdirectory
   - `exiforientation` moved into the image subdirectory
+  - `capture`, `fileinput`, `fileinputdirectory`, `formatattribute`, `input`, `inputnumber-l10n`, `inputsearchevent`, `inputtypes`, `placeholder`, `requestautocomplete`, `validation` moved into the input subdirectory
+  - `svg` moved into the svg subdirectory
+  - `webgl` moved into the webgl subdirectory
      
 - Following tests got removed:
   
