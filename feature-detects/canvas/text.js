@@ -10,7 +10,7 @@
 /* DOC
 Detects support for the text APIs for `<canvas>` elements.
 */
-define(['Modernizr', 'createElement', 'test/canvas'], function(Modernizr, createElement) {
+define(['Modernizr', 'createElement', 'test/canvas/canvas'], function(Modernizr, createElement) {
   Modernizr.addTest('canvastext', function() {
     if (Modernizr.canvas === false) {
       return false;

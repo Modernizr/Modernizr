@@ -2,7 +2,7 @@
 {
   "name": "Low Battery Level",
   "property": "lowbattery",
-  "tags": ["hardware", "mobile"],
+  "tags": ["battery", "hardware", "mobile"],
   "builderAliases": ["battery_level"],
   "authors": ["Paul Sayre"],
   "notes": [{

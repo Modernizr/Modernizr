@@ -12,7 +12,7 @@
 /* DOC
 Detects support for the IndexedDB 2.0 client-side storage API.
 */
-define(['Modernizr', 'addTest', 'test/indexeddb'], function(Modernizr, addTest) {
+define(['Modernizr', 'addTest', 'test/storage/indexeddb'], function(Modernizr, addTest) {
   Modernizr.addAsyncTest(function() {
     Modernizr.on('indexeddb', function(result) {
       if (!result) return;

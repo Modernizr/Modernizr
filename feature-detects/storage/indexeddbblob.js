@@ -1,13 +1,14 @@
 /*!
 {
   "name": "IndexedDB Blob",
-  "property": "indexeddbblob"
+  "property": "indexeddbblob",
+  "tags": ["storage"]
 }
 !*/
 /* DOC
 Detects if the browser can save File/Blob objects to IndexedDB
 */
-define(['Modernizr', 'addTest', 'prefixed', 'test/indexeddb'], function(Modernizr, addTest, prefixed) {
+define(['Modernizr', 'addTest', 'prefixed', 'test/storage/indexeddb'], function(Modernizr, addTest, prefixed) {
   // Vendors had inconsistent prefixing with the experimental Indexed DB:
   // - Webkit's implementation is accessible through webkitIndexedDB
   // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
