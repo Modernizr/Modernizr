@@ -17,7 +17,7 @@ describe('domToCSS', function() {
     });
   });
 
-  it('converts kebab to camel', function() {
+  it('converts hyphen to camel', function() {
     expect(domToCSS('fakeDetect')).to.be.equal('fake-detect');
   });
 

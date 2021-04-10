@@ -10,7 +10,7 @@ define(['contains', 'mStyle', 'createElement', 'nativeTestProps', 'is', 'cssToDO
   // on our modernizr element, but instead just testing undefined vs
   // empty string.
 
-  // Property names can be provided in either camelCase or kebab-case.
+  // Property names can be provided in either camelCase or hyphen-case.
 
   function testProps(props, prefixed, value, skipValueTest) {
     skipValueTest = is(skipValueTest, 'undefined') ? false : skipValueTest;
