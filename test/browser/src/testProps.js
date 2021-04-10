@@ -131,7 +131,7 @@ describe('testProps', function() {
       expect(testProps(['happiness'])).to.be.equal(false);
       // Everyone supports fontSize
       expect(testProps(['fontSize'])).to.be.equal(true);
-      // kebab-case should work too
+      // hyphen-case should work too
     });
 
     afterEach(function() {
