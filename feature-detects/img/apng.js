@@ -3,6 +3,7 @@
   "name": "Animated PNG",
   "async": true,
   "property": "apng",
+  "caniuse": "apng",
   "tags": ["image"],
   "builderAliases": ["img_apng"],
   "notes": [{
@@ -14,7 +15,7 @@
 /* DOC
 Test for animated png support.
 */
-define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function(Modernizr, createElement, addTest) {
+define(['Modernizr', 'createElement', 'addTest', 'test/canvas/canvas'], function(Modernizr, createElement, addTest) {
   Modernizr.addAsyncTest(function() {
     if (!Modernizr.canvas) {
       return false;
@@ -26,7 +27,7 @@ define(['Modernizr', 'createElement', 'addTest', 'test/canvas'], function(Modern
 
     image.onload = function() {
       addTest('apng', function() {
-        if (typeof canvas.getContext == 'undefined') {
+        if (typeof canvas.getContext === 'undefined') {
           return false;
         }
         else {

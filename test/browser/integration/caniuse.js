@@ -1,63 +1,88 @@
-/* global uaparse */
+/*global UAParser*/
 window.caniusecb = function(caniuse) {
-  // So Phantom doesn't kill the caniuse.com matching exit out as it's useless anyway within PhantomJS
-  if (window._phantom) {
+
+  var ua = new UAParser(navigator.userAgent).getResult();
+  if (ua.browser.name === 'Chrome Headless') {
+    // TODO:: We could test against the caniuse data of the standard Chrome browser but there are currently three
+    // errors already present (focuswithin siblinggeneral htmlimports) which need to be fixed first. For now
+    // just return like back with phantomjs
+    //ua.browser.name = 'Chrome';
     return;
   }
-  describe('caniuse', function() {
 
-    var ua = uaparse(navigator.userAgent);
+  describe('caniuse', function() {
     var unusedModernizr = [];
     var unusedCaniuse = _.keys(caniuse.data);
+    // TODO:: This map could (theoretically!) be build automatically by going through all feature-detects and look into
+    // the docs where property and caniuse tags are written down. One should anyway look if some are missing here or in
+    // the feature detect docs
     var map = {
       adownload: 'download',
       ambientlight: 'ambient-light',
       apng: 'apng',
       appearance: 'css-appearance',
       applicationcache: 'offline-apps',
+      atobbtoa: 'atob-btoa',
       audio: 'audio',
+      avif: 'avif',
+      backdropfilter: 'css-backdrop-filter',
       backgroundblendmode: 'css-backgroundblendmode',
+      bgpositionshorthand: 'css-background-offsets',
       blobconstructor: 'blobbuilder',
       bloburls: 'bloburls',
       borderimage: 'border-image',
       borderradius: 'border-radius',
+      boxdecorationbreak: 'css-boxdecorationbreak',
       boxshadow: 'css-boxshadow',
       boxsizing: 'css3-boxsizing',
       canvas: 'canvas',
       canvasblending: 'canvas-blending',
       canvastext: 'canvas-text',
+      checked: 'css-sel3',
       classlist: 'classlist',
       contenteditable: 'contenteditable',
       contextmenu: 'menu',
       cors: 'cors',
+      cryptography: 'cryptography',
       cssanimations: 'css-animation',
       csscalc: 'calc',
+      csschunit: 'ch-unit',
       csscolumns: 'multicolumn',
       cssfilters: 'css-filters',
       cssgradients: 'css-gradients',
+      csshyphens: 'css-hyphens',
+      cssmask: 'css-masks',
       csspointerevents: 'pointer-events',
       csspositionsticky: 'css-sticky',
       cssreflections: 'css-reflections',
       cssremunit: 'rem',
       cssresize: 'css-resize',
-      csstransforms3d: 'transforms3d',
       csstransforms: 'transforms2d',
+      csstransforms3d: 'transforms3d',
       csstransitions: 'css-transitions',
       cssvhunit: 'viewport-units',
       cssvmaxunit: 'viewport-units',
       cssvminunit: 'viewport-units',
       cssvwunit: 'viewport-units',
-      datalistelem: 'datalist',
+      customelements: 'custom-elementsv1',
+      customproperties: 'css-variables',
+      dataset: 'dataset',
       datauri: 'datauri',
       details: 'details',
       deviceorientation: 'deviceorientation',
       displaytable: 'css-table',
+      ellipsis: 'text-overflow',
+      eventlistener: 'addeventlistener',
       eventsource: 'eventsource',
+      fetch: 'fetch',
+      fileinput: 'forms',
       filereader: 'fileapi',
       filesystem: 'filesystem',
       flexbox: 'flexbox',
       flexboxlegacy: 'flexbox',
       flexboxtweener: 'flexbox',
+      focuswithin: 'css-focus-visible',
+      fontdisplay: 'css-font-rendering-controls',
       fontface: 'fontface',
       formvalidationapi: 'form-validation',
       fullscreen: 'fullscreen',
@@ -71,49 +96,74 @@ window.caniusecb = function(caniuse) {
       hsla: 'css3-colors',
       htmlimports: 'imports',
       indexeddb: 'indexeddb',
+      indexeddb2: 'indexeddb2',
       inlinesvg: 'svg-html5',
       inputtypes: 'forms',
-      jpegxr: 'jpegxr',
+      intersectionobserver: 'intersectionobserver',
+      intl: 'internationalization',
       jpeg2000: 'jpeg2000',
+      jpegxr: 'jpegxr',
       json: 'json',
+      lastchild: 'css-sel3',
+      ligatures: 'font-feature',
       localstorage: 'namevalue-storage',
       mathml: 'mathml',
       mediaqueries: 'css-mediaqueries',
+      mediasource: 'mediasource',
+      messagechannel: 'channel-messaging',
       meter: 'progress',
       multiplebgs: 'multibackgrounds',
       mutationobserver: 'mutationobserver',
       notification: 'notifications',
+      nthchild: 'css-sel3',
       objectfit: 'object-fit',
       opacity: 'css-opacity',
       pagevisibility: 'pagevisibility',
+      passiveeventlisteners: 'passive-event-listener',
+      peerconnection: 'rtcpeerconnection',
       performance: 'nav-timing',
       picture: 'picture',
+      pointerevents: 'pointer',
       postmessage: 'x-doc-messaging',
+      prefetch: 'link-rel-prefetch',
       progressbar: 'progress',
       promises: 'promises',
+      proximity: 'proximity',
       queryselector: 'queryselector',
       regions: 'css-regions',
       requestanimationframe: 'requestanimationframe',
+      resizeobserver: 'resizeobserver',
       rgba: 'css3-colors',
       ruby: 'ruby',
       sandbox: 'iframe-sandbox',
       scriptasync: 'script-async',
       scriptdefer: 'script-defer',
+      scrollsnappoints: 'css-snappoints',
       seamless: 'iframe-seamless',
+      serviceworker: 'serviceworkers',
       shapes: 'css-shapes',
       sharedworkers: 'sharedworkers',
+      siblinggeneral: 'css-sel3',
       smil: 'svg-smil',
+      speechrecognition: 'speech-recognition',
+      speechsynthesis: 'speech-synthesis',
+      srcdoc: 'iframe-srcdoc',
+      srcset: 'srcset',
       strictmode: 'use-strict',
       stylescoped: 'style-scoped',
       supports: 'css-featurequeries',
       svg: 'svg',
       svgasimg: 'svg-img',
       svgfilters: 'svg-filters',
+      target: 'css-sel3',
       template: 'template',
       textalignlast: 'css-text-align-last',
+      textdecoration: 'text-decoration',
       textshadow: 'css-textshadow',
+      touchevents: 'touch',
       typedarrays: 'typedarrays',
       unicoderange: 'font-unicode-range',
+      urlsearchparams: 'urlsearchparams',
       userselect: 'user-select-none',
       vibrate: 'vibration',
       video: 'video',
@@ -170,12 +220,12 @@ window.caniusecb = function(caniuse) {
       }
 
       // change the *documented* false positives
-      if (!ciubool && (o.feature == 'textshadow' && o.browser == 'Firefox' && o.version == 3)) {
+      if (!ciubool && (o.feature === 'textshadow' && o.browser === 'Firefox' && o.version === 3)) {
         ciubool = o.fp = true;
       }
 
       // firefox does not support unicode-range without a flag
-      if (o.feature === 'unicoderange' && o.caniuseResult.indexOf('y') === 0 && o.browser == 'Firefox' && o.version <= 40) {
+      if (o.feature === 'unicoderange' && o.caniuseResult.indexOf('y') === 0 && o.browser === 'Firefox' && o.version <= 40) {
         return;
       }
 
@@ -187,13 +237,13 @@ window.caniusecb = function(caniuse) {
 
       // firefox only supports the `url` version of css-filters, which we don't
       // consider support
-      if (o.feature === 'cssfilters' && o.browser == 'Firefox' && o.caniuseResult.indexOf('a') === 0) {
+      if (o.feature === 'cssfilters' && o.browser === 'Firefox' && o.caniuseResult.indexOf('a') === 0) {
         return;
       }
 
       // before 4.0, firefox only supports MathML on XHTML documents. Since we
       // don't run inside of one, we will have a technically false negative
-      if (o.feature === 'mathml' && o.browser == 'Firefox' && o.version < 4) {
+      if (o.feature === 'mathml' && o.browser === 'Firefox' && o.version < 4) {
         return;
       }
 
@@ -219,15 +269,14 @@ window.caniusecb = function(caniuse) {
         return;
       }
 
-
       // caniuse counts a partial support for CORS via the XDomainRequest,
       // but thats not really cors - so skip the comparison.
-      if (o.feature === 'cors' && o.browser == 'IE' && o.version < 10) {
+      if (o.feature === 'cors' && o.browser === 'IE' && o.version < 10) {
         return;
       }
 
       // Opera 12 has a false positive for `defer`
-      if (o.feature === 'scriptdefer' && o.browser == 'Opera' && parseInt(o.version, 10) === 12) {
+      if (o.feature === 'scriptdefer' && o.browser === 'Opera' && parseInt(o.version, 10) === 12) {
         return;
       }
 
@@ -235,14 +284,13 @@ window.caniusecb = function(caniuse) {
       // atleast some of our inputtypes.
       if (o.ciufeature === 'forms') {
         return it('Caniuse result for forms matches Modernizr\'s result for inputtypes', function() {
-          return expect(ciubool).to.be(_.some(Modernizr.inputtypes, function(modernizrResult) {
+          return expect(ciubool).to.be.equal(_.some(Modernizr.inputtypes, function(modernizrResult) {
             return modernizrResult;
           }));
         });
       }
 
-
-      // we breakout flexbox sniffing into three seperate detects, which borks the caniuse mappings,
+      // we breakout flexbox sniffing into three separate detects, which borks the caniuse mappings,
       // since no browser supports all three
       if (o.ciufeature === 'flexbox') {
         return it('Caniuse result for flexbox matches Modernizr\'s result for flexbox', function() {
@@ -273,14 +321,14 @@ window.caniusecb = function(caniuse) {
       if (o.caniuseResult.indexOf('a') === 0) {
         return it(o.browser + o.version + ': Caniuse reported partial support for ' + o.ciufeature, function() {
           var modernizrResult = o.result instanceof Boolean ? o.result.valueOf() : !!o.result;
-          expect(ciubool).to.equal(modernizrResult);
+          expect(ciubool).to.be.equal(modernizrResult);
         });
       }
 
       // where we actually do most our assertions
       it(o.browser + o.version + ': Caniuse result for ' + o.ciufeature + ' matches Modernizr\'s ' + (o.fp ? '*false positive*' : 'result') + ' for ' + o.feature, function() {
         var modernizrResult = o.result instanceof Boolean ? o.result.valueOf() : !!o.result;
-        expect(ciubool).to.equal(modernizrResult);
+        expect(ciubool).to.be.equal(modernizrResult);
       });
     }
 
@@ -301,24 +349,26 @@ window.caniusecb = function(caniuse) {
       unusedCaniuse = _.without(unusedCaniuse, caniuseFeatureName);
 
       // get results for this feature for all versions of this browser
-      var browserResults = caniuseFeatureData.stats[ua.family.toLowerCase()];
+      var browserResults = caniuseFeatureData.stats[ua.browser.name.toLowerCase()];
 
-      // let's get our versions in order..
-      var minorver   = ua.minor &&                                  // caniuse doesn't use two digit minors
-        ua.minor.toString().replace(/(\d)\d$/, '$1'); // but opera does.
+      var majorminor = ua.browser.version
+      // opera gets grouped in some cases by caniuse
+        .replace(/(9\.(6|5))/ , ua.browser.name === 'Opera' ? '9.5-9.6' : '$1')
+        .replace(/(10\.(0|1))/, ua.browser.name === 'Opera' ? '10.0-10.1' : '$1');
 
-      var majorminor = (ua.major + '.' + minorver)
-        // opera gets grouped in some cases by caniuse
-        .replace(/(9\.(6|5))/ , ua.family == 'opera' ? '9.5-9.6'   : '$1')
-        .replace(/(10\.(0|1))/, ua.family == 'opera' ? '10.0-10.1' : '$1');
+      // make sure the version keys of the caniusedata is sorted as numbers not as strings
+      // otherwise for example firefox 3.6 is the first version in the _.findLast call up next
+      var sortedVersionKeys = _.keys(browserResults).sort(function(key1, key2) {
+        return parseFloat(key1) - parseFloat(key2);
+      });
 
-      var versionToUse = _.findLast(_.keys(browserResults), function(ciuVersion) {
+      var versionToUse = _.findLast(sortedVersionKeys, function(ciuVersion) {
         return parseFloat(ciuVersion) <= parseFloat(majorminor);
       });
 
-      var latestResult   = browserResults[versionToUse];
+      var latestResult = browserResults[versionToUse];
 
-      if (latestResult && latestResult != 'u') { // 'y' 'n' or 'a'
+      if (latestResult && latestResult !== 'u') { // 'y' 'n' or 'a'
 
         // data ends w/ ` x` if its still prefixed in the imp
         latestResult = latestResult.replace(' x', '');
@@ -329,7 +379,7 @@ window.caniusecb = function(caniuse) {
           ciufeature: caniuseFeatureName,
           result: Modernizr[feature],
           caniuseResult: latestResult,
-          browser: ua.family,
+          browser: ua.browser.name,
           version: parseFloat(versionToUse)
         });
       }

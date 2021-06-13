@@ -2,17 +2,17 @@
 {
   "name": "Web Workers",
   "property": "webworkers",
-  "caniuse" : "webworkers",
+  "caniuse": "webworkers",
   "tags": ["performance", "workers"],
   "notes": [{
-    "name": "W3C Reference",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/workers/"
   }, {
-    "name": "HTML5 Rocks article",
-    "href": "http://www.html5rocks.com/en/tutorials/workers/basics/"
+    "name": "HTML5 Rocks Tutorial",
+    "href": "https://www.html5rocks.com/en/tutorials/workers/basics/"
   }, {
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/Guide/Performance/Using_web_workers"
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"
   }],
   "polyfills": ["fakeworker", "html5shims"]
 }

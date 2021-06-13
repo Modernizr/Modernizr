@@ -13,6 +13,6 @@ define(['Modernizr', 'testStyles', 'prefixes'], function(Modernizr, testStyles, 
     .slice(1)
     .join('#') + 'scrollbar{width:10px}',
   function(node) {
-    Modernizr.addTest('cssscrollbar', 'scrollWidth' in node && node.scrollWidth == 30);
+    Modernizr.addTest('cssscrollbar', 'scrollWidth' in node && node.scrollWidth === 30);
   });
 });

@@ -8,7 +8,7 @@
   "builderAliases": ["css_displaytable"],
   "notes": [{
     "name": "Detects for all additional table display values",
-    "href": "http://pastebin.com/Gk9PeVaQ"
+    "href": "https://pastebin.com/Gk9PeVaQ"
   }]
 }
 !*/
@@ -16,7 +16,7 @@
 `display: table` and `table-cell` test. (both are tested under one name `table-cell` )
 */
 define(['Modernizr', 'testStyles'], function(Modernizr, testStyles) {
-  // If a document is in rtl mode this test will fail so we force ltr mode on the injeced
+  // If a document is in rtl mode this test will fail so we force ltr mode on the injected
   // element https://github.com/Modernizr/Modernizr/issues/716
   testStyles('#modernizr{display: table; direction: ltr}#modernizr div{display: table-cell; padding: 10px}', function(elem) {
     var ret;

@@ -2,8 +2,9 @@
 {
   "name": "Ambient Light Events",
   "property": "ambientlight",
+  "caniuse": "ambient-light",
   "notes": [{
-    "name": "W3C Ambient Light Events",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/ambient-light/"
   }]
 }

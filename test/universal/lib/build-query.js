@@ -1,18 +1,21 @@
+var projectRoot;
+var filesRoot;
+var cleanup;
+var req;
+
 if (typeof define !== 'function') {
-  var projectRoot = require('find-parent-dir').sync(__dirname, 'package.json');
-  var filesRoot = projectRoot;
+  projectRoot = require('find-parent-dir').sync(__dirname, 'package.json');
+  filesRoot = projectRoot;
   if (process.env.APP_DIR_FOR_CODE_COVERAGE) {
     filesRoot = filesRoot + process.env.APP_DIR_FOR_CODE_COVERAGE;
   }
   var requirejs = require('requirejs');
-  var expect = require('expect.js');
+  var chai = require('chai');
+  var expect = chai.expect;
 } else {
-  var projectRoot = '..';
-  var filesRoot = '..';
+  projectRoot = '..';
+  filesRoot = '..';
 }
-var cleanup;
-var req;
-
 
 describe('build-query', function() {
   var buildQuery;
@@ -40,21 +43,21 @@ describe('build-query', function() {
     var query = buildQuery({
       'feature-detects': ['css/boxsizing']
     });
-    expect(query).to.be('?-boxsizing-dontmin');
+    expect(query).to.be.equal('?-boxsizing-dontmin');
   });
 
   it('properly formats detects with multiple properties', function() {
     var query = buildQuery({
       'feature-detects': ['dom/createElement-attrs']
     });
-    expect(query).to.be('?-createelementattrs_createelement_attrs-dontmin');
+    expect(query).to.be.equal('?-createelementattrs_createelement_attrs-dontmin');
   });
 
   it('adds options to the query', function() {
     var query = buildQuery({
       options: ['mq']
     });
-    expect(query).to.be('?-mq-dontmin');
+    expect(query).to.be.equal('?-mq-dontmin');
   });
 
   it('adds classPrefix when setClasses is true as well', function() {
@@ -62,33 +65,31 @@ describe('build-query', function() {
       classPrefix: 'TEST_PREFIX',
       options: ['setClasses']
     });
-    expect(query).to.be('?-setclasses-dontmin-cssclassprefix:TEST_PREFIX');
+    expect(query).to.be.equal('?-setclasses-dontmin-cssclassprefix:TEST_PREFIX');
   });
 
   it('strips `html5` from the shiv options', function() {
     var query = buildQuery({
       options: ['html5shiv']
     });
-    expect(query).to.be('?-shiv-dontmin');
+    expect(query).to.be.equal('?-shiv-dontmin');
   });
 
   it('removes the dontmin option when minify is true', function() {
     var query = buildQuery({
       minify: true
     });
-    expect(query).to.be('?-');
+    expect(query).to.be.equal('?-');
   });
 
   it('removes custom tests from the build query', function() {
     var query = buildQuery({
       'feature-detects': ['css/boxsizing', 'custom/test/path']
     });
-    expect(query).to.be('?-boxsizing-dontmin');
+    expect(query).to.be.equal('?-boxsizing-dontmin');
   });
-
 
   after(function() {
     cleanup();
   });
-
 });

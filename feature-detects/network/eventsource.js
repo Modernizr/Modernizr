@@ -6,7 +6,7 @@
   "builderAliases": ["network_eventsource"],
   "notes": [{
     "name": "WHATWG Spec",
-    "href": "https://html.spec.whatwg.org/multipage/comms.html#server-sent-events"
+    "href": "https://html.spec.whatwg.org/multipage/server-sent-events.html#server-sent-events"
   }]
 }
 !*/

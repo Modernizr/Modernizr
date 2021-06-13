@@ -4,7 +4,7 @@
   "property": "olreversed",
   "notes": [{
     "name": "Impressive Webs article",
-    "href": "http://impressivewebs.com/reverse-ordered-lists-html5"
+    "href": "https://www.impressivewebs.com/reverse-ordered-lists-html5/"
   }],
   "builderAliases": ["lists_reversed"]
 }

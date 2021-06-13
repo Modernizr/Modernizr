@@ -1,11 +1,11 @@
 /*!
-  {
+{
   "name": "Flash",
   "property": "flash",
   "tags": ["flash"],
   "polyfills": ["shumway"]
-  }
-  !*/
+}
+!*/
 /* DOC
 Detects Flash support as well as Flash-blocking plugins
 */
@@ -69,7 +69,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
       // Need to do this in the body (fake or otherwise) otherwise IE8 complains
       body.appendChild(embed);
 
-      // Pan doesn't exist in the embed if its IE (its on the ActiveXObjeect)
+      // Pan doesn't exist in the embed if its IE (its on the ActiveXObject)
       // so this check is for all other browsers.
       if (!('Pan' in embed) && !activex) {
         attachBody(body);

@@ -2,13 +2,14 @@
 {
   "name": "Beacon API",
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/navigator.sendBeacon"
-  },{
-    "name": "W3C specification",
-    "href": "https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/Beacon/Overview.html"
+  }, {
+    "name": "W3C Spec",
+    "href": "https://w3c.github.io/beacon/"
   }],
   "property": "beacon",
+  "caniuse": "beacon",
   "tags": ["beacon", "network"],
   "authors": ["Cătălin Mariș"]
 }

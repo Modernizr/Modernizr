@@ -1,30 +1,11 @@
 {
-  "preset": "google",
-  "jsDoc": {
-    "requireHyphenBeforeDescription": true,
-    "requireNewlineAfterDescription": true,
-    "checkRedundantReturns": true,
-    "checkParamExistence": true,
-    "requireReturnTypes": true,
-    "requireParamTypes": true,
-    "checkReturnTypes": true,
-    "checkTypes": true,
-    "checkAnnotations": {
-      "preset": "jsdoc3",
-      "extra": {
-        "access": true,
-        "optionName": true,
-        "optionProp": true,
-        "memberof": true
-      }
-    }
-  },
+  "extends": ["eslint:recommended", "plugin:jsdoc/recommended"],
   "env": {
+    "amd": true,
     "browser": true,
-    "node": true,
-    "mocha": true,
     "es6": true,
-    "amd": true
+    "node": true,
+    "mocha": true
   },
   "globals": {
     "DocumentTouch": true,
@@ -34,38 +15,21 @@
     "$": true,
     "_": true
   },
+  "plugins": [
+    "jsdoc"
+  ],
   "rules": {
-    "indent": [
-      2,
-      2,
+    "getter-return": ["error", { "allowImplicit": true }],
+    "jsdoc/check-tag-names": ["error", { "definedTags": ["memberOf", "optionName", "optionProp"] }],
+    "jsdoc/require-jsdoc": "off",
+    "no-empty": "off",
+    "no-prototype-builtins": "off",
+    "no-restricted-syntax": ["error",
       {
-        "SwitchCase": 1
+        "selector": "CallExpression[callee.object.name='window'][callee.property.name='getComputedStyle']",
+        "message": "Do not use `getComputedStyle`, import and use the `computedStyle` helper"
       }
     ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "curly": "error",
-    "wrap-iife": "off",
-    "no-caller": "error",
-    "no-cond-assign": [
-      "error",
-      "except-parens"
-    ],
-    "eqeqeq": "off",
-    "no-eq-null": "error",
-    "new-cap": "off",
-    "no-undef": "error",
-    "no-unused-vars": "error",
-    "no-unused-expressions": "error",
-    "no-eval": "error",
-    "comma-style": [
-      "error",
-      "last"
-    ],
-    "dot-notation": "off",
-    "valid-jsdoc": "error",
-    "no-global-getComputedStyle": "error"
+    "no-useless-escape": "off"
   }
 }

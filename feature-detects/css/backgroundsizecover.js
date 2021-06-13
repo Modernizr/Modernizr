@@ -5,7 +5,7 @@
   "tags": ["css"],
   "builderAliases": ["css_backgroundsizecover"],
   "notes": [{
-    "name" : "MDN Docs",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en/CSS/background-size"
   }]
 }

@@ -19,8 +19,8 @@ describe('getBody', function() {
 
   it('returns document.body', function() {
     var body = getBody();
-    expect(body).to.equal(document.body);
-    expect(body.fake).to.be(undefined);
+    expect(body).to.be.equal(document.body);
+    expect(body.fake).to.be.equal(undefined);
   });
 
   it('returns a fake when document.body does not exist', function() {
@@ -31,7 +31,7 @@ describe('getBody', function() {
     parentNode.appendChild(originalBody);
 
     expect(body).to.not.equal(document.body);
-    expect(body.fake).to.be(true);
+    expect(body.fake).to.be.equal(true);
   });
 
   after(function() {

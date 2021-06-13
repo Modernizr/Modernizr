@@ -2,13 +2,14 @@
 {
   "name": "Template Tag",
   "property": "template",
+  "caniuse": "template",
   "tags": ["elem"],
   "notes": [{
     "name": "HTML5Rocks Article",
-    "href": "http://www.html5rocks.com/en/tutorials/webcomponents/template/"
-  },{
-    "name": "W3 Spec",
-    "href": "https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/templates/index.html"
+    "href": "https://www.html5rocks.com/en/tutorials/webcomponents/template/"
+  }, {
+    "name": "W3C Spec",
+    "href": "https://web.archive.org/web/20171130222649/http://www.w3.org/TR/html5/scripting-1.html"
   }]
 }
 !*/

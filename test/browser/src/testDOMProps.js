@@ -27,26 +27,26 @@ describe('testDOMProps', function() {
   });
 
   it('returns known values', function() {
-    expect(testDOMProps(['clientHeight'], elm)).to.equal(elm.clientHeight);
+    expect(testDOMProps(['clientHeight'], elm)).to.be.equal(elm.clientHeight);
   });
 
   it('returns false for unknown values', function() {
-    expect(testDOMProps(['fart'], elm)).to.equal(false);
+    expect(testDOMProps(['fart'], elm)).to.be.equal(false);
   });
 
   it('bind a value to to the object', function() {
     elm.answer = function() {return 42;};
-    expect(testDOMProps(['answer'], elm)()).to.equal(elm.answer());
+    expect(testDOMProps(['answer'], elm)()).to.be.equal(elm.answer());
   });
 
   it('bind a value to the element, if it is provided', function() {
     elm.answer = function() {return 42;};
-    expect(testDOMProps(['answer'], {}, elm)).to.equal(false);
+    expect(testDOMProps(['answer'], {}, elm)).to.be.equal(false);
   });
 
   it('return the property name as a string if elem is false', function() {
     elm.answer = function() {return 42;};
-    expect(testDOMProps(['answer'], {'answer': 42}, false)).to.equal('answer');
+    expect(testDOMProps(['answer'], {'answer': 42}, false)).to.be.equal('answer');
   });
 
   after(function() {

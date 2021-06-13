@@ -27,9 +27,8 @@ define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function(Mode
       el.innerHTML = '<summary>a</summary>b';
       diff = el.offsetHeight;
       el.open = true;
-      diff = diff != el.offsetHeight;
+      diff = diff !== el.offsetHeight;
     });
-
 
     return diff;
   });

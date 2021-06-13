@@ -8,9 +8,9 @@
   "notes": [{
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/navigation-timing/"
-  },{
-    "name": "HTML5 Rocks article",
-    "href": "http://www.html5rocks.com/en/tutorials/webperformance/basics/"
+  }, {
+    "name": "HTML5 Rocks Tutorial",
+    "href": "https://www.html5rocks.com/en/tutorials/webperformance/basics/"
   }],
   "polyfills": ["perfnow"]
 }

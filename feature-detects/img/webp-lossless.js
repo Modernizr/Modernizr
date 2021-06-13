@@ -8,7 +8,7 @@
   "notes": [{
     "name": "Webp Info",
     "href": "https://developers.google.com/speed/webp/"
-  },{
+  }, {
     "name": "Webp Lossless Spec",
     "href": "https://developers.google.com/speed/webp/docs/webp_lossless_bitstream_specification"
   }]
@@ -26,7 +26,7 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
     };
 
     image.onload = function() {
-      addTest('webplossless', image.width == 1, {aliases: ['webp-lossless']});
+      addTest('webplossless', image.width === 1, {aliases: ['webp-lossless']});
     };
 
     image.src = 'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=';

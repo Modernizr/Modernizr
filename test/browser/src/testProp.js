@@ -12,7 +12,7 @@ describe('testProp', function() {
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
-        sinon: '../test/js/lib/sinon',
+        sinon: '../node_modules/sinon/pkg/sinon',
         cleanup: '../test/cleanup'
       }
     });
@@ -40,18 +40,18 @@ describe('testProp', function() {
 
   it('is a curried version of `testProps`', function() {
     testProp('flexAlign', 'end', true);
-    expect(testProps.calledOnce).to.be(true);
+    expect(testProps.calledOnce).to.be.equal(true);
 
     expect(testProps.calledWithExactly(
       ['flexAlign'],
       undefined,
       'end',
       true
-    )).to.be(true);
+    )).to.be.equal(true);
   });
 
   it('is added to ModernizrProto', function() {
-    expect(testProp).to.equal(ModernizrProto.testProp);
+    expect(testProp).to.be.equal(ModernizrProto.testProp);
   });
 
   after(function() {

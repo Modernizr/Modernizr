@@ -9,7 +9,7 @@
   "notes": [{
     "name": "WebP Info",
     "href": "https://developers.google.com/speed/webp/"
-  },{
+  }, {
     "name": "Chromium blog - Chrome 32 Beta: Animated WebP images and faster Chrome for Android touch input",
     "href": "https://blog.chromium.org/2013/11/chrome-32-beta-animated-webp-images-and.html"
   }]
@@ -27,7 +27,7 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
     };
 
     image.onload = function() {
-      addTest('webpanimation', image.width == 1, {aliases: ['webp-animation']});
+      addTest('webpanimation', image.width === 1, {aliases: ['webp-animation']});
     };
 
     image.src = 'data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA';

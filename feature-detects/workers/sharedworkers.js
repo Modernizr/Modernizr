@@ -2,11 +2,11 @@
 {
   "name": "Shared Workers",
   "property": "sharedworkers",
-  "caniuse" : "sharedworkers",
+  "caniuse": "sharedworkers",
   "tags": ["performance", "workers"],
   "builderAliases": ["workers_sharedworkers"],
   "notes": [{
-    "name": "W3C Reference",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/workers/"
   }]
 }

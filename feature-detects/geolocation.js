@@ -5,7 +5,7 @@
   "caniuse": "geolocation",
   "tags": ["media"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/WebAPI/Using_geolocation"
   }],
   "polyfills": [

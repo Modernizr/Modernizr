@@ -3,16 +3,13 @@
   "name": "CSS wrap-flow",
   "property": "wrapflow",
   "tags": ["css"],
-  "notes": [
-    {
-      "name": "W3C Exclusions spec",
-      "href": "https://www.w3.org/TR/css3-exclusions"
-    },
-    {
-      "name": "Example by Adobe",
-      "href": "http://html.adobe.com/webstandards/cssexclusions"
-    }
-  ]
+  "notes": [{
+    "name": "W3C Spec",
+    "href": "https://www.w3.org/TR/css3-exclusions"
+  }, {
+    "name": "Example by Louie Rootfield",
+    "href": "https://webdesign.tutsplus.com/tutorials/css-exclusions--cms-28087"
+  }]
 }
 !*/
 define(['Modernizr', 'prefixed', 'docElement', 'createElement', 'isSVG'], function(Modernizr, prefixed, docElement, createElement, isSVG) {
@@ -31,7 +28,7 @@ define(['Modernizr', 'prefixed', 'docElement', 'createElement', 'isSVG'], functi
     var content = createElement('span');
 
     /* First we create a div with two adjacent divs inside it. The first div will be the content, the second div will be the exclusion area.
-       We use the "wrap-flow: end" property to test the actual behavior. (http://dev.w3.org/csswg/css3-exclusions/#wrap-flow-property)
+       We use the "wrap-flow: end" property to test the actual behavior. (https://drafts.csswg.org/css-exclusions-1/#wrap-flow-property)
        The wrap-flow property is applied to the exclusion area what has a 50px left offset and a 100px width.
        If the wrap-flow property is working correctly then the content should start after the exclusion area, so the content's left offset should be 150px. */
     exclusion.style.cssText = 'position: absolute; left: 50px; width: 100px; height: 20px;' + wrapFlowProperty + ':end;';
@@ -46,6 +43,6 @@ define(['Modernizr', 'prefixed', 'docElement', 'createElement', 'isSVG'], functi
     docElement.removeChild(container);
     exclusion = content = container = undefined;
 
-    return (leftOffset == 150);
+    return (leftOffset === 150);
   });
 });

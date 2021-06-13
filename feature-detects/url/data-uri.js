@@ -21,31 +21,31 @@ Modernizr.datauri           // true
 Modernizr.datauri.over32kb  // false in IE8
 ```
 */
-define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
+define(['Modernizr'], function(Modernizr) {
   // https://github.com/Modernizr/Modernizr/issues/14
   Modernizr.addAsyncTest(function() {
 
     // IE7 throw a mixed content warning on HTTPS for this test, so we'll
-    // just blacklist it (we know it doesn't support data URIs anyway)
+    // just reject it (we know it doesn't support data URIs anyway)
     // https://github.com/Modernizr/Modernizr/issues/362
     if (navigator.userAgent.indexOf('MSIE 7.') !== -1) {
       // Keep the test async
       setTimeout(function() {
-        addTest('datauri', false);
+        Modernizr.addTest('datauri', new Boolean(false));
       }, 10);
     }
 
     var datauri = new Image();
 
     datauri.onerror = function() {
-      addTest('datauri', false);
+      Modernizr.addTest('datauri', new Boolean(false));
     };
     datauri.onload = function() {
-      if (datauri.width == 1 && datauri.height == 1) {
+      if (datauri.width === 1 && datauri.height === 1) {
         testOver32kb();
       }
       else {
-        addTest('datauri', false);
+        Modernizr.addTest('datauri', new Boolean(false));
       }
     };
 
@@ -58,14 +58,12 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
       var datauriBig = new Image();
 
       datauriBig.onerror = function() {
-        addTest('datauri', true);
-        Modernizr.datauri = new Boolean(true);
-        Modernizr.datauri.over32kb = false;
+        Modernizr.addTest('datauri', new Boolean(true));
+        Modernizr.addTest('datauri.over32kb', false);
       };
       datauriBig.onload = function() {
-        addTest('datauri', true);
-        Modernizr.datauri = new Boolean(true);
-        Modernizr.datauri.over32kb = (datauriBig.width == 1 && datauriBig.height == 1);
+        Modernizr.addTest('datauri', new Boolean(true));
+        Modernizr.addTest('datauri.over32kb', datauriBig.width === 1 && datauriBig.height === 1);
       };
 
       var base64str = 'R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
@@ -74,6 +72,5 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
       }
       datauriBig.src = 'data:image/gif;base64,' + base64str;
     }
-
   });
 });

@@ -3,12 +3,14 @@
   "name": "ES6 Math",
   "property": "es6math",
   "notes": [{
-    "name": "unofficial ECMAScript 6 draft specification",
-    "href": "https://people.mozilla.org/~jorendorff/es6-draft.html"
+    "name": "ECMAScript 6 specification",
+    "href": "https://www.ecma-international.org/ecma-262/6.0/index.html"
+  }, {
+    "name": "Last ECMAScript specification",
+    "href": "https://www.ecma-international.org/ecma-262/index.html"
   }],
   "polyfills": ["es6shim"],
   "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "warnings": ["ECMAScript 6 is still a only a draft, so this detect may not match the final specification or implementations."],
   "tags": ["es6"]
 }
 !*/

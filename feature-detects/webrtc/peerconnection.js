@@ -2,10 +2,11 @@
 {
   "name": "RTC Peer Connection",
   "property": "peerconnection",
+  "caniuse": "rtcpeerconnection",
   "tags": ["webrtc"],
   "authors": ["Ankur Oberoi"],
   "notes": [{
-    "name": "W3C Web RTC spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/webrtc/"
   }]
 }

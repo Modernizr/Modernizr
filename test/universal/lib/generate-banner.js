@@ -1,29 +1,37 @@
+var projectRoot;
+var filesRoot;
+var domain;
+var generateBanner;
+var cleanup;
+var def;
+var pkg;
+var _;
+
 if (typeof define !== 'function') {
-  var projectRoot = require('find-parent-dir').sync(__dirname, 'package.json');
-  var filesRoot = projectRoot;
+  var requirejs = require('requirejs');
+  var chai = require('chai');
+  var expect = chai.expect;
+  projectRoot = require('find-parent-dir').sync(__dirname, 'package.json');
+  filesRoot = projectRoot;
   if (process.env.APP_DIR_FOR_CODE_COVERAGE) {
     filesRoot = filesRoot + process.env.APP_DIR_FOR_CODE_COVERAGE;
   }
-  var requirejs = require('requirejs');
-  var pkg = require(projectRoot + '/package');
-  var expect = require('expect.js');
-  var domain = 'modernizr.com';
-  var _ = require('lodash');
-  var def = function() {
+  domain = 'modernizr.com';
+  pkg = require(projectRoot + '/package');
+  _ = require('lodash');
+  def = function() {
     return requirejs.define.apply(this, arguments);
   };
 } else {
-  var domain = location.host;
-  var projectRoot = '..';
-  var filesRoot = '..';
-  var pkg = {};
-  var _ = window.lodash;
-  var def = function() {
+  projectRoot = '..';
+  filesRoot = '..';
+  domain = location.host;
+  pkg = {};
+  _ = window.lodash;
+  def = function() {
     return define.apply(this, arguments);
   };
 }
-var generateBanner;
-var cleanup;
 
 describe('generate-banner', function() {
 
@@ -50,7 +58,7 @@ describe('generate-banner', function() {
 
   it('should produce a compact banner when requested', function() {
     var banner = generateBanner('compact');
-    var test = '/*! ' + pkg.name + ' ' + pkg.version + ' (Custom Build) | ' + pkg.license  + ' *';
+    var test = '/*! ' + pkg.name + ' ' + pkg.version + ' (Custom Build) | ' + pkg.license + ' *';
     expect(banner).to.contain(test);
   });
 
@@ -67,7 +75,7 @@ describe('generate-banner', function() {
   });
 
   it('should only accept "full" and "compact" as type arguments', function() {
-    expect(function() {generateBanner('sup');}).to.throwError('banners() must be passed "compact" or "full" as an argument.');
+    expect(function() {generateBanner('sup');}).to.throw('banners() must be passed "compact" or "full" as an argument.');
   });
 
   after(function() {

@@ -4,14 +4,12 @@
   "property": "inputformmethod",
   "notes": [{
     "name": "WHATWG Spec",
-    "href": "https://html.spec.whatwg.org/multipage/forms.html#attr-fs-formmethod"
+    "href": "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formmethod"
   }, {
     "name": "Wufoo demo",
-    "href": "https://www.wufoo.com/html5/attributes/14-formmethod.html"
+    "href": "https://www.wufoo.com/html5/formmethod-attribute/"
   }],
-  "polyfills": [
-    "webshims"
-  ]
+  "polyfills": ["webshims"]
 }
 !*/
 /* DOC

@@ -6,12 +6,12 @@
   "tags": ["image"],
   "authors": ["Mat Marquis"],
   "notes": [{
-    "name": "Spec",
-    "href": "http://picture.responsiveimages.org/#parse-sizes-attr"
-    },{
-    "name": "Usage Details",
-    "href": "http://ericportis.com/posts/2014/srcset-sizes/"
-    }]
+    "name": "WHATWG Spec",
+    "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element"
+  }, {
+    "name": "Srcset and sizes",
+    "href": "https://ericportis.com/posts/2014/srcset-sizes/"
+  }]
 }
 !*/
 /* DOC
@@ -25,12 +25,12 @@ define(['Modernizr', 'createElement', 'addTest'], function(Modernizr, createElem
     var isSizes = 'sizes' in image;
 
     // ... but we need to deal with Safari 9...
-    if (!isSizes && ('srcset' in  image)) {
+    if (!isSizes && ('srcset' in image)) {
       width2 = 'data:image/gif;base64,R0lGODlhAgABAPAAAP///wAAACH5BAAAAAAALAAAAAACAAEAAAICBAoAOw==';
       width1 = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
       test = function() {
-        addTest('sizes', image.width == 2);
+        addTest('sizes', image.width === 2);
       };
 
       image.onload = test;

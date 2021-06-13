@@ -1,7 +1,7 @@
 /*!
 {
   "name": "Variable Open Type Fonts",
-  "property": ["variablefonts"],
+  "property": "variablefonts",
   "authors": ["Patrick Kettner"],
   "tags": ["css"],
   "notes": [{

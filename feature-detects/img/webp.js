@@ -3,6 +3,7 @@
   "name": "Webp",
   "async": true,
   "property": "webp",
+  "caniuse": "webp",
   "tags": ["image"],
   "builderAliases": ["img_webp"],
   "authors": ["Krister Kari", "@amandeep", "Rich Bradshaw", "Ryan Seddon", "Paul Irish"],
@@ -10,16 +11,16 @@
     "name": "Webp Info",
     "href": "https://developers.google.com/speed/webp/"
   }, {
-    "name": "Chormium blog - Chrome 32 Beta: Animated WebP images and faster Chrome for Android touch input",
+    "name": "Chromium blog - Chrome 32 Beta: Animated WebP images and faster Chrome for Android touch input",
     "href": "https://blog.chromium.org/2013/11/chrome-32-beta-animated-webp-images-and.html"
   }, {
     "name": "Webp Lossless Spec",
     "href": "https://developers.google.com/speed/webp/docs/webp_lossless_bitstream_specification"
   }, {
-    "name": "Article about WebP support on Android browsers",
-    "href": "http://www.wope-framework.com/en/2013/06/24/webp-support-on-android-browsers/"
+    "name": "Article about WebP support",
+    "href": "https://optimus.keycdn.com/support/webp-support/"
   }, {
-    "name": "Chormium WebP announcement",
+    "name": "Chromium WebP announcement",
     "href": "https://blog.chromium.org/2011/11/lossless-and-transparency-encoding-in.html?m=1"
   }]
 }
@@ -60,13 +61,13 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
 
       function addResult(event) {
         // if the event is from 'onload', check the see if the image's width is
-        // 1 pixel (which indiciates support). otherwise, it fails
+        // 1 pixel (which indicates support). otherwise, it fails
 
-        var result = event && event.type === 'load' ? image.width == 1 : false;
+        var result = event && event.type === 'load' ? image.width === 1 : false;
         var baseTest = name === 'webp';
 
         // if it is the base test, and the result is false, just set a literal false
-        // rather than use the Boolean contrsuctor
+        // rather than use the Boolean constructor
         addTest(name, (baseTest && result) ? new Boolean(result) : result);
 
         if (cb) {

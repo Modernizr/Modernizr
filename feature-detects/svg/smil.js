@@ -5,7 +5,7 @@
   "caniuse": "svg-smil",
   "tags": ["svg"],
   "notes": [{
-  "name": "W3C Synchronised Multimedia spec",
+  "name": "W3C Spec",
   "href": "https://www.w3.org/AudioVideo/"
   }]
 }

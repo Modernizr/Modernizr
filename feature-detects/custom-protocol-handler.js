@@ -5,14 +5,12 @@
   "authors": ["Ben Schwarz"],
   "builderAliases": ["custom_protocol_handler"],
   "notes": [{
-    "name": "WHATWG overview",
-    "href": "https://developers.whatwg.org/timers.html#custom-handlers"
-  },{
-    "name": "MDN documentation",
+    "name": "WHATWG Spec",
+    "href": "https://html.spec.whatwg.org/dev/system-state.html#custom-handlers"
+  }, {
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/navigator.registerProtocolHandler"
-  }],
-  "warnings": [],
-  "polyfills": []
+  }]
 }
 !*/
 /* DOC

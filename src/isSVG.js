@@ -5,7 +5,7 @@ define(['docElement'], function(docElement) {
    * @access private
    * @returns {boolean}
    */
-
   var isSVG = docElement.nodeName.toLowerCase() === 'svg';
+
   return isSVG;
 });

@@ -14,9 +14,9 @@ There are two iterations of the `navigator.connection` interface.
 The first is present in Android 2.2+ and only in the Browser (not WebView)
 
 - http://docs.phonegap.com/en/1.2.0/phonegap_connection_connection.md.html#connection.type
-- http://davidbcalhoun.com/2010/using-navigator-connection-android
+- https://davidbcalhoun.com/2010/using-navigator-connection-android
 
-The second is specced at http://dev.w3.org/2009/dap/netinfo/ and perhaps landing in WebKit
+The second is speced at https://dvcs.w3.org/hg/dap/raw-file/tip/network-api/Overview.html and perhaps landing in WebKit
 
 - https://bugs.webkit.org/show_bug.cgi?id=73528
 
@@ -29,8 +29,8 @@ define(['Modernizr'], function(Modernizr) {
     // polyfill
     var connection = navigator.connection || {type: 0};
 
-    return connection.type == 3 || // connection.CELL_2G
-      connection.type == 4 || // connection.CELL_3G
+    return connection.type === 3 || // connection.CELL_2G
+      connection.type === 4 || // connection.CELL_3G
       /^[23]g$/.test(connection.type); // string value in new spec
   });
 });

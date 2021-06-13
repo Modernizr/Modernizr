@@ -1,8 +1,8 @@
 define(['isSVG'], function(isSVG) {
-/**
-  * @optionName html5shiv
-  * @optionProp html5shiv
-  */
+  /**
+   * @optionName html5shiv
+   * @optionProp html5shiv
+   */
 
   // Take the html5 variable out of the html5shiv scope so we can return it.
   var html5;
@@ -11,6 +11,7 @@ define(['isSVG'], function(isSVG) {
      * @preserve HTML5 Shiv 3.7.3 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
      */
     ;(function(window, document) {
+      /*jshint evil:true */
       /** version */
       var version = '3.7.3';
 
@@ -51,8 +52,8 @@ define(['isSVG'], function(isSVG) {
             var frag = document.createDocumentFragment();
             return (
               typeof frag.cloneNode == 'undefined' ||
-                typeof frag.createDocumentFragment == 'undefined' ||
-                typeof frag.createElement == 'undefined'
+              typeof frag.createDocumentFragment == 'undefined' ||
+              typeof frag.createElement == 'undefined'
             );
           }());
         } catch(e) {
@@ -210,16 +211,16 @@ define(['isSVG'], function(isSVG) {
         };
 
         ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
-                                                        'var n=f.cloneNode(),c=n.createElement;' +
-                                                        'h.shivMethods&&(' +
-                                                        // unroll the `createElement` calls
-                                                        getElements().join().replace(/[\w\-:]+/g, function(nodeName) {
-                                                          data.createElem(nodeName);
-                                                          data.frag.createElement(nodeName);
-                                                          return 'c("' + nodeName + '")';
-                                                        }) +
+          'var n=f.cloneNode(),c=n.createElement;' +
+          'h.shivMethods&&(' +
+          // unroll the `createElement` calls
+          getElements().join().replace(/[\w\-:]+/g, function(nodeName) {
+            data.createElem(nodeName);
+            data.frag.createElement(nodeName);
+            return 'c("' + nodeName + '")';
+          }) +
           ');return n}'
-                                                       )(html5, data.frag);
+        )(html5, data.frag);
       }
 
       /*--------------------------------------------------------------------------*/
@@ -238,13 +239,13 @@ define(['isSVG'], function(isSVG) {
 
         if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
           data.hasCSS = !!addStyleSheet(ownerDocument,
-                                        // corrects block display not defined in IE6/7/8/9
-                                        'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
-                                        // adds styling not present in IE6/7/8/9
-                                        'mark{background:#FF0;color:#000}' +
-                                        // hides non-rendered elements
-                                        'template{display:none}'
-                                       );
+            // corrects block display not defined in IE6/7/8/9
+            'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
+            // adds styling not present in IE6/7/8/9
+            'mark{background:#FF0;color:#000}' +
+            // hides non-rendered elements
+            'template{display:none}'
+          );
         }
         if (!supportsUnknownElements) {
           shivMethods(ownerDocument, data);
@@ -331,7 +332,7 @@ define(['isSVG'], function(isSVG) {
         module.exports = html5;
       }
 
-    }(typeof window !== 'undefined' ? window : this, document));
+    }(typeof window !== "undefined" ? window : this, document));
   }
   return html5;
 });

@@ -39,6 +39,10 @@ var yargs = require('yargs')
     alias: 'uglify',
     describe: 'uglify/minify the output'
   })
+  .options('s', {
+    alias: 'scriptGlobalName',
+    describe: 'Script global variable where Modernizr is attached. Defaults to window'
+  })
   .options('q', {
     alias: 'quiet',
     describe: 'Silence all output'
@@ -46,7 +50,6 @@ var yargs = require('yargs')
 var argv = yargs.argv;
 var cwd = process.cwd();
 var dest = cwd + '/modernizr.js';
-var inlineConfig;
 var configPath;
 var config;
 
@@ -99,16 +102,14 @@ if (argv.m) {
     log('metadata saved to ' + metaDest);
   });
   if (!argv.d) {
-    // return early unless we explictly request Modernizr to be built
+    // return early unless we explicitly request Modernizr to be built
     return;
   }
 }
 
-
 if (argv.o || argv.f) {
   var metadata = Modernizr.metadata();
   var options = Modernizr.options();
-
 
   var find = function(config, source) {
     if (!config) {
@@ -119,7 +120,13 @@ if (argv.o || argv.f) {
       .replace(/-/g, ',')
       .split(',')
       .map(function(prop) {
-        var obj = _.find(source, {property: prop});
+        var obj = _.find(source, function(o) {
+          if (o.property instanceof Array) {
+            return o.property.includes(prop);
+          } else {
+            return o.property === prop;
+          }
+        });
 
         // setClasses is technically a flag, not an option. But it is passed
         // in as an option. Since it doesn't exist as an option we have to
@@ -138,8 +145,6 @@ if (argv.o || argv.f) {
     'feature-detects': find(argv.f, metadata),
     'options': find(argv.o, options)
   };
-
-  inlineConfig = true;
 }
 
 if (argv.c) {
@@ -158,7 +163,7 @@ try {
   if (!config && !configPath) {
     console.error('config file, inline features, or options required.');
     yargs.showHelp();
-    process.exit(1)
+    process.exit(1);
   } else {
     config = config || {};
     if (configPath) {
@@ -176,6 +181,10 @@ try {
 
 if (argv.u) {
   config.minify = true;
+}
+
+if (argv.scriptGlobalName) {
+  config.scriptGlobalName = argv.scriptGlobalName;
 }
 
 Modernizr.build(config, function(output) {

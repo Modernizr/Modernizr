@@ -5,7 +5,7 @@
   "tags": ["iframe"],
   "builderAliases": ["iframe_seamless"],
   "notes": [{
-    "name": "WhatWG Spec",
+    "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#attr-iframe-seamless"
   }]
 }

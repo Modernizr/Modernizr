@@ -5,7 +5,7 @@
   "caniuse": "cors",
   "authors": ["Theodoor van Donge"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS"
   }],
   "polyfills": ["pmxdr", "ppx", "flxhr"]

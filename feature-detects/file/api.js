@@ -4,7 +4,7 @@
   "property": "filereader",
   "caniuse": "fileapi",
   "notes": [{
-    "name": "W3C Working Draft",
+    "name": "W3C Working Draft Spec",
     "href": "https://www.w3.org/TR/FileAPI/"
   }],
   "tags": ["file"],

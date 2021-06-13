@@ -1,18 +1,21 @@
 describe('domPrefixes', function() {
   /*
-    eslint no-unused-vars: [ "error", {
+    eslint no-unused-vars: ["error", {
       "varsIgnorePattern": "domPrefixes"
     }]
- */
-
+  */
+  var domPrefixes;
+  var domPrefixesAll;
+  var cleanup;
   var req;
 
   var setup = function(done, bool) {
     return (function() {
       define('ModernizrProto', [], function() {return {_config: {usePrefixes: bool}};});
 
-      req(['domPrefixes'], function(_domPrefixes) {
+      req(['domPrefixes', 'domPrefixesAll'], function(_domPrefixes, _domPrefixesAll) {
         domPrefixes = _domPrefixes;
+        domPrefixesAll = _domPrefixesAll;
         done();
       });
     })();
@@ -20,11 +23,11 @@ describe('domPrefixes', function() {
 
   var teardown = function() {
     domPrefixes = undefined;
+    domPrefixesAll = undefined;
     req.undef('domPrefixes');
+    req.undef('domPrefixesAll');
     req.undef('ModernizrProto');
   };
-  var domPrefixes;
-  var cleanup;
 
   before(function(done) {
     define('package', [], function() {return {version: 'v9999'};});
@@ -51,6 +54,13 @@ describe('domPrefixes', function() {
     it('returns prefixes', function(done) {
       req(['domPrefixes'], function(domPrefixes) {
         expect(domPrefixes).to.not.have.length(0);
+        done();
+      });
+    });
+
+    it('returns one less then domPrefixesAll', function(done) {
+      req(['domPrefixes', 'domPrefixesAll'], function(domPrefixes, domPrefixesAll) {
+        expect(domPrefixes).to.have.length(domPrefixesAll.length-1);
         done();
       });
     });

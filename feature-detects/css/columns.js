@@ -3,7 +3,6 @@
   "name": "CSS Columns",
   "property": "csscolumns",
   "caniuse": "multicolumn",
-  "polyfills": ["css3multicolumnjs"],
   "tags": ["css"]
 }
 !*/
@@ -15,7 +14,7 @@ define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
       var bool = false;
       var test = testAllProps('columnCount');
       try {
-        bool = !!test
+        bool = !!test;
         if (bool) {
           bool = new Boolean(bool);
         }
@@ -32,14 +31,11 @@ define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
       test = testAllProps('column' + props[i]);
 
       // break-before, break-after & break-inside are not "column"-prefixed in spec
-      if (name === 'breakbefore' || name === 'breakafter' || name == 'breakinside') {
+      if (name === 'breakbefore' || name === 'breakafter' || name === 'breakinside') {
         test = test || testAllProps(props[i]);
       }
 
       Modernizr.addTest('csscolumns.' + name, test);
     }
-
-
   })();
-
 });

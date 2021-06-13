@@ -5,8 +5,8 @@
   "tags": ["performance", "workers"],
   "builderAliases": ["transferables"],
   "notes": [{
-    "name": "HTML5 Rocks article",
-    "href": "http://updates.html5rocks.com/2011/12/Transferable-Objects-Lightning-Fast"
+    "name": "Transferable Objects: Lightning Fast!",
+    "href": "https://developers.google.com/web/updates/2011/12/Transferable-Objects-Lightning-Fast"
   }],
   "async": true
 }

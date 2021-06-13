@@ -18,7 +18,7 @@ describe('inputElem', function() {
   });
 
   it('returns an input element', function() {
-    expect(inputElem.nodeName).to.equal('INPUT');
+    expect(inputElem.nodeName).to.be.equal('INPUT');
   });
 
   after(function() {

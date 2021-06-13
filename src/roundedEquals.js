@@ -4,11 +4,10 @@ define(function() {
    *
    * @access private
    * @function roundedEquals
-   * @param {number} a
-   * @param {number} b
-   * @returns {boolean}
+   * @param {number} a - first integer
+   * @param {number} b - second integer
+   * @returns {boolean} true if the first integer is within 1 of the second, false otherwise
    */
-
   function roundedEquals(a, b) {
     return a - 1 === b || a === b || a + 1 === b;
   }

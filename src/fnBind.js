@@ -4,11 +4,10 @@ define(function() {
    *
    * @access private
    * @function fnBind
-   * @param {function} fn - a function you want to change `this` reference to
+   * @param {Function} fn - a function you want to change `this` reference to
    * @param {object} that - the `this` you want to call the function with
-   * @returns {function} The wrapped version of the supplied function
+   * @returns {Function} The wrapped version of the supplied function
    */
-
   function fnBind(fn, that) {
     return function() {
       return fn.apply(that, arguments);

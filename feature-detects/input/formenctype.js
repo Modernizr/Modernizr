@@ -5,14 +5,12 @@
   "aliases": ["input-formenctype"],
   "notes": [{
     "name": "WHATWG Spec",
-    "href": "https://html.spec.whatwg.org/multipage/forms.html#attr-fs-formenctype"
+    "href": "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formenctype"
   }, {
     "name": "Wufoo demo",
-    "href": "https://www.wufoo.com/html5/attributes/16-formenctype.html"
+    "href": "https://www.wufoo.com/html5/formenctype-attribute/"
   }],
-  "polyfills": [
-    "html5formshim"
-  ]
+  "polyfills": ["html5formshim"]
 }
 !*/
 /* DOC

@@ -2,6 +2,7 @@
 {
   "name": "ServiceWorker API",
   "property": "serviceworker",
+  "caniuse": "serviceworkers",
   "notes": [{
     "name": "ServiceWorkers Explained",
     "href": "https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md"

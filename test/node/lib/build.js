@@ -1,11 +1,12 @@
 var root = require('find-parent-dir').sync(__dirname, 'package.json');
 var build = require(root + 'lib/build');
-var expect = require('expect.js');
+var chai = require('chai');
+var expect = chai.expect;
 
 describe('cli/build', function() {
 
   it('should build without error', function() {
-    expect(function() {build();}).to.not.throwError();
+    expect(function() {build();}).to.not.throw();
   });
 
   describe('custom builds', function(done) {
@@ -13,7 +14,7 @@ describe('cli/build', function() {
     it('should build without errors when using a custom build', function() {
       expect(function() {
         build({'feature-detects': ['css/boxsizing']}, done);
-      }).to.not.throwError();
+      }).to.not.throw();
     });
 
     it('should include the requested options', function(done) {
@@ -54,7 +55,7 @@ describe('cli/build', function() {
       build(config, function(file) {
         var parsedConfig = file.match(configRE);
         parsedConfig = JSON.parse(parsedConfig[1].replace(/'/g, '"'));
-        expect(parsedConfig.classPrefix).to.be(prefix);
+        expect(parsedConfig.classPrefix).to.be.equal(prefix);
         done();
       });
     });
@@ -70,10 +71,10 @@ describe('cli/build', function() {
 
       build(config, function(file) {
         var parsedConfig = file.match(configRE);
-        //use eval becuase the minified code creates non valid JSON.
+        //use eval because the minified code creates non valid JSON.
         // eslint-disable-next-line
         parsedConfig = eval('(' + parsedConfig[1].replace(/'/g, '"') + ')');
-        expect(parsedConfig.classPrefix).to.be(prefix);
+        expect(parsedConfig.classPrefix).to.be.equal(prefix);
         done();
       });
     });
@@ -94,23 +95,46 @@ describe('cli/build', function() {
 
       it('strips out the modernizr-init/build `define` section', function() {
         var defineRe = /define\("modernizr-(init|build)"\)/m;
-        expect(defineRe.test(output)).to.be(false);
+        expect(defineRe.test(output)).to.be.equal(false);
       });
 
       it('strips out the `define` section', function() {
         var docRe = /define\(.*?\{/;
-        expect(docRe.test(output)).to.be(false);
+        expect(docRe.test(output)).to.be.equal(false);
       });
 
       it('strips out the `require` section', function() {
         var requireRe = /require[^\{\r\n]+\{/;
-        expect(requireRe.test(output)).to.be(false);
+        expect(requireRe.test(output)).to.be.equal(false);
       });
 
       it('replaces __VERSION__ ', function() {
         expect(output).to.not.contain('__VERSION__');
       });
+    });
 
+    describe('scriptGlobalName', function() {
+
+      it('should inject modernizr onto window by default', function(done) {
+        var config = {
+          'feature-detects': ['css/boxsizing']
+        };
+        build(config, function(file) {
+          expect(file).to.contain('})(window, window, document);');
+          done();
+        });
+      });
+
+      it('should inject modernizr onto custom window global when specified', function(done) {
+        var config = {
+          'scriptGlobalName': 'window.awesomeco',
+          'feature-detects': ['css/boxsizing']
+        };
+        build(config, function(file) {
+          expect(file).to.contain('})(window.awesomeco, window, document);');
+          done();
+        });
+      });
     });
 
     describe('minified', function() {
@@ -130,25 +154,22 @@ describe('cli/build', function() {
 
       it('strips out the modernizr-init/build `define` section', function() {
         var defineRe = /define\("modernizr-(init|build)"\)/m;
-        expect(defineRe.test(output)).to.be(false);
+        expect(defineRe.test(output)).to.be.equal(false);
       });
 
       it('strips out the `define` section', function() {
         var docRe = /define\(.*?\{/;
-        expect(docRe.test(output)).to.be(false);
+        expect(docRe.test(output)).to.be.equal(false);
       });
 
       it('strips out the `require` section', function() {
         var requireRe = /require[^\{\r\n]+\{/;
-        expect(requireRe.test(output)).to.be(false);
+        expect(requireRe.test(output)).to.be.equal(false);
       });
 
       it('replaces __VERSION__ ', function() {
         expect(output).to.not.contain('__VERSION__');
       });
-
     });
-
   });
-
 });

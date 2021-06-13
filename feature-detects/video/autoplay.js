@@ -3,7 +3,7 @@
   "name": "Video Autoplay",
   "property": "videoautoplay",
   "tags": ["video"],
-  "async" : true,
+  "async": true,
   "warnings": ["This test is very large – only include it if you absolutely need it"],
   "knownBugs": ["crashes with an alert on iOS7 when added to homescreen"]
 }
@@ -11,7 +11,7 @@
 /* DOC
 Checks for support of the autoplay attribute of the video element.
 */
-define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video'], function(Modernizr, addTest, docElement, createElement) {
+define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/video/video'], function(Modernizr, addTest, docElement, createElement) {
 
   Modernizr.addAsyncTest(function() {
     var timeout;

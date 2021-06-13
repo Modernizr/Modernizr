@@ -3,10 +3,10 @@ describe('prefixed()', function() {
   // Generic control function used for prefixed() and prefixedCSS() tests
   // https://gist.github.com/523692
   function gimmePrefix(prop, obj) {
-    var prefixes = ['Moz', 'Khtml', 'Webkit', 'O', 'ms'],
-      domPrefixes = ['moz', 'khtml', 'webkit', 'o', 'ms'],
-      elem     = document.createElement('div'),
-      upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
+    var prefixes = ['Khtml', 'Webkit', 'ms', 'O', 'Moz'],
+      domPrefixes = ['khtml', 'webkit', 'ms', 'o', 'moz'],
+      elem = document.createElement('div'),
+      upper = prop.charAt(0).toUpperCase() + prop.slice(1),
       len;
 
     if (!obj) {
@@ -15,7 +15,7 @@ describe('prefixed()', function() {
       }
 
       for (len = prefixes.length; len--;) {
-        if ((prefixes[len] + upper)  in elem.style) {
+        if ((prefixes[len] + upper) in elem.style) {
           return (prefixes[len] + upper);
         }
       }
@@ -25,7 +25,7 @@ describe('prefixed()', function() {
       }
 
       for (len = domPrefixes.length; len--;) {
-        if ((domPrefixes[len] + upper)  in obj) {
+        if ((domPrefixes[len] + upper) in obj) {
           return (domPrefixes[len] + upper);
         }
       }
@@ -44,19 +44,19 @@ describe('prefixed()', function() {
     'borderRadius', 'boxShadow', 'columnCount'];
 
   var domPropArr = [
-    {'prop': 'requestAnimationFrame',  'obj': window},
-    {'prop': 'querySelectorAll',       'obj': document},
-    {'prop': 'matchesSelector',        'obj': document.createElement('div')}];
+    {'prop': 'requestAnimationFrame', 'obj': window},
+    {'prop': 'querySelectorAll', 'obj': document},
+    {'prop': 'matchesSelector', 'obj': document.createElement('div')}];
 
   _.forEach(propArr, function(prop) {
     it('results for ' + prop + ' match the homebaked prefix finder', function() {
-      expect(Modernizr.prefixed(prop)).to.equal(gimmePrefix(prop));
+      expect(Modernizr.prefixed(prop)).to.be.equal(gimmePrefix(prop));
     });
   });
 
   _.forEach(propArr, function(prop) {
     it('results for ' + prop + ' match the homebaked prefix finder', function() {
-      expect(Modernizr.prefixed(domToCSS(prop))).to.equal(gimmePrefix(prop));
+      expect(Modernizr.prefixed(domToCSS(prop))).to.be.equal(gimmePrefix(prop));
     });
   });
 

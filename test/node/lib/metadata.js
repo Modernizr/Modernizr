@@ -1,7 +1,8 @@
 var root = require('find-parent-dir').sync(__dirname, 'package.json');
 var proxyquire = require('proxyquire').noPreserveCache();
 var metadata = require(root + 'lib/metadata');
-var expect = require('expect.js');
+var chai = require('chai');
+var expect = chai.expect;
 var Joi = require('joi');
 
 describe('cli/metadata', function() {
@@ -33,7 +34,7 @@ describe('cli/metadata', function() {
       }
     });
 
-    expect(metadata).to.throwException(/Error Parsing Metadata/);
+    expect(metadata).to.throw(/Error Parsing Metadata/);
   });
 
   it('should not throw when metadata is missing', function() {
@@ -46,7 +47,7 @@ describe('cli/metadata', function() {
       }
     });
 
-    expect(metadata).to.not.throwException(/Error Parsing Metadata/);
+    expect(metadata).to.not.throw(/Error Parsing Metadata/);
   });
 
   it('should throw on malformed deps', function() {
@@ -59,7 +60,7 @@ describe('cli/metadata', function() {
       }
     });
 
-    expect(metadata).to.throwException(/Couldn't parse dependencies/);
+    expect(metadata).to.throw(/Couldn't parse dependencies/);
   });
 
   it('should throw if we can\'t find the define', function() {
@@ -67,59 +68,78 @@ describe('cli/metadata', function() {
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
         'readFileSync': function() {
-          return 'defin([]),';
+          return 'define_([]),';
         }
       }
     });
 
-    expect(metadata).to.throwException(/Couldn't find the define/);
+    expect(metadata).to.throw(/Couldn't find the define/);
   });
 
-  it('should use amdPath as a fallback for name', function() {
+  it('should throw if no name is defined', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
-      'file': {
-        'walkSync': function(dir, cb) {
-          cb('/', [], ['fakeDetect.js']);
-        }
-      },
       'fs': {
         'readFileSync': function() {
           return '/*! { "property": "fake"}!*/ define([],';
         }
       }
     });
-    var result = metadata();
 
-    expect(result.name).to.equal(result.amdPath);
+    expect(metadata).to.throw(/Minimal metadata not found/);
   });
 
-  it('should throw if we can\'t find the define', function() {
+  it('should throw if no property is defined', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
         'readFileSync': function() {
-          return '/*! { "polyfills": ["fake"]}!*/ define([],';
+          return '/*! { "name": "fake"}!*/ define([],';
         }
       }
     });
 
-    expect(metadata).to.throwException(/Polyfill not found/);
+    expect(metadata).to.throw(/Minimal metadata not found/);
   });
 
-  it('should throw if we can\'t find the define', function() {
+  it('should throw if property contains uppercase characters and/or special symbols except dashes', function() {
 
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
         'readFileSync': function() {
-          return '/*! { "property": "fake", "cssclass": "realFake"}!*/ define([],';
+          return '/*! { "name": "fake", "property": "U_pper-case123"}!*/ define([],';
+        }
+      }
+    });
+    expect(metadata).to.throw(/Property can only have lowercase alphanumeric characters and dashes/);
+  });
+
+  it('should throw if polyfill is incorrectly configured', function() {
+
+    var metadata = proxyquire(root + 'lib/metadata', {
+      'fs': {
+        'readFileSync': function() {
+          return '/*! { "name": "fake", "property": "fake", "polyfills": ["fake"]}!*/ define([],';
+        }
+      }
+    });
+
+    expect(metadata).to.throw(/Polyfill not found/);
+  });
+
+  it('should return null if cssclass is incorrectly configured', function() {
+
+    var metadata = proxyquire(root + 'lib/metadata', {
+      'fs': {
+        'readFileSync': function() {
+          return '/*! { "name": "fake", "property": "fake", "cssclass": "realFake"}!*/ define([],';
         }
       }
     });
 
     var firstResult = metadata()[0];
 
-    expect(firstResult.cssclass).to.be(null);
+    expect(firstResult.cssclass).to.be.equal(null);
   });
 
   it('should rename `docs` to `doc` when found', function() {
@@ -127,14 +147,14 @@ describe('cli/metadata', function() {
     var metadata = proxyquire(root + 'lib/metadata', {
       'fs': {
         'readFileSync': function() {
-          return '/*! { "docs": "originally docs" }!*/ define([],';
+          return '/*! { "name": "fake", "property": "fake", "docs": "originally docs" }!*/ define([],';
         }
       }
     });
 
     var firstResult = metadata()[0];
 
-    expect(firstResult.docs).to.be(undefined);
+    expect(firstResult.docs).to.be.equal(undefined);
     expect(firstResult.doc).to.match(/originally docs/);
   });
 
@@ -143,7 +163,7 @@ describe('cli/metadata', function() {
   });
 
   it('return nothing when given a callback', function() {
-    expect(metadata(function noop() {})).to.be(undefined);
+    expect(metadata(function noop() {})).to.be.equal(undefined);
   });
 
   it('pass the json blob when given a callback', function(done) {
@@ -173,38 +193,38 @@ describe('cli/metadata', function() {
       deps: Joi.array().items(Joi.string()),
 
       notes: Joi.array().items(
-                    Joi.object().keys({
-                      name: Joi.string().required(),
-                      href: Joi.string().required()
-                    })
-                  ).unique(),
+        Joi.object().keys({
+          name: Joi.string().required(),
+          href: Joi.string().required()
+        })
+      ).unique(),
 
       cssclass: Joi.alternatives().try(
-                              Joi.string().lowercase(),
-                              Joi.array().items(Joi.string().lowercase())
-                            ).required(),
+        Joi.string().lowercase(),
+        Joi.array().items(Joi.string().lowercase())
+      ).required(),
 
       property: Joi.alternatives().try(
-                              Joi.string().lowercase(),
-                              Joi.array().items(Joi.string().lowercase())
-                            ).required(),
+        Joi.string().lowercase(),
+        Joi.array().items(Joi.string().lowercase())
+      ).required(),
 
       polyfills: Joi.array().items(
-                                Joi.object().keys({
-                                  name: Joi.string().required(),
-                                  authors: Joi.array().items(Joi.string()),
-                                  notes: Joi.array().items(Joi.string()),
-                                  href: Joi.string().required(),
-                                  licenses: Joi.array().items(Joi.string()).required()
-                                })
-                              ).unique()
+        Joi.object().keys({
+          name: Joi.string().required(),
+          authors: Joi.array().items(Joi.string()),
+          notes: Joi.array().items(Joi.string()),
+          href: Joi.string().required(),
+          licenses: Joi.array().items(Joi.string()).required()
+        })
+      ).unique()
     });
 
     metadata(function(data) {
       data.forEach(function(obj) {
         var err = schema.validate(obj).error;
         it('for ' + obj.name, function() {
-          expect(err).to.be(null);
+          expect(err).to.be.equal(undefined);
         });
       });
     });

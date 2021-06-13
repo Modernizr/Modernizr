@@ -5,12 +5,11 @@ define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function(Mo
    * @access private
    * @function injectElementWithStyles
    * @param {string} rule - String representing a css rule
-   * @param {function} callback - A function that is used to test the injected element
+   * @param {Function} callback - A function that is used to test the injected element
    * @param {number} [nodes] - An integer representing the number of additional nodes you want injected
    * @param {string[]} [testnames] - An array of strings that are used as ids for the additional nodes
-   * @returns {boolean}
+   * @returns {boolean} the result of the specified callback test
    */
-
   function injectElementWithStyles(rule, callback, nodes, testnames) {
     var mod = 'modernizr';
     var style;
@@ -58,7 +57,7 @@ define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function(Mo
 
     ret = callback(div, rule);
     // If this is done after page load we don't want to remove the body so check if body exists
-    if (body.fake) {
+    if (body.fake && body.parentNode) {
       body.parentNode.removeChild(body);
       docElement.style.overflow = docOverflow;
       // Trigger layout so kinetic scrolling isn't disabled in iOS6+
@@ -69,7 +68,6 @@ define(['ModernizrProto', 'docElement', 'createElement', 'getBody'], function(Mo
     }
 
     return !!ret;
-
   }
 
   return injectElementWithStyles;

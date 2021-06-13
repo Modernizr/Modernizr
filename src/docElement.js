@@ -5,7 +5,6 @@ define(function() {
    * @access private
    * @returns {HTMLElement|SVGElement} The root element of the document
    */
-
   var docElement = document.documentElement;
   return docElement;
 });

@@ -42,7 +42,7 @@ describe('mq', function() {
       context: Math.random().toString().slice(2),
       baseUrl: '../src',
       paths: {
-        sinon: '../test/js/lib/sinon',
+        sinon: '../node_modules/sinon/pkg/sinon',
         cleanup: '../test/cleanup'
       }
     });
@@ -66,8 +66,8 @@ describe('mq', function() {
       });
 
       it('works', function() {
-        expect(mq('only screen')).to.equal(media('only screen').matches);
-        expect(mq('only fake rule')).to.equal(media('only fake rule').matches);
+        expect(mq('only screen')).to.be.equal(media('only screen').matches);
+        expect(mq('only fake rule')).to.be.equal(media('only fake rule').matches);
       });
     });
   } else {
@@ -88,9 +88,9 @@ describe('mq', function() {
 
       it('works', function() {
 
-        expect(mq('only screen')).to.equal(media('only screen').matches);
-        expect(mq('only fake rule')).to.equal(media('only fake rule').matches);
-        expect(injectElementWithStyles.called).to.be(true);
+        expect(mq('only screen')).to.be.equal(media('only screen').matches);
+        expect(mq('only fake rule')).to.be.equal(media('only fake rule').matches);
+        expect(injectElementWithStyles.called).to.be.equal(true);
       });
 
     });

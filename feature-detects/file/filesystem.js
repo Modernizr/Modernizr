@@ -4,8 +4,8 @@
   "property": "filesystem",
   "caniuse": "filesystem",
   "notes": [{
-    "name": "W3 Draft",
-    "href": "http://dev.w3.org/2009/dap/file-system/file-dir-sys.html"
+    "name": "W3C Spec",
+    "href": "https://www.w3.org/TR/file-system-api/"
   }],
   "authors": ["Eric Bidelman (@ebidel)"],
   "tags": ["file"],

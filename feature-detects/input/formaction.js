@@ -5,14 +5,12 @@
   "aliases": ["input-formaction"],
   "notes": [{
     "name": "WHATWG Spec",
-    "href": "https://html.spec.whatwg.org/multipage/forms.html#attr-fs-formaction"
+    "href": "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formaction"
   }, {
     "name": "Wufoo demo",
-    "href": "https://www.wufoo.com/html5/attributes/13-formaction.html"
+    "href": "https://www.wufoo.com/html5/formaction-attribute/"
   }],
-  "polyfills": [
-    "webshims"
-  ]
+  "polyfills": ["webshims"]
 }
 !*/
 /* DOC

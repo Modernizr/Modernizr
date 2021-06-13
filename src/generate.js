@@ -5,12 +5,11 @@ define(['lodash'], function(_) {
    *
    * @access private
    * @function generate
-   * @param {object} [config] - A configuration object
-   * @param {array} [config.options[]] - An array of options to include in the build
-   * @param {array} [config.feature-detects[]] - An array of the feature detects to include
+   * @param {object} [config] - A configuration object consisting of:
+   *                 [config.options] - An array of options to include in the build
+   *                 [config.feature-detects] - An array of the feature detects to include
    * @returns {string} A string of the require.js build
    */
-
   return function generate(config) {
     // Set some defaults
     if (!config) {
@@ -70,15 +69,14 @@ define(['lodash'], function(_) {
     output += '  delete ModernizrProto.addAsyncTest;\n' +
     '\n';
 
-    // TODO:: if there's a way to figure out if there will be no
-    // items in this queue, then we could avoid the code.
+    // TODO :: if there's a way to figure out if there will be no items in this queue, then we could avoid the code.
     output += '  // Run the things that are supposed to run after the tests\n' +
     '  for (var i = 0; i < Modernizr._q.length; i++) {\n' +
     '    Modernizr._q[i]();\n' +
     '  }\n\n';
 
     output += '  // Leak Modernizr namespace\n' +
-    '  window.Modernizr = Modernizr;\n' +
+    '  scriptGlobalObject.Modernizr = Modernizr;\n' +
     '\n' +
     '});';
 

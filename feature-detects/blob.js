@@ -6,7 +6,7 @@
   "builderAliases": ["blob_constructor"],
   "caniuse": "blobbuilder",
   "notes": [{
-    "name": "W3C spec",
+    "name": "W3C Spec",
     "href": "https://w3c.github.io/FileAPI/#constructorBlob"
   }],
   "polyfills": ["blobjs"]

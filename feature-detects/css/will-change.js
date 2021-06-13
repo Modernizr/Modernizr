@@ -2,8 +2,9 @@
 {
   "name": "will-change",
   "property": "willchange",
+  "caniuse": "will-change",
   "notes": [{
-    "name": "Spec",
+    "name": "W3C Spec",
     "href": "https://drafts.csswg.org/css-will-change/"
   }]
 }

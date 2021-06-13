@@ -1,27 +1,22 @@
 environment:
   matrix:
-    - nodejs_version: 0.10
-      npm_version: 3
-    - nodejs_version: 0.12
-      npm_version: 3
-    - nodejs_version: 4
-      npm_version: 'latest'
-    - nodejs_version: 6
-      npm_version: 'latest'
-    - nodejs_version: 8
-      npm_version: 'latest'
+    - nodejs_version: 10
+    - nodejs_version: 12
+    - nodejs_version: 14
 
-# Get the latest stable version of Node 0.STABLE.latest
 install:
-  - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
-  - npm install -g npm@%npm_version%
-  - set PATH=%APPDATA%\npm;%PATH%
+  - ps: Install-Product node $env:nodejs_version x64
   - npm install
 
 build: off
 
 before_test:
-  - npm install grunt-cli -g
+  - npm install -g gulp-cli
+
+# Skipping specific commit files: https://www.appveyor.com/docs/appveyor-yml and https://www.appveyor.com/docs/how-to/filtering-commits
+skip_commits:
+  files:
+    - '**/*.md'
 
 test_script:
   - node --version

@@ -9,10 +9,10 @@
   "notes": [{
     "name": "WebP Info",
     "href": "https://developers.google.com/speed/webp/"
-  },{
-    "name": "Article about WebP support on Android browsers",
-    "href": "http://www.wope-framework.com/en/2013/06/24/webp-support-on-android-browsers/"
-  },{
+  }, {
+    "name": "Article about WebP support",
+    "href": "https://optimus.keycdn.com/support/webp-support/"
+  }, {
     "name": "Chromium WebP announcement",
     "href": "https://blog.chromium.org/2011/11/lossless-and-transparency-encoding-in.html?m=1"
   }]
@@ -30,7 +30,7 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
     };
 
     image.onload = function() {
-      addTest('webpalpha', image.width == 1, {aliases: ['webp-alpha']});
+      addTest('webpalpha', image.width === 1, {aliases: ['webp-alpha']});
     };
 
     image.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==';

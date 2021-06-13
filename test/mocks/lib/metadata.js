@@ -5,10 +5,10 @@ define([], [
     'caniuse': 'css3-boxsizing',
     'polyfills': [],
     'tags': [],
-    'builderAliases': [ ],
+    'builderAliases': [],
     'notes': [{
       'name': 'MDN Docs',
-      'href': 'http://developer.mozilla.org/en/CSS/box-sizing'
+      'href': 'https://developer.mozilla.org/en/CSS/box-sizing'
     }],
     'doc': '<p>Detects support for the ability to control the css box model</p>\n',
     'deps': [

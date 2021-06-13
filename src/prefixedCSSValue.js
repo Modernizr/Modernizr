@@ -2,7 +2,7 @@ define(['ModernizrProto', 'domPrefixes', 'createElement'], function(ModernizrPro
   /**
    * prefixedCSSValue is a way test for prefixed css properties (e.g. display: -webkit-flex)
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.prefixedCSSValue
    * @optionName Modernizr.prefixedCSSValue()
    * @optionProp prefixedCSSValue
@@ -10,7 +10,7 @@ define(['ModernizrProto', 'domPrefixes', 'createElement'], function(ModernizrPro
    * @function prefixedCSSValue
    * @param {string} prop - String name of the property to test for
    * @param {string} value - String value of the non prefixed version of the value you want to test for
-   * @returns {string|false} The string representing the (possibly prefixed)
+   * @returns {string|boolean} The string representing the (possibly prefixed)
    * valid version of the property, or `false` when it is unsupported.
    * @example
    *
@@ -19,9 +19,7 @@ define(['ModernizrProto', 'domPrefixes', 'createElement'], function(ModernizrPro
    * ```js
    * Modernizr.prefixedCSSValue('background', 'linear-gradient(left, red, red)')
    * ```
-   *
    */
-
   var prefixedCSSValue = function(prop, value) {
     var result = false;
     var elem = createElement('div');

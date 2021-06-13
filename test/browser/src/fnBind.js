@@ -23,7 +23,7 @@ describe('fnBind', function() {
       return this.x;
     };
 
-    expect(fnBind(bar, foo)()).to.equal(1);
+    expect(fnBind(bar, foo)()).to.be.equal(1);
   });
 
   after(function() {

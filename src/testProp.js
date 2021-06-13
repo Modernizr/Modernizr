@@ -1,9 +1,9 @@
 define(['ModernizrProto', 'testProps'], function(ModernizrProto, testProps) {
   /**
    * testProp() investigates whether a given style property is recognized
-   * Property names can be provided in either camelCase or kebab-case.
+   * Property names can be provided in either camelCase or hyphen-case.
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.testProp
    * @access public
    * @optionName Modernizr.testProp()
@@ -12,7 +12,7 @@ define(['ModernizrProto', 'testProps'], function(ModernizrProto, testProps) {
    * @param {string} prop - Name of the CSS property to check
    * @param {string} [value] - Name of the CSS value to check
    * @param {boolean} [useValue] - Whether or not to check the value if @supports isn't supported
-   * @returns {boolean}
+   * @returns {boolean} an empty string if the property is supported, undefined if its unsupported
    * @example
    *
    * Just like [testAllProps](#modernizr-testallprops), only it does not check any vendor prefixed
@@ -32,9 +32,9 @@ define(['ModernizrProto', 'testProps'], function(ModernizrProto, testProps) {
    * Modernizr.testProp('pointerEvents', 'penguin') // false
    * ```
    */
-
   var testProp = ModernizrProto.testProp = function(prop, value, useValue) {
     return testProps([prop], undefined, value, useValue);
   };
+
   return testProp;
 });

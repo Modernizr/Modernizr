@@ -34,8 +34,8 @@ describe('html5printshiv', function() {
   it('shivs the document', function(done) {
     try {
       iframeWindow.requirejs(['html5printshiv'], function() {
-        expect('html5' in iframeWindow).to.be(true);
-        expect(iframeWindow.html5.type).to.equal('default print');
+        expect('html5' in iframeWindow).to.be.equal(true);
+        expect(iframeWindow.html5.type).to.be.equal('default print');
         done();
       });
     } catch (e) {

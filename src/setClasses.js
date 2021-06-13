@@ -6,7 +6,6 @@ define(['Modernizr', 'docElement', 'isSVG'], function(Modernizr, docElement, isS
    * @function setClasses
    * @param {string[]} classes - Array of class names
    */
-
   // Pass in an and array of class names, e.g.:
   //  ['no-webp', 'borderradius', ...]
   function setClasses(classes) {
@@ -26,14 +25,15 @@ define(['Modernizr', 'docElement', 'isSVG'], function(Modernizr, docElement, isS
 
     if (Modernizr._config.enableClasses) {
       // Add the new classes
-      className += ' ' + classPrefix + classes.join(' ' + classPrefix);
+      if (classes.length > 0) {
+        className += ' ' + classPrefix + classes.join(' ' + classPrefix);
+      }
       if (isSVG) {
         docElement.className.baseVal = className;
       } else {
         docElement.className = className;
       }
     }
-
   }
 
   return setClasses;

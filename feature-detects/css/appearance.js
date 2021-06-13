@@ -5,9 +5,9 @@
   "caniuse": "css-appearance",
   "tags": ["css"],
   "notes": [{
-    "name": "MDN documentation",
+    "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance"
-  },{
+  }, {
     "name": "CSS-Tricks CSS Almanac: appearance",
     "href": "https://css-tricks.com/almanac/properties/a/appearance/"
   }]

@@ -1,14 +1,11 @@
 define(['tests'], function(tests) {
   /**
-   *
    * ModernizrProto is the constructor for Modernizr
    *
    * @class
    * @access public
    */
-
   var ModernizrProto = {
-    // The current version, dummy
     _version: '__VERSION__',
 
     // Any settings that don't work as separate modules

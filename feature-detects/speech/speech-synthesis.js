@@ -1,18 +1,22 @@
 /*!
 {
+  "property": "speechsynthesis",
+  "caniuse": "speech-synthesis",
+  "tags": ["input", "speech"],
   "authors": ["Cătălin Mariș"],
   "name": "Speech Synthesis API",
-  "notes": [
-    {
-      "name": "W3C Web Speech API Specification - The SpeechSynthesis Interface",
-      "href": "https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section"
-    }
-  ],
-  "property": "speechsynthesis",
-  "tags": ["input", "speech"]
+  "notes": [{
+    "name": "W3C Spec",
+    "href": "https://w3c.github.io/speech-api/speechapi.html#tts-section"
+  }]
 }
 !*/
-
 define(['Modernizr'], function(Modernizr) {
-  Modernizr.addTest('speechsynthesis', 'SpeechSynthesisUtterance' in window);
+  Modernizr.addTest('speechsynthesis', function() {
+    try {
+      return 'SpeechSynthesisUtterance' in window;
+    } catch (e) {
+      return false;
+    }
+  });
 });

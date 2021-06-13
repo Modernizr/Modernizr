@@ -18,15 +18,15 @@ describe('prefixedCSSValue', function() {
   });
 
   it('returns the value when it is valid', function() {
-    expect(prefixedCSSValue('display', 'block')).to.equal('block');
+    expect(prefixedCSSValue('display', 'block')).to.be.equal('block');
   });
 
   it('returns false when the prop is not supported', function() {
-    expect(prefixedCSSValue('fart', 'block')).to.equal(false);
+    expect(prefixedCSSValue('fart', 'block')).to.be.equal(false);
   });
 
   it('returns false when value is not supported', function() {
-    expect(prefixedCSSValue('display', 'fart')).to.equal(false);
+    expect(prefixedCSSValue('display', 'fart')).to.be.equal(false);
   });
 
   after(function() {

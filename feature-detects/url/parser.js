@@ -3,8 +3,8 @@
   "name": "URL parser",
   "property": "urlparser",
   "notes": [{
-    "name": "URL",
-    "href": "https://dvcs.w3.org/hg/url/raw-file/tip/Overview.html"
+    "name": "WHATWG Spec",
+    "href": "https://url.spec.whatwg.org/"
   }],
   "polyfills": ["urlparser"],
   "authors": ["Ron Waldon (@jokeyrhyme)"],

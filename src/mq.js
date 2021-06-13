@@ -1,10 +1,10 @@
-define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, injectElementWithStyles) {
+define(['ModernizrProto', 'injectElementWithStyles', 'computedStyle'], function(ModernizrProto, injectElementWithStyles, computedStyle) {
   /**
    * Modernizr.mq tests a given media query, live against the current state of the window
    * adapted from matchMedia polyfill by Scott Jehl and Paul Irish
    * gist.github.com/786768
    *
-   * @memberof Modernizr
+   * @memberOf Modernizr
    * @name Modernizr.mq
    * @optionName Modernizr.mq()
    * @optionProp mq
@@ -41,11 +41,9 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
    *  Modernizr.mq('only all'); // true if MQ are supported, false if not
    * ```
    *
-   *
    * Note that if the browser does not support media queries (e.g. old IE) mq will
    * always return false.
    */
-
   var mq = (function() {
     var matchMedia = window.matchMedia || window.msMatchMedia;
     if (matchMedia) {
@@ -59,15 +57,12 @@ define(['ModernizrProto', 'injectElementWithStyles'], function(ModernizrProto, i
       var bool = false;
 
       injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function(node) {
-        bool = (window.getComputedStyle ?
-                window.getComputedStyle(node, null) :
-                node.currentStyle).position == 'absolute';
+        bool = computedStyle(node, null, 'position') === 'absolute';
       });
 
       return bool;
     };
   })();
-
 
   ModernizrProto.mq = mq;
 

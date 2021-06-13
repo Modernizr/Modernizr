@@ -2,8 +2,8 @@ describe('prefixedCSS', function() {
   function gimmePrefix(prop, obj) {
     var prefixes = ['Moz', 'Khtml', 'Webkit', 'O', 'ms'],
       domPrefixes = ['moz', 'khtml', 'webkit', 'o', 'ms'],
-      elem     = document.createElement('div'),
-      upper    = prop.charAt(0).toUpperCase() + prop.slice(1),
+      elem = document.createElement('div'),
+      upper = prop.charAt(0).toUpperCase() + prop.slice(1),
       len;
 
     if (!obj) {
@@ -12,7 +12,7 @@ describe('prefixedCSS', function() {
       }
 
       for (len = prefixes.length; len--;) {
-        if ((prefixes[len] + upper)  in elem.style) {
+        if ((prefixes[len] + upper) in elem.style) {
           return (prefixes[len] + upper);
         }
       }
@@ -22,7 +22,7 @@ describe('prefixedCSS', function() {
       }
 
       for (len = domPrefixes.length; len--;) {
-        if ((domPrefixes[len] + upper)  in obj) {
+        if ((domPrefixes[len] + upper) in obj) {
           return (domPrefixes[len] + upper);
         }
       }
@@ -47,11 +47,11 @@ describe('prefixedCSS', function() {
     var prefixed = gimmePrefix(cssToDOM(prop));
     if (prefixed) {
       it('results for ' + prop + ' match the homebaked prefix finder', function() {
-        expect(Modernizr.prefixedCSS(prop)).to.be(domToCSS(prefixed));
+        expect(Modernizr.prefixedCSS(prop)).to.be.equal(domToCSS(prefixed));
       });
     } else {
       it('results for ' + prop + ' match the homebaked prefix finder', function() {
-        expect(Modernizr.prefixedCSS(prop)).to.be(false);
+        expect(Modernizr.prefixedCSS(prop)).to.be.equal(false);
       });
     }
   }

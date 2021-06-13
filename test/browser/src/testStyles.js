@@ -3,7 +3,6 @@ describe('testStyles', function() {
   var ModernizrProto;
   var cleanup;
 
-
   before(function(done) {
 
     define('ModernizrProto', [], function() {return {};});
@@ -27,7 +26,7 @@ describe('testStyles', function() {
   });
 
   it('is just an alias to injectElementWithStyles', function() {
-    expect(ModernizrProto.testStyles).to.equal(injectElementWithStyles);
+    expect(ModernizrProto.testStyles).to.be.equal(injectElementWithStyles);
   });
 
   after(function() {

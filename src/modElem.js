@@ -4,7 +4,6 @@ define(['Modernizr', 'createElement'], function(Modernizr, createElement) {
    *
    * @access private
    */
-
   var modElem = {
     elem: createElement('modernizr')
   };

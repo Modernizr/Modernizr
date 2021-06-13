@@ -1,5 +1,6 @@
-/* globals mocha, __coverage__ */
+/*global __coverage__*/
 $(document).ready(function() {
+
   var runner = mocha.run();
 
   var results = {
@@ -13,7 +14,7 @@ $(document).ready(function() {
     mocha.suite.afterAll('send coverage', function(done) {
       // ensure timeout errors block normal reporting, to ensure the entire suite is retried
       if (!window.global_test_results) {
-        // opera 12 can't handle the defualt `window.mochaResults`, so we build
+        // opera 12 can't handle the default `window.mochaResults`, so we build
         // generic test data instead
         window.global_test_results = results;
       }

@@ -17,16 +17,15 @@ describe('toStringFn', function() {
     });
   });
 
-
   it('is an function', function() {
     expect(toStringFn).to.be.an('function');
   });
 
   it('toStrings stuff', function() {
-    expect(toStringFn.call([])).to.equal('[object Array]');
-    expect(toStringFn.call({})).to.equal('[object Object]');
-    expect(toStringFn.call(true)).to.equal('[object Boolean]');
-    expect(toStringFn.call(new Date())).to.equal('[object Date]');
+    expect(toStringFn.call([])).to.be.equal('[object Array]');
+    expect(toStringFn.call({})).to.be.equal('[object Object]');
+    expect(toStringFn.call(true)).to.be.equal('[object Boolean]');
+    expect(toStringFn.call(new Date())).to.be.equal('[object Date]');
   });
 
   after(function() {

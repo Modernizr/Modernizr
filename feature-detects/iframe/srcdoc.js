@@ -2,10 +2,11 @@
 {
   "name": "iframe[srcdoc] Attribute",
   "property": "srcdoc",
+  "caniuse": "iframe-srcdoc",
   "tags": ["iframe"],
   "builderAliases": ["iframe_srcdoc"],
   "notes": [{
-    "name": "WhatWG Spec",
+    "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#attr-iframe-srcdoc"
   }]
 }

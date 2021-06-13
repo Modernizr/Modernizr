@@ -7,7 +7,7 @@
   "tags": ["animation"],
   "authors": ["Addy Osmani"],
   "notes": [{
-    "name": "W3C spec",
+    "name": "W3C Spec",
     "href": "https://www.w3.org/TR/animation-timing/"
   }],
   "polyfills": ["raf"]
