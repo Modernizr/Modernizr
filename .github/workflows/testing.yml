@@ -8,10 +8,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [12.x, 14.x, 16.x]
         include:
-          - node: 15.x # This way we have a way to see if it works in the latest 
-            os: ubuntu-18.04 # Even though we don't officialy maintain it
+          - node: 16.x # This way we have a way to see if it works in the latest
+            os: ubuntu-18.04 # Even though we don't officially maintain it
             experimental: true
 
     steps:
