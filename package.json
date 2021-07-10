@@ -65,7 +65,7 @@
     "codecov": "^3.8.2",
     "del": "^6.0.0",
     "eslint": "^7.30.0",
-    "eslint-plugin-jsdoc": "^35.4.2",
+    "eslint-plugin-jsdoc": "^35.4.3",
     "find-parent-dir": "^0.3.1",
     "fs-extra": "^10.0.0",
     "globby": "^11.0.4",
