@@ -10,7 +10,7 @@ define(['ModernizrProto', 'omPrefixes'], function(ModernizrProto, omPrefixes) {
    * @example
    *
    * Modernizr._domPrefixes is exactly the same as [_prefixes](#modernizr-_prefixes), but rather
-   * than kebab-case properties, all properties are their Capitalized variant
+   * than hyphen-case properties, all properties are their Capitalized variant
    *
    * ```js
    * Modernizr._domPrefixes === [ "Moz", "O", "ms", "Webkit" ];

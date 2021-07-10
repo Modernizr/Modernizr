@@ -4,7 +4,7 @@
   "property": "batteryapi",
   "aliases": ["battery-api"],
   "builderAliases": ["battery_api"],
-  "tags": ["device", "media"],
+  "tags": ["battery", "device", "media"],
   "authors": ["Paul Sayre", "Alex Bradley (@abrad1212)"],
   "notes": [{
     "name": "MDN Docs",

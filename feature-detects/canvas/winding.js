@@ -12,7 +12,7 @@
 /* DOC
 Determines if winding rules, which controls if a path can go clockwise or counterclockwise
 */
-define(['Modernizr', 'createElement', 'test/canvas'], function(Modernizr, createElement) {
+define(['Modernizr', 'createElement', 'test/canvas/canvas'], function(Modernizr, createElement) {
 
   Modernizr.addTest('canvaswinding', function() {
     if (Modernizr.canvas === false) {

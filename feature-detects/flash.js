@@ -1,11 +1,11 @@
 /*!
-  {
+{
   "name": "Flash",
   "property": "flash",
   "tags": ["flash"],
   "polyfills": ["shumway"]
-  }
-  !*/
+}
+!*/
 /* DOC
 Detects Flash support as well as Flash-blocking plugins
 */

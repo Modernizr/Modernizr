@@ -12,7 +12,7 @@ define(['ModernizrProto'], function(ModernizrProto) {
    *
    * Modernizr._prefixes is the internal list of prefixes that we test against
    * inside of things like [prefixed](#modernizr-prefixed) and [prefixedCSS](#-code-modernizr-prefixedcss). It is simply
-   * an array of kebab-case vendor prefixes you can use within your code.
+   * an array of hyphen-case vendor prefixes you can use within your code.
    *
    * Some common use cases include
    *

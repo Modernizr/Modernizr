@@ -10,7 +10,7 @@
 /* DOC
 Checks for support of the autoplay attribute of the audio element.
 */
-define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/audio'], function(Modernizr, addTest, docElement, createElement) {
+define(['Modernizr', 'addTest', 'docElement', 'createElement', 'test/audio/audio'], function(Modernizr, addTest, docElement, createElement) {
 
   Modernizr.addAsyncTest(function() {
     var timeout;

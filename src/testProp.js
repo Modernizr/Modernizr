@@ -1,7 +1,7 @@
 define(['ModernizrProto', 'testProps'], function(ModernizrProto, testProps) {
   /**
    * testProp() investigates whether a given style property is recognized
-   * Property names can be provided in either camelCase or kebab-case.
+   * Property names can be provided in either camelCase or hyphen-case.
    *
    * @memberOf Modernizr
    * @name Modernizr.testProp

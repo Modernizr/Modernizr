@@ -1,7 +1,8 @@
 /*!
 {
   "name": "Hover Media Query",
-  "property": "hovermq"
+  "property": "hovermq",
+  "tags": ["mediaquery"]
 }
 !*/
 /* DOC

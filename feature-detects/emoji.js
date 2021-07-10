@@ -7,7 +7,7 @@
 /* DOC
 Detects support for emoji character sets.
 */
-define(['Modernizr', 'createElement', 'test/canvastext'], function(Modernizr, createElement) {
+define(['Modernizr', 'createElement', 'test/canvas/text'], function(Modernizr, createElement) {
   Modernizr.addTest('emoji', function() {
     if (!Modernizr.canvastext) {
       return false;
