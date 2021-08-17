@@ -248,9 +248,7 @@ module.exports = function(grunt) {
    */
   var tests = ['clean', 'eslint', 'pug', 'instrument', 'env:coverage', 'nodeTests'];
 
-  if (process.env.APPVEYOR) {
-    grunt.registerTask('test', tests);
-  } else if (process.env.BROWSER_COVERAGE !== 'true') {
+  if (process.env.BROWSER_COVERAGE !== 'true') {
     grunt.registerTask('test', tests.concat(['generate', 'browserTests']));
   } else {
     grunt.registerTask('test', tests.concat(['generate', 'storeCoverage', 'browserTests', 'saucelabs-custom', 'makeReport', 'coveralls']));

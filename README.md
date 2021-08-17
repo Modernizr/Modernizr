@@ -1,7 +1,6 @@
 # Modernizr 
 [![npm version](https://badge.fury.io/js/modernizr.svg)](https://badge.fury.io/js/modernizr)
-[![Build Status](https://api.travis-ci.org/Modernizr/Modernizr.svg?branch=master)](https://travis-ci.org/Modernizr/Modernizr) 
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/Modernizr/modernizr?branch=master&svg=true)](https://ci.appveyor.com/project/rejas/modernizr) 
+[![Build Status](https://github.com/Modernizr/Modernizr/workflows/Testing/badge.svg)](https://github.com/Modernizr/Modernizr/actions)
 [![codecov](https://codecov.io/gh/Modernizr/Modernizr/branch/master/graph/badge.svg)](https://codecov.io/gh/Modernizr/Modernizr)
 [![Inline docs](https://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](https://inch-ci.org/github/Modernizr/Modernizr)
 
@@ -19,7 +18,7 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
 
 ## Breaking changes with v4
 
-- Dropped Node 8 Support, please upgrade to Node v10
+- Dropped Node 10 Support, please upgrade to Node v12
 
 - Following tests got renamed:
   
