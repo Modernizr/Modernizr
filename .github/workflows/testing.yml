@@ -1,0 +1,24 @@
+name: Testing
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [8.x, 10.x, 12.x]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Installing Node ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Installing dependencies
+      run: npm ci
+    - name: Installing gulp command line interface
+      run: npm install gulp-cli
+    - name: Testing Modernizr
+      run: npm test
