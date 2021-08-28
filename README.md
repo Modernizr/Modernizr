@@ -18,7 +18,7 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
 
 ## Breaking changes with v4
 
-- Dropped Node 10 Support, please upgrade to Node v12
+- Dropped support for node versions <= 10, please upgrade to at least version 12
 
 - Following tests got renamed:
   
