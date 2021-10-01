@@ -81,7 +81,7 @@ window.caniusecb = function(caniuse) {
       flexbox: 'flexbox',
       flexboxlegacy: 'flexbox',
       flexboxtweener: 'flexbox',
-      focuswithin: 'css-focus-visible',
+      focuswithin: 'css-focus-within',
       fontdisplay: 'css-font-rendering-controls',
       fontface: 'fontface',
       formvalidationapi: 'form-validation',
