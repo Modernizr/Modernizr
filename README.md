@@ -1,8 +1,6 @@
 <p align="center">
-   <a href="https://www.npmjs.com/package/modernizr" rel="noopener" target="_blank"><img alt="Modernizr Logo" src="./media/Modernizr-2-Logo-vertical-medium.png" width="250" /></a>
+   <a href="https://www.npmjs.com/package/modernizr" rel="noopener" target="_blank"><img alt="Modernizr" src="./media/Modernizr-2-Logo-vertical-medium.png" width="250" /></a>
 </p>
-                                 
-<h1 align="center">Modernizr</h1> 
 
 <div align="center">
   
