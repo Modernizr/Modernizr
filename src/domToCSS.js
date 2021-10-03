@@ -8,8 +8,8 @@ define(function() {
    * @param {string} name - String name of camelCase prop we want to convert
    * @returns {string} The hyphen-case version of the supplied name
    */
-  function domToCSS(name) {
-    return name.replace(/([A-Z])/g, function(str, m1) {
+  const domToCSS =  name => {
+    return name.replace(/([A-Z])/g, (str, m1)=> {
       return '-' + m1.toLowerCase();
     }).replace(/^ms-/, '-ms-');
   }
