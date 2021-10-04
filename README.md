@@ -1,13 +1,20 @@
-# Modernizr 
+<p align="center">
+   <a href="https://www.npmjs.com/package/modernizr" rel="noopener" target="_blank"><img alt="Modernizr" src="./media/Modernizr-2-Logo-vertical-medium.png" width="250" /></a>
+</p>
+
+<div align="center">
+  
+##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
+  
 [![npm version](https://badge.fury.io/js/modernizr.svg)](https://badge.fury.io/js/modernizr)
 [![Build Status](https://github.com/Modernizr/Modernizr/workflows/Testing/badge.svg)](https://github.com/Modernizr/Modernizr/actions)
 [![codecov](https://codecov.io/gh/Modernizr/Modernizr/branch/master/graph/badge.svg)](https://codecov.io/gh/Modernizr/Modernizr)
 [![Inline docs](https://inch-ci.org/github/Modernizr/Modernizr.svg?branch=master)](https://inch-ci.org/github/Modernizr/Modernizr)
 
+</div>
 
 - Read this file in Portuguese-BR [here](/README.pt_br.md)
 
-##### Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 
 - Our Website is outdated and broken, please DO NOT use it (https://modernizr.com) but rather build your modernizr version from npm.
 - [Documentation](https://modernizr.com/docs/)
