@@ -240,6 +240,7 @@
     "media-source-extension-api",
     "mediaquery/hovermq",
     "mediaquery/pointermq",
+    "mediastream",
     "messagechannel",
     "network/beacon",
     "network/connection-effectivetype",
