@@ -1,6 +1,6 @@
 /*!
 {
-  "name": "MediaRecorder API",
+  "name": "MediaStream API",
   "property": "mediarecorder",
   "caniuse": "mediarecorder",
   "tags": ["mediarecorder"],
