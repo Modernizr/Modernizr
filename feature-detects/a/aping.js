@@ -5,6 +5,7 @@
   "caniuse": "ping",
   "tags": ["media", "attribute"],
   "builderAliases": ["a_ping"],
+  "authors": ["Hélio Correia (@heliocorreia)"],
   "notes": [{
     "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/dev/links.html#ping"
