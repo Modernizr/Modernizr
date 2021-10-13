@@ -24,6 +24,8 @@
   ],
   "feature-detects": [
     "a/download",
+    "a/aping",
+    "a/areaping",
     "ambientlight",
     "applicationcache",
     "audio/audio",
