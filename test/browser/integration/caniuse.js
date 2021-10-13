@@ -18,6 +18,8 @@ window.caniusecb = function(caniuse) {
     // the feature detect docs
     var map = {
       adownload: 'download',
+      aping: 'ping',
+      areaping: 'ping',
       ambientlight: 'ambient-light',
       apng: 'apng',
       appearance: 'css-appearance',
