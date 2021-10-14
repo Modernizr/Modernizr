@@ -309,6 +309,7 @@
     "webgl/extensions",
     "webrtc/datachannel",
     "webrtc/getusermedia",
+    "webrtc/mediastream",
     "webrtc/peerconnection",
     "websockets",
     "websockets/binary",
