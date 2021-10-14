@@ -107,6 +107,7 @@ window.caniusecb = function(caniuse) {
       localstorage: 'namevalue-storage',
       mathml: 'mathml',
       mediaqueries: 'css-mediaqueries',
+      medirecorder: 'mediarecorder',
       mediasource: 'mediasource',
       messagechannel: 'channel-messaging',
       meter: 'progress',
