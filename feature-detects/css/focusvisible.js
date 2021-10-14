@@ -2,7 +2,8 @@
 {
   "name": "CSS :focus-visible pseudo-selector",
   "caniuse": "css-focus-visible",
-  "property": "focusvisible",
+  "property": "focusvisible",  
+  "authors": ["@esaborit4code"],
   "tags": ["css"]
 }
 !*/
