@@ -1,9 +1,9 @@
 /*!
 {
-  "name": "MediaStream API",
+  "name": "MediaStream Recording API",
   "property": "mediarecorder",
   "caniuse": "mediarecorder",
-  "tags": ["mediarecorder"],
+  "tags": ["mediarecorder", "media"],
   "authors": ["Onkar Dahale"],
   "notes": [{
     "name": "MDN Docs",
@@ -12,9 +12,8 @@
 }
 !*/
 /* DOC
-Detects support for the MediaStream Recording API for detecting mediastreaming.
+Detects support for the MediaStream Recording API.
 */
-
 define(['Modernizr'], function (Modernizr) {
     Modernizr.addTest('mediastream', typeof MediaRecorder !== "undefined" );
 });
