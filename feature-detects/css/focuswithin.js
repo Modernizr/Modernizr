@@ -1,7 +1,7 @@
 /*!
 {
   "name": "CSS :focus-within pseudo-selector",
-  "caniuse": "css-focus-visible",
+  "caniuse": "css-focus-within",
   "property": "focuswithin",
   "tags": ["css"]
 }
