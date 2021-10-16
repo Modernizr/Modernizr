@@ -143,7 +143,8 @@ gulp.task('pug', () => {
 
 gulp.task('serve:gh-pages', gulp.series('clean', 'generate', 'pug',  'copy:gh-pages', (done) => {
   connect.server({
-    root: 'gh-pages/'
+    host: '0.0.0.0',
+    root: 'gh-pages/',
   });
   done();
 }));
