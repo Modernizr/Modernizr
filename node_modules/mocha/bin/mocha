@@ -1,0 +1,139 @@
+#!/usr/bin/env node
+
+'use strict';
+
+/**
+ * This wrapper executable checks for known node flags and appends them when found,
+ * before invoking the "real" executable (`lib/cli/cli.js`)
+ *
+ * @module bin/mocha
+ * @private
+ */
+
+const {deprecate} = require('../lib/utils');
+const {loadOptions} = require('../lib/cli/options');
+const {
+  unparseNodeFlags,
+  isNodeFlag,
+  impliesNoTimeouts
+} = require('../lib/cli/node-flags');
+const unparse = require('yargs-unparser');
+const debug = require('debug')('mocha:cli:mocha');
+const {aliases} = require('../lib/cli/run-option-metadata');
+
+const mochaArgs = {};
+const nodeArgs = {};
+
+const opts = loadOptions(process.argv.slice(2));
+debug('loaded opts', opts);
+
+/**
+ * Given option/command `value`, disable timeouts if applicable
+ * @param {string} [value] - Value to check
+ * @ignore
+ */
+const disableTimeouts = value => {
+  if (impliesNoTimeouts(value)) {
+    debug('option %s disabled timeouts', value);
+    mochaArgs.timeout = 0;
+    delete mochaArgs.timeouts;
+    delete mochaArgs.t;
+  }
+};
+
+/**
+ * If `value` begins with `v8-` and is not explicitly `v8-options`, remove prefix
+ * @param {string} [value] - Value to check
+ * @returns {string} `value` with prefix (maybe) removed
+ * @ignore
+ */
+const trimV8Option = value =>
+  value !== 'v8-options' && /^v8-/.test(value) ? value.slice(3) : value;
+
+// sort options into "node" and "mocha" buckets
+Object.keys(opts).forEach(opt => {
+  if (isNodeFlag(opt)) {
+    nodeArgs[trimV8Option(opt)] = opts[opt];
+  } else {
+    mochaArgs[opt] = opts[opt];
+  }
+});
+
+// disable 'timeout' for debugFlags
+Object.keys(nodeArgs).forEach(opt => disableTimeouts(opt));
+
+// Native debugger handling
+// see https://nodejs.org/api/debugger.html#debugger_debugger
+// look for 'inspect' or 'debug' that would launch this debugger,
+// remove it from Mocha's opts and prepend it to Node's opts.
+// A deprecation warning will be printed by node, if applicable.
+// (mochaArgs._ are "positional" arguments, not prefixed with - or --)
+if (mochaArgs._) {
+  const i = mochaArgs._.findIndex(val => val === 'inspect' || val === 'debug');
+  if (i > -1) {
+    const [command] = mochaArgs._.splice(i, 1);
+    disableTimeouts('inspect');
+    nodeArgs._ = [command];
+  }
+}
+
+// historical
+if (nodeArgs.gc) {
+  deprecate(
+    '"-gc" is deprecated and will be removed from a future version of Mocha.  Use "--gc-global" instead.'
+  );
+  nodeArgs['gc-global'] = nodeArgs.gc;
+  delete nodeArgs.gc;
+}
+
+// --require/-r is treated as Mocha flag except when 'esm' is preloaded
+if (mochaArgs.require && mochaArgs.require.includes('esm')) {
+  nodeArgs.require = ['esm'];
+  mochaArgs.require = mochaArgs.require.filter(mod => mod !== 'esm');
+  if (!mochaArgs.require.length) {
+    delete mochaArgs.require;
+  }
+  delete mochaArgs.r;
+}
+
+if (Object.keys(nodeArgs).length) {
+  const {spawn} = require('child_process');
+  const mochaPath = require.resolve('../lib/cli/cli.js');
+
+  debug('final node args', nodeArgs);
+
+  const args = [].concat(
+    unparseNodeFlags(nodeArgs),
+    mochaPath,
+    unparse(mochaArgs, {alias: aliases})
+  );
+
+  debug(
+    'forking child process via command: %s %s',
+    process.execPath,
+    args.join(' ')
+  );
+
+  const proc = spawn(process.execPath, args, {
+    stdio: 'inherit'
+  });
+
+  proc.on('exit', (code, signal) => {
+    process.on('exit', () => {
+      if (signal) {
+        process.kill(process.pid, signal);
+      } else {
+        process.exit(code);
+      }
+    });
+  });
+
+  // terminate children.
+  process.on('SIGINT', () => {
+    proc.kill('SIGINT'); // calls runner.abort()
+    proc.kill('SIGTERM'); // if that didn't work, we're probably in an infinite loop, so make it die.
+  });
+} else {
+  debug('running Mocha in-process');
+  require('../lib/cli/cli').main(unparse(mochaArgs, {alias: aliases}));
+}
