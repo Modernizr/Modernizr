@@ -9,7 +9,7 @@
 /* DOC
 Tests for determining low-bandwidth via `navigator.connection`
 
-There are two iterations of the `navigator.connection` interface.
+There are three iterations of the `navigator.connection` interface.
 
 The first is present in Android 2.2+ and only in the Browser (not WebView)
 
@@ -22,15 +22,19 @@ The second is speced at https://dvcs.w3.org/hg/dap/raw-file/tip/network-api/Over
 
 Unknown devices are assumed as fast
 
+The third is placed at https://wicg.github.io/netinfo/
+
+- Support for the old type now only exists in Android 4 and below (https://caniuse.com/netinfo)
+
 For more rigorous network testing, consider boomerang.js: https://github.com/bluesmoon/boomerang/
 */
 define(['Modernizr'], function(Modernizr) {
   Modernizr.addTest('lowbandwidth', function() {
-    // polyfill
-    var connection = navigator.connection || {type: 0};
+    // Polyfill the network info API to inculde both the old type and new effectiveType
+    var connection = navigator.connection || {type: 0, effectiveType: 0};
 
     return connection.type === 3 || // connection.CELL_2G
       connection.type === 4 || // connection.CELL_3G
-      /^[23]g$/.test(connection.type); // string value in new spec
+      /^[23]g$/.test(connection.effectiveType); // string value in new spec
   });
 });
