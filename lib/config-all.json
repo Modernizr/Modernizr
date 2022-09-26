@@ -50,6 +50,7 @@
     "css/all",
     "css/animations",
     "css/appearance",
+    "css/aspectratio",
     "css/backdropfilter",
     "css/backgroundblendmode",
     "css/backgroundcliptext",
@@ -323,6 +324,7 @@
     "workers/sharedworkers",
     "workers/transferables",
     "workers/webworkers",
+    "workers/workeroptions",
     "xdomainrequest"
   ]
 }
