@@ -3,7 +3,7 @@
   "name": "PushManager",
   "property": "pushmanager",
   "caniuse": "mdn-api_pushmanager",
-  "authors": ["Dawid Kulpa (@dkulpa)"],
+  "authors": ["Dawid Kulpa (@dawidkulpa)"],
   "notes": [{
     "name": "MDN Docs",
     "href": "https://developer.mozilla.org/en-US/docs/Web/API/PushManager"
