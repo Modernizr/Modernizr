@@ -4,7 +4,7 @@
   "property": "aspectratio",
   "tags": ["css aspectration", "aspect-ratio"],
   "builderAliases": ["aspectratio"],
-  "caniuse":"aspect-ratio",
+  "caniuse":"mdn-css_properties_aspect-ratio",
   "authors": ["Debadutta Panda"],
   "notes": [{
     "name": "MDN Docs",

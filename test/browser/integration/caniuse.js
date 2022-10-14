@@ -66,7 +66,7 @@ window.caniusecb = function(caniuse) {
       cssvmaxunit: 'viewport-units',
       cssvminunit: 'viewport-units',
       cssvwunit: 'viewport-units',
-      cssaspectratio:'aspect-ratio',
+      cssaspectratio:'mdn-css_properties_aspect-ratio',
       customelements: 'custom-elementsv1',
       customproperties: 'css-variables',
       dataset: 'dataset',
@@ -179,7 +179,7 @@ window.caniusecb = function(caniuse) {
       websockets: 'websockets',
       websqldatabase: 'sql-storage',
       webworkers: 'webworkers',
-      workertypeoption:'worker-type-option',
+      workertypeoption:'mdn-api_worker_worker_ecmascript_modules',
       willchange: 'will-change',
       xhr2: 'xhr2'
     };

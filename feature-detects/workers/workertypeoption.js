@@ -2,7 +2,7 @@
 {
   "name": "worker type option test",
   "property": "workertypeoption",
-  "caniuse":"worker-type-option",
+  "caniuse":"mdn-api_worker_worker_ecmascript_modules",
   "tags": ["web worker type options", "web worker"],
   "builderAliases": ["worker_type_options"],
   "authors": ["Debadutta Panda"],
