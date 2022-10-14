@@ -317,6 +317,7 @@
     "window/atob-btoa",
     "window/framed",
     "window/matchmedia",
+    "window/pushmanager",
     "window/resizeobserver",
     "workers/blobworkers",
     "workers/dataworkers",
