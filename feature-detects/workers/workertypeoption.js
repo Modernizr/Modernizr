@@ -14,10 +14,8 @@
 !*/
 /* DOC
 Detect working status of all Workeroptions
+https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker
 */
-/**
- * @see https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker
- */
 define(['Modernizr'], function (Modernizr) {
     Modernizr.addTest("workertypeoption", function () {
         if ('Worker' in window) {

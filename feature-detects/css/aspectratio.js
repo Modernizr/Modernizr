@@ -1,8 +1,8 @@
 /*!
 {
-  "name": "aspectration css property",
+  "name": "aspectratio css property",
   "property": "aspectratio",
-  "tags": ["css aspectration", "aspect-ratio"],
+  "tags": ["css aspectratio", "aspect-ratio"],
   "builderAliases": ["aspectratio"],
   "caniuse":"mdn-css_properties_aspect-ratio",
   "authors": ["Debadutta Panda"],
@@ -14,10 +14,8 @@
 !*/
 /* DOC
 Detect working status of all aspectratio css property
+https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
 */
-/**
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
- */
 define(['Modernizr', 'createElement'], function (Modernizr, createElement) {
   Modernizr.addTest("aspectratio", function () {
     if (typeof CSS !== "object" && typeof CSS.supports === "function") {
