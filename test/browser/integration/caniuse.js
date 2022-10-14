@@ -66,6 +66,7 @@ window.caniusecb = function(caniuse) {
       cssvmaxunit: 'viewport-units',
       cssvminunit: 'viewport-units',
       cssvwunit: 'viewport-units',
+      cssaspectratio:'aspect-ratio',
       customelements: 'custom-elementsv1',
       customproperties: 'css-variables',
       dataset: 'dataset',
@@ -178,6 +179,7 @@ window.caniusecb = function(caniuse) {
       websockets: 'websockets',
       websqldatabase: 'sql-storage',
       webworkers: 'webworkers',
+      workertypeoption:'worker-type-option',
       willchange: 'will-change',
       xhr2: 'xhr2'
     };

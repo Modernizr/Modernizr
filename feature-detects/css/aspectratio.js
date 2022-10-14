@@ -4,6 +4,7 @@
   "property": "aspectratio",
   "tags": ["css aspectration", "aspect-ratio"],
   "builderAliases": ["aspectratio"],
+  "caniuse":"aspect-ratio",
   "authors": ["Debadutta Panda"],
   "notes": [{
     "name": "MDN Docs",
@@ -17,15 +18,21 @@ Detect working status of all aspectratio css property
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
  */
-define(['Modernizr'], function (Modernizr) {
+define(['Modernizr', 'createElement'], function (Modernizr, createElement) {
   Modernizr.addTest("aspectratio", function () {
-    const element = document.createElement('p');
-    if ('aspectRatio' in element.style) {
-      element.remove();
-      return true;
+    if (typeof CSS !== "object" && typeof CSS.supports === "function") {
+      return CSS.supports('aspect-ratio', '1 / 1')
     } else {
-      element.remove();
-      return false;
+      var element = createElement('p'),
+            elStyle = element.style
+      if ('aspectRatio' in elStyle) {
+        elStyle.cssText = 'aspect-ratio:1 / 1'
+        element.remove()
+        return (elStyle['aspectRatio'] === '1 / 1');
+      } else {
+        element.remove();
+        return false;
+      }
     }
   });
 });
