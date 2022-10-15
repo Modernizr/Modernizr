@@ -16,6 +16,7 @@
 - Read this file in Portuguese-BR [here](/README.pt_br.md)
 - Read this file in Indonesian [here](/README.id.md)
 - Read this file in Spanish [here](/README.sp.md)
+- Read this file in Swedish [here](/README.sv.md)
 
 - Our Website is outdated and broken, please DO NOT use it (https://modernizr.com) but rather build your modernizr version from npm.
 - [Documentation](https://modernizr.com/docs/)
