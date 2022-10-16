@@ -126,6 +126,7 @@ window.caniusecb = function(caniuse) {
       progressbar: 'progress',
       promises: 'promises',
       proximity: 'proximity',
+      pushmanager: 'mdn-api_pushmanager',
       queryselector: 'queryselector',
       regions: 'css-regions',
       requestanimationframe: 'requestanimationframe',
