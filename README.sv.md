@@ -17,12 +17,12 @@
 - Läs filen på indonesiska [här](/README.id.md)
 - Läs filen på spanska [här](/README.sp.md)
 
-- Vår webbplats är föråldrad och trasig, använd den INTE (https://modernizr.com) utan bygg din modernizr-version från npm.
+- Vår webbplats är föråldrad och trasig, använd rekommenderas inte (https://modernizr.com) utan ladda ned och bygg din modernizr-version med npm.
 - [Documentation](https://modernizr.com/docs/)
 - [Integration tests](https://modernizr.github.io/Modernizr/test/integration.html)
 - [Unit tests](https://modernizr.github.io/Modernizr/test/unit.html)
 
-Modernizr testar vilka inbyggda CSS3- och HTML5-funktioner som är tillgängliga i den aktuella UA och gör resultaten tillgängliga för dig på två sätt: som egenskaper på ett globalt `Modernizr`-objekt och som klasser på `<html>`-elementet. Denna information gör att du gradvis kan förbättra dina sidor med detaljerad kontroll över upplevelsen.
+Modernizr testar vilka inbyggda CSS3- och HTML5-funktioner som är tillgängliga i den aktuella UA och gör resultaten tillgängliga för dig på två sätt: som egenskaper på ett globalt `Modernizr`-objekt och som klasser på `<html>`-elementet. Denna information gör att du gradvis kan förbättra dina sidor med detaljerad information över upplevelsen.
 
 ## Förändringar med v4
 
@@ -30,7 +30,7 @@ Modernizr testar vilka inbyggda CSS3- och HTML5-funktioner som är tillgängliga
 
 - Följande tester har bytt namn:
   
-  - `class` till `es6class` för att hålla sig i linje med resten av es-testen
+  - `class` till `es6class` för att vara närmare resten av es-testen
 
 - Följande tester har flyttats till underkataloger:
 
@@ -72,7 +72,7 @@ Modernizr.on('testname', function( result ) {
 });
 ```
 
-Vi garanterar att vi bara kommer att anropa din funktion en gång (per gång du ringer `on`). Vi exponerar för närvarande inte
+Vi garanterar att vi bara kommer att anropa din funktion en gång (per gång du aktiverar `on` funktionen). Vi exponerar för närvarande inte
 en metod för att exponera "trigger"-funktionen. Istället, om du vill ha kontroll över asynkrontester, använd
 `src/addTest`-funktionen, och varje test som du ställer in kommer automatiskt att exponera och trigga `on`-funktionen.
 
@@ -85,7 +85,7 @@ en metod för att exponera "trigger"-funktionen. Istället, om du vill ha kontro
 
 ### Från javascript
 
-Modernizr kan användas programmatiskt via npm:
+Modernizr kan användas via npm:
 
 ```js
 var modernizr = require("modernizr");
@@ -132,7 +132,7 @@ npm test
 Du kan också köra tester i den webbläsare du väljer med detta kommando:
 
 ```shell
-npm run serve-gh-pagesoch navigera till dessa två webbadresser:
+npm run serve-gh-pages
 ```
 
 och navigera till dessa två webbadresser:
@@ -145,7 +145,7 @@ http://localhost:8080/test/integration.html
 ## Uppförandekod
 
 Detta projekt följer [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md). 
-Genom att delta förväntas du respektera denna kod.
+Genom att delta förväntas du respektera detta.
 
 
 ## License
