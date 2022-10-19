@@ -72,8 +72,8 @@ Modernizr.on('testname', function( result ) {
 });
 ```
 
-Vi garanterar att vi bara kommer att anropa din funktion en gång (per gång du aktiverar `on` funktionen). Vi exponerar för närvarande inte
-en metod för att exponera "trigger"-funktionen. Istället, om du vill ha kontroll över asynkrontester, använd
+Vi garanterar att vi bara kommer att anropa din funktion en gång (per gång du aktiverar `on` funktionen). Vi förser för närvarande inte
+en metod för att exponera "trigger"-funktionen. Istället, om du vill ha kontroll över dina asynkronatester, använd
 `src/addTest`-funktionen, och varje test som du ställer in kommer automatiskt att exponera och trigga `on`-funktionen.
 
 ## Kom igång
@@ -81,7 +81,7 @@ en metod för att exponera "trigger"-funktionen. Istället, om du vill ha kontro
 - Klona eller ladda ned arkivet.
 - Installera projektberoenden med `npm install`
 
-## Building Modernizr 
+## Att bygga Modernizr 
 
 ### Från javascript
 
@@ -101,13 +101,13 @@ modernizr.build({}, function (result) {
 });
 ```
 
-Den första parametern tar med ett JSON-objekt med alternativ och funktionsupptäckter. Se [`lib/config-all.json`](lib/config-all.json) för alla alternativ.
+Den första parametern tar med ett JSON-objekt med alternativ och funktioner. Se [`lib/config-all.json`](lib/config-all.json) för alla alternativ.
 
 Den andra parametern är en funktion som anropas när uppgiften är klar.
 
 ### Från kommandocentralen
 
-Vi tillhandahåller också ett kommandocentralssgränssnitt för att bygga modernizr.
+Vi tillhandahåller också ett kommando för att bygga modernizr.
 För att se alla tillgängliga alternativ körs:
 
 ```shell
