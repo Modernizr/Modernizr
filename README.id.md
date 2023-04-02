@@ -15,7 +15,7 @@
 
 - Baca file ini dengan bahasa Portuguese-BR [disini](/README.pt_br.md)
 - Baca file ini dengan bahasa Indonesia [disini](/README.id.md)
-- Baca file ini di kannada[disini](/README.ka.md)
+- Baca file ini di kannada [disini](/README.ka.md)
 
 - Situs web kami sudah lama dan rusak, mohon JANGAN menggunakannya (https://modernizr.com) melainkan buat versi modernizr dari npm.
 - [Dokumentasi](https://modernizr.com/docs/)
