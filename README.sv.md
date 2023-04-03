@@ -16,6 +16,7 @@
 - Läs filen på Portugugisiska-BR [här](/README.pt_br.md)
 - Läs filen på indonesiska [här](/README.id.md)
 - Läs filen på spanska [här](/README.sp.md)
+- Läs filen i kannada [här](/README.ka.md)
 
 - Vår webbplats är föråldrad och trasig, använd rekommenderas inte (https://modernizr.com) utan ladda ned och bygg din modernizr-version med npm.
 - [Documentation](https://modernizr.com/docs/)
