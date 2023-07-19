@@ -97,7 +97,7 @@
     "update-license": "node scripts/generate-license.js && git add LICENSE"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   },
   "files": [
     "LICENSE",
