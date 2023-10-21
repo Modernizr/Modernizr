@@ -19,6 +19,7 @@
 - Bu dosyayı İsveççe okuyun [here](/README.sv.md)
 - Bu dosyayı Tamil dilinde okuyun [here](/README.ta.md)
 - Bu dosyayı Kannada dilinde okuyun [here](/README.ka.md)
+- Bu dosyayı Hintçe olarak okuyun [here](/README.hi.md)
 
 - Web sitemiz eski ve hatalı, lütfen KULLANMAYIN (https://modernizr.com) bunun yerine modernizr sürümünüzü npm'den oluşturun.
 - [Documentation](https://modernizr.com/docs/)
@@ -32,26 +33,26 @@ Modernizr, mevcut UA'da hangi yerel CSS3 ve HTML5 özelliklerinin bulunduğunu t
 - Düğüm sürümleri <= 10 için destek kaldırıldı, lütfen en az sürüm 12'ye yükseltin
 
 - Aşağıdaki testler yeniden adlandırıldı:
-  
-    - es-testlerin geri kalanıyla aynı çizgide kalmak için `class`tan `es6class`a
+
+  - es-testlerin geri kalanıyla aynı çizgide kalmak için `class`tan `es6class`a
 
 - Aşağıdaki testler alt dizinlere taşındı:
 
   - `cookies`, `indexeddb`, `indexedblob`, `quota-management-api`, `userdata` storage alt
-  dizinine taşındı.
+    dizinine taşındı.
   - `audio` audio alt dizinine taşındı.
   - `battery` battery alt dizinine taşındı.
   - `canvas`, `canvastext` canvas alt dizinine taşındı.
-  - `customevent`, `eventlistener`, `forcetouch`, `hashchange`, `pointerevents`, `proximity` event 
-  alt dizinine taşındı.
+  - `customevent`, `eventlistener`, `forcetouch`, `hashchange`, `pointerevents`, `proximity` event
+    alt dizinine taşındı.
   - `exiforientation` image alt dizinine taşındı.
-  - `capture`, `fileinput`, `fileinputdirectory`, `formatattribute`, `input`, `inputnumber-l10n`, `inputsearchevent`, `inputtypes`, `placeholder`, `requestautocomplete`, `validation` input 
-  alt dizinine taşındı.
+  - `capture`, `fileinput`, `fileinputdirectory`, `formatattribute`, `input`, `inputnumber-l10n`, `inputsearchevent`, `inputtypes`, `placeholder`, `requestautocomplete`, `validation` input
+    alt dizinine taşındı.
   - `svg` svg alt dizinine taşındı.
   - `webgl`webgl alt dizinine taşındı.
-     
+
 - Aşağıdaki testler kaldırıldı:
-  
+
   - `touchevents`: [discussion](https://github.com/Modernizr/Modernizr/pull/2432)
   - `unicode`: [discussion](https://github.com/Modernizr/Modernizr/issues/2468)
   - `templatestrings`: es6'nın kopyası `stringtemplate`i algılar
@@ -68,20 +69,19 @@ Yeni API şuna benzer:
 
 ```js
 // Listen to a test, give it a callback
-Modernizr.on('testname', function( result ) {
+Modernizr.on("testname", function (result) {
   if (result) {
-    console.log('The test passed!');
-  }
-  else {
-    console.log('The test failed!');
+    console.log("The test passed!");
+  } else {
+    console.log("The test failed!");
   }
 });
 ```
 
-Fonksiyonunuzu yalnızca bir kez çağıracağımızı garanti ederiz (`on` olarak çağıracağınız her zaman için). 
-Şu anda `trigger` işlevselliğini ortaya çıkarmak için bir metod göstermiyoruz. 
+Fonksiyonunuzu yalnızca bir kez çağıracağımızı garanti ederiz (`on` olarak çağıracağınız her zaman için).
+Şu anda `trigger` işlevselliğini ortaya çıkarmak için bir metod göstermiyoruz.
 Bunun yerine, eşzamansız testler üzerinde kontrole sahip olmak istiyorsanız,
-`src/addTest` özelliğini kullanın, ve ayarladığınız herhangi bir test otomatik olarak `on` fonksiyonunu 
+`src/addTest` özelliğini kullanın, ve ayarladığınız herhangi bir test otomatik olarak `on` fonksiyonunu
 ortaya çıkaracak ve tetikleyecektir.
 
 ## Getting Started
@@ -89,7 +89,7 @@ ortaya çıkaracak ve tetikleyecektir.
 - Repoyu klonlayın veya indirin
 - Proje bağımlılıklarını `npm install` ile yükleyin
 
-## Building Modernizr 
+## Building Modernizr
 
 ### From javascript
 
@@ -152,9 +152,8 @@ http://localhost:8080/test/integration.html
 
 ## Code of Conduct
 
-Bu proje aşağıdaki kurallara uygundur [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md). 
+Bu proje aşağıdaki kurallara uygundur [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md).
 Projeye katılmanız durumunda bu kurallara uymanız bekleniyor.
-
 
 ## License
 

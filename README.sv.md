@@ -17,6 +17,7 @@
 - Läs filen på indonesiska [här](/README.id.md)
 - Läs filen på spanska [här](/README.sp.md)
 - Läs filen i kannada [här](/README.ka.md)
+- Läs filen på hindi [here](/README.hi.md)
 
 - Vår webbplats är föråldrad och trasig, använd rekommenderas inte (https://modernizr.com) utan ladda ned och bygg din modernizr-version med npm.
 - [Documentation](https://modernizr.com/docs/)
@@ -30,7 +31,7 @@ Modernizr testar vilka inbyggda CSS3- och HTML5-funktioner som är tillgängliga
 - Avbrutet stöd för node versioner <= 10, uppgradera till minst version 12
 
 - Följande tester har bytt namn:
-  
+
   - `class` till `es6class` för att vara närmare resten av es-testen
 
 - Följande tester har flyttats till underkataloger:
@@ -44,9 +45,9 @@ Modernizr testar vilka inbyggda CSS3- och HTML5-funktioner som är tillgängliga
   - `capture`, `fileinput`, `fileinputdirectory`, `formatattribute`, `input`, `inputnumber-l10n`, `inputsearchevent`, `inputtypes`, `placeholder`, `requestautocomplete`, `validation` flyttade till input underkatalogen
   - `svg` flyttade till svg underkatalogen
   - `webgl` flyttade till webgl underkatalogen
-     
+
 - Följande tester har tagits bort:
-  
+
   - `touchevents`: [diskussion](https://github.com/Modernizr/Modernizr/pull/2432)
   - `unicode`: [diskussion](https://github.com/Modernizr/Modernizr/issues/2468)
   - `templatestrings`: dubblett av es6 detect `stringtemplate`
@@ -63,12 +64,11 @@ Det nya API:n ser ut så här:
 
 ```js
 // Listen to a test, give it a callback
-Modernizr.on('testname', function( result ) {
+Modernizr.on("testname", function (result) {
   if (result) {
-    console.log('The test passed!');
-  }
-  else {
-    console.log('The test failed!');
+    console.log("The test passed!");
+  } else {
+    console.log("The test failed!");
   }
 });
 ```
@@ -82,7 +82,7 @@ en metod för att exponera "trigger"-funktionen. Istället, om du vill ha kontro
 - Klona eller ladda ned arkivet.
 - Installera projektberoenden med `npm install`
 
-## Att bygga Modernizr 
+## Att bygga Modernizr
 
 ### Från javascript
 
@@ -145,9 +145,8 @@ http://localhost:8080/test/integration.html
 
 ## Uppförandekod
 
-Detta projekt följer [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md). 
+Detta projekt följer [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md).
 Genom att delta förväntas du respektera detta.
-
 
 ## License
 

@@ -16,6 +16,7 @@
 - Baca file ini dengan bahasa Portuguese-BR [disini](/README.pt_br.md)
 - Baca file ini dengan bahasa Indonesia [disini](/README.id.md)
 - Baca file ini di kannada [disini](/README.ka.md)
+- Baca file ini dalam bahasa hindi [disini](/README.hi.md)
 
 - Situs web kami sudah lama dan rusak, mohon JANGAN menggunakannya (https://modernizr.com) melainkan buat versi modernizr dari npm.
 - [Dokumentasi](https://modernizr.com/docs/)
@@ -29,13 +30,13 @@ Modernizr menguji fitur CSS3 dan HTML5 asli mana yang tersedia di UA saat ini da
 - Menjatuhkan dukungan untuk versi node <= 10, harap tingkatkan ke setidaknya versi 12
 
 - Tes berikut diganti namanya:
-  
+
   - `class` ke `es6class` agar tetap sejalan dengan es-test lainnya
 
 - Tes berikut dipindahkan di subdirektori:
 
-  - `cookies`, `indexeddb`, `indexedblob`, `quota-management-api`, `userdata` pindahkan ke subdirektori penyimpanan 
-  - `audio` 
+  - `cookies`, `indexeddb`, `indexedblob`, `quota-management-api`, `userdata` pindahkan ke subdirektori penyimpanan
+  - `audio`
   - `battery` pindahkan ke subdirektori audio
   - `canvas`, `canvastext` pindahkan ke subdirektori canvas
   - `customevent`, `eventlistener`, `forcetouch`, `hashchange`, `pointerevents`, `proximity` pindahkan ke subdirektori event
@@ -43,9 +44,9 @@ Modernizr menguji fitur CSS3 dan HTML5 asli mana yang tersedia di UA saat ini da
   - `capture`, `fileinput`, `fileinputdirectory`, `formatattribute`, `input`, `inputnumber-l10n`, `inputsearchevent`, `inputtypes`, `placeholder`, `requestautocomplete`, `validation` pindahkan ke subdirektori input
   - `svg` pindahkan ke subdirektori svg
   - `webgl` pindahkan ke subdirektori webgl
-     
+
 - Tes berikut yang telah dihapus:
-  
+
   - `touchevents`: [diskusi](https://github.com/Modernizr/Modernizr/pull/2432)
   - `unicode`: [diskusi](https://github.com/Modernizr/Modernizr/issues/2468)
   - `templatestrings`: duplikat dari deteksi es6 `stringtemplate`
@@ -60,12 +61,11 @@ API baru terlihat seperti ini:
 
 ```js
 // Listen to a test, give it a callback
-Modernizr.on('testname', function( result ) {
+Modernizr.on("testname", function (result) {
   if (result) {
-    console.log('The test passed!');
-  }
-  else {
-    console.log('The test failed!');
+    console.log("The test passed!");
+  } else {
+    console.log("The test failed!");
   }
 });
 ```
@@ -78,7 +78,7 @@ metode untuk mengekspos fungsionalitas `trigger`. Sebagai gantinya, jika Anda in
 - Kloning atau unduh repository
 - Install dependensi proyek dengan `npm install`
 
-## Membangun Modernizr 
+## Membangun Modernizr
 
 ### Dari javascript
 
@@ -141,9 +141,8 @@ http://localhost:8080/test/integration.html
 
 ## Code of Conduct
 
-Proyek ini mematuhi [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md). 
+Proyek ini mematuhi [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md).
 Dengan berpertisipasi, anda diharapkan untuk menghormati code ini.
-
 
 ## License
 
