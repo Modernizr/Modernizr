@@ -19,6 +19,7 @@
 - Read this file in Swedish [here](/README.sv.md)
 - Read this file in Tamil [here](/README.ta.md)
 - Read this file in Kannada [here](/README.ka.md)
+- Read this file in Hindi [here](/README.hi.md)
 
 - Our Website is outdated and broken, please DO NOT use it (https://modernizr.com) but rather build your modernizr version from npm.
 - [Documentation](https://modernizr.com/docs/)
@@ -32,7 +33,7 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
 - Dropped support for node versions <= 10, please upgrade to at least version 12
 
 - Following tests got renamed:
-  
+
   - `class` to `es6class` to keep in line with the rest of the es-tests
 
 - Following tests got moved in subdirectories:
@@ -46,9 +47,9 @@ Modernizr tests which native CSS3 and HTML5 features are available in the curren
   - `capture`, `fileinput`, `fileinputdirectory`, `formatattribute`, `input`, `inputnumber-l10n`, `inputsearchevent`, `inputtypes`, `placeholder`, `requestautocomplete`, `validation` moved into the input subdirectory
   - `svg` moved into the svg subdirectory
   - `webgl` moved into the webgl subdirectory
-     
+
 - Following tests got removed:
-  
+
   - `touchevents`: [discussion](https://github.com/Modernizr/Modernizr/pull/2432)
   - `unicode`: [discussion](https://github.com/Modernizr/Modernizr/issues/2468)
   - `templatestrings`: duplicate of the es6 detect `stringtemplate`
@@ -65,12 +66,11 @@ The new API looks like this:
 
 ```js
 // Listen to a test, give it a callback
-Modernizr.on('testname', function( result ) {
+Modernizr.on("testname", function (result) {
   if (result) {
-    console.log('The test passed!');
-  }
-  else {
-    console.log('The test failed!');
+    console.log("The test passed!");
+  } else {
+    console.log("The test failed!");
   }
 });
 ```
@@ -84,7 +84,7 @@ a method for exposing the `trigger` functionality. Instead, if you'd like to hav
 - Clone or download the repository
 - Install project dependencies with `npm install`
 
-## Building Modernizr 
+## Building Modernizr
 
 ### From javascript
 
@@ -110,7 +110,7 @@ The second parameter is a function invoked on task completion.
 
 ### From the command-line
 
-We also provide a command line interface for building modernizr. 
+We also provide a command line interface for building modernizr.
 To see all available options run:
 
 ```shell
@@ -147,9 +147,8 @@ http://localhost:8080/test/integration.html
 
 ## Code of Conduct
 
-This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md). 
+This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md).
 By participating, you are expected to honor this code.
-
 
 ## License
 
