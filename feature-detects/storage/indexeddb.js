@@ -48,6 +48,8 @@ define(['Modernizr', 'prefixed', 'addTest'], function(Modernizr, prefixed, addTe
       };
 
       req.onsuccess = function() {
+
+        req.result.close();
         addTest('indexeddb', true);
         detectDeleteDatabase(indexeddb, testDBName);
       };
