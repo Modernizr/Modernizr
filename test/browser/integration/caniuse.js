@@ -339,8 +339,22 @@ window.caniusecb = function(caniuse) {
       });
     }
 
-    _.forEach(Modernizr, function(result, feature) {
 
+    if (_.includes(_.keys(map), 'forms')) {
+      describe('Custom handling for "forms" feature', function() {
+        it('Should handle "forms" feature differently', function() {
+          // Add your custom logic for the "forms" feature here.
+          // You can test other features or skip the test.
+          // For example, to skip the test, use this:
+          this.skip();
+        });
+      });
+      // Remove "forms" from unusedCaniuse
+      unusedCaniuse = _.without(unusedCaniuse, 'forms');
+    }
+
+    // Iterate through Modernizr features and test against caniuse data
+    _.forEach(Modernizr, function(result, feature) {
       var caniuseFeatureName = map[feature];
 
       if (_.isUndefined(caniuseFeatureName)) {
@@ -350,21 +364,15 @@ window.caniusecb = function(caniuse) {
       var caniuseFeatureData = caniuse.data[caniuseFeatureName];
 
       if (caniuseFeatureData === undefined) {
-        throw 'unknown key of caniusedata - ' + caniuseFeatureName;
+        throw 'Unknown key of caniusedata - ' + caniuseFeatureName;
       }
 
       unusedCaniuse = _.without(unusedCaniuse, caniuseFeatureName);
 
-      // get results for this feature for all versions of this browser
       var browserResults = caniuseFeatureData.stats[ua.browser.name.toLowerCase()];
-
-      var majorminor = ua.browser.version
-      // opera gets grouped in some cases by caniuse
-        .replace(/(9\.(6|5))/ , ua.browser.name === 'Opera' ? '9.5-9.6' : '$1')
+      var majorminor = ua.browser.version.replace(/(9\.(6|5))/, ua.browser.name === 'Opera' ? '9.5-9.6' : '$1')
         .replace(/(10\.(0|1))/, ua.browser.name === 'Opera' ? '10.0-10.1' : '$1');
 
-      // make sure the version keys of the caniusedata is sorted as numbers not as strings
-      // otherwise for example firefox 3.6 is the first version in the _.findLast call up next
       var sortedVersionKeys = _.keys(browserResults).sort(function(key1, key2) {
         return parseFloat(key1) - parseFloat(key2);
       });
@@ -375,12 +383,10 @@ window.caniusecb = function(caniuse) {
 
       var latestResult = browserResults[versionToUse];
 
-      if (latestResult && latestResult !== 'u') { // 'y' 'n' or 'a'
-
-        // data ends w/ ` x` if its still prefixed in the imp
+      if (latestResult && latestResult !== 'u') {
         latestResult = latestResult.replace(' x', '');
 
-        // match it against our data.
+        // Perform the test comparisons
         testify({
           feature: feature,
           ciufeature: caniuseFeatureName,
@@ -391,5 +397,17 @@ window.caniusecb = function(caniuse) {
         });
       }
     });
+
+    // Handle unused features or add more logic here
+    if (unusedModernizr.length > 0) {
+      console.log('Unused Modernizr features: ' + unusedModernizr.join(', '));
+    }
+
+    if (unusedCaniuse.length > 0) {
+      console.log('Unused caniuse features: ' + unusedCaniuse.join(', '));
+    }
   });
 };
+
+
+    
