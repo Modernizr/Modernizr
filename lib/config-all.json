@@ -36,6 +36,7 @@
     "battery/battery",
     "battery/lowbattery",
     "blob",
+    "broadcastchannel",
     "canvas/canvas",
     "canvas/blending",
     "canvas/todataurl",
