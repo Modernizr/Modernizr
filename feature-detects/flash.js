@@ -67,12 +67,12 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
       embed.type = 'application/x-shockwave-flash';
 
       // Need to do this in the body (fake or otherwise) otherwise IE8 complains
+      attachBody(body);
       body.appendChild(embed);
 
       // Pan doesn't exist in the embed if its IE (its on the ActiveXObject)
       // so this check is for all other browsers.
       if (!('Pan' in embed) && !activex) {
-        attachBody(body);
         runTest('blocked', embed);
         removeFakeBody(body);
         return;
@@ -82,7 +82,6 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
         // if we used a fake body originally, we need to restart this test, since
         // we haven't been attached to the DOM, and therefore none of the blockers
         // have had time to work.
-        attachBody(body);
         if (!docElement.contains(body)) {
           body = document.body || body;
           embed = createElement('embed');
