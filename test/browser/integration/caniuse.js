@@ -37,6 +37,7 @@ window.caniusecb = function(caniuse) {
       boxdecorationbreak: 'css-boxdecorationbreak',
       boxshadow: 'css-boxshadow',
       boxsizing: 'css3-boxsizing',
+      broadcastchannel: 'broadcastchannel',
       canvas: 'canvas',
       canvasblending: 'canvas-blending',
       canvastext: 'canvas-text',
