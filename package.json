@@ -50,9 +50,9 @@
     "doctrine": "^3.0.0",
     "file": "^0.2.2",
     "lodash": "^4.17.21",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^13.0.2",
     "mkdirp": "0.5.6",
-    "requirejs": "^2.3.6",
+    "requirejs": "^2.3.7",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
