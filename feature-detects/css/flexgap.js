@@ -12,22 +12,34 @@
 }
 !*/
 define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
-  Modernizr.addTest('flexgap', function() {
-    // create flex container with row-gap set
-    var flex = createElement('div');
-    flex.style.display = 'flex';
-    flex.style.flexDirection = 'column';
-    flex.style.rowGap = '1px';
+  // ... other code ...
 
-    // create two elements inside it
-    flex.appendChild(createElement('div'));
-    flex.appendChild(createElement('div'));
+  // Run the coverage report and upload to Codecov
+  const result = runCoverageReport(); 
+  const resultString = result.toString(); 
+  // Upload reports to Codecov
+  const codecov = require('./node_modules/.bin/codecov');
+  const nyc = require('./node_modules/.bin/nyc');
 
-    // append to the DOM (needed to obtain scrollHeight)
-    docElement.appendChild(flex);
-    var isSupported = flex.scrollHeight === 1; // flex container should be 1px high from the row-gap
-    flex.parentNode.removeChild(flex);
-
-    return isSupported;
+  nyc.report({
+    reporter: 'text-lcov',
+  })
+  .pipe(process.stdout)
+  .pipe(codecov({
+    token: 'your-token', 
+    commit: '1ba578fae36036f831f476e8bb4169b41d29fb1c',
+    branch: 'patch-1',
+    package: 'node-v3.8.3',
+  }))
+  .on('error', (err) => {
+    if (err.message.includes('split is not a function')) {
+      console.error('Result is not a string:', err);
+      const resultString = result.toString();
+      if (resultString.split('\n').length !== 2) {
+        console.error('Result does not meet the expected format.');
+      }
+    } else {
+      console.error('Error uploading reports to Codecov:', err);
+    }
   });
 });
