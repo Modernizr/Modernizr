@@ -132,27 +132,18 @@ To execute the tests using mocha-headless-chrome on the console run:
 npm test
 ```
 
-You can also run tests in the browser of your choice with this command:
+You can also run tests in your browser of choice with this command:
 
 ```shell
 npm run serve-gh-pages
 ```
 
-and navigating to these two URLs:
+and navigate to these two URLs:
 
 ```shell
 http://localhost:8080/test/unit.html
 http://localhost:8080/test/integration.html
 ```
-
-## Code of Conduct
-
-This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md).
-By participating, you are expected to honor this code.
-
-## License
-
-[MIT License](https://opensource.org/licenses/MIT)
 
 ## Integrating Modernizr with Build Tools
 
@@ -271,3 +262,12 @@ For projects using Parcel, you can integrate Modernizr as follows:
 Integrating Modernizr with your build tools can enhance your web applications by allowing you to detect and respond to the capabilities of the user's browser. Follow the steps above to set up Modernizr with your preferred build tool.
 
 For more information, refer to the [Modernizr documentation](https://modernizr.com/docs/).
+
+## Code of Conduct
+
+This project adheres to the [Open Code of Conduct](https://github.com/Modernizr/Modernizr/blob/master/.github/CODE_OF_CONDUCT.md).
+By participating, you are expected to honor this code.
+
+## License
+
+[MIT License](https://opensource.org/licenses/MIT)
