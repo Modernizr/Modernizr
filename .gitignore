@@ -1,8 +1,10 @@
+/coverage
 /dist
 /gh-pages
 /node_modules
 /test/coverage
 /test/*.html
+/.nyc_output
 modernizr.js
 metadata.json
 .DS_Store
@@ -10,4 +12,3 @@ metadata.json
 .project
 *.log
 tmp
-/.nyc_output
