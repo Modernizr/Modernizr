@@ -18,8 +18,7 @@ jobs:
       - name: Installing gulp command line interface
         run: npm install gulp-cli
       - name: Run tests with coverage
-        run: |
-          npx nyc --reporter=lcov gulp test
+        run: npm run coverage:lcov
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:

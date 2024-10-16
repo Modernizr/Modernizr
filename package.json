@@ -90,6 +90,8 @@
     "--- GULP SCRIPTS ---": "",
     "clean": "gulp clean",
     "lint": "gulp eslint",
+    "coverage": "nyc gulp test",
+    "coverage:_cov": "nyc --reporter=lcov gulp test",
     "--- MODERNIZR SCRIPTS ---": "",
     "serve-gh-pages": "gulp serve:gh-pages",
     "update-gh-pages": "scripts/generate-gh-pages.sh",
