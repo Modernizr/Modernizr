@@ -11,3 +11,4 @@ metadata.json
 *.log
 tmp
 /.nyc_output
+coverage/
