@@ -132,18 +132,136 @@ To execute the tests using mocha-headless-chrome on the console run:
 npm test
 ```
 
-You can also run tests in the browser of your choice with this command:
+You can also run tests in your browser of choice with this command:
 
 ```shell
 npm run serve-gh-pages
 ```
 
-and navigating to these two URLs:
+and navigate to these two URLs:
 
 ```shell
 http://localhost:8080/test/unit.html
 http://localhost:8080/test/integration.html
 ```
+
+## Integrating Modernizr with Build Tools
+
+This section provides guidance on how to integrate Modernizr with various build tools and frameworks, making it easier to use in your projects.
+
+### 1. Integrating with Webpack
+
+To integrate Modernizr with Webpack, follow these steps:
+
+1. **Install Modernizr**:
+   ```bash
+   npm install modernizr --save
+   ```
+
+2. **Create a Modernizr Configuration File**:
+   Create a file named `modernizr-config.js` in your project root:
+   ```javascript
+   module.exports = {
+     "feature-detects": [
+       "test/feature1",
+       "test/feature2",
+       // Add more feature detects as needed
+     ]
+   };
+   ```
+
+3. **Update Webpack Configuration**:
+   Modify your Webpack configuration file (e.g., `webpack.config.js`) to include the Modernizr plugin:
+   ```javascript
+   const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
+
+   module.exports = {
+     // Other configurations...
+     plugins: [
+       new ModernizrWebpackPlugin({
+         "feature-detects": [
+           "test/feature1",
+           "test/feature2"
+         ]
+       })
+     ]
+   };
+   ```
+
+4. **Build Your Project**:
+   Run your Webpack build process:
+   ```bash
+   npm run build
+   ```
+
+### 2. Integrating with Gulp
+
+If you are using Gulp, you can integrate Modernizr as follows:
+
+1. **Install Modernizr**:
+   ```bash
+   npm install modernizr --save-dev
+   ```
+
+2. **Create a Gulp Task**:
+   In your `gulpfile.js`, add a task to build Modernizr:
+   ```javascript
+   const gulp = require('gulp');
+   const modernizr = require('modernizr');
+
+   gulp.task('modernizr', function() {
+     return modernizr.build({
+       "feature-detects": [
+         "test/feature1",
+         "test/feature2"
+       ]
+     }).pipe(gulp.dest('dist/'));
+   });
+   ```
+
+3. **Run the Gulp Task**:
+   Execute the task to generate the Modernizr build:
+   ```bash
+   gulp modernizr
+   ```
+
+### 3. Integrating with Parcel
+
+For projects using Parcel, you can integrate Modernizr as follows:
+
+1. **Install Modernizr**:
+   ```bash
+   npm install modernizr --save
+   ```
+
+2. **Create a Modernizr Configuration File**:
+   Similar to the Webpack setup, create a `modernizr-config.js` file:
+   ```javascript
+   module.exports = {
+     "feature-detects": [
+       "test/feature1",
+       "test/feature2"
+     ]
+   };
+   ```
+
+3. **Update Parcel Configuration**:
+   You can use a plugin like `parcel-plugin-modernizr` to integrate Modernizr:
+   ```bash
+   npm install parcel-plugin-modernizr --save-dev
+   ```
+
+4. **Build Your Project**:
+   Run Parcel to build your project:
+   ```bash
+   parcel build index.html
+   ```
+
+### Conclusion
+
+Integrating Modernizr with your build tools can enhance your web applications by allowing you to detect and respond to the capabilities of the user's browser. Follow the steps above to set up Modernizr with your preferred build tool.
+
+For more information, refer to the [Modernizr documentation](https://modernizr.com/docs/).
 
 ## Code of Conduct
 
