@@ -327,6 +327,8 @@
     "workers/sharedworkers",
     "workers/transferables",
     "workers/webworkers",
-    "xdomainrequest"
+    "xdomainrequest",
+    "feature-detects/intersectionobserver",
+    "feature-detects/fetch"
   ]
 }
