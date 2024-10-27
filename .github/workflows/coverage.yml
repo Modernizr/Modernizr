@@ -1,25 +1,26 @@
-name: Testing
+name: Coverage
 
 on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [16.x, 18.x, 20.x]
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Installing Node ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20
           cache: npm
       - name: Installing dependencies
         run: npm ci
       - name: Installing gulp command line interface
         run: npm install gulp-cli
-      - name: Run tests
-        run: npm test
+      - name: Run tests with coverage
+        run: npm run coverage:lcov
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }} # required
