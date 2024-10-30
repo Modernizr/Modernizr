@@ -65,6 +65,7 @@ define(['Modernizr', 'createElement', 'docElement', 'addTest', 'getBody', 'isSVG
       var inline_style;
 
       embed.type = 'application/x-shockwave-flash';
+      embed.setAttribute('style', 'display: none;');
 
       // Need to do this in the body (fake or otherwise) otherwise IE8 complains
       body.appendChild(embed);
