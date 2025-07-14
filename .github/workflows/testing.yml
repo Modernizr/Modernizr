@@ -22,4 +22,4 @@ jobs:
       - name: Installing gulp command line interface
         run: npm install gulp-cli
       - name: Run tests
-        run: npm test
+        run: npm test -- --no-sandbox --disable-setuid-sandbox
