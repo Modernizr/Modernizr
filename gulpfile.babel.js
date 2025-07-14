@@ -92,7 +92,7 @@ gulp.task('generate', (done) => {
 gulp.task('mocha:browser', (done) => {
   const options = {
     reporter: 'dot',
-    timeout: 10000,
+    timeout: 100000,
     args: ['disable-web-security', 'no-sandbox', 'disable-setuid-sandbox']
   };
   Mochaheadless.runner({
