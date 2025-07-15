@@ -75,7 +75,7 @@
     "joi": "^17.13.3",
     "jquery": "^3.7.1",
     "json3": "^3.3.3",
-    "mocha": "^10.7.3",
+    "mocha": "^11.7.1",
     "mocha-headless-chrome": "github:direct-adv-interfaces/mocha-headless-chrome#pull/68/head",
     "nyc": "^17.1.0",
     "proxyquire": "^2.1.3",
