@@ -72,7 +72,7 @@ gulp.task('eslint', () => {
     '!src/html5shiv.js',
     '!src/html5printshiv.js',
     '!test/coverage/**/*.js'
-  ])
+  ], { allowEmpty: true })
     .pipe(eslint({
       fix: true,
       configFile: '.eslintrc'
