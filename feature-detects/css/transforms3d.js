@@ -9,7 +9,7 @@
   ]
 }
 !*/
-define(['Modernizr', 'testAllProps', 'test/css/supports'], function(Modernizr, testAllProps) {
+define(['Modernizr', 'testAllProps'], function(Modernizr, testAllProps) {
   Modernizr.addTest('csstransforms3d', function() {
     return !!testAllProps('perspective', '1px', true);
   });

@@ -16,21 +16,22 @@
 Detect working status of all aspectratio css property
 https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
 */
-define(['Modernizr', 'createElement'], function (Modernizr, createElement) {
+define(['Modernizr', 'createElement', 'test/css/supports'], function (Modernizr, createElement) {
   Modernizr.addTest("aspectratio", function () {
-    if (typeof CSS !== "object" && typeof CSS.supports === "function") {
-      return CSS.supports('aspect-ratio', '1 / 1')
+    var CSS = window.CSS;
+    if (Modernizr.supports && CSS.supports('aspect-ratio', '1 / 1')) {
+      return true;
+    }
+
+    var element = createElement('p'),
+          elStyle = element.style
+    if ('aspectRatio' in elStyle) {
+      elStyle.cssText = 'aspect-ratio:1 / 1'
+      element.remove()
+      return (elStyle['aspectRatio'] === '1 / 1');
     } else {
-      var element = createElement('p'),
-            elStyle = element.style
-      if ('aspectRatio' in elStyle) {
-        elStyle.cssText = 'aspect-ratio:1 / 1'
-        element.remove()
-        return (elStyle['aspectRatio'] === '1 / 1');
-      } else {
-        element.remove();
-        return false;
-      }
+      element.remove();
+      return false;
     }
   });
 });

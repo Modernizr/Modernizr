@@ -16,13 +16,13 @@
 /* DOC
 Detects support for `transform-style: preserve-3d`, for getting a proper 3D perspective on elements.
 */
-define(['Modernizr', 'createElement', 'docElement'], function(Modernizr, createElement, docElement) {
+define(['Modernizr', 'createElement', 'docElement', 'test/css/supports'], function(Modernizr, createElement, docElement) {
   Modernizr.addTest('preserve3d', function() {
     var outerAnchor, innerAnchor;
     var CSS = window.CSS;
     var result = false;
 
-    if (CSS && CSS.supports && CSS.supports('(transform-style: preserve-3d)')) {
+    if (Modernizr.supports && CSS.supports('(transform-style: preserve-3d)')) {
       return true;
     }
 
