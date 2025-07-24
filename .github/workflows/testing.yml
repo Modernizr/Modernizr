@@ -8,12 +8,12 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [20.x, 22.x, 24.x]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Installing Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
@@ -21,5 +21,5 @@ jobs:
         run: npm ci
       - name: Installing gulp command line interface
         run: npm install gulp-cli
-      - name: Testing Modernizr
-        run: npm test
+      - name: Run tests
+        run: npm test -- --no-sandbox --disable-setuid-sandbox
