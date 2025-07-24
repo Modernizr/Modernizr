@@ -72,7 +72,7 @@ gulp.task('eslint', () => {
     '!src/html5shiv.js',
     '!src/html5printshiv.js',
     '!test/coverage/**/*.js'
-  ])
+  ], { allowEmpty: true })
     .pipe(eslint({
       fix: true,
       configFile: '.eslintrc'
@@ -93,7 +93,7 @@ gulp.task('mocha:browser', (done) => {
   const options = {
     reporter: 'dot',
     timeout: 5000,
-    args: ['disable-web-security']
+    args: ['disable-web-security', 'no-sandbox', 'disable-setuid-sandbox']
   };
   Mochaheadless.runner({
     ...options,
