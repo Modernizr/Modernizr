@@ -18,6 +18,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
 */
 define(['Modernizr', 'createElement', 'test/css/supports'], function (Modernizr, createElement) {
   Modernizr.addTest("aspectratio", function () {
+    var CSS = window.CSS;
     if (Modernizr.supports && CSS.supports('aspect-ratio', '1 / 1')) {
       return true;
     }
