@@ -17,8 +17,14 @@ define(['Modernizr'], function(Modernizr) {
     if (typeof XMLHttpRequest === 'undefined') {
       return false;
     }
+    
     var xhr = new XMLHttpRequest();
-    xhr.open('get', '/', true);
-    return 'response' in xhr;
+    try {
+      // "xhr.open" may crash when used within an iframe
+      xhr.open('get', '/', true);
+      return 'response' in xhr;
+    } catch (signal) {
+      return false;
+    };
   }()));
 });
