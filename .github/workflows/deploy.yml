@@ -1,13 +1,6 @@
 name: Deploy to GitHub Pages
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    types: [closed]
-    branches:
-      - master
+on: [push]
 
 jobs:
   # Build & upload the static files as an artifact
