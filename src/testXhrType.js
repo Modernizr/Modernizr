@@ -13,8 +13,9 @@ define(function() {
       return false;
     }
     var xhr = new XMLHttpRequest();
-    xhr.open('get', '/', true);
     try {
+      // "xhr.open" may crash when called within an iframe
+      xhr.open('get', '/', true);
       xhr.responseType = type;
     } catch (error) {
       return false;
