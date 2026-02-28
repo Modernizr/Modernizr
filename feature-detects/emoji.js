@@ -26,6 +26,10 @@ define(['Modernizr', 'createElement', 'test/canvas/text'], function(Modernizr, c
     ctx.textBaseline = 'top';
     ctx.font = '32px Arial';
     ctx.fillText('\ud83d\udc28', 0, 0); // U+1F428 KOALA
-    return ctx.getImageData(offset, offset, 1, 1).data[0] !== 0;
+    var imgData = ctx.getImageData(offset, offset, 1, 1);
+    if (imgData){
+      return imgData.data[0] !== 0;
+    }
+    return false;
   });
 });
