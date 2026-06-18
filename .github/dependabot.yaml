@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    commit-message:
+      prefix: chore
+      prefix-development: chore
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: npm
+    directory: /
+    commit-message:
+      prefix: chore
+      prefix-development: chore
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 1
