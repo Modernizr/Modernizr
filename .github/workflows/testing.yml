@@ -19,7 +19,14 @@ jobs:
           cache: npm
       - name: Installing dependencies
         run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
       - name: Installing gulp command line interface
         run: npm install gulp-cli
+      - name: Install Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
       - name: Run tests
         run: npm test -- --no-sandbox --disable-setuid-sandbox
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}

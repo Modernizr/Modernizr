@@ -15,10 +15,17 @@ jobs:
           cache: npm
       - name: Installing dependencies
         run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
       - name: Installing gulp command line interface
         run: npm install gulp-cli
+      - name: Install Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
       - name: Run tests with coverage
         run: npm run coverage:lcov
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
