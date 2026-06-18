@@ -25,7 +25,7 @@ jobs:
         run: npm install gulp-cli
       - name: Install Chrome
         id: setup-chrome
-        uses: browser-actions/setup-chrome@v1
+        uses: browser-actions/setup-chrome@v2
       - name: Run tests
         run: npm test -- --no-sandbox --disable-setuid-sandbox
         env:
