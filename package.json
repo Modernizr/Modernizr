@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-env": "^8.0.1",
     "@babel/register": "^7.29.7",
     "auto-changelog": "^2.5.0",
     "chai": "^4.5.0",
