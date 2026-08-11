@@ -26,6 +26,8 @@ jobs:
       - name: Install Chrome
         id: setup-chrome
         uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: latest
       - name: Run tests
         run: npm test -- --no-sandbox --disable-setuid-sandbox
         env:
