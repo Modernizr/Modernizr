@@ -49,17 +49,17 @@
   "dependencies": {
     "doctrine": "^3.0.0",
     "file": "^0.2.2",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "markdown-it": "^13.0.2",
     "mkdirp": "0.5.6",
-    "requirejs": "^2.3.7",
+    "requirejs": "^2.3.8",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@babel/register": "^7.22.5",
-    "auto-changelog": "^2.4.0",
+    "auto-changelog": "^2.6.0",
     "chai": "^4.3.7",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
