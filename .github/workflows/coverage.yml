@@ -26,6 +26,8 @@ jobs:
       - name: Install Chrome
         id: setup-chrome
         uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: latest
       - name: Run tests with coverage
         run: npm run coverage:lcov
         env:
