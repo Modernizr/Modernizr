@@ -60,7 +60,7 @@
     "@babel/preset-env": "^7.29.7",
     "@babel/register": "^7.29.7",
     "auto-changelog": "^2.6.0",
-    "chai": "^4.5.0",
+    "chai": "^6.2.2",
     "codecov": "^3.8.3",
     "del": "^6.1.1",
     "eslint": "^8.57.1",
